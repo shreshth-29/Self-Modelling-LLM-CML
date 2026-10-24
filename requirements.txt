@@ -1,0 +1,9 @@
+# imports of common_v5.py, analysis_v5_compute.py and analysis_v5_interpret.py
+torch
+numpy
+sentencepiece
+sacrebleu
+scipy
+pandas
+matplotlib
+huggingface_hub

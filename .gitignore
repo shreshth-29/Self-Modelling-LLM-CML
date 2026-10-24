@@ -12,3 +12,8 @@ data/
 *.pt
 *.npz
 .ipynb_checkpoints/
+
+# large analysis outputs and tokenizer models: already committed copies stay, new ones are not tracked
+analysis/v5/*/p*.npz
+analysis/v5/*/log.jsonl
+tokenizer*/spm.model
