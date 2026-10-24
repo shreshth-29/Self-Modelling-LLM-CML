@@ -2,13 +2,15 @@
 
 **Status:** work in progress. All results below are preliminary and come from single-seed runs.
 
-## Research question
+## Problem
 
 When one neural network learns several tasks one after another, does part of it stay the same across every task switch? We call such a persistent subnetwork a "self": a group of neurons that keep working together while the rest of the network changes to fit each new task. This repository tests that question on a small translation Transformer trained continually across three languages, and compares it with control runs that never switch tasks.
 
 The analysis follows the method used in the Creative Machines Lab robot work, which this repository refers to as "the robot paper": correlation groups of neurons, Hungarian matching between checkpoints, and a per-neuron change score.
 
-## Setup
+## Approach
+
+### Setup
 
 **Model.** An encoder-decoder Transformer trained from scratch (`common_v5.py`): 4 encoder and 4 decoder layers, `d_model` 640, 10 heads, MLP width 2,560 with GELU, QK-norm, pre-LayerNorm, shared input and output embeddings, dropout 0.1, label smoothing 0.1.
 
@@ -36,7 +38,7 @@ Both runs use the same seed, so phase 1 is the same Hindi-from-scratch training 
 
 Both are reported unrestricted and script-restricted ("masked"); the tables below use the masked versions. The analysis uses the separate FLORES+ dev split as its fixed probe inputs.
 
-## Analysis pipeline (v5)
+### Analysis pipeline (v5)
 
 **Pass 1: `analysis_v5_compute.py`** (GPU, threshold-free). For each checkpoint of a run:
 
@@ -62,7 +64,7 @@ Output: one `analysis/v5/<run>/pXXX.npz` per checkpoint, plus `weights.jsonl`, `
 
 Output: `analysis/v5/interpret/`.
 
-## Version history
+### Version history
 
 **v3** (`common.py`, `train_continual_gpu0.ipynb`, `train_controls_gpu1.ipynb`). A smaller model (3+3 layers, `d_model` 512, MLP 2,048) with a 24,000-piece tokenizer (`tokenizer/`). The languages were Hindi, Yoruba and Chinese. All runs started from a pretrained English-Hindi checkpoint rather than random weights. The continual run cycled hi, yo, zh for 24 phases, with Hindi-only and Yoruba-only controls. The analysis used MLP neurons only and a fixed tau of 0.5 (`analysis/v3/`). At that tau the self was 1% to 10% of a layer.
 
@@ -75,7 +77,14 @@ Output: `analysis/v5/interpret/`.
 - Attention value vectors became hookable as probe points.
 - The analysis was split into the threshold-free compute pass (spanning trees, so tau is chosen offline) and the interpretation pass (lesions, meaning stability, top tokens).
 
-## Results so far
+## Results
+
+![Layer enc1.mlp at phase 45: reordered co-activation map with the self in purple and per-neuron persistence, Hindi-only run on the left and continual run on the right](analysis/v5/interpret/paper_style/enc1.mlp_p045.png)
+
+`analysis/v5/interpret/paper_style/enc1.mlp_p045.png`, layer `enc1.mlp`, switch into phase 45:
+- **Top panels.** The co-activation map with neurons reordered so that groups sit on the diagonal. The self is boxed in purple.
+- **Bottom panels.** Per-neuron persistence across the switch.
+- **What it shows.** At tau 0.19, the self is 917 of 2,560 neurons (36%) in the Hindi-only run and 1,433 of 2,560 (56%) in the continual run. Mean persistence is 0.95 (self) against 0.92 (task) in the Hindi-only run, and 0.79 against 0.70 in the continual run.
 
 All numbers come from `summaries.txt` and the CSVs under `analysis/`. chrF and validation loss are script-restricted.
 
@@ -98,14 +107,26 @@ In both runs the self changes less than task neurons and less than size-matched 
 
 **v5 interpretation** (`analysis/v5/interpret/`):
 - **Lesion test.** Mean-ablating the core raised own-language validation loss by 0.073 on average in the continual run, against 0.040 for size-matched random task neurons. In the Hindi-only run the figures were 0.263 and 0.088.
-- **Lesion coverage.** The test is skipped when a group is larger than the pool of task neurons. Because of that, and because the interpretation pass covers only continual phases 18 to 72, the continual lesion averages rest on only a few rows.
 - **Meaning stability.** Mean top-50 Jaccard was 0.247 (core), 0.243 (self) and 0.188 (task) in the continual run, and 0.407, 0.406 and 0.386 in the Hindi-only run.
 
-These results are not yet conclusive. They come from one seed per run, and the self is defined at a chosen threshold.
+## Evidence
 
-## How to run
+- `summaries.txt`: per-phase chrF and validation loss on all three languages for both v5 runs.
+- `analysis/v5/interpret/`:
+  - `lesion.csv`, `meaning_stability.csv` and `top_tokens.csv`;
+  - `tau50_used.json`, the tau used for each layer;
+  - `paper_style/`: one figure per MLP layer and chosen phase (18, 45, 60, 72, 84), Hindi-only and continual side by side.
+- `analysis/v5/<run>/`: one `pXXX.npz` per checkpoint from the compute pass (spanning trees, health statistics, matchings), plus `phases.jsonl`, `weights.jsonl` and `log.jsonl`.
+- `analysis/v4b/`, `analysis/v4/`, `analysis/v3/`: summary CSVs per version, with figures:
+  - change at each transition, for example `analysis/v4b/fig_change_continual_tau0.3.png`;
+  - self size and member overlap;
+  - the self/task persistence table (`fig_quad_taus.png`);
+  - training curves;
+  - per-layer co-activation maps (`analysis/v4b/paper_style/`).
 
-Checkpoints, FLORES+ and the training data are not in the repository (`runs/` and `data/` are ignored). The notebooks set `REPO = "/workspace/shreshth"` and pin a GPU in their first cell. Update `REPO` to your checkout path before running them.
+## Reproduction
+
+The notebooks set `REPO = "/workspace/shreshth"` and pin a GPU in their first cell. Update `REPO` to your checkout path before running them.
 
 1. Install the dependencies:
    ```bash
@@ -129,7 +150,7 @@ Checkpoints, FLORES+ and the training data are not in the repository (`runs/` an
 
 `analysis_v5_compute.ipynb` and `analysis_v5_interpret.ipynb` are notebook versions of the two scripts.
 
-## Repository layout
+### Repository layout
 
 ```
 common.py, common_v4.py, common_v5.py   shared model, tokenizer, masks, data, evaluation and training engine (v3, v4/v4b, v5)
@@ -153,3 +174,12 @@ analysis/v5/<run>/                      per-checkpoint npz files and logs from p
 analysis/v5/interpret/                  lesion, meaning stability, top tokens, tau50 and paper-style figures
 archive/                                scratch and duplicate notebooks kept for reference
 ```
+
+## Limitations
+
+- **Status.** This is work in progress. All results are preliminary.
+- **One seed.** There is one seed per run.
+- **Threshold.** The self is defined at a chosen threshold: tau 0.3 in the v4b tables, and tau50 per layer in v5.
+- **Lesion coverage.** The lesion test is skipped when a group is larger than the pool of task neurons. Because of that, and because the interpretation pass covers only continual phases 18 to 72, the continual lesion averages rest on only a few rows.
+- **Run length.** The continual run stopped at phase 86 of the planned 90.
+- **Not included.** Checkpoints, FLORES+ and the training data are not in the repository (`runs/` and `data/` are ignored).
