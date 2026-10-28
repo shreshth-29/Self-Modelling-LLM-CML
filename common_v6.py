@@ -1,0 +1,802 @@
+"""common_v5.py: common_v4.py + value-vector hook points (probe_points), best checkpoint per language
+(runs/<run>/best/) and optional HF backup after every phase. Same model and training recipe as v4b.
+
+Contains: tokenizer, model, script masks, data loading, evaluation, and the phase-based
+training engine (warmup -> stable -> cooldown on plateau). Import with:  from common_v6 import *
+Keeping this in one file guarantees all three notebooks use exactly the same model and code.
+"""
+import os, json, math, glob, random, re, time, contextlib, shutil, threading
+from dataclasses import dataclass, asdict
+import numpy as np
+import torch, torch.nn as nn, torch.nn.functional as F
+import sentencepiece as spm
+from sacrebleu.metrics import CHRF
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+P = lambda *parts: os.path.join(ROOT, *parts)            # path inside the repo
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+if DEVICE == "cuda":
+    torch.backends.cuda.matmul.allow_tf32 = True
+
+def amp():
+    """bf16 autocast on GPU, nothing on CPU."""
+    return torch.autocast("cuda", dtype=torch.bfloat16) if DEVICE == "cuda" else contextlib.nullcontext()
+
+# ============================================================ tokenizer (locked, never retrained)
+_SPM = P("tokenizer_v4/spm.model")
+sp = spm.SentencePieceProcessor(model_file=_SPM)
+PAD, UNK, BOS, EOS = 0, 1, 2, 3
+LANGS = ["hi", "zh", "ar"]
+LANG_TAG = {l: sp.piece_to_id(f"<2{l}>") for l in LANGS}
+MAX_TOK = 128
+V = sp.get_piece_size()
+
+# ============================================================ model
+@dataclass
+class Config:
+    vocab_size: int = V
+    d_model: int = 640
+    n_head: int = 10
+    d_mlp: int = 2560
+    n_enc: int = 4
+    n_dec: int = 4
+    max_len: int = 256
+    dropout: float = 0.1
+    label_smoothing: float = 0.1
+    qk_norm: bool = True               # LayerNorm on queries and keys (per head): stops attention scores blowing up
+    z_loss: float = 0.0                # OFF (as in v3). If turned on, it is computed over the allowed (target-script) tokens only
+
+class Attention(nn.Module):
+    """Self-attention if mem is None, cross-attention otherwise."""
+    def __init__(self, c):
+        super().__init__()
+        self.h, self.p = c.n_head, c.dropout
+        self.q = nn.Linear(c.d_model, c.d_model)
+        self.kv = nn.Linear(c.d_model, 2 * c.d_model)
+        self.proj = nn.Linear(c.d_model, c.d_model)
+        dh = c.d_model // c.n_head
+        self.q_norm = nn.LayerNorm(dh) if c.qk_norm else nn.Identity()
+        self.k_norm = nn.LayerNorm(dh) if c.qk_norm else nn.Identity()
+        self.v_out = nn.Identity()                    # no weights; a hook point for the value vectors (640 per token)
+    def forward(self, x, mem=None, mask=None, causal=False):
+        B, T, C = x.shape
+        src = x if mem is None else mem
+        S = src.size(1)
+        q = self.q(x).view(B, T, self.h, C // self.h).transpose(1, 2)
+        k, v = self.kv(src).split(C, dim=2)
+        v = self.v_out(v)
+        k = k.view(B, S, self.h, C // self.h).transpose(1, 2)
+        v = v.view(B, S, self.h, C // self.h).transpose(1, 2)
+        q, k = self.q_norm(q), self.k_norm(k)
+        y = F.scaled_dot_product_attention(q, k, v, attn_mask=mask, is_causal=causal,
+                                           dropout_p=self.p if self.training else 0.0)
+        return self.proj(y.transpose(1, 2).contiguous().view(B, T, C))
+
+class MLP(nn.Module):
+    def __init__(self, c):
+        super().__init__()
+        self.fc = nn.Linear(c.d_model, c.d_mlp)
+        self.act = nn.GELU()                          # <- the "neurons" we analyse
+        self.proj = nn.Linear(c.d_mlp, c.d_model)
+        self.drop = nn.Dropout(c.dropout)
+    def forward(self, x):
+        return self.drop(self.proj(self.act(self.fc(x))))
+
+class EncoderBlock(nn.Module):
+    def __init__(self, c):
+        super().__init__()
+        self.ln1, self.attn = nn.LayerNorm(c.d_model), Attention(c)
+        self.ln2, self.mlp = nn.LayerNorm(c.d_model), MLP(c)
+        self.drop = nn.Dropout(c.dropout)
+    def forward(self, x, src_mask):
+        x = x + self.drop(self.attn(self.ln1(x), mask=src_mask))
+        return x + self.mlp(self.ln2(x))
+
+class DecoderBlock(nn.Module):
+    def __init__(self, c):
+        super().__init__()
+        self.ln1, self.self_attn = nn.LayerNorm(c.d_model), Attention(c)
+        self.ln2, self.cross_attn = nn.LayerNorm(c.d_model), Attention(c)
+        self.ln3, self.mlp = nn.LayerNorm(c.d_model), MLP(c)
+        self.drop = nn.Dropout(c.dropout)
+    def forward(self, x, mem, src_mask):
+        x = x + self.drop(self.self_attn(self.ln1(x), causal=True))
+        x = x + self.drop(self.cross_attn(self.ln2(x), mem=mem, mask=src_mask))
+        return x + self.mlp(self.ln3(x))
+
+class Seq2Seq(nn.Module):
+    def __init__(self, c):
+        super().__init__()
+        self.cfg = c
+        self.tok_emb = nn.Embedding(c.vocab_size, c.d_model)
+        self.enc_pos = nn.Embedding(c.max_len, c.d_model)
+        self.dec_pos = nn.Embedding(c.max_len, c.d_model)
+        self.enc_blocks = nn.ModuleList([EncoderBlock(c) for _ in range(c.n_enc)])
+        self.dec_blocks = nn.ModuleList([DecoderBlock(c) for _ in range(c.n_dec)])
+        self.enc_ln, self.dec_ln = nn.LayerNorm(c.d_model), nn.LayerNorm(c.d_model)
+        self.drop = nn.Dropout(c.dropout)
+        self.lm_head = nn.Linear(c.d_model, c.vocab_size, bias=False)
+        self.lm_head.weight = self.tok_emb.weight                # one shared table
+        self.apply(self._init)
+        for name, p in self.named_parameters():
+            if name.endswith("proj.weight"):
+                nn.init.normal_(p, std=0.02 / math.sqrt(2 * (c.n_enc + c.n_dec)))
+    def _init(self, m):
+        if isinstance(m, (nn.Linear, nn.Embedding)):
+            nn.init.normal_(m.weight, std=0.02)
+        if isinstance(m, nn.Linear) and m.bias is not None:
+            nn.init.zeros_(m.bias)
+    def encode(self, src):
+        S = src.size(1)
+        src_mask = (src != PAD)[:, None, None, :]
+        x = self.drop(self.tok_emb(src) + self.enc_pos(torch.arange(S, device=src.device)))
+        for b in self.enc_blocks:
+            x = b(x, src_mask)
+        return self.enc_ln(x), src_mask
+    def decode(self, tgt_in, mem, src_mask):
+        T = tgt_in.size(1)
+        x = self.drop(self.tok_emb(tgt_in) + self.dec_pos(torch.arange(T, device=tgt_in.device)))
+        for b in self.dec_blocks:
+            x = b(x, mem, src_mask)
+        return self.lm_head(self.dec_ln(x))
+    def forward(self, src, tgt_in, tgt_out=None):
+        mem, src_mask = self.encode(src)
+        logits = self.decode(tgt_in, mem, src_mask)
+        loss = None
+        if tgt_out is not None:
+            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), tgt_out.view(-1),
+                                   ignore_index=PAD, label_smoothing=self.cfg.label_smoothing)
+        return logits, loss
+
+def load_model(path):
+    """Load any saved checkpoint into a fresh model (architecture taken from the checkpoint)."""
+    ck = torch.load(path, map_location=DEVICE)
+    model = Seq2Seq(Config(**ck["cfg"])).to(DEVICE)
+    model.load_state_dict(ck["model"])
+    return model, ck
+
+def probe_points(model):
+    """Where the analysis records activations. name -> module (register a forward hook on it).
+    enc{j}.mlp / dec{j}.mlp : the 2,560 GELU neurons of each MLP (one value per token).
+    enc{j}.v                : encoder self-attention value vectors (640 = 10 heads x 64), at English source tokens.
+    dec{j}.self_v           : decoder self-attention value vectors, at target tokens.
+    dec{j}.cross_v          : decoder cross-attention value vectors. NOTE: computed from the encoder output,
+                              so they sit at SOURCE (English) token positions, not target positions."""
+    pts = {}
+    for j, b in enumerate(model.enc_blocks):
+        pts[f"enc{j}.mlp"], pts[f"enc{j}.v"] = b.mlp.act, b.attn.v_out
+    for j, b in enumerate(model.dec_blocks):
+        pts[f"dec{j}.mlp"], pts[f"dec{j}.self_v"], pts[f"dec{j}.cross_v"] = b.mlp.act, b.self_attn.v_out, b.cross_attn.v_out
+    return pts
+
+# ============================================================ script masks (task-ID output restriction)
+def piece_class(i):
+    """Which script a vocabulary piece belongs to. 'common' = usable by every language."""
+    if sp.is_control(i) or sp.is_unknown(i) or sp.is_byte(i):
+        return "common"
+    p = sp.id_to_piece(i)
+    if p.startswith("<2"):
+        return "common"
+    if re.search(r"[\u0900-\u097F]", p):
+        return "hi"
+    if re.search(r"[\u3000-\u303F\u4E00-\u9FFF\uFF00-\uFFEF]", p):
+        return "zh"
+    if re.search(r"[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]", p):
+        return "ar"
+    if re.search(r"[A-Za-z\u00C0-\u024F\u1E00-\u1EFF]", p):
+        return "latin"
+    return "common"                                   # punctuation, digits, spaces
+
+CLS = [piece_class(i) for i in range(V)]
+SCRIPT = {"hi": "hi", "zh": "zh", "ar": "ar"}
+ALLOWED = {l: torch.tensor([c in ("common", SCRIPT[l]) for c in CLS], device=DEVICE) for l in LANGS}
+NEG = {l: torch.zeros(V, device=DEVICE).masked_fill(~ALLOWED[l], float("-inf")) for l in LANGS}
+
+def masked_ce(logits, tgt, allowed, eps=0.1):
+    """Cross-entropy where only `allowed` tokens can be predicted.
+    Blocked tokens get probability 0 and NO gradient (they are not pushed down).
+    Label smoothing is spread over allowed tokens only.
+    Positions whose correct token is outside the allowed set are skipped."""
+    lp = F.log_softmax(logits.float().masked_fill(~allowed, float("-inf")), dim=-1)
+    keep = (tgt != PAD) & allowed[tgt]
+    lp, tgt = lp[keep], tgt[keep]
+    nll = -lp.gather(1, tgt[:, None]).squeeze(1)
+    smooth = -lp.masked_fill(~allowed, 0.0).sum(1) / allowed.sum()
+    return ((1 - eps) * nll + eps * smooth).mean()
+
+def z_loss(logits, tgt, coef, allowed=None):
+    """Penalty on the squared log-sum-exp of the output scores at real positions.
+    With `allowed`, only the target script's tokens enter the log-sum-exp, so tokens of other
+    languages get NO gradient (an unrestricted z-loss pushed them down and caused heavy forgetting)."""
+    if not coef:
+        return 0.0
+    lg = logits.float()
+    if allowed is not None:
+        lg = lg.masked_fill(~allowed, float("-inf"))
+    lse = torch.logsumexp(lg, dim=-1)[tgt != PAD]
+    return coef * (lse ** 2).mean()
+
+# ============================================================ data
+def pad_batch(seqs):
+    L = max(len(s) for s in seqs)
+    return torch.tensor([s + [PAD] * (L - len(s)) for s in seqs], device=DEVICE)
+
+def load_pairs(path, lang):
+    """jsonl of {"en","tgt"} -> list of (src, tgt_in, tgt_out) token-id lists.
+    src = English + </s> ; tgt_in = <2xx> + target ; tgt_out = target + </s>"""
+    rows = [json.loads(l) for l in open(path, encoding="utf-8")]
+    src_ids = sp.encode([r["en"] for r in rows])
+    tgt_ids = sp.encode([r["tgt"] for r in rows])
+    data = []
+    for s, t in zip(src_ids, tgt_ids):
+        s, t = s[:MAX_TOK - 1] + [EOS], t[:MAX_TOK - 1]
+        data.append((s, [LANG_TAG[lang]] + t, t + [EOS]))
+    return data
+
+def make_batches(data, max_tokens, seed=0, shuffle=True):
+    """Batches of similar-length examples, at most max_tokens (with padding) per side."""
+    rng = random.Random(seed)
+    idx = list(range(len(data)))
+    if shuffle:
+        rng.shuffle(idx)
+    length = lambda i: max(len(data[i][0]), len(data[i][1]))
+    batches = []
+    for c in range(0, len(idx), 100_000):
+        cur, cur_max = [], 0
+        for i in sorted(idx[c:c + 100_000], key=length):
+            L = length(i)
+            if cur and max(cur_max, L) * (len(cur) + 1) > max_tokens:
+                batches.append(cur); cur, cur_max = [], 0
+            cur.append(i); cur_max = max(cur_max, L)
+        if cur:
+            batches.append(cur)
+    if shuffle:
+        rng.shuffle(batches)
+    return batches
+
+def collate(data, bidx):
+    return (pad_batch([data[i][0] for i in bidx]),
+            pad_batch([data[i][1] for i in bidx]),
+            pad_batch([data[i][2] for i in bidx]))
+
+def read_flores(split, lang):
+    with open(P(f"data/flores/{split}.{lang}.jsonl"), encoding="utf-8") as f:
+        return [json.loads(l)["text"] for l in f]
+
+def load_data(train_langs=LANGS, n_val=2000, n_chrf=200):
+    """Tokenized train data for `train_langs`; val + FLORES devtest subset for ALL languages
+    (needed to measure forgetting)."""
+    t0 = time.time()
+    D = {"train": {}, "val": {}, "flores_ref": {}}
+    for l in LANGS:
+        if l in train_langs:
+            D["train"][l] = load_pairs(P(f"data/en-{l}/train.jsonl"), l)
+        D["val"][l] = load_pairs(P(f"data/en-{l}/val.jsonl"), l)[:n_val]
+        D["flores_ref"][l] = read_flores("devtest", l)[:n_chrf]
+        n_tr = f"{len(D['train'][l]):,} train / " if l in D["train"] else ""
+        print(f"  {l}: {n_tr}{len(D['val'][l]):,} val")
+    D["flores_src"] = read_flores("devtest", "en")[:n_chrf]
+    print(f"data loaded in {time.time() - t0:.0f}s")
+    return D
+
+# ============================================================ evaluation
+CHRF_METRIC = CHRF()
+
+@torch.no_grad()
+def val_loss(model, data, lang, max_tokens=16000, masked=False):
+    """Mean cross-entropy per target token (no label smoothing).
+    masked=True: only the target language's script may be predicted."""
+    model.eval()
+    total, count = 0.0, 0
+    for bidx in make_batches(data, max_tokens, shuffle=False):
+        src, tgt_in, tgt_out = collate(data, bidx)
+        with amp():
+            logits, _ = model(src, tgt_in)
+        logits = logits.float().view(-1, logits.size(-1))
+        tgt = tgt_out.view(-1)
+        keep = tgt != PAD
+        if masked:
+            logits = logits.masked_fill(~ALLOWED[lang], float("-inf"))
+            keep &= ALLOWED[lang][tgt]
+        total += F.cross_entropy(logits[keep], tgt[keep], reduction="sum").item()
+        count += int(keep.sum())
+    return total / max(count, 1)
+
+@torch.no_grad()
+def translate(model, sents, lang, masked=False, bs=64):
+    """Greedy decoding. masked=True: only the target language's script can be generated."""
+    model.eval()
+    out = []
+    with amp():
+        for i in range(0, len(sents), bs):
+            src = pad_batch([sp.encode(s)[:MAX_TOK - 1] + [EOS] for s in sents[i:i + bs]])
+            mem, src_mask = model.encode(src)
+            ys = torch.full((src.size(0), 1), LANG_TAG[lang], device=DEVICE)
+            done = torch.zeros(src.size(0), dtype=torch.bool, device=DEVICE)
+            for _ in range(MAX_TOK):
+                logits = model.decode(ys, mem, src_mask)[:, -1].float()
+                if masked:
+                    logits = logits + NEG[lang]
+                nxt = logits.argmax(-1)
+                nxt[done] = PAD
+                ys = torch.cat([ys, nxt[:, None]], dim=1)
+                done |= nxt == EOS
+                if done.all():
+                    break
+            for row in ys[:, 1:].tolist():
+                row = row[:row.index(EOS)] if EOS in row else row
+                out.append(sp.decode([t for t in row if t != PAD]))
+    return out
+
+def chrf(model, src, ref, lang, masked=False):
+    hyps = translate(model, src, lang, masked=masked)
+    return CHRF_METRIC.corpus_score(hyps, [ref]).score, hyps
+
+def evaluate_all(model, D, max_tokens=16000):
+    """Val loss and chrF on ALL languages, both unrestricted ('full') and script-restricted ('masked').
+    Learning shows on the trained language; forgetting on the others."""
+    ev = {"val_full": {}, "val_masked": {}, "chrf_full": {}, "chrf_masked": {}}
+    for l in LANGS:
+        ev["val_full"][l] = round(val_loss(model, D["val"][l], l, max_tokens, masked=False), 4)
+        ev["val_masked"][l] = round(val_loss(model, D["val"][l], l, max_tokens, masked=True), 4)
+        ev["chrf_full"][l] = round(chrf(model, D["flores_src"], D["flores_ref"][l], l, masked=False)[0], 2)
+        ev["chrf_masked"][l] = round(chrf(model, D["flores_src"], D["flores_ref"][l], l, masked=True)[0], 2)
+    return ev
+
+# ============================================================ training engine
+@dataclass
+class RunConfig:
+    run_name: str
+    mode: str = "continual"            # "continual", "only_hi", "only_yo", "only_zh"
+    order: tuple = ("hi", "zh", "ar")  # continual: phase 1 trains order[0], phase 2 order[1], ...
+    init_ckpt: str = None              # None = start from random weights (phase 0 = random model)
+    n_phases: int = 18                 # phases after phase 0 (18 = 6 full cycles)
+    seed: int = 0
+    max_tokens: int = 16000
+    # learning-rate schedule per phase: warmup -> stable -> cooldown (after plateau) -> switch
+    lr: float = 2e-4
+    min_lr: float = 2e-5
+    warmup_steps: int = 500
+    cooldown_steps: int = 2000
+    min_steps: int = 2000              # no plateau check before this
+    max_stable_steps: int = 60000      # start cooldown by here even without a plateau (first visits learn from scratch)
+    eval_every: int = 500
+    plateau_window: int = 4            # mean of last 4 evals vs the 4 before
+    plateau_tol: float = 0.005         # improvement below 0.5% -> converged -> start cooldown
+    weight_decay: float = 0.1          # weight matrices only (not LayerNorm / biases)
+    grad_clip: float = 1.0
+    masked: bool = True                # script-masked loss and decoding
+    diverge_factor: float = 1.15       # val > 1.15 x phase best, twice in a row -> diverged
+    max_retries: int = 2               # diverged phase restarts from its start at half the lr
+    time_cap_h: float = 30.0           # safety cap; no new phase starts after this
+    hf_repo: str = None                # e.g. "<user>/cml-lang-self-checkpoints": back up each new checkpoint to HF (in the background)
+    # ---- v6 options (all off by default = exactly the v5 behaviour)
+    start_phase: int = None            # branch: init_ckpt is phase <start_phase> of another run; train phases start_phase+1 .. n_phases
+    noise_per_step: float = 0.0        # FIX: after every optimizer step add N(0, (noise_per_step * ref_std)^2) to every weight matrix
+                                       #      (ref_std = that matrix's std at the start of the run). Weight decay already does the "shrink".
+    boundary_push: float = 0.0         # Q2: at the start of every phase add N(0, (boundary_push * current_std)^2) to every weight matrix
+    health_every: int = 1              # log health (weight norm, rarely-active neurons, effective rank) every N evals (0 = off)
+    # ---- v6b options
+    redo_every: int = 0                # ReDo: every N steps (and at every phase start) reset MLP neurons that almost never fire (0 = off)
+    redo_thresh: float = 0.01          # "almost never fires" = > 0 on fewer than this share of tokens (same as health's rarely_active)
+
+def phase_lang(C, phase):
+    """Phase 1 trains order[0], phase 2 order[1], ... (phase 0 = the starting model, no training)."""
+    if C.mode == "mixed":
+        return "mix"                   # mixed: every phase trains all languages, batches alternate hi, zh, ar, hi, ...
+    return C.order[(phase - 1) % len(C.order)] if C.mode == "continual" else C.mode.split("_")[1]
+
+def mixed_batches(D, langs, max_tokens, seed):
+    """Mixed mode: one batch list per language, interleaved round-robin (hi, zh, ar, hi, ...). Each batch is ONE language,
+    so the script-restricted loss works unchanged. Stops when the shortest language runs out (equal share per language)."""
+    per = {l: make_batches(D["train"][l], max_tokens, seed=seed + 31 * i) for i, l in enumerate(langs)}
+    n = min(len(v) for v in per.values())
+    return [(l, per[l][k]) for k in range(n) for l in langs]
+
+@torch.no_grad()
+def redo_reset(model, D, lang, thresh, opt=None):
+    """ReDo (Sokar et al. 2023): find MLP neurons that are > 0 on fewer than `thresh` of the tokens (200 FLORES sentences),
+    give them fresh random incoming weights and zero outgoing weights, and clear their optimizer state. Returns #reset."""
+    # a decoder neuron counts as dead only if it almost never fires on ALL three languages (so a neuron that serves
+    # only Chinese is not reset during a Hindi phase); encoder neurons are measured on the English source
+    if "src" not in _HEALTH:
+        _HEALTH["src"] = [sp.encode(t)[:MAX_TOK - 1] + [EOS] for t in D["flores_src"][:200]]
+    for l in LANGS:
+        if l not in _HEALTH:
+            _HEALTH[l] = [[LANG_TAG[l]] + sp.encode(t)[:MAX_TOK - 1] for t in D["flores_ref"][l][:200]]
+    was = model.training; model.eval()
+    mlps = {f"enc{j}": b.mlp for j, b in enumerate(model.enc_blocks)} | {f"dec{j}": b.mlp for j, b in enumerate(model.dec_blocks)}
+    cur, pos, cnt = {}, {k: 0 for k in mlps}, {k: 0 for k in mlps}
+    hooks = [m.act.register_forward_hook(lambda mod, i, o, k=k: cur.__setitem__(k, o)) for k, m in mlps.items()]
+    for s in range(0, len(_HEALTH["src"]), 50):
+        src = pad_batch(_HEALTH["src"][s:s + 50]); mem, sm = model.encode(src)
+        sk = (src != PAD) & (src != EOS)
+        for k in mlps:
+            if k.startswith("enc"):
+                X = cur[k][sk]; pos[k] = pos[k] + (X > 0).float().sum(0); cnt[k] += X.shape[0]
+        for l in LANGS:
+            tgt = pad_batch(_HEALTH[l][s:s + 50]); model.decode(tgt, mem, sm); tk = tgt != PAD
+            for k in mlps:
+                if k.startswith("dec"):
+                    X = cur[k][tk]; pos[k] = pos[k] + (X > 0).float().sum(0); cnt[k] += X.shape[0]
+    for h in hooks:
+        h.remove()
+    state = opt.state if opt is not None else {}
+    total = 0
+    for k, m in mlps.items():
+        dead = torch.nonzero(pos[k] / max(cnt[k], 1) < thresh).squeeze(1)
+        if len(dead) == 0:
+            continue
+        total += len(dead)
+        m.fc.weight[dead] = torch.randn(len(dead), m.fc.weight.shape[1], device=m.fc.weight.device) * 0.02
+        m.fc.bias[dead] = 0
+        m.proj.weight[:, dead] = 0                                   # starts silent, then learns what to write
+        for p, rows in [(m.fc.weight, dead), (m.fc.bias, dead)]:
+            if p in state:
+                for key in ("exp_avg", "exp_avg_sq"):
+                    state[p][key][rows] = 0
+        if m.proj.weight in state:
+            for key in ("exp_avg", "exp_avg_sq"):
+                state[m.proj.weight][key][:, dead] = 0
+    if was:
+        model.train()
+    return total
+
+def make_optimizer(model, lr, weight_decay):
+    params = list(model.named_parameters())
+    decay = [p for n, p in params if p.dim() >= 2]          # weight matrices, embeddings
+    no_decay = [p for n, p in params if p.dim() < 2]        # LayerNorm weights, biases
+    return torch.optim.AdamW([{"params": decay, "weight_decay": weight_decay},
+                              {"params": no_decay, "weight_decay": 0.0}],
+                             lr=lr, betas=(0.9, 0.98), eps=1e-9)
+
+def lr_at(step, C, peak, cool_start):
+    """Warmup to `peak`, flat until cooldown starts, then linear decay to the floor."""
+    if step < C.warmup_steps:
+        return peak * (step + 1) / C.warmup_steps
+    if cool_start is None:
+        return peak
+    floor = peak * C.min_lr / C.lr                          # same ratio if peak was halved on a retry
+    return peak - (peak - floor) * min(1.0, (step - cool_start) / C.cooldown_steps)
+
+def window_improvement(hist, w):
+    if len(hist) < 2 * w:
+        return None
+    prev, recent = sum(hist[-2 * w:-w]) / w, sum(hist[-w:]) / w
+    return (prev - recent) / prev
+
+def fmt(sec):
+    sec = max(0, int(sec))
+    h, m, s = sec // 3600, (sec % 3600) // 60, sec % 60
+    return f"{h}h{m:02d}m" if h else f"{m}m{s:02d}s"
+
+def _print_phase_table(phase, lang, info, ev, prev_ev, C):
+    head = "chrf_masked" if C.masked else "chrf_full"
+    vhead = "val_masked" if C.masked else "val_full"
+    print("\n" + "=" * 86)
+    print(f" PHASE {phase} DONE | trained: {lang} | {info}")
+    print("-" * 86)
+    print(f"   {'lang':<5} {'val':>7} {'Δ':>7} | {'chrF':>6} {'Δ':>6} | {'chrF (unrestricted)':>20} {'val (unrestr.)':>15}")
+    for l in LANGS:
+        dv = f"{ev[vhead][l] - prev_ev[vhead][l]:+.3f}" if prev_ev else ""
+        dc = f"{ev[head][l] - prev_ev[head][l]:+.1f}" if prev_ev else ""
+        mark = "  ◀ trained" if l == lang else ""
+        print(f"   {l:<5} {ev[vhead][l]:>7.3f} {dv:>7} | {ev[head][l]:>6.1f} {dc:>6} | "
+              f"{ev['chrf_full'][l]:>20.1f} {ev['val_full'][l]:>15.3f}{mark}")
+    print("=" * 86 + "\n")
+
+# ============================================================ v6: health monitor + noise helpers
+_HEALTH = {}
+@torch.no_grad()
+def health(model, D, lang, n_sent=200):
+    """Cheap training-time health check on 200 FLORES sentences: total weight norm (matrices), share of
+    rarely-active MLP neurons (>0 on <1% of tokens, mean over 8 layers), effective rank of enc1 and dec1 MLP."""
+    was_training = model.training
+    model.eval()
+    if "src" not in _HEALTH:
+        _HEALTH["src"] = [sp.encode(t)[:MAX_TOK - 1] + [EOS] for t in D["flores_src"][:n_sent]]
+    if lang not in _HEALTH:
+        _HEALTH[lang] = [[LANG_TAG[lang]] + sp.encode(t)[:MAX_TOK - 1] for t in D["flores_ref"][lang][:n_sent]]
+    pts = {k: m for k, m in probe_points(model).items() if k.endswith(".mlp")}
+    cur, acts = {}, {k: [] for k in pts}
+    hooks = [m.register_forward_hook(lambda mod, i, o, k=k: cur.__setitem__(k, o)) for k, m in pts.items()]
+    for s in range(0, len(_HEALTH["src"]), 50):
+        src = pad_batch(_HEALTH["src"][s:s + 50]); tgt = pad_batch(_HEALTH[lang][s:s + 50])
+        mem, sm = model.encode(src); model.decode(tgt, mem, sm)
+        sk, tk = (src != PAD) & (src != EOS), tgt != PAD
+        for k in pts:
+            acts[k].append(cur[k][sk if k.startswith("enc") else tk].float())
+    for h in hooks:
+        h.remove()
+    out = {"wnorm": round(float(sum(p.float().pow(2).sum() for p in model.parameters() if p.dim() >= 2) ** 0.5), 3)}
+    ra = []
+    for k, v in acts.items():
+        X = torch.cat(v)
+        ra.append(float(((X > 0).float().mean(0) < 0.01).float().mean()))
+        if k in ("enc1.mlp", "dec1.mlp"):
+            Xc = X - X.mean(0, keepdim=True)
+            sd = Xc.std(0, keepdim=True); alive = sd[0] > 1e-6
+            Z = Xc[:, alive] / sd[:, alive]
+            ev = torch.linalg.eigvalsh((Z.T @ Z / Z.shape[0]).double()).clamp(min=0)
+            out[f"rank_{k[:4]}"] = round(float(ev.sum() ** 2 / (ev ** 2).sum()), 1)
+    out["rarely_active"] = round(sum(ra) / len(ra), 4)
+    if was_training:
+        model.train()
+    return out
+
+@torch.no_grad()
+def add_weight_noise(model, scale, ref_std=None, gen=None):
+    """Add Gaussian noise to every weight matrix (dim >= 2, incl. embeddings; not norms/biases).
+    std = scale * ref_std[name] if given, else scale * the matrix's current std."""
+    for name, p in model.named_parameters():
+        if p.dim() >= 2:
+            sd = ref_std[name] if ref_std is not None else p.float().std()
+            p.add_(torch.randn(p.shape, generator=gen, device=p.device, dtype=p.dtype) * (scale * sd))
+
+def train_run(C, D):
+    """Run (or resume) a phase-based run. Saves one checkpoint per phase to runs/<run_name>/ckpt/."""
+    RUN = P("runs", C.run_name)
+    CK = os.path.join(RUN, "ckpt")
+    os.makedirs(CK, exist_ok=True)
+    with open(os.path.join(RUN, "config.json"), "w") as f:
+        json.dump(asdict(C), f, indent=2)
+    random.seed(C.seed); torch.manual_seed(C.seed)
+    t_start = time.time()
+
+    print("=" * 86)
+    print(f" RUN {C.run_name} | mode {C.mode} | {C.n_phases} phases after phase 0 | device {DEVICE}")
+    langs_seq = [phase_lang(C, p) for p in range(1, min(C.n_phases, 7) + 1)]
+    start = "init (loaded)" if C.init_ckpt else "init (random)"
+    print(f" phase order: {start} → {' → '.join(langs_seq)}{' → ...' if C.n_phases > 7 else ''}")
+    print(f" each phase: fresh AdamW (wd {C.weight_decay} on matrices), warmup {C.warmup_steps} → lr {C.lr} "
+          f"→ plateau (<{C.plateau_tol:.1%} over {C.plateau_window}-eval windows, after {C.min_steps:,}, "
+          f"cap {C.max_stable_steps:,}) → cooldown {C.cooldown_steps:,} steps to {C.min_lr}")
+    print(f" masked (script-restricted) loss & decoding: {C.masked} | divergence guard: "
+          f">{C.diverge_factor}x best twice → retry at half lr (max {C.max_retries})")
+    print("=" * 86)
+
+    # ---- start from the trained Hindi model, or resume after the last saved phase
+    saved = sorted(glob.glob(os.path.join(CK, "p*.pt")))
+    if saved:
+        model, ck = load_model(saved[-1])
+        phase, prev_ev = ck["phase"] + 1, ck["eval"]
+        print(f"RESUMING after phase {ck['phase']} ({ck['lang']})\n")
+        _update_best(RUN, CK)
+    elif C.start_phase is not None:
+        # v6 branch: copy the starting checkpoint in as this run's phase <start_phase>, then continue from there
+        model, ck0 = load_model(P(C.init_ckpt))
+        assert ck0["phase"] == C.start_phase, f"init_ckpt is phase {ck0['phase']}, not {C.start_phase}"
+        dst = os.path.join(CK, os.path.basename(C.init_ckpt))
+        shutil.copyfile(P(C.init_ckpt), dst)
+        with open(os.path.join(RUN, "phases.jsonl"), "a") as f:
+            f.write(json.dumps({"phase": ck0["phase"], "lang": ck0["lang"], **ck0["info"], **ck0["eval"],
+                                "total_min": 0.0, "branched_from": C.init_ckpt}) + "\n")
+        print(f"BRANCH: starting from {C.init_ckpt} (phase {ck0['phase']}, {ck0['lang']}); next phase {C.start_phase + 1}\n")
+        _backup(C, RUN, [dst, os.path.join(RUN, "phases.jsonl")])
+        phase, prev_ev = C.start_phase + 1, ck0["eval"]
+    else:
+        if C.init_ckpt:
+            model, _ = load_model(P(C.init_ckpt))
+            print("phase 0: evaluating the loaded Hindi model on all languages...")
+        else:
+            model = Seq2Seq(Config()).to(DEVICE)
+            print(f"phase 0: fresh random model ({sum(p.numel() for p in model.parameters()) / 1e6:.1f}M params)")
+        ev = evaluate_all(model, D, C.max_tokens)
+        path = _save_phase(CK, RUN, model, 0, "init", {"steps": 0, "reason": "init"}, ev, t_start)
+        _backup(C, RUN, [path, os.path.join(RUN, "phases.jsonl")])
+        _print_phase_table(0, "init", "starting model, no training", ev, None, C)
+        phase, prev_ev = 1, ev
+
+    log = open(os.path.join(RUN, "log.jsonl"), "a")
+    phase_times = []
+    gen = torch.Generator(device=DEVICE).manual_seed(C.seed * 7919 + 17)
+    rs_path = os.path.join(RUN, "ref_std.json")                 # reference scale for per-step noise, fixed for the whole run
+    if os.path.exists(rs_path):
+        ref_std = json.load(open(rs_path))
+    else:
+        ref_std = {n: float(p.detach().float().std()) for n, p in model.named_parameters() if p.dim() >= 2}
+        json.dump(ref_std, open(rs_path, "w"))
+    if C.noise_per_step or C.boundary_push:
+        print(f" v6: noise_per_step = {C.noise_per_step} (x each matrix's starting std) | boundary_push = {C.boundary_push} "
+              f"(x each matrix's current std, at the start of every phase)\n")
+    while phase <= C.n_phases:
+        if (time.time() - t_start) / 3600 > C.time_cap_h:
+            print(f"time cap of {C.time_cap_h} h reached; stopping before phase {phase}")
+            break
+        lang = phase_lang(C, phase)
+        train_langs = [l for l in LANGS if l in D["train"]] if lang == "mix" else [lang]
+        n_pairs = sum(len(D["train"][l]) for l in train_langs)
+        print(f"▶ PHASE {phase}/{C.n_phases} | training {lang} ({n_pairs:,} pairs{', batches alternate ' + ' / '.join(train_langs) if lang == 'mix' else ''})")
+        t_phase = time.time()
+        if C.boundary_push:
+            add_weight_noise(model, C.boundary_push, None, gen)
+            print(f"  push: added noise {C.boundary_push} x std to every weight matrix")
+        if C.redo_every:
+            nr = redo_reset(model, D, lang, C.redo_thresh)
+            print(f"  ReDo at phase start: reset {nr} MLP neurons that almost never fire")
+        start_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
+        peak = C.lr
+
+        for attempt in range(C.max_retries + 1):
+            opt = make_optimizer(model, peak, C.weight_decay)      # the switch: fresh optimizer
+            model.train()
+            step, epoch, hist, bad = 0, 0, [], 0
+            cool_start, cool_reason, reason = None, None, None
+            loss_sum, n_loss, tok_count, t_last = 0.0, 0, 0, time.time()
+
+            while reason is None:
+                seed = C.seed * 1_000_003 + phase * 1000 + attempt * 100 + epoch
+                batches = (mixed_batches(D, train_langs, C.max_tokens, seed) if lang == "mix"
+                           else [(lang, b) for b in make_batches(D["train"][lang], C.max_tokens, seed=seed)])
+                for blang, bidx in batches:
+                    lr = lr_at(step, C, peak, cool_start)
+                    for g in opt.param_groups:
+                        g["lr"] = lr
+                    src, tgt_in, tgt_out = collate(D["train"][blang], bidx)
+                    with amp():
+                        logits, _ = model(src, tgt_in)
+                    if C.masked:
+                        loss = masked_ce(logits, tgt_out, ALLOWED[blang], model.cfg.label_smoothing)
+                    else:
+                        loss = F.cross_entropy(logits.float().view(-1, logits.size(-1)), tgt_out.view(-1),
+                                               ignore_index=PAD, label_smoothing=model.cfg.label_smoothing)
+                    loss = loss + z_loss(logits, tgt_out, model.cfg.z_loss, ALLOWED[blang] if C.masked else None)
+                    opt.zero_grad(set_to_none=True)
+                    loss.backward()
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), C.grad_clip)
+                    opt.step()
+                    if C.noise_per_step:
+                        add_weight_noise(model, C.noise_per_step, ref_std, gen)
+                    step += 1
+                    if C.redo_every and step % C.redo_every == 0:
+                        nr = redo_reset(model, D, lang, C.redo_thresh, opt)
+                        print(f"  ReDo at step {step:,}: reset {nr} MLP neurons")
+                    loss_sum += loss.item(); n_loss += 1
+                    tok_count += int((tgt_out != PAD).sum())
+
+                    if cool_start is not None and step >= cool_start + C.cooldown_steps:
+                        reason = cool_reason                         # cooldown finished -> phase done
+                        break
+
+                    if step % C.eval_every == 0:
+                        vl = (sum(val_loss(model, D["val"][l], l, C.max_tokens, masked=C.masked) for l in train_langs) / len(train_langs))
+                        model.train()
+                        best_before = min(hist) if hist else float("inf")
+                        hist.append(vl)
+                        imp = window_improvement(hist, C.plateau_window)
+                        bad = bad + 1 if (step > C.warmup_steps and vl > best_before * C.diverge_factor) else 0
+                        if bad >= 2:
+                            reason = "diverged"
+                        elif cool_start is None:
+                            if step >= C.min_steps and imp is not None and imp < C.plateau_tol:
+                                cool_start = step
+                                cool_reason = "plateau" if imp >= -C.plateau_tol else "worsening"
+                            elif step >= C.max_stable_steps:
+                                cool_start, cool_reason = step, "capped"
+
+                        now = time.time()
+                        stage = ("warmup" if step < C.warmup_steps else
+                                 "stable" if cool_start is None else
+                                 f"cooldown ({cool_reason}, ends at {cool_start + C.cooldown_steps:,})")
+                        plat = "n/a" if imp is None else f"{imp:+.2%}"
+                        done_ph = len(phase_times)
+                        eta = (f"run ETA ~{fmt(sum(phase_times) / done_ph * (C.n_phases - phase + 1))}"
+                               if done_ph else "run ETA: after first phase")
+                        hl = {}
+                        if C.health_every and (step // C.eval_every) % C.health_every == 0:
+                            hl = health(model, D, "hi" if lang == "mix" else lang)
+                        print(f"  [p{phase:02d} {lang}{' retry' + str(attempt) if attempt else ''}] "
+                              f"step {step:>6,} | lr {lr:.1e} | train {loss_sum / n_loss:.3f} | "
+                              f"val {vl:.3f} (best {min(hist):.3f}) | window Δ {plat} | {stage} | "
+                              f"{tok_count / (now - t_last) / 1000:.0f}k tok/s | phase {fmt(now - t_phase)} | {eta}"
+                              + (f" | health {hl}" if hl else ""))
+                        log.write(json.dumps({"phase": phase, "lang": lang, "attempt": attempt, "step": step,
+                                              "lr": lr, "train_loss": loss_sum / n_loss, "val_loss": vl,
+                                              "window_improvement": imp, "stage": stage.split(" ")[0],
+                                              "minutes": (now - t_start) / 60, **hl}) + "\n")
+                        log.flush()
+                        loss_sum, n_loss, tok_count, t_last = 0.0, 0, 0, now
+                        if reason:
+                            break
+                epoch += 1
+
+            if reason != "diverged":
+                break
+            print(f"  ⚠ phase {phase} DIVERGED (val {hist[-1]:.3f} vs best {min(hist):.3f}); "
+                  f"restoring the phase's starting weights")
+            model.load_state_dict(start_state)
+            if attempt < C.max_retries:
+                peak /= 2
+                print(f"  ↻ retrying phase {phase} with peak lr {peak:.1e}")
+            else:
+                reason = "failed"
+                print(f"  ✗ phase {phase} failed after {C.max_retries} retries; keeping its starting weights")
+
+        print(f"  phase {phase} finished ({reason}); evaluating all languages...")
+        ev = evaluate_all(model, D, C.max_tokens)
+        phase_sec = time.time() - t_phase
+        phase_times.append(phase_sec)
+        info = {"steps": step, "reason": reason, "cooldown_start": cool_start, "peak_lr": peak,
+                "attempts": attempt + 1, "phase_min": round(phase_sec / 60, 1), "health": health(model, D, "hi" if lang == "mix" else lang)}
+        path = _save_phase(CK, RUN, model, phase, lang, info, ev, t_start)
+        changed = _update_best(RUN, CK)
+        log.flush()
+        _backup(C, RUN, [path, os.path.join(RUN, "phases.jsonl"), os.path.join(RUN, "log.jsonl"),
+                         os.path.join(RUN, "best", "best.json")] + [os.path.join(RUN, "best", f"best_{l}.pt") for l in changed])
+        _print_phase_table(phase, lang, f"{step:,} steps | stop: {reason} | peak lr {peak:.1e} | "
+                                        f"took {fmt(phase_sec)} | run time {fmt(time.time() - t_start)}",
+                           ev, prev_ev, C)
+        prev_ev, phase = ev, phase + 1
+        del start_state
+
+    log.close()
+    print_run_summary(C.run_name)
+    return model
+
+def _save_phase(CK, RUN, model, phase, lang, info, ev, t_start):
+    path = os.path.join(CK, f"p{phase:03d}_{lang}.pt")
+    torch.save({"model": model.state_dict(), "cfg": asdict(model.cfg), "phase": phase, "lang": lang,
+                "info": info, "eval": ev}, path + ".tmp")
+    os.replace(path + ".tmp", path)
+    with open(os.path.join(RUN, "phases.jsonl"), "a") as f:
+        f.write(json.dumps({"phase": phase, "lang": lang, **info, **ev,
+                            "total_min": round((time.time() - t_start) / 60, 1)}) + "\n")
+    return path
+
+def _update_best(RUN, CK):
+    """runs/<run>/best/best_<lang>.pt = the checkpoint with the highest chrF on <lang>, among phases that trained <lang>."""
+    rows = {}
+    for l in open(os.path.join(RUN, "phases.jsonl")):
+        r = json.loads(l); rows[r["phase"]] = r
+    os.makedirs(os.path.join(RUN, "best"), exist_ok=True)
+    info_path = os.path.join(RUN, "best", "best.json")
+    best = json.load(open(info_path)) if os.path.exists(info_path) else {}
+    changed = []
+    for l in LANGS:
+        cands = [r for r in rows.values() if r["lang"] == l]
+        if not cands:
+            continue
+        top = max(cands, key=lambda r: r["chrf_masked"][l])
+        src = os.path.join(CK, f"p{top['phase']:03d}_{l}.pt")
+        if best.get(l, {}).get("phase") != top["phase"] and os.path.exists(src):
+            shutil.copyfile(src, os.path.join(RUN, "best", f"best_{l}.pt"))
+            best[l] = {"phase": top["phase"], "chrf": top["chrf_masked"][l]}
+            changed.append(l)
+    json.dump(best, open(info_path, "w"), indent=2)
+    if changed:
+        print("  new best checkpoint: " + ", ".join(f"{l} = phase {best[l]['phase']} (chrF {best[l]['chrf']:.1f})" for l in changed))
+    return changed
+
+def _backup(C, RUN, files):
+    """Upload files to the HF repo in a background thread (training does not wait). Failures only print."""
+    if not C.hf_repo:
+        return
+    def work():
+        try:
+            from huggingface_hub import HfApi
+            api = HfApi()
+            for f in files:
+                if os.path.exists(f):
+                    api.upload_file(path_or_fileobj=f, repo_id=C.hf_repo, repo_type="model",
+                                    path_in_repo=os.path.relpath(f, P("runs")))
+        except Exception as e:
+            print(f"  (HF backup failed, training continues: {e})")
+    threading.Thread(target=work, daemon=True).start()
+
+def print_run_summary(run_name):
+    path = P("runs", run_name, "phases.jsonl")
+    rows = {}
+    for l in open(path):
+        r = json.loads(l)
+        rows[r["phase"]] = r                                  # keep the latest row per phase
+    rows = [rows[k] for k in sorted(rows)]
+    print("=" * 86)
+    print(f" SUMMARY {run_name}: {len(rows)} phases (incl. phase 0)")
+    print("-" * 86)
+    print(f" {'ph':>3} {'lang':>4} {'steps':>7} {'stop':>9} | " + " ".join(f"chrF {l}" for l in LANGS)
+          + " | " + " ".join(f"val {l}" for l in LANGS) + "   (script-restricted)")
+    for r in rows:
+        print(f" {r['phase']:>3} {r['lang']:>4} {r['steps']:>7,} {r['reason']:>9} | "
+              + " ".join(f"{r['chrf_masked'][l]:>7.1f}" for l in LANGS) + " | "
+              + " ".join(f"{r['val_masked'][l]:>6.3f}" for l in LANGS))
+    print("=" * 86)
