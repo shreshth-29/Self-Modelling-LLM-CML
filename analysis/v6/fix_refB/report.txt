@@ -1,0 +1,21 @@
+analysis_v6_fix | cont v4b_continual_s0 | hi v4b_only_hi_s0 | push v6_hi_push0.6_from30 | phase 45 | tau 0.2 | parts ['crosscoder', 'relearn']
+
+=== CROSSCODER (fixed) ===
+  CONTROL same model twice (expect ~all shared)              dec2.mlp: live 100%  active/token   38  unexplained A 0.16 B 0.16 | shared 100%  only-A   0%  only-B   0% | input from shared: self 1.00 vs task 1.00 (A), self 1.00 vs task 1.00 (B)  [9.1 min]
+  CONTROL knows Arabic vs not, Arabic text (expect exclusive) dec2.mlp: live 100%  active/token   36  unexplained A 0.16 B 0.08 | shared  19%  only-A  41%  only-B   1% | input from shared: self 0.08 vs task 0.09 (A), self 0.21 vs task 0.20 (B)  [9.1 min]
+  continual switch 44->45                                    dec2.mlp: live 100%  active/token   38  unexplained A 0.36 B 0.33 | shared  61%  only-A  11%  only-B   9% | input from shared: self 0.39 vs task 0.41 (A), self 0.42 vs task 0.45 (B)  [9.1 min]
+  Hindi-only step 44->45                                     dec2.mlp: live 100%  active/token   36  unexplained A 0.17 B 0.17 | shared 100%  only-A   0%  only-B   0% | input from shared: self 1.00 vs task 1.00 (A), self 1.00 vs task 1.00 (B)  [9.1 min]
+  continual vs Hindi-only, Hindi text                        dec2.mlp: live 100%  active/token   36  unexplained A 0.24 B 0.27 | shared  83%  only-A   2%  only-B   1% | input from shared: self 0.59 vs task 0.60 (A), self 0.63 vs task 0.65 (B)  [9.1 min]
+  continual switch 44->45, encoder                           enc1.mlp: live 100%  active/token   35  unexplained A 0.07 B 0.07 | shared  98%  only-A   0%  only-B   0% | input from shared: self 0.94 vs task 0.95 (A), self 0.94 vs task 0.94 (B)  [9.1 min]
+  read: the two CONTROLS must behave as expected (first ~all shared, second clearly exclusive); only then trust the rest.
+  [crosscoder took 54.9 min]
+
+=== LESION + RELEARN (fixed: warm-up to lr 3e-5) ===
+  continual  reset self  : rise right after 0.463 | after 50 0.227 | after 400 0.147
+  continual  reset task  : rise right after 0.241 | after 50 0.136 | after 400 0.113
+  continual  reset random: rise right after 0.294 | after 50 0.164 | after 400 0.129
+  hindi      reset self  : rise right after 0.723 | after 50 0.282 | after 400 0.146
+  hindi      reset task  : rise right after 0.327 | after 50 0.174 | after 400 0.123
+  hindi      reset random: rise right after 0.492 | after 50 0.212 | after 400 0.127
+  [relearn took 7.9 min]
+finished

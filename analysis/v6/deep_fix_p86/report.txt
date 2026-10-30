@@ -1,0 +1,21 @@
+analysis_v6_deep | runs {'fix': 'v6_cont_noise0.0007_from60', 'continual (ref)': 'v4b_continual_s0'} | phase 86 | tau 0.2 | parts ['relearn', 'steer'] | out /workspace/shreshth/analysis/v6/deep_fix_p86
+
+=== 1. LESION + RELEARN: reset 20% of each MLP layer, then train the same language ===
+  fix        reset self  : loss rise right after = 0.333, after 400 steps = 0.184
+  fix        reset task  : loss rise right after = 0.242, after 400 steps = 0.121
+  fix        reset random: loss rise right after = 0.351, after 400 steps = 0.193
+  continual (ref) reset self  : loss rise right after = 0.337, after 400 steps = 0.184
+  continual (ref) reset task  : loss rise right after = 0.323, after 400 steps = 0.158
+  continual (ref) reset random: loss rise right after = 0.363, after 400 steps = 0.195
+  [relearn took 7.9 min]
+
+=== 5. GOODFIRE: force a neuron on while translating ===
+                       top5_ratio_median  chrf_drop
+run             group                              
+continual (ref) self                0.99       0.13
+                task                1.00       0.06
+fix             self                1.00      -0.00
+                task                1.00      -0.02
+  top5_ratio > 1: forcing the neuron makes the model write more of the tokens that neuron fires on (it is causal for them).
+  [steer took 0.5 min]
+finished

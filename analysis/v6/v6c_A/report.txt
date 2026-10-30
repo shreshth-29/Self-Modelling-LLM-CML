@@ -1,0 +1,138 @@
+analysis_v6c | cont v4b_continual_s0 | hi v4b_only_hi_s0 | mixed v6b_mixed_s0 | redo v6b_cont_redo_from60 | push v6_hi_push0.6_from30 | phase 45 | tau 0.2 | parts ['training', 'pairs', 'noise', 'selfreturn']
+
+=== TRAINING: mixed model and ReDo run vs the references ===
+  v4b_continual_s0               phases 0..86
+  v4b_only_hi_s0                 phases 0..90
+  v6b_mixed_s0                   phases 0..60
+  v6b_cont_redo_from60           phases 60..90
+  v6_cont_noise0.0007_from60     phases 60..86
+  v4b_continual_s0               phase 61 (hi): chrF on it 51.7 | rarely active None
+  v4b_continual_s0               phase 70 (hi): chrF on it 50.3 | rarely active None
+  v4b_continual_s0               phase 80 (zh): chrF on it 20.1 | rarely active None
+  v4b_continual_s0               phase 86 (zh): chrF on it 17.2 | rarely active None
+  v6_cont_noise0.0007_from60     phase 61 (hi): chrF on it 51.4 | rarely active 0.1481
+  v6_cont_noise0.0007_from60     phase 70 (hi): chrF on it 49.9 | rarely active 0.1537
+  v6_cont_noise0.0007_from60     phase 80 (zh): chrF on it 19.9 | rarely active 0.2717
+  v6_cont_noise0.0007_from60     phase 86 (zh): chrF on it 16.9 | rarely active 0.4692
+  v6b_cont_redo_from60           phase 61 (hi): chrF on it 51.4 | rarely active 0.0222
+  v6b_cont_redo_from60           phase 70 (hi): chrF on it 49.1 | rarely active 0.0998
+  v6b_cont_redo_from60           phase 80 (zh): chrF on it 19.1 | rarely active 0.3678
+  v6b_cont_redo_from60           phase 86 (zh): chrF on it 16.9 | rarely active 0.3793
+  v6b_cont_redo_from60           phase 90 (ar): chrF on it 37.2 | rarely active 0.6083
+  mixed phase 10: chrF hi 49.1 zh 25.5 ar 51.4 | steps 6000
+  mixed phase 20: chrF hi 49.0 zh 25.4 ar 52.1 | steps 6000
+  mixed phase 30: chrF hi 50.6 zh 25.7 ar 52.2 | steps 6000
+  mixed phase 45: chrF hi 50.2 zh 26.4 ar 52.0 | steps 6000
+  mixed phase 60: chrF hi 50.0 zh 26.6 ar 52.3 | steps 6000
+  [training took 0.0 min]
+
+=== PAIRS at matched movement (tau 0.2 , MLP mean), now with the mixed model ===
+  continual, DIFFERENT language    p30->p31 (ar->hi): other neurons  49.5  self  41.9  rel gap  15.5%  self size  47%  stays  66%
+  continual, DIFFERENT language    p30->p32 (ar->zh): other neurons  48.8  self  40.6  rel gap  16.9%  self size  46%  stays  67%
+  continual, SAME language         p30->p33 (ar->ar): other neurons  20.0  self  13.7  rel gap  31.1%  self size  54%  stays  86%
+  continual, SAME language         p30->p39 (ar->ar): other neurons  28.0  self  19.3  rel gap  31.3%  self size  54%  stays  83%
+  continual, DIFFERENT language    p30->p40 (ar->hi): other neurons  53.6  self  44.9  rel gap  16.3%  self size  45%  stays  64%
+  continual, DIFFERENT language    p30->p44 (ar->zh): other neurons  54.1  self  44.7  rel gap  17.3%  self size  46%  stays  65%
+  continual, SAME language         p30->p45 (ar->ar): other neurons  33.2  self  23.3  rel gap  29.8%  self size  55%  stays  82%
+  continual, DIFFERENT language    p30->p52 (ar->hi): other neurons  58.5  self  49.2  rel gap  16.0%  self size  46%  stays  63%
+  continual, SAME language         p30->p60 (ar->ar): other neurons  45.2  self  33.1  rel gap  26.7%  self size  57%  stays  80%
+  Hindi only                       p30->p31 (hi->hi): other neurons   9.1  self   7.1  rel gap  21.4%  self size  49%  stays  90%
+  Hindi only                       p30->p35 (hi->hi): other neurons  14.0  self  11.0  rel gap  21.1%  self size  48%  stays  87%
+  Hindi only                       p30->p40 (hi->hi): other neurons  17.8  self  13.9  rel gap  21.7%  self size  47%  stays  84%
+  Hindi only                       p30->p45 (hi->hi): other neurons  21.4  self  16.8  rel gap  21.5%  self size  47%  stays  83%
+  Hindi only                       p30->p50 (hi->hi): other neurons  24.5  self  19.3  rel gap  21.2%  self size  47%  stays  81%
+  Hindi only                       p30->p58 (hi->hi): other neurons  29.5  self  23.4  rel gap  20.6%  self size  46%  stays  79%
+  Hindi + push                     p30->p31 (hi->hi): other neurons  16.2  self  12.6  rel gap  22.3%  self size  50%  stays  89%
+  Hindi + push                     p30->p33 (hi->hi): other neurons  26.5  self  20.3  rel gap  23.3%  self size  53%  stays  87%
+  Hindi + push                     p30->p35 (hi->hi): other neurons  33.6  self  25.5  rel gap  24.0%  self size  54%  stays  85%
+  Hindi + push                     p30->p40 (hi->hi): other neurons  46.3  self  35.8  rel gap  22.8%  self size  57%  stays  83%
+  Hindi + push                     p30->p45 (hi->hi): other neurons  54.8  self  43.0  rel gap  21.4%  self size  58%  stays  82%
+  Hindi + push                     p30->p50 (hi->hi): other neurons  60.8  self  48.4  rel gap  20.4%  self size  58%  stays  81%
+  Hindi + push                     p30->p58 (hi->hi): other neurons  67.5  self  54.7  rel gap  19.0%  self size  59%  stays  79%
+  mixed (all 3 at once)            p30->p31 (mix->mix): other neurons   8.9  self   6.3  rel gap  29.3%  self size  59%  stays  91%
+  mixed (all 3 at once)            p30->p33 (mix->mix): other neurons  11.8  self   8.2  rel gap  30.5%  self size  59%  stays  90%
+  mixed (all 3 at once)            p30->p35 (mix->mix): other neurons  13.6  self   9.4  rel gap  30.6%  self size  58%  stays  88%
+  mixed (all 3 at once)            p30->p40 (mix->mix): other neurons  17.5  self  12.1  rel gap  30.8%  self size  58%  stays  86%
+  mixed (all 3 at once)            p30->p45 (mix->mix): other neurons  21.2  self  14.7  rel gap  30.8%  self size  57%  stays  85%
+  mixed (all 3 at once)            p30->p50 (mix->mix): other neurons  24.7  self  17.3  rel gap  29.9%  self size  56%  stays  83%
+  mixed (all 3 at once)            p30->p58 (mix->mix): other neurons  29.8  self  21.1  rel gap  29.2%  self size  55%  stays  81%
+
+  relative gap read off at the SAME movement ('-' = outside that series' range):
+  series                               moved 10   moved 20   moved 30   moved 40   moved 47
+  Hindi + push                                -      22.7%      23.7%      23.4%      22.7%
+  Hindi only                              21.4%      21.6%      20.6%          -          -
+  continual, DIFFERENT language               -          -          -          -      16.9%
+  continual, SAME language                    -      31.1%      30.7%      28.0%      26.7%
+  mixed (all 3 at once)                   29.7%      30.8%      29.2%          -          -
+  [pairs took 3.4 min]
+
+=== CHANCE LEVEL: random noise (no training) on many checkpoints ===
+  continual  phase 20 noise 0.3: other neurons  16.9  rel gap  26.5%  self size after  38%
+  continual  phase 20 noise 0.45: other neurons  34.9  rel gap  24.2%  self size after  27%
+  continual  phase 20 noise 0.6: other neurons  55.0  rel gap  19.1%  self size after  14%
+  continual  phase 30 noise 0.3: other neurons  15.9  rel gap  26.3%  self size after  47%
+  continual  phase 30 noise 0.45: other neurons  33.4  rel gap  23.5%  self size after  35%
+  continual  phase 30 noise 0.6: other neurons  54.1  rel gap  19.4%  self size after  19%
+  continual  phase 45 noise 0.3: other neurons  16.2  rel gap  25.5%  self size after  46%
+  continual  phase 45 noise 0.45: other neurons  34.1  rel gap  23.0%  self size after  34%
+  continual  phase 45 noise 0.6: other neurons  55.2  rel gap  17.2%  self size after  18%
+  continual  phase 60 noise 0.3: other neurons  15.9  rel gap  25.9%  self size after  47%
+  continual  phase 60 noise 0.45: other neurons  33.4  rel gap  23.2%  self size after  35%
+  continual  phase 60 noise 0.6: other neurons  54.6  rel gap  18.3%  self size after  20%
+  hindi      phase 20 noise 0.3: other neurons  18.9  rel gap  17.0%  self size after  43%
+  hindi      phase 20 noise 0.45: other neurons  37.6  rel gap  16.2%  self size after  33%
+  hindi      phase 20 noise 0.6: other neurons  56.6  rel gap  13.4%  self size after  20%
+  hindi      phase 30 noise 0.3: other neurons  19.4  rel gap  18.2%  self size after  41%
+  hindi      phase 30 noise 0.45: other neurons  38.3  rel gap  16.7%  self size after  31%
+  hindi      phase 30 noise 0.6: other neurons  57.4  rel gap  14.8%  self size after  19%
+  hindi      phase 45 noise 0.3: other neurons  20.2  rel gap  18.1%  self size after  39%
+  hindi      phase 45 noise 0.45: other neurons  39.2  rel gap  16.2%  self size after  29%
+  hindi      phase 45 noise 0.6: other neurons  58.4  rel gap  15.0%  self size after  17%
+  hindi      phase 60 noise 0.3: other neurons  20.4  rel gap  18.2%  self size after  38%
+  hindi      phase 60 noise 0.45: other neurons  39.9  rel gap  15.6%  self size after  28%
+  hindi      phase 60 noise 0.6: other neurons  59.1  rel gap  14.3%  self size after  16%
+  mixed      phase 20 noise 0.3: other neurons  14.0  rel gap  27.9%  self size after  54%
+  mixed      phase 20 noise 0.45: other neurons  30.6  rel gap  24.4%  self size after  42%
+  mixed      phase 20 noise 0.6: other neurons  52.4  rel gap  20.4%  self size after  26%
+  mixed      phase 30 noise 0.3: other neurons  14.3  rel gap  28.0%  self size after  51%
+  mixed      phase 30 noise 0.45: other neurons  31.2  rel gap  24.2%  self size after  40%
+  mixed      phase 30 noise 0.6: other neurons  53.1  rel gap  20.2%  self size after  25%
+  mixed      phase 45 noise 0.3: other neurons  14.5  rel gap  26.6%  self size after  49%
+  mixed      phase 45 noise 0.45: other neurons  31.8  rel gap  24.3%  self size after  37%
+  mixed      phase 45 noise 0.6: other neurons  53.9  rel gap  19.9%  self size after  22%
+  mixed      phase 60 noise 0.3: other neurons  14.8  rel gap  26.8%  self size after  47%
+  mixed      phase 60 noise 0.45: other neurons  32.4  rel gap  24.0%  self size after  35%
+  mixed      phase 60 noise 0.6: other neurons  54.7  rel gap  18.7%  self size after  21%
+  push       phase 40 noise 0.3: other neurons  19.2  rel gap  23.8%  self size after  47%
+  push       phase 40 noise 0.45: other neurons  38.2  rel gap  21.2%  self size after  36%
+  push       phase 40 noise 0.6: other neurons  58.5  rel gap  18.4%  self size after  22%
+  redo       phase 75 noise 0.3: other neurons  15.1  rel gap  27.5%  self size after  75%
+  redo       phase 75 noise 0.45: other neurons  29.3  rel gap  23.9%  self size after  68%
+  redo       phase 75 noise 0.6: other neurons  44.9  rel gap  19.8%  self size after  55%
+
+  chance level at movement 47 (interpolated), per checkpoint:
+  continual  phase 20:  21.1%
+  continual  phase 30:  20.8%
+  continual  phase 45:  19.5%
+  continual  phase 60:  20.0%
+  hindi      phase 20:  14.8%
+  hindi      phase 30:  15.8%
+  hindi      phase 45:  15.7%
+  hindi      phase 60:  15.1%
+  mixed      phase 20:  21.4%
+  mixed      phase 30:  21.3%
+  mixed      phase 45:  21.3%
+  mixed      phase 60:  20.5%
+  push       phase 40:  20.0%
+  redo       phase 75:  19.8%
+  [noise took 4.9 min]
+
+=== DOES THE SAME SELF COME BACK? share of phase-30 self neurons that are in the self again (same neuron numbers) ===
+  continual  decoder: phase-30 self neurons still in the self, later phase in the SAME language   84% | DIFFERENT language   59%
+  continual  encoder: phase-30 self neurons still in the self, later phase in the SAME language   79% | DIFFERENT language   71%
+  hindi      decoder: phase-30 self neurons still in the self, later phase in the SAME language   85% | DIFFERENT language  nan%
+  hindi      encoder: phase-30 self neurons still in the self, later phase in the SAME language   80% | DIFFERENT language  nan%
+  mixed      decoder: phase-30 self neurons still in the self, later phase in the SAME language   88% | DIFFERENT language  nan%
+  mixed      encoder: phase-30 self neurons still in the self, later phase in the SAME language   81% | DIFFERENT language  nan%
+  [selfreturn took 3.9 min]
+finished

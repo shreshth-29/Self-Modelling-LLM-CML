@@ -1,0 +1,68 @@
+RunConfig(run_name='v6_cont_noise0.0007_from60', mode='continual', order=('hi', 'zh', 'ar'), init_ckpt='runs/v4b_continual_s0/ckpt/p060_ar.pt', n_phases=90, seed=0, max_tokens=16000, lr=0.0002, min_lr=2e-05, warmup_steps=500, cooldown_steps=2000, min_steps=2000, max_stable_steps=60000, eval_every=500, plateau_window=4, plateau_tol=0.005, weight_decay=0.1, grad_clip=1.0, masked=True, diverge_factor=1.15, max_retries=2, time_cap_h=120.0, hf_repo='s8n29/cml-lang-self-checkpoints', start_phase=60, noise_per_step=0.0007, boundary_push=0.0, health_every=1)
+  hi: 993,016 train / 2,000 val
+  zh: 755,626 train / 2,000 val
+  ar: 998,000 train / 2,000 val
+data loaded in 45s
+======================================================================================
+ RUN v6_cont_noise0.0007_from60 | mode continual | 90 phases after phase 0 | device cuda
+ phase order: init (loaded) → hi → zh → ar → hi → zh → ar → hi → ...
+ each phase: fresh AdamW (wd 0.1 on matrices), warmup 500 → lr 0.0002 → plateau (<0.5% over 4-eval windows, after 2,000, cap 60,000) → cooldown 2,000 steps to 2e-05
+ masked (script-restricted) loss & decoding: True | divergence guard: >1.15x best twice → retry at half lr (max 2)
+======================================================================================
+BRANCH: starting from runs/v4b_continual_s0/ckpt/p060_ar.pt (phase 60, ar); next phase 61
+
+ v6: noise_per_step = 0.0007 (x each matrix's starting std) | boundary_push = 0.0 (x each matrix's current std, at the start of every phase)
+
+▶ PHASE 61/90 | training hi (993,016 pairs)
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A[W1026 22:10:15.854044815 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 41943040 bytes (free: 31916032, total: 25250627584).
+[W1026 22:10:15.854196605 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 41943040 bytes (free: 31916032, total: 25250627584).
+Traceback (most recent call last):
+  File "/workspace/shreshth/train_v6.py", line 43, in <module>
+    train_run(C, D)
+  File "/workspace/shreshth/common_v6.py", line 570, in train_run
+    logits, _ = model(src, tgt_in)
+                ^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/shreshth/common_v6.py", line 144, in forward
+    logits = self.decode(tgt_in, mem, src_mask)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/shreshth/common_v6.py", line 140, in decode
+    x = b(x, mem, src_mask)
+        ^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/shreshth/common_v6.py", line 104, in forward
+    x = x + self.drop(self.cross_attn(self.ln2(x), mem=mem, mask=src_mask))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/shreshth/common_v6.py", line 70, in forward
+    q, k = self.q_norm(q), self.k_norm(k)
+                           ^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 228, in forward
+    return F.layer_norm(
+           ^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/torch/nn/functional.py", line 2993, in layer_norm
+    return torch.layer_norm(
+           ^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB. GPU 0 has a total capacity of 23.52 GiB of which 30.44 MiB is free. Including non-PyTorch memory, this process has 4.79 GiB memory in use. Process 5653 has 18.68 GiB memory in use. Of the allocated memory 4.29 GiB is allocated by PyTorch, and 48.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

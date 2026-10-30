@@ -1,0 +1,87 @@
+RunConfig(run_name='v6_cont_noise0.0002_from60', mode='continual', order=('hi', 'zh', 'ar'), init_ckpt='runs/v4b_continual_s0/ckpt/p060_ar.pt', n_phases=90, seed=0, max_tokens=16000, lr=0.0002, min_lr=2e-05, warmup_steps=500, cooldown_steps=2000, min_steps=2000, max_stable_steps=60000, eval_every=500, plateau_window=4, plateau_tol=0.005, weight_decay=0.1, grad_clip=1.0, masked=True, diverge_factor=1.15, max_retries=2, time_cap_h=120.0, hf_repo='s8n29/cml-lang-self-checkpoints', start_phase=60, noise_per_step=0.0002, boundary_push=0.0, health_every=1)
+  hi: 993,016 train / 2,000 val
+  zh: 755,626 train / 2,000 val
+  ar: 998,000 train / 2,000 val
+data loaded in 42s
+======================================================================================
+ RUN v6_cont_noise0.0002_from60 | mode continual | 90 phases after phase 0 | device cuda
+ phase order: init (loaded) → hi → zh → ar → hi → zh → ar → hi → ...
+ each phase: fresh AdamW (wd 0.1 on matrices), warmup 500 → lr 0.0002 → plateau (<0.5% over 4-eval windows, after 2,000, cap 60,000) → cooldown 2,000 steps to 2e-05
+ masked (script-restricted) loss & decoding: True | divergence guard: >1.15x best twice → retry at half lr (max 2)
+======================================================================================
+BRANCH: starting from runs/v4b_continual_s0/ckpt/p060_ar.pt (phase 60, ar); next phase 61
+
+ v6: noise_per_step = 0.0002 (x each matrix's starting std) | boundary_push = 0.0 (x each matrix's current std, at the start of every phase)
+
+▶ PHASE 61/90 | training hi (993,016 pairs)
+[W1026 22:10:15.501926495 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1918894080 bytes (free: 1873215488, total: 25250627584).
+[W1026 22:10:22.395166134 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1920991232 bytes (free: 27721728, total: 25250627584).
+  [p61 hi] step    500 | lr 2.0e-04 | train 3.685 | val 1.915 (best 1.915) | window Δ n/a | stable | 75k tok/s | phase 1m41s | run ETA: after first phase | health {'wnorm': 228.756, 'rank_enc1': 1063.5, 'rank_dec1': 607.3, 'rarely_active': 0.1574}
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...02_from60/ckpt/p060_ar.pt:  15%|█▍        | 40.0MB /  267MB            [A[A
+
+  ...02_from60/ckpt/p060_ar.pt:  15%|█▍        | 40.0MB /  267MB            [A[AProcessing Files (0 / 1)      :  15%|█▍        | 40.0MB /  267MB, 3.77MB/s  
+
+  ...02_from60/ckpt/p060_ar.pt:  39%|███▉      |  104MB /  267MB            [A[AProcessing Files (0 / 1)      :  39%|███▉      |  104MB /  267MB, 9.75MB/s  
+
+  ...02_from60/ckpt/p060_ar.pt:  69%|██████▉   |  184MB /  267MB            [A[AProcessing Files (0 / 1)      :  69%|██████▉   |  184MB /  267MB, 17.2MB/s  
+
+  ...02_from60/ckpt/p060_ar.pt:  93%|█████████▎|  248MB /  267MB            [A[AProcessing Files (0 / 1)      :  93%|█████████▎|  248MB /  267MB, 23.0MB/s  
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  267MB /  267MB, 24.6MB/s  
+
+
+Validating                    :           |   0%            [A[A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    : ██████████| 100%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    : ██████████| 100%            [A[A[A
+
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    : ██████████| 100%            [A[A[AProcessing Files (1 / 1)      : 100%|██████████|  267MB /  267MB, 23.1MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+Validating                    : ██████████| 100%            
+  ...02_from60/ckpt/p060_ar.pt: 100%|██████████|  267MB /  267MB            
+  [p61 hi] step  1,000 | lr 2.0e-04 | train 2.833 | val 1.624 (best 1.624) | window Δ n/a | stable | 76k tok/s | phase 3m17s | run ETA: after first phase | health {'wnorm': 228.888, 'rank_enc1': 1079.2, 'rank_dec1': 679.4, 'rarely_active': 0.1489}
+  [p61 hi] step  1,500 | lr 2.0e-04 | train 2.654 | val 1.511 (best 1.511) | window Δ n/a | stable | 77k tok/s | phase 4m52s | run ETA: after first phase | health {'wnorm': 229.036, 'rank_enc1': 1081.5, 'rank_dec1': 704.4, 'rarely_active': 0.1482}
+  [p61 hi] step  2,000 | lr 2.0e-04 | train 2.530 | val 1.461 (best 1.461) | window Δ n/a | stable | 75k tok/s | phase 6m30s | run ETA: after first phase | health {'wnorm': 229.191, 'rank_enc1': 1087.4, 'rank_dec1': 743.9, 'rarely_active': 0.1442}
+  [p61 hi] step  2,500 | lr 2.0e-04 | train 2.484 | val 1.430 (best 1.430) | window Δ n/a | stable | 77k tok/s | phase 8m05s | run ETA: after first phase | health {'wnorm': 229.327, 'rank_enc1': 1087.8, 'rank_dec1': 743.0, 'rarely_active': 0.1431}
+  [p61 hi] step  3,000 | lr 2.0e-04 | train 2.467 | val 1.397 (best 1.397) | window Δ n/a | stable | 77k tok/s | phase 9m41s | run ETA: after first phase | health {'wnorm': 229.46, 'rank_enc1': 1094.2, 'rank_dec1': 757.0, 'rarely_active': 0.1518}
+  [p61 hi] step  3,500 | lr 2.0e-04 | train 2.425 | val 1.389 (best 1.389) | window Δ n/a | stable | 75k tok/s | phase 11m18s | run ETA: after first phase | health {'wnorm': 229.593, 'rank_enc1': 1093.0, 'rank_dec1': 767.1, 'rarely_active': 0.1487}
+  [p61 hi] step  4,000 | lr 2.0e-04 | train 2.383 | val 1.373 (best 1.373) | window Δ +14.15% | stable | 77k tok/s | phase 12m53s | run ETA: after first phase | health {'wnorm': 229.726, 'rank_enc1': 1097.0, 'rank_dec1': 763.9, 'rarely_active': 0.1473}
+  [p61 hi] step  4,500 | lr 2.0e-04 | train 2.396 | val 1.363 (best 1.363) | window Δ +8.34% | stable | 77k tok/s | phase 14m28s | run ETA: after first phase | health {'wnorm': 229.854, 'rank_enc1': 1106.8, 'rank_dec1': 766.8, 'rarely_active': 0.1529}
+  [p61 hi] step  5,000 | lr 2.0e-04 | train 2.392 | val 1.356 (best 1.356) | window Δ +5.47% | stable | 77k tok/s | phase 16m03s | run ETA: after first phase | health {'wnorm': 229.978, 'rank_enc1': 1103.9, 'rank_dec1': 779.5, 'rarely_active': 0.1458}
+  [p61 hi] step  5,500 | lr 2.0e-04 | train 2.324 | val 1.360 (best 1.356) | window Δ +3.98% | stable | 75k tok/s | phase 17m41s | run ETA: after first phase | health {'wnorm': 230.112, 'rank_enc1': 1109.8, 'rank_dec1': 792.3, 'rarely_active': 0.1412}

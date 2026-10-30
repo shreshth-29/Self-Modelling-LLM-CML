@@ -1,0 +1,63 @@
+analysis_v6_fix | cont v4b_continual_s0 | hi v4b_only_hi_s0 | push v6_hi_push0.6_from30 | phase 45 | tau 0.2 | parts ['q2pairs', 'steer']
+
+=== Q2 at MATCHED movement, from existing checkpoints (tau 0.2 , MLP mean) ===
+  continual, DIFFERENT language    p30->p31 (ar->hi): task  49.5  self  41.9  rel gap  15.5%  (enc 25.7%, dec  9.4%)  stays  66%
+  continual, DIFFERENT language    p30->p32 (ar->zh): task  48.8  self  40.6  rel gap  16.9%  (enc 27.1%, dec 10.9%)  stays  67%
+  continual, SAME language         p30->p33 (ar->ar): task  20.0  self  13.7  rel gap  31.1%  (enc 33.4%, dec 28.7%)  stays  86%
+  continual, SAME language         p30->p39 (ar->ar): task  28.0  self  19.3  rel gap  31.3%  (enc 33.6%, dec 28.8%)  stays  83%
+  continual, DIFFERENT language    p30->p40 (ar->hi): task  53.6  self  44.9  rel gap  16.3%  (enc 25.6%, dec 10.0%)  stays  64%
+  continual, DIFFERENT language    p30->p44 (ar->zh): task  54.1  self  44.7  rel gap  17.3%  (enc 26.6%, dec 10.9%)  stays  65%
+  continual, SAME language         p30->p45 (ar->ar): task  33.2  self  23.3  rel gap  29.8%  (enc 31.6%, dec 27.9%)  stays  82%
+  continual, DIFFERENT language    p30->p52 (ar->hi): task  58.5  self  49.2  rel gap  16.0%  (enc 24.8%, dec  9.5%)  stays  63%
+  continual, SAME language         p30->p60 (ar->ar): task  45.2  self  33.1  rel gap  26.7%  (enc 28.1%, dec 25.1%)  stays  80%
+  Hindi only, far apart            p30->p31 (hi->hi): task   9.1  self   7.1  rel gap  21.4%  (enc 28.7%, dec 16.2%)  stays  90%
+  Hindi only, far apart            p30->p35 (hi->hi): task  14.0  self  11.0  rel gap  21.1%  (enc 30.8%, dec 14.1%)  stays  87%
+  Hindi only, far apart            p30->p40 (hi->hi): task  17.8  self  13.9  rel gap  21.7%  (enc 30.0%, dec 15.5%)  stays  84%
+  Hindi only, far apart            p30->p45 (hi->hi): task  21.4  self  16.8  rel gap  21.5%  (enc 30.3%, dec 14.8%)  stays  83%
+  Hindi only, far apart            p30->p50 (hi->hi): task  24.5  self  19.3  rel gap  21.2%  (enc 29.7%, dec 14.5%)  stays  81%
+  Hindi only, far apart            p30->p58 (hi->hi): task  29.5  self  23.4  rel gap  20.6%  (enc 29.1%, dec 14.0%)  stays  79%
+  Hindi + push, far apart          p30->p31 (hi->hi): task  16.2  self  12.6  rel gap  22.3%  (enc 30.4%, dec 16.6%)  stays  89%
+  Hindi + push, far apart          p30->p33 (hi->hi): task  26.5  self  20.3  rel gap  23.3%  (enc 30.1%, dec 18.2%)  stays  87%
+  Hindi + push, far apart          p30->p35 (hi->hi): task  33.6  self  25.5  rel gap  24.0%  (enc 29.3%, dec 19.8%)  stays  85%
+  Hindi + push, far apart          p30->p40 (hi->hi): task  46.3  self  35.8  rel gap  22.8%  (enc 27.8%, dec 18.3%)  stays  83%
+  Hindi + push, far apart          p30->p45 (hi->hi): task  54.8  self  43.0  rel gap  21.4%  (enc 26.2%, dec 16.9%)  stays  82%
+  Hindi + push, far apart          p30->p50 (hi->hi): task  60.8  self  48.4  rel gap  20.4%  (enc 24.4%, dec 16.5%)  stays  81%
+  Hindi + push, far apart          p30->p58 (hi->hi): task  67.5  self  54.7  rel gap  19.0%  (enc 21.7%, dec 16.3%)  stays  79%
+
+  relative gap read off at the SAME movement (linear interpolation; '-' = outside that series' range):
+  series                               task=20   task=30   task=40   task=47
+  Hindi + push, far apart                22.7%     23.7%     23.4%     22.7%
+  Hindi only, far apart                  21.6%     20.6%         -         -
+  continual, DIFFERENT language              -         -         -     16.9%
+  continual, SAME language               31.1%     30.7%     28.0%     26.7%
+  [q2pairs took 2.6 min]
+
+=== FORCE A NEURON ON (fixed): how much do the next-token predictions change? ===
+                               kl_mean  kl_median  gained_related  random_related
+run       layer    mult group                                                    
+continual dec2.mlp 3    self    0.0430     0.0351          0.0907          0.1169
+                        task    0.0206     0.0183          0.0773          0.1168
+                   10   self    0.7618     0.5902          0.0921          0.1185
+                        task    0.2948     0.2414          0.0753          0.1160
+          dec3.mlp 3    self    0.0473     0.0480          0.0677          0.1158
+                        task    0.0474     0.0473          0.0608          0.1263
+                   10   self    0.6078     0.6398          0.0698          0.1160
+                        task    0.6012     0.6344          0.0610          0.1265
+hindi     dec2.mlp 3    self    0.0613     0.0480          0.2373          0.3240
+                        task    0.0366     0.0331          0.2057          0.3158
+                   10   self    1.1843     0.7854          0.2403          0.3264
+                        task    0.5017     0.4209          0.2059          0.3102
+          dec3.mlp 3    self    0.0509     0.0430          0.2342          0.3172
+                        task    0.0357     0.0343          0.1969          0.2975
+                   10   self    0.6701     0.6411          0.2390          0.3153
+                        task    0.4274     0.4225          0.1969          0.2940
+  kl = how much forcing ONE neuron changes the next-token predictions (bigger = more causal power).
+  gained_related > random_related: the tokens it pushes up resemble the tokens it fires on (its job is causal).
+  e.g. hindi dec2.mlp self #1031: kl 4.124 | fires on: _विशेषज्ञ ष्ट _जटिल _वास्तविक _गंभीर द्र | pushes up: ता ताओं ीकरण ात्मक न _न
+  e.g. continual dec2.mlp self #1310: kl 1.786 | fires on: _ومن باح _ثم سقط صفة _كثيراً | pushes up: _ثم _بعدها ثم _وبعد ث _ومن
+  e.g. continual dec3.mlp self #1380: kl 1.184 | fires on: 500 ٣ 56 ٠ _مليون _سبع | pushes up: هار مجرد _قد وح _مر _وإ
+  e.g. hindi dec2.mlp self #1790: kl 1.119 | fires on: _जून _ऑस्ट्रेलिया । राय . प्र | pushes up: </s> _रू _उसकी हा _मु ाध्यक्ष
+  e.g. hindi dec2.mlp task #2274: kl 1.095 | fires on: _हाथ _दशक _गैल _हिस्से _भू _धरती | pushes up: _के _की _का ाल ीय ते
+  e.g. hindi dec3.mlp self #1846: kl 1.046 | fires on: स्टो _ज़ _भू _टो _फ़ इक | pushes up: ना _आ लन रन अ _रोज़
+  [steer took 0.4 min]
+finished

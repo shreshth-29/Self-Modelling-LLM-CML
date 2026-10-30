@@ -1,0 +1,27 @@
+      check                                label  task  self_ch  random   gap  self_size  stays  rel_gap_pct
+      noise           continual p45 + noise 0.03  0.17     0.13    0.15  0.05       0.54   0.97        27.64
+      noise            continual p45 + noise 0.1  1.92     1.40    1.63  0.53       0.53   0.93        27.45
+      noise            continual p45 + noise 0.2  7.51     5.52    6.47  1.99       0.51   0.85        26.49
+      noise            continual p45 + noise 0.4 27.98    21.33   25.37  6.64       0.38   0.61        23.75
+      noise            continual p45 + noise 0.5 41.83    32.77   39.03  9.06       0.29   0.46        21.66
+      noise            continual p45 + noise 0.6 55.94    45.25   53.75 10.69       0.18   0.28        19.11
+      noise                only p45 + noise 0.03  0.23     0.18    0.21  0.05       0.47   0.98        21.39
+      noise                 only p45 + noise 0.1  2.53     2.01    2.29  0.52       0.46   0.93        20.66
+      noise                 only p45 + noise 0.2  9.60     7.80    8.86  1.80       0.43   0.83        18.76
+      noise                 only p45 + noise 0.4 33.00    27.59   31.46  5.42       0.31   0.57        16.41
+      noise                 only p45 + noise 0.5 46.81    39.91   45.35  6.90       0.22   0.41        14.74
+      noise                 only p45 + noise 0.6 59.66    50.76   58.40  8.90       0.15   0.28        14.91
+   drift_hi                Hindi only p30 -> p31  9.06     7.12    8.15  1.94       0.49   0.90        21.40
+   drift_hi                Hindi only p30 -> p35 14.01    11.05   12.68  2.96       0.48   0.87        21.15
+   drift_hi                Hindi only p30 -> p40 17.77    13.91   16.06  3.86       0.47   0.84        21.73
+   drift_hi                Hindi only p30 -> p50 24.54    19.34   22.33  5.20       0.47   0.81        21.21
+   drift_hi                Hindi only p30 -> p60 30.52    24.42   27.98  6.10       0.45   0.78        19.98
+   drift_hi                Hindi only p10 -> p60 47.23    39.08   43.93  8.14       0.45   0.66        17.24
+   drift_hi                 Hindi only p2 -> p60 57.22    48.15   53.50  9.07       0.45   0.60        15.85
+ drift_cont continual p30 -> p33 (same language) 19.95    13.75   16.62  6.21       0.54   0.86        31.10
+ drift_cont continual p30 -> p45 (same language) 33.24    23.33   27.87  9.91       0.55   0.82        29.81
+ drift_cont continual p30 -> p60 (same language) 45.16    33.12   38.32 12.04       0.57   0.80        26.67
+switch_cont          continual switch p44 -> p45 46.03    40.11   42.92  5.91       0.55   0.77        12.85
+switch_cont          continual switch p45 -> p46 48.93    41.68   45.62  7.25       0.46   0.65        14.81
+switch_cont          continual switch p46 -> p47 45.35    38.58   42.31  6.77       0.46   0.70        14.93
+switch_cont          continual switch p59 -> p60 47.53    41.39   44.14  6.14       0.57   0.78        12.91

@@ -1,0 +1,10 @@
+{
+  "enc0.mlp": 0.2,
+  "enc1.mlp": 0.2,
+  "enc2.mlp": 0.2,
+  "enc3.mlp": 0.2,
+  "dec0.mlp": 0.2,
+  "dec1.mlp": 0.2,
+  "dec2.mlp": 0.2,
+  "dec3.mlp": 0.2
+}

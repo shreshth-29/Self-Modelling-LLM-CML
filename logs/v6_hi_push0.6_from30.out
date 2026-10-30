@@ -1,0 +1,104 @@
+RunConfig(run_name='v6_hi_push0.6_from30', mode='only_hi', order=('hi', 'zh', 'ar'), init_ckpt='runs/v4b_only_hi_s0/ckpt/p030_hi.pt', n_phases=90, seed=0, max_tokens=16000, lr=0.0002, min_lr=2e-05, warmup_steps=500, cooldown_steps=2000, min_steps=2000, max_stable_steps=60000, eval_every=500, plateau_window=4, plateau_tol=0.005, weight_decay=0.1, grad_clip=1.0, masked=True, diverge_factor=1.15, max_retries=2, time_cap_h=120.0, hf_repo='s8n29/cml-lang-self-checkpoints', start_phase=30, noise_per_step=0.0, boundary_push=0.6, health_every=1)
+  hi: 993,016 train / 2,000 val
+  zh: 2,000 val
+  ar: 2,000 val
+data loaded in 18s
+======================================================================================
+ RUN v6_hi_push0.6_from30 | mode only_hi | 90 phases after phase 0 | device cuda
+ phase order: init (loaded) → hi → hi → hi → hi → hi → hi → hi → ...
+ each phase: fresh AdamW (wd 0.1 on matrices), warmup 500 → lr 0.0002 → plateau (<0.5% over 4-eval windows, after 2,000, cap 60,000) → cooldown 2,000 steps to 2e-05
+ masked (script-restricted) loss & decoding: True | divergence guard: >1.15x best twice → retry at half lr (max 2)
+======================================================================================
+BRANCH: starting from runs/v4b_only_hi_s0/ckpt/p030_hi.pt (phase 30, hi); next phase 31
+
+ v6: noise_per_step = 0.0 (x each matrix's starting std) | boundary_push = 0.6 (x each matrix's current std, at the start of every phase)
+
+▶ PHASE 31/90 | training hi (993,016 pairs)
+  push: added noise 0.6 x std to every weight matrix
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A[W1026 22:13:12.934560147 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2048917504 bytes (free: 964427776, total: 25250627584).
+
+
+  ....6_from30/ckpt/p030_hi.pt:  27%|██▋       | 72.0MB /  267MB            [A[A
+
+  ....6_from30/ckpt/p030_hi.pt:  27%|██▋       | 72.0MB /  267MB            [A[AProcessing Files (0 / 1)      :  27%|██▋       | 72.0MB /  267MB, 6.76MB/s  
+
+  ....6_from30/ckpt/p030_hi.pt:  54%|█████▍    |  144MB /  267MB            [A[AProcessing Files (0 / 1)      :  54%|█████▍    |  144MB /  267MB, 13.5MB/s  
+
+  ....6_from30/ckpt/p030_hi.pt:  84%|████████▍ |  224MB /  267MB            [A[AProcessing Files (0 / 1)      :  84%|████████▍ |  224MB /  267MB, 20.8MB/s  
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  267MB /  267MB, 24.6MB/s  
+
+
+Validating                    :           |   0%            [A[A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    :           |   0%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    : ██████████| 100%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    : ██████████| 100%            [A[A[A
+
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            [A[A
+
+
+Validating                    : ██████████| 100%            [A[A[AProcessing Files (1 / 1)      : 100%|██████████|  267MB /  267MB, 22.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+Validating                    : ██████████| 100%            
+  ....6_from30/ckpt/p030_hi.pt: 100%|██████████|  267MB /  267MB            
+  [p31 hi] step    500 | lr 2.0e-04 | train 3.591 | val 1.728 (best 1.728) | window Δ n/a | stable | 75k tok/s | phase 1m38s | run ETA: after first phase | health {'wnorm': 257.726, 'rank_enc1': 864.7, 'rank_dec1': 747.1, 'rarely_active': 0.0065}
+  [p31 hi] step  1,000 | lr 2.0e-04 | train 2.657 | val 1.502 (best 1.502) | window Δ n/a | stable | 77k tok/s | phase 3m13s | run ETA: after first phase | health {'wnorm': 257.068, 'rank_enc1': 859.5, 'rank_dec1': 747.3, 'rarely_active': 0.0067}
+[W1026 22:17:48.839834045 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1954545664 bytes (free: 140247040, total: 25250627584).
+  [p31 hi] step  1,500 | lr 2.0e-04 | train 2.494 | val 1.427 (best 1.427) | window Δ n/a | stable | 77k tok/s | phase 4m49s | run ETA: after first phase | health {'wnorm': 256.468, 'rank_enc1': 876.3, 'rank_dec1': 748.4, 'rarely_active': 0.0087}
+  [p31 hi] step  2,000 | lr 2.0e-04 | train 2.382 | val 1.404 (best 1.404) | window Δ n/a | stable | 75k tok/s | phase 6m26s | run ETA: after first phase | health {'wnorm': 255.905, 'rank_enc1': 877.6, 'rank_dec1': 764.2, 'rarely_active': 0.0075}
+  [p31 hi] step  2,500 | lr 2.0e-04 | train 2.346 | val 1.384 (best 1.384) | window Δ n/a | stable | 77k tok/s | phase 8m01s | run ETA: after first phase | health {'wnorm': 255.367, 'rank_enc1': 874.9, 'rank_dec1': 770.4, 'rarely_active': 0.0077}
+  [p31 hi] step  3,000 | lr 2.0e-04 | train 2.333 | val 1.364 (best 1.364) | window Δ n/a | stable | 77k tok/s | phase 9m35s | run ETA: after first phase | health {'wnorm': 254.85, 'rank_enc1': 879.1, 'rank_dec1': 773.3, 'rarely_active': 0.0085}
+  [p31 hi] step  3,500 | lr 2.0e-04 | train 2.288 | val 1.362 (best 1.362) | window Δ n/a | stable | 75k tok/s | phase 11m13s | run ETA: after first phase | health {'wnorm': 254.347, 'rank_enc1': 892.1, 'rank_dec1': 787.1, 'rarely_active': 0.0081}
+  [p31 hi] step  4,000 | lr 2.0e-04 | train 2.241 | val 1.358 (best 1.358) | window Δ +9.81% | stable | 77k tok/s | phase 12m47s | run ETA: after first phase | health {'wnorm': 253.866, 'rank_enc1': 885.6, 'rank_dec1': 795.1, 'rarely_active': 0.0078}
+  [p31 hi] step  4,500 | lr 2.0e-04 | train 2.261 | val 1.355 (best 1.355) | window Δ +4.87% | stable | 76k tok/s | phase 14m24s | run ETA: after first phase | health {'wnorm': 253.396, 'rank_enc1': 884.2, 'rank_dec1': 780.9, 'rarely_active': 0.0087}

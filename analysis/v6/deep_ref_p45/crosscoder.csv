@@ -1,0 +1,7 @@
+pair,layer,A,B,fvu_A,live,shared_frac,A_only_frac,B_only_frac,shared_input_self_A,shared_input_task_A,shared_input_self_B,shared_input_task_B
+continual switch,enc1.mlp,v4b_continual_s0:p44,v4b_continual_s0:p45,0.16859821361653946,8185,1.0,0.0,0.0,1.0,1.0,1.0,1.0
+continual switch,dec2.mlp,v4b_continual_s0:p44,v4b_continual_s0:p45,0.42043167153994243,8068,0.9093951412989588,0.0,0.0,0.6762891,0.6991074,0.69452953,0.7274807
+Hindi-only step,enc1.mlp,v4b_only_hi_s0:p44,v4b_only_hi_s0:p45,0.2049423657795962,8180,1.0,0.0,0.0,1.0,1.0,1.0,1.0
+Hindi-only step,dec2.mlp,v4b_only_hi_s0:p44,v4b_only_hi_s0:p45,0.258591490983963,8163,1.0,0.0,0.0,1.0,1.0,1.0,1.0
+continual vs Hindi-only (Hindi text),enc1.mlp,v4b_continual_s0:p45,v4b_only_hi_s0:p45,0.1812380000072367,8148,0.9949680903289151,0.0,0.0,0.98888344,0.99255717,0.98832047,0.9922169
+continual vs Hindi-only (Hindi text),dec2.mlp,v4b_continual_s0:p45,v4b_only_hi_s0:p45,0.35114266475041706,8110,0.9397040690505549,0.0,0.0,0.776363,0.79900813,0.80776775,0.8174009

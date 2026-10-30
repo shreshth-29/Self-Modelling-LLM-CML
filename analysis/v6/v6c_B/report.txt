@@ -1,0 +1,38 @@
+analysis_v6c | cont v4b_continual_s0 | hi v4b_only_hi_s0 | mixed v6b_mixed_s0 | redo v6b_cont_redo_from60 | push v6_hi_push0.6_from30 | phase 45 | tau 0.2 | parts ['crosscoder', 'steer', 'relearn']
+
+=== CROSSCODER: which decoder features a switch replaces, do they come back, are self features kept more? ===
+  continual 44 (zh) vs 45 (ar): switch           kept  61%  lost   9%  new   7% | self features kept  53% vs task features kept  62% (291 vs 7901 features) | unexplained 0.38/0.34 [4.9 min]
+  continual 44 (zh) vs 46 (hi): two switches     kept  68%  lost   9%  new   6% | self features kept  54% vs task features kept  68% (289 vs 7903 features) | unexplained 0.38/0.34 [4.9 min]
+  continual 44 (zh) vs 47 (zh): language back    kept  99%  lost   0%  new   0% | self features kept  93% vs task features kept  99% (286 vs 7906 features) | unexplained 0.32/0.33 [4.9 min]
+  Hindi only 44 vs 45                            kept 100%  lost   0%  new   0% | self features kept 100% vs task features kept 100% (4814 vs 3378 features) | unexplained 0.19/0.19 [4.9 min]
+  mixed 44 vs 45                                 kept 100%  lost   0%  new   0% | self features kept 100% vs task features kept 100% (8181 vs 11 features) | unexplained 0.25/0.25 [4.9 min]
+  (earlier controls: same model twice -> 100% kept; Arabic-knowing vs not, on Arabic -> 41% only in the Arabic model)
+  [crosscoder took 25.1 min]
+
+=== FORCE ONE NEURON ON: 100 self vs 100 task neurons, decoder layer 2, 10x its peak, every language it knows ===
+  continual  ar: self 0.849 (median 0.480) vs task 0.348 (median 0.302) | ratio 2.44 [95%: 1.76-3.40]  n = 100 + 100
+  continual  hi: self 0.915 (median 0.753) vs task 0.576 (median 0.548) | ratio 1.59 [95%: 1.34-1.92]  n = 100 + 100
+  continual  zh: self 0.681 (median 0.573) vs task 0.420 (median 0.405) | ratio 1.62 [95%: 1.35-1.97]  n = 100 + 100
+  hindi      hi: self 1.130 (median 0.584) vs task 0.429 (median 0.389) | ratio 2.64 [95%: 1.97-3.48]  n = 100 + 100
+  mixed      ar: self 0.916 (median 0.537) vs task 0.325 (median 0.258) | ratio 2.81 [95%: 2.10-3.80]  n = 100 + 100
+  mixed      hi: self 0.980 (median 0.572) vs task 0.358 (median 0.288) | ratio 2.74 [95%: 2.06-3.67]  n = 100 + 100
+  mixed      zh: self 0.929 (median 0.614) vs task 0.407 (median 0.330) | ratio 2.28 [95%: 1.78-2.86]  n = 100 + 100
+  [steer took 2.0 min]
+
+=== DAMAGE + RELEARN: reset 20% of each layer (self / task / random); loss rise on EVERY language right after ===
+  loss rise RIGHT AFTER the reset (mean of 3 repeats), per language:
+  continual  on ar: self 0.446 (±0.032) | task 0.239 | random 0.291 | self/task 1.87
+  continual  on hi: self 0.383 (±0.021) | task 0.209 | random 0.254 | self/task 1.83
+  continual  on zh: self 0.302 (±0.016) | task 0.271 | random 0.249 | self/task 1.11
+  hindi      on hi: self 0.739 (±0.049) | task 0.324 | random 0.469 | self/task 2.28
+  mixed      on ar: self 0.424 (±0.011) | task 0.208 | random 0.277 | self/task 2.04
+  mixed      on hi: self 0.527 (±0.069) | task 0.276 | random 0.354 | self/task 1.91
+  mixed      on zh: self 0.365 (±0.036) | task 0.179 | random 0.234 | self/task 2.04
+  after 400 relearning steps:
+  continual  on ar: self 0.139 | task 0.115 | random 0.123
+  hindi      on hi: self 0.151 | task 0.121 | random 0.132
+  mixed      on ar: self 0.153 | task 0.130 | random 0.141
+  mixed      on hi: self 0.163 | task 0.145 | random 0.145
+  mixed      on zh: self 0.150 | task 0.121 | random 0.138
+  [relearn took 18.0 min]
+finished

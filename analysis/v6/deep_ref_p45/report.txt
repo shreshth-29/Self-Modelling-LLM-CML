@@ -1,0 +1,61 @@
+analysis_v6_deep | runs {'continual': 'v4b_continual_s0', 'hindi': 'v4b_only_hi_s0'} | phase 45 | tau 0.2 | parts ['relearn', 'crosscoder', 'ends', 'widen', 'steer', 'sentences'] | out /workspace/shreshth/analysis/v6/deep_ref_p45
+
+=== 1. LESION + RELEARN: reset 20% of each MLP layer, then train the same language ===
+  continual  reset self  : loss rise right after = 0.520, after 400 steps = 0.239
+  continual  reset task  : loss rise right after = 0.247, after 400 steps = 0.224
+  continual  reset random: loss rise right after = 0.294, after 400 steps = 0.240
+  hindi      reset self  : loss rise right after = 0.770, after 400 steps = 0.206
+  hindi      reset task  : loss rise right after = 0.365, after 400 steps = 0.188
+  hindi      reset random: loss rise right after = 0.492, after 400 steps = 0.192
+  [relearn took 8.2 min]
+
+=== 2. CROSSCODER (model diffing) ===
+  continual switch                       enc1.mlp: shared  100%  A-only   0%  B-only   0%  | input from shared features: self 1.00 vs task 1.00 (A), self 1.00 vs task 1.00 (B)  | unexplained variance 0.17
+  continual switch                       dec2.mlp: shared   91%  A-only   0%  B-only   0%  | input from shared features: self 0.68 vs task 0.70 (A), self 0.69 vs task 0.73 (B)  | unexplained variance 0.42
+  Hindi-only step                        enc1.mlp: shared  100%  A-only   0%  B-only   0%  | input from shared features: self 1.00 vs task 1.00 (A), self 1.00 vs task 1.00 (B)  | unexplained variance 0.20
+  Hindi-only step                        dec2.mlp: shared  100%  A-only   0%  B-only   0%  | input from shared features: self 1.00 vs task 1.00 (A), self 1.00 vs task 1.00 (B)  | unexplained variance 0.26
+  continual vs Hindi-only (Hindi text)   enc1.mlp: shared   99%  A-only   0%  B-only   0%  | input from shared features: self 0.99 vs task 0.99 (A), self 0.99 vs task 0.99 (B)  | unexplained variance 0.18
+  continual vs Hindi-only (Hindi text)   dec2.mlp: shared   94%  A-only   0%  B-only   0%  | input from shared features: self 0.78 vs task 0.80 (A), self 0.81 vs task 0.82 (B)  | unexplained variance 0.35
+  [crosscoder took 14.1 min]
+
+=== 3. GOODFIRE: both ends of a neuron (pre-GELU input, mean per token type) ===
+  continual enc1.mlp self #2154:  + _near _Northern hood _close _town other ern _northern _across _larger   |   - _Olympic _launch _score _however _lot _run _any _much oc _film
+  continual enc1.mlp self #43:  + _100 _hotel _summer _temple tele _best iti _host 39 _room   |   - _Germany gal ban _Sikh _control _due _sub _vote _focus _attract
+  continual enc1.mlp self #1322:  + _Turkey ak _fact ect _U k _different _distinct ille cu   |   - _everything _once _season _case _million osa _provide life _learn _2,
+  continual enc1.mlp self #1637:  + _way _ways _how way _route _however _means _However _reason pt   |   - _region _died _Sa _Francis osa _requires _international / _volume _atoms
+  continual enc1.mlp self #819:  + _film _export _million _video _100 _percent _fire _thousand _Zealand _image   |   - _agent tu _difficult _reason _care _individuals _stay rant ance _enjoy
+  continual enc1.mlp self #430:  + _understand _fear _study _get _enjoy _built _move _use _give _learn   |   - _large _easily _small _great _main _good _major _Many _car _easy
+  continual enc1.mlp self #719:  + _sometimes _often _Australia _cases _however _others _though _several _among _usually   |   - _keep _sure _knowledge _National _warm own ow ke _able _live
+  continual enc1.mlp self #91:  + _require _required _might _would _player _seek _requires _trying _should _expect   |   - _know _word _global _report _words _Rock _moon _famous _name _Roman
+  (full table: ends.csv; read it by eye: do the two ends form a contrast?)
+  [ends took 0.2 min]
+
+=== 4. GOODFIRE: does a neuron's job widen (related new tokens) or jump (unrelated)? ===
+                          jaccard  rel_new  rel_random  breadth
+run       layer    group                                       
+continual dec2.mlp self     0.556    0.116       0.105    9.092
+                   task     0.517    0.114       0.103    7.528
+          enc1.mlp self     0.497    0.033      -0.000    3.900
+                   task     0.481    0.034      -0.004    3.962
+hindi     dec2.mlp self     0.628    0.263       0.067   11.098
+                   task     0.589    0.259       0.067    7.892
+          enc1.mlp self     0.641    0.052       0.006    7.160
+                   task     0.646    0.039       0.002    5.330
+  widening = high jaccard + new tokens MORE related than random (rel_new > rel_random); jumping = the opposite.
+  [widen took 1.0 min]
+
+=== 5. GOODFIRE: force a neuron on while translating ===
+                 top5_ratio_median  chrf_drop
+run       group                              
+continual self                1.01      -0.10
+          task                1.00      -0.35
+hindi     self                1.01      -0.13
+          task                0.99      -0.43
+  top5_ratio > 1: forcing the neuron makes the model write more of the tokens that neuron fires on (it is causal for them).
+  [steer took 0.5 min]
+
+=== 6. SELF-PRESERVATION: which sentences are forgotten at a switch, and what do they rely on? ===
+  switch 44->45 (zh->ar), forgetting of hi: mean loss rise nan. Spearman with reliance on self +nan, on task neurons +nan, with sentence length +nan
+  switch 44->45 (zh->ar), forgetting of zh: mean loss rise nan. Spearman with reliance on self +nan, on task neurons +nan, with sentence length +nan
+  [sentences took 0.2 min]
+finished
