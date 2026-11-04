@@ -1,0 +1,30 @@
+=== HARDCORE LESION (indic: hi, gu, pa) | tau 0.2 | doses (0.05, 0.1, 0.2) of each layer | 3 repeats | loss on 300 val pairs/lang, chrF on 150 FLORES sentences/lang ===
+  'matched' = task neurons with the same average activity, firing rate and outgoing weight size as the self neurons
+  related p10 (hi, 172s) | ONE layer, 10%: loss rise self 0.0144 matched 0.0065 random 0.0045 | ALL layers 10%: chrF 40.5 -> self 36.7 matched 40.8 random 40.2
+  related p16 (hi, 164s) | ONE layer, 10%: loss rise self 0.0168 matched 0.0056 random 0.0052 | ALL layers 10%: chrF 43.4 -> self 39.1 matched 42.6 random 43.0
+
+  MATCHING CHECK (10% dose, averages over layers): the matched set should look like the self set
+  related p10: self: activity -0.022 firing 0.07 weight 0.83 | matched: activity -0.029 firing 0.07 weight 0.82 | random: activity -0.037 firing 0.06 weight 0.80
+  related p16: self: activity -0.024 firing 0.06 weight 0.81 | matched: activity -0.029 firing 0.06 weight 0.81 | random: activity -0.039 firing 0.05 weight 0.78
+
+  RESULT, ONE layer at a time (mean ablation): how many times more damage the self does than MATCHED task neurons
+  (ratio shown as '-' when the matched neurons raised the loss by less than 0.002: then compare the extra damage instead)
+  model        phase  dose  self / matched       95% range   extra loss (self - matched)  self worse in  self / random
+  related         10    5%           2.73x      1.86-4.69x  +0.0050 (+0.0030 to +0.0072)      72% of 72          3.11x
+  related         10   10%           2.22x      1.65-3.22x  +0.0079 (+0.0048 to +0.0116)      69% of 72          3.18x
+  related         10   20%           2.36x      1.91-2.92x  +0.0178 (+0.0124 to +0.0236)      78% of 72          2.93x
+  related         16    5%           3.05x      2.12-5.23x  +0.0056 (+0.0038 to +0.0077)      69% of 72          3.00x
+  related         16   10%           3.02x      2.07-4.94x  +0.0113 (+0.0075 to +0.0152)      65% of 72          3.21x
+  related         16   20%           2.73x      2.18-3.67x  +0.0212 (+0.0159 to +0.0273)      81% of 72          2.52x
+
+  zero ablation (10%) instead of mean ablation:
+  related         10  self / matched 1.19x (0.95-1.44x) | extra loss +0.0025 (-0.0006 to +0.0059)
+  related         16  self / matched 1.60x (1.30-1.92x) | extra loss +0.0073 (+0.0037 to +0.0109)
+
+  per layer (10%, mean ablation, all models pooled): self / matched
+  enc0.mlp 1.30x | enc1.mlp 0.56x | enc2.mlp 1.15x | enc3.mlp 0.61x | dec0.mlp 3.05x | dec1.mlp 3.13x | dec2.mlp 3.29x | dec3.mlp nanx
+
+  ALL 8 layers at once, 10% of each: real translation quality (chrF, higher = better)
+  related p10: gu: intact 29.1, -self 24.6, -matched 29.3, -random 29.0 | hi: intact 52.9, -self 49.9, -matched 53.0, -random 52.3 | pa: intact 39.4, -self 35.5, -matched 39.9, -random 39.3
+  related p16: gu: intact 36.1, -self 30.6, -matched 34.8, -random 35.5 | hi: intact 53.1, -self 50.1, -matched 52.3, -random 52.6 | pa: intact 41.0, -self 36.6, -matched 40.6, -random 40.9
+finished

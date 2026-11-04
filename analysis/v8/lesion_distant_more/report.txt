@@ -1,0 +1,65 @@
+=== HARDCORE LESION (distant: hi, zh, ar) | tau 0.2 | doses (0.05, 0.1, 0.2) of each layer | 3 repeats | loss on 300 val pairs/lang, chrF on 150 FLORES sentences/lang ===
+  'matched' = task neurons with the same average activity, firing rate and outgoing weight size as the self neurons
+  continual p20 (zh, 168s) | ONE layer, 10%: loss rise self 0.0123 matched 0.0066 random 0.0057 | ALL layers 10%: chrF 23.1 -> self 21.1 matched 22.7 random 22.2
+  continual p40 (hi, 172s) | ONE layer, 10%: loss rise self 0.0122 matched 0.0063 random 0.0054 | ALL layers 10%: chrF 23.2 -> self 21.1 matched 22.0 random 23.0
+  continual p50 (zh, 170s) | ONE layer, 10%: loss rise self 0.0141 matched 0.0085 random 0.0106 | ALL layers 10%: chrF 23.6 -> self 21.5 matched 23.2 random 23.6
+  hindi p10 (hi, 56s) | ONE layer, 10%: loss rise self 0.0141 matched 0.0102 random 0.0098 | ALL layers 10%: chrF 50.8 -> self 48.3 matched 50.6 random 50.5
+  hindi p45 (hi, 57s) | ONE layer, 10%: loss rise self 0.0341 matched 0.0122 random 0.0117 | ALL layers 10%: chrF 50.3 -> self 44.8 matched 50.2 random 49.4
+  mixed p10 (mix, 131s) | ONE layer, 10%: loss rise self 0.0102 matched 0.0089 random 0.0083 | ALL layers 10%: chrF 43.2 -> self 41.2 matched 42.7 random 42.7
+  mixed p45 (mix, 138s) | ONE layer, 10%: loss rise self 0.0137 matched 0.0103 random 0.0085 | ALL layers 10%: chrF 44.0 -> self 41.4 matched 42.8 random 43.2
+
+  MATCHING CHECK (10% dose, averages over layers): the matched set should look like the self set
+  continual p20: self: activity -0.020 firing 0.06 weight 0.81 | matched: activity -0.025 firing 0.06 weight 0.80 | random: activity -0.032 firing 0.05 weight 0.78
+  continual p40: self: activity -0.027 firing 0.05 weight 0.80 | matched: activity -0.031 firing 0.04 weight 0.79 | random: activity -0.037 firing 0.04 weight 0.78
+  continual p50: self: activity -0.020 firing 0.05 weight 0.80 | matched: activity -0.025 firing 0.05 weight 0.79 | random: activity -0.031 firing 0.04 weight 0.77
+  hindi p10: self: activity -0.024 firing 0.09 weight 0.79 | matched: activity -0.041 firing 0.08 weight 0.78 | random: activity -0.048 firing 0.06 weight 0.76
+  hindi p45: self: activity -0.032 firing 0.08 weight 0.76 | matched: activity -0.045 firing 0.06 weight 0.76 | random: activity -0.053 firing 0.05 weight 0.73
+  mixed p10: self: activity -0.012 firing 0.09 weight 0.81 | matched: activity -0.021 firing 0.09 weight 0.79 | random: activity -0.028 firing 0.09 weight 0.77
+  mixed p45: self: activity -0.019 firing 0.07 weight 0.78 | matched: activity -0.026 firing 0.07 weight 0.77 | random: activity -0.033 firing 0.07 weight 0.74
+
+  RESULT, ONE layer at a time (mean ablation): how many times more damage the self does than MATCHED task neurons
+  (ratio shown as '-' when the matched neurons raised the loss by less than 0.002: then compare the extra damage instead)
+  model        phase  dose  self / matched       95% range   extra loss (self - matched)  self worse in  self / random
+  continual       20    5%           2.21x      1.47-3.66x  +0.0041 (+0.0017 to +0.0067)      58% of 72          2.33x
+  continual       20   10%           1.86x      1.36-2.67x  +0.0057 (+0.0027 to +0.0090)      65% of 72          2.17x
+  continual       20   20%           1.89x      1.49-2.63x  +0.0132 (+0.0075 to +0.0191)      67% of 72          1.82x
+  continual       40    5%           1.33x      0.85-1.86x  +0.0011 (-0.0005 to +0.0027)      58% of 72          1.45x
+  continual       40   10%           1.93x      1.40-2.58x  +0.0059 (+0.0026 to +0.0093)      74% of 72          2.24x
+  continual       40   20%           1.47x      1.17-1.81x  +0.0070 (+0.0024 to +0.0115)      60% of 72          1.50x
+  continual       50    5%           1.90x      1.40-2.62x  +0.0043 (+0.0020 to +0.0066)      67% of 72          1.81x
+  continual       50   10%           1.66x      1.34-2.11x  +0.0056 (+0.0031 to +0.0084)      71% of 72          1.33x
+  continual       50   20%           1.88x      1.56-2.30x  +0.0162 (+0.0104 to +0.0227)      78% of 72          1.61x
+  hindi           10    5%           1.01x      0.76-1.26x  +0.0001 (-0.0014 to +0.0013)      58% of 24          1.15x
+  hindi           10   10%           1.39x      1.00-1.84x  +0.0039 (-0.0000 to +0.0086)      67% of 24          1.44x
+  hindi           10   20%           1.78x      1.22-2.53x  +0.0175 (+0.0048 to +0.0348)      67% of 24          1.86x
+  hindi           45    5%           2.34x      1.44-3.52x  +0.0076 (+0.0024 to +0.0144)      79% of 24          1.97x
+  hindi           45   10%           2.80x      1.47-4.74x  +0.0219 (+0.0056 to +0.0449)      79% of 24          2.91x
+  hindi           45   20%           1.87x      1.25-2.69x  +0.0239 (+0.0069 to +0.0462)      67% of 24          1.81x
+  mixed           10    5%           1.02x      0.90-1.16x  +0.0001 (-0.0005 to +0.0006)      51% of 72          1.13x
+  mixed           10   10%           1.14x      1.05-1.25x  +0.0013 (+0.0005 to +0.0022)      60% of 72          1.23x
+  mixed           10   20%           1.35x      1.18-1.57x  +0.0053 (+0.0026 to +0.0089)      73% of 63          1.44x
+  mixed           45    5%           1.34x      1.09-1.63x  +0.0017 (+0.0005 to +0.0032)      57% of 72          1.54x
+  mixed           45   10%           1.32x      1.21-1.46x  +0.0033 (+0.0021 to +0.0047)      78% of 72          1.61x
+  mixed           45   20%           1.52x      1.37-1.70x  +0.0104 (+0.0075 to +0.0138)      78% of 72          1.66x
+
+  zero ablation (10%) instead of mean ablation:
+  continual       20  self / matched 1.49x (1.21-1.80x) | extra loss +0.0051 (+0.0022 to +0.0082)
+  continual       40  self / matched 1.11x (0.81-1.43x) | extra loss +0.0016 (-0.0026 to +0.0058)
+  continual       50  self / matched 1.29x (1.03-1.58x) | extra loss +0.0036 (+0.0004 to +0.0069)
+  hindi           10  self / matched 1.31x (0.97-1.72x) | extra loss +0.0033 (-0.0004 to +0.0074)
+  hindi           45  self / matched 1.58x (1.25-1.95x) | extra loss +0.0083 (+0.0035 to +0.0141)
+  mixed           10  self / matched 1.11x (1.02-1.21x) | extra loss +0.0011 (+0.0002 to +0.0020)
+  mixed           45  self / matched 1.24x (1.11-1.38x) | extra loss +0.0027 (+0.0013 to +0.0042)
+
+  per layer (10%, mean ablation, all models pooled): self / matched
+  enc0.mlp 1.66x | enc1.mlp 1.20x | enc2.mlp 0.89x | enc3.mlp 1.00x | dec0.mlp 2.42x | dec1.mlp 1.42x | dec2.mlp 1.53x | dec3.mlp 1.83x
+
+  ALL 8 layers at once, 10% of each: real translation quality (chrF, higher = better)
+  continual p20: ar: intact 16.7, -self 16.0, -matched 16.1, -random 16.2 | hi: intact 24.7, -self 22.4, -matched 25.2, -random 24.0 | zh: intact 27.7, -self 24.9, -matched 26.8, -random 26.3
+  continual p40: ar: intact 13.3, -self 10.8, -matched 12.8, -random 13.6 | hi: intact 53.0, -self 49.7, -matched 50.7, -random 52.4 | zh: intact 3.3, -self 2.7, -matched 2.7, -random 3.1
+  continual p50: ar: intact 19.1, -self 17.3, -matched 19.4, -random 19.6 | hi: intact 24.9, -self 22.8, -matched 23.7, -random 24.2 | zh: intact 26.9, -self 24.4, -matched 26.5, -random 27.0
+  hindi p10: hi: intact 50.8, -self 48.3, -matched 50.6, -random 50.5
+  hindi p45: hi: intact 50.3, -self 44.8, -matched 50.2, -random 49.4
+  mixed p10: ar: intact 52.2, -self 50.1, -matched 51.4, -random 51.6 | hi: intact 50.7, -self 48.5, -matched 49.9, -random 50.1 | zh: intact 26.8, -self 25.0, -matched 26.6, -random 26.5
+  mixed p45: ar: intact 53.1, -self 50.0, -matched 51.9, -random 52.5 | hi: intact 51.3, -self 48.7, -matched 50.4, -random 50.8 | zh: intact 27.5, -self 25.5, -matched 26.2, -random 26.3
+finished

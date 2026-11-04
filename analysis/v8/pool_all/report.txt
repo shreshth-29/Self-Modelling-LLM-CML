@@ -1,0 +1,28 @@
+=== LESION, ALL RESULTS POOLED: 18 checkpoints x 8 layers ===
+  one 'cell' = one checkpoint + one layer (averaged over its 3 repeats and its languages)
+
+  10% of one layer, mean ablation:
+  EVERYTHING                         self did more damage in 100 of 144 cells (69%, chance would be 50%, p = 1.7e-06) | self / matched 1.71x (95% range 1.44-2.13x)
+  model: continual                   self did more damage in 37 of 56 cells (66%, chance would be 50%, p = 1.1e-02) | self / matched 1.67x (95% range 1.31-2.09x)
+  model: hindi                       self did more damage in 25 of 32 cells (78%, chance would be 50%, p = 1.1e-03) | self / matched 1.84x (95% range 1.28-2.88x)
+  model: mixed                       self did more damage in 22 of 32 cells (69%, chance would be 50%, p = 2.5e-02) | self / matched 1.30x (95% range 1.13-1.49x)
+  model: push                        self did more damage in 5 of 8 cells (62%, chance would be 50%, p = 3.6e-01) | self / matched 1.85x (95% range 1.15-2.85x)
+  model: related                     self did more damage in 11 of 16 cells (69%, chance would be 50%, p = 1.1e-01) | self / matched 2.59x (95% range 1.65-4.23x)
+  encoder layers only                self did more damage in 37 of 72 cells (51%, chance would be 50%, p = 4.5e-01) | self / matched 1.13x (95% range 0.98-1.29x)
+  decoder layers only                self did more damage in 63 of 72 cells (88%, chance would be 50%, p = 2.1e-11) | self / matched 2.07x (95% range 1.65-2.68x)
+
+  per layer, over all checkpoints:
+  layer enc0.mlp                     self did more damage in 16 of 18 cells (89%, chance would be 50%, p = 6.6e-04) | self / matched 1.72x (95% range 1.45-2.06x)
+  layer enc1.mlp                     self did more damage in 9 of 18 cells (50%, chance would be 50%, p = 5.9e-01) | self / matched 1.09x (95% range 0.90-1.28x)
+  layer enc2.mlp                     self did more damage in 6 of 18 cells (33%, chance would be 50%, p = 9.5e-01) | self / matched 0.90x (95% range 0.79-1.00x)
+  layer enc3.mlp                     self did more damage in 6 of 18 cells (33%, chance would be 50%, p = 9.5e-01) | self / matched 0.85x (95% range 0.74-0.98x)
+  layer dec0.mlp                     self did more damage in 17 of 18 cells (94%, chance would be 50%, p = 7.2e-05) | self / matched 2.73x (95% range 1.98-3.88x)
+  layer dec1.mlp                     self did more damage in 16 of 18 cells (89%, chance would be 50%, p = 6.6e-04) | self / matched 1.72x (95% range 1.41-2.07x)
+  layer dec2.mlp                     self did more damage in 15 of 18 cells (83%, chance would be 50%, p = 3.8e-03) | self / matched 1.55x (95% range 1.26-1.97x)
+  layer dec3.mlp                     self did more damage in 15 of 18 cells (83%, chance would be 50%, p = 3.8e-03) | self / matched 1.88x (95% range 1.37-3.24x)
+
+  other doses and zero ablation (everything pooled):
+  5% of one layer                    self did more damage in 94 of 144 cells (65%, chance would be 50%, p = 1.5e-04) | self / matched 1.82x (95% range 1.46-2.28x)
+  20% of one layer                   self did more damage in 104 of 141 cells (74%, chance would be 50%, p = 7.3e-09) | self / matched 1.72x (95% range 1.51-1.97x)
+  10%, ZERO instead of average       self did more damage in 86 of 144 cells (60%, chance would be 50%, p = 1.2e-02) | self / matched 1.28x (95% range 1.12-1.44x)
+finished

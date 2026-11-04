@@ -1,0 +1,33 @@
+=== v4b_continual_s0 (distant: hi, zh, ar) | anchor phase 10 | later phases 11..30 | tau 0.2 ===
+  anchor phase 10 was trained on hi
+  chance (noise 0.15): other neurons change   4.5 | self changes  28.2% less
+  chance (noise 0.3): other neurons change  16.9 | self changes  26.7% less
+  chance (noise 0.45): other neurons change  34.7 | self changes  23.3% less
+  chance (noise 0.6): other neurons change  55.0 | self changes  18.6% less
+  chance (noise 0.8): other neurons change  76.0 | self changes  18.6% less
+  chance (noise 1.0): other neurons change  87.6 | self changes  12.7% less
+  p10->p11 (hi->zh, DIFF): task change  48.4 | self changes  17.4% less (chance 20.2%) | self =  50% of layer | phase-10 self neurons back in the self: enc  81% dec  65%
+  p10->p12 (hi->ar, DIFF): task change  54.3 | self changes  13.9% less (chance 18.8%) | self =  57% of layer | phase-10 self neurons back in the self: enc  80% dec  77%
+  p10->p13 (hi->hi, SAME): task change  24.4 | self changes  31.1% less (chance 25.3%) | self =  50% of layer | phase-10 self neurons back in the self: enc  84% dec  84%
+  p10->p14 (hi->zh, DIFF): task change  52.0 | self changes  17.7% less (chance 19.3%) | self =  49% of layer | phase-10 self neurons back in the self: enc  77% dec  64%
+  p10->p15 (hi->ar, DIFF): task change  56.5 | self changes  14.4% less (chance 18.6%) | self =  57% of layer | phase-10 self neurons back in the self: enc  79% dec  76%
+  p10->p16 (hi->hi, SAME): task change  32.3 | self changes  30.4% less (chance 23.8%) | self =  50% of layer | phase-10 self neurons back in the self: enc  81% dec  82%
+  p10->p17 (hi->zh, DIFF): task change  54.5 | self changes  18.1% less (chance 18.7%) | self =  49% of layer | phase-10 self neurons back in the self: enc  76% dec  64%
+  p10->p18 (hi->ar, DIFF): task change  58.7 | self changes  14.7% less (chance 18.6%) | self =  57% of layer | phase-10 self neurons back in the self: enc  78% dec  76%
+  p10->p19 (hi->hi, SAME): task change  38.0 | self changes  29.3% less (chance 22.5%) | self =  49% of layer | phase-10 self neurons back in the self: enc  78% dec  80%
+  p10->p20 (hi->zh, DIFF): task change  57.0 | self changes  17.7% less (chance 18.6%) | self =  48% of layer | phase-10 self neurons back in the self: enc  74% dec  64%
+  p10->p21 (hi->ar, DIFF): task change  60.8 | self changes  14.9% less (chance 18.6%) | self =  56% of layer | phase-10 self neurons back in the self: enc  76% dec  76%
+  p10->p22 (hi->hi, SAME): task change  42.2 | self changes  28.7% less (chance 21.6%) | self =  48% of layer | phase-10 self neurons back in the self: enc  75% dec  78%
+  p10->p23 (hi->zh, DIFF): task change  58.7 | self changes  17.5% less (chance 18.6%) | self =  47% of layer | phase-10 self neurons back in the self: enc  72% dec  63%
+  p10->p24 (hi->ar, DIFF): task change  62.1 | self changes  14.9% less (chance 18.6%) | self =  56% of layer | phase-10 self neurons back in the self: enc  75% dec  76%
+  p10->p25 (hi->hi, SAME): task change  45.5 | self changes  27.4% less (chance 20.8%) | self =  48% of layer | phase-10 self neurons back in the self: enc  74% dec  77%
+  p10->p26 (hi->zh, DIFF): task change  60.5 | self changes  17.6% less (chance 18.6%) | self =  47% of layer | phase-10 self neurons back in the self: enc  71% dec  62%
+  p10->p27 (hi->ar, DIFF): task change  63.5 | self changes  14.6% less (chance 18.6%) | self =  56% of layer | phase-10 self neurons back in the self: enc  74% dec  76%
+  p10->p28 (hi->hi, SAME): task change  48.2 | self changes  26.7% less (chance 20.2%) | self =  47% of layer | phase-10 self neurons back in the self: enc  71% dec  75%
+  p10->p29 (hi->zh, DIFF): task change  61.5 | self changes  17.3% less (chance 18.6%) | self =  46% of layer | phase-10 self neurons back in the self: enc  70% dec  61%
+  p10->p30 (hi->ar, DIFF): task change  64.7 | self changes  14.5% less (chance 18.6%) | self =  56% of layer | phase-10 self neurons back in the self: enc  74% dec  75%
+
+  SUMMARY (distant)
+  DIFFERENT language (14 pairs): task change  58.1 | self changes  16.1% less | chance 18.8% | above chance  -2.7 points | self back: enc  76% dec  70%
+  SAME language (6 pairs): task change  38.4 | self changes  28.9% less | chance 22.4% | above chance  +6.6 points | self back: enc  77% dec  79%
+finished
