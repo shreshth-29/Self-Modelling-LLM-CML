@@ -1,0 +1,43 @@
+=== v9: learning a NEW task with part of the self switched off ===
+one comparison = one start model x one seed x one task: self switched off vs look-alike task neurons switched off
+learning slowness = average held-out loss over the learning curve (steps 50 ... end); lower = learned faster
+
+AVERAGE OVER SEEDS (curve loss | final score; score = accuracy % or chrF for Indonesian)
+                          curve_loss  final_score  seeds
+task start     cond                                     
+next distant30 lookalike       2.100       47.628      3
+               none            2.051       47.713      3
+               random          2.098       47.780      3
+               self            2.110       47.974      3
+     distant40 lookalike       2.589       23.436      3
+               none            2.557       24.122      3
+               random          2.582       23.570      3
+               self            2.595       23.417      3
+     related10 lookalike       2.384       42.339      3
+               none            2.359       42.706      3
+               random          2.379       42.658      3
+               self            2.393       42.617      3
+     related15 lookalike       1.902       49.597      3
+               none            1.860       48.986      3
+               random          1.900       49.429      3
+               self            1.913       48.830      3
+
+RESULT: self switched off vs look-alike switched off (positive = self switched off learns WORSE)
+  next      : curve loss higher in 12/12 (sign test p = 0.000244), mean extra loss +0.0089 | final score lower in 6/12, mean drop +0.04
+  ALL       : curve loss higher in 12/12 (sign test p = 0.000244), mean extra loss +0.0089 | final score lower in 6/12, mean drop +0.04
+
+STEP 0 (no training yet): held-out loss on the new task with each set switched off
+cond            lookalike    none  random    self
+task start                                       
+next distant30     5.6328  5.5954  5.6321  5.7005
+     distant40     6.1381  6.0975  6.1278  6.1683
+     related10     4.5015  4.4812  4.5038  4.5949
+     related15     3.1663  3.1112  3.1701  3.3145
+
+FORGETTING: rise in loss on the original languages after learning the new task (avg over languages, seeds)
+cond            lookalike    none  random    self
+task start                                       
+next distant30    -0.8690 -0.8785 -0.8779 -0.9050
+     distant40    -0.9281 -0.9234 -0.9316 -0.9643
+     related10    -0.5041 -0.4868 -0.4983 -0.5689
+     related15    -0.3582 -0.3442 -0.3606 -0.4606
