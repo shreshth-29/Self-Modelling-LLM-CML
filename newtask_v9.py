@@ -7,6 +7,8 @@ Conditions (held for the WHOLE training, and during every evaluation):
   lookalike  the same number of task neurons with the same average activity, firing rate and outgoing weight size
   random     the same number of random task neurons
 "Switched off" = the neuron always outputs its own average (measured on the start model), so it carries no information.
+Task "next" = the next phase of the start model's own continual schedule (its next language, normal
+script-masked loss, chrF on 200 FLORES devtest sentences): lesion during normal continual training.
 Tasks: indonesian (new language), sentiment (2 labels), topic (4 labels), addition (not language). Data: prep_newtasks.py.
 The decoder starts every new-task output with <s> (BOS), a token never used as a start in translation training.
 
@@ -31,14 +33,15 @@ ap.add_argument("--max_tokens", type=int, default=8000)
 ap.add_argument("--tau", type=float, default=0.2)
 ap.add_argument("--max_t", type=int, default=24000)
 ap.add_argument("--summarize", action="store_true")
+ap.add_argument("--out", default="newtask", help="results folder under analysis/v9/")
 args = ap.parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
 REPO = os.path.dirname(os.path.abspath(__file__)); os.chdir(REPO); sys.path.insert(0, REPO)
-OUT = os.path.join(REPO, "analysis", "v9", "newtask"); os.makedirs(OUT, exist_ok=True)
+OUT = os.path.join(REPO, "analysis", "v9", args.out); os.makedirs(OUT, exist_ok=True)
 import numpy as np, pandas as pd
 EVAL_AT = [0, 50, 100, 200, 300, 500, 750, 1000, 1500, 2000, 3000]
-TASK_ORDER = ["indonesian", "sentiment", "topic", "addition"]          # near -> far from translation
-TASK_LABEL = {"indonesian": "Indonesian\n(new language)", "sentiment": "Sentiment\n(2 labels)",
+TASK_ORDER = ["next", "indonesian", "sentiment", "topic", "addition"]          # near -> far from translation
+TASK_LABEL = {"next": "Next phase\n(its next language)", "indonesian": "Indonesian\n(new language)", "sentiment": "Sentiment\n(2 labels)",
               "topic": "Topic\n(4 labels)", "addition": "Addition\n(not language)"}
 
 # =============================================================================================== SUMMARY (CPU)
@@ -247,7 +250,19 @@ def pick_sets(info, seed):
     return sets, bal
 
 # ---------------- tasks
+NEXT = {}
 def load_task(task):
+    if task == "next":
+        l = NEXT["lang"]; rows = []
+        with open(P(f"data/en-{l}/train.jsonl"), encoding="utf-8") as f:
+            for line in f:
+                rows.append(json.loads(line))
+                if len(rows) >= 300_000:
+                    break
+        S = sp.encode([r["en"] for r in rows]); T = sp.encode([r["tgt"] for r in rows])
+        tr = [(s_[:MAX_TOK - 1] + [EOS], [LANG_TAG[l]] + t[:MAX_TOK - 1], t[:MAX_TOK - 1] + [EOS]) for s_, t in zip(S, T)]
+        test = [{"src": a, "tgt": b} for a, b in zip(read_flores("devtest", "en")[:200], read_flores("devtest", l)[:200])]
+        return {"train": tr, "val": load_pairs(P(f"data/en-{l}/val.jsonl"), l)[:1000], "test": test}
     def rd(split):
         return [json.loads(l) for l in open(P(f"data/newtask/{task}/{split}.jsonl"), encoding="utf-8")]
     def tok(rows):
@@ -275,6 +290,8 @@ def greedy(model, srcs, max_new, bs=128):
     return out
 
 def score(model, task, test):
+    if task == "next":
+        return chrf(model, [r["src"] for r in test], [r["tgt"] for r in test], NEXT["lang"], masked=True)[0]
     if task == "indonesian":
         hyp = greedy(model, [r["src"] for r in test], MAX_TOK)
         return CHRF_METRIC.corpus_score(hyp, [[r["tgt"] for r in test]]).score
@@ -293,10 +310,11 @@ def train_one(start_name, start_sd, cfg, task, data, cond, seed, lesions, ORIG):
     if args.steps not in evals:
         evals.append(args.steps)
     chrf_at = {0, 500, args.steps}
+    nl = NEXT.get("lang") if task == "next" else None
     rows, frows = [], []
     def evaluate(step):
-        vl = val_loss(model, data["val"], None)
-        sc = score(model, task, data["test"]) if (task != "indonesian" or step in chrf_at) else np.nan
+        vl = val_loss(model, data["val"], nl, masked=nl is not None)
+        sc = score(model, task, data["test"]) if (task not in ("indonesian", "next") or step in chrf_at) else np.nan
         rows.append({"start": start_name, "task": task, "cond": cond, "seed": seed, "step": step, "val_loss": vl, "score": sc,
                      "n_off": sum(len(i) for _, i, _ in lesions)})
         model.train()
@@ -311,7 +329,11 @@ def train_one(start_name, start_sd, cfg, task, data, cond, seed, lesions, ORIG):
             for gp in opt.param_groups:
                 gp["lr"] = lr
             with amp():
-                _, loss = model(src, tin, tout)
+                if nl is None:
+                    _, loss = model(src, tin, tout)
+                else:                                                        # same script-masked loss as normal training
+                    logits, _ = model(src, tin)
+                    loss = masked_ce(logits.view(-1, logits.size(-1)), tout.view(-1), ALLOWED[nl])
             opt.zero_grad(set_to_none=True); loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step()
             step += 1
@@ -350,6 +372,9 @@ else:
               f"switching off {int(round(args.dose * d['nalive']))}")
     print(f"  self found in {time.time() - t0:.0f}s")
     conds = args.conds.split(",")
+    if ck0.get("lang") in LANGS:
+        NEXT["lang"] = LANGS[(LANGS.index(ck0["lang"]) + 1) % len(LANGS)]
+        print(f"  'next' task for this start model = {NEXT['lang']} (phase {int(ph) + 1} of the normal schedule)")
 if cfg is None:
     cfg = asdict(Config())
 ORIG = {} if start_name == "fresh" else {l: load_pairs(P(f"data/en-{l}/val.jsonl"), l)[:300] for l in LANGS}
