@@ -5,42 +5,42 @@ learning slowness = average held-out loss over the learning curve (steps 50 ... 
 AVERAGE OVER SEEDS (curve loss | final score; score = accuracy % or chrF for Indonesian)
                               curve_loss  final_score  seeds
 task       start   cond                                     
-addition   distant lookalike       0.802      100.000      2
-                   none            0.800       99.800      2
-                   random          0.816      100.000      2
-                   self            0.804       99.900      2
-           fresh   none            1.934       99.600      2
-           related lookalike       0.753      100.000      2
-                   none            0.718      100.000      2
-                   random          0.751      100.000      2
-                   self            0.801      100.000      2
-indonesian distant lookalike       2.898       36.466      2
-                   none            2.848       36.565      2
-                   random          2.899       35.980      2
-                   self            2.933       34.423      2
-           fresh   none            4.490       20.127      2
-           related lookalike       2.907       36.741      2
-                   none            2.873       37.250      2
-                   random          2.915       36.281      2
-                   self            2.939       34.654      2
+addition   distant lookalike       0.825      100.000      3
+                   none            0.811       99.800      3
+                   random          0.825      100.000      3
+                   self            0.798       99.867      3
+           fresh   none            1.982       99.600      3
+           related lookalike       0.764      100.000      3
+                   none            0.725       99.933      3
+                   random          0.758       99.933      3
+                   self            0.809       99.933      3
+indonesian distant lookalike       2.897       36.269      3
+                   none            2.848       36.274      3
+                   random          2.898       35.936      3
+                   self            2.932       33.991      3
+           fresh   none            4.484       19.610      3
+           related lookalike       2.905       36.742      3
+                   none            2.872       37.526      3
+                   random          2.913       36.536      3
+                   self            2.941       34.669      3
 
 RESULT: self switched off vs look-alike switched off (positive = self switched off learns WORSE)
-  indonesian: curve loss higher in 4/4 (sign test p = 0.0625), mean extra loss +0.0336 | final score lower in 4/4, mean drop +2.06
-  addition  : curve loss higher in 3/4 (sign test p = 0.312), mean extra loss +0.0251 | final score lower in 1/4, mean drop +0.05
-  ALL       : curve loss higher in 7/8 (sign test p = 0.0352), mean extra loss +0.0293 | final score lower in 5/8, mean drop +1.06
+  indonesian: curve loss higher in 6/6 (sign test p = 0.0156), mean extra loss +0.0351 | final score lower in 6/6, mean drop +2.18
+  addition  : curve loss higher in 4/6 (sign test p = 0.344), mean extra loss +0.0093 | final score lower in 3/6, mean drop +0.10
+  ALL       : curve loss higher in 10/12 (sign test p = 0.0193), mean extra loss +0.0222 | final score lower in 9/12, mean drop +1.14
 
 STEP 0 (no training yet): held-out loss on the new task with each set switched off
 cond                lookalike     none   random     self
 task       start                                        
-addition   distant     7.6796   7.1976   7.4035   7.4235
-           related     8.9439   9.1097   9.0907   7.5157
-indonesian distant    10.7499  10.6694  10.5890  10.4041
-           related     9.7127   9.9702   9.7627   9.5666
+addition   distant     7.6606   7.1976   7.4673   7.5415
+           related     9.0027   9.1097   9.2464   7.2909
+indonesian distant    10.7154  10.6694  10.5495  10.4984
+           related     9.7202   9.9702   9.7896   9.6746
 
 FORGETTING: rise in loss on the original languages after learning the new task (avg over languages, seeds)
 cond                lookalike    none  random    self
 task       start                                     
-addition   distant     3.5238  3.2577  3.5171  5.0921
-           related     5.6276  5.4553  5.4319  6.4385
-indonesian distant     4.8842  5.1773  4.9234  4.5350
-           related     6.0750  6.2543  6.1161  5.7747
+addition   distant     3.4470  3.2268  3.5617  4.9868
+           related     5.6195  5.3787  5.4982  6.4384
+indonesian distant     4.9065  5.1960  4.9287  4.5923
+           related     6.0593  6.2500  6.0755  5.7662

@@ -1,0 +1,216 @@
+start model: mixed45 = v6b_mixed_s0 phase 45 | languages ['hi', 'zh', 'ar']
+  dec0.mlp: self 1603 of 2560 working neurons; groups of 768
+  dec1.mlp: self 1435 of 2560 working neurons; groups of 768
+  dec2.mlp: self 1484 of 2560 working neurons; groups of 768
+  dec3.mlp: self 2011 of 2560 working neurons; groups of 768
+  self found in 9s
+baseline loss of the B reference when asked for A (rows A, columns B):
+       hi     zh     ar
+hi  4.339  6.703  5.223
+zh  4.521  6.196  5.238
+ar  4.580  6.771  4.975
+  asked hi: script share hi 88%, zh 3%, ar 10% | chrF 0.9
+  asked zh: script share hi 43%, zh 30%, ar 28% | chrF 0.3
+  asked ar: script share hi 21%, zh 3%, ar 76% | chrF 0.2
+    dec3.mlp: group too small, skipped
+  draw 0 | self      | asked hi, pushed to zh | shift to B: patch_all -0.651, steer a2 +0.026 | generated zh script: patch 4% steer 4% (normally 3%)
+  draw 0 | self      | asked hi, pushed to ar | shift to B: patch_all -1.216, steer a2 -0.046 | generated ar script: patch 6% steer 8% (normally 10%)
+  draw 0 | self      | asked zh, pushed to hi | shift to B: patch_all -0.952, steer a2 -0.103 | generated hi script: patch 61% steer 45% (normally 43%)
+  draw 0 | self      | asked zh, pushed to ar | shift to B: patch_all -1.350, steer a2 -0.096 | generated ar script: patch 1% steer 18% (normally 28%)
+  draw 0 | self      | asked ar, pushed to hi | shift to B: patch_all -0.923, steer a2 -0.025 | generated hi script: patch 27% steer 14% (normally 21%)
+  draw 0 | self      | asked ar, pushed to zh | shift to B: patch_all -0.697, steer a2 +0.093 | generated zh script: patch 0% steer 0% (normally 3%)
+  draw 0 | lookalike | asked hi, pushed to zh | shift to B: patch_all -0.204, steer a2 -0.006 | generated zh script: patch 4% steer 3% (normally 3%)
+  draw 0 | lookalike | asked hi, pushed to ar | shift to B: patch_all -0.322, steer a2 -0.021 | generated ar script: patch 24% steer 11% (normally 10%)
+  draw 0 | lookalike | asked zh, pushed to hi | shift to B: patch_all -0.368, steer a2 -0.020 | generated hi script: patch 44% steer 38% (normally 43%)
+  draw 0 | lookalike | asked zh, pushed to ar | shift to B: patch_all -0.335, steer a2 +0.013 | generated ar script: patch 29% steer 26% (normally 28%)
+  draw 0 | lookalike | asked ar, pushed to hi | shift to B: patch_all -0.386, steer a2 -0.054 | generated hi script: patch 15% steer 11% (normally 21%)
+  draw 0 | lookalike | asked ar, pushed to zh | shift to B: patch_all -0.228, steer a2 -0.036 | generated zh script: patch 3% steer 3% (normally 3%)
+  draw 0 | random    | asked hi, pushed to zh | shift to B: patch_all -0.218, steer a2 +0.014 | generated zh script: patch 6% steer 2% (normally 3%)
+  draw 0 | random    | asked hi, pushed to ar | shift to B: patch_all -0.290, steer a2 +0.004 | generated ar script: patch 20% steer 13% (normally 10%)
+  draw 0 | random    | asked zh, pushed to hi | shift to B: patch_all -0.351, steer a2 -0.054 | generated hi script: patch 47% steer 41% (normally 43%)
+  draw 0 | random    | asked zh, pushed to ar | shift to B: patch_all -0.301, steer a2 +0.000 | generated ar script: patch 25% steer 25% (normally 28%)
+  draw 0 | random    | asked ar, pushed to hi | shift to B: patch_all -0.347, steer a2 -0.069 | generated hi script: patch 12% steer 21% (normally 21%)
+  draw 0 | random    | asked ar, pushed to zh | shift to B: patch_all -0.211, steer a2 -0.030 | generated zh script: patch 9% steer 3% (normally 3%)
+    dec3.mlp: group too small, skipped
+  draw 1 | self      | asked hi, pushed to zh | shift to B: patch_all -0.751, steer a2 +0.099 | generated zh script: patch 1% steer 3% (normally 3%)
+  draw 1 | self      | asked hi, pushed to ar | shift to B: patch_all -1.243, steer a2 -0.007 | generated ar script: patch 12% steer 8% (normally 10%)
+  draw 1 | self      | asked zh, pushed to hi | shift to B: patch_all -0.979, steer a2 -0.181 | generated hi script: patch 47% steer 44% (normally 43%)
+  draw 1 | self      | asked zh, pushed to ar | shift to B: patch_all -1.371, steer a2 -0.141 | generated ar script: patch 17% steer 24% (normally 28%)
+  draw 1 | self      | asked ar, pushed to hi | shift to B: patch_all -0.966, steer a2 -0.106 | generated hi script: patch 22% steer 14% (normally 21%)
+  draw 1 | self      | asked ar, pushed to zh | shift to B: patch_all -0.762, steer a2 +0.005 | generated zh script: patch 0% steer 6% (normally 3%)
+  draw 1 | lookalike | asked hi, pushed to zh | shift to B: patch_all -0.207, steer a2 +0.015 | generated zh script: patch 5% steer 3% (normally 3%)
+  draw 1 | lookalike | asked hi, pushed to ar | shift to B: patch_all -0.339, steer a2 +0.001 | generated ar script: patch 22% steer 14% (normally 10%)
+  draw 1 | lookalike | asked zh, pushed to hi | shift to B: patch_all -0.397, steer a2 -0.060 | generated hi script: patch 46% steer 38% (normally 43%)
+  draw 1 | lookalike | asked zh, pushed to ar | shift to B: patch_all -0.361, steer a2 -0.013 | generated ar script: patch 29% steer 26% (normally 28%)
+  draw 1 | lookalike | asked ar, pushed to hi | shift to B: patch_all -0.429, steer a2 -0.060 | generated hi script: patch 35% steer 17% (normally 21%)
+  draw 1 | lookalike | asked ar, pushed to zh | shift to B: patch_all -0.255, steer a2 -0.024 | generated zh script: patch 0% steer 2% (normally 3%)
+  draw 1 | random    | asked hi, pushed to zh | shift to B: patch_all -0.202, steer a2 -0.016 | generated zh script: patch 4% steer 3% (normally 3%)
+  draw 1 | random    | asked hi, pushed to ar | shift to B: patch_all -0.338, steer a2 -0.005 | generated ar script: patch 20% steer 11% (normally 10%)
+  draw 1 | random    | asked zh, pushed to hi | shift to B: patch_all -0.332, steer a2 +0.023 | generated hi script: patch 36% steer 40% (normally 43%)
+  draw 1 | random    | asked zh, pushed to ar | shift to B: patch_all -0.335, steer a2 +0.016 | generated ar script: patch 32% steer 25% (normally 28%)
+  draw 1 | random    | asked ar, pushed to hi | shift to B: patch_all -0.381, steer a2 -0.051 | generated hi script: patch 9% steer 25% (normally 21%)
+  draw 1 | random    | asked ar, pushed to zh | shift to B: patch_all -0.221, steer a2 -0.037 | generated zh script: patch 8% steer 2% (normally 3%)
+    dec3.mlp: group too small, skipped
+  draw 2 | self      | asked hi, pushed to zh | shift to B: patch_all -0.708, steer a2 +0.027 | generated zh script: patch 4% steer 5% (normally 3%)
+  draw 2 | self      | asked hi, pushed to ar | shift to B: patch_all -1.294, steer a2 -0.202 | generated ar script: patch 13% steer 12% (normally 10%)
+  draw 2 | self      | asked zh, pushed to hi | shift to B: patch_all -0.961, steer a2 -0.075 | generated hi script: patch 44% steer 40% (normally 43%)
+  draw 2 | self      | asked zh, pushed to ar | shift to B: patch_all -1.315, steer a2 -0.236 | generated ar script: patch 22% steer 25% (normally 28%)
+  draw 2 | self      | asked ar, pushed to hi | shift to B: patch_all -0.943, steer a2 +0.002 | generated hi script: patch 30% steer 24% (normally 21%)
+  draw 2 | self      | asked ar, pushed to zh | shift to B: patch_all -0.629, steer a2 +0.111 | generated zh script: patch 0% steer 3% (normally 3%)
+  draw 2 | lookalike | asked hi, pushed to zh | shift to B: patch_all -0.221, steer a2 -0.002 | generated zh script: patch 3% steer 3% (normally 3%)
+  draw 2 | lookalike | asked hi, pushed to ar | shift to B: patch_all -0.352, steer a2 -0.012 | generated ar script: patch 22% steer 13% (normally 10%)
+  draw 2 | lookalike | asked zh, pushed to hi | shift to B: patch_all -0.382, steer a2 -0.023 | generated hi script: patch 47% steer 40% (normally 43%)
+  draw 2 | lookalike | asked zh, pushed to ar | shift to B: patch_all -0.362, steer a2 -0.002 | generated ar script: patch 31% steer 26% (normally 28%)
+  draw 2 | lookalike | asked ar, pushed to hi | shift to B: patch_all -0.440, steer a2 -0.051 | generated hi script: patch 30% steer 16% (normally 21%)
+  draw 2 | lookalike | asked ar, pushed to zh | shift to B: patch_all -0.282, steer a2 -0.061 | generated zh script: patch 0% steer 3% (normally 3%)
+  draw 2 | random    | asked hi, pushed to zh | shift to B: patch_all -0.214, steer a2 -0.044 | generated zh script: patch 5% steer 2% (normally 3%)
+  draw 2 | random    | asked hi, pushed to ar | shift to B: patch_all -0.315, steer a2 +0.026 | generated ar script: patch 19% steer 13% (normally 10%)
+  draw 2 | random    | asked zh, pushed to hi | shift to B: patch_all -0.335, steer a2 +0.000 | generated hi script: patch 43% steer 39% (normally 43%)
+  draw 2 | random    | asked zh, pushed to ar | shift to B: patch_all -0.322, steer a2 +0.049 | generated ar script: patch 31% steer 29% (normally 28%)
+  draw 2 | random    | asked ar, pushed to hi | shift to B: patch_all -0.382, steer a2 -0.085 | generated hi script: patch 31% steer 15% (normally 21%)
+  draw 2 | random    | asked ar, pushed to zh | shift to B: patch_all -0.255, steer a2 -0.085 | generated zh script: patch 0% steer 3% (normally 3%)
+done
+start model: distant30 = v4b_continual_s0 phase 30 | languages ['hi', 'zh', 'ar']
+  dec0.mlp: self 1482 of 2560 working neurons; groups of 768
+  dec1.mlp: self 1325 of 2560 working neurons; groups of 768
+  dec2.mlp: self 1394 of 2560 working neurons; groups of 768
+  dec3.mlp: self 2049 of 2560 working neurons; groups of 768
+  self found in 9s
+baseline loss of the B reference when asked for A (rows A, columns B):
+        hi     zh     ar
+hi  10.142  9.952  3.787
+zh  10.145  9.954  3.788
+ar  10.142  9.951  3.786
+  asked hi: script share hi 0%, zh 1%, ar 99% | chrF 0.0
+  asked zh: script share hi 0%, zh 1%, ar 99% | chrF 0.2
+  asked ar: script share hi 0%, zh 1%, ar 99% | chrF 1.4
+    dec3.mlp: group too small, skipped
+  draw 0 | self      | asked hi, pushed to zh | shift to B: patch_all -0.025, steer a2 +0.041 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 0 | self      | asked hi, pushed to ar | shift to B: patch_all -0.627, steer a2 -0.019 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 0 | self      | asked zh, pushed to hi | shift to B: patch_all -0.105, steer a2 -0.146 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 0 | self      | asked zh, pushed to ar | shift to B: patch_all -0.627, steer a2 -0.007 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 0 | self      | asked ar, pushed to hi | shift to B: patch_all -0.106, steer a2 -0.290 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 0 | self      | asked ar, pushed to zh | shift to B: patch_all -0.026, steer a2 -0.222 | generated zh script: patch 1% steer 0% (normally 1%)
+  draw 0 | lookalike | asked hi, pushed to zh | shift to B: patch_all +0.019, steer a2 -0.049 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 0 | lookalike | asked hi, pushed to ar | shift to B: patch_all -0.238, steer a2 +0.005 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 0 | lookalike | asked zh, pushed to hi | shift to B: patch_all -0.053, steer a2 +0.044 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 0 | lookalike | asked zh, pushed to ar | shift to B: patch_all -0.238, steer a2 +0.007 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 0 | lookalike | asked ar, pushed to hi | shift to B: patch_all -0.054, steer a2 +0.133 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 0 | lookalike | asked ar, pushed to zh | shift to B: patch_all +0.018, steer a2 +0.070 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 0 | random    | asked hi, pushed to zh | shift to B: patch_all -0.094, steer a2 -0.033 | generated zh script: patch 0% steer 1% (normally 1%)
+  draw 0 | random    | asked hi, pushed to ar | shift to B: patch_all -0.316, steer a2 +0.005 | generated ar script: patch 100% steer 99% (normally 99%)
+  draw 0 | random    | asked zh, pushed to hi | shift to B: patch_all -0.143, steer a2 +0.014 | generated hi script: patch 1% steer 0% (normally 0%)
+  draw 0 | random    | asked zh, pushed to ar | shift to B: patch_all -0.317, steer a2 +0.009 | generated ar script: patch 100% steer 99% (normally 99%)
+  draw 0 | random    | asked ar, pushed to hi | shift to B: patch_all -0.141, steer a2 +0.103 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 0 | random    | asked ar, pushed to zh | shift to B: patch_all -0.092, steer a2 +0.094 | generated zh script: patch 0% steer 1% (normally 1%)
+    dec3.mlp: group too small, skipped
+  draw 1 | self      | asked hi, pushed to zh | shift to B: patch_all -0.116, steer a2 -0.005 | generated zh script: patch 2% steer 1% (normally 1%)
+  draw 1 | self      | asked hi, pushed to ar | shift to B: patch_all -0.914, steer a2 -0.100 | generated ar script: patch 98% steer 99% (normally 99%)
+  draw 1 | self      | asked zh, pushed to hi | shift to B: patch_all -0.175, steer a2 -0.021 | generated hi script: patch 1% steer 0% (normally 0%)
+  draw 1 | self      | asked zh, pushed to ar | shift to B: patch_all -0.915, steer a2 -0.045 | generated ar script: patch 98% steer 99% (normally 99%)
+  draw 1 | self      | asked ar, pushed to hi | shift to B: patch_all -0.175, steer a2 -0.237 | generated hi script: patch 1% steer 0% (normally 0%)
+  draw 1 | self      | asked ar, pushed to zh | shift to B: patch_all -0.119, steer a2 -0.260 | generated zh script: patch 2% steer 1% (normally 1%)
+  draw 1 | lookalike | asked hi, pushed to zh | shift to B: patch_all -0.053, steer a2 -0.040 | generated zh script: patch 0% steer 1% (normally 1%)
+  draw 1 | lookalike | asked hi, pushed to ar | shift to B: patch_all -0.320, steer a2 -0.008 | generated ar script: patch 100% steer 99% (normally 99%)
+  draw 1 | lookalike | asked zh, pushed to hi | shift to B: patch_all -0.089, steer a2 +0.018 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 1 | lookalike | asked zh, pushed to ar | shift to B: patch_all -0.320, steer a2 -0.003 | generated ar script: patch 100% steer 99% (normally 99%)
+  draw 1 | lookalike | asked ar, pushed to hi | shift to B: patch_all -0.090, steer a2 +0.103 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 1 | lookalike | asked ar, pushed to zh | shift to B: patch_all -0.052, steer a2 +0.080 | generated zh script: patch 0% steer 1% (normally 1%)
+  draw 1 | random    | asked hi, pushed to zh | shift to B: patch_all -0.128, steer a2 -0.039 | generated zh script: patch 0% steer 1% (normally 1%)
+  draw 1 | random    | asked hi, pushed to ar | shift to B: patch_all -0.332, steer a2 +0.006 | generated ar script: patch 100% steer 99% (normally 99%)
+  draw 1 | random    | asked zh, pushed to hi | shift to B: patch_all -0.155, steer a2 +0.033 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 1 | random    | asked zh, pushed to ar | shift to B: patch_all -0.333, steer a2 +0.008 | generated ar script: patch 100% steer 99% (normally 99%)
+  draw 1 | random    | asked ar, pushed to hi | shift to B: patch_all -0.158, steer a2 +0.086 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 1 | random    | asked ar, pushed to zh | shift to B: patch_all -0.129, steer a2 +0.053 | generated zh script: patch 0% steer 1% (normally 1%)
+    dec3.mlp: group too small, skipped
+  draw 2 | self      | asked hi, pushed to zh | shift to B: patch_all -0.146, steer a2 -0.031 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 2 | self      | asked hi, pushed to ar | shift to B: patch_all -0.737, steer a2 -0.056 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 2 | self      | asked zh, pushed to hi | shift to B: patch_all -0.189, steer a2 -0.021 | generated hi script: patch 1% steer 0% (normally 0%)
+  draw 2 | self      | asked zh, pushed to ar | shift to B: patch_all -0.738, steer a2 +0.002 | generated ar script: patch 98% steer 99% (normally 99%)
+  draw 2 | self      | asked ar, pushed to hi | shift to B: patch_all -0.187, steer a2 -0.112 | generated hi script: patch 1% steer 0% (normally 0%)
+  draw 2 | self      | asked ar, pushed to zh | shift to B: patch_all -0.145, steer a2 -0.179 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 2 | lookalike | asked hi, pushed to zh | shift to B: patch_all +0.001, steer a2 -0.043 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 2 | lookalike | asked hi, pushed to ar | shift to B: patch_all -0.245, steer a2 -0.009 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 2 | lookalike | asked zh, pushed to hi | shift to B: patch_all -0.037, steer a2 +0.036 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 2 | lookalike | asked zh, pushed to ar | shift to B: patch_all -0.245, steer a2 -0.002 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 2 | lookalike | asked ar, pushed to hi | shift to B: patch_all -0.039, steer a2 +0.110 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 2 | lookalike | asked ar, pushed to zh | shift to B: patch_all +0.001, steer a2 +0.051 | generated zh script: patch 1% steer 1% (normally 1%)
+  draw 2 | random    | asked hi, pushed to zh | shift to B: patch_all +0.009, steer a2 -0.015 | generated zh script: patch 0% steer 1% (normally 1%)
+  draw 2 | random    | asked hi, pushed to ar | shift to B: patch_all -0.225, steer a2 +0.016 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 2 | random    | asked zh, pushed to hi | shift to B: patch_all -0.048, steer a2 -0.010 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 2 | random    | asked zh, pushed to ar | shift to B: patch_all -0.225, steer a2 +0.011 | generated ar script: patch 99% steer 99% (normally 99%)
+  draw 2 | random    | asked ar, pushed to hi | shift to B: patch_all -0.049, steer a2 +0.040 | generated hi script: patch 0% steer 0% (normally 0%)
+  draw 2 | random    | asked ar, pushed to zh | shift to B: patch_all +0.008, steer a2 +0.043 | generated zh script: patch 1% steer 1% (normally 1%)
+done
+start model: related15 = v8_indic_continual_s0 phase 15 | languages ['hi', 'gu', 'pa']
+  dec0.mlp: self 1709 of 2560 working neurons; groups of 768
+  dec1.mlp: self 1249 of 2560 working neurons; groups of 768
+  dec2.mlp: self 1311 of 2560 working neurons; groups of 768
+  dec3.mlp: self 1886 of 2560 working neurons; groups of 768
+  self found in 9s
+baseline loss of the B reference when asked for A (rows A, columns B):
+       hi     gu     pa
+hi  5.272  5.638  4.284
+gu  5.272  5.638  4.284
+pa  5.271  5.637  4.283
+  asked hi: script share hi 1%, gu 1%, pa 97% | chrF 0.1
+  asked gu: script share hi 1%, gu 1%, pa 98% | chrF 0.1
+  asked pa: script share hi 1%, gu 2%, pa 97% | chrF 4.5
+    dec3.mlp: group too small, skipped
+  draw 0 | self      | asked hi, pushed to gu | shift to B: patch_all -0.476, steer a2 -0.055 | generated gu script: patch 1% steer 2% (normally 1%)
+  draw 0 | self      | asked hi, pushed to pa | shift to B: patch_all -0.795, steer a2 -0.139 | generated pa script: patch 98% steer 97% (normally 97%)
+  draw 0 | self      | asked gu, pushed to hi | shift to B: patch_all -0.525, steer a2 +0.037 | generated hi script: patch 0% steer 1% (normally 1%)
+  draw 0 | self      | asked gu, pushed to pa | shift to B: patch_all -0.795, steer a2 -0.095 | generated pa script: patch 98% steer 98% (normally 98%)
+  draw 0 | self      | asked pa, pushed to hi | shift to B: patch_all -0.525, steer a2 +0.038 | generated hi script: patch 0% steer 1% (normally 1%)
+  draw 0 | self      | asked pa, pushed to gu | shift to B: patch_all -0.476, steer a2 +0.030 | generated gu script: patch 2% steer 1% (normally 2%)
+  draw 0 | lookalike | asked hi, pushed to gu | shift to B: patch_all -0.161, steer a2 -0.000 | generated gu script: patch 0% steer 1% (normally 1%)
+  draw 0 | lookalike | asked hi, pushed to pa | shift to B: patch_all -0.177, steer a2 -0.003 | generated pa script: patch 98% steer 97% (normally 97%)
+  draw 0 | lookalike | asked gu, pushed to hi | shift to B: patch_all -0.139, steer a2 -0.004 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 0 | lookalike | asked gu, pushed to pa | shift to B: patch_all -0.177, steer a2 -0.005 | generated pa script: patch 98% steer 97% (normally 98%)
+  draw 0 | lookalike | asked pa, pushed to hi | shift to B: patch_all -0.138, steer a2 -0.003 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 0 | lookalike | asked pa, pushed to gu | shift to B: patch_all -0.159, steer a2 -0.003 | generated gu script: patch 0% steer 1% (normally 2%)
+  draw 0 | random    | asked hi, pushed to gu | shift to B: patch_all -0.140, steer a2 +0.003 | generated gu script: patch 1% steer 1% (normally 1%)
+  draw 0 | random    | asked hi, pushed to pa | shift to B: patch_all -0.143, steer a2 -0.003 | generated pa script: patch 98% steer 97% (normally 97%)
+  draw 0 | random    | asked gu, pushed to hi | shift to B: patch_all -0.124, steer a2 -0.006 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 0 | random    | asked gu, pushed to pa | shift to B: patch_all -0.143, steer a2 -0.004 | generated pa script: patch 98% steer 97% (normally 98%)
+  draw 0 | random    | asked pa, pushed to hi | shift to B: patch_all -0.123, steer a2 -0.006 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 0 | random    | asked pa, pushed to gu | shift to B: patch_all -0.138, steer a2 -0.007 | generated gu script: patch 2% steer 2% (normally 2%)
+    dec3.mlp: group too small, skipped
+  draw 1 | self      | asked hi, pushed to gu | shift to B: patch_all -0.508, steer a2 -0.037 | generated gu script: patch 1% steer 2% (normally 1%)
+  draw 1 | self      | asked hi, pushed to pa | shift to B: patch_all -0.614, steer a2 -0.053 | generated pa script: patch 99% steer 97% (normally 97%)
+  draw 1 | self      | asked gu, pushed to hi | shift to B: patch_all -0.497, steer a2 +0.028 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 1 | self      | asked gu, pushed to pa | shift to B: patch_all -0.614, steer a2 -0.026 | generated pa script: patch 99% steer 97% (normally 98%)
+  draw 1 | self      | asked pa, pushed to hi | shift to B: patch_all -0.497, steer a2 +0.013 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 1 | self      | asked pa, pushed to gu | shift to B: patch_all -0.507, steer a2 -0.016 | generated gu script: patch 1% steer 2% (normally 2%)
+  draw 1 | lookalike | asked hi, pushed to gu | shift to B: patch_all -0.121, steer a2 -0.001 | generated gu script: patch 2% steer 1% (normally 1%)
+  draw 1 | lookalike | asked hi, pushed to pa | shift to B: patch_all -0.123, steer a2 -0.005 | generated pa script: patch 98% steer 97% (normally 97%)
+  draw 1 | lookalike | asked gu, pushed to hi | shift to B: patch_all -0.086, steer a2 -0.003 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 1 | lookalike | asked gu, pushed to pa | shift to B: patch_all -0.123, steer a2 -0.005 | generated pa script: patch 98% steer 97% (normally 98%)
+  draw 1 | lookalike | asked pa, pushed to hi | shift to B: patch_all -0.086, steer a2 -0.002 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 1 | lookalike | asked pa, pushed to gu | shift to B: patch_all -0.121, steer a2 -0.004 | generated gu script: patch 2% steer 1% (normally 2%)
+  draw 1 | random    | asked hi, pushed to gu | shift to B: patch_all -0.147, steer a2 -0.001 | generated gu script: patch 1% steer 2% (normally 1%)
+  draw 1 | random    | asked hi, pushed to pa | shift to B: patch_all -0.162, steer a2 -0.001 | generated pa script: patch 98% steer 97% (normally 97%)
+  draw 1 | random    | asked gu, pushed to hi | shift to B: patch_all -0.128, steer a2 -0.002 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 1 | random    | asked gu, pushed to pa | shift to B: patch_all -0.161, steer a2 -0.001 | generated pa script: patch 98% steer 97% (normally 98%)
+  draw 1 | random    | asked pa, pushed to hi | shift to B: patch_all -0.127, steer a2 -0.006 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 1 | random    | asked pa, pushed to gu | shift to B: patch_all -0.145, steer a2 -0.011 | generated gu script: patch 0% steer 2% (normally 2%)
+    dec3.mlp: group too small, skipped
+  draw 2 | self      | asked hi, pushed to gu | shift to B: patch_all -0.509, steer a2 -0.037 | generated gu script: patch 3% steer 2% (normally 1%)
+  draw 2 | self      | asked hi, pushed to pa | shift to B: patch_all -0.751, steer a2 -0.118 | generated pa script: patch 97% steer 98% (normally 97%)
+  draw 2 | self      | asked gu, pushed to hi | shift to B: patch_all -0.545, steer a2 +0.020 | generated hi script: patch 0% steer 1% (normally 1%)
+  draw 2 | self      | asked gu, pushed to pa | shift to B: patch_all -0.751, steer a2 -0.089 | generated pa script: patch 97% steer 98% (normally 98%)
+  draw 2 | self      | asked pa, pushed to hi | shift to B: patch_all -0.547, steer a2 +0.039 | generated hi script: patch 0% steer 1% (normally 1%)
+  draw 2 | self      | asked pa, pushed to gu | shift to B: patch_all -0.510, steer a2 +0.041 | generated gu script: patch 3% steer 3% (normally 2%)
+  draw 2 | lookalike | asked hi, pushed to gu | shift to B: patch_all -0.111, steer a2 -0.001 | generated gu script: patch 2% steer 1% (normally 1%)
+  draw 2 | lookalike | asked hi, pushed to pa | shift to B: patch_all -0.114, steer a2 -0.003 | generated pa script: patch 97% steer 97% (normally 97%)
+  draw 2 | lookalike | asked gu, pushed to hi | shift to B: patch_all -0.082, steer a2 -0.003 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 2 | lookalike | asked gu, pushed to pa | shift to B: patch_all -0.114, steer a2 -0.006 | generated pa script: patch 97% steer 97% (normally 98%)
+  draw 2 | lookalike | asked pa, pushed to hi | shift to B: patch_all -0.082, steer a2 -0.005 | generated hi script: patch 1% steer 1% (normally 1%)
+  draw 2 | lookalike | asked pa, pushed to gu | shift to B: patch_all -0.110, steer a2 -0.006 | generated gu script: patch 2% steer 1% (normally 2%)
+  draw 2 | random    | asked hi, pushed to gu | shift to B: patch_all -0.147, steer a2 +0.001 | generated gu script: patch 2% steer 1% (normally 1%)
+  draw 2 | random    | asked hi, pushed to pa | shift to B: patch_all -0.153, steer a2 -0.002 | generated pa script: patch 98% steer 96% (normally 97%)
+  draw 2 | random    | asked gu, pushed to hi | shift to B: patch_all -0.125, steer a2 -0.003 | generated hi script: patch 2% steer 1% (normally 1%)
+  draw 2 | random    | asked gu, pushed to pa | shift to B: patch_all -0.153, steer a2 -0.002 | generated pa script: patch 97% steer 98% (normally 98%)
+  draw 2 | random    | asked pa, pushed to hi | shift to B: patch_all -0.125, steer a2 -0.010 | generated hi script: patch 2% steer 1% (normally 1%)
+  draw 2 | random    | asked pa, pushed to gu | shift to B: patch_all -0.147, steer a2 -0.011 | generated gu script: patch 1% steer 1% (normally 2%)
+done

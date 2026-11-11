@@ -1,0 +1,43 @@
+=== v9: WIPE part of the self, then RELEARN the language the model knows best ===
+one comparison = one start model x one seed: self wiped vs look-alike task neurons wiped (same number)
+learning slowness = average held-out loss over the learning curve (steps 50 ... end); lower = learned faster
+
+AVERAGE OVER SEEDS (curve loss | final score; score = accuracy % or chrF for Indonesian)
+                          curve_loss  final_score  seeds
+task start     cond                                     
+same distant30 lookalike       1.983       51.499      3
+               none            1.835       52.898      3
+               random          1.973       51.303      3
+               self            2.047       50.669      3
+     distant40 lookalike       1.491       49.720      3
+               none            1.241       51.579      3
+               random          1.487       50.334      3
+               self            1.619       48.680      3
+     related10 lookalike       1.462       50.815      3
+               none            1.303       51.594      3
+               random          1.448       50.414      3
+               self            1.558       49.322      3
+     related15 lookalike       1.954       44.304      3
+               none            1.836       44.615      3
+               random          1.950       44.619      3
+               self            2.027       43.856      3
+
+RESULT: self wiped vs look-alike wiped (positive = after wiping the self the model is WORSE while relearning)
+  same      : curve loss higher in 12/12 (sign test p = 0.000244), mean extra loss +0.0904 | final score lower in 11/12, mean drop +0.95
+  ALL       : curve loss higher in 12/12 (sign test p = 0.000244), mean extra loss +0.0904 | final score lower in 11/12, mean drop +0.95
+
+STEP 0 (right after the wipe, no relearning yet): held-out loss with each set wiped
+cond            lookalike    none  random    self
+task start                                       
+same distant30     2.1999  1.8242  2.1895  2.6263
+     distant40     1.8852  1.2402  1.8949  2.7932
+     related10     1.6431  1.2986  1.6059  2.2260
+     related15     2.0756  1.8285  2.0761  2.4273
+
+OTHER LANGUAGES: loss after relearning minus loss right after the wipe (negative = they came back too)
+cond            lookalike    none  random    self
+task start                                       
+same distant30    -0.3755  0.0419 -0.3862 -0.6145
+     distant40    -0.5075  0.0032 -0.5273 -1.1482
+     related10    -0.2678  0.0080 -0.2300 -0.8623
+     related15    -0.2045  0.0231 -0.2104 -0.5967

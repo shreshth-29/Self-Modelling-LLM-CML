@@ -1,0 +1,52 @@
+=== v9 patching + steering: does the self carry WHICH LANGUAGE is written? ===
+shift_to_B > 0: the B translation became more likely while the model was asked for A. damage_A > 0: the A translation got worse.
+average over language pairs and draws:
+
+                       shift_to_B                damage_A              
+group                   lookalike random   self lookalike random   self
+start     intervention                                                 
+distant30 patch_all        -0.113 -0.159 -0.337     0.150  0.195  0.299
+          patch_dec0       -0.037 -0.047 -0.155     0.049  0.061  0.169
+          patch_dec1       -0.018 -0.026 -0.084     0.026  0.038  0.093
+          patch_dec2       -0.035 -0.028 -0.036     0.051  0.038 -0.012
+          patch_dec3        0.000  0.000  0.000     0.000  0.000  0.000
+          steer_a1          0.019  0.017 -0.039     0.029  0.028 -0.027
+          steer_a2          0.028  0.024 -0.095     0.069  0.066 -0.040
+          steer_a4          0.017  0.006 -0.281     0.185  0.180  0.008
+mixed45   patch_all        -0.326 -0.297 -0.984     0.313  0.283  1.042
+          patch_dec0       -0.080 -0.075 -0.330     0.059  0.051  0.317
+          patch_dec1       -0.101 -0.089 -0.292     0.099  0.088  0.308
+          patch_dec2       -0.107 -0.103 -0.247     0.116  0.111  0.266
+          patch_dec3        0.000  0.000  0.000     0.000  0.000  0.000
+          steer_a1         -0.005 -0.003  0.008     0.002  0.001  0.014
+          steer_a2         -0.023 -0.019 -0.048     0.016  0.014  0.086
+          steer_a4         -0.102 -0.092 -0.344     0.083  0.077  0.464
+related15 patch_all        -0.124 -0.141 -0.580     0.128  0.144  0.605
+          patch_dec0       -0.029 -0.048 -0.162     0.031  0.050  0.170
+          patch_dec1       -0.037 -0.032 -0.154     0.038  0.033  0.160
+          patch_dec2       -0.040 -0.029 -0.125     0.041  0.029  0.125
+          patch_dec3        0.000  0.000  0.000     0.000  0.000  0.000
+          steer_a1         -0.001 -0.002 -0.007    -0.000 -0.001  0.004
+          steer_a2         -0.004 -0.004 -0.023    -0.000 -0.001  0.018
+          steer_a4         -0.010 -0.011 -0.088     0.003  0.001  0.080
+
+COMPARISON (one = one start model x one language pair x one draw): look-alike task neurons vs self
+  patch_all : look-alike moves the output to B MORE than self in 54/54 (sign test two-sided p = 1.11e-16); mean shift self -0.634 | look-alike -0.188 | random -0.199
+  patch_dec0: look-alike moves the output to B MORE than self in 54/54 (sign test two-sided p = 1.11e-16); mean shift self -0.216 | look-alike -0.049 | random -0.057
+  patch_dec1: look-alike moves the output to B MORE than self in 54/54 (sign test two-sided p = 1.11e-16); mean shift self -0.177 | look-alike -0.052 | random -0.049
+  patch_dec2: look-alike moves the output to B MORE than self in 42/54 (sign test two-sided p = 5.21e-05); mean shift self -0.136 | look-alike -0.061 | random -0.053
+  patch_dec3: look-alike moves the output to B MORE than self in 0/54 (sign test two-sided p = 1.11e-16); mean shift self +0.000 | look-alike +0.000 | random +0.000
+  steer_a1  : look-alike moves the output to B MORE than self in 29/54 (sign test two-sided p = 0.683); mean shift self -0.013 | look-alike +0.004 | random +0.004
+  steer_a2  : look-alike moves the output to B MORE than self in 34/54 (sign test two-sided p = 0.0759); mean shift self -0.055 | look-alike +0.000 | random +0.000
+  steer_a4  : look-alike moves the output to B MORE than self in 41/54 (sign test two-sided p = 0.000175); mean shift self -0.238 | look-alike -0.032 | random -0.032
+
+GENERATION (greedy, unmasked): % of output letters in B's script | chrF vs the A reference
+                         share_B                 chrf_A            
+group                  lookalike random  self lookalike random self
+start     intervention                                             
+distant30 patch_all         33.3   33.4  33.5       0.6    0.4  0.4
+          steer_a2          33.3   33.4  33.3       0.5    0.6  0.4
+mixed45   patch_all         21.6   19.8  17.4       0.2    0.3  0.2
+          steer_a2          16.3   17.3  16.5       0.4    0.4  0.4
+related15 patch_all         33.3   33.3  33.5       1.2    0.8  1.1
+          steer_a2          33.1   33.2  33.5       1.5    1.5  1.5

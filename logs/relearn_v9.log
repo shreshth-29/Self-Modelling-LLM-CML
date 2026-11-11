@@ -51,3 +51,175 @@ runs to do in this call: 4 (1 tasks x 4 conditions x seeds [0]; already done are
   loaded same: 300,000 train examples
   related10 | same       | none      | seed 0 | loss 1.299 -> 1.307 | score 51.3 -> score 52.0 | 106s | left in this call: 3 runs, about 6 min
   related10 | same       | self      | seed 0 | loss 2.234 -> 1.417 | score 30.4 -> score 48.6 | 104s | left in this call: 2 runs, about 4 min
+  related10 | same       | lookalike | seed 0 | loss 1.636 -> 1.396 | score 47.7 -> score 50.6 | 102s | left in this call: 1 runs, about 2 min
+  related10 | same       | random    | seed 0 | loss 1.601 -> 1.390 | score 48.9 -> score 50.0 | 103s | left in this call: 0 runs, about 0 min
+done
+start model: related15 = v8_indic_continual_s0 phase 15 (last trained on pa) | language set indic: hi, gu, pa
+  enc0.mlp: 2560 working neurons, self = 1384 (54%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1152 (45%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1203 (47%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1302 (51%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1709 (67%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1249 (49%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1311 (51%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1886 (74%), switching off 768
+  self found in 8s
+  relearning pa: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [0]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  related15 | same       | none      | seed 0 | loss 1.829 -> 1.849 | score 44.4 -> score 44.6 | 104s | left in this call: 3 runs, about 6 min
+  related15 | same       | self      | seed 0 | loss 2.402 -> 1.930 | score 35.6 -> score 45.3 | 103s | left in this call: 2 runs, about 4 min
+  related15 | same       | lookalike | seed 0 | loss 2.075 -> 1.909 | score 42.8 -> score 44.5 | 102s | left in this call: 1 runs, about 2 min
+  related15 | same       | random    | seed 0 | loss 2.074 -> 1.913 | score 43.6 -> score 44.9 | 103s | left in this call: 0 runs, about 0 min
+done
+start model: distant30 = v4b_continual_s0 phase 30 (last trained on ar) | language set distant: hi, zh, ar
+  enc0.mlp: 2560 working neurons, self = 1234 (48%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1189 (46%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1224 (48%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1538 (60%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1482 (58%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1325 (52%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1394 (54%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 2049 (80%), switching off 768
+  self found in 8s
+  relearning ar: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [1]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  distant30 | same       | none      | seed 1 | loss 1.824 -> 1.847 | score 53.0 -> score 52.6 | 103s | left in this call: 3 runs, about 5 min
+  distant30 | same       | self      | seed 1 | loss 2.580 -> 1.924 | score 33.6 -> score 50.8 | 104s | left in this call: 2 runs, about 4 min
+  distant30 | same       | lookalike | seed 1 | loss 2.196 -> 1.924 | score 45.7 -> score 51.5 | 104s | left in this call: 1 runs, about 2 min
+  distant30 | same       | random    | seed 1 | loss 2.193 -> 1.918 | score 46.6 -> score 50.9 | 105s | left in this call: 0 runs, about 0 min
+done
+start model: distant40 = v4b_continual_s0 phase 40 (last trained on hi) | language set distant: hi, zh, ar
+  enc0.mlp: 2560 working neurons, self = 1190 (46%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 971 (38%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1036 (40%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1356 (53%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1357 (53%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 920 (36%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 920 (36%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1563 (61%), switching off 768
+  self found in 8s
+  relearning hi: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [1]; already done are skipped)
+  loaded same: 300,000 train examples
+  distant40 | same       | none      | seed 1 | loss 1.240 -> 1.239 | score 51.5 -> score 52.0 | 103s | left in this call: 3 runs, about 6 min
+  distant40 | same       | self      | seed 1 | loss 2.853 -> 1.386 | score 20.0 -> score 48.9 | 104s | left in this call: 2 runs, about 4 min
+  distant40 | same       | lookalike | seed 1 | loss 1.886 -> 1.367 | score 43.4 -> score 49.7 | 104s | left in this call: 1 runs, about 2 min
+  distant40 | same       | random    | seed 1 | loss 1.914 -> 1.364 | score 43.6 -> score 50.9 | 103s | left in this call: 0 runs, about 0 min
+done
+start model: related10 = v8_indic_continual_s0 phase 10 (last trained on hi) | language set indic: hi, gu, pa
+  enc0.mlp: 2560 working neurons, self = 1466 (57%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1176 (46%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1269 (50%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1329 (52%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1558 (61%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1144 (45%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1235 (48%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1909 (75%), switching off 768
+  self found in 9s
+  relearning hi: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [1]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  related10 | same       | none      | seed 1 | loss 1.299 -> 1.307 | score 51.3 -> score 51.2 | 104s | left in this call: 3 runs, about 6 min
+  related10 | same       | self      | seed 1 | loss 2.228 -> 1.417 | score 35.4 -> score 49.2 | 107s | left in this call: 2 runs, about 4 min
+  related10 | same       | lookalike | seed 1 | loss 1.645 -> 1.399 | score 48.7 -> score 50.5 | 104s | left in this call: 1 runs, about 2 min
+  related10 | same       | random    | seed 1 | loss 1.604 -> 1.389 | score 49.7 -> score 50.0 | 102s | left in this call: 0 runs, about 0 min
+done
+start model: related15 = v8_indic_continual_s0 phase 15 (last trained on pa) | language set indic: hi, gu, pa
+  enc0.mlp: 2560 working neurons, self = 1384 (54%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1152 (45%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1203 (47%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1302 (51%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1709 (67%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1249 (49%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1311 (51%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1886 (74%), switching off 768
+  self found in 11s
+  relearning pa: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [1]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  related15 | same       | none      | seed 1 | loss 1.829 -> 1.848 | score 44.4 -> score 44.5 | 103s | left in this call: 3 runs, about 6 min
+  related15 | same       | self      | seed 1 | loss 2.358 -> 1.928 | score 36.7 -> score 43.3 | 104s | left in this call: 2 runs, about 4 min
+  related15 | same       | lookalike | seed 1 | loss 2.079 -> 1.913 | score 42.9 -> score 44.1 | 102s | left in this call: 1 runs, about 2 min
+  related15 | same       | random    | seed 1 | loss 2.075 -> 1.910 | score 43.4 -> score 45.5 | 103s | left in this call: 0 runs, about 0 min
+done
+start model: distant30 = v4b_continual_s0 phase 30 (last trained on ar) | language set distant: hi, zh, ar
+  enc0.mlp: 2560 working neurons, self = 1234 (48%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1189 (46%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1224 (48%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1538 (60%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1482 (58%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1325 (52%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1394 (54%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 2049 (80%), switching off 768
+  self found in 8s
+  relearning ar: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [2]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  distant30 | same       | none      | seed 2 | loss 1.824 -> 1.849 | score 53.0 -> score 53.1 | 103s | left in this call: 3 runs, about 5 min
+  distant30 | same       | self      | seed 2 | loss 2.625 -> 1.921 | score 34.0 -> score 50.2 | 104s | left in this call: 2 runs, about 4 min
+  distant30 | same       | lookalike | seed 2 | loss 2.196 -> 1.918 | score 46.0 -> score 51.3 | 101s | left in this call: 1 runs, about 2 min
+  distant30 | same       | random    | seed 2 | loss 2.173 -> 1.915 | score 47.0 -> score 50.9 | 102s | left in this call: 0 runs, about 0 min
+done
+start model: distant40 = v4b_continual_s0 phase 40 (last trained on hi) | language set distant: hi, zh, ar
+  enc0.mlp: 2560 working neurons, self = 1190 (46%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 971 (38%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1036 (40%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1356 (53%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1357 (53%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 920 (36%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 920 (36%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1563 (61%), switching off 768
+  self found in 8s
+  relearning hi: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [2]; already done are skipped)
+  loaded same: 300,000 train examples
+  distant40 | same       | none      | seed 2 | loss 1.240 -> 1.241 | score 51.5 -> score 51.3 | 105s | left in this call: 3 runs, about 6 min
+  distant40 | same       | self      | seed 2 | loss 2.755 -> 1.390 | score 20.9 -> score 48.9 | 105s | left in this call: 2 runs, about 4 min
+  distant40 | same       | lookalike | seed 2 | loss 1.882 -> 1.369 | score 43.1 -> score 49.7 | 104s | left in this call: 1 runs, about 2 min
+  distant40 | same       | random    | seed 2 | loss 1.930 -> 1.363 | score 45.3 -> score 49.8 | 102s | left in this call: 0 runs, about 0 min
+done
+start model: related10 = v8_indic_continual_s0 phase 10 (last trained on hi) | language set indic: hi, gu, pa
+  enc0.mlp: 2560 working neurons, self = 1466 (57%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1176 (46%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1269 (50%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1329 (52%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1558 (61%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1144 (45%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1235 (48%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1909 (75%), switching off 768
+  self found in 9s
+  relearning hi: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [2]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  related10 | same       | none      | seed 2 | loss 1.299 -> 1.308 | score 51.3 -> score 51.7 | 105s | left in this call: 3 runs, about 6 min
+  related10 | same       | self      | seed 2 | loss 2.216 -> 1.419 | score 35.2 -> score 50.2 | 104s | left in this call: 2 runs, about 4 min
+  related10 | same       | lookalike | seed 2 | loss 1.649 -> 1.400 | score 48.5 -> score 51.4 | 102s | left in this call: 1 runs, about 2 min
+  related10 | same       | random    | seed 2 | loss 1.613 -> 1.391 | score 49.0 -> score 51.3 | 102s | left in this call: 0 runs, about 0 min
+done
+start model: related15 = v8_indic_continual_s0 phase 15 (last trained on pa) | language set indic: hi, gu, pa
+  enc0.mlp: 2560 working neurons, self = 1384 (54%), switching off 768
+  enc1.mlp: 2560 working neurons, self = 1152 (45%), switching off 768
+  enc2.mlp: 2560 working neurons, self = 1203 (47%), switching off 768
+  enc3.mlp: 2560 working neurons, self = 1302 (51%), switching off 768
+  dec0.mlp: 2560 working neurons, self = 1709 (67%), switching off 768
+  dec1.mlp: 2560 working neurons, self = 1249 (49%), switching off 768
+  dec2.mlp: 2560 working neurons, self = 1311 (51%), switching off 768
+  dec3.mlp: 2560 working neurons, self = 1886 (74%), switching off 768
+  self found in 9s
+  relearning pa: the language this checkpoint was last trained on
+runs to do in this call: 4 (1 tasks x 4 conditions x seeds [2]; already done are skipped)
+    dec3.mlp: self or task group too small, layer left intact
+  loaded same: 300,000 train examples
+  related15 | same       | none      | seed 2 | loss 1.829 -> 1.846 | score 44.4 -> score 44.8 | 103s | left in this call: 3 runs, about 5 min
+  related15 | same       | self      | seed 2 | loss 2.522 -> 1.939 | score 28.8 -> score 42.9 | 104s | left in this call: 2 runs, about 4 min
+  related15 | same       | lookalike | seed 2 | loss 2.074 -> 1.910 | score 41.8 -> score 44.3 | 102s | left in this call: 1 runs, about 2 min
+  related15 | same       | random    | seed 2 | loss 2.080 -> 1.906 | score 42.9 -> score 43.4 | 102s | left in this call: 0 runs, about 0 min
+done
