@@ -1,0 +1,46 @@
+=== v9: learning a NEW task with part of the self switched off ===
+one comparison = one start model x one seed x one task: self switched off vs look-alike task neurons switched off
+learning slowness = average held-out loss over the learning curve (steps 50 ... end); lower = learned faster
+
+AVERAGE OVER SEEDS (curve loss | final score; score = accuracy % or chrF for Indonesian)
+                              curve_loss  final_score  seeds
+task       start   cond                                     
+addition   distant lookalike       0.802      100.000      2
+                   none            0.800       99.800      2
+                   random          0.816      100.000      2
+                   self            0.804       99.900      2
+           fresh   none            1.934       99.600      2
+           related lookalike       0.753      100.000      2
+                   none            0.718      100.000      2
+                   random          0.751      100.000      2
+                   self            0.801      100.000      2
+indonesian distant lookalike       2.898       36.466      2
+                   none            2.848       36.565      2
+                   random          2.899       35.980      2
+                   self            2.933       34.423      2
+           fresh   none            4.490       20.127      2
+           related lookalike       2.907       36.741      2
+                   none            2.873       37.250      2
+                   random          2.915       36.281      2
+                   self            2.939       34.654      2
+
+RESULT: self switched off vs look-alike switched off (positive = self switched off learns WORSE)
+  indonesian: curve loss higher in 4/4 (sign test p = 0.0625), mean extra loss +0.0336 | final score lower in 4/4, mean drop +2.06
+  addition  : curve loss higher in 3/4 (sign test p = 0.312), mean extra loss +0.0251 | final score lower in 1/4, mean drop +0.05
+  ALL       : curve loss higher in 7/8 (sign test p = 0.0352), mean extra loss +0.0293 | final score lower in 5/8, mean drop +1.06
+
+STEP 0 (no training yet): held-out loss on the new task with each set switched off
+cond                lookalike     none   random     self
+task       start                                        
+addition   distant     7.6796   7.1976   7.4035   7.4235
+           related     8.9439   9.1097   9.0907   7.5157
+indonesian distant    10.7499  10.6694  10.5890  10.4041
+           related     9.7127   9.9702   9.7627   9.5666
+
+FORGETTING: rise in loss on the original languages after learning the new task (avg over languages, seeds)
+cond                lookalike    none  random    self
+task       start                                     
+addition   distant     3.5238  3.2577  3.5171  5.0921
+           related     5.6276  5.4553  5.4319  6.4385
+indonesian distant     4.8842  5.1773  4.9234  4.5350
+           related     6.0750  6.2543  6.1161  5.7747
