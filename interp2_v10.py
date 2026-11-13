@@ -23,11 +23,13 @@ import os, sys, json, time, argparse, glob
 ap = argparse.ArgumentParser()
 ap.add_argument("--gpu", default="0")
 ap.add_argument("--model", default="")
-ap.add_argument("--parts", default="h2,h3,h4,h5")
+ap.add_argument("--parts", default="h2,h3,h4,h5,h7")
 ap.add_argument("--n_sent", type=int, default=997)
 ap.add_argument("--dose", type=float, default=0.10)
 ap.add_argument("--draws", default="0,1,2")
 ap.add_argument("--summarize", action="store_true")
+ap.add_argument("--steer_dose", type=float, default=0.25)
+ap.add_argument("--alphas", default="-2,-1,-0.5,0.5,1,2")
 args = ap.parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
 REPO = os.path.dirname(os.path.abspath(__file__)); os.chdir(REPO); sys.path.insert(0, REPO)
@@ -109,7 +111,7 @@ def summarize():
         say("\n=== H4: what breaks when 10% is switched off? average over tokens and 3 draws ===")
         say(wmean(t4, ["model", "scope", "group"], ["d_loss", "d_entropy", "flip", "kl"]).round(4).to_string())
         for fac in ["kind", "pos_b", "freq_b", "conf_b"]:
-            say(f"\n-- loss rise by {fac}: self / look-alike (ratio > 1 = the self matters more for this kind), scope = all 8 layers")
+            say(f"\n-- loss rise by {fac} ({'of the PREDICTED token' if fac in ('kind', 'freq_b') else 'of the position'}): self / look-alike (ratio > 1 = the self matters more here), scope = all 8 layers")
             q = wmean(t4[t4.scope == "all"], ["model", fac, "group"], ["d_loss"]).d_loss.unstack("group")
             q["self / look-alike"] = q["self"] / q["lookalike"]
             say(q.round(4).to_string())
@@ -117,12 +119,30 @@ def summarize():
         fig, axs = plt.subplots(1, len(ms), figsize=(5 * len(ms), 4.2), squeeze=False, sharey=True)
         COL = {"self": "#7A3FB0", "lookalike": "#D96A12", "random": "#9CA3AF"}
         for ax, m in zip(axs[0], ms):
-            q = wmean(t4[(t4.model == m) & (t4.scope == "all")], ["kind", "group"], ["d_loss"]).d_loss.unstack("group").reindex([k for k in KINDS if k in set(t4.kind)])
+            q = wmean(t4[(t4.model == m) & (t4.scope == "all")], ["kind", "group"], ["d_loss"]).d_loss.unstack("group").reindex([k for k in KINDS + ["end of sentence"] if k in set(t4.kind)])
             for j, g in enumerate(["self", "lookalike", "random"]):
                 ax.bar(np.arange(len(q)) + (j - 1) * .27, q[g], .26, color=COL[g], label=g if m == ms[0] else None)
             ax.set_xticks(range(len(q))); ax.set_xticklabels(q.index, rotation=35, ha="right", fontsize=8); ax.set_title(m, fontsize=10)
         axs[0, 0].set_ylabel("loss rise on this kind of Hindi token\n(10% of all 8 layers switched off)"); axs[0, 0].legend(frameon=False, fontsize=8)
         fig.tight_layout(); fig.savefig(f"{OUT}/h4_by_kind.png", dpi=150); plt.close(fig)
+    if os.path.exists(f"{OUT}/h7_steer.csv"):
+        s7 = pd.read_csv(f"{OUT}/h7_steer.csv")
+        say("\n=== H7: push 25% of each decoder layer along the 'confident minus unsure' direction (x = how far, 1 = the natural gap) ===")
+        say("-- change in uncertainty (entropy; negative = MORE confident), average of 3 draws")
+        say(s7.pivot_table(index=["model", "group"], columns="alpha", values="d_entropy").round(3).to_string())
+        say("-- change in loss"); say(s7.pivot_table(index=["model", "group"], columns="alpha", values="d_loss").round(3).to_string())
+        say("-- change in chrF (200 devtest sentences, pushes of -2x and +2x)")
+        say(s7.dropna(subset=["d_chrf"]).pivot_table(index=["model", "group"], columns="alpha", values="d_chrf").round(2).to_string())
+        ms = list(s7.model.unique()); COL = {"self": "#7A3FB0", "lookalike": "#D96A12", "random": "#9CA3AF"}
+        fig, axs = plt.subplots(1, len(ms), figsize=(4.6 * len(ms), 3.8), squeeze=False, sharey=True)
+        for ax, m in zip(axs[0], ms):
+            for g_, c_ in COL.items():
+                q = s7[(s7.model == m) & (s7.group == g_)].groupby("alpha").d_entropy.mean()
+                q.loc[0.0] = 0; q = q.sort_index()
+                ax.plot(q.index, q.values, marker="o", color=c_, label=g_)
+            ax.axhline(0, color="k", lw=.6); ax.axvline(0, color="k", lw=.6); ax.set_title(m, fontsize=10); ax.set_xlabel("push along 'confident' direction (x natural gap)")
+        axs[0, 0].set_ylabel("change in uncertainty (entropy)\nnegative = more confident"); axs[0, 0].legend(frameon=False, fontsize=8)
+        fig.tight_layout(); fig.savefig(f"{OUT}/h7_steer.png", dpi=150); plt.close(fig)
     if os.path.exists(f"{OUT}/h5_dims.csv"):
         d5 = pd.read_csv(f"{OUT}/h5_dims.csv")
         say("\n=== H5: how many dimensions does the activity really use? (participation ratio; per 100 neurons so self and task compare fairly) ===")
@@ -233,7 +253,8 @@ if "h2" in args.parts:
 # ---------------------------------------------------------------- H3
 if "h3" in args.parts:
     E = model.tok_emb.weight.detach().float(); gamma = model.dec_ln.weight.detach().float()
-    hi_ok = np.nonzero(cnt["hi"] > 0)[0]
+    allowed = (NEG["hi"].detach().cpu().numpy() == 0) if torch.is_tensor(NEG["hi"]) else (np.asarray(NEG["hi"]) == 0)
+    hi_ok = np.nonzero((cnt["hi"] > 0) & allowed.reshape(-1)[:V])[0]           # tokens the model can actually write in Hindi
     tk = pd.DataFrame({"token": hi_ok}); tk["piece"] = [sp.id_to_piece(int(i)) for i in hi_ok]
     tk["type"] = [ttype(i) for i in hi_ok]; tk["log_freq"] = np.log(cnt["hi"][hi_ok] + 1); tk["pos"] = 0
     tk = add_kinds(tk, "dec", COMMON["dec"])
@@ -259,52 +280,75 @@ if "h3" in args.parts:
         print(f"  H3 {L}", flush=True)
     app(f"{OUT}/h3_summary.csv", srows); app(f"{OUT}/h3_alike.csv", arows); app(f"{OUT}/h3_top_tokens.csv", toprows)
 
+# ---------------------------------------------------------------- shared helpers (H4, H7)
+def matched_pick(feat, self_ids, task_ids, g):
+    F_ = (feat - feat.mean(0)) / (feat.std(0) + 1e-9); free = np.ones(len(task_ids), bool); out = []
+    for s in g.permutation(self_ids):
+        d = np.linalg.norm(F_[task_ids] - F_[s], axis=1); d[~free] = np.inf
+        cand = np.argsort(d)[:3]; cand = cand[np.isfinite(d[cand])]; c = g.choice(cand); free[c] = False; out.append(task_ids[c])
+    return np.array(out)
+
+def make_hooks(hooks_spec, mode="set"):
+    """mode set: the neurons output fixed values (switch off); mode add: values are added (steering)"""
+    hooks = []
+    for L, ids, vals in hooks_spec:
+        ii = torch.as_tensor(ids, device=DEVICE); vv = torch.as_tensor(vals, device=DEVICE, dtype=torch.float32)
+        def hk(m, i, o, ii=ii, vv=vv):
+            o = o.clone()
+            if mode == "set": o[..., ii] = vv.to(o.dtype)
+            else: o[..., ii] = o[..., ii] + vv.to(o.dtype)
+            return o
+        hooks.append(mlp(L).act.register_forward_hook(hk))
+    return hooks
+
+def per_token(hooks_spec, mode="set"):
+    hooks = make_hooks(hooks_spec, mode); out = []
+    with torch.no_grad():
+        for s in range(0, len(S_ALL), 32):
+            S_ = pad_batch(S_ALL[s:s + 32]); mem, sm_ = model.encode(S_)
+            tin = pad_batch([[LANG_TAG["hi"]] + t for t in T_ALL[s:s + 32]])
+            lp = (model.decode(tin, mem, sm_).float() + NEG["hi"]).log_softmax(-1)
+            out.append(lp[tin != PAD].cpu())
+    for h in hooks: h.remove()
+    return torch.cat(out)
+
+def pick_groups(dose, g, layers):
+    sets = {"self": [], "lookalike": [], "random": []}
+    for L in layers:
+        q = NEU[NEU.layer == L].sort_values("neuron"); alive, sm = SELFM[L]
+        sid, tid = np.nonzero(alive & sm)[0], np.nonzero(alive & ~sm)[0]; n = int(round(dose * alive.sum()))
+        if n < 5 or n > len(sid) or n > len(tid):
+            print(f"    {L}: self or task too small for {int(100 * dose)}%, skipped"); continue
+        ss = g.choice(sid, n, replace=False); feat = q[["act_mean", "fire_rate", "w_out"]].values
+        for grp, ids in [("self", ss), ("lookalike", matched_pick(feat, ss, tid, g)), ("random", g.choice(tid, n, replace=False))]:
+            sets[grp].append((L, ids))
+    return sets
+
+# predicted-token facts (H4 groups by the token being PREDICTED)
+_T = TOK["dec"]
+PRED = pd.DataFrame({"token": _T.next_token.values, "pos": _T.pos.values})
+PRED["piece"] = [sp.id_to_piece(int(t)) for t in PRED.token]; PRED["type"] = [ttype(t) for t in PRED.token]
+PRED["log_freq"] = np.log(cnt["hi"][PRED.token.values] + 1)
+PRED = add_kinds(PRED, "dec", COMMON["dec"])
+PRED.loc[PRED.token == EOS, "kind"] = "end of sentence"
+
 # ---------------------------------------------------------------- H4
 if "h4" in args.parts and spec != "random":
-    def matched_pick(feat, self_ids, task_ids, g):
-        F_ = (feat - feat.mean(0)) / (feat.std(0) + 1e-9); free = np.ones(len(task_ids), bool); out = []
-        for s in g.permutation(self_ids):
-            d = np.linalg.norm(F_[task_ids] - F_[s], axis=1); d[~free] = np.inf
-            cand = np.argsort(d)[:3]; cand = cand[np.isfinite(d[cand])]; c = g.choice(cand); free[c] = False; out.append(task_ids[c])
-        return np.array(out)
-    def per_token(hooks_spec):
-        hooks = []
-        for L, ids, vals in hooks_spec:
-            ii = torch.as_tensor(ids, device=DEVICE); vv = torch.as_tensor(vals, device=DEVICE, dtype=torch.float32)
-            def hk(m, i, o, ii=ii, vv=vv):
-                o = o.clone(); o[..., ii] = vv.to(o.dtype); return o
-            hooks.append(mlp(L).act.register_forward_hook(hk))
-        out = []
-        with torch.no_grad():
-            for s in range(0, len(S_ALL), 32):
-                S_ = pad_batch(S_ALL[s:s + 32]); mem, sm_ = model.encode(S_)
-                tin = pad_batch([[LANG_TAG["hi"]] + t for t in T_ALL[s:s + 32]]); tout = pad_batch([t + [EOS] for t in T_ALL[s:s + 32]])
-                lp = (model.decode(tin, mem, sm_).float() + NEG["hi"]).log_softmax(-1)
-                tk_ = tin != PAD
-                out.append(lp[tk_].cpu())
-        for h in hooks: h.remove()
-        return torch.cat(out)
     T = TOK["dec"]; tgt = torch.tensor(T.next_token.values)
     base = per_token([]); bl = -base.gather(1, tgt[:, None])[:, 0]; bp = base.exp()
     bent = -(bp * base.masked_fill(bp == 0, 0)).sum(1); btop = base.argmax(1)
     MEAN = {L: POST[L].float().mean(0).numpy() for L in LAYERS}
     rows = []
     for draw in [int(d) for d in args.draws.split(",")]:
-        g = np.random.default_rng(3000 + draw); sets = {"self": [], "lookalike": [], "random": []}
-        for L in LAYERS:
-            q = NEU[NEU.layer == L].sort_values("neuron"); alive, sm = SELFM[L]
-            sid, tid = np.nonzero(alive & sm)[0], np.nonzero(alive & ~sm)[0]; n = int(round(args.dose * alive.sum()))
-            if n < 5 or n > len(sid) or n > len(tid): continue
-            ss = g.choice(sid, n, replace=False); feat = q[["act_mean", "fire_rate", "w_out"]].values
-            for grp, ids in [("self", ss), ("lookalike", matched_pick(feat, ss, tid, g)), ("random", g.choice(tid, n, replace=False))]:
-                sets[grp].append((L, ids, MEAN[L][ids]))
+        g = np.random.default_rng(3000 + draw)
+        sets = {k: [(L, ids, MEAN[L][ids]) for L, ids in v] for k, v in pick_groups(args.dose, g, LAYERS).items()}
         for scope in ["all", "enc", "dec"]:
             for grp, S in sets.items():
                 spec_ = [x for x in S if scope == "all" or x[0].startswith(scope)]
                 lp = per_token(spec_); l = -lp.gather(1, tgt[:, None])[:, 0]; p_ = lp.exp()
                 ent = -(p_ * lp.masked_fill(p_ == 0, 0)).sum(1)
                 kl = (bp * (base - lp).masked_fill(bp == 0, 0)).sum(1)
-                d = T[["kind", "pos_b", "freq_b", "conf_b"]].copy()
+                d = T[["pos_b", "conf_b"]].copy(); d["kind"] = PRED.kind.values; d["freq_b"] = PRED.freq_b.values   # facts of the PREDICTED token
                 d["d_loss"] = (l - bl).numpy(); d["d_entropy"] = (ent - bent).numpy(); d["flip"] = (lp.argmax(1) != btop).numpy(); d["kl"] = kl.numpy()
                 d["model"] = name; d["draw"] = draw; d["scope"] = scope; d["group"] = grp
                 rows.append(d.groupby(["model", "draw", "scope", "group", "kind", "pos_b", "freq_b", "conf_b"]).agg(
@@ -312,6 +356,38 @@ if "h4" in args.parts and spec != "random":
                 print(f"  H4 draw {draw} | {scope:3s} | {grp:9s}: loss {d.d_loss.mean():+.4f}, entropy {d.d_entropy.mean():+.4f}, top-1 flipped {100 * d.flip.mean():.2f}%", flush=True)
     R4 = pd.concat(rows)                                   # grouped rows; column n = number of tokens in the group
     R4.to_csv(f"{OUT}/h4_tokens.csv", mode="a", header=not os.path.exists(f"{OUT}/h4_tokens.csv"), index=False)
+
+
+# ---------------------------------------------------------------- H7: steering along the confidence direction
+if "h7" in args.parts and spec != "random":
+    T = TOK["dec"]; tgt = torch.tensor(T.next_token.values)
+    odd = (T.sent.values % 2 == 1)                                   # direction from even sentences, measured on odd ones
+    conf = T.entropy.values <= np.quantile(T.entropy.values[~odd], 1 / 3); unsure = T.entropy.values >= np.quantile(T.entropy.values[~odd], 2 / 3)
+    DIR = {L: (POST[L][torch.tensor(conf & ~odd)].float().mean(0) - POST[L][torch.tensor(unsure & ~odd)].float().mean(0)).numpy() for L in LAYERS[4:]}
+    def stats(lp):
+        l = -lp.gather(1, tgt[:, None])[:, 0]; p_ = lp.exp(); ent = -(p_ * lp.masked_fill(p_ == 0, 0)).sum(1)
+        m = torch.tensor(odd)
+        return float(ent[m].mean()), float(l[m].mean()), float((lp.argmax(1) == tgt)[m].float().mean())
+    b_ent, b_loss, b_top = stats(per_token([]))
+    devtest_en = read_flores("devtest", "en")[:200]; devtest_hi = read_flores("devtest", "hi")[:200]
+    b_chrf = chrf(model, devtest_en, devtest_hi, "hi", masked=True)[0]
+    print(f"  H7 baseline (odd sentences): entropy {b_ent:.3f}, loss {b_loss:.3f}, top-1 {100 * b_top:.1f}% | chrF {b_chrf:.1f}", flush=True)
+    rows = []
+    for draw in [int(d) for d in args.draws.split(",")]:
+        groups = pick_groups(args.steer_dose, np.random.default_rng(5000 + draw), LAYERS[4:])
+        for grp, S in groups.items():
+            for a in [float(x) for x in args.alphas.split(",")]:
+                spec_ = [(L, ids, a * DIR[L][ids]) for L, ids in S]
+                e, l, t1 = stats(per_token(spec_, mode="add"))
+                c = np.nan
+                if abs(a) == 2:
+                    hk = make_hooks(spec_, mode="add"); c = chrf(model, devtest_en, devtest_hi, "hi", masked=True)[0]
+                    for h in hk: h.remove()
+                rows.append({"model": name, "draw": draw, "group": grp, "alpha": a, "n_neurons": sum(len(i) for _, i in S),
+                             "d_entropy": e - b_ent, "d_loss": l - b_loss, "d_top1": 100 * (t1 - b_top), "d_chrf": c - b_chrf if c == c else np.nan})
+                print(f"  H7 draw {draw} | {grp:9s} | push {a:+.1f}x: entropy {e - b_ent:+.3f}, loss {l - b_loss:+.3f}, top-1 {100 * (t1 - b_top):+.2f} pts"
+                      + (f", chrF {c - b_chrf:+.2f}" if c == c else ""), flush=True)
+    app(f"{OUT}/h7_steer.csv", rows)
 
 # ---------------------------------------------------------------- H5
 if "h5" in args.parts:
