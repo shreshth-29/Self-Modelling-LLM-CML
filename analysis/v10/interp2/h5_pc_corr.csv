@@ -1,0 +1,1345 @@
+model,layer,group,pc,fact,abs_corr
+hindi45,enc0,self,1,position,0.10740981963358578
+hindi45,enc0,self,1,relative position,0.1548917308082833
+hindi45,enc0,self,1,how common,0.46582431199610524
+hindi45,enc0,self,1,punct,0.3749020616116074
+hindi45,enc0,self,1,common word,0.15768273240143588
+hindi45,enc0,self,1,word start,0.09829154377681655
+hindi45,enc0,self,2,position,0.2235724798153198
+hindi45,enc0,self,2,relative position,0.28958670241742424
+hindi45,enc0,self,2,how common,0.11829866387698706
+hindi45,enc0,self,2,punct,0.47475427727268343
+hindi45,enc0,self,2,common word,0.07102363515827921
+hindi45,enc0,self,2,word start,0.16832835238166385
+hindi45,enc0,self,3,position,0.08166538837974703
+hindi45,enc0,self,3,relative position,0.07774080170455437
+hindi45,enc0,self,3,how common,0.03128998770116103
+hindi45,enc0,self,3,punct,0.26480303139473405
+hindi45,enc0,self,3,common word,0.19226667085857613
+hindi45,enc0,self,3,word start,0.3422457773492803
+hindi45,enc0,task,1,position,0.023278050626478742
+hindi45,enc0,task,1,relative position,0.0582324915299558
+hindi45,enc0,task,1,how common,0.022571495367711247
+hindi45,enc0,task,1,punct,0.08747147022491501
+hindi45,enc0,task,1,common word,0.08528543869493516
+hindi45,enc0,task,1,word start,0.2967544672068158
+hindi45,enc0,task,2,position,0.05057267781783874
+hindi45,enc0,task,2,relative position,0.0653288958018523
+hindi45,enc0,task,2,how common,0.5694324984690763
+hindi45,enc0,task,2,punct,0.3277408790490774
+hindi45,enc0,task,2,common word,0.42998496015560644
+hindi45,enc0,task,2,word start,0.0010326128089835772
+hindi45,enc0,task,3,position,0.006281028832551533
+hindi45,enc0,task,3,relative position,0.012890577283143405
+hindi45,enc0,task,3,how common,0.021091157712232717
+hindi45,enc0,task,3,punct,0.0009530107448929633
+hindi45,enc0,task,3,common word,0.09294178031931519
+hindi45,enc0,task,3,word start,0.010005534681668591
+hindi45,enc1,self,1,position,0.2620034346952546
+hindi45,enc1,self,1,relative position,0.33688953407848515
+hindi45,enc1,self,1,how common,0.3045394337486325
+hindi45,enc1,self,1,punct,0.6316770161703783
+hindi45,enc1,self,1,common word,0.07292999219995752
+hindi45,enc1,self,1,word start,0.2729093600314976
+hindi45,enc1,self,2,position,0.0515422001011199
+hindi45,enc1,self,2,relative position,0.06677651350577746
+hindi45,enc1,self,2,how common,0.3419545974464082
+hindi45,enc1,self,2,punct,0.382411451517496
+hindi45,enc1,self,2,common word,0.21722480994394294
+hindi45,enc1,self,2,word start,0.029287097681309306
+hindi45,enc1,self,3,position,0.03283479350917187
+hindi45,enc1,self,3,relative position,0.01998519778921661
+hindi45,enc1,self,3,how common,0.0448172767424547
+hindi45,enc1,self,3,punct,0.15389700222442432
+hindi45,enc1,self,3,common word,0.17731632264584077
+hindi45,enc1,self,3,word start,0.20566443403568688
+hindi45,enc1,task,1,position,0.15089597951346245
+hindi45,enc1,task,1,relative position,0.18787376902644617
+hindi45,enc1,task,1,how common,0.4894658579378666
+hindi45,enc1,task,1,punct,0.48830568969713917
+hindi45,enc1,task,1,common word,0.3674758543260916
+hindi45,enc1,task,1,word start,0.0345206095432649
+hindi45,enc1,task,2,position,0.11367493020298251
+hindi45,enc1,task,2,relative position,0.08095565923898453
+hindi45,enc1,task,2,how common,0.059753122839865176
+hindi45,enc1,task,2,punct,0.17791289583573153
+hindi45,enc1,task,2,common word,0.09993632058859983
+hindi45,enc1,task,2,word start,0.3200366114053267
+hindi45,enc1,task,3,position,0.09710912300892272
+hindi45,enc1,task,3,relative position,0.12496128417268614
+hindi45,enc1,task,3,how common,0.13139752050312303
+hindi45,enc1,task,3,punct,0.22643515612532103
+hindi45,enc1,task,3,common word,0.09035011117279088
+hindi45,enc1,task,3,word start,0.31440970231612103
+hindi45,enc2,self,1,position,0.230228887606546
+hindi45,enc2,self,1,relative position,0.3055603806254404
+hindi45,enc2,self,1,how common,0.18224654251482533
+hindi45,enc2,self,1,punct,0.4277163123546349
+hindi45,enc2,self,1,common word,0.10887968876067751
+hindi45,enc2,self,1,word start,0.25580109251714267
+hindi45,enc2,self,2,position,0.04923286882434227
+hindi45,enc2,self,2,relative position,0.0616376616206908
+hindi45,enc2,self,2,how common,0.3766037089636641
+hindi45,enc2,self,2,punct,0.5707059976057556
+hindi45,enc2,self,2,common word,0.09979116808248302
+hindi45,enc2,self,2,word start,0.10830798906716882
+hindi45,enc2,self,3,position,0.012997028725320275
+hindi45,enc2,self,3,relative position,0.020693080438080116
+hindi45,enc2,self,3,how common,0.19809133964211165
+hindi45,enc2,self,3,punct,0.12077723082691479
+hindi45,enc2,self,3,common word,0.3419304187312934
+hindi45,enc2,self,3,word start,0.2689731498374114
+hindi45,enc2,task,1,position,0.21274252893964704
+hindi45,enc2,task,1,relative position,0.24664263613846263
+hindi45,enc2,task,1,how common,0.462867495358683
+hindi45,enc2,task,1,punct,0.5947648644480255
+hindi45,enc2,task,1,common word,0.23633185169790422
+hindi45,enc2,task,1,word start,0.12446475482562126
+hindi45,enc2,task,2,position,0.12980372787815447
+hindi45,enc2,task,2,relative position,0.13614988399159006
+hindi45,enc2,task,2,how common,0.18185004548148329
+hindi45,enc2,task,2,punct,0.0923733986185559
+hindi45,enc2,task,2,common word,0.3597962885749091
+hindi45,enc2,task,2,word start,0.33209960759522805
+hindi45,enc2,task,3,position,0.043113358873338434
+hindi45,enc2,task,3,relative position,0.12968813588056236
+hindi45,enc2,task,3,how common,0.029952424107063644
+hindi45,enc2,task,3,punct,0.16034736608454933
+hindi45,enc2,task,3,common word,0.2031919547644775
+hindi45,enc2,task,3,word start,0.0380336971581414
+hindi45,enc3,self,1,position,0.21076980403181622
+hindi45,enc3,self,1,relative position,0.3193870847593423
+hindi45,enc3,self,1,how common,0.31439834860660704
+hindi45,enc3,self,1,punct,0.6323397629282552
+hindi45,enc3,self,1,common word,0.05927302968754377
+hindi45,enc3,self,1,word start,0.253100640698256
+hindi45,enc3,self,2,position,0.0811470833776582
+hindi45,enc3,self,2,relative position,0.10455283033105493
+hindi45,enc3,self,2,how common,0.33185969213351413
+hindi45,enc3,self,2,punct,0.31664356813517464
+hindi45,enc3,self,2,common word,0.23584374452555484
+hindi45,enc3,self,2,word start,0.07298628763310273
+hindi45,enc3,self,3,position,0.047245184641973484
+hindi45,enc3,self,3,relative position,0.06805162289234522
+hindi45,enc3,self,3,how common,0.03999132905927202
+hindi45,enc3,self,3,punct,0.16617772095886907
+hindi45,enc3,self,3,common word,0.18931297842405304
+hindi45,enc3,self,3,word start,0.18678628740675413
+hindi45,enc3,task,1,position,0.17652916181796927
+hindi45,enc3,task,1,relative position,0.203695995477074
+hindi45,enc3,task,1,how common,0.4357074879665167
+hindi45,enc3,task,1,punct,0.5398386502782547
+hindi45,enc3,task,1,common word,0.24252076657695318
+hindi45,enc3,task,1,word start,0.15289610772609108
+hindi45,enc3,task,2,position,0.04357097718201914
+hindi45,enc3,task,2,relative position,0.005197230904076642
+hindi45,enc3,task,2,how common,0.3041372910005581
+hindi45,enc3,task,2,punct,0.14785168975949142
+hindi45,enc3,task,2,common word,0.297573449931798
+hindi45,enc3,task,2,word start,0.1730919040045209
+hindi45,enc3,task,3,position,0.08371974059601608
+hindi45,enc3,task,3,relative position,0.10057223581173776
+hindi45,enc3,task,3,how common,0.08478042715563922
+hindi45,enc3,task,3,punct,0.07464050589219673
+hindi45,enc3,task,3,common word,0.003834938272371797
+hindi45,enc3,task,3,word start,0.1638276060281357
+hindi45,dec0,self,1,position,0.029548270711662813
+hindi45,dec0,self,1,relative position,0.044339765673835484
+hindi45,dec0,self,1,how common,0.3213677703229575
+hindi45,dec0,self,1,punct,0.12255339872220954
+hindi45,dec0,self,1,common word,0.3937685751405753
+hindi45,dec0,self,1,word start,0.19733686420133437
+hindi45,dec0,self,1,confidence (entropy),0.06084821855495749
+hindi45,dec0,self,1,loss,
+hindi45,dec0,self,2,position,0.1047889392096582
+hindi45,dec0,self,2,relative position,0.14464526860675953
+hindi45,dec0,self,2,how common,0.004407997713112352
+hindi45,dec0,self,2,punct,0.07321585005205881
+hindi45,dec0,self,2,common word,0.000257883642446665
+hindi45,dec0,self,2,word start,0.4649323855301686
+hindi45,dec0,self,2,confidence (entropy),0.026597423592120226
+hindi45,dec0,self,2,loss,
+hindi45,dec0,self,3,position,0.3390499178942092
+hindi45,dec0,self,3,relative position,0.40835978957706515
+hindi45,dec0,self,3,how common,0.23223519868922207
+hindi45,dec0,self,3,punct,0.23800657266853797
+hindi45,dec0,self,3,common word,0.07729236149776693
+hindi45,dec0,self,3,word start,0.23338664021745553
+hindi45,dec0,self,3,confidence (entropy),0.07606639846530411
+hindi45,dec0,self,3,loss,
+hindi45,dec0,task,1,position,0.11132509050831126
+hindi45,dec0,task,1,relative position,0.06666504296755067
+hindi45,dec0,task,1,how common,0.22796903668236954
+hindi45,dec0,task,1,punct,0.09440199755175399
+hindi45,dec0,task,1,common word,0.3526611902030844
+hindi45,dec0,task,1,word start,0.020514555163068215
+hindi45,dec0,task,1,confidence (entropy),0.07621934164017538
+hindi45,dec0,task,1,loss,
+hindi45,dec0,task,2,position,0.148840428945283
+hindi45,dec0,task,2,relative position,0.21604684715733616
+hindi45,dec0,task,2,how common,0.20368246661708034
+hindi45,dec0,task,2,punct,0.01691583898879553
+hindi45,dec0,task,2,common word,0.19764056778257627
+hindi45,dec0,task,2,word start,0.5443581292703574
+hindi45,dec0,task,2,confidence (entropy),0.0012859940776250947
+hindi45,dec0,task,2,loss,
+hindi45,dec0,task,3,position,0.18610135832678512
+hindi45,dec0,task,3,relative position,0.19844522602422973
+hindi45,dec0,task,3,how common,0.5000416287599002
+hindi45,dec0,task,3,punct,0.1327769409194458
+hindi45,dec0,task,3,common word,0.1803147731553122
+hindi45,dec0,task,3,word start,0.056661616308194905
+hindi45,dec0,task,3,confidence (entropy),0.06601042084668095
+hindi45,dec0,task,3,loss,
+hindi45,dec1,self,1,position,0.08881466817551967
+hindi45,dec1,self,1,relative position,0.08702117136563287
+hindi45,dec1,self,1,how common,0.12633374094994862
+hindi45,dec1,self,1,punct,0.25513394870750905
+hindi45,dec1,self,1,common word,0.28410056343615275
+hindi45,dec1,self,1,word start,0.47816429474933914
+hindi45,dec1,self,1,confidence (entropy),0.1446512859466556
+hindi45,dec1,self,1,loss,
+hindi45,dec1,self,2,position,0.20764364069570682
+hindi45,dec1,self,2,relative position,0.32740570644776507
+hindi45,dec1,self,2,how common,0.29771057532772655
+hindi45,dec1,self,2,punct,0.48073281458165623
+hindi45,dec1,self,2,common word,0.06646577994283671
+hindi45,dec1,self,2,word start,0.019547923116249
+hindi45,dec1,self,2,confidence (entropy),0.05204319482506206
+hindi45,dec1,self,2,loss,
+hindi45,dec1,self,3,position,0.1045831783080723
+hindi45,dec1,self,3,relative position,0.13054271262837133
+hindi45,dec1,self,3,how common,0.0021639794688819995
+hindi45,dec1,self,3,punct,0.13229973329794362
+hindi45,dec1,self,3,common word,0.01261931054326034
+hindi45,dec1,self,3,word start,0.18618950885751093
+hindi45,dec1,self,3,confidence (entropy),0.11044144718676077
+hindi45,dec1,self,3,loss,
+hindi45,dec1,task,1,position,0.14267762525437466
+hindi45,dec1,task,1,relative position,0.11028420377536102
+hindi45,dec1,task,1,how common,0.0370896084495807
+hindi45,dec1,task,1,punct,0.00934230101579929
+hindi45,dec1,task,1,common word,0.17668556373712854
+hindi45,dec1,task,1,word start,0.03362730994502682
+hindi45,dec1,task,1,confidence (entropy),0.08111962135375213
+hindi45,dec1,task,1,loss,
+hindi45,dec1,task,2,position,0.1734675644735476
+hindi45,dec1,task,2,relative position,0.2562984613311405
+hindi45,dec1,task,2,how common,0.37189030799468376
+hindi45,dec1,task,2,punct,0.20376131438760886
+hindi45,dec1,task,2,common word,0.32272800738869983
+hindi45,dec1,task,2,word start,0.2733221561176142
+hindi45,dec1,task,2,confidence (entropy),0.0384650403273385
+hindi45,dec1,task,2,loss,
+hindi45,dec1,task,3,position,0.17185405616327074
+hindi45,dec1,task,3,relative position,0.19185229614975238
+hindi45,dec1,task,3,how common,0.11260146943423617
+hindi45,dec1,task,3,punct,0.25870034332717357
+hindi45,dec1,task,3,common word,0.04713920489003726
+hindi45,dec1,task,3,word start,0.35461000360888684
+hindi45,dec1,task,3,confidence (entropy),0.14051583918577853
+hindi45,dec1,task,3,loss,
+hindi45,dec2,self,1,position,0.10493720536216578
+hindi45,dec2,self,1,relative position,0.19098434746044113
+hindi45,dec2,self,1,how common,0.12018437410581496
+hindi45,dec2,self,1,punct,0.1281971700768347
+hindi45,dec2,self,1,common word,0.16796602348688247
+hindi45,dec2,self,1,word start,0.1591813785761419
+hindi45,dec2,self,1,confidence (entropy),0.09738644289161734
+hindi45,dec2,self,1,loss,
+hindi45,dec2,self,2,position,0.16714809965890393
+hindi45,dec2,self,2,relative position,0.24511564325001975
+hindi45,dec2,self,2,how common,0.11855382201718072
+hindi45,dec2,self,2,punct,0.47741264726073046
+hindi45,dec2,self,2,common word,0.15309225413606734
+hindi45,dec2,self,2,word start,0.3209310453655625
+hindi45,dec2,self,2,confidence (entropy),0.15636462564123194
+hindi45,dec2,self,2,loss,
+hindi45,dec2,self,3,position,0.17079098098784823
+hindi45,dec2,self,3,relative position,0.271435056170091
+hindi45,dec2,self,3,how common,0.2159227797844761
+hindi45,dec2,self,3,punct,0.0020483900679513917
+hindi45,dec2,self,3,common word,0.011648322060118252
+hindi45,dec2,self,3,word start,0.2196157478648721
+hindi45,dec2,self,3,confidence (entropy),0.20647666250301608
+hindi45,dec2,self,3,loss,
+hindi45,dec2,task,1,position,0.0261406708346443
+hindi45,dec2,task,1,relative position,0.012644284031277672
+hindi45,dec2,task,1,how common,0.0750540143051545
+hindi45,dec2,task,1,punct,0.1783549318205853
+hindi45,dec2,task,1,common word,0.03836727005265907
+hindi45,dec2,task,1,word start,0.17284287836323725
+hindi45,dec2,task,1,confidence (entropy),0.08112920885469975
+hindi45,dec2,task,1,loss,
+hindi45,dec2,task,2,position,0.08000127263223729
+hindi45,dec2,task,2,relative position,0.1379890420966021
+hindi45,dec2,task,2,how common,0.1272395066092996
+hindi45,dec2,task,2,punct,0.05930081418596175
+hindi45,dec2,task,2,common word,0.21494002904962603
+hindi45,dec2,task,2,word start,0.22508135523678158
+hindi45,dec2,task,2,confidence (entropy),0.11502552944858496
+hindi45,dec2,task,2,loss,
+hindi45,dec2,task,3,position,0.04786578782416957
+hindi45,dec2,task,3,relative position,0.07200330411776233
+hindi45,dec2,task,3,how common,0.02056356820644598
+hindi45,dec2,task,3,punct,0.07717283648698439
+hindi45,dec2,task,3,common word,0.02571113335425817
+hindi45,dec2,task,3,word start,0.01751649701647843
+hindi45,dec2,task,3,confidence (entropy),0.07485624073832381
+hindi45,dec2,task,3,loss,
+hindi45,dec3,self,1,position,0.11222695208533622
+hindi45,dec3,self,1,relative position,0.18445548542381288
+hindi45,dec3,self,1,how common,0.00633097848465283
+hindi45,dec3,self,1,punct,0.0611174751234612
+hindi45,dec3,self,1,common word,0.08336568828913085
+hindi45,dec3,self,1,word start,0.054672509709040674
+hindi45,dec3,self,1,confidence (entropy),0.03164410866322897
+hindi45,dec3,self,1,loss,
+hindi45,dec3,self,2,position,0.1284778937917594
+hindi45,dec3,self,2,relative position,0.19611812587487665
+hindi45,dec3,self,2,how common,0.11987428065586943
+hindi45,dec3,self,2,punct,0.15523347896972575
+hindi45,dec3,self,2,common word,0.01476781810937197
+hindi45,dec3,self,2,word start,0.07939542260870597
+hindi45,dec3,self,2,confidence (entropy),0.11388765550058785
+hindi45,dec3,self,2,loss,
+hindi45,dec3,self,3,position,0.1025638821754293
+hindi45,dec3,self,3,relative position,0.12181707390418046
+hindi45,dec3,self,3,how common,0.01704806718762964
+hindi45,dec3,self,3,punct,0.16562495803880675
+hindi45,dec3,self,3,common word,0.2591136833827293
+hindi45,dec3,self,3,word start,0.20808304095454697
+hindi45,dec3,self,3,confidence (entropy),0.27016491147046817
+hindi45,dec3,self,3,loss,
+hindi45,dec3,task,1,position,0.15931073391077027
+hindi45,dec3,task,1,relative position,0.220746919774001
+hindi45,dec3,task,1,how common,0.018482583160182378
+hindi45,dec3,task,1,punct,0.1790688017380863
+hindi45,dec3,task,1,common word,0.03798619739219662
+hindi45,dec3,task,1,word start,0.14245632028014657
+hindi45,dec3,task,1,confidence (entropy),0.13937316109653053
+hindi45,dec3,task,1,loss,
+hindi45,dec3,task,2,position,0.04445239024086061
+hindi45,dec3,task,2,relative position,0.10952725071425164
+hindi45,dec3,task,2,how common,0.14543989656215697
+hindi45,dec3,task,2,punct,0.05985552974623838
+hindi45,dec3,task,2,common word,0.2085114202394126
+hindi45,dec3,task,2,word start,0.2076415203833308
+hindi45,dec3,task,2,confidence (entropy),0.16399699061084494
+hindi45,dec3,task,2,loss,
+hindi45,dec3,task,3,position,0.12792861980065703
+hindi45,dec3,task,3,relative position,0.15223334815433165
+hindi45,dec3,task,3,how common,0.03084447664555885
+hindi45,dec3,task,3,punct,0.0008861969386681021
+hindi45,dec3,task,3,common word,0.042024823772555266
+hindi45,dec3,task,3,word start,0.0014644290693398188
+hindi45,dec3,task,3,confidence (entropy),0.10415450537943487
+hindi45,dec3,task,3,loss,
+cont40,enc0,self,1,position,0.022792797449260667
+cont40,enc0,self,1,relative position,0.015708317343435193
+cont40,enc0,self,1,how common,0.22616563224512845
+cont40,enc0,self,1,punct,0.048447447114059065
+cont40,enc0,self,1,common word,0.05441363405974721
+cont40,enc0,self,1,word start,0.023969294101323382
+cont40,enc0,self,2,position,0.010691391115271237
+cont40,enc0,self,2,relative position,0.048091653272177654
+cont40,enc0,self,2,how common,0.4974642067072493
+cont40,enc0,self,2,punct,0.38828164025222267
+cont40,enc0,self,2,common word,0.4489771208345751
+cont40,enc0,self,2,word start,0.243519291091012
+cont40,enc0,self,3,position,0.07735909612698655
+cont40,enc0,self,3,relative position,0.035340684949133415
+cont40,enc0,self,3,how common,0.005345855824854052
+cont40,enc0,self,3,punct,0.06424660842655722
+cont40,enc0,self,3,common word,0.0981521963318795
+cont40,enc0,self,3,word start,0.1804417380995308
+cont40,enc0,task,1,position,0.01166882003552361
+cont40,enc0,task,1,relative position,0.020878418486004625
+cont40,enc0,task,1,how common,0.5155296407992117
+cont40,enc0,task,1,punct,0.3385216475560484
+cont40,enc0,task,1,common word,0.45651514526094433
+cont40,enc0,task,1,word start,0.16989404715991366
+cont40,enc0,task,2,position,0.011911939644669306
+cont40,enc0,task,2,relative position,0.011858574534460608
+cont40,enc0,task,2,how common,0.05159124038006873
+cont40,enc0,task,2,punct,0.04613085568025991
+cont40,enc0,task,2,common word,0.05841630040686265
+cont40,enc0,task,2,word start,0.08189871750369399
+cont40,enc0,task,3,position,0.015606726083168787
+cont40,enc0,task,3,relative position,0.010761765410246784
+cont40,enc0,task,3,how common,0.011716994188855972
+cont40,enc0,task,3,punct,0.024120394383557127
+cont40,enc0,task,3,common word,0.015404891708642638
+cont40,enc0,task,3,word start,0.12314824198046859
+cont40,enc1,self,1,position,0.009678265108583045
+cont40,enc1,self,1,relative position,0.01823828563102193
+cont40,enc1,self,1,how common,0.322787146317546
+cont40,enc1,self,1,punct,0.46157934824189656
+cont40,enc1,self,1,common word,0.17211970675762786
+cont40,enc1,self,1,word start,0.03668558151295355
+cont40,enc1,self,2,position,0.06960837896762344
+cont40,enc1,self,2,relative position,0.12286703747239142
+cont40,enc1,self,2,how common,0.21282202851059695
+cont40,enc1,self,2,punct,0.07642023176762389
+cont40,enc1,self,2,common word,0.19195390882190752
+cont40,enc1,self,2,word start,0.07528792741132953
+cont40,enc1,self,3,position,0.06472298360618056
+cont40,enc1,self,3,relative position,0.019153202474242466
+cont40,enc1,self,3,how common,0.08108541673362561
+cont40,enc1,self,3,punct,0.0554292902109515
+cont40,enc1,self,3,common word,0.12468838362117911
+cont40,enc1,self,3,word start,0.1956131031470234
+cont40,enc1,task,1,position,0.05897720462142963
+cont40,enc1,task,1,relative position,0.002210176740978116
+cont40,enc1,task,1,how common,0.3851969091020868
+cont40,enc1,task,1,punct,0.37491597419053135
+cont40,enc1,task,1,common word,0.34571747383027945
+cont40,enc1,task,1,word start,0.22572065426914364
+cont40,enc1,task,2,position,0.05986932949406704
+cont40,enc1,task,2,relative position,0.0007306834278566692
+cont40,enc1,task,2,how common,0.04351508526839894
+cont40,enc1,task,2,punct,0.019838259879911828
+cont40,enc1,task,2,common word,0.09745045478743135
+cont40,enc1,task,2,word start,0.22586993631416316
+cont40,enc1,task,3,position,0.06262441468500113
+cont40,enc1,task,3,relative position,0.03636959063214476
+cont40,enc1,task,3,how common,0.16722713936174016
+cont40,enc1,task,3,punct,0.07299403873923165
+cont40,enc1,task,3,common word,0.1193443367234745
+cont40,enc1,task,3,word start,0.06682178732904069
+cont40,enc2,self,1,position,0.029763758603482952
+cont40,enc2,self,1,relative position,0.03685924596565108
+cont40,enc2,self,1,how common,0.33528640271451354
+cont40,enc2,self,1,punct,0.3640165394303272
+cont40,enc2,self,1,common word,0.20614254683159733
+cont40,enc2,self,1,word start,0.025849421007182724
+cont40,enc2,self,2,position,0.15510020616833553
+cont40,enc2,self,2,relative position,0.16487194977438624
+cont40,enc2,self,2,how common,0.07032668803017045
+cont40,enc2,self,2,punct,0.36809281260820953
+cont40,enc2,self,2,common word,0.15227641076637904
+cont40,enc2,self,2,word start,0.27259025848467905
+cont40,enc2,self,3,position,0.09586159224352551
+cont40,enc2,self,3,relative position,0.18553391932336136
+cont40,enc2,self,3,how common,0.23829009317582137
+cont40,enc2,self,3,punct,0.5469273433366673
+cont40,enc2,self,3,common word,0.04195523715652316
+cont40,enc2,self,3,word start,0.11565006416493134
+cont40,enc2,task,1,position,0.019491845816074424
+cont40,enc2,task,1,relative position,0.0036139352414665017
+cont40,enc2,task,1,how common,0.4434565095469308
+cont40,enc2,task,1,punct,0.1859079855985911
+cont40,enc2,task,1,common word,0.47191904838449716
+cont40,enc2,task,1,word start,0.21945154601837377
+cont40,enc2,task,2,position,0.11264775286434549
+cont40,enc2,task,2,relative position,0.05225765222056207
+cont40,enc2,task,2,how common,0.11978842497275519
+cont40,enc2,task,2,punct,0.165033443089188
+cont40,enc2,task,2,common word,0.02701505641708467
+cont40,enc2,task,2,word start,0.2635497441191776
+cont40,enc2,task,3,position,0.034909777235306604
+cont40,enc2,task,3,relative position,0.05748396722036558
+cont40,enc2,task,3,how common,0.10114943976265363
+cont40,enc2,task,3,punct,0.4031018545395467
+cont40,enc2,task,3,common word,0.11422318695133761
+cont40,enc2,task,3,word start,0.07777292478620423
+cont40,enc3,self,1,position,0.10680461344314715
+cont40,enc3,self,1,relative position,0.10984069814481617
+cont40,enc3,self,1,how common,0.13696493991557668
+cont40,enc3,self,1,punct,0.12458802700182045
+cont40,enc3,self,1,common word,0.287312177976166
+cont40,enc3,self,1,word start,0.24978389940317094
+cont40,enc3,self,2,position,0.08115392559213794
+cont40,enc3,self,2,relative position,0.10604434397239118
+cont40,enc3,self,2,how common,0.4205755370892175
+cont40,enc3,self,2,punct,0.5795626358127849
+cont40,enc3,self,2,common word,0.16710065124893814
+cont40,enc3,self,2,word start,0.135971015396193
+cont40,enc3,self,3,position,0.21020570482358786
+cont40,enc3,self,3,relative position,0.2526753814712213
+cont40,enc3,self,3,how common,0.1312429758200517
+cont40,enc3,self,3,punct,0.2714275373686367
+cont40,enc3,self,3,common word,0.32428229331377495
+cont40,enc3,self,3,word start,0.2901985975093524
+cont40,enc3,task,1,position,0.13089687507838688
+cont40,enc3,task,1,relative position,0.09722510732172181
+cont40,enc3,task,1,how common,0.28799191579323363
+cont40,enc3,task,1,punct,0.33949816546675904
+cont40,enc3,task,1,common word,0.18253941227622916
+cont40,enc3,task,1,word start,0.10758147017163955
+cont40,enc3,task,2,position,0.03387807539860558
+cont40,enc3,task,2,relative position,0.014325127310052437
+cont40,enc3,task,2,how common,0.39538784203959465
+cont40,enc3,task,2,punct,0.1838556718848094
+cont40,enc3,task,2,common word,0.36660492618853363
+cont40,enc3,task,2,word start,0.19051513243953497
+cont40,enc3,task,3,position,0.008824305908034898
+cont40,enc3,task,3,relative position,0.02308285014228954
+cont40,enc3,task,3,how common,0.11276037934516246
+cont40,enc3,task,3,punct,0.04796483702691631
+cont40,enc3,task,3,common word,0.1655228942622758
+cont40,enc3,task,3,word start,0.08855983043844466
+cont40,dec0,self,1,position,0.015643920256911935
+cont40,dec0,self,1,relative position,0.09644770107670501
+cont40,dec0,self,1,how common,0.44922338571794873
+cont40,dec0,self,1,punct,0.17595437008384363
+cont40,dec0,self,1,common word,0.48810383538568836
+cont40,dec0,self,1,word start,0.20481402123089695
+cont40,dec0,self,1,confidence (entropy),0.09162265979826567
+cont40,dec0,self,1,loss,
+cont40,dec0,self,2,position,0.21509778883937222
+cont40,dec0,self,2,relative position,0.22449764250236287
+cont40,dec0,self,2,how common,0.2697745997559444
+cont40,dec0,self,2,punct,0.296127373091683
+cont40,dec0,self,2,common word,0.01956050708025593
+cont40,dec0,self,2,word start,0.41355739662937124
+cont40,dec0,self,2,confidence (entropy),0.1357364722046531
+cont40,dec0,self,2,loss,
+cont40,dec0,self,3,position,0.3567936278305662
+cont40,dec0,self,3,relative position,0.4414202800118155
+cont40,dec0,self,3,how common,0.0021083891369808754
+cont40,dec0,self,3,punct,0.04487427361215908
+cont40,dec0,self,3,common word,0.12766463599292713
+cont40,dec0,self,3,word start,0.03036775534566881
+cont40,dec0,self,3,confidence (entropy),0.07134082375259733
+cont40,dec0,self,3,loss,
+cont40,dec0,task,1,position,0.04409236176577503
+cont40,dec0,task,1,relative position,0.013524219733916688
+cont40,dec0,task,1,how common,0.39736109155921356
+cont40,dec0,task,1,punct,0.09872834193278415
+cont40,dec0,task,1,common word,0.5135502500104722
+cont40,dec0,task,1,word start,0.20521206917113832
+cont40,dec0,task,1,confidence (entropy),0.1025802612620593
+cont40,dec0,task,1,loss,
+cont40,dec0,task,2,position,0.022048502180947054
+cont40,dec0,task,2,relative position,0.01739844522921287
+cont40,dec0,task,2,how common,0.01819341777475442
+cont40,dec0,task,2,punct,0.07226513033195374
+cont40,dec0,task,2,common word,0.012324678050813574
+cont40,dec0,task,2,word start,0.2579882411319563
+cont40,dec0,task,2,confidence (entropy),0.03543009423852693
+cont40,dec0,task,2,loss,
+cont40,dec0,task,3,position,0.08121780412942448
+cont40,dec0,task,3,relative position,0.05799956279625207
+cont40,dec0,task,3,how common,0.2540410564348412
+cont40,dec0,task,3,punct,0.0768612473613171
+cont40,dec0,task,3,common word,0.017366804816144162
+cont40,dec0,task,3,word start,0.1473880114496939
+cont40,dec0,task,3,confidence (entropy),0.06991727415508373
+cont40,dec0,task,3,loss,
+cont40,dec1,self,1,position,0.1117894186399732
+cont40,dec1,self,1,relative position,0.2250587898390468
+cont40,dec1,self,1,how common,0.35303446337897043
+cont40,dec1,self,1,punct,0.31057775880878263
+cont40,dec1,self,1,common word,0.27125037069946506
+cont40,dec1,self,1,word start,0.16238106333158525
+cont40,dec1,self,1,confidence (entropy),0.05960063873050305
+cont40,dec1,self,1,loss,
+cont40,dec1,self,2,position,0.21280099767283864
+cont40,dec1,self,2,relative position,0.26336108365451816
+cont40,dec1,self,2,how common,0.04294509319606678
+cont40,dec1,self,2,punct,0.45097695690176715
+cont40,dec1,self,2,common word,0.2330334116794012
+cont40,dec1,self,2,word start,0.3870596988603089
+cont40,dec1,self,2,confidence (entropy),0.20810325597969223
+cont40,dec1,self,2,loss,
+cont40,dec1,self,3,position,0.11226720131059534
+cont40,dec1,self,3,relative position,0.16381566085996135
+cont40,dec1,self,3,how common,0.007574569371091991
+cont40,dec1,self,3,punct,0.18459518798935065
+cont40,dec1,self,3,common word,0.04764061591706629
+cont40,dec1,self,3,word start,0.20729275069631517
+cont40,dec1,self,3,confidence (entropy),0.10629971914842186
+cont40,dec1,self,3,loss,
+cont40,dec1,task,1,position,0.02303310370083971
+cont40,dec1,task,1,relative position,0.09284647058498338
+cont40,dec1,task,1,how common,0.24289073134734843
+cont40,dec1,task,1,punct,0.2214745497458001
+cont40,dec1,task,1,common word,0.3446159762957455
+cont40,dec1,task,1,word start,0.06779229567069078
+cont40,dec1,task,1,confidence (entropy),0.053652983533858264
+cont40,dec1,task,1,loss,
+cont40,dec1,task,2,position,0.06478777226943153
+cont40,dec1,task,2,relative position,0.0372302767621999
+cont40,dec1,task,2,how common,0.16460852621676794
+cont40,dec1,task,2,punct,0.06244756200149929
+cont40,dec1,task,2,common word,0.15117116190477564
+cont40,dec1,task,2,word start,0.0006163877113617277
+cont40,dec1,task,2,confidence (entropy),0.026835139537066094
+cont40,dec1,task,2,loss,
+cont40,dec1,task,3,position,0.4032196193634831
+cont40,dec1,task,3,relative position,0.5051312980286721
+cont40,dec1,task,3,how common,0.10446971500427409
+cont40,dec1,task,3,punct,0.015145968913656277
+cont40,dec1,task,3,common word,0.038712916732466476
+cont40,dec1,task,3,word start,0.12206332186826989
+cont40,dec1,task,3,confidence (entropy),0.1285394651716715
+cont40,dec1,task,3,loss,
+cont40,dec2,self,1,position,0.21608270109434982
+cont40,dec2,self,1,relative position,0.3415289080806972
+cont40,dec2,self,1,how common,0.24739947290875106
+cont40,dec2,self,1,punct,0.4567656508540255
+cont40,dec2,self,1,common word,0.012878375262407931
+cont40,dec2,self,1,word start,0.1052085542973138
+cont40,dec2,self,1,confidence (entropy),0.09020759643942483
+cont40,dec2,self,1,loss,
+cont40,dec2,self,2,position,0.006047956640828945
+cont40,dec2,self,2,relative position,0.04331118271006378
+cont40,dec2,self,2,how common,0.11556106658772884
+cont40,dec2,self,2,punct,0.23128271505792775
+cont40,dec2,self,2,common word,0.2587863785441346
+cont40,dec2,self,2,word start,0.3929720773326178
+cont40,dec2,self,2,confidence (entropy),0.17506406998558594
+cont40,dec2,self,2,loss,
+cont40,dec2,self,3,position,0.1382752415234611
+cont40,dec2,self,3,relative position,0.20624248500070474
+cont40,dec2,self,3,how common,0.09328113093684037
+cont40,dec2,self,3,punct,0.06324354330323419
+cont40,dec2,self,3,common word,0.026082291345248244
+cont40,dec2,self,3,word start,0.12714646720269995
+cont40,dec2,self,3,confidence (entropy),0.18468058268221188
+cont40,dec2,self,3,loss,
+cont40,dec2,task,1,position,0.058799006033507455
+cont40,dec2,task,1,relative position,0.059791493861800875
+cont40,dec2,task,1,how common,0.08358634692205431
+cont40,dec2,task,1,punct,0.11911200494414269
+cont40,dec2,task,1,common word,0.04872282518833713
+cont40,dec2,task,1,word start,0.011009073316260507
+cont40,dec2,task,1,confidence (entropy),0.08574795495950964
+cont40,dec2,task,1,loss,
+cont40,dec2,task,2,position,0.09399112482552323
+cont40,dec2,task,2,relative position,0.15526500672449273
+cont40,dec2,task,2,how common,0.17052008139237326
+cont40,dec2,task,2,punct,0.24643426462281545
+cont40,dec2,task,2,common word,0.19696294444536475
+cont40,dec2,task,2,word start,0.015558240660174222
+cont40,dec2,task,2,confidence (entropy),0.03804545993379247
+cont40,dec2,task,2,loss,
+cont40,dec2,task,3,position,0.017868792324091564
+cont40,dec2,task,3,relative position,0.06203566749932515
+cont40,dec2,task,3,how common,0.13581096502690237
+cont40,dec2,task,3,punct,0.21254286665574165
+cont40,dec2,task,3,common word,0.22597146069126522
+cont40,dec2,task,3,word start,0.33408723499231463
+cont40,dec2,task,3,confidence (entropy),0.10654427330353435
+cont40,dec2,task,3,loss,
+cont40,dec3,self,1,position,0.0962966705501413
+cont40,dec3,self,1,relative position,0.1655648625296113
+cont40,dec3,self,1,how common,0.03576580632332906
+cont40,dec3,self,1,punct,0.04120886126835806
+cont40,dec3,self,1,common word,0.08201223274015819
+cont40,dec3,self,1,word start,0.07050905455141576
+cont40,dec3,self,1,confidence (entropy),0.03740973947212191
+cont40,dec3,self,1,loss,
+cont40,dec3,self,2,position,0.0956629424116273
+cont40,dec3,self,2,relative position,0.1420125286107441
+cont40,dec3,self,2,how common,0.08519696742841723
+cont40,dec3,self,2,punct,0.27190188551987815
+cont40,dec3,self,2,common word,0.0846544909285154
+cont40,dec3,self,2,word start,0.09322312658897615
+cont40,dec3,self,2,confidence (entropy),0.16889105121681658
+cont40,dec3,self,2,loss,
+cont40,dec3,self,3,position,0.014558111309341964
+cont40,dec3,self,3,relative position,0.007964773899433722
+cont40,dec3,self,3,how common,0.08282435197275871
+cont40,dec3,self,3,punct,0.14727377711709122
+cont40,dec3,self,3,common word,0.24165300687684677
+cont40,dec3,self,3,word start,0.25555909328513565
+cont40,dec3,self,3,confidence (entropy),0.24685744645961552
+cont40,dec3,self,3,loss,
+cont40,dec3,task,1,position,0.12017819803465052
+cont40,dec3,task,1,relative position,0.1846322580452172
+cont40,dec3,task,1,how common,0.01750521618005836
+cont40,dec3,task,1,punct,0.21074154541674506
+cont40,dec3,task,1,common word,0.06428895678229751
+cont40,dec3,task,1,word start,0.16251358243607988
+cont40,dec3,task,1,confidence (entropy),0.17993232920773258
+cont40,dec3,task,1,loss,
+cont40,dec3,task,2,position,0.026278967439365145
+cont40,dec3,task,2,relative position,0.01529144581284264
+cont40,dec3,task,2,how common,0.11012282577644648
+cont40,dec3,task,2,punct,0.06749655032231879
+cont40,dec3,task,2,common word,0.23350242196525015
+cont40,dec3,task,2,word start,0.12225187068553076
+cont40,dec3,task,2,confidence (entropy),0.2436424180941796
+cont40,dec3,task,2,loss,
+cont40,dec3,task,3,position,0.08590460971333136
+cont40,dec3,task,3,relative position,0.12299475431908193
+cont40,dec3,task,3,how common,0.012100300687940952
+cont40,dec3,task,3,punct,0.004470724796970522
+cont40,dec3,task,3,common word,0.04315177609557863
+cont40,dec3,task,3,word start,0.055863397178390464
+cont40,dec3,task,3,confidence (entropy),0.05566393182228432
+cont40,dec3,task,3,loss,
+cont10,enc0,self,1,position,0.016616360893221743
+cont10,enc0,self,1,relative position,0.033860883448740005
+cont10,enc0,self,1,how common,0.3824343485522506
+cont10,enc0,self,1,punct,0.1528158935481209
+cont10,enc0,self,1,common word,0.1593988228162689
+cont10,enc0,self,1,word start,0.03620056776812549
+cont10,enc0,self,2,position,0.2301208717140745
+cont10,enc0,self,2,relative position,0.2912935894647185
+cont10,enc0,self,2,how common,0.39772693944945603
+cont10,enc0,self,2,punct,0.6269088507470034
+cont10,enc0,self,2,common word,0.12529833578481225
+cont10,enc0,self,2,word start,0.12515940227786213
+cont10,enc0,self,3,position,0.1339458756760457
+cont10,enc0,self,3,relative position,0.17610511698706013
+cont10,enc0,self,3,how common,0.3965485440225863
+cont10,enc0,self,3,punct,0.024955713707901735
+cont10,enc0,self,3,common word,0.45952263043836145
+cont10,enc0,self,3,word start,0.09512499145312339
+cont10,enc0,task,1,position,0.02317997002816255
+cont10,enc0,task,1,relative position,0.03738672305988337
+cont10,enc0,task,1,how common,0.24029365275402065
+cont10,enc0,task,1,punct,0.11684110180313945
+cont10,enc0,task,1,common word,0.08214603291537188
+cont10,enc0,task,1,word start,0.20134895016669022
+cont10,enc0,task,2,position,0.013909323113350497
+cont10,enc0,task,2,relative position,0.027142718661090755
+cont10,enc0,task,2,how common,0.3149734940945731
+cont10,enc0,task,2,punct,0.15512103345467027
+cont10,enc0,task,2,common word,0.2641540572431544
+cont10,enc0,task,2,word start,0.1057116580126102
+cont10,enc0,task,3,position,0.0031570009875028933
+cont10,enc0,task,3,relative position,0.0007159104191642933
+cont10,enc0,task,3,how common,0.040141770547660494
+cont10,enc0,task,3,punct,0.025514227816705207
+cont10,enc0,task,3,common word,0.04123752979984453
+cont10,enc0,task,3,word start,0.029436067685893075
+cont10,enc1,self,1,position,0.26844458470630056
+cont10,enc1,self,1,relative position,0.3481042673841189
+cont10,enc1,self,1,how common,0.32350309257579457
+cont10,enc1,self,1,punct,0.6603682021278946
+cont10,enc1,self,1,common word,0.0580405833603482
+cont10,enc1,self,1,word start,0.2631532709540649
+cont10,enc1,self,2,position,0.09732005252243597
+cont10,enc1,self,2,relative position,0.12169185824127245
+cont10,enc1,self,2,how common,0.35237438976880386
+cont10,enc1,self,2,punct,0.23886529092283917
+cont10,enc1,self,2,common word,0.3496270890074492
+cont10,enc1,self,2,word start,0.19615966573581853
+cont10,enc1,self,3,position,0.03228433490714445
+cont10,enc1,self,3,relative position,0.013499503028567835
+cont10,enc1,self,3,how common,0.08821371534318818
+cont10,enc1,self,3,punct,0.21497198408768234
+cont10,enc1,self,3,common word,0.026340691324382413
+cont10,enc1,self,3,word start,0.11433490625124391
+cont10,enc1,task,1,position,0.05061299010667069
+cont10,enc1,task,1,relative position,0.08796270689794923
+cont10,enc1,task,1,how common,0.35924543735883846
+cont10,enc1,task,1,punct,0.2822274172999347
+cont10,enc1,task,1,common word,0.32598352710204154
+cont10,enc1,task,1,word start,0.16212332967461307
+cont10,enc1,task,2,position,0.1432103110587303
+cont10,enc1,task,2,relative position,0.11116840771971703
+cont10,enc1,task,2,how common,0.2605873752800067
+cont10,enc1,task,2,punct,0.2532683554344847
+cont10,enc1,task,2,common word,0.09205735164222056
+cont10,enc1,task,2,word start,0.26764449989253825
+cont10,enc1,task,3,position,0.06643241920579326
+cont10,enc1,task,3,relative position,0.07704723158228306
+cont10,enc1,task,3,how common,0.16562669681804504
+cont10,enc1,task,3,punct,0.1925755164518266
+cont10,enc1,task,3,common word,0.015172508961894404
+cont10,enc1,task,3,word start,0.14335075485753235
+cont10,enc2,self,1,position,0.22629782886100777
+cont10,enc2,self,1,relative position,0.29400791542125143
+cont10,enc2,self,1,how common,0.025926630177295545
+cont10,enc2,self,1,punct,0.2440583595320688
+cont10,enc2,self,1,common word,0.24463869732978832
+cont10,enc2,self,1,word start,0.2782195824453708
+cont10,enc2,self,2,position,0.1378103811940054
+cont10,enc2,self,2,relative position,0.1810740639436056
+cont10,enc2,self,2,how common,0.46022693337035575
+cont10,enc2,self,2,punct,0.6908014494004596
+cont10,enc2,self,2,common word,0.12082009406546254
+cont10,enc2,self,2,word start,0.15984574955775788
+cont10,enc2,self,3,position,0.05775799540445587
+cont10,enc2,self,3,relative position,0.020767480791133556
+cont10,enc2,self,3,how common,0.13430035148127784
+cont10,enc2,self,3,punct,0.10713176498649891
+cont10,enc2,self,3,common word,0.2386580638679501
+cont10,enc2,self,3,word start,0.23916411910159008
+cont10,enc2,task,1,position,0.1551710339394073
+cont10,enc2,task,1,relative position,0.1866506999225371
+cont10,enc2,task,1,how common,0.4986674507728568
+cont10,enc2,task,1,punct,0.5290975462058423
+cont10,enc2,task,1,common word,0.31046829310940416
+cont10,enc2,task,1,word start,0.08177675708304008
+cont10,enc2,task,2,position,0.14522553153253834
+cont10,enc2,task,2,relative position,0.10999005421738005
+cont10,enc2,task,2,how common,0.08268731975502226
+cont10,enc2,task,2,punct,0.10948001640023897
+cont10,enc2,task,2,common word,0.2159367509251112
+cont10,enc2,task,2,word start,0.31760823681534495
+cont10,enc2,task,3,position,0.03610772239240595
+cont10,enc2,task,3,relative position,0.08510791501311063
+cont10,enc2,task,3,how common,0.03666083767223004
+cont10,enc2,task,3,punct,0.1346887858765981
+cont10,enc2,task,3,common word,0.13883386393992622
+cont10,enc2,task,3,word start,0.012257395327933957
+cont10,enc3,self,1,position,0.21952168926684404
+cont10,enc3,self,1,relative position,0.3065047595589756
+cont10,enc3,self,1,how common,0.3724048266331007
+cont10,enc3,self,1,punct,0.7052571424342505
+cont10,enc3,self,1,common word,0.019357026669769687
+cont10,enc3,self,1,word start,0.3248977328806417
+cont10,enc3,self,2,position,0.01726610265296243
+cont10,enc3,self,2,relative position,0.0099620626823484
+cont10,enc3,self,2,how common,0.28974362689345545
+cont10,enc3,self,2,punct,0.16213956960797715
+cont10,enc3,self,2,common word,0.2906704152985573
+cont10,enc3,self,2,word start,0.16031433853529448
+cont10,enc3,self,3,position,0.10415971981682635
+cont10,enc3,self,3,relative position,0.15977792792438894
+cont10,enc3,self,3,how common,0.2545871195678792
+cont10,enc3,self,3,punct,0.09402151634378973
+cont10,enc3,self,3,common word,0.2878988308221825
+cont10,enc3,self,3,word start,0.12695968700134994
+cont10,enc3,task,1,position,0.17739263941783215
+cont10,enc3,task,1,relative position,0.21229839948034607
+cont10,enc3,task,1,how common,0.4746638406669713
+cont10,enc3,task,1,punct,0.5669658297222918
+cont10,enc3,task,1,common word,0.25099423955574557
+cont10,enc3,task,1,word start,0.1653129666811741
+cont10,enc3,task,2,position,0.04553681121693337
+cont10,enc3,task,2,relative position,0.007722067693012484
+cont10,enc3,task,2,how common,0.22710517837059788
+cont10,enc3,task,2,punct,0.09632619698497381
+cont10,enc3,task,2,common word,0.2131564557250864
+cont10,enc3,task,2,word start,0.18243240452050238
+cont10,enc3,task,3,position,0.16497662805937593
+cont10,enc3,task,3,relative position,0.23788468410252736
+cont10,enc3,task,3,how common,0.04878053544689215
+cont10,enc3,task,3,punct,0.17896774716683408
+cont10,enc3,task,3,common word,0.24269328435595927
+cont10,enc3,task,3,word start,0.21154959440458493
+cont10,dec0,self,1,position,0.05808045444552349
+cont10,dec0,self,1,relative position,0.1289064362547134
+cont10,dec0,self,1,how common,0.5147285655393753
+cont10,dec0,self,1,punct,0.20673711360432803
+cont10,dec0,self,1,common word,0.500091249631019
+cont10,dec0,self,1,word start,0.07786546252979494
+cont10,dec0,self,1,confidence (entropy),0.07281445370500057
+cont10,dec0,self,1,loss,
+cont10,dec0,self,2,position,0.0026693730569117328
+cont10,dec0,self,2,relative position,0.04694256536761324
+cont10,dec0,self,2,how common,0.057392056096672285
+cont10,dec0,self,2,punct,0.08103132625584795
+cont10,dec0,self,2,common word,0.017723010268120093
+cont10,dec0,self,2,word start,0.3893479686223009
+cont10,dec0,self,2,confidence (entropy),0.09267229668798271
+cont10,dec0,self,2,loss,
+cont10,dec0,self,3,position,0.32329292043238383
+cont10,dec0,self,3,relative position,0.4009698265135352
+cont10,dec0,self,3,how common,0.08808995993518551
+cont10,dec0,self,3,punct,0.17217965625228626
+cont10,dec0,self,3,common word,0.1511490554339439
+cont10,dec0,self,3,word start,0.058465596969335655
+cont10,dec0,self,3,confidence (entropy),0.13606608756686814
+cont10,dec0,self,3,loss,
+cont10,dec0,task,1,position,0.05982990534405731
+cont10,dec0,task,1,relative position,0.0018705401741823426
+cont10,dec0,task,1,how common,0.41519535568280785
+cont10,dec0,task,1,punct,0.12229512232427923
+cont10,dec0,task,1,common word,0.5093881165288281
+cont10,dec0,task,1,word start,0.13083943371723847
+cont10,dec0,task,1,confidence (entropy),0.10180583503067969
+cont10,dec0,task,1,loss,
+cont10,dec0,task,2,position,0.03175242040026614
+cont10,dec0,task,2,relative position,0.051423779564679736
+cont10,dec0,task,2,how common,0.1831115848631446
+cont10,dec0,task,2,punct,0.08200632454776226
+cont10,dec0,task,2,common word,0.030548964663700228
+cont10,dec0,task,2,word start,0.1199167052951171
+cont10,dec0,task,2,confidence (entropy),0.02145916622454162
+cont10,dec0,task,2,loss,
+cont10,dec0,task,3,position,0.07312976827179105
+cont10,dec0,task,3,relative position,0.04854931721689379
+cont10,dec0,task,3,how common,0.2592806416404775
+cont10,dec0,task,3,punct,0.10215378725365841
+cont10,dec0,task,3,common word,0.1609592966974716
+cont10,dec0,task,3,word start,0.07805790462402014
+cont10,dec0,task,3,confidence (entropy),0.013952672761175395
+cont10,dec0,task,3,loss,
+cont10,dec1,self,1,position,0.18058801261295573
+cont10,dec1,self,1,relative position,0.2229973671358472
+cont10,dec1,self,1,how common,0.006108020681620782
+cont10,dec1,self,1,punct,0.42673423761576984
+cont10,dec1,self,1,common word,0.24977880953725082
+cont10,dec1,self,1,word start,0.4168693962331661
+cont10,dec1,self,1,confidence (entropy),0.21516792649029381
+cont10,dec1,self,1,loss,
+cont10,dec1,self,2,position,0.1641134138082861
+cont10,dec1,self,2,relative position,0.28001438012627383
+cont10,dec1,self,2,how common,0.3792900073262577
+cont10,dec1,self,2,punct,0.32499033120403575
+cont10,dec1,self,2,common word,0.2616441888525347
+cont10,dec1,self,2,word start,0.19800589621835904
+cont10,dec1,self,2,confidence (entropy),0.05401950171762469
+cont10,dec1,self,2,loss,
+cont10,dec1,self,3,position,0.11888705355514104
+cont10,dec1,self,3,relative position,0.15721361461516334
+cont10,dec1,self,3,how common,0.026169462641889813
+cont10,dec1,self,3,punct,0.20564461647828475
+cont10,dec1,self,3,common word,0.060451745198656565
+cont10,dec1,self,3,word start,0.21690835359772703
+cont10,dec1,self,3,confidence (entropy),0.10954689650387146
+cont10,dec1,self,3,loss,
+cont10,dec1,task,1,position,0.03452674649714933
+cont10,dec1,task,1,relative position,0.10291275745345704
+cont10,dec1,task,1,how common,0.31069684618777715
+cont10,dec1,task,1,punct,0.21794189317930537
+cont10,dec1,task,1,common word,0.3771525241071967
+cont10,dec1,task,1,word start,0.10879994256099668
+cont10,dec1,task,1,confidence (entropy),0.07396143015865778
+cont10,dec1,task,1,loss,
+cont10,dec1,task,2,position,0.031000487593488654
+cont10,dec1,task,2,relative position,0.04866554176041619
+cont10,dec1,task,2,how common,0.028105648720009528
+cont10,dec1,task,2,punct,0.07803831166778605
+cont10,dec1,task,2,common word,0.0403184232574545
+cont10,dec1,task,2,word start,0.24818609550441145
+cont10,dec1,task,2,confidence (entropy),0.09150199155340874
+cont10,dec1,task,2,loss,
+cont10,dec1,task,3,position,0.3024947823781106
+cont10,dec1,task,3,relative position,0.3952246358753064
+cont10,dec1,task,3,how common,0.07018044055753687
+cont10,dec1,task,3,punct,0.10927659537421898
+cont10,dec1,task,3,common word,0.019942032559221327
+cont10,dec1,task,3,word start,0.21925562321831998
+cont10,dec1,task,3,confidence (entropy),0.05547206219129191
+cont10,dec1,task,3,loss,
+cont10,dec2,self,1,position,0.11973376057603438
+cont10,dec2,self,1,relative position,0.21289474457829108
+cont10,dec2,self,1,how common,0.16198716602785096
+cont10,dec2,self,1,punct,0.23170419078650975
+cont10,dec2,self,1,common word,0.14464775406349292
+cont10,dec2,self,1,word start,0.07649641353169491
+cont10,dec2,self,1,confidence (entropy),0.10830726971282785
+cont10,dec2,self,1,loss,
+cont10,dec2,self,2,position,0.03883527258550192
+cont10,dec2,self,2,relative position,0.03914017918455563
+cont10,dec2,self,2,how common,0.08965904821557043
+cont10,dec2,self,2,punct,0.38031215271347335
+cont10,dec2,self,2,common word,0.21400487014182193
+cont10,dec2,self,2,word start,0.4253523863109589
+cont10,dec2,self,2,confidence (entropy),0.08210814758300498
+cont10,dec2,self,2,loss,
+cont10,dec2,self,3,position,0.19852463424498792
+cont10,dec2,self,3,relative position,0.2971581104243509
+cont10,dec2,self,3,how common,0.153752077221681
+cont10,dec2,self,3,punct,0.12289411338344125
+cont10,dec2,self,3,common word,0.07304246537403661
+cont10,dec2,self,3,word start,0.03921315853404917
+cont10,dec2,self,3,confidence (entropy),0.2398444235747041
+cont10,dec2,self,3,loss,
+cont10,dec2,task,1,position,0.01449940982721597
+cont10,dec2,task,1,relative position,0.023586825726578785
+cont10,dec2,task,1,how common,0.0470997713555304
+cont10,dec2,task,1,punct,0.177138949515057
+cont10,dec2,task,1,common word,0.04375581906025111
+cont10,dec2,task,1,word start,0.11832727485043468
+cont10,dec2,task,1,confidence (entropy),0.1132535168320047
+cont10,dec2,task,1,loss,
+cont10,dec2,task,2,position,0.11808140439598391
+cont10,dec2,task,2,relative position,0.1858774143276996
+cont10,dec2,task,2,how common,0.25492438022565744
+cont10,dec2,task,2,punct,0.1278721275249802
+cont10,dec2,task,2,common word,0.3038149857298801
+cont10,dec2,task,2,word start,0.3584325525704615
+cont10,dec2,task,2,confidence (entropy),0.13296199145215948
+cont10,dec2,task,2,loss,
+cont10,dec2,task,3,position,0.01703439683626277
+cont10,dec2,task,3,relative position,0.022110635295496263
+cont10,dec2,task,3,how common,0.046312755633589685
+cont10,dec2,task,3,punct,0.20040082467509374
+cont10,dec2,task,3,common word,0.09053237730473873
+cont10,dec2,task,3,word start,0.08326949929880484
+cont10,dec2,task,3,confidence (entropy),0.028409195159141618
+cont10,dec2,task,3,loss,
+cont10,dec3,self,1,position,0.09438147623249635
+cont10,dec3,self,1,relative position,0.16802746812625302
+cont10,dec3,self,1,how common,0.019084157856909246
+cont10,dec3,self,1,punct,0.04984361639809933
+cont10,dec3,self,1,common word,0.09413546404949667
+cont10,dec3,self,1,word start,0.055327512489736004
+cont10,dec3,self,1,confidence (entropy),0.010908001867041767
+cont10,dec3,self,1,loss,
+cont10,dec3,self,2,position,0.09200761346897013
+cont10,dec3,self,2,relative position,0.14725889642347145
+cont10,dec3,self,2,how common,0.09478933802255048
+cont10,dec3,self,2,punct,0.1871298859702231
+cont10,dec3,self,2,common word,0.01149786546635853
+cont10,dec3,self,2,word start,0.01205115821285506
+cont10,dec3,self,2,confidence (entropy),0.07758854607572066
+cont10,dec3,self,2,loss,
+cont10,dec3,self,3,position,0.09221641949835933
+cont10,dec3,self,3,relative position,0.10896073576752299
+cont10,dec3,self,3,how common,0.013138855596383867
+cont10,dec3,self,3,punct,0.20370859897515814
+cont10,dec3,self,3,common word,0.26219058514374166
+cont10,dec3,self,3,word start,0.21306275156747578
+cont10,dec3,self,3,confidence (entropy),0.2926701814416408
+cont10,dec3,self,3,loss,
+cont10,dec3,task,1,position,0.1246322004542203
+cont10,dec3,task,1,relative position,0.200162820486526
+cont10,dec3,task,1,how common,0.0032834965530626667
+cont10,dec3,task,1,punct,0.20789678560352642
+cont10,dec3,task,1,common word,0.04565644541471196
+cont10,dec3,task,1,word start,0.1501279596607071
+cont10,dec3,task,1,confidence (entropy),0.15892926470035257
+cont10,dec3,task,1,loss,
+cont10,dec3,task,2,position,0.00014095618293154743
+cont10,dec3,task,2,relative position,0.01656522968607834
+cont10,dec3,task,2,how common,0.09942313750845176
+cont10,dec3,task,2,punct,0.09842089612025358
+cont10,dec3,task,2,common word,0.2520746667932968
+cont10,dec3,task,2,word start,0.14659779377489682
+cont10,dec3,task,2,confidence (entropy),0.28593903949687854
+cont10,dec3,task,2,loss,
+cont10,dec3,task,3,position,0.1232095481749558
+cont10,dec3,task,3,relative position,0.14461735507459214
+cont10,dec3,task,3,how common,0.002722006733359002
+cont10,dec3,task,3,punct,0.01457572673222089
+cont10,dec3,task,3,common word,0.07256536328664331
+cont10,dec3,task,3,word start,0.005273795481835573
+cont10,dec3,task,3,confidence (entropy),0.06067998447510521
+cont10,dec3,task,3,loss,
+random,enc0,self,1,position,0.04958709686093247
+random,enc0,self,1,relative position,0.02850358043066053
+random,enc0,self,1,how common,0.060680314329786364
+random,enc0,self,1,punct,0.270665908982281
+random,enc0,self,1,common word,0.2516608776856053
+random,enc0,self,1,word start,0.20614143734298612
+random,enc0,self,2,position,0.2853179136355224
+random,enc0,self,2,relative position,0.36900502700108434
+random,enc0,self,2,how common,0.07150679228284512
+random,enc0,self,2,punct,0.05065803032313241
+random,enc0,self,2,common word,0.13885535773713928
+random,enc0,self,2,word start,0.18011306999323057
+random,enc0,self,3,position,0.18455680011973766
+random,enc0,self,3,relative position,0.22568833981285893
+random,enc0,self,3,how common,0.10680139670883473
+random,enc0,self,3,punct,0.30284018482120045
+random,enc0,self,3,common word,0.06819997486383488
+random,enc0,self,3,word start,0.0017360991478517958
+random,enc0,task,1,position,0.05306524917763455
+random,enc0,task,1,relative position,0.05228806913592435
+random,enc0,task,1,how common,0.09024659459333348
+random,enc0,task,1,punct,0.025194253653406704
+random,enc0,task,1,common word,0.022697819097318137
+random,enc0,task,1,word start,0.017640877080144595
+random,enc0,task,2,position,0.06203024200790797
+random,enc0,task,2,relative position,0.01710000183160292
+random,enc0,task,2,how common,0.014675775877383813
+random,enc0,task,2,punct,0.05114061106502518
+random,enc0,task,2,common word,0.10242475492613264
+random,enc0,task,2,word start,0.04392264272810831
+random,enc0,task,3,position,0.02776235377932557
+random,enc0,task,3,relative position,0.10088330138649217
+random,enc0,task,3,how common,0.10321002100670494
+random,enc0,task,3,punct,0.029131003233720094
+random,enc0,task,3,common word,0.05784088658284253
+random,enc0,task,3,word start,0.029060144326202353
+random,enc1,self,1,position,0.10499871108224507
+random,enc1,self,1,relative position,0.14926712874050432
+random,enc1,self,1,how common,0.052371593326362015
+random,enc1,self,1,punct,0.026958217124668678
+random,enc1,self,1,common word,0.04438594069001061
+random,enc1,self,1,word start,0.01751875121761721
+random,enc1,self,2,position,0.17753958407228754
+random,enc1,self,2,relative position,0.1580454736205755
+random,enc1,self,2,how common,0.06924532297093615
+random,enc1,self,2,punct,0.2554924011590389
+random,enc1,self,2,common word,0.02814572279058634
+random,enc1,self,2,word start,0.01844924927519296
+random,enc1,self,3,position,0.02291921750698153
+random,enc1,self,3,relative position,0.03870958613259453
+random,enc1,self,3,how common,0.13317135568343894
+random,enc1,self,3,punct,0.11761666788965713
+random,enc1,self,3,common word,0.08646335233365578
+random,enc1,self,3,word start,0.04530315121717281
+random,enc1,task,1,position,0.08621922575531818
+random,enc1,task,1,relative position,0.10587719857399647
+random,enc1,task,1,how common,0.1303368594026837
+random,enc1,task,1,punct,0.04467831902209034
+random,enc1,task,1,common word,0.13560145635905824
+random,enc1,task,1,word start,0.011763298467515053
+random,enc1,task,2,position,0.07824384291826307
+random,enc1,task,2,relative position,0.06751956351765648
+random,enc1,task,2,how common,0.011959946306558817
+random,enc1,task,2,punct,0.0472867422985005
+random,enc1,task,2,common word,0.025038502701303682
+random,enc1,task,2,word start,0.017558106832518235
+random,enc1,task,3,position,0.29825469579533115
+random,enc1,task,3,relative position,0.19006620889553769
+random,enc1,task,3,how common,0.0006205298395522713
+random,enc1,task,3,punct,0.0024946172014054507
+random,enc1,task,3,common word,0.01768029796178003
+random,enc1,task,3,word start,0.030633284765053802
+random,enc2,self,1,position,0.09195286331461872
+random,enc2,self,1,relative position,0.106063231582152
+random,enc2,self,1,how common,0.08837488407900354
+random,enc2,self,1,punct,0.009138263709920888
+random,enc2,self,1,common word,0.10371604383145448
+random,enc2,self,1,word start,0.06196561286325873
+random,enc2,self,2,position,0.3170054756560287
+random,enc2,self,2,relative position,0.17009026724763512
+random,enc2,self,2,how common,0.08716552832209781
+random,enc2,self,2,punct,0.11690081262753362
+random,enc2,self,2,common word,0.14152486272854628
+random,enc2,self,2,word start,0.20918056279823816
+random,enc2,self,3,position,0.12250267414024701
+random,enc2,self,3,relative position,0.08343183319573227
+random,enc2,self,3,how common,0.03573326948778102
+random,enc2,self,3,punct,0.3236004527687601
+random,enc2,self,3,common word,0.13000421229246245
+random,enc2,self,3,word start,0.07169962181156371
+random,enc2,task,1,position,0.0929030606397468
+random,enc2,task,1,relative position,0.14651105768406433
+random,enc2,task,1,how common,0.19632601148308115
+random,enc2,task,1,punct,0.21228671149885983
+random,enc2,task,1,common word,0.013894995997151022
+random,enc2,task,1,word start,0.08836721789685656
+random,enc2,task,2,position,0.011455188334164526
+random,enc2,task,2,relative position,0.0871411826183727
+random,enc2,task,2,how common,0.09191719517186812
+random,enc2,task,2,punct,0.0670139238045583
+random,enc2,task,2,common word,0.03089457733791043
+random,enc2,task,2,word start,0.00973980558440595
+random,enc2,task,3,position,0.12830348440905046
+random,enc2,task,3,relative position,0.055494424893174445
+random,enc2,task,3,how common,0.09697276146454917
+random,enc2,task,3,punct,0.014068874637083756
+random,enc2,task,3,common word,0.03158465659347271
+random,enc2,task,3,word start,0.012533952452089932
+random,enc3,self,1,position,0.30877567086839974
+random,enc3,self,1,relative position,0.22763254517240553
+random,enc3,self,1,how common,0.11860502798818
+random,enc3,self,1,punct,0.0709462615142419
+random,enc3,self,1,common word,0.025674053765298344
+random,enc3,self,1,word start,0.11581116442048241
+random,enc3,self,2,position,0.1445895462908012
+random,enc3,self,2,relative position,0.02599814621770233
+random,enc3,self,2,how common,0.0005884931711447966
+random,enc3,self,2,punct,0.07389717989497611
+random,enc3,self,2,common word,0.1450241213839512
+random,enc3,self,2,word start,0.16938788093301596
+random,enc3,self,3,position,0.14214683170825576
+random,enc3,self,3,relative position,0.055642706063289464
+random,enc3,self,3,how common,0.05699677710601733
+random,enc3,self,3,punct,0.29082971222937365
+random,enc3,self,3,common word,0.14509377859997907
+random,enc3,self,3,word start,0.09687591696418217
+random,enc3,task,1,position,0.029627512692534993
+random,enc3,task,1,relative position,0.023569684778615957
+random,enc3,task,1,how common,0.028124630343416057
+random,enc3,task,1,punct,0.001746805059068345
+random,enc3,task,1,common word,0.0011897370068910888
+random,enc3,task,1,word start,0.011003905596042715
+random,enc3,task,2,position,0.13643680008808867
+random,enc3,task,2,relative position,0.10823534268625293
+random,enc3,task,2,how common,0.0346650955686513
+random,enc3,task,2,punct,0.07481931153396991
+random,enc3,task,2,common word,0.01306723081139346
+random,enc3,task,2,word start,0.03209817453081194
+random,enc3,task,3,position,0.06169740938970002
+random,enc3,task,3,relative position,0.0063258612883210245
+random,enc3,task,3,how common,0.11194673661208622
+random,enc3,task,3,punct,0.055175526886492826
+random,enc3,task,3,common word,0.03950790173324126
+random,enc3,task,3,word start,0.013616300882862
+random,dec0,self,1,position,0.654691294333545
+random,dec0,self,1,relative position,0.6841470609060689
+random,dec0,self,1,how common,0.39696144117344034
+random,dec0,self,1,punct,0.09553119352759731
+random,dec0,self,1,common word,0.07851025911267194
+random,dec0,self,1,word start,0.11899917037753066
+random,dec0,self,1,confidence (entropy),0.2208347225888342
+random,dec0,self,1,loss,
+random,dec0,self,2,position,0.3896858979884272
+random,dec0,self,2,relative position,0.11407873835397418
+random,dec0,self,2,how common,0.1828565826299306
+random,dec0,self,2,punct,0.0058328347168798995
+random,dec0,self,2,common word,0.011522976368189086
+random,dec0,self,2,word start,0.13175168912222807
+random,dec0,self,2,confidence (entropy),0.18535494270526737
+random,dec0,self,2,loss,
+random,dec0,self,3,position,0.17471145368551944
+random,dec0,self,3,relative position,0.4065845476685352
+random,dec0,self,3,how common,0.14608142989679532
+random,dec0,self,3,punct,0.034618125918810215
+random,dec0,self,3,common word,0.013635337707041322
+random,dec0,self,3,word start,0.0892724213395678
+random,dec0,self,3,confidence (entropy),0.28486322229524946
+random,dec0,self,3,loss,
+random,dec0,task,1,position,0.12084854371863135
+random,dec0,task,1,relative position,0.2552903697040606
+random,dec0,task,1,how common,0.14095101013187342
+random,dec0,task,1,punct,0.09764172740791383
+random,dec0,task,1,common word,0.013136263666998993
+random,dec0,task,1,word start,0.01799708066708253
+random,dec0,task,1,confidence (entropy),0.04159993672750047
+random,dec0,task,1,loss,
+random,dec0,task,2,position,0.2778902864079806
+random,dec0,task,2,relative position,0.13455850889906196
+random,dec0,task,2,how common,0.07902004908617881
+random,dec0,task,2,punct,0.024895842900100343
+random,dec0,task,2,common word,0.026079293679312956
+random,dec0,task,2,word start,0.10411345364829135
+random,dec0,task,2,confidence (entropy),0.05784117527090491
+random,dec0,task,2,loss,
+random,dec0,task,3,position,0.15548918073247178
+random,dec0,task,3,relative position,0.12345111839555792
+random,dec0,task,3,how common,0.005368165901576477
+random,dec0,task,3,punct,0.06427239125805077
+random,dec0,task,3,common word,0.005476565861942787
+random,dec0,task,3,word start,0.03953509796721692
+random,dec0,task,3,confidence (entropy),0.051471609558693836
+random,dec0,task,3,loss,
+random,dec1,self,1,position,0.7030283783762707
+random,dec1,self,1,relative position,0.6858050067487163
+random,dec1,self,1,how common,0.3704289174759178
+random,dec1,self,1,punct,0.0981237534017408
+random,dec1,self,1,common word,0.0663325815986454
+random,dec1,self,1,word start,0.09371389881054913
+random,dec1,self,1,confidence (entropy),0.24383501427802245
+random,dec1,self,1,loss,
+random,dec1,self,2,position,0.16704950831610083
+random,dec1,self,2,relative position,0.18296620548617853
+random,dec1,self,2,how common,0.1549131321876576
+random,dec1,self,2,punct,0.03009445489343791
+random,dec1,self,2,common word,0.03992449763508255
+random,dec1,self,2,word start,0.09168916932910864
+random,dec1,self,2,confidence (entropy),0.27339937863087693
+random,dec1,self,2,loss,
+random,dec1,self,3,position,0.2839275710054051
+random,dec1,self,3,relative position,0.327129956939576
+random,dec1,self,3,how common,0.22426600015721865
+random,dec1,self,3,punct,0.027931913648495146
+random,dec1,self,3,common word,0.016907100122702596
+random,dec1,self,3,word start,0.13087625451824442
+random,dec1,self,3,confidence (entropy),0.13230197022262197
+random,dec1,self,3,loss,
+random,dec1,task,1,position,0.20188768344534558
+random,dec1,task,1,relative position,0.045809211404064354
+random,dec1,task,1,how common,0.13317056738328248
+random,dec1,task,1,punct,0.06216406115329189
+random,dec1,task,1,common word,0.0010458304456738307
+random,dec1,task,1,word start,0.026267197227370736
+random,dec1,task,1,confidence (entropy),0.0535776299622418
+random,dec1,task,1,loss,
+random,dec1,task,2,position,0.090036955141234
+random,dec1,task,2,relative position,0.12165146445803184
+random,dec1,task,2,how common,0.009548591508337829
+random,dec1,task,2,punct,0.07635715481062032
+random,dec1,task,2,common word,0.11825109742679686
+random,dec1,task,2,word start,0.04050503095006632
+random,dec1,task,2,confidence (entropy),0.05152147754988238
+random,dec1,task,2,loss,
+random,dec1,task,3,position,0.14255494157171633
+random,dec1,task,3,relative position,0.09030528612038559
+random,dec1,task,3,how common,0.0631139449111066
+random,dec1,task,3,punct,0.03995410382881075
+random,dec1,task,3,common word,0.05478718378496303
+random,dec1,task,3,word start,0.012374268034256333
+random,dec1,task,3,confidence (entropy),0.0673348694790357
+random,dec1,task,3,loss,
+random,dec2,self,1,position,0.7176297078387538
+random,dec2,self,1,relative position,0.6814330840809912
+random,dec2,self,1,how common,0.3489867529352342
+random,dec2,self,1,punct,0.08900847369605369
+random,dec2,self,1,common word,0.05595771953254492
+random,dec2,self,1,word start,0.09062562131821922
+random,dec2,self,1,confidence (entropy),0.25177563420100874
+random,dec2,self,1,loss,
+random,dec2,self,2,position,0.09843142706214408
+random,dec2,self,2,relative position,0.2556059609633885
+random,dec2,self,2,how common,0.16251423679070423
+random,dec2,self,2,punct,0.0421818710315777
+random,dec2,self,2,common word,0.04678800513538287
+random,dec2,self,2,word start,0.08375848508088903
+random,dec2,self,2,confidence (entropy),0.2653721611775226
+random,dec2,self,2,loss,
+random,dec2,self,3,position,0.3241941048718038
+random,dec2,self,3,relative position,0.3498846056632846
+random,dec2,self,3,how common,0.23782941792700982
+random,dec2,self,3,punct,0.008403278504052583
+random,dec2,self,3,common word,0.039099551106596374
+random,dec2,self,3,word start,0.10893575456547411
+random,dec2,self,3,confidence (entropy),0.13090176286259736
+random,dec2,self,3,loss,
+random,dec2,task,1,position,0.2217285164388729
+random,dec2,task,1,relative position,0.11148080304397595
+random,dec2,task,1,how common,0.062037253825584816
+random,dec2,task,1,punct,0.006104514823797809
+random,dec2,task,1,common word,0.008173638849305843
+random,dec2,task,1,word start,0.04228688130767795
+random,dec2,task,1,confidence (entropy),0.07165400817347062
+random,dec2,task,1,loss,
+random,dec2,task,2,position,0.1488278625535159
+random,dec2,task,2,relative position,0.1297046188504268
+random,dec2,task,2,how common,0.00011646694716851927
+random,dec2,task,2,punct,0.08491983701557594
+random,dec2,task,2,common word,0.029254230501402845
+random,dec2,task,2,word start,0.0712729613328523
+random,dec2,task,2,confidence (entropy),0.06736060399642976
+random,dec2,task,2,loss,
+random,dec2,task,3,position,0.33247729693348493
+random,dec2,task,3,relative position,0.28731441193858964
+random,dec2,task,3,how common,0.1715235189972995
+random,dec2,task,3,punct,0.042412486995848125
+random,dec2,task,3,common word,0.016016705827173353
+random,dec2,task,3,word start,0.021020986168100896
+random,dec2,task,3,confidence (entropy),0.10291603917303993
+random,dec2,task,3,loss,
+random,dec3,self,1,position,0.7371084480565376
+random,dec3,self,1,relative position,0.6718902634956451
+random,dec3,self,1,how common,0.3327290684694242
+random,dec3,self,1,punct,0.07890601013149356
+random,dec3,self,1,common word,0.06265813004569762
+random,dec3,self,1,word start,0.08339023951100076
+random,dec3,self,1,confidence (entropy),0.27298464469274475
+random,dec3,self,1,loss,
+random,dec3,self,2,position,0.015554668421190297
+random,dec3,self,2,relative position,0.33285836786320167
+random,dec3,self,2,how common,0.20026830469310405
+random,dec3,self,2,punct,0.06860761590722633
+random,dec3,self,2,common word,0.0519210591468919
+random,dec3,self,2,word start,0.08183185207728852
+random,dec3,self,2,confidence (entropy),0.23893235577400992
+random,dec3,self,2,loss,
+random,dec3,self,3,position,0.27038131896057
+random,dec3,self,3,relative position,0.28571123401347226
+random,dec3,self,3,how common,0.23452006087135885
+random,dec3,self,3,punct,0.006321296138907669
+random,dec3,self,3,common word,0.03150841897422603
+random,dec3,self,3,word start,0.09738296515609327
+random,dec3,self,3,confidence (entropy),0.12572925305746724
+random,dec3,self,3,loss,
+random,dec3,task,1,position,0.15696441305840417
+random,dec3,task,1,relative position,0.0026077696083002745
+random,dec3,task,1,how common,0.024672114607536752
+random,dec3,task,1,punct,0.02681858983329591
+random,dec3,task,1,common word,0.013270072431410358
+random,dec3,task,1,word start,0.01202572348121032
+random,dec3,task,1,confidence (entropy),0.12067419453023624
+random,dec3,task,1,loss,
+random,dec3,task,2,position,0.2880917798066491
+random,dec3,task,2,relative position,0.3332457684792086
+random,dec3,task,2,how common,0.08341479231749786
+random,dec3,task,2,punct,0.07835894524192877
+random,dec3,task,2,common word,0.004326342950890148
+random,dec3,task,2,word start,0.0259348147560587
+random,dec3,task,2,confidence (entropy),0.0934043932750947
+random,dec3,task,2,loss,
+random,dec3,task,3,position,0.03398771611358186
+random,dec3,task,3,relative position,0.029502058612039386
+random,dec3,task,3,how common,0.0373687332074614
+random,dec3,task,3,punct,0.03321421219465033
+random,dec3,task,3,common word,0.02530519665657525
+random,dec3,task,3,word start,0.020223499434971943
+random,dec3,task,3,confidence (entropy),0.07915576098786203
+random,dec3,task,3,loss,
