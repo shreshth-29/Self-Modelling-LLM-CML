@@ -215,7 +215,7 @@ if "h2" in args.parts:
                 rows.append({"model": name, "layer": L, "side": side(L), "factor": fac, "category": cat, "n_tokens": len(ii),
                              "self": zs[ii].mean(), "task": zt[ii].mean(), "self_minus_task": zs[ii].mean() - zt[ii].mean()})
         for fact in ["token", "kind", "pos_b", "freq_b"] + (["conf_b"] if side(L) == "dec" else []):
-            et = eta2(Z, T[fact].astype(str).values, min_n=20 if fact == "token" else 5)
+            et = eta2(Z, np.asarray(T[fact].astype(str).tolist(), dtype=object), min_n=20 if fact == "token" else 5)
             for g, idx in [("self", sidx), ("task", tidx)]:
                 erows.append({"model": name, "layer": L, "side": side(L), "fact": fact, "group": g, "eta": float(np.nanmean(et[idx.numpy()]))})
         if L in ("enc2", "dec2"):                     # top-activating examples
@@ -333,7 +333,7 @@ if "h5" in args.parts:
             evals, evecs = torch.linalg.eigh(C); pcs = (X @ evecs[:, -3:].flip(1)).cpu().numpy()
             for k in range(3):
                 for f_, v in facts.items():
-                    v = v.astype(float); r = np.corrcoef(pcs[:, k], v)[0, 1] if v.std() > 0 else np.nan
+                    v = np.asarray(v, dtype=float); r = np.corrcoef(pcs[:, k], v)[0, 1] if v.std() > 0 else np.nan
                     crows.append({"model": name, "layer": L, "group": grp, "pc": k + 1, "fact": f_, "abs_corr": abs(r)})
         print(f"  H5 {L}", flush=True)
     app(f"{OUT}/h5_dims.csv", drows); app(f"{OUT}/h5_pc_corr.csv", crows)
