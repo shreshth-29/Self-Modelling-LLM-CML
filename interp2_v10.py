@@ -237,6 +237,7 @@ if "h3" in args.parts:
     tk = pd.DataFrame({"token": hi_ok}); tk["piece"] = [sp.id_to_piece(int(i)) for i in hi_ok]
     tk["type"] = [ttype(i) for i in hi_ok]; tk["log_freq"] = np.log(cnt["hi"][hi_ok] + 1); tk["pos"] = 0
     tk = add_kinds(tk, "dec", COMMON["dec"])
+    KIND_ARR = np.asarray(tk.kind.astype(str).tolist(), dtype=object); PIECE_ARR = np.asarray(tk.piece.astype(str).tolist(), dtype=object)
     srows, arows, toprows = [], [], []
     for L in LAYERS[4:]:
         alive, sm = SELFM[L]
@@ -246,7 +247,7 @@ if "h3" in args.parts:
         Wn = (W / (W.norm(dim=0, keepdim=True) + 1e-9)).cpu()
         for g, msk in [("self", alive & sm), ("task", alive & ~sm)]:
             idx = np.nonzero(msk)[0]
-            kinds = tk.kind.values[top20[idx]].ravel()
+            kinds = KIND_ARR[top20[idx]].ravel()
             for k in KINDS:
                 srows.append({"model": name, "layer": L, "group": g, "kind": k, "share": float((kinds == k).mean()), "base": float((tk.kind == k).mean())})
             sub = Wn[:, torch.tensor(np.random.default_rng(0).choice(idx, min(400, len(idx)), replace=False))]
@@ -254,7 +255,7 @@ if "h3" in args.parts:
             arows.append({"model": name, "layer": L, "group": g, "mean_abs_cos": float((C.sum() - n_) / (n_ * (n_ - 1)))})
             for n_i in np.random.default_rng(1).choice(idx, 5, replace=False):
                 o = np.argsort(-le[n_i]); toprows.append({"model": name, "layer": L, "group": g, "neuron": int(n_i),
-                    "promotes": " ".join(tk.piece.values[o[:10]]), "suppresses": " ".join(tk.piece.values[o[-10:]])})
+                    "promotes": " ".join(PIECE_ARR[o[:10]]), "suppresses": " ".join(PIECE_ARR[o[-10:]])})
         print(f"  H3 {L}", flush=True)
     app(f"{OUT}/h3_summary.csv", srows); app(f"{OUT}/h3_alike.csv", arows); app(f"{OUT}/h3_top_tokens.csv", toprows)
 
