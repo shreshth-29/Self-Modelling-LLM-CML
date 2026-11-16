@@ -87,157 +87,160 @@ random  dec  conf_b  0.007  0.002
 === H3: what do decoder neurons write? share of each neuron's top-20 promoted tokens by kind (self vs task) ===
 kind                 Hindi word start  Hindi word-piece  Latin  common word  number  other  punct
 model   layer group                                                                              
-cont10  dec0  self              0.070             0.080  0.828        0.007   0.000  0.002  0.013
-              task              0.054             0.083  0.843        0.003   0.001  0.001  0.014
-        dec1  self              0.100             0.080  0.776        0.020   0.001  0.002  0.021
-              task              0.067             0.101  0.800        0.011   0.000  0.002  0.019
-        dec2  self              0.127             0.117  0.699        0.029   0.001  0.002  0.025
-              task              0.083             0.102  0.770        0.020   0.000  0.002  0.022
-        dec3  self              0.130             0.106  0.730        0.014   0.002  0.003  0.016
-              task              0.146             0.075  0.744        0.017   0.000  0.004  0.014
-cont40  dec0  self              0.020             0.024  0.945        0.003   0.000  0.002  0.006
-              task              0.016             0.030  0.943        0.001   0.000  0.002  0.007
-        dec1  self              0.046             0.038  0.891        0.011   0.000  0.002  0.012
-              task              0.025             0.040  0.917        0.006   0.001  0.001  0.009
-        dec2  self              0.086             0.065  0.802        0.021   0.002  0.003  0.021
-              task              0.039             0.050  0.881        0.014   0.000  0.002  0.015
-        dec3  self              0.061             0.045  0.873        0.007   0.002  0.004  0.009
-              task              0.053             0.027  0.903        0.008   0.000  0.003  0.006
-hindi45 dec0  self              0.219             0.160  0.584        0.011   0.001  0.001  0.024
-              task              0.200             0.163  0.606        0.007   0.001  0.001  0.023
-        dec1  self              0.229             0.146  0.568        0.025   0.001  0.001  0.030
-              task              0.199             0.163  0.592        0.018   0.000  0.001  0.027
-        dec2  self              0.240             0.222  0.453        0.042   0.000  0.002  0.041
-              task              0.203             0.178  0.542        0.039   0.001  0.002  0.035
-        dec3  self              0.286             0.183  0.475        0.024   0.001  0.002  0.029
-              task              0.279             0.154  0.514        0.026   0.000  0.002  0.025
-random  dec0  self              0.488             0.166  0.219        0.004   0.100  0.004  0.019
-              task              0.495             0.165  0.218        0.004   0.094  0.005  0.019
-        dec1  self              0.490             0.163  0.218        0.004   0.102  0.004  0.019
-              task              0.495             0.159  0.210        0.004   0.106  0.006  0.019
-        dec2  self              0.491             0.166  0.217        0.004   0.100  0.004  0.018
-              task              0.477             0.167  0.222        0.003   0.100  0.010  0.020
-        dec3  self              0.489             0.165  0.221        0.004   0.099  0.004  0.019
-              task              0.478             0.159  0.236        0.006   0.095  0.005  0.021
+cont40  dec0  self              0.502             0.409    0.0        0.031   0.003  0.000  0.054
+              task              0.492             0.425    0.0        0.025   0.003  0.000  0.055
+        dec1  self              0.533             0.336    0.0        0.061   0.003  0.001  0.066
+              task              0.479             0.404    0.0        0.050   0.004  0.001  0.062
+        dec2  self              0.502             0.351    0.0        0.069   0.006  0.002  0.070
+              task              0.450             0.414    0.0        0.062   0.002  0.002  0.070
+        dec3  self              0.499             0.402    0.0        0.038   0.008  0.003  0.050
+              task              0.552             0.349    0.0        0.046   0.001  0.004  0.048
+hindi45 dec0  self              0.562             0.361    0.0        0.024   0.002  0.001  0.050
+              task              0.551             0.379    0.0        0.019   0.002  0.000  0.048
+        dec1  self              0.568             0.316    0.0        0.053   0.003  0.001  0.060
+              task              0.538             0.361    0.0        0.042   0.001  0.001  0.056
+        dec2  self              0.486             0.371    0.0        0.073   0.002  0.002  0.065
+              task              0.496             0.362    0.0        0.073   0.001  0.002  0.066
+        dec3  self              0.542             0.353    0.0        0.044   0.004  0.003  0.053
+              task              0.570             0.328    0.0        0.051   0.000  0.003  0.049
 
 -- how alike are the output directions? average |cosine| between neurons' output weights (higher = push the same way)
 layer     dec0          dec1          dec2          dec3       
 group     self   task   self   task   self   task   self   task
 model                                                          
-cont10   0.034  0.035  0.035  0.035  0.037  0.036  0.035  0.036
 cont40   0.033  0.035  0.035  0.035  0.038  0.036  0.035  0.035
 hindi45  0.032  0.033  0.034  0.034  0.036  0.036  0.035  0.034
-random   0.031  0.032  0.031  0.032  0.031  0.031  0.031  0.031
 
 === H4: what breaks when 10% is switched off? average over tokens and 3 draws ===
                          d_loss  d_entropy    flip      kl
 model   scope group                                       
-cont10  all   lookalike  0.0628     0.0589  0.1099  0.0953
-              random     0.0385     0.0505  0.0954  0.0713
-              self       0.1496     0.3635  0.1547  0.1741
-        dec   lookalike  0.0284     0.0240  0.0656  0.0406
-              random     0.0153     0.0252  0.0565  0.0284
-              self       0.0834     0.2548  0.0993  0.0885
-        enc   lookalike  0.0330     0.0341  0.0854  0.0537
-              random     0.0228     0.0242  0.0745  0.0426
-              self       0.0611     0.0871  0.1099  0.0834
-cont40  all   lookalike  0.0780     0.0510  0.1218  0.1277
-              random     0.0563     0.0536  0.1058  0.0928
-              self       0.1766     0.3690  0.1638  0.2058
-        dec   lookalike  0.0361    -0.0035  0.0699  0.0549
-              random     0.0219     0.0131  0.0582  0.0359
-              self       0.0921     0.2425  0.1008  0.1011
+cont10  all   lookalike  0.0626     0.0589  0.1099  0.0953
+              random     0.0383     0.0505  0.0954  0.0713
+              self       0.1488     0.3635  0.1548  0.1741
+        dec   lookalike  0.0284     0.0240  0.0655  0.0406
+              random     0.0153     0.0252  0.0564  0.0284
+              self       0.0829     0.2548  0.0994  0.0885
+        enc   lookalike  0.0329     0.0341  0.0853  0.0537
+              random     0.0227     0.0242  0.0745  0.0426
+              self       0.0608     0.0871  0.1100  0.0834
+cont40  all   lookalike  0.0776     0.0510  0.1217  0.1277
+              random     0.0552     0.0536  0.1058  0.0928
+              self       0.1762     0.3690  0.1638  0.2058
+        dec   lookalike  0.0356    -0.0035  0.0698  0.0549
+              random     0.0210     0.0131  0.0581  0.0359
+              self       0.0919     0.2425  0.1008  0.1011
         enc   lookalike  0.0409     0.0498  0.0959  0.0720
-              random     0.0343     0.0389  0.0850  0.0570
-              self       0.0769     0.1073  0.1171  0.1011
-hindi45 all   lookalike  0.0949     0.1288  0.1473  0.1686
-              random     0.0623     0.1142  0.1302  0.1260
-              self       0.3201     0.5998  0.2183  0.3615
-        dec   lookalike  0.0412     0.0759  0.0936  0.0784
-              random     0.0280     0.0797  0.0792  0.0541
-              self       0.1853     0.4195  0.1453  0.1976
+              random     0.0342     0.0389  0.0850  0.0570
+              self       0.0767     0.1073  0.1171  0.1011
+hindi45 all   lookalike  0.0950     0.1288  0.1473  0.1686
+              random     0.0622     0.1142  0.1302  0.1260
+              self       0.3188     0.5998  0.2183  0.3615
+        dec   lookalike  0.0412     0.0759  0.0937  0.0784
+              random     0.0282     0.0797  0.0792  0.0541
+              self       0.1844     0.4195  0.1453  0.1976
         enc   lookalike  0.0525     0.0467  0.1107  0.0911
-              random     0.0338     0.0343  0.0999  0.0725
-              self       0.1195     0.1285  0.1460  0.1511
+              random     0.0335     0.0343  0.0999  0.0725
+              self       0.1191     0.1285  0.1460  0.1511
 
--- loss rise by kind: self / look-alike (ratio > 1 = the self matters more for this kind), scope = all 8 layers
+-- loss rise by kind (of the PREDICTED token): self / look-alike (ratio > 1 = the self matters more here), scope = all 8 layers
 group                     lookalike  random    self  self / look-alike
 model   kind                                                          
-cont10  Hindi word start     0.0651  0.0412  0.1393             2.1401
-        Hindi word-piece     0.0840  0.0469  0.1601             1.9056
-        Latin                0.0012  0.0253  0.1731           146.7352
-        common word          0.0504  0.0289  0.1373             2.7239
-        number               0.0649  0.0305  0.1404             2.1619
-        other                0.0593  0.0749  0.5322             8.9811
-        punct                0.0425  0.0321  0.1565             3.6848
-cont40  Hindi word start     0.0762  0.0562  0.1668             2.1905
-        Hindi word-piece     0.0956  0.0682  0.2003             2.0952
-        Latin                0.1240  0.4284  0.0053             0.0425
-        common word          0.0701  0.0464  0.1732             2.4707
-        number               0.1056  0.0503  0.1520             1.4388
-        other                0.0544  0.0742  0.3699             6.8051
-        punct                0.0608  0.0450  0.1698             2.7943
-hindi45 Hindi word start     0.1070  0.0663  0.2466             2.3041
-        Hindi word-piece     0.1005  0.0809  0.2934             2.9185
-        Latin               -0.1190  0.0224  0.2411            -2.0259
-        common word          0.0806  0.0449  0.3333             4.1344
-        number               0.1045  0.0699  0.3003             2.8746
-        other                0.0885  0.0814  1.8619            21.0389
-        punct                0.0715  0.0463  0.4646             6.4943
+cont10  Hindi word start     0.0642  0.0431  0.1395             2.1742
+        Hindi word-piece     0.0984  0.0699  0.2408             2.4488
+        Latin                0.0000  0.0000  0.0000                NaN
+        common word          0.0442  0.0177  0.1258             2.8484
+        end of sentence      0.0184  0.0186  0.0308             1.6708
+        number               0.0277  0.0100  0.4106            14.8435
+        other                0.1634  0.1401  0.0065             0.0399
+        punct                0.0358  0.0032  0.0863             2.4083
+cont40  Hindi word start     0.0844  0.0557  0.1735             2.0556
+        Hindi word-piece     0.1253  0.0834  0.2568             2.0503
+        Latin                0.0000  0.0000  0.0000                NaN
+        common word          0.0286  0.0277  0.1750             6.1258
+        end of sentence      0.0165  0.0154  0.0506             3.0710
+        number               0.0644  0.0663  0.3595             5.5833
+        other                0.1883  0.2237  0.0464             0.2462
+        punct                0.0777  0.0527  0.0692             0.8905
+hindi45 Hindi word start     0.0922  0.0628  0.3012             3.2657
+        Hindi word-piece     0.1579  0.1154  0.4747             3.0061
+        Latin                0.0000  0.0000  0.0000                NaN
+        common word          0.0683  0.0226  0.2371             3.4733
+        end of sentence      0.0351  0.0122  0.3288             9.3734
+        number              -0.0110 -0.0158  0.6150           -55.9078
+        other                0.1118  0.1992  0.1858             1.6615
+        punct                0.0754  0.0555  0.2682             3.5572
 
--- loss rise by pos_b: self / look-alike (ratio > 1 = the self matters more for this kind), scope = all 8 layers
+-- loss rise by pos_b (of the position): self / look-alike (ratio > 1 = the self matters more here), scope = all 8 layers
 group          lookalike  random    self  self / look-alike
 model   pos_b                                              
-cont10  0         0.0702  0.0319  0.1455             2.0740
-        1-2       0.0661  0.0341  0.1482             2.2413
-        11-20     0.0704  0.0451  0.1485             2.1091
-        21+       0.0514  0.0323  0.1526             2.9694
-        3-5       0.0726  0.0420  0.1349             1.8576
-        6-10      0.0754  0.0463  0.1525             2.0239
-cont40  0         0.1228  0.0585  0.1518             1.2359
-        1-2       0.0875  0.0596  0.1987             2.2709
-        11-20     0.0861  0.0623  0.1867             2.1670
-        21+       0.0666  0.0491  0.1687             2.5310
-        3-5       0.0895  0.0653  0.1802             2.0141
-        6-10      0.0787  0.0605  0.1759             2.2357
-hindi45 0         0.1132  0.0791  0.3551             3.1356
-        1-2       0.1031  0.0692  0.3075             2.9836
-        11-20     0.0912  0.0595  0.3118             3.4171
-        21+       0.0894  0.0606  0.3205             3.5836
-        3-5       0.1132  0.0619  0.3125             2.7603
-        6-10      0.1016  0.0671  0.3379             3.3264
+cont10  0         0.0698  0.0318  0.1448             2.0738
+        1-2       0.0659  0.0337  0.1470             2.2317
+        11-20     0.0705  0.0449  0.1468             2.0825
+        21+       0.0512  0.0322  0.1523             2.9755
+        3-5       0.0725  0.0420  0.1338             1.8454
+        6-10      0.0752  0.0461  0.1518             2.0194
+cont40  0         0.1225  0.0583  0.1512             1.2336
+        1-2       0.0872  0.0594  0.1981             2.2716
+        11-20     0.0860  0.0594  0.1861             2.1637
+        21+       0.0661  0.0485  0.1685             2.5494
+        3-5       0.0889  0.0647  0.1798             2.0216
+        6-10      0.0783  0.0600  0.1752             2.2384
+hindi45 0         0.1128  0.0788  0.3536             3.1353
+        1-2       0.1030  0.0690  0.3051             2.9615
+        11-20     0.0931  0.0605  0.3096             3.3240
+        21+       0.0892  0.0602  0.3198             3.5855
+        3-5       0.1110  0.0609  0.3117             2.8066
+        6-10      0.1004  0.0664  0.3360             3.3453
 
--- loss rise by freq_b: self / look-alike (ratio > 1 = the self matters more for this kind), scope = all 8 layers
+-- loss rise by freq_b (of the PREDICTED token): self / look-alike (ratio > 1 = the self matters more here), scope = all 8 layers
 group                  lookalike  random    self  self / look-alike
 model   freq_b                                                     
-cont10  common            0.0453  0.0288  0.1543             3.4084
-        commonest 20%     0.0480  0.0339  0.1514             3.1555
-        middle            0.0733  0.0450  0.1455             1.9855
-        rare              0.0831  0.0483  0.1617             1.9444
-        rarest 20%        0.0642  0.0364  0.1353             2.1078
-cont40  common            0.0656  0.0518  0.1681             2.5641
-        commonest 20%     0.0690  0.0470  0.1825             2.6442
-        middle            0.0865  0.0629  0.1889             2.1834
-        rare              0.0836  0.0609  0.1812             2.1667
-        rarest 20%        0.0854  0.0590  0.1622             1.9006
-hindi45 common            0.0790  0.0459  0.3769             4.7687
-        commonest 20%     0.0728  0.0486  0.4180             5.7432
-        middle            0.1062  0.0690  0.2818             2.6534
-        rare              0.1218  0.0776  0.2571             2.1107
-        rarest 20%        0.0947  0.0703  0.2668             2.8168
+cont10  common            0.0476  0.0229  0.1329             2.7925
+        commonest 20%     0.0563  0.0284  0.1074             1.9067
+        middle            0.0715  0.0478  0.1516             2.1218
+        rare              0.0656  0.0460  0.1686             2.5687
+        rarest 20%        0.0722  0.0466  0.1834             2.5390
+cont40  common            0.0625  0.0452  0.1941             3.1052
+        commonest 20%     0.0392  0.0417  0.1127             2.8705
+        middle            0.1043  0.0631  0.2069             1.9835
+        rare              0.0871  0.0644  0.1691             1.9406
+        rarest 20%        0.0949  0.0614  0.1982             2.0882
+hindi45 common            0.0675  0.0504  0.2533             3.7513
+        commonest 20%     0.0911  0.0416  0.2491             2.7350
+        middle            0.1020  0.0718  0.3537             3.4690
+        rare              0.1103  0.0786  0.3302             2.9943
+        rarest 20%        0.1040  0.0683  0.4075             3.9187
 
--- loss rise by conf_b: self / look-alike (ratio > 1 = the self matters more for this kind), scope = all 8 layers
+-- loss rise by conf_b (of the position): self / look-alike (ratio > 1 = the self matters more here), scope = all 8 layers
 group              lookalike  random    self  self / look-alike
 model   conf_b                                                 
-cont10  confident     0.0322  0.0202  0.0727             2.2545
-        medium        0.0535  0.0328  0.1316             2.4576
-        unsure        0.1025  0.0624  0.2447             2.3858
-cont40  confident     0.0379  0.0247  0.0843             2.2254
-        medium        0.0695  0.0462  0.1659             2.3877
-        unsure        0.1267  0.0981  0.2795             2.2067
-hindi45 confident     0.0401  0.0225  0.1772             4.4217
-        medium        0.0817  0.0491  0.2859             3.5004
-        unsure        0.1630  0.1152  0.4973             3.0512
+cont10  confident     0.0322  0.0201  0.0726             2.2518
+        medium        0.0535  0.0327  0.1313             2.4547
+        unsure        0.1022  0.0622  0.2424             2.3719
+cont40  confident     0.0379  0.0247  0.0842             2.2186
+        medium        0.0693  0.0460  0.1655             2.3864
+        unsure        0.1256  0.0948  0.2789             2.2209
+hindi45 confident     0.0400  0.0225  0.1766             4.4102
+        medium        0.0810  0.0488  0.2848             3.5142
+        unsure        0.1638  0.1152  0.4948             3.0209
+
+=== H7: push 25% of each decoder layer along the 'confident minus unsure' direction (x = how far, 1 = the natural gap) ===
+-- change in uncertainty (entropy; negative = MORE confident), average of 3 draws
+alpha               -2.0   -1.0   -0.5    0.5    1.0    2.0
+model   group                                              
+hindi45 lookalike  0.030  0.013  0.006 -0.004 -0.008 -0.010
+        random     0.008  0.002  0.000  0.001  0.002  0.008
+        self      -0.369 -0.281 -0.167  0.228  0.525  1.350
+-- change in loss
+Empty DataFrame
+Columns: []
+Index: []
+-- change in chrF (200 devtest sentences, pushes of -2x and +2x)
+alpha              -2.0   2.0
+model   group                
+hindi45 lookalike  0.21 -0.18
+        random     0.27  0.05
+        self       0.15 -1.01
 
 === H5: how many dimensions does the activity really use? (participation ratio; per 100 neurons so self and task compare fairly) ===
 layer           dec0   dec1   dec2   dec3   enc0   enc1   enc2   enc3

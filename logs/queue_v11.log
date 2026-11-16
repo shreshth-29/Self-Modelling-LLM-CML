@@ -1,0 +1,6 @@
+nohup: ignoring input
+[32mActivated conda/uv virtual environment at [36m/venv/main[0m
+Mon 05:59 queue started
+Mon 05:59 START    interp3a_v10.ipynb
+Mon 05:59 START    interp3b_v10.ipynb
+Mon 06:21 FINISHED interp3b_v10.ipynb

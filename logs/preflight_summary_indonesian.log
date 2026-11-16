@@ -1,0 +1,38 @@
+=== train (_pre_indo): held-out loss on the trained language MINUS the untouched model's, same start and seed ===
+average over starts and seeds; step 0 = right after the intervention, before any training
+step                           0       20
+family  mode   dose group                
+distant lesion 0.5  look  -0.1792 -0.2891
+                    task   0.0855 -0.2298
+               1.0  self  -0.1770 -0.4362
+
+--- self vs task: in how many runs is the self version worse (one run = one start x one seed)
+Empty DataFrame
+Columns: []
+Index: []
+
+--- self vs look: in how many runs is the self version worse (one run = one start x one seed)
+Empty DataFrame
+Columns: []
+Index: []
+
+--- untouched model (and the fresh untrained model, if run) at step 20: loss and chrF, average over seeds
+            loss   chrf  seeds
+start                         
+distant40  6.485  3.791      1
+fresh      8.872  0.000      1
+
+--- final score (chrF) at step 20: average, and change vs the untouched model
+                           chrf  vs_untouched  runs
+family  mode   dose group                          
+distant lesion 0.5  look   2.54         -1.25     1
+                    task   3.16         -0.64     1
+               1.0  self   2.09         -1.70     1
+
+--- the model's ORIGINAL languages (300 val pairs each): loss rise right after the intervention (lost), and at the end vs the intact model
+                            lost  after_vs_intact
+family  mode   dose group                        
+distant lesion 0.5  look   0.316            0.739
+                    task   0.257            0.596
+               1.0  self   2.299            3.076
+report in /workspace/shreshth/analysis/v11/_pre_indo

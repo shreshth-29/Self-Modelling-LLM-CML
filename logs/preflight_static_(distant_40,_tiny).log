@@ -1,0 +1,9 @@
+distant phase 40 (hi): intact loss hi 1.097, zh 5.921, ar 5.552 | chrF hi 53.4, zh 1.8, ar 16.5
+  count-matched n per layer (n_max = smaller group): enc0:1190 enc1:971 enc2:1036 enc3:1204 dec0:1203 dec1:920 dec2:920 dec3:997
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.309     0.512     2.244     0.260     1.240
+silence     0.163     0.340     1.387     0.157     0.582
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 27s
+done

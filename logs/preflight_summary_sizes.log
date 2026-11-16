@@ -1,0 +1,37 @@
+=== module sizes per layer, averaged over the checkpoints listed (phases <= 60) ===
+self_pct = % of the layer's working neurons in the self; n_max = size of the smaller group (the count-matched lesion size)
+
+--- self found on: Hindi only
+               self_pct  sd  n_self  n_task   n_max  working  checkpoints
+family  layer                                                            
+distant dec0       73.8 NaN  1890.0   670.0   670.0   2560.0            1
+        dec1       53.0 NaN  1358.0  1202.0  1202.0   2560.0            1
+        dec2       47.0 NaN  1203.0  1357.0  1203.0   2560.0            1
+        dec3       69.8 NaN  1788.0   772.0   772.0   2560.0            1
+        enc0       46.5 NaN  1190.0  1370.0  1190.0   2560.0            1
+        enc1       37.9 NaN   971.0  1589.0   971.0   2560.0            1
+        enc2       40.5 NaN  1036.0  1524.0  1036.0   2560.0            1
+        enc3       53.0 NaN  1356.0  1204.0  1204.0   2560.0            1
+
+average of the 8 layers:
+         mean  std  count
+family                   
+distant  52.7  NaN      1
+
+--- self found on: all the model's languages
+               self_pct  sd  n_self  n_task   n_max  working  checkpoints
+family  layer                                                            
+distant dec0       53.0 NaN  1357.0  1203.0  1203.0   2560.0            1
+        dec1       35.9 NaN   920.0  1640.0   920.0   2560.0            1
+        dec2       35.9 NaN   920.0  1640.0   920.0   2560.0            1
+        dec3       61.1 NaN  1563.0   997.0   997.0   2560.0            1
+        enc0       46.5 NaN  1190.0  1370.0  1190.0   2560.0            1
+        enc1       37.9 NaN   971.0  1589.0   971.0   2560.0            1
+        enc2       40.5 NaN  1036.0  1524.0  1036.0   2560.0            1
+        enc3       53.0 NaN  1356.0  1204.0  1204.0   2560.0            1
+
+average of the 8 layers:
+         mean  std  count
+family                   
+distant  45.5  NaN      1
+report in /workspace/shreshth/analysis/v11/_pre_sizes

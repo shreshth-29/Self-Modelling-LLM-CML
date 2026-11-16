@@ -1,0 +1,48 @@
+=== static (no training): loss rise on the model's languages; one comparison = one checkpoint x one scope x one draw (average of the languages) ===
+
+--- self vs task (count-matched)
+ family        scope    mode dose   self   task  ratio self_worse  sign_p
+distant all 8 layers  lesion  0.5 0.5120 0.2604 1.9659        1/1  0.5000
+distant all 8 layers  lesion  1.0 2.2437 1.2399 1.8096        1/1  0.5000
+distant all 8 layers silence  0.5 0.3400 0.1571 2.1638        1/1  0.5000
+distant all 8 layers silence  1.0 1.3867 0.5819 2.3831        1/1  0.5000
+distant    one layer  lesion  0.5 0.0302 0.0305 0.9887        4/8  0.6367
+distant    one layer  lesion  1.0 0.1062 0.0853 1.2443        5/8  0.3633
+distant    one layer silence  0.5 0.0190 0.0168 1.1314        4/8  0.6367
+distant    one layer silence  1.0 0.0439 0.0395 1.1101        5/8  0.3633
+
+--- self vs look (count-matched)
+ family        scope    mode dose   self   look  ratio self_worse  sign_p
+distant all 8 layers  lesion  0.5 0.5120 0.3085 1.6594        1/1  0.5000
+distant all 8 layers silence  0.5 0.3400 0.1632 2.0840        1/1  0.5000
+distant    one layer  lesion  0.5 0.0302 0.0324 0.9306        2/8  0.9648
+distant    one layer silence  0.5 0.0190 0.0167 1.1367        3/8  0.8555
+
+--- chrF drop (points), all 8 layers
+group                 look   self  task
+family  mode    dose                   
+distant lesion  0.5   1.22   8.69  0.37
+                1.0    NaN  19.62  8.63
+        silence 0.5   1.87   9.98  0.55
+                1.0    NaN  19.59  3.15
+
+--- per layer (dose 1.0): loss rise self / task
+group                    self    task
+family  mode    scope                
+distant lesion  dec0   0.2285  0.2134
+                dec1   0.0214  0.0599
+                dec2   0.1001  0.0510
+                dec3   0.1384  0.1162
+                enc0   0.2265  0.0975
+                enc1   0.0561  0.0180
+                enc2   0.0244  0.0530
+                enc3   0.0539  0.0736
+        silence dec0   0.1085  0.0943
+                dec1  -0.0084  0.0330
+                dec2   0.0342  0.0122
+                dec3   0.1037  0.0257
+                enc0   0.0857  0.0666
+                enc1   0.0297  0.0180
+                enc2  -0.0025  0.0266
+                enc3   0.0000  0.0399
+report in /workspace/shreshth/analysis/v11/_pre_static

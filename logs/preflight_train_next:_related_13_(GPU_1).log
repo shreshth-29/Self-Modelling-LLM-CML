@@ -1,0 +1,16 @@
+start model: related13 = v8_indic_continual_s0 phase 13 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1416, task 1144 -> count-matched n_max 1144
+  enc1: working 2560, self 1109, task 1451 -> count-matched n_max 1109
+  enc2: working 2560, self 1223, task 1337 -> count-matched n_max 1223
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1603, task 957 -> count-matched n_max 957
+  dec1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  dec2: working 2560, self 1190, task 1370 -> count-matched n_max 1190
+  dec3: working 2560, self 1862, task 698 -> count-matched n_max 698
+  self found in 6s
+  next language = gu (phase 14 of the normal schedule)
+runs to do in this call: 3 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0']; seeds [0]; finished runs are skipped)
+  related13 | next | none    | none      | seed 0 | 0 neurons | loss 4.294 -> 3.374 | chrF 33.0 -> 35.6 | 9s | left in this call: 2 runs, about 0 min
+  related13 | next | lesion  | self@1.0  | seed 0 | 8759 neurons | loss 6.186 -> 4.114 | chrF 1.7 -> 14.0 | 9s | left in this call: 1 runs, about 0 min
+  related13 | next | lesion  | task@1.0  | seed 0 | 8759 neurons | loss 4.899 -> 3.525 | chrF 20.1 -> 30.5 | 8s | left in this call: 0 runs, about 0 min
+done

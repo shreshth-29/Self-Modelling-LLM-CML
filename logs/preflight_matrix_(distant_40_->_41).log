@@ -1,0 +1,9 @@
+  distant enc0: self 1190/2560 | persistence self 0.860 vs task 0.815
+  distant enc1: self 971/2560 | persistence self 0.799 vs task 0.712
+  distant enc2: self 1036/2560 | persistence self 0.731 vs task 0.624
+  distant enc3: self 1356/2560 | persistence self 0.680 vs task 0.577
+  distant dec0: self 1357/2560 | persistence self 0.574 vs task 0.523
+  distant dec1: self 920/2560 | persistence self 0.476 vs task 0.379
+  distant dec2: self 920/2560 | persistence self 0.412 vs task 0.345
+  distant dec3: self 1563/2560 | persistence self 0.397 vs task 0.383
+done

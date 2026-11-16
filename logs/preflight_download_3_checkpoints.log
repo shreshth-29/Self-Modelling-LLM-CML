@@ -1,0 +1,9 @@
+/venv/main/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+v4b_continual_s0 40 ok
+v4b_continual_s0 41 ok
+v8_indic_continual_s0 13 ok
+v4b_continual_s0 phases on HF: 87 from [0] to [86]
+v4b_only_hi_s0 phases on HF: 91 from [0] to [90]
+v6b_mixed_s0 phases on HF: 61 from [0] to [60]
+v8_indic_continual_s0 phases on HF: 17 from [0] to [16]

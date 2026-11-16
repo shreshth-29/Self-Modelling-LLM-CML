@@ -1,0 +1,31 @@
+/venv/main/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+Generating test split:   0%|          | 0/2000 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 2000/2000 [00:00<00:00, 349846.03 examples/s]
+Generating train split:   0%|          | 0/1000000 [00:00<?, ? examples/s]Generating train split:  11%|█         | 107000/1000000 [00:00<00:00, 1063023.68 examples/s]Generating train split:  27%|██▋       | 272000/1000000 [00:00<00:00, 1402268.78 examples/s]Generating train split:  59%|█████▊    | 587000/1000000 [00:00<00:00, 2126485.08 examples/s]Generating train split:  87%|████████▋ | 870000/1000000 [00:00<00:00, 2391050.46 examples/s]Generating train split: 100%|██████████| 1000000/1000000 [00:00<00:00, 2162140.54 examples/s]
+Generating validation split:   0%|          | 0/2000 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 2000/2000 [00:00<00:00, 804045.62 examples/s]
+indonesian: 1,000,000 raw -> 836,247 clean
+wrote data/newtask/indonesian/val.jsonl 1,000
+wrote data/newtask/indonesian/train.jsonl 300,000
+Generating dev split: 0 examples [00:00, ? examples/s]Generating dev split: 997 examples [00:00, 176936.66 examples/s]
+Generating devtest split: 0 examples [00:00, ? examples/s]Generating devtest split: 1012 examples [00:00, 279032.06 examples/s]
+Generating dev split: 0 examples [00:00, ? examples/s]Generating dev split: 997 examples [00:00, 174209.34 examples/s]
+Generating devtest split: 0 examples [00:00, ? examples/s]Generating devtest split: 1012 examples [00:00, 136786.94 examples/s]
+wrote data/newtask/indonesian/test.jsonl 200
+Generating train split:   0%|          | 0/67349 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 67349/67349 [00:00<00:00, 2341860.01 examples/s]
+Generating validation split:   0%|          | 0/872 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 872/872 [00:00<00:00, 518637.70 examples/s]
+Generating test split:   0%|          | 0/1821 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1821/1821 [00:00<00:00, 865868.68 examples/s]
+wrote data/newtask/sentiment/val.jsonl 1,000
+wrote data/newtask/sentiment/train.jsonl 66,336
+wrote data/newtask/sentiment/test.jsonl 872
+Generating train split:   0%|          | 0/120000 [00:00<?, ? examples/s]Generating train split:  71%|███████   | 85000/120000 [00:00<00:00, 839386.16 examples/s]Generating train split: 100%|██████████| 120000/120000 [00:00<00:00, 960113.54 examples/s]
+Generating test split:   0%|          | 0/7600 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 7600/7600 [00:00<00:00, 900981.07 examples/s]
+wrote data/newtask/topic/val.jsonl 1,000
+wrote data/newtask/topic/train.jsonl 119,000
+wrote data/newtask/topic/test.jsonl 1,000
+wrote data/newtask/addition/train.jsonl 300,000
+wrote data/newtask/addition/val.jsonl 1,000
+wrote data/newtask/addition/test.jsonl 500
+indonesian  example: '"We now have 4-month-old mice that are non-diabetic that used to be di' -> '“Saat ini ada mencit umur 4 bulan nondia'
+sentiment   example: "it 's a charming and often affecting journey ." -> 'positive'
+topic       example: 'At wireless show, services take center stage Games, graphic ring tones' -> 'science'
+addition    example: '1 + 5' -> '6'

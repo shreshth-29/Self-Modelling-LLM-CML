@@ -1,0 +1,15 @@
+start model: distant40 = v4b_continual_s0 phase 40 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1190, task 1370 -> count-matched n_max 1190
+  enc1: working 2560, self 971, task 1589 -> count-matched n_max 971
+  enc2: working 2560, self 1036, task 1524 -> count-matched n_max 1036
+  enc3: working 2560, self 1356, task 1204 -> count-matched n_max 1204
+  dec0: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec1: working 2560, self 920, task 1640 -> count-matched n_max 920
+  dec2: working 2560, self 920, task 1640 -> count-matched n_max 920
+  dec3: working 2560, self 1563, task 997 -> count-matched n_max 997
+  self found in 6s
+  next language = zh (phase 41 of the normal schedule)
+runs to do in this call: 2 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0']; seeds [0]; finished runs are skipped)
+  distant40 | next | freeze  | self@1.0  | seed 0 | 8441 neurons | loss 6.097 -> 4.743 | chrF 3.0 -> 5.4 | 10s | left in this call: 1 runs, about 0 min
+  distant40 | next | freeze  | task@1.0  | seed 0 | 8441 neurons | loss 6.097 -> 4.683 | chrF 3.0 -> 6.1 | 9s | left in this call: 0 runs, about 0 min
+done
