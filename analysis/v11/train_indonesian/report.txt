@@ -1,0 +1,148 @@
+=== train (train_indonesian): held-out loss on the trained language MINUS the untouched model's, same start and seed ===
+average over starts and seeds; step 0 = right after the intervention, before any training
+step                          0       100     300     1500
+family  mode    dose group                                
+distant lesion  0.5  look   0.0873 -0.0209 -0.0061  0.0112
+                     self   0.0931  0.0355  0.0359  0.0210
+                     task  -0.2008 -0.0206 -0.0093  0.0091
+                1.0  self   0.2077  0.1696  0.1076  0.0533
+                     task   0.6265 -0.0266 -0.0021  0.0278
+        silence 0.5  look   0.0792  0.0323  0.0427  0.0232
+                     self   0.0519  0.1084  0.0833  0.0329
+                     task  -0.1727  0.0358  0.0390  0.0228
+                1.0  self   0.0620  0.2806  0.2152  0.0843
+                     task   0.5855  0.1103  0.0974  0.0563
+related lesion  0.5  look  -0.3157 -0.0517 -0.0068  0.0066
+                     self  -0.0538 -0.0140  0.0238  0.0143
+                     task  -0.0872 -0.0425 -0.0077  0.0056
+                1.0  self  -0.6320  0.0317  0.0661  0.0384
+                     task   0.0306 -0.0423  0.0005  0.0171
+        silence 0.5  look  -0.3090  0.0281  0.0352  0.0197
+                     self  -0.3896  0.0448  0.0682  0.0273
+                     task  -0.2043  0.0339  0.0343  0.0174
+                1.0  self  -1.0133  0.1655  0.1713  0.0668
+                     task  -0.3741  0.1082  0.0876  0.0439
+
+--- self vs task: in how many runs is the self version worse (one run = one start x one seed)
+ family    mode dose  step  mean_gap self_worse  sign_p
+distant  lesion  0.5     0    0.2939        4/5  0.1875
+distant  lesion  0.5   100    0.0562        5/5  0.0312
+distant  lesion  0.5   300    0.0452        5/5  0.0312
+distant  lesion  0.5  1500    0.0119        5/5  0.0312
+distant  lesion  1.0     0   -0.4188        2/5  0.8125
+distant  lesion  1.0   100    0.1961        5/5  0.0312
+distant  lesion  1.0   300    0.1097        5/5  0.0312
+distant  lesion  1.0  1500    0.0254        5/5  0.0312
+distant silence  0.5     0    0.2246        5/5  0.0312
+distant silence  0.5   100    0.0726        5/5  0.0312
+distant silence  0.5   300    0.0443        5/5  0.0312
+distant silence  0.5  1500    0.0101        5/5  0.0312
+distant silence  1.0     0   -0.5236        2/5  0.8125
+distant silence  1.0   100    0.1702        5/5  0.0312
+distant silence  1.0   300    0.1177        5/5  0.0312
+distant silence  1.0  1500    0.0280        5/5  0.0312
+related  lesion  0.5     0    0.0334        3/5  0.5000
+related  lesion  0.5   100    0.0286        5/5  0.0312
+related  lesion  0.5   300    0.0316        5/5  0.0312
+related  lesion  0.5  1500    0.0087        5/5  0.0312
+related  lesion  1.0     0   -0.6626        0/5  1.0000
+related  lesion  1.0   100    0.0739        5/5  0.0312
+related  lesion  1.0   300    0.0656        5/5  0.0312
+related  lesion  1.0  1500    0.0213        5/5  0.0312
+related silence  0.5     0   -0.1853        1/5  0.9688
+related silence  0.5   100    0.0109        4/5  0.1875
+related silence  0.5   300    0.0339        5/5  0.0312
+related silence  0.5  1500    0.0099        5/5  0.0312
+related silence  1.0     0   -0.6393        0/5  1.0000
+related silence  1.0   100    0.0573        5/5  0.0312
+related silence  1.0   300    0.0836        5/5  0.0312
+related silence  1.0  1500    0.0229        5/5  0.0312
+
+--- self vs look: in how many runs is the self version worse (one run = one start x one seed)
+ family    mode dose  step  mean_gap self_worse  sign_p
+distant  lesion  0.5     0    0.0057        4/5  0.1875
+distant  lesion  0.5   100    0.0565        5/5  0.0312
+distant  lesion  0.5   300    0.0420        5/5  0.0312
+distant  lesion  0.5  1500    0.0098        5/5  0.0312
+distant silence  0.5     0   -0.0273        2/5  0.8125
+distant silence  0.5   100    0.0761        5/5  0.0312
+distant silence  0.5   300    0.0406        5/5  0.0312
+distant silence  0.5  1500    0.0097        5/5  0.0312
+related  lesion  0.5     0    0.2619        4/5  0.1875
+related  lesion  0.5   100    0.0378        5/5  0.0312
+related  lesion  0.5   300    0.0306        5/5  0.0312
+related  lesion  0.5  1500    0.0077        5/5  0.0312
+related silence  0.5     0   -0.0806        2/5  0.8125
+related silence  0.5   100    0.0167        3/5  0.5000
+related silence  0.5   300    0.0330        5/5  0.0312
+related silence  0.5  1500    0.0076        5/5  0.0312
+
+--- untouched model (and the fresh untrained model, if run) at step 1500: loss and chrF, average over seeds
+            loss    chrf  seeds
+start                          
+distant20  1.209  48.313      5
+fresh      1.805  23.130      5
+related16  1.256  47.709      5
+
+--- final score (chrF) at step 1500: average, and change vs the untouched model
+                             chrf  vs_untouched  runs
+family  mode    dose group                           
+distant lesion  0.5  look   48.34          0.02     5
+                     self   47.50         -0.81     5
+                     task   48.26         -0.05     5
+                1.0  self   45.69         -2.62     5
+                     task   47.85         -0.46     5
+        silence 0.5  look   47.59         -0.72     5
+                     self   46.89         -1.42     5
+                     task   47.56         -0.75     5
+                1.0  self   44.37         -3.94     5
+                     task   46.64         -1.67     5
+related lesion  0.5  look   47.30         -0.40     5
+                     self   46.71         -1.00     5
+                     task   47.93          0.22     5
+                1.0  self   46.27         -1.44     5
+                     task   47.69         -0.02     5
+        silence 0.5  look   47.10         -0.61     5
+                     self   46.49         -1.22     5
+                     task   47.09         -0.62     5
+                1.0  self   44.50         -3.20     5
+                     task   46.12         -1.58     5
+
+--- final chrF: self version lower than the comparison?
+ family    mode dose   vs  chrf_lower_by self_lower  sign_p
+distant  lesion  0.5 task          0.759        5/5   0.031
+distant  lesion  1.0 task          2.162        5/5   0.031
+distant silence  0.5 task          0.668        5/5   0.031
+distant silence  1.0 task          2.273        5/5   0.031
+related  lesion  0.5 task          1.213        5/5   0.031
+related  lesion  1.0 task          1.426        5/5   0.031
+related silence  0.5 task          0.601        4/5   0.188
+related silence  1.0 task          1.620        5/5   0.031
+distant  lesion  0.5 look          0.837        5/5   0.031
+distant silence  0.5 look          0.700        5/5   0.031
+related  lesion  0.5 look          0.591        5/5   0.031
+related silence  0.5 look          0.607        4/5   0.188
+
+--- the model's ORIGINAL languages (300 val pairs each): loss rise right after the intervention (lost), and at the end vs the intact model
+                             lost  after_vs_intact
+family  mode    dose group                        
+distant lesion  0.5  look   0.257            5.664
+                     self   0.482            5.395
+                     task   0.232            5.688
+                1.0  self   2.040            5.190
+                     task   0.991            5.451
+        silence 0.5  look   0.163            5.630
+                     self   0.347            5.410
+                     task   0.152            5.623
+                1.0  self   1.744            5.186
+                     task   0.757            5.499
+related lesion  0.5  look   0.276            7.054
+                     self   0.559            6.999
+                     task   0.242            7.003
+                1.0  self   2.331            6.886
+                     task   0.750            6.929
+        silence 0.5  look   0.140            7.086
+                     self   0.466            6.983
+                     task   0.147            7.042
+                1.0  self   2.036            6.818
+                     task   0.448            6.935

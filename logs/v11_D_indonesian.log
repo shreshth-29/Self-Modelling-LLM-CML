@@ -47,3 +47,169 @@ runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1
   related16 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.970 -> 1.257 | chrF 5.2 -> 46.9 | 104s | left in this call: 5 runs, about 9 min
   related16 | indonesian | lesion  | self@1.0  | seed 0 | 8685 neurons | loss 9.305 -> 1.303 | chrF 3.9 -> 46.7 | 103s | left in this call: 4 runs, about 7 min
   related16 | indonesian | lesion  | task@1.0  | seed 0 | 8685 neurons | loss 10.022 -> 1.276 | chrF 4.8 -> 47.2 | 102s | left in this call: 3 runs, about 5 min
+  related16 | indonesian | lesion  | self@0.5  | seed 0 | 4341 neurons | loss 10.385 -> 1.271 | chrF 5.4 -> 46.2 | 103s | left in this call: 2 runs, about 3 min
+  related16 | indonesian | lesion  | task@0.5  | seed 0 | 4341 neurons | loss 9.648 -> 1.265 | chrF 5.0 -> 46.9 | 102s | left in this call: 1 runs, about 2 min
+  related16 | indonesian | lesion  | look@0.5  | seed 0 | 4341 neurons | loss 9.576 -> 1.262 | chrF 5.0 -> 46.9 | 107s | left in this call: 0 runs, about 0 min
+done
+start model: related16 = v8_indic_continual_s0 phase 16 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1412, task 1148 -> count-matched n_max 1148
+  enc1: working 2560, self 1101, task 1459 -> count-matched n_max 1101
+  enc2: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  enc3: working 2560, self 1258, task 1302 -> count-matched n_max 1258
+  dec0: working 2560, self 1594, task 966 -> count-matched n_max 966
+  dec1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  dec2: working 2560, self 1174, task 1386 -> count-matched n_max 1174
+  dec3: working 2560, self 1808, task 752 -> count-matched n_max 752
+  self found in 7s
+runs to do in this call: 5 (mode silence; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related16 | indonesian | silence | self@1.0  | seed 0 | 8685 neurons | loss 8.907 -> 1.338 | chrF 3.9 -> 44.2 | 110s | left in this call: 4 runs, about 7 min
+  related16 | indonesian | silence | task@1.0  | seed 0 | 8685 neurons | loss 9.607 -> 1.302 | chrF 4.7 -> 46.2 | 104s | left in this call: 3 runs, about 5 min
+  related16 | indonesian | silence | self@0.5  | seed 0 | 4341 neurons | loss 9.993 -> 1.289 | chrF 4.8 -> 45.4 | 105s | left in this call: 2 runs, about 4 min
+  related16 | indonesian | silence | task@0.5  | seed 0 | 4341 neurons | loss 9.622 -> 1.280 | chrF 5.0 -> 46.2 | 104s | left in this call: 1 runs, about 2 min
+  related16 | indonesian | silence | look@0.5  | seed 0 | 4341 neurons | loss 9.615 -> 1.279 | chrF 4.7 -> 46.3 | 104s | left in this call: 0 runs, about 0 min
+done
+runs to do in this call: 1 (mode lesion; conditions ['none']; seeds [0]; finished runs are skipped)
+  fresh | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.537 -> 1.836 | chrF 0.6 -> 21.3 | 103s | left in this call: 0 runs, about 0 min
+done
+start model: distant20 = v4b_continual_s0 phase 20 (last trained on zh) | languages hi, zh, ar
+  enc0: working 2560, self 1201, task 1359 -> count-matched n_max 1201
+  enc1: working 2560, self 1116, task 1444 -> count-matched n_max 1116
+  enc2: working 2560, self 1151, task 1409 -> count-matched n_max 1151
+  enc3: working 2560, self 1464, task 1096 -> count-matched n_max 1096
+  dec0: working 2560, self 1410, task 1150 -> count-matched n_max 1150
+  dec1: working 2560, self 1033, task 1527 -> count-matched n_max 1033
+  dec2: working 2560, self 1044, task 1516 -> count-matched n_max 1044
+  dec3: working 2560, self 1409, task 1151 -> count-matched n_max 1151
+  self found in 6s
+runs to do in this call: 24 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2, 3, 4]; finished runs are skipped)
+  distant20 | indonesian | none    | none      | seed 1 | 0 neurons | loss 10.669 -> 1.207 | chrF 5.2 -> 48.9 | 103s | left in this call: 23 runs, about 40 min
+  distant20 | indonesian | lesion  | self@1.0  | seed 1 | 8942 neurons | loss 11.150 -> 1.260 | chrF 3.2 -> 46.7 | 102s | left in this call: 22 runs, about 38 min
+  distant20 | indonesian | lesion  | task@1.0  | seed 1 | 8942 neurons | loss 11.797 -> 1.233 | chrF 4.2 -> 48.1 | 103s | left in this call: 21 runs, about 36 min
+  distant20 | indonesian | lesion  | self@0.5  | seed 1 | 4471 neurons | loss 10.907 -> 1.228 | chrF 3.9 -> 47.9 | 102s | left in this call: 20 runs, about 34 min
+  distant20 | indonesian | lesion  | task@0.5  | seed 1 | 4471 neurons | loss 10.534 -> 1.214 | chrF 4.9 -> 48.5 | 102s | left in this call: 19 runs, about 33 min
+  distant20 | indonesian | lesion  | look@0.5  | seed 1 | 4471 neurons | loss 10.731 -> 1.219 | chrF 4.7 -> 48.4 | 103s | left in this call: 18 runs, about 31 min
+  distant20 | indonesian | none    | none      | seed 2 | 0 neurons | loss 10.669 -> 1.207 | chrF 5.2 -> 47.0 | 102s | left in this call: 17 runs, about 29 min
+  distant20 | indonesian | lesion  | self@1.0  | seed 2 | 8942 neurons | loss 10.943 -> 1.258 | chrF 3.2 -> 43.3 | 103s | left in this call: 16 runs, about 27 min
+  distant20 | indonesian | lesion  | task@1.0  | seed 2 | 8942 neurons | loss 11.825 -> 1.234 | chrF 4.3 -> 47.0 | 102s | left in this call: 15 runs, about 26 min
+  distant20 | indonesian | lesion  | self@0.5  | seed 2 | 4471 neurons | loss 10.902 -> 1.221 | chrF 3.8 -> 46.6 | 102s | left in this call: 14 runs, about 24 min
+  distant20 | indonesian | lesion  | task@0.5  | seed 2 | 4471 neurons | loss 10.659 -> 1.213 | chrF 4.6 -> 47.0 | 102s | left in this call: 13 runs, about 22 min
+  distant20 | indonesian | lesion  | look@0.5  | seed 2 | 4471 neurons | loss 10.873 -> 1.215 | chrF 4.7 -> 47.6 | 102s | left in this call: 12 runs, about 20 min
+  distant20 | indonesian | none    | none      | seed 3 | 0 neurons | loss 10.669 -> 1.209 | chrF 5.2 -> 47.7 | 102s | left in this call: 11 runs, about 19 min
+  distant20 | indonesian | lesion  | self@1.0  | seed 3 | 8942 neurons | loss 10.471 -> 1.262 | chrF 3.3 -> 45.4 | 104s | left in this call: 10 runs, about 17 min
+  distant20 | indonesian | lesion  | task@1.0  | seed 3 | 8942 neurons | loss 10.358 -> 1.238 | chrF 4.5 -> 46.9 | 102s | left in this call: 9 runs, about 15 min
+  distant20 | indonesian | lesion  | self@0.5  | seed 3 | 4471 neurons | loss 10.210 -> 1.236 | chrF 3.9 -> 45.9 | 102s | left in this call: 8 runs, about 14 min
+  distant20 | indonesian | lesion  | task@0.5  | seed 3 | 4471 neurons | loss 10.550 -> 1.223 | chrF 5.2 -> 47.7 | 102s | left in this call: 7 runs, about 12 min
+  distant20 | indonesian | lesion  | look@0.5  | seed 3 | 4471 neurons | loss 10.836 -> 1.222 | chrF 4.8 -> 48.5 | 102s | left in this call: 6 runs, about 10 min
+  distant20 | indonesian | none    | none      | seed 4 | 0 neurons | loss 10.669 -> 1.211 | chrF 5.2 -> 49.2 | 102s | left in this call: 5 runs, about 9 min
+  distant20 | indonesian | lesion  | self@1.0  | seed 4 | 8942 neurons | loss 11.068 -> 1.262 | chrF 3.3 -> 46.2 | 103s | left in this call: 4 runs, about 7 min
+  distant20 | indonesian | lesion  | task@1.0  | seed 4 | 8942 neurons | loss 10.582 -> 1.242 | chrF 4.8 -> 48.6 | 102s | left in this call: 3 runs, about 5 min
+  distant20 | indonesian | lesion  | self@0.5  | seed 4 | 4471 neurons | loss 10.966 -> 1.231 | chrF 4.0 -> 48.6 | 103s | left in this call: 2 runs, about 3 min
+  distant20 | indonesian | lesion  | task@0.5  | seed 4 | 4471 neurons | loss 10.334 -> 1.217 | chrF 4.7 -> 49.0 | 102s | left in this call: 1 runs, about 2 min
+  distant20 | indonesian | lesion  | look@0.5  | seed 4 | 4471 neurons | loss 10.650 -> 1.225 | chrF 4.7 -> 48.7 | 102s | left in this call: 0 runs, about 0 min
+done
+start model: distant20 = v4b_continual_s0 phase 20 (last trained on zh) | languages hi, zh, ar
+  enc0: working 2560, self 1201, task 1359 -> count-matched n_max 1201
+  enc1: working 2560, self 1116, task 1444 -> count-matched n_max 1116
+  enc2: working 2560, self 1151, task 1409 -> count-matched n_max 1151
+  enc3: working 2560, self 1464, task 1096 -> count-matched n_max 1096
+  dec0: working 2560, self 1410, task 1150 -> count-matched n_max 1150
+  dec1: working 2560, self 1033, task 1527 -> count-matched n_max 1033
+  dec2: working 2560, self 1044, task 1516 -> count-matched n_max 1044
+  dec3: working 2560, self 1409, task 1151 -> count-matched n_max 1151
+  self found in 6s
+runs to do in this call: 20 (mode silence; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2, 3, 4]; finished runs are skipped)
+  distant20 | indonesian | silence | self@1.0  | seed 1 | 8942 neurons | loss 10.914 -> 1.289 | chrF 2.6 -> 45.3 | 106s | left in this call: 19 runs, about 34 min
+  distant20 | indonesian | silence | task@1.0  | seed 1 | 8942 neurons | loss 11.832 -> 1.261 | chrF 4.5 -> 46.4 | 104s | left in this call: 18 runs, about 32 min
+  distant20 | indonesian | silence | self@0.5  | seed 1 | 4471 neurons | loss 10.609 -> 1.239 | chrF 3.7 -> 47.4 | 104s | left in this call: 17 runs, about 30 min
+  distant20 | indonesian | silence | task@0.5  | seed 1 | 4471 neurons | loss 10.568 -> 1.228 | chrF 4.9 -> 48.2 | 104s | left in this call: 16 runs, about 28 min
+  distant20 | indonesian | silence | look@0.5  | seed 1 | 4471 neurons | loss 10.715 -> 1.232 | chrF 5.3 -> 48.0 | 104s | left in this call: 15 runs, about 26 min
+  distant20 | indonesian | silence | self@1.0  | seed 2 | 8942 neurons | loss 10.694 -> 1.291 | chrF 2.8 -> 43.2 | 104s | left in this call: 14 runs, about 24 min
+  distant20 | indonesian | silence | task@1.0  | seed 2 | 8942 neurons | loss 11.900 -> 1.259 | chrF 4.5 -> 45.9 | 105s | left in this call: 13 runs, about 23 min
+  distant20 | indonesian | silence | self@0.5  | seed 2 | 4471 neurons | loss 11.070 -> 1.236 | chrF 3.6 -> 45.7 | 104s | left in this call: 12 runs, about 21 min
+  distant20 | indonesian | silence | task@0.5  | seed 2 | 4471 neurons | loss 10.625 -> 1.226 | chrF 5.0 -> 46.4 | 104s | left in this call: 11 runs, about 19 min
+  distant20 | indonesian | silence | look@0.5  | seed 2 | 4471 neurons | loss 10.790 -> 1.224 | chrF 4.6 -> 46.5 | 104s | left in this call: 10 runs, about 17 min
+  distant20 | indonesian | silence | self@1.0  | seed 3 | 8942 neurons | loss 10.675 -> 1.292 | chrF 2.4 -> 43.4 | 104s | left in this call: 9 runs, about 16 min
+  distant20 | indonesian | silence | task@1.0  | seed 3 | 8942 neurons | loss 10.294 -> 1.269 | chrF 4.7 -> 46.4 | 104s | left in this call: 8 runs, about 14 min
+  distant20 | indonesian | silence | self@0.5  | seed 3 | 4471 neurons | loss 10.556 -> 1.246 | chrF 3.8 -> 46.4 | 105s | left in this call: 7 runs, about 12 min
+  distant20 | indonesian | silence | task@0.5  | seed 3 | 4471 neurons | loss 10.535 -> 1.239 | chrF 4.6 -> 46.8 | 104s | left in this call: 6 runs, about 10 min
+  distant20 | indonesian | silence | look@0.5  | seed 3 | 4471 neurons | loss 10.834 -> 1.237 | chrF 4.7 -> 47.1 | 104s | left in this call: 5 runs, about 9 min
+  distant20 | indonesian | silence | self@1.0  | seed 4 | 8942 neurons | loss 11.001 -> 1.294 | chrF 2.7 -> 45.1 | 104s | left in this call: 4 runs, about 7 min
+  distant20 | indonesian | silence | task@1.0  | seed 4 | 8942 neurons | loss 10.530 -> 1.271 | chrF 4.2 -> 47.1 | 104s | left in this call: 3 runs, about 5 min
+  distant20 | indonesian | silence | self@0.5  | seed 4 | 4471 neurons | loss 10.786 -> 1.243 | chrF 3.8 -> 47.4 | 105s | left in this call: 2 runs, about 3 min
+  distant20 | indonesian | silence | task@0.5  | seed 4 | 4471 neurons | loss 10.389 -> 1.234 | chrF 4.7 -> 48.0 | 104s | left in this call: 1 runs, about 2 min
+  distant20 | indonesian | silence | look@0.5  | seed 4 | 4471 neurons | loss 10.730 -> 1.237 | chrF 4.7 -> 47.9 | 104s | left in this call: 0 runs, about 0 min
+done
+start model: related16 = v8_indic_continual_s0 phase 16 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1412, task 1148 -> count-matched n_max 1148
+  enc1: working 2560, self 1101, task 1459 -> count-matched n_max 1101
+  enc2: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  enc3: working 2560, self 1258, task 1302 -> count-matched n_max 1258
+  dec0: working 2560, self 1594, task 966 -> count-matched n_max 966
+  dec1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  dec2: working 2560, self 1174, task 1386 -> count-matched n_max 1174
+  dec3: working 2560, self 1808, task 752 -> count-matched n_max 752
+  self found in 7s
+runs to do in this call: 24 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2, 3, 4]; finished runs are skipped)
+  related16 | indonesian | none    | none      | seed 1 | 0 neurons | loss 9.970 -> 1.256 | chrF 5.2 -> 48.2 | 103s | left in this call: 23 runs, about 40 min
+  related16 | indonesian | lesion  | self@1.0  | seed 1 | 8685 neurons | loss 9.311 -> 1.291 | chrF 4.2 -> 46.4 | 102s | left in this call: 22 runs, about 38 min
+  related16 | indonesian | lesion  | task@1.0  | seed 1 | 8685 neurons | loss 9.906 -> 1.278 | chrF 4.6 -> 48.5 | 102s | left in this call: 21 runs, about 36 min
+  related16 | indonesian | lesion  | self@0.5  | seed 1 | 4341 neurons | loss 9.745 -> 1.275 | chrF 4.9 -> 47.1 | 103s | left in this call: 20 runs, about 34 min
+  related16 | indonesian | lesion  | task@0.5  | seed 1 | 4341 neurons | loss 9.873 -> 1.263 | chrF 5.3 -> 48.7 | 102s | left in this call: 19 runs, about 33 min
+  related16 | indonesian | lesion  | look@0.5  | seed 1 | 4341 neurons | loss 9.659 -> 1.262 | chrF 5.1 -> 47.7 | 102s | left in this call: 18 runs, about 31 min
+  related16 | indonesian | none    | none      | seed 2 | 0 neurons | loss 9.970 -> 1.259 | chrF 5.2 -> 48.7 | 102s | left in this call: 17 runs, about 29 min
+  related16 | indonesian | lesion  | self@1.0  | seed 2 | 8685 neurons | loss 9.429 -> 1.305 | chrF 4.5 -> 46.3 | 102s | left in this call: 16 runs, about 27 min
+  related16 | indonesian | lesion  | task@1.0  | seed 2 | 8685 neurons | loss 9.905 -> 1.279 | chrF 5.6 -> 47.8 | 103s | left in this call: 15 runs, about 26 min
+  related16 | indonesian | lesion  | self@0.5  | seed 2 | 4341 neurons | loss 9.896 -> 1.275 | chrF 4.5 -> 47.4 | 103s | left in this call: 14 runs, about 24 min
+  related16 | indonesian | lesion  | task@0.5  | seed 2 | 4341 neurons | loss 9.826 -> 1.267 | chrF 5.2 -> 48.7 | 102s | left in this call: 13 runs, about 22 min
+  related16 | indonesian | lesion  | look@0.5  | seed 2 | 4341 neurons | loss 9.654 -> 1.268 | chrF 4.9 -> 47.9 | 102s | left in this call: 12 runs, about 21 min
+  related16 | indonesian | none    | none      | seed 3 | 0 neurons | loss 9.970 -> 1.257 | chrF 5.2 -> 47.5 | 103s | left in this call: 11 runs, about 19 min
+  related16 | indonesian | lesion  | self@1.0  | seed 3 | 8685 neurons | loss 9.318 -> 1.288 | chrF 4.0 -> 46.5 | 103s | left in this call: 10 runs, about 17 min
+  related16 | indonesian | lesion  | task@1.0  | seed 3 | 8685 neurons | loss 10.118 -> 1.269 | chrF 4.8 -> 47.6 | 102s | left in this call: 9 runs, about 15 min
+  related16 | indonesian | lesion  | self@0.5  | seed 3 | 4341 neurons | loss 9.512 -> 1.267 | chrF 4.6 -> 46.7 | 103s | left in this call: 8 runs, about 14 min
+  related16 | indonesian | lesion  | task@0.5  | seed 3 | 4341 neurons | loss 10.137 -> 1.258 | chrF 5.2 -> 48.2 | 102s | left in this call: 7 runs, about 12 min
+  related16 | indonesian | lesion  | look@0.5  | seed 3 | 4341 neurons | loss 9.773 -> 1.260 | chrF 5.0 -> 47.4 | 103s | left in this call: 6 runs, about 10 min
+  related16 | indonesian | none    | none      | seed 4 | 0 neurons | loss 9.970 -> 1.249 | chrF 5.2 -> 47.3 | 102s | left in this call: 5 runs, about 9 min
+  related16 | indonesian | lesion  | self@1.0  | seed 4 | 8685 neurons | loss 9.329 -> 1.283 | chrF 3.8 -> 45.4 | 102s | left in this call: 4 runs, about 7 min
+  related16 | indonesian | lesion  | task@1.0  | seed 4 | 8685 neurons | loss 10.052 -> 1.262 | chrF 4.4 -> 47.3 | 102s | left in this call: 3 runs, about 5 min
+  related16 | indonesian | lesion  | self@0.5  | seed 4 | 4341 neurons | loss 10.045 -> 1.261 | chrF 5.1 -> 46.2 | 102s | left in this call: 2 runs, about 3 min
+  related16 | indonesian | lesion  | task@0.5  | seed 4 | 4341 neurons | loss 9.930 -> 1.253 | chrF 5.0 -> 47.2 | 102s | left in this call: 1 runs, about 2 min
+  related16 | indonesian | lesion  | look@0.5  | seed 4 | 4341 neurons | loss 9.610 -> 1.260 | chrF 4.8 -> 46.6 | 102s | left in this call: 0 runs, about 0 min
+done
+start model: related16 = v8_indic_continual_s0 phase 16 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1412, task 1148 -> count-matched n_max 1148
+  enc1: working 2560, self 1101, task 1459 -> count-matched n_max 1101
+  enc2: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  enc3: working 2560, self 1258, task 1302 -> count-matched n_max 1258
+  dec0: working 2560, self 1594, task 966 -> count-matched n_max 966
+  dec1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  dec2: working 2560, self 1174, task 1386 -> count-matched n_max 1174
+  dec3: working 2560, self 1808, task 752 -> count-matched n_max 752
+  self found in 7s
+runs to do in this call: 20 (mode silence; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2, 3, 4]; finished runs are skipped)
+  related16 | indonesian | silence | self@1.0  | seed 1 | 8685 neurons | loss 8.967 -> 1.320 | chrF 4.1 -> 44.5 | 106s | left in this call: 19 runs, about 34 min
+  related16 | indonesian | silence | task@1.0  | seed 1 | 8685 neurons | loss 9.533 -> 1.298 | chrF 4.9 -> 46.9 | 105s | left in this call: 18 runs, about 32 min
+  related16 | indonesian | silence | self@0.5  | seed 1 | 4341 neurons | loss 9.409 -> 1.284 | chrF 4.5 -> 47.6 | 104s | left in this call: 17 runs, about 30 min
+  related16 | indonesian | silence | task@0.5  | seed 1 | 4341 neurons | loss 9.822 -> 1.275 | chrF 4.8 -> 47.3 | 104s | left in this call: 16 runs, about 28 min
+  related16 | indonesian | silence | look@0.5  | seed 1 | 4341 neurons | loss 9.682 -> 1.273 | chrF 5.2 -> 47.6 | 104s | left in this call: 15 runs, about 26 min
+  related16 | indonesian | silence | self@1.0  | seed 2 | 8685 neurons | loss 8.996 -> 1.327 | chrF 3.9 -> 44.9 | 105s | left in this call: 14 runs, about 24 min
+  related16 | indonesian | silence | task@1.0  | seed 2 | 8685 neurons | loss 9.609 -> 1.304 | chrF 4.9 -> 46.1 | 105s | left in this call: 13 runs, about 23 min
+  related16 | indonesian | silence | self@0.5  | seed 2 | 4341 neurons | loss 9.512 -> 1.289 | chrF 4.6 -> 47.6 | 104s | left in this call: 12 runs, about 21 min
+  related16 | indonesian | silence | task@0.5  | seed 2 | 4341 neurons | loss 9.730 -> 1.275 | chrF 5.1 -> 47.8 | 104s | left in this call: 11 runs, about 19 min
+  related16 | indonesian | silence | look@0.5  | seed 2 | 4341 neurons | loss 9.645 -> 1.279 | chrF 4.9 -> 47.4 | 104s | left in this call: 10 runs, about 17 min
+  related16 | indonesian | silence | self@1.0  | seed 3 | 8685 neurons | loss 8.980 -> 1.317 | chrF 4.1 -> 45.4 | 104s | left in this call: 9 runs, about 16 min
+  related16 | indonesian | silence | task@1.0  | seed 3 | 8685 neurons | loss 9.585 -> 1.297 | chrF 4.7 -> 46.3 | 104s | left in this call: 8 runs, about 14 min
+  related16 | indonesian | silence | self@0.5  | seed 3 | 4341 neurons | loss 9.235 -> 1.279 | chrF 4.7 -> 46.2 | 105s | left in this call: 7 runs, about 12 min
+  related16 | indonesian | silence | task@0.5  | seed 3 | 4341 neurons | loss 9.888 -> 1.270 | chrF 5.1 -> 47.7 | 105s | left in this call: 6 runs, about 10 min
+  related16 | indonesian | silence | look@0.5  | seed 3 | 4341 neurons | loss 9.717 -> 1.273 | chrF 4.9 -> 47.4 | 104s | left in this call: 5 runs, about 9 min
+  related16 | indonesian | silence | self@1.0  | seed 4 | 8685 neurons | loss 8.934 -> 1.312 | chrF 3.9 -> 43.5 | 104s | left in this call: 4 runs, about 7 min
+  related16 | indonesian | silence | task@1.0  | seed 4 | 8685 neurons | loss 9.647 -> 1.297 | chrF 4.7 -> 45.2 | 104s | left in this call: 3 runs, about 5 min
+  related16 | indonesian | silence | self@0.5  | seed 4 | 4341 neurons | loss 9.754 -> 1.274 | chrF 4.8 -> 45.7 | 104s | left in this call: 2 runs, about 3 min
+  related16 | indonesian | silence | task@0.5  | seed 4 | 4341 neurons | loss 9.768 -> 1.266 | chrF 4.7 -> 46.4 | 104s | left in this call: 1 runs, about 2 min
+  related16 | indonesian | silence | look@0.5  | seed 4 | 4341 neurons | loss 9.647 -> 1.272 | chrF 5.1 -> 46.7 | 103s | left in this call: 0 runs, about 0 min
+done
+runs to do in this call: 4 (mode lesion; conditions ['none']; seeds [1, 2, 3, 4]; finished runs are skipped)
+  fresh | indonesian | none    | none      | seed 1 | 0 neurons | loss 10.565 -> 1.783 | chrF 1.6 -> 25.4 | 104s | left in this call: 3 runs, about 5 min
+  fresh | indonesian | none    | none      | seed 2 | 0 neurons | loss 10.429 -> 1.779 | chrF 0.8 -> 23.3 | 102s | left in this call: 2 runs, about 3 min
+  fresh | indonesian | none    | none      | seed 3 | 0 neurons | loss 10.500 -> 1.811 | chrF 2.0 -> 21.7 | 102s | left in this call: 1 runs, about 2 min
+  fresh | indonesian | none    | none      | seed 4 | 0 neurons | loss 10.383 -> 1.814 | chrF 0.9 -> 24.0 | 102s | left in this call: 0 runs, about 0 min
+done

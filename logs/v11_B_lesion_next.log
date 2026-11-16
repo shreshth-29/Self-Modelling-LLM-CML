@@ -1,0 +1,301 @@
+start model: distant10 = v4b_continual_s0 phase 10 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1313, task 1247 -> count-matched n_max 1247
+  enc1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  enc2: working 2560, self 1273, task 1287 -> count-matched n_max 1273
+  enc3: working 2560, self 1552, task 1008 -> count-matched n_max 1008
+  dec0: working 2560, self 1331, task 1229 -> count-matched n_max 1229
+  dec1: working 2560, self 1039, task 1521 -> count-matched n_max 1039
+  dec2: working 2560, self 1108, task 1452 -> count-matched n_max 1108
+  dec3: working 2560, self 1663, task 897 -> count-matched n_max 897
+  self found in 6s
+  next language = zh (phase 11 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  distant10 | next | none    | none      | seed 0 | 0 neurons | loss 6.419 -> 2.367 | chrF 2.5 -> 22.0 | 93s | left in this call: 5 runs, about 8 min
+  distant10 | next | lesion  | self@1.0  | seed 0 | 8934 neurons | loss 7.997 -> 2.479 | chrF 0.4 -> 20.5 | 92s | left in this call: 4 runs, about 6 min
+  distant10 | next | lesion  | task@1.0  | seed 0 | 8934 neurons | loss 8.002 -> 2.438 | chrF 1.5 -> 21.3 | 97s | left in this call: 3 runs, about 5 min
+  distant10 | next | lesion  | self@0.5  | seed 0 | 4466 neurons | loss 6.972 -> 2.407 | chrF 2.2 -> 21.7 | 93s | left in this call: 2 runs, about 3 min
+  distant10 | next | lesion  | task@0.5  | seed 0 | 4466 neurons | loss 6.685 -> 2.390 | chrF 2.4 -> 21.9 | 97s | left in this call: 1 runs, about 2 min
+  distant10 | next | lesion  | look@0.5  | seed 0 | 4466 neurons | loss 6.723 -> 2.399 | chrF 2.1 -> 21.7 | 92s | left in this call: 0 runs, about 0 min
+done
+start model: distant11 = v4b_continual_s0 phase 11 (last trained on zh) | languages hi, zh, ar
+  enc0: working 2560, self 1307, task 1253 -> count-matched n_max 1253
+  enc1: working 2560, self 1137, task 1423 -> count-matched n_max 1137
+  enc2: working 2560, self 1275, task 1285 -> count-matched n_max 1275
+  enc3: working 2560, self 1562, task 998 -> count-matched n_max 998
+  dec0: working 2560, self 1359, task 1201 -> count-matched n_max 1201
+  dec1: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  dec2: working 2560, self 1084, task 1476 -> count-matched n_max 1084
+  dec3: working 2560, self 1425, task 1135 -> count-matched n_max 1135
+  self found in 6s
+  next language = ar (phase 12 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  distant11 | next | none    | none      | seed 0 | 0 neurons | loss 6.138 -> 2.183 | chrF 13.6 -> 47.1 | 97s | left in this call: 5 runs, about 8 min
+  distant11 | next | lesion  | self@1.0  | seed 0 | 9215 neurons | loss 7.786 -> 2.312 | chrF 0.0 -> 44.3 | 96s | left in this call: 4 runs, about 6 min
+  distant11 | next | lesion  | task@1.0  | seed 0 | 9215 neurons | loss 6.376 -> 2.274 | chrF 10.6 -> 46.3 | 96s | left in this call: 3 runs, about 5 min
+  distant11 | next | lesion  | self@0.5  | seed 0 | 4607 neurons | loss 6.592 -> 2.240 | chrF 3.0 -> 46.1 | 96s | left in this call: 2 runs, about 3 min
+  distant11 | next | lesion  | task@0.5  | seed 0 | 4607 neurons | loss 6.224 -> 2.221 | chrF 12.0 -> 46.6 | 96s | left in this call: 1 runs, about 2 min
+  distant11 | next | lesion  | look@0.5  | seed 0 | 4607 neurons | loss 6.247 -> 2.226 | chrF 13.5 -> 47.0 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: distant12 = v4b_continual_s0 phase 12 (last trained on ar) | languages hi, zh, ar
+  enc0: working 2560, self 1265, task 1295 -> count-matched n_max 1265
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1318, task 1242 -> count-matched n_max 1242
+  enc3: working 2560, self 1635, task 925 -> count-matched n_max 925
+  dec0: working 2560, self 1410, task 1150 -> count-matched n_max 1150
+  dec1: working 2560, self 1399, task 1161 -> count-matched n_max 1161
+  dec2: working 2560, self 1478, task 1082 -> count-matched n_max 1082
+  dec3: working 2560, self 2056, task 504 -> count-matched n_max 504
+  self found in 6s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  distant12 | next | none    | none      | seed 0 | 0 neurons | loss 5.998 -> 1.781 | chrF 7.1 -> 46.3 | 97s | left in this call: 5 runs, about 8 min
+  distant12 | next | lesion  | self@1.0  | seed 0 | 8526 neurons | loss 6.999 -> 1.958 | chrF 1.2 -> 43.7 | 96s | left in this call: 4 runs, about 6 min
+  distant12 | next | lesion  | task@1.0  | seed 0 | 8526 neurons | loss 6.742 -> 1.923 | chrF 5.0 -> 44.8 | 96s | left in this call: 3 runs, about 5 min
+  distant12 | next | lesion  | self@0.5  | seed 0 | 4261 neurons | loss 6.392 -> 1.857 | chrF 5.9 -> 45.0 | 96s | left in this call: 2 runs, about 3 min
+  distant12 | next | lesion  | task@0.5  | seed 0 | 4261 neurons | loss 6.112 -> 1.848 | chrF 7.4 -> 46.4 | 96s | left in this call: 1 runs, about 2 min
+  distant12 | next | lesion  | look@0.5  | seed 0 | 4261 neurons | loss 6.176 -> 1.850 | chrF 6.3 -> 46.3 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: distant40 = v4b_continual_s0 phase 40 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1190, task 1370 -> count-matched n_max 1190
+  enc1: working 2560, self 971, task 1589 -> count-matched n_max 971
+  enc2: working 2560, self 1036, task 1524 -> count-matched n_max 1036
+  enc3: working 2560, self 1356, task 1204 -> count-matched n_max 1204
+  dec0: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec1: working 2560, self 920, task 1640 -> count-matched n_max 920
+  dec2: working 2560, self 920, task 1640 -> count-matched n_max 920
+  dec3: working 2560, self 1563, task 997 -> count-matched n_max 997
+  self found in 6s
+  next language = zh (phase 41 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  distant40 | next | none    | none      | seed 0 | 0 neurons | loss 6.097 -> 2.315 | chrF 3.0 -> 23.3 | 93s | left in this call: 5 runs, about 8 min
+  distant40 | next | lesion  | self@1.0  | seed 0 | 8441 neurons | loss 7.924 -> 2.419 | chrF 0.5 -> 21.3 | 92s | left in this call: 4 runs, about 6 min
+  distant40 | next | lesion  | task@1.0  | seed 0 | 8441 neurons | loss 7.388 -> 2.399 | chrF 1.3 -> 22.4 | 92s | left in this call: 3 runs, about 5 min
+  distant40 | next | lesion  | self@0.5  | seed 0 | 4221 neurons | loss 6.572 -> 2.355 | chrF 1.5 -> 22.0 | 92s | left in this call: 2 runs, about 3 min
+  distant40 | next | lesion  | task@0.5  | seed 0 | 4221 neurons | loss 6.330 -> 2.342 | chrF 2.4 -> 22.2 | 92s | left in this call: 1 runs, about 2 min
+  distant40 | next | lesion  | look@0.5  | seed 0 | 4221 neurons | loss 6.383 -> 2.357 | chrF 1.8 -> 22.5 | 93s | left in this call: 0 runs, about 0 min
+done
+start model: distant41 = v4b_continual_s0 phase 41 (last trained on zh) | languages hi, zh, ar
+  enc0: working 2560, self 1191, task 1369 -> count-matched n_max 1191
+  enc1: working 2560, self 1141, task 1419 -> count-matched n_max 1141
+  enc2: working 2560, self 1058, task 1502 -> count-matched n_max 1058
+  enc3: working 2560, self 1328, task 1232 -> count-matched n_max 1232
+  dec0: working 2560, self 1393, task 1167 -> count-matched n_max 1167
+  dec1: working 2560, self 1022, task 1538 -> count-matched n_max 1022
+  dec2: working 2560, self 923, task 1637 -> count-matched n_max 923
+  dec3: working 2560, self 1365, task 1195 -> count-matched n_max 1195
+  self found in 6s
+  next language = ar (phase 42 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  distant41 | next | none    | none      | seed 0 | 0 neurons | loss 5.747 -> 2.087 | chrF 19.4 -> 49.0 | 97s | left in this call: 5 runs, about 8 min
+  distant41 | next | lesion  | self@1.0  | seed 0 | 8929 neurons | loss 7.125 -> 2.233 | chrF 1.7 -> 44.3 | 96s | left in this call: 4 runs, about 6 min
+  distant41 | next | lesion  | task@1.0  | seed 0 | 8929 neurons | loss 6.329 -> 2.203 | chrF 13.6 -> 47.0 | 96s | left in this call: 3 runs, about 5 min
+  distant41 | next | lesion  | self@0.5  | seed 0 | 4466 neurons | loss 6.156 -> 2.143 | chrF 7.5 -> 47.5 | 96s | left in this call: 2 runs, about 3 min
+  distant41 | next | lesion  | task@0.5  | seed 0 | 4466 neurons | loss 5.954 -> 2.137 | chrF 17.3 -> 47.4 | 96s | left in this call: 1 runs, about 2 min
+  distant41 | next | lesion  | look@0.5  | seed 0 | 4466 neurons | loss 6.020 -> 2.137 | chrF 18.0 -> 48.2 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: distant42 = v4b_continual_s0 phase 42 (last trained on ar) | languages hi, zh, ar
+  enc0: working 2560, self 1179, task 1381 -> count-matched n_max 1179
+  enc1: working 2560, self 1194, task 1366 -> count-matched n_max 1194
+  enc2: working 2560, self 1181, task 1379 -> count-matched n_max 1181
+  enc3: working 2560, self 1485, task 1075 -> count-matched n_max 1075
+  dec0: working 2560, self 1431, task 1129 -> count-matched n_max 1129
+  dec1: working 2560, self 1376, task 1184 -> count-matched n_max 1184
+  dec2: working 2560, self 1287, task 1273 -> count-matched n_max 1273
+  dec3: working 2560, self 2035, task 525 -> count-matched n_max 525
+  self found in 6s
+  next language = hi (phase 43 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  distant42 | next | none    | none      | seed 0 | 0 neurons | loss 5.578 -> 1.629 | chrF 10.4 -> 47.3 | 97s | left in this call: 5 runs, about 8 min
+  distant42 | next | lesion  | self@1.0  | seed 0 | 8740 neurons | loss 7.139 -> 1.864 | chrF 1.4 -> 45.6 | 96s | left in this call: 4 runs, about 6 min
+  distant42 | next | lesion  | task@1.0  | seed 0 | 8740 neurons | loss 6.519 -> 1.830 | chrF 7.1 -> 46.2 | 96s | left in this call: 3 runs, about 5 min
+  distant42 | next | lesion  | self@0.5  | seed 0 | 4369 neurons | loss 6.098 -> 1.728 | chrF 9.6 -> 46.1 | 95s | left in this call: 2 runs, about 3 min
+  distant42 | next | lesion  | task@0.5  | seed 0 | 4369 neurons | loss 5.812 -> 1.718 | chrF 9.0 -> 46.5 | 96s | left in this call: 1 runs, about 2 min
+  distant42 | next | lesion  | look@0.5  | seed 0 | 4369 neurons | loss 5.822 -> 1.718 | chrF 8.9 -> 46.5 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: related10 = v8_indic_continual_s0 phase 10 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1466, task 1094 -> count-matched n_max 1094
+  enc1: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  enc2: working 2560, self 1269, task 1291 -> count-matched n_max 1269
+  enc3: working 2560, self 1329, task 1231 -> count-matched n_max 1231
+  dec0: working 2560, self 1558, task 1002 -> count-matched n_max 1002
+  dec1: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec2: working 2560, self 1235, task 1325 -> count-matched n_max 1235
+  dec3: working 2560, self 1909, task 651 -> count-matched n_max 651
+  self found in 7s
+  next language = gu (phase 11 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related10 | next | none    | none      | seed 0 | 0 neurons | loss 4.481 -> 2.174 | chrF 29.2 -> 43.3 | 98s | left in this call: 5 runs, about 8 min
+  related10 | next | lesion  | self@1.0  | seed 0 | 8802 neurons | loss 6.877 -> 2.286 | chrF 2.1 -> 42.1 | 97s | left in this call: 4 runs, about 6 min
+  related10 | next | lesion  | task@1.0  | seed 0 | 8802 neurons | loss 4.979 -> 2.251 | chrF 24.1 -> 41.5 | 97s | left in this call: 3 runs, about 5 min
+  related10 | next | lesion  | self@0.5  | seed 0 | 4402 neurons | loss 5.372 -> 2.219 | chrF 9.7 -> 40.9 | 97s | left in this call: 2 runs, about 3 min
+  related10 | next | lesion  | task@0.5  | seed 0 | 4402 neurons | loss 4.697 -> 2.216 | chrF 28.1 -> 42.5 | 97s | left in this call: 1 runs, about 2 min
+  related10 | next | lesion  | look@0.5  | seed 0 | 4402 neurons | loss 4.744 -> 2.211 | chrF 26.0 -> 42.9 | 97s | left in this call: 0 runs, about 0 min
+done
+start model: related11 = v8_indic_continual_s0 phase 11 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1426, task 1134 -> count-matched n_max 1134
+  enc1: working 2560, self 1140, task 1420 -> count-matched n_max 1140
+  enc2: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  enc3: working 2560, self 1283, task 1277 -> count-matched n_max 1277
+  dec0: working 2560, self 1662, task 898 -> count-matched n_max 898
+  dec1: working 2560, self 1274, task 1286 -> count-matched n_max 1274
+  dec2: working 2560, self 1288, task 1272 -> count-matched n_max 1272
+  dec3: working 2560, self 1743, task 817 -> count-matched n_max 817
+  self found in 7s
+  next language = pa (phase 12 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related11 | next | none    | none      | seed 0 | 0 neurons | loss 3.842 -> 2.070 | chrF 30.4 -> 43.5 | 97s | left in this call: 5 runs, about 8 min
+  related11 | next | lesion  | self@1.0  | seed 0 | 9026 neurons | loss 5.970 -> 2.183 | chrF 2.0 -> 42.5 | 96s | left in this call: 4 runs, about 6 min
+  related11 | next | lesion  | task@1.0  | seed 0 | 9026 neurons | loss 4.780 -> 2.157 | chrF 16.4 -> 43.4 | 96s | left in this call: 3 runs, about 5 min
+  related11 | next | lesion  | self@0.5  | seed 0 | 4512 neurons | loss 4.304 -> 2.114 | chrF 20.2 -> 43.2 | 96s | left in this call: 2 runs, about 3 min
+  related11 | next | lesion  | task@0.5  | seed 0 | 4512 neurons | loss 4.010 -> 2.107 | chrF 26.8 -> 43.9 | 96s | left in this call: 1 runs, about 2 min
+  related11 | next | lesion  | look@0.5  | seed 0 | 4512 neurons | loss 4.053 -> 2.114 | chrF 27.0 -> 44.1 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: related12 = v8_indic_continual_s0 phase 12 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  enc1: working 2560, self 1182, task 1378 -> count-matched n_max 1182
+  enc2: working 2560, self 1231, task 1329 -> count-matched n_max 1231
+  enc3: working 2560, self 1299, task 1261 -> count-matched n_max 1261
+  dec0: working 2560, self 1666, task 894 -> count-matched n_max 894
+  dec1: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec2: working 2560, self 1364, task 1196 -> count-matched n_max 1196
+  dec3: working 2560, self 1892, task 668 -> count-matched n_max 668
+  self found in 7s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related12 | next | none    | none      | seed 0 | 0 neurons | loss 3.224 -> 1.662 | chrF 38.4 -> 48.9 | 97s | left in this call: 5 runs, about 8 min
+  related12 | next | lesion  | self@1.0  | seed 0 | 8845 neurons | loss 5.462 -> 1.859 | chrF 4.7 -> 46.0 | 96s | left in this call: 4 runs, about 6 min
+  related12 | next | lesion  | task@1.0  | seed 0 | 8845 neurons | loss 3.829 -> 1.810 | chrF 26.3 -> 48.7 | 96s | left in this call: 3 runs, about 5 min
+  related12 | next | lesion  | self@0.5  | seed 0 | 4423 neurons | loss 3.765 -> 1.743 | chrF 26.2 -> 47.9 | 96s | left in this call: 2 runs, about 3 min
+  related12 | next | lesion  | task@0.5  | seed 0 | 4423 neurons | loss 3.405 -> 1.722 | chrF 35.6 -> 48.3 | 96s | left in this call: 1 runs, about 2 min
+  related12 | next | lesion  | look@0.5  | seed 0 | 4423 neurons | loss 3.485 -> 1.727 | chrF 35.4 -> 48.4 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: related13 = v8_indic_continual_s0 phase 13 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1416, task 1144 -> count-matched n_max 1144
+  enc1: working 2560, self 1109, task 1451 -> count-matched n_max 1109
+  enc2: working 2560, self 1223, task 1337 -> count-matched n_max 1223
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1603, task 957 -> count-matched n_max 957
+  dec1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  dec2: working 2560, self 1190, task 1370 -> count-matched n_max 1190
+  dec3: working 2560, self 1862, task 698 -> count-matched n_max 698
+  self found in 7s
+  next language = gu (phase 14 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related13 | next | none    | none      | seed 0 | 0 neurons | loss 4.294 -> 2.164 | chrF 33.0 -> 42.6 | 98s | left in this call: 5 runs, about 8 min
+  related13 | next | lesion  | self@1.0  | seed 0 | 8759 neurons | loss 6.186 -> 2.276 | chrF 1.7 -> 42.5 | 97s | left in this call: 4 runs, about 6 min
+  related13 | next | lesion  | task@1.0  | seed 0 | 8759 neurons | loss 4.899 -> 2.245 | chrF 20.1 -> 43.2 | 97s | left in this call: 3 runs, about 5 min
+  related13 | next | lesion  | self@0.5  | seed 0 | 4380 neurons | loss 4.786 -> 2.203 | chrF 16.3 -> 42.0 | 96s | left in this call: 2 runs, about 3 min
+  related13 | next | lesion  | task@0.5  | seed 0 | 4380 neurons | loss 4.549 -> 2.193 | chrF 29.5 -> 44.5 | 96s | left in this call: 1 runs, about 2 min
+  related13 | next | lesion  | look@0.5  | seed 0 | 4380 neurons | loss 4.554 -> 2.196 | chrF 29.0 -> 43.4 | 97s | left in this call: 0 runs, about 0 min
+done
+start model: related14 = v8_indic_continual_s0 phase 14 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1102, task 1458 -> count-matched n_max 1102
+  enc2: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  enc3: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  dec0: working 2560, self 1674, task 886 -> count-matched n_max 886
+  dec1: working 2560, self 1315, task 1245 -> count-matched n_max 1245
+  dec2: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  dec3: working 2560, self 1715, task 845 -> count-matched n_max 845
+  self found in 6s
+  next language = pa (phase 15 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related14 | next | none    | none      | seed 0 | 0 neurons | loss 3.783 -> 2.063 | chrF 29.7 -> 44.6 | 97s | left in this call: 5 runs, about 8 min
+  related14 | next | lesion  | self@1.0  | seed 0 | 8842 neurons | loss 5.489 -> 2.174 | chrF 5.4 -> 42.4 | 96s | left in this call: 4 runs, about 6 min
+  related14 | next | lesion  | task@1.0  | seed 0 | 8842 neurons | loss 4.350 -> 2.146 | chrF 18.1 -> 44.0 | 96s | left in this call: 3 runs, about 5 min
+  related14 | next | lesion  | self@0.5  | seed 0 | 4419 neurons | loss 4.318 -> 2.102 | chrF 18.8 -> 43.7 | 96s | left in this call: 2 runs, about 3 min
+  related14 | next | lesion  | task@0.5  | seed 0 | 4419 neurons | loss 3.959 -> 2.095 | chrF 26.5 -> 44.8 | 96s | left in this call: 1 runs, about 2 min
+  related14 | next | lesion  | look@0.5  | seed 0 | 4419 neurons | loss 4.025 -> 2.100 | chrF 24.4 -> 43.4 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: related15 = v8_indic_continual_s0 phase 15 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1384, task 1176 -> count-matched n_max 1176
+  enc1: working 2560, self 1152, task 1408 -> count-matched n_max 1152
+  enc2: working 2560, self 1203, task 1357 -> count-matched n_max 1203
+  enc3: working 2560, self 1302, task 1258 -> count-matched n_max 1258
+  dec0: working 2560, self 1709, task 851 -> count-matched n_max 851
+  dec1: working 2560, self 1249, task 1311 -> count-matched n_max 1249
+  dec2: working 2560, self 1311, task 1249 -> count-matched n_max 1249
+  dec3: working 2560, self 1886, task 674 -> count-matched n_max 674
+  self found in 7s
+  next language = hi (phase 16 of the normal schedule)
+runs to do in this call: 6 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related15 | next | none    | none      | seed 0 | 0 neurons | loss 3.111 -> 1.620 | chrF 38.5 -> 49.6 | 97s | left in this call: 5 runs, about 8 min
+  related15 | next | lesion  | self@1.0  | seed 0 | 8812 neurons | loss 5.437 -> 1.830 | chrF 3.2 -> 47.3 | 96s | left in this call: 4 runs, about 6 min
+  related15 | next | lesion  | task@1.0  | seed 0 | 8812 neurons | loss 3.812 -> 1.780 | chrF 28.3 -> 48.0 | 96s | left in this call: 3 runs, about 5 min
+  related15 | next | lesion  | self@0.5  | seed 0 | 4406 neurons | loss 3.742 -> 1.704 | chrF 29.0 -> 47.9 | 96s | left in this call: 2 runs, about 3 min
+  related15 | next | lesion  | task@0.5  | seed 0 | 4406 neurons | loss 3.342 -> 1.688 | chrF 38.3 -> 48.3 | 96s | left in this call: 1 runs, about 2 min
+  related15 | next | lesion  | look@0.5  | seed 0 | 4406 neurons | loss 3.389 -> 1.701 | chrF 36.8 -> 48.7 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: distant10 = v4b_continual_s0 phase 10 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1313, task 1247 -> count-matched n_max 1247
+  enc1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  enc2: working 2560, self 1273, task 1287 -> count-matched n_max 1273
+  enc3: working 2560, self 1552, task 1008 -> count-matched n_max 1008
+  dec0: working 2560, self 1331, task 1229 -> count-matched n_max 1229
+  dec1: working 2560, self 1039, task 1521 -> count-matched n_max 1039
+  dec2: working 2560, self 1108, task 1452 -> count-matched n_max 1108
+  dec3: working 2560, self 1663, task 897 -> count-matched n_max 897
+  self found in 6s
+  next language = zh (phase 11 of the normal schedule)
+runs to do in this call: 12 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2]; finished runs are skipped)
+  distant10 | next | none    | none      | seed 1 | 0 neurons | loss 6.419 -> 2.368 | chrF 2.5 -> 22.2 | 93s | left in this call: 11 runs, about 17 min
+  distant10 | next | lesion  | self@1.0  | seed 1 | 8934 neurons | loss 7.963 -> 2.468 | chrF 0.2 -> 20.8 | 92s | left in this call: 10 runs, about 15 min
+  distant10 | next | lesion  | task@1.0  | seed 1 | 8934 neurons | loss 7.623 -> 2.440 | chrF 1.7 -> 21.7 | 92s | left in this call: 9 runs, about 14 min
+  distant10 | next | lesion  | self@0.5  | seed 1 | 4466 neurons | loss 6.875 -> 2.399 | chrF 1.5 -> 21.9 | 92s | left in this call: 8 runs, about 12 min
+  distant10 | next | lesion  | task@0.5  | seed 1 | 4466 neurons | loss 6.653 -> 2.394 | chrF 2.7 -> 21.9 | 92s | left in this call: 7 runs, about 11 min
+  distant10 | next | lesion  | look@0.5  | seed 1 | 4466 neurons | loss 6.716 -> 2.402 | chrF 2.1 -> 22.5 | 92s | left in this call: 6 runs, about 9 min
+  distant10 | next | none    | none      | seed 2 | 0 neurons | loss 6.419 -> 2.378 | chrF 2.5 -> 23.0 | 92s | left in this call: 5 runs, about 8 min
+  distant10 | next | lesion  | self@1.0  | seed 2 | 8934 neurons | loss 7.851 -> 2.485 | chrF 0.5 -> 20.9 | 92s | left in this call: 4 runs, about 6 min
+  distant10 | next | lesion  | task@1.0  | seed 2 | 8934 neurons | loss 7.655 -> 2.444 | chrF 2.3 -> 21.5 | 92s | left in this call: 3 runs, about 5 min
+  distant10 | next | lesion  | self@0.5  | seed 2 | 4466 neurons | loss 7.247 -> 2.415 | chrF 0.4 -> 22.5 | 93s | left in this call: 2 runs, about 3 min
+  distant10 | next | lesion  | task@0.5  | seed 2 | 4466 neurons | loss 6.639 -> 2.411 | chrF 2.1 -> 22.4 | 92s | left in this call: 1 runs, about 2 min
+  distant10 | next | lesion  | look@0.5  | seed 2 | 4466 neurons | loss 6.755 -> 2.405 | chrF 2.1 -> 22.4 | 92s | left in this call: 0 runs, about 0 min
+done
+start model: distant11 = v4b_continual_s0 phase 11 (last trained on zh) | languages hi, zh, ar
+  enc0: working 2560, self 1307, task 1253 -> count-matched n_max 1253
+  enc1: working 2560, self 1137, task 1423 -> count-matched n_max 1137
+  enc2: working 2560, self 1275, task 1285 -> count-matched n_max 1275
+  enc3: working 2560, self 1562, task 998 -> count-matched n_max 998
+  dec0: working 2560, self 1359, task 1201 -> count-matched n_max 1201
+  dec1: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  dec2: working 2560, self 1084, task 1476 -> count-matched n_max 1084
+  dec3: working 2560, self 1425, task 1135 -> count-matched n_max 1135
+  self found in 6s
+  next language = ar (phase 12 of the normal schedule)
+runs to do in this call: 12 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2]; finished runs are skipped)
+  distant11 | next | none    | none      | seed 1 | 0 neurons | loss 6.138 -> 2.182 | chrF 13.6 -> 47.1 | 97s | left in this call: 11 runs, about 18 min
+  distant11 | next | lesion  | self@1.0  | seed 1 | 9215 neurons | loss 8.553 -> 2.322 | chrF 0.8 -> 44.8 | 97s | left in this call: 10 runs, about 16 min
+  distant11 | next | lesion  | task@1.0  | seed 1 | 9215 neurons | loss 6.389 -> 2.279 | chrF 10.2 -> 45.6 | 96s | left in this call: 9 runs, about 15 min
+  distant11 | next | lesion  | self@0.5  | seed 1 | 4607 neurons | loss 6.362 -> 2.229 | chrF 7.1 -> 46.3 | 96s | left in this call: 8 runs, about 13 min
+  distant11 | next | lesion  | task@0.5  | seed 1 | 4607 neurons | loss 6.197 -> 2.221 | chrF 13.1 -> 46.1 | 96s | left in this call: 7 runs, about 11 min
+  distant11 | next | lesion  | look@0.5  | seed 1 | 4607 neurons | loss 6.239 -> 2.227 | chrF 12.0 -> 46.2 | 96s | left in this call: 6 runs, about 10 min
+  distant11 | next | none    | none      | seed 2 | 0 neurons | loss 6.138 -> 2.182 | chrF 13.6 -> 47.4 | 96s | left in this call: 5 runs, about 8 min
+  distant11 | next | lesion  | self@1.0  | seed 2 | 9215 neurons | loss 8.219 -> 2.304 | chrF 0.2 -> 44.5 | 96s | left in this call: 4 runs, about 6 min
+  distant11 | next | lesion  | task@1.0  | seed 2 | 9215 neurons | loss 6.360 -> 2.287 | chrF 11.2 -> 46.3 | 96s | left in this call: 3 runs, about 5 min
+  distant11 | next | lesion  | self@0.5  | seed 2 | 4607 neurons | loss 6.502 -> 2.230 | chrF 8.6 -> 46.0 | 96s | left in this call: 2 runs, about 3 min
+  distant11 | next | lesion  | task@0.5  | seed 2 | 4607 neurons | loss 6.202 -> 2.223 | chrF 12.6 -> 47.2 | 96s | left in this call: 1 runs, about 2 min
+  distant11 | next | lesion  | look@0.5  | seed 2 | 4607 neurons | loss 6.276 -> 2.223 | chrF 11.8 -> 46.5 | 96s | left in this call: 0 runs, about 0 min
+done
+start model: distant12 = v4b_continual_s0 phase 12 (last trained on ar) | languages hi, zh, ar
+  enc0: working 2560, self 1265, task 1295 -> count-matched n_max 1265
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1318, task 1242 -> count-matched n_max 1242
+  enc3: working 2560, self 1635, task 925 -> count-matched n_max 925
+  dec0: working 2560, self 1410, task 1150 -> count-matched n_max 1150
+  dec1: working 2560, self 1399, task 1161 -> count-matched n_max 1161
+  dec2: working 2560, self 1478, task 1082 -> count-matched n_max 1082
+  dec3: working 2560, self 2056, task 504 -> count-matched n_max 504
+  self found in 6s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 12 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5', 'look@0.5']; seeds [1, 2]; finished runs are skipped)
+  distant12 | next | none    | none      | seed 1 | 0 neurons | loss 5.998 -> 1.789 | chrF 7.1 -> 46.7 | 97s | left in this call: 11 runs, about 18 min
+  distant12 | next | lesion  | self@1.0  | seed 1 | 8526 neurons | loss 7.201 -> 1.981 | chrF 1.4 -> 44.4 | 96s | left in this call: 10 runs, about 16 min
+  distant12 | next | lesion  | task@1.0  | seed 1 | 8526 neurons | loss 6.369 -> 1.937 | chrF 4.8 -> 45.6 | 96s | left in this call: 9 runs, about 14 min
+  distant12 | next | lesion  | self@0.5  | seed 1 | 4261 neurons | loss 6.479 -> 1.864 | chrF 3.4 -> 45.7 | 96s | left in this call: 8 runs, about 13 min
+  distant12 | next | lesion  | task@0.5  | seed 1 | 4261 neurons | loss 6.116 -> 1.850 | chrF 7.4 -> 45.7 | 95s | left in this call: 7 runs, about 11 min
+  distant12 | next | lesion  | look@0.5  | seed 1 | 4261 neurons | loss 6.201 -> 1.850 | chrF 7.7 -> 46.5 | 96s | left in this call: 6 runs, about 10 min
+  distant12 | next | none    | none      | seed 2 | 0 neurons | loss 5.998 -> 1.791 | chrF 7.1 -> 47.0 | 96s | left in this call: 5 runs, about 8 min
+  distant12 | next | lesion  | self@1.0  | seed 2 | 8526 neurons | loss 7.175 -> 1.970 | chrF 0.6 -> 44.5 | 96s | left in this call: 4 runs, about 6 min
+  distant12 | next | lesion  | task@1.0  | seed 2 | 8526 neurons | loss 6.803 -> 1.926 | chrF 5.3 -> 45.7 | 96s | left in this call: 3 runs, about 5 min
+  distant12 | next | lesion  | self@0.5  | seed 2 | 4261 neurons | loss 6.406 -> 1.857 | chrF 3.1 -> 45.5 | 96s | left in this call: 2 runs, about 3 min
+  distant12 | next | lesion  | task@0.5  | seed 2 | 4261 neurons | loss 6.120 -> 1.849 | chrF 6.1 -> 45.8 | 96s | left in this call: 1 runs, about 2 min
