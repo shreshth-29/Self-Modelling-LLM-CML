@@ -14,3 +14,151 @@ mode
 lesion      0.221     0.521     2.939     0.195     0.552
 silence     0.146     0.407     2.962     0.134     0.375
   restored model check: loss differs from intact by 0.00000 (should be ~0) | 108s
+distant phase 12 (ar): intact loss hi 5.924, zh 5.565, ar 1.731 | chrF hi 7.2, zh 3.7, ar 53.4
+  count-matched n per layer (n_max = smaller group): enc0:1265 enc1:1197 enc2:1242 enc3:925 dec0:1150 dec1:1161 dec2:1082 dec3:504
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.224     0.422     1.720     0.163     0.894
+silence     0.081     0.259     1.403     0.061     0.586
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 106s
+distant phase 40 (hi): intact loss hi 1.083, zh 6.116, ar 5.567 | chrF hi 54.6, zh 3.0, ar 13.6
+  count-matched n per layer (n_max = smaller group): enc0:1190 enc1:971 enc2:1036 enc3:1204 dec0:1203 dec1:920 dec2:920 dec3:997
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.318     0.578     2.259     0.260     1.248
+silence     0.160     0.369     1.448     0.132     0.669
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 105s
+distant phase 41 (zh): intact loss hi 4.127, zh 2.040, ar 5.728 | chrF hi 25.9, zh 27.4, ar 20.1
+  count-matched n per layer (n_max = smaller group): enc0:1191 enc1:1141 enc2:1058 enc3:1232 dec0:1167 dec1:1022 dec2:923 dec3:1195
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.322     0.606     2.290     0.282     1.264
+silence     0.211     0.429     1.779     0.192     0.941
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 106s
+distant phase 42 (ar): intact loss hi 5.489, zh 5.342, ar 1.711 | chrF hi 10.2, zh 6.1, ar 53.5
+  count-matched n per layer (n_max = smaller group): enc0:1179 enc1:1194 enc2:1181 enc3:1075 dec0:1129 dec1:1184 dec2:1273 dec3:525
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.282     0.468     2.102     0.244     0.966
+silence     0.150     0.297     1.369     0.116     0.629
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 107s
+done
+hindi phase 10 (hi): intact loss hi 1.127 | chrF hi 51.7
+  count-matched n per layer (n_max = smaller group): enc0:1125 enc1:1171 enc2:1159 enc3:1193 dec0:783 dec1:1110 dec2:1089 dec3:794
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.264     0.455     2.834     0.248     0.824
+silence     0.234     0.465     2.854     0.217     0.714
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 37s
+hindi phase 30 (hi): intact loss hi 1.141 | chrF hi 51.8
+  count-matched n per layer (n_max = smaller group): enc0:1198 enc1:879 enc2:879 enc3:1103 dec0:805 dec1:1268 dec2:1262 dec3:949
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.368     0.671     3.075     0.361     1.594
+silence     0.312     0.774     3.476     0.302     1.327
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 36s
+hindi phase 45 (hi): intact loss hi 1.137 | chrF hi 51.3
+  count-matched n per layer (n_max = smaller group): enc0:1138 enc1:772 enc2:793 enc3:992 dec0:756 dec1:1195 dec2:1223 dec3:1022
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.374     0.688     2.976     0.320     1.212
+silence     0.289     0.603     2.532     0.251     0.926
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 37s
+hindi phase 60 (hi): intact loss hi 1.155 | chrF hi 51.7
+  count-matched n per layer (n_max = smaller group): enc0:1103 enc1:750 enc2:731 enc3:930 dec0:741 dec1:1270 dec2:1153 dec3:1004
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.432     0.690     3.069     0.477     1.435
+silence     0.343     0.647     3.280     0.388     1.110
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 36s
+done
+mixed phase 10 (mix): intact loss hi 1.308, zh 2.135, ar 1.857 | chrF hi 51.8, zh 26.9, ar 51.9
+  count-matched n per layer (n_max = smaller group): enc0:1048 enc1:1150 enc2:842 enc3:596 dec0:822 dec1:873 dec2:826 dec3:383
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.147     0.182     0.631     0.127     0.606
+silence     0.131     0.170     0.639     0.118     0.524
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 84s
+mixed phase 30 (mix): intact loss hi 1.242, zh 2.079, ar 1.788 | chrF hi 53.4, zh 27.1, ar 52.5
+  count-matched n per layer (n_max = smaller group): enc0:1201 enc1:1021 enc2:1138 enc3:831 dec0:940 dec1:1028 dec2:983 dec3:527
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.221     0.371     1.530     0.179     0.937
+silence     0.183     0.342     1.271     0.156     0.791
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 87s
+mixed phase 45 (mix): intact loss hi 1.232, zh 2.071, ar 1.798 | chrF hi 52.4, zh 27.8, ar 52.8
+  count-matched n per layer (n_max = smaller group): enc0:1166 enc1:975 enc2:1227 enc3:933 dec0:957 dec1:1125 dec2:1076 dec3:549
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.257     0.407     1.926     0.209     1.519
+silence     0.210     0.346     1.592     0.179     1.247
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 90s
+mixed phase 60 (mix): intact loss hi 1.210, zh 2.058, ar 1.778 | chrF hi 52.0, zh 28.2, ar 53.2
+  count-matched n per layer (n_max = smaller group): enc0:1094 enc1:959 enc2:1249 enc3:1033 dec0:971 dec1:1147 dec2:1128 dec3:595
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.286     0.499     2.330     0.236     0.827
+silence     0.231     0.423     1.838     0.197     0.648
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 89s
+done
+related phase 10 (hi): intact loss hi 1.145, gu 4.402, pa 3.663 | chrF hi 53.8, gu 29.4, pa 38.7
+  count-matched n per layer (n_max = smaller group): enc0:1094 enc1:1176 enc2:1269 enc3:1231 dec0:1002 dec1:1144 dec2:1235 dec3:651
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.258     0.874     2.983     0.201     0.611
+silence     0.136     0.732     2.751     0.116     0.365
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 102s
+related phase 11 (gu): intact loss hi 2.893, gu 1.900, pa 3.883 | chrF hi 42.2, gu 44.5, pa 31.6
+  count-matched n per layer (n_max = smaller group): enc0:1134 enc1:1140 enc2:1214 enc3:1277 dec0:898 dec1:1274 dec2:1272 dec3:817
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.255     0.507     2.284     0.207     1.328
+silence     0.170     0.411     2.114     0.151     1.104
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 101s
+related phase 12 (pa): intact loss hi 3.178, gu 3.119, pa 1.891 | chrF hi 40.0, gu 38.1, pa 43.1
+  count-matched n per layer (n_max = smaller group): enc0:1142 enc1:1182 enc2:1231 enc3:1261 dec0:894 dec1:1271 dec2:1196 dec3:668
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.229     0.439     2.061     0.193     0.611
+silence     0.146     0.354     1.909     0.132     0.402
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 102s
+related phase 13 (hi): intact loss hi 1.153, gu 4.187, pa 3.498 | chrF hi 53.8, gu 32.7, pa 40.3
+  count-matched n per layer (n_max = smaller group): enc0:1144 enc1:1109 enc2:1223 enc3:1271 dec0:957 dec1:1167 dec2:1190 dec3:698
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.287     0.567     2.294     0.235     0.787
+silence     0.147     0.463     2.117     0.145     0.489
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 100s
+related phase 14 (gu): intact loss hi 2.925, gu 1.884, pa 3.807 | chrF hi 40.5, gu 43.9, pa 29.8
+  count-matched n per layer (n_max = smaller group): enc0:1182 enc1:1102 enc2:1176 enc3:1209 dec0:886 dec1:1245 dec2:1197 dec3:845
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.275     0.515     2.078     0.208     0.686
+silence     0.177     0.424     1.804     0.151     0.462
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 101s
+related phase 15 (pa): intact loss hi 3.069, gu 2.947, pa 1.873 | chrF hi 40.5, gu 38.2, pa 43.6
+  count-matched n per layer (n_max = smaller group): enc0:1176 enc1:1152 enc2:1203 enc3:1258 dec0:851 dec1:1249 dec2:1249 dec3:674
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.237     0.490     2.028     0.206     0.648
+silence     0.156     0.417     1.894     0.138     0.434
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 95s
+done

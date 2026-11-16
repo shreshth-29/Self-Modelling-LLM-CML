@@ -1,0 +1,143 @@
+=== static (no training): loss rise on the model's languages; one comparison = one checkpoint x one scope x one draw (average of the languages) ===
+
+--- self vs task (count-matched)
+ family        scope    mode dose   self   task  ratio self_worse  sign_p
+distant all 8 layers  lesion  0.5 0.5224 0.2309 2.2622      12/12  0.0002
+distant all 8 layers  lesion  1.0 2.2444 1.0849 2.0688      12/12  0.0002
+distant all 8 layers silence  0.5 0.3487 0.1222 2.8531      12/12  0.0002
+distant all 8 layers silence  1.0 1.7803 0.7361 2.4187      12/12  0.0002
+distant    one layer  lesion  0.5 0.0409 0.0241 1.6984      75/96  0.0000
+distant    one layer  lesion  1.0 0.1170 0.0851 1.3753      80/96  0.0000
+distant    one layer silence  0.5 0.0275 0.0118 2.3395      76/96  0.0000
+distant    one layer silence  1.0 0.0830 0.0560 1.4841      71/96  0.0000
+  hindi all 8 layers  lesion  0.5 0.6260 0.3516 1.7804        8/8  0.0039
+  hindi all 8 layers  lesion  1.0 2.9884 1.2666 2.3594        8/8  0.0039
+  hindi all 8 layers silence  0.5 0.6221 0.2896 2.1480        8/8  0.0039
+  hindi all 8 layers silence  1.0 3.0355 1.0192 2.9784        8/8  0.0039
+  hindi    one layer  lesion  0.5 0.0411 0.0298 1.3808      55/64  0.0000
+  hindi    one layer  lesion  1.0 0.1077 0.0838 1.2854      56/64  0.0000
+  hindi    one layer silence  0.5 0.0413 0.0254 1.6248      53/64  0.0000
+  hindi    one layer silence  1.0 0.1174 0.0715 1.6406      58/64  0.0000
+  mixed all 8 layers  lesion  0.5 0.3649 0.1876 1.9448        8/8  0.0039
+  mixed all 8 layers  lesion  1.0 1.6044 0.9721 1.6505        7/8  0.0352
+  mixed all 8 layers silence  0.5 0.3201 0.1628 1.9668        8/8  0.0039
+  mixed all 8 layers silence  1.0 1.3351 0.8026 1.6634        7/8  0.0352
+  mixed    one layer  lesion  0.5 0.0282 0.0175 1.6132      54/64  0.0000
+  mixed    one layer  lesion  1.0 0.0686 0.0660 1.0397      53/64  0.0000
+  mixed    one layer silence  0.5 0.0256 0.0154 1.6644      56/64  0.0000
+  mixed    one layer silence  1.0 0.0573 0.0593 0.9663      57/64  0.0000
+related all 8 layers  lesion  0.5 0.5655 0.2083 2.7144      12/12  0.0002
+related all 8 layers  lesion  1.0 2.2882 0.7787 2.9386      12/12  0.0002
+related all 8 layers silence  0.5 0.4667 0.1389 3.3596      12/12  0.0002
+related all 8 layers silence  1.0 2.0980 0.5425 3.8671      12/12  0.0002
+related    one layer  lesion  0.5 0.0413 0.0209 1.9792      91/96  0.0000
+related    one layer  lesion  1.0 0.0952 0.0533 1.7855      84/96  0.0000
+related    one layer silence  0.5 0.0337 0.0135 2.4934      90/96  0.0000
+related    one layer silence  1.0 0.0762 0.0366 2.0827      92/96  0.0000
+
+--- self vs look (count-matched)
+ family        scope    mode dose   self   look  ratio self_worse  sign_p
+distant all 8 layers  lesion  0.5 0.5224 0.2729 1.9142      12/12  0.0002
+distant all 8 layers silence  0.5 0.3487 0.1426 2.4450      12/12  0.0002
+distant    one layer  lesion  0.5 0.0409 0.0278 1.4721      54/96  0.1307
+distant    one layer silence  0.5 0.0275 0.0136 2.0184      64/96  0.0007
+  hindi all 8 layers  lesion  0.5 0.6260 0.3597 1.7402        8/8  0.0039
+  hindi all 8 layers silence  0.5 0.6221 0.2945 2.1126        8/8  0.0039
+  hindi    one layer  lesion  0.5 0.0411 0.0305 1.3456      47/64  0.0001
+  hindi    one layer silence  0.5 0.0413 0.0262 1.5733      47/64  0.0001
+  mixed all 8 layers  lesion  0.5 0.3649 0.2277 1.6026        8/8  0.0039
+  mixed all 8 layers silence  0.5 0.3201 0.1888 1.6955        8/8  0.0039
+  mixed    one layer  lesion  0.5 0.0282 0.0200 1.4124      48/64  0.0000
+  mixed    one layer silence  0.5 0.0256 0.0170 1.5076      54/64  0.0000
+related all 8 layers  lesion  0.5 0.5655 0.2569 2.2009      12/12  0.0002
+related all 8 layers silence  0.5 0.4667 0.1554 3.0040      12/12  0.0002
+related    one layer  lesion  0.5 0.0413 0.0252 1.6436      81/96  0.0000
+related    one layer silence  0.5 0.0337 0.0145 2.3321      88/96  0.0000
+
+--- chrF drop (points), all 8 layers
+group                 look   self   task
+family  mode    dose                    
+distant lesion  0.5   1.97   7.57   1.47
+                1.0    NaN  20.52   6.73
+        silence 0.5   1.04   6.46   0.77
+                1.0    NaN  20.28   4.48
+hindi   lesion  0.5   3.54  12.52   3.34
+                1.0    NaN  43.51  13.11
+        silence 0.5   2.44  12.76   2.24
+                1.0    NaN  47.24   7.30
+mixed   lesion  0.5   2.19   6.98   1.82
+                1.0    NaN  28.70   8.20
+        silence 0.5   1.91   6.21   1.64
+                1.0    NaN  26.18   6.79
+related lesion  0.5   1.91  11.13   0.93
+                1.0    NaN  35.64   8.29
+        silence 0.5   0.83  10.92   0.21
+                1.0    NaN  35.58   3.97
+
+--- per layer (dose 1.0): loss rise self / task
+group                    self    task
+family  mode    scope                
+distant lesion  dec0   0.3785  0.1612
+                dec1   0.0734  0.0537
+                dec2   0.0548  0.0340
+                dec3   0.0664  0.0452
+                enc0   0.2257  0.2855
+                enc1   0.0414  0.0293
+                enc2   0.0480  0.0333
+                enc3   0.0477  0.0381
+        silence dec0   0.2255  0.0717
+                dec1   0.0385  0.0292
+                dec2   0.0168  0.0185
+                dec3   0.0653  0.0087
+                enc0   0.2434  0.2623
+                enc1   0.0270  0.0206
+                enc2   0.0264  0.0188
+                enc3   0.0215  0.0180
+hindi   lesion  dec0   0.2074  0.1163
+                dec1   0.1395  0.0805
+                dec2   0.1131  0.0777
+                dec3   0.0912  0.0965
+                enc0   0.1452  0.1892
+                enc1   0.0510  0.0398
+                enc2   0.0497  0.0303
+                enc3   0.0642  0.0397
+        silence dec0   0.3430  0.0887
+                dec1   0.1741  0.0698
+                dec2   0.1148  0.0785
+                dec3   0.0894  0.0805
+                enc0   0.0871  0.1630
+                enc1   0.0412  0.0339
+                enc2   0.0388  0.0256
+                enc3   0.0507  0.0324
+mixed   lesion  dec0   0.1394  0.0550
+                dec1   0.0912  0.0530
+                dec2   0.0780  0.0559
+                dec3   0.0465  0.0460
+                enc0   0.0871  0.2317
+                enc1   0.0324  0.0250
+                enc2   0.0400  0.0334
+                enc3   0.0340  0.0276
+        silence dec0   0.1067  0.0470
+                dec1   0.0761  0.0456
+                dec2   0.0778  0.0539
+                dec3   0.0480  0.0413
+                enc0   0.0581  0.2168
+                enc1   0.0282  0.0207
+                enc2   0.0348  0.0274
+                enc3   0.0284  0.0214
+related lesion  dec0   0.2359  0.0722
+                dec1   0.1415  0.0664
+                dec2   0.1159  0.0578
+                dec3   0.0473  0.0530
+                enc0   0.0732  0.0780
+                enc1   0.0392  0.0255
+                enc2   0.0472  0.0324
+                enc3   0.0614  0.0412
+        silence dec0   0.1734  0.0491
+                dec1   0.1130  0.0431
+                dec2   0.1021  0.0383
+                dec3   0.0601  0.0260
+                enc0   0.0558  0.0731
+                enc1   0.0312  0.0206
+                enc2   0.0349  0.0223
+                enc3   0.0394  0.0203
