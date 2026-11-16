@@ -56,3 +56,57 @@ done
 done
   related phase 7 (hi): self % per layer 62 50 53 55 62 49 51 76 | 10s
 done
+  related phase 8 (gu): self % per layer 57 48 49 50 66 53 51 71 | 7s
+done
+  related phase 9 (pa): self % per layer 57 48 50 54 67 50 53 74 | 7s
+done
+  related phase 10 (hi): self % per layer 57 46 50 52 61 45 48 75 | 7s
+done
+  related phase 11 (gu): self % per layer 56 45 47 50 65 50 50 68 | 7s
+done
+  related phase 12 (pa): self % per layer 55 46 48 51 65 50 53 74 | 7s
+done
+  related phase 13 (hi): self % per layer 55 43 48 50 63 46 46 73 | 7s
+done
+  related phase 14 (gu): self % per layer 54 43 46 47 65 51 47 67 | 7s
+done
+  related phase 15 (pa): self % per layer 54 45 47 51 67 49 51 74 | 7s
+done
+  related phase 16 (hi): self % per layer 55 43 45 49 62 44 46 71 | 7s
+done
+  distant enc0: self 1190/2560 | persistence self 0.860 vs task 0.815
+  distant enc1: self 971/2560 | persistence self 0.799 vs task 0.712
+  distant enc2: self 1036/2560 | persistence self 0.731 vs task 0.624
+  distant enc3: self 1356/2560 | persistence self 0.680 vs task 0.577
+  distant dec0: self 1357/2560 | persistence self 0.574 vs task 0.523
+  distant dec1: self 920/2560 | persistence self 0.476 vs task 0.379
+  distant dec2: self 920/2560 | persistence self 0.412 vs task 0.345
+  distant dec3: self 1563/2560 | persistence self 0.397 vs task 0.383
+done
+  hindi enc0: self 1129/2560 | persistence self 0.961 vs task 0.950
+  hindi enc1: self 794/2560 | persistence self 0.946 vs task 0.927
+  hindi enc2: self 829/2560 | persistence self 0.942 vs task 0.910
+  hindi enc3: self 1017/2560 | persistence self 0.939 vs task 0.911
+  hindi dec0: self 1804/2560 | persistence self 0.919 vs task 0.900
+  hindi dec1: self 1339/2560 | persistence self 0.875 vs task 0.864
+  hindi dec2: self 1205/2560 | persistence self 0.901 vs task 0.880
+  hindi dec3: self 1557/2560 | persistence self 0.926 vs task 0.904
+done
+  mixed enc0: self 1187/2560 | persistence self 0.939 vs task 0.920
+  mixed enc1: self 990/2560 | persistence self 0.925 vs task 0.890
+  mixed enc2: self 1342/2560 | persistence self 0.927 vs task 0.890
+  mixed enc3: self 1677/2560 | persistence self 0.932 vs task 0.897
+  mixed dec0: self 1604/2560 | persistence self 0.943 vs task 0.916
+  mixed dec1: self 1488/2560 | persistence self 0.936 vs task 0.907
+  mixed dec2: self 1494/2560 | persistence self 0.946 vs task 0.926
+  mixed dec3: self 1996/2560 | persistence self 0.952 vs task 0.936
+done
+  related enc0: self 1416/2560 | persistence self 0.850 vs task 0.798
+  related enc1: self 1109/2560 | persistence self 0.801 vs task 0.724
+  related enc2: self 1223/2560 | persistence self 0.767 vs task 0.665
+  related enc3: self 1271/2560 | persistence self 0.741 vs task 0.645
+  related dec0: self 1603/2560 | persistence self 0.696 vs task 0.641
+  related dec1: self 1167/2560 | persistence self 0.669 vs task 0.566
+  related dec2: self 1190/2560 | persistence self 0.664 vs task 0.587
+  related dec3: self 1862/2560 | persistence self 0.706 vs task 0.635
+done

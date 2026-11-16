@@ -1,0 +1,16 @@
+distant phase 10 (hi): intact loss hi 1.107, zh 6.441, ar 6.015 | chrF hi 54.1, zh 2.7, ar 9.8
+  count-matched n per layer (n_max = smaller group): enc0:1247 enc1:1133 enc2:1273 enc3:1008 dec0:1229 dec1:1039 dec2:1108 dec3:897
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.270     0.539     2.157     0.241     1.585
+silence     0.108     0.332     1.721     0.099     1.216
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 111s
+distant phase 11 (zh): intact loss hi 4.349, zh 2.062, ar 6.105 | chrF hi 25.6, zh 26.3, ar 13.2
+  count-matched n per layer (n_max = smaller group): enc0:1253 enc1:1137 enc2:1275 enc3:998 dec0:1201 dec1:1132 dec2:1084 dec3:1135
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.221     0.521     2.939     0.195     0.552
+silence     0.146     0.407     2.962     0.134     0.375
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 108s
