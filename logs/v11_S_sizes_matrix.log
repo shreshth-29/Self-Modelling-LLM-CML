@@ -1,0 +1,58 @@
+  distant phase 10 (hi): self % per layer 51 44 50 61 52 41 43 65 | 8s
+done
+  distant phase 11 (zh): self % per layer 51 44 50 61 53 44 42 56 | 10s
+done
+  distant phase 12 (ar): self % per layer 49 47 51 64 55 55 58 80 | 10s
+done
+  distant phase 25 (hi): self % per layer 47 43 44 54 52 40 39 63 | 8s
+done
+  distant phase 26 (zh): self % per layer 49 43 44 53 54 40 39 53 | 8s
+done
+  distant phase 27 (ar): self % per layer 49 46 48 58 58 52 56 79 | 9s
+done
+  distant phase 40 (hi): self % per layer 46 38 40 53 53 36 36 61 | 9s
+done
+  distant phase 41 (zh): self % per layer 47 45 41 52 54 40 36 53 | 10s
+done
+  distant phase 42 (ar): self % per layer 46 47 46 58 56 54 50 79 | 9s
+done
+  distant phase 55 (hi): self % per layer 49 44 38 49 54 37 35 59 | 10s
+done
+  distant phase 56 (zh): self % per layer 49 44 40 49 55 40 37 54 | 9s
+done
+  distant phase 57 (ar): self % per layer 49 46 49 54 56 52 50 80 | 8s
+done
+  hindi phase 10 (hi): self % per layer 56 46 45 53 69 57 57 69 | 8s
+done
+  hindi phase 25 (hi): self % per layer 49 36 37 46 70 53 53 65 | 9s
+done
+  hindi phase 30 (hi): self % per layer 47 34 34 43 69 50 51 63 | 9s
+done
+  hindi phase 40 (hi): self % per layer 44 31 32 40 70 52 47 61 | 10s
+done
+  hindi phase 45 (hi): self % per layer 44 30 31 39 70 53 48 60 | 9s
+done
+  hindi phase 55 (hi): self % per layer 43 28 30 36 71 51 46 60 | 10s
+done
+  hindi phase 60 (hi): self % per layer 43 29 29 36 71 50 45 61 | 9s
+done
+  mixed phase 10 (mix): self % per layer 59 55 67 77 68 66 68 85 | 9s
+done
+  mixed phase 25 (mix): self % per layer 48 42 58 70 64 60 63 81 | 8s
+done
+  mixed phase 30 (mix): self % per layer 47 40 56 68 63 60 62 79 | 9s
+done
+  mixed phase 40 (mix): self % per layer 46 39 52 66 63 58 58 78 | 9s
+done
+  mixed phase 45 (mix): self % per layer 46 38 52 64 63 56 58 79 | 8s
+done
+  mixed phase 55 (mix): self % per layer 44 38 50 61 62 57 57 76 | 9s
+done
+  mixed phase 60 (mix): self % per layer 43 37 49 60 62 55 56 77 | 9s
+done
+  related phase 5 (gu): self % per layer 60 49 52 50 63 53 52 70 | 9s
+done
+  related phase 6 (pa): self % per layer 62 51 53 55 65 53 57 76 | 10s
+done
+  related phase 7 (hi): self % per layer 62 50 53 55 62 49 51 76 | 10s
+done
