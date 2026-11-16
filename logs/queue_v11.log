@@ -22,3 +22,6 @@ Mon 12:51 FINISHED v11_B_lesion_next_gpu0.ipynb
 Mon 12:51 pushed (after v11_B_lesion_next_gpu0.ipynb)
 Mon 12:51 START    v11_C_freeze_silence_next_gpu0.ipynb
 Mon 16:51 FINISHED v11_C_freeze_silence_next_gpu0.ipynb
+Mon 16:51 pushed (after v11_C_freeze_silence_next_gpu0.ipynb)
+Mon 16:51 GPU 0 chain done
+Mon 22:40 FINISHED v11_E_train_related_seed1_gpu1.ipynb

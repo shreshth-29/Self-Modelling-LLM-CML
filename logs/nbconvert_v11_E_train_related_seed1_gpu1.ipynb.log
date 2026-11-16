@@ -11,3 +11,4 @@ Hindi training pairs: 993,016 -> Gujarati and Punjabi get exactly the same numbe
 data ready: {'hi': 993016, 'gu': 993016, 'pa': 993016}
 [W1116 09:56:58.865648385 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1929379840 bytes (free: 358350848, total: 25252724736).
 [W1116 10:15:06.550155905 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1954545664 bytes (free: 108789760, total: 25252724736).
+[NbConvertApp] Writing 576915 bytes to v11_E_train_related_seed1_gpu1.ipynb
