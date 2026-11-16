@@ -1,0 +1,13 @@
+[NbConvertApp] Converting notebook v11_E_train_related_seed1_gpu1.ipynb to notebook
+/venv/main/lib/python3.12/site-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  _validate(nbdict, ref, version, version_minor, relax_add_props)
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+/venv/main/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+Hindi training pairs: 993,016 -> Gujarati and Punjabi get exactly the same number
+  hi: 1.37 pieces per word (2,000 validation sentences)
+  gu: 1.52 pieces per word (2,000 validation sentences)
+  pa: 1.31 pieces per word (2,000 validation sentences)
+data ready: {'hi': 993016, 'gu': 993016, 'pa': 993016}
+[W1116 09:56:58.865648385 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1929379840 bytes (free: 358350848, total: 25252724736).
+[W1116 10:15:06.550155905 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1954545664 bytes (free: 108789760, total: 25252724736).
