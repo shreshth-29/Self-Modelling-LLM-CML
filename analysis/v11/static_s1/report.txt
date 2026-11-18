@@ -1,0 +1,47 @@
+=== static (no training): loss rise on the model's languages; one comparison = one checkpoint x one scope x one draw (average of the languages) ===
+
+--- self vs task (count-matched)
+    family        scope    mode dose   self   task  ratio self_worse  sign_p
+related_s1 all 8 layers  lesion  0.5 0.5129 0.2259 2.2706      12/12  0.0002
+related_s1 all 8 layers  lesion  1.0 2.8494 1.2217 2.3323       9/12  0.0730
+related_s1 all 8 layers silence  0.5 0.4065 0.1562 2.6018      12/12  0.0002
+related_s1 all 8 layers silence  1.0 2.6320 1.0453 2.5179       9/12  0.0730
+related_s1    one layer  lesion  0.5 0.0398 0.0220 1.8118      86/96  0.0000
+related_s1    one layer  lesion  1.0 0.0926 0.0692 1.3379      81/96  0.0000
+related_s1    one layer silence  0.5 0.0317 0.0144 2.1992      83/96  0.0000
+related_s1    one layer silence  1.0 0.0770 0.0671 1.1483      85/96  0.0000
+
+--- self vs look (count-matched)
+    family        scope    mode dose   self   look  ratio self_worse  sign_p
+related_s1 all 8 layers  lesion  0.5 0.5129 0.2441 2.1012      12/12  0.0002
+related_s1 all 8 layers silence  0.5 0.4065 0.1484 2.7392      12/12  0.0002
+related_s1    one layer  lesion  0.5 0.0398 0.0237 1.6809      80/96  0.0000
+related_s1    one layer silence  0.5 0.0317 0.0136 2.3333      84/96  0.0000
+
+--- chrF drop (points), all 8 layers
+group                    look   self   task
+family     mode    dose                    
+related_s1 lesion  0.5   2.06  10.15   2.12
+                   1.0    NaN  36.04  15.64
+           silence 0.5   0.47   9.52   1.17
+                   1.0    NaN  36.30  11.24
+
+--- per layer (dose 1.0): loss rise self / task
+group                       self    task
+family     mode    scope                
+related_s1 lesion  dec0   0.2051  0.1053
+                   dec1   0.1428  0.0672
+                   dec2   0.1221  0.0524
+                   dec3   0.0344  0.0528
+                   enc0   0.0925  0.1825
+                   enc1   0.0410  0.0261
+                   enc2   0.0493  0.0286
+                   enc3   0.0539  0.0390
+           silence dec0   0.1442  0.0734
+                   dec1   0.1016  0.0476
+                   dec2   0.1091  0.0394
+                   dec3   0.0624  0.0200
+                   enc0   0.1075  0.2940
+                   enc1   0.0279  0.0219
+                   enc2   0.0281  0.0194
+                   enc3   0.0354  0.0210

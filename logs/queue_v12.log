@@ -4,3 +4,5 @@ Wed 02:55 queue started, GPUs: 2
 Wed 02:55 START    v12_M_mind_gpu0.ipynb on GPU 0
 Wed 02:55 START    v12_R_seed1_hindifix.ipynb on GPU 1
 Wed 03:08 FINISHED v12_M_mind_gpu0.ipynb
+Wed 03:08 pushed (after v12_M_mind_gpu0.ipynb)
+Wed 05:14 FINISHED v12_R_seed1_hindifix.ipynb
