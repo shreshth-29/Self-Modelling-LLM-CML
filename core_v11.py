@@ -32,6 +32,7 @@ ap.add_argument("--part", default="", choices=["", "sizes", "matrix", "static", 
 ap.add_argument("--model", default="", help="name=run:phase[,phase,...]   (train: exactly one phase)   or fresh")
 ap.add_argument("--family", default="", help="label used to group results: distant / related / hindi / mixed")
 ap.add_argument("--eval_langs", default="", help="static: comma list; default = all languages of the language set")
+ap.add_argument("--self_langs", default="", help="static: comma list of languages the self is found on; default = all languages of the language set")
 ap.add_argument("--task", default="next", choices=["next", "indonesian"])
 ap.add_argument("--mode", default="lesion", choices=["lesion", "silence", "freeze"])
 ap.add_argument("--conds", default="none,self@1.0,task@1.0,self@0.5,task@0.5,look@0.5")
@@ -455,7 +456,7 @@ if args.part == "static":
         if path is None:
             print(f"  {run} phase {ph}: checkpoint not on this machine, skipped", flush=True); continue
         t0 = time.time(); model, ck = load_model(path); model.eval()
-        info = neuron_info(model, list(LANGS))
+        info = neuron_info(model, [l for l in (args.self_langs.split(",") if args.self_langs else LANGS) if l in LANGS])
         base, base_c = ev_loss(model), ev_chrf(model)
         print(f"{FAMILY} phase {ph} ({ck.get('lang')}): intact loss " + ", ".join(f"{l} {base[l]:.3f}" for l in EV)
               + " | chrF " + ", ".join(f"{l} {base_c[l]:.1f}" for l in EV), flush=True)
