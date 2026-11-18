@@ -48,7 +48,7 @@ PY
 echo "--- new code, every part, tiny (results go to analysis/*/_pre_* and are deleted at the end)"
 rm -rf analysis/v11/_pre_* analysis/v12/_pre_*
 D="v4b_continual_s0"; H="v4b_only_hi_s0"; R="v8_indic_continual_s0"; R1="v8_indic_continual_s1"
-TINY="--draws 0 --n_val 40 --n_chrf 8 --gains 0,2 --alphas -2,2"
+TINY="--draws 0 --n_val 40 --n_chrf 8 --gains=0,2 --alphas=-2,2"
 export CML_LANGSET=distant
 step "dial (distant 40)"                 python -u mind_v12.py --gpu 0 --part dial --out _pre_dial --family distant --model distant=$D:40 $TINY
 step "dial (Hindi-only 45, self on hi)"  python -u mind_v12.py --gpu 0 --part dial --out _pre_dial --family hindi --model hindi=$H:45 --self_langs hi $TINY
