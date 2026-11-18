@@ -1,0 +1,13 @@
+related phase 13 (measured on hi): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    3.744  4.449  4.133
+enc1    3.153  3.623  3.692
+enc2    2.775  3.016  3.149
+enc3    2.612  3.042  3.277
+dec0    5.017  5.086  4.903
+dec1    3.663  4.234  3.697
+dec2    2.846  2.756  2.751
+dec3    2.349  2.262  2.345
+  8s
+done

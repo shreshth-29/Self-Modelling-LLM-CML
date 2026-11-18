@@ -1,0 +1,9 @@
+distant phase 40 (hi): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.591     1.089
+dec1     0.412     1.393
+dec2     0.463     1.704
+dec3     0.677     1.337
+  8s
+done

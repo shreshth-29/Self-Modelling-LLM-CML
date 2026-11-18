@@ -1,0 +1,25 @@
+=== overlap: the self found separately on each language's text (decoder layers; the encoder only ever reads English) ===
+jaccard = shared / in either. x_chance = shared neurons / the number expected if the two sets were unrelated (1 = chance)
+                 self_a    self_b    shared  jaccard  x_chance  pairs
+family  layer                                                        
+distant dec0   1897.667  1635.000  1312.667    0.591     1.089      3
+        dec1   1269.000   949.667   646.000    0.412     1.393      3
+        dec2   1133.333   836.667   618.667    0.463     1.704      3
+        dec3   1704.000  1426.000  1260.333    0.677     1.337      3
+related dec0   1620.000  1776.667  1286.000    0.607     1.163      3
+        dec1   1170.000  1194.667   900.333    0.615     1.670      3
+        dec2   1214.000  1219.333   978.333    0.672     1.703      3
+        dec3   1848.333  1869.000  1687.000    0.831     1.252      3
+
+--- in the self for ALL the languages at once (n_both), vs expected by chance
+               in_all  expected  x_chance  share_of_layer
+family  layer                                            
+distant dec0   1043.0   825.332     1.264           0.407
+        dec1    472.0   198.716     2.375           0.184
+        dec2    476.0   138.306     3.442           0.186
+        dec3   1130.0   574.535     1.967           0.441
+related dec0   1054.0   718.531     1.467           0.412
+        dec1    792.0   247.200     3.204           0.309
+        dec2    878.0   271.948     3.229           0.343
+        dec3   1600.0   978.046     1.636           0.625
+report in /workspace/shreshth/analysis/v12/_pre_overlap

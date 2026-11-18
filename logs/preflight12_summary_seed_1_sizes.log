@@ -1,0 +1,41 @@
+=== module sizes per layer, averaged over the checkpoints listed (phases <= 60) ===
+self_pct = % of the layer's working neurons in the self; n_max = size of the smaller group (the count-matched lesion size)
+
+--- self found on: Hindi only
+                  self_pct  sd  n_self  n_task   n_max  working  checkpoints
+family     layer                                                            
+related_s1 dec0       68.7 NaN  1759.0   801.0   801.0   2560.0            1
+           dec1       46.7 NaN  1196.0  1364.0  1196.0   2560.0            1
+           dec2       52.9 NaN  1353.0  1207.0  1207.0   2560.0            1
+           dec3       75.4 NaN  1931.0   629.0   629.0   2560.0            1
+           enc0       55.5 NaN  1420.0  1140.0  1140.0   2560.0            1
+           enc1       45.5 NaN  1165.0  1395.0  1165.0   2560.0            1
+           enc2       46.1 NaN  1179.0  1381.0  1179.0   2560.0            1
+           enc3       55.9 NaN  1432.0  1128.0  1128.0   2560.0            1
+
+average of the 8 layers:
+            mean  std  count
+family                      
+related_s1  55.8  NaN      1
+
+--- self found on: all the model's languages
+                  self_pct  sd  n_self  n_task   n_max  working  checkpoints
+family     layer                                                            
+related_s1 dec0       62.3 NaN  1596.0   964.0   964.0   2560.0            1
+           dec1       43.3 NaN  1108.0  1452.0  1108.0   2560.0            1
+           dec2       47.8 NaN  1223.0  1337.0  1223.0   2560.0            1
+           dec3       73.2 NaN  1875.0   685.0   685.0   2560.0            1
+           enc0       55.5 NaN  1420.0  1140.0  1140.0   2560.0            1
+           enc1       45.5 NaN  1165.0  1395.0  1165.0   2560.0            1
+           enc2       46.1 NaN  1179.0  1381.0  1179.0   2560.0            1
+           enc3       55.9 NaN  1432.0  1128.0  1128.0   2560.0            1
+
+average of the 8 layers:
+            mean  std  count
+family                      
+related_s1  53.7  NaN      1
+/workspace/shreshth/core_v11.py:105: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.set_title(f"Self size per layer, mean and spread over checkpoints (self found on: {d})", fontsize=10); ax.legend(frameon=False)
+/workspace/shreshth/core_v11.py:105: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.set_title(f"Self size per layer, mean and spread over checkpoints (self found on: {d})", fontsize=10); ax.legend(frameon=False)
+report in /workspace/shreshth/analysis/v11/_pre_sizes

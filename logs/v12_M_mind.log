@@ -1,0 +1,251 @@
+distant phase 40 (last trained hi; measured on hi; self found on hi,zh,ar): untouched loss 1.083, entropy 1.714, top-1 75.7%, chrF 54.6
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.835  0.159    NaN  0.079  0.310
+           self     NaN    NaN  1.434  0.225    NaN  0.135  0.485
+           task     NaN    NaN  0.709  0.150    NaN  0.051  0.241
+steer_same look  -0.300 -0.167    NaN    NaN  0.204    NaN  0.453
+           self  -0.420 -0.237    NaN    NaN  0.297    NaN  0.667
+           task  -0.228 -0.124    NaN    NaN  0.146    NaN  0.318
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 40s
+distant phase 41 (last trained zh; measured on zh; self found on hi,zh,ar): untouched loss 2.039, entropy 2.332, top-1 59.7%, chrF 27.4
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.585  0.118    NaN  0.069  0.264
+           self     NaN    NaN  0.789  0.077    NaN  0.170  0.493
+           task     NaN    NaN  0.608  0.145    NaN  0.037  0.198
+steer_same look  -0.106 -0.072    NaN    NaN  0.114    NaN  0.280
+           self  -0.113 -0.162    NaN    NaN  0.524    NaN  1.598
+           task   0.264  0.112    NaN    NaN -0.078    NaN -0.122
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 36s
+distant phase 42 (last trained ar; measured on ar; self found on hi,zh,ar): untouched loss 1.711, entropy 2.290, top-1 62.5%, chrF 53.5
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.575  0.139    NaN  0.018  0.136
+           self     NaN    NaN  0.942  0.179    NaN  0.063  0.285
+           task     NaN    NaN  0.474  0.100    NaN  0.043  0.178
+steer_same look  -0.122 -0.085    NaN    NaN  0.130    NaN  0.312
+           self   0.323  0.031    NaN    NaN  0.145    NaN  0.508
+           task   0.014 -0.017    NaN    NaN  0.058    NaN  0.166
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 37s
+done
+related phase 13 (last trained hi; measured on hi; self found on hi,gu,pa): untouched loss 1.153, entropy 1.744, top-1 75.2%, chrF 53.8
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.753  0.151    NaN  0.072  0.307
+           self     NaN    NaN  1.282  0.204    NaN  0.118  0.468
+           task     NaN    NaN  0.634  0.119    NaN  0.084  0.342
+steer_same look  -0.190 -0.104    NaN    NaN  0.122    NaN  0.268
+           self  -0.282 -0.156    NaN    NaN  0.190    NaN  0.418
+           task  -0.057 -0.035    NaN    NaN  0.048    NaN  0.112
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 39s
+related phase 14 (last trained gu; measured on gu; self found on hi,gu,pa): untouched loss 1.884, entropy 2.381, top-1 60.2%, chrF 43.9
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.507  0.120    NaN  0.044  0.200
+           self     NaN    NaN  0.671  0.079    NaN  0.141  0.410
+           task     NaN    NaN  0.373  0.078    NaN  0.051  0.203
+steer_same look   0.530  0.230    NaN    NaN -0.166    NaN -0.272
+           self  -0.110 -0.130    NaN    NaN  0.489    NaN  1.572
+           task   0.415  0.183    NaN    NaN -0.130    NaN -0.201
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 36s
+related phase 15 (last trained pa; measured on pa; self found on hi,gu,pa): untouched loss 1.873, entropy 2.385, top-1 60.6%, chrF 43.6
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.419  0.095    NaN  0.045  0.186
+           self     NaN    NaN  0.787  0.129    NaN  0.097  0.323
+           task     NaN    NaN  0.306  0.058    NaN  0.068  0.233
+steer_same look   0.252  0.108    NaN    NaN -0.072    NaN -0.101
+           self   0.133  0.010    NaN    NaN  0.243    NaN  0.930
+           task   0.168  0.069    NaN    NaN -0.037    NaN -0.035
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 35s
+done
+hindi phase 45 (last trained hi; measured on hi; self found on hi): untouched loss 1.137, entropy 1.570, top-1 75.7%, chrF 51.3
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  1.011  0.200    NaN  0.103  0.409
+           self     NaN    NaN  1.762  0.269    NaN  0.190  0.662
+           task     NaN    NaN  0.740  0.144    NaN  0.086  0.361
+steer_same look  -0.290 -0.163    NaN    NaN  0.207    NaN  0.464
+           self  -0.269 -0.153    NaN    NaN  0.194    NaN  0.435
+           task  -0.220 -0.123    NaN    NaN  0.154    NaN  0.345
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 38s
+done
+mixed phase 45 (last trained mix; measured on hi; self found on hi,zh,ar): untouched loss 1.232, entropy 1.889, top-1 73.2%, chrF 52.4
+  entropy change (average of draws):
+value              -2.0   -1.0    0.0    0.5    1.0    1.5    2.0
+kind       group                                                 
+gain       look     NaN    NaN  0.713  0.133    NaN  0.103  0.406
+           self     NaN    NaN  1.036  0.190    NaN  0.096  0.392
+           task     NaN    NaN  0.631  0.126    NaN  0.081  0.348
+steer_same look  -0.121 -0.072    NaN    NaN  0.096    NaN  0.220
+           self  -0.087 -0.055    NaN    NaN  0.082    NaN  0.193
+           task   0.001 -0.010    NaN    NaN  0.031    NaN  0.085
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 39s
+done
+distant phase 40 (measured on hi): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    6.121  6.934  6.730
+enc1    4.944  5.691  5.977
+enc2    4.032  4.490  4.626
+enc3    3.622  4.060  4.469
+dec0    5.972  6.774  6.162
+dec1    4.636  4.991  4.944
+dec2    3.488  3.511  3.471
+dec3    2.897  2.762  2.837
+  42s
+distant phase 41 (measured on zh): final-state movement per unit nudge
+group  random    self    task
+layer                        
+enc0    9.218  10.519  10.033
+enc1    7.530   8.728   8.803
+enc2    6.125   6.946   7.270
+enc3    5.545   6.470   6.552
+dec0    7.911   8.615   8.200
+dec1    6.084   6.764   6.351
+dec2    4.564   4.475   4.543
+dec3    3.689   3.571   3.577
+  39s
+distant phase 42 (measured on ar): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    6.243  7.138  6.860
+enc1    5.089  5.947  6.124
+enc2    4.157  4.809  4.876
+enc3    3.764  4.289  4.590
+dec0    5.884  6.370  6.278
+dec1    4.673  5.152  5.014
+dec2    3.551  3.518  3.578
+dec3    2.921  2.828  2.769
+  38s
+done
+related phase 13 (measured on hi): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    4.009  4.512  4.462
+enc1    3.354  3.751  4.043
+enc2    2.926  3.408  3.487
+enc3    2.662  3.042  3.206
+dec0    5.239  5.701  5.262
+dec1    3.866  4.138  3.931
+dec2    2.948  2.973  2.964
+dec3    2.418  2.333  2.351
+  41s
+related phase 14 (measured on gu): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    4.811  5.365  5.332
+enc1    3.977  4.517  4.602
+enc2    3.452  3.785  4.080
+enc3    3.099  3.666  3.814
+dec0    5.835  6.260  5.944
+dec1    4.330  4.771  4.426
+dec2    3.296  3.288  3.332
+dec3    2.665  2.548  2.579
+  36s
+related phase 15 (measured on pa): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    4.187  4.781  4.690
+enc1    3.474  3.920  4.047
+enc2    2.993  3.399  3.573
+enc3    2.749  3.124  3.330
+dec0    5.765  6.231  6.295
+dec1    4.244  4.645  4.471
+dec2    3.223  3.328  3.258
+dec3    2.620  2.515  2.549
+  44s
+done
+hindi phase 45 (measured on hi): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    4.592  4.965  4.859
+enc1    3.699  4.209  4.297
+enc2    3.219  3.503  3.630
+enc3    2.831  3.190  3.339
+dec0    5.329  5.466  5.267
+dec1    3.800  4.107  3.898
+dec2    2.859  2.845  2.839
+dec3    2.289  2.164  2.237
+  40s
+done
+mixed phase 45 (measured on hi): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    3.936  4.275  4.300
+enc1    3.300  3.506  3.630
+enc2    2.929  3.103  3.361
+enc3    2.749  3.086  3.161
+dec0    4.893  5.165  5.119
+dec1    3.817  3.976  3.918
+dec2    2.940  2.937  2.945
+dec3    2.490  2.407  2.443
+  42s
+done
+distant phase 40 (hi): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.591     1.089
+dec1     0.412     1.393
+dec2     0.463     1.704
+dec3     0.677     1.337
+  12s
+distant phase 41 (zh): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.599     1.109
+dec1     0.489     1.456
+dec2     0.484     1.836
+dec3     0.623     1.541
+  7s
+distant phase 42 (ar): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.613     1.096
+dec1     0.508     1.266
+dec2     0.514     1.339
+dec3     0.721     1.141
+  7s
+done
+related phase 13 (hi): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.607     1.163
+dec1     0.615     1.670
+dec2     0.672     1.703
+dec3     0.831     1.252
+  8s
+related phase 14 (gu): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.697     1.159
+dec1     0.665     1.548
+dec2     0.704     1.721
+dec3     0.802     1.350
+  7s
+related phase 15 (pa): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.694     1.171
+dec1     0.646     1.604
+dec2     0.708     1.647
+dec3     0.840     1.256
+  7s
+done
+mixed phase 45 (mix): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.673     1.039
+dec1     0.593     1.052
+dec2     0.603     1.043
+dec3     0.734     1.040
+  8s
+done

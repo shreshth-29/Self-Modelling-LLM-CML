@@ -1,0 +1,9 @@
+hindi phase 45 (hi): intact loss hi 1.153 | chrF hi 48.2
+  count-matched n per layer (n_max = smaller group): enc0:1138 enc1:772 enc2:793 enc3:992 dec0:1169 dec1:965 dec2:944 dec3:995
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.377     0.913     3.815     0.260     1.014
+silence     0.283     0.734     3.307     0.205     0.773
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 13s
+done

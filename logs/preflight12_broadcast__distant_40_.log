@@ -1,0 +1,13 @@
+distant phase 40 (measured on hi): final-state movement per unit nudge
+group  random   self   task
+layer                      
+enc0    5.851  6.769  6.270
+enc1    4.936  5.288  5.374
+enc2    3.823  4.434  4.402
+enc3    3.578  3.739  4.497
+dec0    5.641  6.398  5.740
+dec1    4.451  4.844  4.493
+dec2    3.361  3.375  3.345
+dec3    2.872  2.838  2.832
+  8s
+done

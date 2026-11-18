@@ -1,0 +1,32 @@
+=== overlap: the self found separately on each language's text (decoder layers; the encoder only ever reads English) ===
+jaccard = shared / in either. x_chance = shared neurons / the number expected if the two sets were unrelated (1 = chance)
+                 self_a    self_b    shared  jaccard  x_chance  pairs
+family  layer                                                        
+distant dec0   1822.667  1706.222  1325.444    0.601     1.098      9
+        dec1   1272.889  1213.778   797.889    0.470     1.371      9
+        dec2   1096.000  1111.111   723.444    0.487     1.627      9
+        dec3   1616.778  1581.000  1291.778    0.674     1.340      9
+mixed   dec0   1973.000  1990.333  1593.667    0.673     1.039      3
+        dec1   1752.333  1875.000  1350.000    0.593     1.052      3
+        dec2   1731.000  1992.333  1402.333    0.603     1.043      3
+        dec3   2021.333  2168.667  1774.333    0.734     1.040      3
+related dec0   1704.556  1851.222  1422.667    0.666     1.164      9
+        dec1   1227.333  1288.222   983.556    0.642     1.607      9
+        dec2   1225.444  1269.667  1022.444    0.695     1.690      9
+        dec3   1772.778  1834.778  1630.222    0.824     1.286      9
+
+--- in the self for ALL the languages at once (n_both), vs expected by chance
+                 in_all  expected  x_chance  share_of_layer
+family  layer                                              
+distant dec0   1058.667   826.517     1.281           0.414
+        dec1    604.333   284.686     2.209           0.236
+        dec2    570.667   206.590     3.163           0.223
+        dec3   1143.333   647.918     1.985           0.447
+mixed   dec0   1324.000  1187.389     1.115           0.517
+        dec1   1041.000   907.976     1.147           0.407
+        dec2   1095.000   969.767     1.129           0.428
+        dec3   1536.000  1385.611     1.109           0.600
+related dec0   1224.333   842.585     1.454           0.478
+        dec1    871.667   301.792     2.920           0.340
+        dec2    928.333   294.960     3.158           0.363
+        dec3   1549.333   899.373     1.741           0.605

@@ -1,0 +1,12 @@
+hindi phase 45 (last trained hi; measured on hi; self found on hi): untouched loss 1.186, entropy 1.612, top-1 72.3%, chrF 48.2
+  entropy change (average of draws):
+value              -2.0    0.0    2.0
+kind       group                     
+gain       look     NaN  0.878  0.353
+           self     NaN  1.640  0.521
+           task     NaN  0.627  0.301
+steer_same look  -0.272    NaN  0.476
+           self  -0.221    NaN  0.400
+           task  -0.269    NaN  0.457
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 12s
+done

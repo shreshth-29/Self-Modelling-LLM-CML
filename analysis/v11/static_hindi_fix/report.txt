@@ -1,0 +1,47 @@
+=== static (no training): loss rise on the model's languages; one comparison = one checkpoint x one scope x one draw (average of the languages) ===
+
+--- self vs task (count-matched)
+family        scope    mode dose   self   task  ratio self_worse  sign_p
+ hindi all 8 layers  lesion  0.5 0.8466 0.3744 2.2611        8/8  0.0039
+ hindi all 8 layers  lesion  1.0 3.9454 1.3957 2.8269        8/8  0.0039
+ hindi all 8 layers silence  0.5 0.6962 0.3100 2.2457        8/8  0.0039
+ hindi all 8 layers silence  1.0 3.3777 1.0825 3.1202        8/8  0.0039
+ hindi    one layer  lesion  0.5 0.0547 0.0330 1.6551      58/64  0.0000
+ hindi    one layer  lesion  1.0 0.1612 0.0912 1.7669      57/64  0.0000
+ hindi    one layer silence  0.5 0.0465 0.0279 1.6662      54/64  0.0000
+ hindi    one layer silence  1.0 0.1175 0.0751 1.5636      60/64  0.0000
+
+--- self vs look (count-matched)
+family        scope    mode dose   self   look  ratio self_worse  sign_p
+ hindi all 8 layers  lesion  0.5 0.8466 0.3958 2.1392        8/8  0.0039
+ hindi all 8 layers silence  0.5 0.6962 0.3034 2.2949        8/8  0.0039
+ hindi    one layer  lesion  0.5 0.0547 0.0335 1.6316      54/64  0.0000
+ hindi    one layer silence  0.5 0.0465 0.0276 1.6881      50/64  0.0000
+
+--- chrF drop (points), all 8 layers
+group                look   self   task
+family mode    dose                    
+hindi  lesion  0.5   3.85  15.76   3.86
+               1.0    NaN  44.42  16.18
+       silence 0.5   2.70  13.65   2.43
+               1.0    NaN  44.33   7.70
+
+--- per layer (dose 1.0): loss rise self / task
+group                   self    task
+family mode    scope                
+hindi  lesion  dec0   0.6335  0.2122
+               dec1   0.1409  0.0585
+               dec2   0.1044  0.0645
+               dec3   0.1008  0.0958
+               enc0   0.1452  0.1892
+               enc1   0.0510  0.0398
+               enc2   0.0497  0.0303
+               enc3   0.0642  0.0397
+       silence dec0   0.3967  0.1516
+               dec1   0.1025  0.0504
+               dec2   0.1014  0.0613
+               dec3   0.1213  0.0828
+               enc0   0.0871  0.1630
+               enc1   0.0412  0.0339
+               enc2   0.0388  0.0256
+               enc3   0.0507  0.0324

@@ -1,0 +1,367 @@
+=== dial: change vs the untouched model (average over checkpoints and draws). loss, entropy: higher = worse / more unsure ===
+one comparison = one checkpoint x one draw; self, task and look-alike picks all have the same number of neurons
+
+--- gain k: picked neurons' activity multiplied by k, all 8 layers (1 = untouched)
+d_loss:
+value            0.0    0.5    1.5    2.0
+family  group                            
+distant look   0.287  0.051  0.037  0.149
+        self   0.553  0.078  0.044  0.182
+        task   0.247  0.045  0.034  0.140
+hindi   look   0.356  0.063  0.041  0.190
+        self   0.910  0.104  0.058  0.242
+        task   0.283  0.050  0.038  0.165
+mixed   look   0.274  0.046  0.041  0.173
+        self   0.458  0.062  0.039  0.165
+        task   0.242  0.044  0.031  0.142
+related look   0.233  0.047  0.032  0.138
+        self   0.419  0.058  0.048  0.181
+        task   0.202  0.041  0.029  0.126
+d_entropy:
+value            0.0    0.5    1.5    2.0
+family  group                            
+distant look   0.665  0.139  0.055  0.237
+        self   1.055  0.160  0.123  0.421
+        task   0.597  0.131  0.044  0.205
+hindi   look   1.011  0.200  0.103  0.409
+        self   1.762  0.269  0.190  0.662
+        task   0.740  0.144  0.086  0.361
+mixed   look   0.713  0.133  0.103  0.406
+        self   1.036  0.190  0.096  0.392
+        task   0.631  0.126  0.081  0.348
+related look   0.560  0.122  0.054  0.231
+        self   0.913  0.137  0.118  0.400
+        task   0.438  0.085  0.068  0.259
+d_top1:
+value             0.0    0.5    1.5    2.0
+family  group                             
+distant look   -3.741 -0.458 -0.618 -2.171
+        self   -8.470 -0.856 -0.529 -2.498
+        task   -3.296 -0.527 -0.521 -2.314
+hindi   look   -4.880 -0.783 -0.928 -3.518
+        self  -15.520 -1.720 -0.734 -3.653
+        task   -3.856 -0.628 -0.734 -2.880
+mixed   look   -4.271 -0.860 -0.454 -2.725
+        self   -8.069 -0.792 -0.628 -2.899
+        task   -3.943 -0.667 -0.425 -2.261
+related look   -2.961 -0.473 -0.679 -2.602
+        self   -6.194 -0.749 -0.943 -3.092
+        task   -3.114 -0.712 -0.531 -2.205
+d_chrf:
+value             0.0    2.0
+family  group               
+distant look   -3.668 -5.852
+        self  -11.875 -5.160
+        task   -2.529 -6.025
+hindi   look   -4.004 -8.349
+        self  -16.926 -6.780
+        task   -2.312 -6.903
+mixed   look   -1.189 -6.889
+        self   -7.032 -4.786
+        task   -1.366 -5.623
+related look   -0.936 -5.336
+        self   -5.663 -5.505
+        task    0.523 -5.395
+self vs task: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant    0.0  6                           6/6  0.0156                              6/6   0.0156
+distant    0.5  6                           6/6  0.0156                              3/6   0.6562
+distant    1.5  6                           5/6  0.1094                              6/6   0.0156
+distant    2.0  6                           6/6  0.0156                              6/6   0.0156
+  hindi    0.0  2                           2/2  0.2500                              2/2   0.2500
+  hindi    0.5  2                           2/2  0.2500                              2/2   0.2500
+  hindi    1.5  2                           2/2  0.2500                              2/2   0.2500
+  hindi    2.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    0.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    0.5  2                           2/2  0.2500                              2/2   0.2500
+  mixed    1.5  2                           2/2  0.2500                              1/2   0.7500
+  mixed    2.0  2                           2/2  0.2500                              1/2   0.7500
+related    0.0  6                           6/6  0.0156                              6/6   0.0156
+related    0.5  6                           6/6  0.0156                              5/6   0.1094
+related    1.5  6                           6/6  0.0156                              6/6   0.0156
+related    2.0  6                           6/6  0.0156                              6/6   0.0156
+self vs look: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant    0.0  6                           6/6  0.0156                              6/6   0.0156
+distant    0.5  6                           6/6  0.0156                              3/6   0.6562
+distant    1.5  6                           5/6  0.1094                              6/6   0.0156
+distant    2.0  6                           6/6  0.0156                              6/6   0.0156
+  hindi    0.0  2                           2/2  0.2500                              2/2   0.2500
+  hindi    0.5  2                           2/2  0.2500                              2/2   0.2500
+  hindi    1.5  2                           2/2  0.2500                              2/2   0.2500
+  hindi    2.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    0.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    0.5  2                           2/2  0.2500                              2/2   0.2500
+  mixed    1.5  2                           0/2  1.0000                              1/2   0.7500
+  mixed    2.0  2                           0/2  1.0000                              1/2   0.7500
+related    0.0  6                           6/6  0.0156                              6/6   0.0156
+related    0.5  6                           5/6  0.1094                              5/6   0.1094
+related    1.5  6                           6/6  0.0156                              6/6   0.0156
+related    2.0  6                           6/6  0.0156                              6/6   0.0156
+
+--- clamp: picked neurons held at their own average, all 8 layers
+d_loss:
+value            1.0
+family  group       
+distant look   0.230
+        self   0.443
+        task   0.197
+hindi   look   0.283
+        self   0.758
+        task   0.246
+mixed   look   0.245
+        self   0.413
+        task   0.229
+related look   0.197
+        self   0.383
+        task   0.178
+d_entropy:
+value            1.0
+family  group       
+distant look   0.272
+        self   0.685
+        task   0.276
+hindi   look   0.541
+        self   1.599
+        task   0.529
+mixed   look   0.558
+        self   0.940
+        task   0.562
+related look   0.228
+        self   0.840
+        task   0.286
+d_top1:
+value             1.0
+family  group        
+distant look   -3.388
+        self   -7.484
+        task   -2.941
+hindi   look   -4.474
+        self  -13.549
+        task   -4.088
+mixed   look   -4.204
+        self   -7.402
+        task   -4.049
+related look   -2.901
+        self   -5.974
+        task   -2.900
+d_chrf:
+value             1.0
+family  group        
+distant look   -3.245
+        self  -10.560
+        task   -2.581
+hindi   look   -2.119
+        self  -14.485
+        task   -2.190
+mixed   look   -1.675
+        self   -7.125
+        task   -1.317
+related look   -0.278
+        self   -6.937
+        task   -0.313
+self vs task: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant    1.0  6                           6/6  0.0156                              6/6   0.0156
+  hindi    1.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    1.0  2                           2/2  0.2500                              2/2   0.2500
+related    1.0  6                           6/6  0.0156                              6/6   0.0156
+self vs look: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant    1.0  6                           6/6  0.0156                              6/6   0.0156
+  hindi    1.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    1.0  2                           2/2  0.2500                              2/2   0.2500
+related    1.0  6                           6/6  0.0156                              6/6   0.0156
+
+--- steer, SAME push size for every group (fair), decoder layers; a = push size in units of the self group's natural gap
+d_loss:
+value           -2.0   -1.0    1.0    2.0
+family  group                            
+distant look   0.009 -0.002  0.017  0.052
+        self   0.069  0.008  0.030  0.125
+        task   0.017  0.001  0.014  0.050
+hindi   look  -0.005 -0.006  0.015  0.041
+        self  -0.009 -0.009  0.017  0.045
+        task  -0.008 -0.007  0.015  0.040
+mixed   look  -0.003 -0.005  0.012  0.032
+        self  -0.002 -0.005  0.012  0.033
+        task   0.008  0.001  0.006  0.020
+related look   0.030  0.007  0.007  0.028
+        self   0.047  0.010  0.031  0.149
+        task   0.025  0.005  0.008  0.029
+d_entropy:
+value           -2.0   -1.0    1.0    2.0
+family  group                            
+distant look  -0.176 -0.108  0.149  0.348
+        self  -0.070 -0.123  0.322  0.924
+        task   0.016 -0.010  0.042  0.120
+hindi   look  -0.290 -0.163  0.207  0.464
+        self  -0.269 -0.153  0.194  0.435
+        task  -0.220 -0.123  0.154  0.345
+mixed   look  -0.121 -0.072  0.096  0.220
+        self  -0.087 -0.055  0.082  0.193
+        task   0.001 -0.010  0.031  0.085
+related look   0.197  0.078 -0.038 -0.035
+        self  -0.087 -0.092  0.307  0.973
+        task   0.176  0.072 -0.040 -0.041
+d_top1:
+value           -2.0   -1.0    1.0    2.0
+family  group                            
+distant look  -0.348 -0.160 -0.125 -0.478
+        self  -1.377 -0.415 -0.123 -0.761
+        task  -0.408 -0.145 -0.092 -0.516
+hindi   look  -0.271 -0.116  0.019 -0.039
+        self  -0.116  0.058 -0.251 -0.377
+        task  -0.068  0.010 -0.039 -0.106
+mixed   look  -0.319 -0.077 -0.193 -0.309
+        self  -0.203 -0.029 -0.116 -0.300
+        task  -0.068 -0.019 -0.155 -0.213
+related look  -0.482 -0.042 -0.073 -0.135
+        self  -0.993 -0.338 -0.131 -0.791
+        task  -0.345 -0.065 -0.066 -0.227
+d_chrf:
+value           -2.0    2.0
+family  group              
+distant look  -0.940 -0.288
+        self  -1.368 -0.881
+        task  -0.781 -0.488
+hindi   look   0.152 -0.112
+        self  -0.160 -0.424
+        task   0.660 -0.471
+mixed   look   0.410  0.697
+        self  -0.033  0.233
+        task  -0.151  1.254
+related look  -0.767 -0.160
+        self  -0.287 -1.902
+        task  -0.210  0.112
+self vs task: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant   -2.0  6                           6/6  0.0156                              4/6   0.3438
+distant   -1.0  6                           6/6  0.0156                              5/6   0.1094
+distant    1.0  6                           4/6  0.3438                              6/6   0.0156
+distant    2.0  6                           5/6  0.1094                              6/6   0.0156
+  hindi   -2.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi   -1.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi    1.0  2                           1/2  0.7500                              1/2   0.7500
+  hindi    2.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed   -2.0  2                           0/2  1.0000                              2/2   0.2500
+  mixed   -1.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    1.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    2.0  2                           2/2  0.2500                              2/2   0.2500
+related   -2.0  6                           6/6  0.0156                              3/6   0.6562
+related   -1.0  6                           6/6  0.0156                              2/6   0.8906
+related    1.0  6                           6/6  0.0156                              6/6   0.0156
+related    2.0  6                           6/6  0.0156                              6/6   0.0156
+self vs look: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant   -2.0  6                           6/6  0.0156                              4/6   0.3438
+distant   -1.0  6                           5/6  0.1094                              4/6   0.3438
+distant    1.0  6                           5/6  0.1094                              5/6   0.1094
+distant    2.0  6                           6/6  0.0156                              5/6   0.1094
+  hindi   -2.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi   -1.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi    1.0  2                           1/2  0.7500                              1/2   0.7500
+  hindi    2.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed   -2.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed   -1.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed    1.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed    2.0  2                           1/2  0.7500                              1/2   0.7500
+related   -2.0  6                           6/6  0.0156                              2/6   0.8906
+related   -1.0  6                           6/6  0.0156                              2/6   0.8906
+related    1.0  6                           6/6  0.0156                              6/6   0.0156
+related    2.0  6                           6/6  0.0156                              6/6   0.0156
+
+--- steer, each neuron by its OWN natural gap (old H7; push sizes differ between groups), decoder layers
+d_loss:
+value           -2.0   -1.0    1.0    2.0
+family  group                            
+distant look  -0.002 -0.004  0.008  0.021
+        self   0.069  0.008  0.030  0.125
+        task  -0.004 -0.003  0.006  0.014
+hindi   look  -0.006 -0.006  0.012  0.032
+        self  -0.009 -0.009  0.017  0.045
+        task  -0.008 -0.007  0.013  0.035
+mixed   look  -0.004 -0.005  0.011  0.028
+        self  -0.002 -0.005  0.012  0.033
+        task   0.009  0.001  0.006  0.020
+related look   0.005  0.001  0.002  0.008
+        self   0.047  0.010  0.031  0.149
+        task   0.007  0.001  0.003  0.011
+d_entropy:
+value           -2.0   -1.0    1.0    2.0
+family  group                            
+distant look  -0.138 -0.077  0.093  0.206
+        self  -0.070 -0.122  0.322  0.924
+        task  -0.053 -0.031  0.040  0.091
+hindi   look  -0.261 -0.144  0.176  0.389
+        self  -0.269 -0.153  0.194  0.435
+        task  -0.205 -0.113  0.139  0.307
+mixed   look  -0.120 -0.070  0.090  0.203
+        self  -0.087 -0.055  0.082  0.193
+        task   0.001 -0.010  0.032  0.089
+related look   0.060  0.024 -0.013 -0.014
+        self  -0.087 -0.092  0.307  0.973
+        task   0.098  0.042 -0.028 -0.041
+d_top1:
+value           -2.0   -1.0    1.0    2.0
+family  group                            
+distant look  -0.163 -0.108 -0.050 -0.095
+        self  -1.377 -0.410 -0.123 -0.761
+        task  -0.036 -0.018 -0.042 -0.012
+hindi   look  -0.242 -0.116  0.039 -0.048
+        self  -0.116  0.058 -0.251 -0.377
+        task  -0.019 -0.039 -0.048 -0.039
+mixed   look  -0.203 -0.029 -0.184 -0.222
+        self  -0.203 -0.029 -0.116 -0.300
+        task  -0.164 -0.019 -0.174 -0.203
+related look  -0.031 -0.038 -0.052 -0.052
+        self  -0.993 -0.338 -0.131 -0.791
+        task  -0.135 -0.024 -0.080 -0.039
+self vs task: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant   -2.0  6                           6/6  0.0156                              4/6   0.3438
+distant   -1.0  6                           6/6  0.0156                              5/6   0.1094
+distant    1.0  6                           6/6  0.0156                              6/6   0.0156
+distant    2.0  6                           6/6  0.0156                              6/6   0.0156
+  hindi   -2.0  2                           2/2  0.2500                              2/2   0.2500
+  hindi   -1.0  2                           2/2  0.2500                              2/2   0.2500
+  hindi    1.0  2                           2/2  0.2500                              2/2   0.2500
+  hindi    2.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed   -2.0  2                           0/2  1.0000                              2/2   0.2500
+  mixed   -1.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    1.0  2                           2/2  0.2500                              2/2   0.2500
+  mixed    2.0  2                           2/2  0.2500                              2/2   0.2500
+related   -2.0  6                           6/6  0.0156                              3/6   0.6562
+related   -1.0  6                           6/6  0.0156                              3/6   0.6562
+related    1.0  6                           6/6  0.0156                              6/6   0.0156
+related    2.0  6                           6/6  0.0156                              6/6   0.0156
+self vs look: in how many comparisons does the self pick move the model MORE (size of the change, either sign)
+ family  value  n |loss change| bigger for self  sign_p |entropy change| bigger for self  sign_p 
+distant   -2.0  6                           6/6  0.0156                              6/6   0.0156
+distant   -1.0  6                           6/6  0.0156                              4/6   0.3438
+distant    1.0  6                           6/6  0.0156                              6/6   0.0156
+distant    2.0  6                           6/6  0.0156                              6/6   0.0156
+  hindi   -2.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi   -1.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi    1.0  2                           2/2  0.2500                              1/2   0.7500
+  hindi    2.0  2                           2/2  0.2500                              1/2   0.7500
+  mixed   -2.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed   -1.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed    1.0  2                           1/2  0.7500                              1/2   0.7500
+  mixed    2.0  2                           1/2  0.7500                              1/2   0.7500
+related   -2.0  6                           6/6  0.0156                              3/6   0.6562
+related   -1.0  6                           6/6  0.0156                              4/6   0.3438
+related    1.0  6                           6/6  0.0156                              6/6   0.0156
+related    2.0  6                           6/6  0.0156                              6/6   0.0156
+
+--- steer: total push size actually applied at a = 1 (sum over decoder layers of the push vector's length)
+group                look   self   task
+family  kind                           
+distant steer_own   1.745  3.773  1.728
+        steer_same  3.773  3.773  3.773
+hindi   steer_own   2.371  2.799  2.553
+        steer_same  2.799  2.799  2.799
+mixed   steer_own   3.086  3.374  3.473
+        steer_same  3.374  3.374  3.374
+related steer_own   2.150  4.319  2.430
+        steer_same  4.319  4.319  4.319

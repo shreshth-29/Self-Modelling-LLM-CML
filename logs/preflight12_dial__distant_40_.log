@@ -1,0 +1,12 @@
+distant phase 40 (last trained hi; measured on hi; self found on hi,zh,ar): untouched loss 1.120, entropy 1.767, top-1 72.9%, chrF 53.4
+  entropy change (average of draws):
+value              -2.0    0.0    2.0
+kind       group                     
+gain       look     NaN  0.740  0.318
+           self     NaN  1.025  0.529
+           task     NaN  0.576  0.197
+steer_same look  -0.226    NaN  0.387
+           self  -0.238    NaN  0.415
+           task  -0.264    NaN  0.376
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 13s
+done

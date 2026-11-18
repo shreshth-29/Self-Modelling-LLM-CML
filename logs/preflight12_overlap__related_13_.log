@@ -1,0 +1,9 @@
+related phase 13 (hi): overlap of the selfs found on each language
+       jaccard  x_chance
+layer                   
+dec0     0.607     1.163
+dec1     0.615     1.670
+dec2     0.672     1.703
+dec3     0.831     1.252
+  8s
+done

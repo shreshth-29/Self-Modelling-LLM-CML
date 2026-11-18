@@ -1,0 +1,12 @@
+related phase 13 (last trained hi; measured on hi; self found on hi,gu,pa): untouched loss 1.181, entropy 1.794, top-1 73.7%, chrF 52.9
+  entropy change (average of draws):
+value              -2.0    0.0    2.0
+kind       group                     
+gain       look     NaN  0.599  0.258
+           self     NaN  1.133  0.386
+           task     NaN  0.509  0.354
+steer_same look  -0.291    NaN  0.459
+           self  -0.372    NaN  0.641
+           task  -0.121    NaN  0.267
+  hooks removed check: loss differs from untouched by 0.00000 (should be 0) | 13s
+done

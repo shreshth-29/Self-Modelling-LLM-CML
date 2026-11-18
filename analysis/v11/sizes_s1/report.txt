@@ -1,0 +1,36 @@
+=== module sizes per layer, averaged over the checkpoints listed (phases <= 60) ===
+self_pct = % of the layer's working neurons in the self; n_max = size of the smaller group (the count-matched lesion size)
+
+--- self found on: Hindi only
+                  self_pct   sd  n_self  n_task   n_max  working  checkpoints
+family     layer                                                             
+related_s1 dec0       69.2  1.5  1771.8   788.2   788.2   2560.0           12
+           dec1       51.3  3.3  1312.2  1247.8  1206.1   2560.0           12
+           dec2       52.5  2.8  1344.5  1215.5  1200.7   2560.0           12
+           dec3       72.7  3.4  1860.2   699.8   699.8   2560.0           12
+           enc0       53.8  1.6  1377.3  1182.7  1182.7   2560.0           12
+           enc1       46.0  2.6  1177.9  1382.1  1176.2   2560.0           12
+           enc2       47.5  2.6  1215.5  1344.5  1208.2   2560.0           12
+           enc3       56.0  3.0  1433.3  1126.7  1126.2   2560.0           12
+
+average of the 8 layers:
+            mean  std  count
+family                      
+related_s1  56.1  1.8     12
+
+--- self found on: all the model's languages
+                  self_pct   sd  n_self  n_task   n_max  working  checkpoints
+family     layer                                                             
+related_s1 dec0       64.2  1.5  1643.6   916.4   916.4   2560.0           12
+           dec1       49.6  4.2  1269.0  1291.0  1195.7   2560.0           12
+           dec2       50.5  2.9  1291.8  1268.2  1221.8   2560.0           12
+           dec3       72.8  2.5  1863.8   696.2   696.2   2560.0           12
+           enc0       53.8  1.6  1377.3  1182.7  1182.7   2560.0           12
+           enc1       46.0  2.6  1177.9  1382.1  1176.2   2560.0           12
+           enc2       47.5  2.6  1215.5  1344.5  1208.2   2560.0           12
+           enc3       56.0  3.0  1433.3  1126.7  1126.2   2560.0           12
+
+average of the 8 layers:
+            mean  std  count
+family                      
+related_s1  55.0  2.0     12

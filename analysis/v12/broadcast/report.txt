@@ -1,0 +1,83 @@
+=== broadcast: how much the FINAL hidden state moves per unit of nudge along one direction at a layer (gain) ===
+same nudge size for every direction; self / task = one neuron's outgoing weight direction; random = a random direction
+group          random   self   task  self/task  self/random
+family  layer                                              
+distant dec0    6.589  7.253  6.880      1.054        1.101
+        dec1    5.131  5.636  5.436      1.037        1.098
+        dec2    3.868  3.834  3.864      0.992        0.991
+        dec3    3.169  3.054  3.061      0.998        0.964
+        enc0    7.194  8.197  7.874      1.041        1.139
+        enc1    5.855  6.789  6.968      0.974        1.160
+        enc2    4.771  5.415  5.591      0.969        1.135
+        enc3    4.311  4.940  5.204      0.949        1.146
+hindi   dec0    5.329  5.466  5.267      1.038        1.026
+        dec1    3.800  4.107  3.898      1.053        1.081
+        dec2    2.859  2.845  2.839      1.002        0.995
+        dec3    2.289  2.164  2.237      0.967        0.945
+        enc0    4.592  4.965  4.859      1.022        1.081
+        enc1    3.699  4.209  4.297      0.980        1.138
+        enc2    3.219  3.503  3.630      0.965        1.088
+        enc3    2.831  3.190  3.339      0.955        1.127
+mixed   dec0    4.893  5.165  5.119      1.009        1.056
+        dec1    3.817  3.976  3.918      1.015        1.042
+        dec2    2.940  2.937  2.945      0.997        0.999
+        dec3    2.490  2.407  2.443      0.985        0.967
+        enc0    3.936  4.275  4.300      0.994        1.086
+        enc1    3.300  3.506  3.630      0.966        1.062
+        enc2    2.929  3.103  3.361      0.923        1.059
+        enc3    2.749  3.086  3.161      0.976        1.122
+related dec0    5.613  6.064  5.834      1.039        1.080
+        dec1    4.146  4.518  4.276      1.057        1.090
+        dec2    3.156  3.196  3.185      1.004        1.013
+        dec3    2.568  2.465  2.493      0.989        0.960
+        enc0    4.336  4.886  4.828      1.012        1.127
+        enc1    3.602  4.063  4.231      0.960        1.128
+        enc2    3.124  3.531  3.713      0.951        1.130
+        enc3    2.837  3.278  3.450      0.950        1.156
+
+--- effect on the output words (KL between untouched and nudged predictions, x1000)
+group          random    self    task
+family  layer                        
+distant dec0    2.585   3.675   2.867
+        dec1    1.068   1.657   1.382
+        dec2    2.003   2.532   2.267
+        dec3    1.346   1.629   1.688
+        enc0   14.489  21.163  17.639
+        enc1   20.920  32.286  36.431
+        enc2   10.274  14.788  16.166
+        enc3    3.449   5.192   5.672
+hindi   dec0    3.646   3.900   3.464
+        dec1    1.366   2.208   1.520
+        dec2    2.358   2.880   2.694
+        dec3    2.500   3.206   3.239
+        enc0   12.523  15.937  14.481
+        enc1   35.128  56.900  52.636
+        enc2   26.727  36.453  36.768
+        enc3    7.774  11.926  12.415
+mixed   dec0    1.754   2.269   1.974
+        dec1    1.140   1.510   1.276
+        dec2    1.558   1.836   1.788
+        dec3    0.956   1.213   1.278
+        enc0    6.111   7.504   7.421
+        enc1    5.615   6.877   6.979
+        enc2    5.114   6.208   7.108
+        enc3    3.049   4.308   4.696
+related dec0    2.518   3.237   2.780
+        dec1    1.080   1.658   1.272
+        dec2    1.698   2.295   2.045
+        dec3    1.051   1.409   1.413
+        enc0    5.466   7.543   6.887
+        enc1   16.092  22.651  24.209
+        enc2   13.504  19.452  20.902
+        enc3    3.929   6.188   6.619
+
+--- one comparison = one checkpoint x one layer (average of the sampled neurons)
+ family self vs  self gain / other gain self bigger in (checkpoint x layer)  sign_p
+distant    task                   1.005                               11/24  0.7294
+distant  random                   1.103                               19/24  0.0033
+  hindi    task                   1.003                                 4/8  0.6367
+  hindi  random                   1.064                                 6/8  0.1445
+  mixed    task                   0.985                                 2/8  0.9648
+  mixed  random                   1.052                                 6/8  0.1445
+related    task                   1.000                               10/24  0.8463
+related  random                   1.089                               20/24  0.0008
