@@ -1,0 +1,25 @@
+nohup: ignoring input
+[32mActivated conda/uv virtual environment at [36m/venv/main[0m
+Mon 21:20 downloading checkpoints
+/venv/main/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+v4b_continual_s0 0 ok
+v4b_continual_s0 1 ok
+v4b_continual_s0 10 ok
+v4b_continual_s0 40 ok
+v4b_continual_s0 41 ok
+v4b_continual_s0 42 ok
+v4b_only_hi_s0 0 ok
+v4b_only_hi_s0 40 ok
+v4b_only_hi_s0 45 ok
+v6b_mixed_s0 40 ok
+v6b_mixed_s0 45 ok
+v8_indic_continual_s0 0 ok
+v8_indic_continual_s0 13 ok
+v8_indic_continual_s0 14 ok
+v8_indic_continual_s0 15 ok
+v8_indic_continual_s1 13 ok
+Mon 21:36 tiny test of the new code
+Mon 21:36 tiny test OK
+Mon 21:36 full run (progress: tail -f logs/v13.log)
+Mon 21:49 summary
