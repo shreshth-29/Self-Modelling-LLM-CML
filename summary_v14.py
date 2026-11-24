@@ -123,6 +123,21 @@ def part_static():
         s = split_cond(pd.read_csv(f))
         s = s[s["scope"].astype(str) == "all"]
         s = s[s["phase"].isin(pick(CFG.LESION_PHASES, s["phase"]))]
+        if not CFG.FAMILIES[fam]["only"]:
+            # PREVIOUS language = the one trained one phase earlier (a Hindi-only model has no previous language)
+            pv = s[[int(p) >= 2 and l == CFG.trained_lang(fam, int(p) - 1) for l, p in zip(s["lang"], s["phase"])]]
+            pv = pv[(pv["mode"] == "lesion") & (pv["dose"] == "1.0")]
+            g = pv.groupby(["phase", "draw", "group"])[["d_loss", "d_chrf"]].mean().unstack("group")
+            if len(g) and ("d_loss", "self") in g.columns and ("d_loss", "task") in g.columns:
+                put(label, prev_les_self=g[("d_loss", "self")].mean(), prev_les_task=g[("d_loss", "task")].mean(),
+                    prev_les_diff=(g[("d_loss", "self")] - g[("d_loss", "task")]).mean(),
+                    prev_chrf_diff=(g[("d_chrf", "self")] - g[("d_chrf", "task")]).mean(),
+                    prev_les_k=int((g[("d_loss", "self")] > g[("d_loss", "task")]).sum()), prev_les_n=len(g))
+            gh = pv[pv["lang"] == "hi"].groupby(["phase", "draw", "group"])[["d_loss", "d_chrf"]].mean().unstack("group")
+            if len(gh) and ("d_loss", "self") in gh.columns and ("d_loss", "task") in gh.columns:      # Hindi, one phase after Hindi was trained
+                put(label, hi_prev_les_self=gh[("d_loss", "self")].mean(), hi_prev_les_task=gh[("d_loss", "task")].mean(),
+                    hi_prev_les_diff=(gh[("d_loss", "self")] - gh[("d_loss", "task")]).mean(),
+                    hi_prev_chrf_diff=(gh[("d_chrf", "self")] - gh[("d_chrf", "task")]).mean())
         s = s[[l == CFG.trained_lang(fam, int(p)) for l, p in zip(s["lang"], s["phase"])]]      # the language just trained
         if not len(s):
             continue
@@ -176,6 +191,24 @@ def part_train():
             return float(q.mean()) if len(q) else np.nan
         put(label, hi_tr0_diff=at_hi(0, "self") - at_hi(0, "task"), hi_trN_self=at_hi(last, "self"), hi_trN_task=at_hi(last, "task"),
             hi_trN_diff=at_hi(last, "self") - at_hi(last, "task"), hi_chrf_end_diff=at_hi(last, "task", "d_score") - at_hi(last, "self", "d_score"))
+        of = [f for f in sorted(glob.glob(f"{ROOT}/train_next/{label}/p*/others.csv"))]
+        if of and not CFG.FAMILIES[fam]["only"]:
+            o = pd.concat([pd.read_csv(f) for f in of])
+            o = o[[l == CFG.trained_lang(fam, int(str(st).rsplit("_p", 1)[1])) for l, st in zip(o["lang"], o["start"])]]      # previous language only
+            base = o[o["cond"] == "none"].groupby(["start", "seed"])["after"].mean().rename("none_after").reset_index()
+            o = split_cond(o[o["cond"] != "none"]).merge(base, on=["start", "seed"], how="left")
+            o["lost_now"] = o["before"] - o["intact"]                 # right after the lesion, before any training
+            o["extra_forget"] = o["after"] - o["none_after"]          # at the end: forgotten MORE than the untouched model forgot
+            o = o[o["dose"] == "1.0"]
+            def stats_for(q, pre):
+                w = q.pivot_table(index=["start", "seed"], columns="group", values=["lost_now", "extra_forget"])
+                if ("extra_forget", "self") in w.columns and ("extra_forget", "task") in w.columns and len(w):
+                    put(label, **{f"{pre}_now_self": w[("lost_now", "self")].mean(), f"{pre}_now_task": w[("lost_now", "task")].mean(),
+                                  f"{pre}_end_self": w[("extra_forget", "self")].mean(), f"{pre}_end_task": w[("extra_forget", "task")].mean(),
+                                  f"{pre}_end_diff": (w[("extra_forget", "self")] - w[("extra_forget", "task")]).mean(),
+                                  f"{pre}_k": int((w[("extra_forget", "self")] > w[("extra_forget", "task")]).sum()), f"{pre}_n": len(w)})
+            stats_for(o, "prev_tr")
+            stats_for(o[o["lang"] == "hi"], "hi_prev_tr")             # Hindi as the previous language (starts where Hindi was just trained)
         put(label, tr0_self=at(0, "1.0", "self"), tr0_task=at(0, "1.0", "task"), trN_self=at(last, "1.0", "self"), trN_task=at(last, "1.0", "task"),
             trN_diff=at(last, "1.0", "self") - at(last, "1.0", "task"), trN_k=k, trN_n=n, trN_step=last,
             trN_self05=at(last, "0.5", "self"), trN_look05=at(last, "0.5", "look"),
@@ -185,6 +218,8 @@ def part_train():
 KEY = [("hi_les_diff", "IMPORTANCE on Hindi, lesion without training: loss rise, self minus task"),
        ("hi_chrf_diff", "IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task"),
        ("hi_trN_diff", "IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task"),
+       ("hi_prev_les_diff", "PREVIOUS language = Hindi, lesion without training: loss rise, self minus task (continual runs only)"),
+       ("hi_prev_tr_end_diff", "PREVIOUS language = Hindi, lesion + 1,000 steps of the next language: extra forgetting, self minus task (continual runs only)"),
        ("gap_matched", "persistence gap, self minus task (task neurons of equal activity)"),
        ("les_diff", "lesion, no training, language just trained (a different language per kind of run): self minus task"),
        ("trN_diff", "lesion + training on the next language (differs per kind of run): self minus task")]
@@ -208,6 +243,8 @@ def tests(T):
         for i, fa in enumerate(CFG.FAMILY_ORDER):
             for fb in CFG.FAMILY_ORDER[i + 1:]:
                 a, b = T[T["family"] == fa][col].dropna(), T[T["family"] == fb][col].dropna()
+                if not len(a) or not len(b):
+                    continue
                 p = stats.ttest_ind(a, b, equal_var=False).pvalue if len(a) >= 2 and len(b) >= 2 else np.nan
                 rows.append({"test": name, "groups": f"{fa} vs {fb}", "n_models": f"{len(a)} vs {len(b)}", "mean_1": a.mean() if len(a) else np.nan,
                              "mean_2": b.mean() if len(b) else np.nan, "models_where_self_is_higher": "", "p": p, "kind": "Welch t-test between kinds of run"})
@@ -229,12 +266,17 @@ def fig_trend(T):
     panels = [("hi_les_diff", "1. Importance: lesion, no training", "self minus task\n(loss rise on Hindi)"),
               ("hi_chrf_diff", "2. Importance: lesion, no training", "self minus task\n(chrF points lost on Hindi)"),
               ("hi_trN_diff", "3. Importance: lesion, then 1,000 steps of Hindi", "self minus task\n(extra Hindi loss still there at the end)"),
-              ("gap_matched", "4. Persistence (existence, not importance)", "self minus task\n(persistence from one phase to the next)")]
+              ("hi_prev_les_diff", "4. Previous language: lesion, no training", "self minus task\n(loss rise on Hindi, one phase after Hindi)"),
+              ("hi_prev_tr_end_diff", "5. Previous language: lesion, then the next language", "self minus task\n(extra Hindi forgetting at the end)"),
+              ("gap_matched", "6. Persistence (existence, not importance)", "self minus task\n(persistence from one phase to the next)")]
     panels = [p for p in panels if p[0] in T and T[p[0]].notna().any()]
     if not panels or not fams:
         return
-    fig, axs = plt.subplots(1, len(panels), figsize=(4.6 * len(panels), 4.4), squeeze=False)
-    for ax, (col, title, yl) in zip(axs[0], panels):
+    ncol = min(3, len(panels)); nrow = -(-len(panels) // ncol)
+    fig, axs = plt.subplots(nrow, ncol, figsize=(4.8 * ncol, 4.3 * nrow + 0.5), squeeze=False)
+    for ax in axs.ravel()[len(panels):]:
+        ax.axis("off")
+    for ax, (col, title, yl) in zip(axs.ravel(), panels):
         for k, fam in enumerate(fams):
             q = T[T["family"] == fam].dropna(subset=[col])
             if not len(q):
@@ -254,8 +296,9 @@ def fig_trend(T):
         ax.grid(axis="y", color="#EEEEEE", lw=0.8); ax.set_axisbelow(True)
     fig.text(0.01, 0.01, "One dot = one model (one seed). Filled = new seeds, hollow = the old seed-0 runs. Line and number = average of the models. "
              "Above the dotted zero line = higher for self neurons than for task neurons.\n"
-             "Panels 1 to 3 are measured on Hindi in every kind of run (the one language they share), same number of self and task neurons lesioned, all 8 layers.", fontsize=8, color="#555555")
-    fig.tight_layout(rect=(0, 0.08, 1, 1)); fig.savefig(f"{OUT}/trend.png", dpi=170); plt.close(fig)
+             "Panels 1 to 5 are measured on Hindi in every kind of run (the one language they share), same number of self and task neurons lesioned, all 8 layers.\n"
+             "Previous language (panels 4, 5): a Hindi-only model has none, so those panels show the two continual kinds of run.", fontsize=8, color="#555555")
+    fig.tight_layout(rect=(0, 0.07, 1, 1)); fig.savefig(f"{OUT}/trend.png", dpi=170); plt.close(fig)
 
 def fig_gap_by_phase(P):
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
@@ -326,6 +369,15 @@ show("5. THE TREND QUESTION: importance of the self on HINDI, the one language a
      ["hi_les_self", "hi_les_task", "hi_les_diff", "hi_chrf_self", "hi_chrf_task", "hi_chrf_diff", "hi_les_n", "hi_trN_self", "hi_trN_task", "hi_trN_diff", "hi_chrf_end_diff"],
      "Same language and same test sentences everywhere, so the three kinds of run can be compared directly. hi_les = loss rise on Hindi after the lesion "
      "(checkpoints where Hindi was just trained). hi_chrf = chrF points lost. hi_trN = extra Hindi loss after the lesion and 1,000 steps of Hindi. diff = self minus task.")
+show("5b. The PREVIOUS language (the one trained one phase earlier). Continual runs only: a Hindi-only model has no previous language",
+     ["prev_les_self", "prev_les_task", "prev_les_diff", "prev_chrf_diff", "prev_les_k", "prev_les_n", "hi_prev_les_self", "hi_prev_les_task", "hi_prev_les_diff", "hi_prev_chrf_diff"],
+     "Lesion without training. prev_les = loss rise on the previous language, all 8 layers; diff = self minus task; prev_chrf_diff = chrF points lost, self minus task. "
+     "hi_prev = the same when the previous language is Hindi (phase 14), so related and distant can be compared on one language.")
+show("5c. The PREVIOUS language while the next one is learned (lesion, then 1,000 steps on the next language)",
+     ["prev_tr_now_self", "prev_tr_now_task", "prev_tr_end_self", "prev_tr_end_task", "prev_tr_end_diff", "prev_tr_k", "prev_tr_n",
+      "hi_prev_tr_end_self", "hi_prev_tr_end_task", "hi_prev_tr_end_diff"],
+     "now = loss rise on the previous language right after the lesion. end = how much MORE of it is forgotten after the 1,000 steps than the untouched model forgets. "
+     "prev_tr_k of prev_tr_n = runs where the self lesion forgot more. hi_prev = the starts where the previous language is Hindi (phase 13).")
 by = None
 if len(T):
     num = [c for c in T.columns if c not in ("label", "family", "tag", "new") and pd.api.types.is_numeric_dtype(T[c])]
