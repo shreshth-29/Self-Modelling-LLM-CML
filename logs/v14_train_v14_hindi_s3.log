@@ -1,0 +1,903 @@
+
+===== Tue 13:45 | GPU 6 | /venv/main/bin/python -u train_v14.py --family hindi --seed 3 --n_phases 30
+RunConfig(run_name='v14_hindi_s3', mode='only_hi', order=('hi', 'zh', 'ar'), init_ckpt=None, n_phases=30, seed=3, max_tokens=16000, lr=0.0002, min_lr=2e-05, warmup_steps=500, cooldown_steps=2000, min_steps=2000, max_stable_steps=60000, eval_every=500, plateau_window=4, plateau_tol=0.005, weight_decay=0.1, grad_clip=1.0, masked=True, diverge_factor=1.15, max_retries=2, time_cap_h=240.0, hf_repo=None, start_phase=None, noise_per_step=0.0, boundary_push=0.0, health_every=1, redo_every=0, redo_thresh=0.01)
+family hindi | languages ['hi', 'zh', 'ar'] | trains ['hi'] | tokenizer tokenizer_v4 | device cuda
+/venv/main/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+  hi: 993,016 train / 2,000 val
+  zh: 2,000 val
+  ar: 2,000 val
+data loaded in 12s
+checkpoints go to HF repo s8n29/cml-lang-self-checkpoints under v14_hindi_s3/
+======================================================================================
+ RUN v14_hindi_s3 | mode only_hi | 30 phases after phase 0 | device cuda
+ phase order: init (random) → hi → hi → hi → hi → hi → hi → hi → ...
+ each phase: fresh AdamW (wd 0.1 on matrices), warmup 500 → lr 0.0002 → plateau (<0.5% over 4-eval windows, after 2,000, cap 60,000) → cooldown 2,000 steps to 2e-05
+ masked (script-restricted) loss & decoding: True | divergence guard: >1.15x best twice → retry at half lr (max 2)
+======================================================================================
+phase 0: fresh random model (66.8M params)
+
+======================================================================================
+ PHASE 0 DONE | trained: init | starting model, no training
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      8.969         |    2.1        |                  0.3          10.523
+   zh      9.608         |    0.0        |                  0.1          10.491
+   ar      9.145         |    4.0        |                  2.8          10.490
+======================================================================================
+
+▶ PHASE 1/30 | training hi (993,016 pairs)
+Upload 0 LFS files: 0it [00:00, ?it/s]Upload 0 LFS files: 0it [00:00, ?it/s]
+  HF: uploaded v14_hindi_s3/ckpt/p000_init.pt
+  [p01 hi] step    500 | lr 2.0e-04 | train 6.665 | val 5.126 (best 5.126) | window Δ n/a | stable | 117k tok/s | phase 1m03s | run ETA: after first phase | health {'wnorm': 142.216, 'rank_enc1': 15.1, 'rank_dec1': 29.2, 'rarely_active': 0.0026}
+  [p01 hi] step  1,000 | lr 2.0e-04 | train 5.248 | val 4.125 (best 4.125) | window Δ n/a | stable | 120k tok/s | phase 2m04s | run ETA: after first phase | health {'wnorm': 145.388, 'rank_enc1': 23.5, 'rank_dec1': 113.1, 'rarely_active': 0.0}
+  [p01 hi] step  1,500 | lr 2.0e-04 | train 4.632 | val 3.570 (best 3.570) | window Δ n/a | stable | 120k tok/s | phase 3m05s | run ETA: after first phase | health {'wnorm': 148.799, 'rank_enc1': 37.3, 'rank_dec1': 167.5, 'rarely_active': 0.0}
+  [p01 hi] step  2,000 | lr 2.0e-04 | train 4.205 | val 3.063 (best 3.063) | window Δ n/a | stable | 118k tok/s | phase 4m07s | run ETA: after first phase | health {'wnorm': 152.074, 'rank_enc1': 53.0, 'rank_dec1': 246.0, 'rarely_active': 0.0001}
+  [p01 hi] step  2,500 | lr 2.0e-04 | train 3.928 | val 2.788 (best 2.788) | window Δ n/a | stable | 120k tok/s | phase 5m08s | run ETA: after first phase | health {'wnorm': 155.017, 'rank_enc1': 69.3, 'rank_dec1': 277.8, 'rarely_active': 0.0002}
+  [p01 hi] step  3,000 | lr 2.0e-04 | train 3.722 | val 2.567 (best 2.567) | window Δ n/a | stable | 120k tok/s | phase 6m09s | run ETA: after first phase | health {'wnorm': 157.675, 'rank_enc1': 94.1, 'rank_dec1': 337.4, 'rarely_active': 0.0005}
+  [p01 hi] step  3,500 | lr 2.0e-04 | train 3.552 | val 2.398 (best 2.398) | window Δ n/a | stable | 117k tok/s | phase 7m11s | run ETA: after first phase | health {'wnorm': 160.153, 'rank_enc1': 125.7, 'rank_dec1': 375.7, 'rarely_active': 0.0011}
+  [p01 hi] step  4,000 | lr 2.0e-04 | train 3.415 | val 2.260 (best 2.260) | window Δ +36.97% | stable | 120k tok/s | phase 8m12s | run ETA: after first phase | health {'wnorm': 162.42, 'rank_enc1': 124.8, 'rank_dec1': 407.4, 'rarely_active': 0.0012}
+  [p01 hi] step  4,500 | lr 2.0e-04 | train 3.324 | val 2.158 (best 2.158) | window Δ +30.73% | stable | 118k tok/s | phase 9m14s | run ETA: after first phase | health {'wnorm': 164.528, 'rank_enc1': 132.1, 'rank_dec1': 427.2, 'rarely_active': 0.0015}
+  [p01 hi] step  5,000 | lr 2.0e-04 | train 3.245 | val 2.060 (best 2.060) | window Δ +25.97% | stable | 118k tok/s | phase 10m16s | run ETA: after first phase | health {'wnorm': 166.489, 'rank_enc1': 139.0, 'rank_dec1': 438.3, 'rarely_active': 0.0016}
+  [p01 hi] step  5,500 | lr 2.0e-04 | train 3.123 | val 2.001 (best 2.001) | window Δ +21.61% | stable | 121k tok/s | phase 11m17s | run ETA: after first phase | health {'wnorm': 168.411, 'rank_enc1': 150.6, 'rank_dec1': 475.4, 'rarely_active': 0.0016}
+  [p01 hi] step  6,000 | lr 2.0e-04 | train 3.089 | val 1.930 (best 1.930) | window Δ +18.61% | stable | 121k tok/s | phase 12m17s | run ETA: after first phase | health {'wnorm': 170.177, 'rank_enc1': 149.3, 'rank_dec1': 463.9, 'rarely_active': 0.0016}
+  [p01 hi] step  6,500 | lr 2.0e-04 | train 3.039 | val 1.871 (best 1.871) | window Δ +16.21% | stable | 120k tok/s | phase 13m18s | run ETA: after first phase | health {'wnorm': 171.84, 'rank_enc1': 172.5, 'rank_dec1': 476.8, 'rarely_active': 0.0016}
+  [p01 hi] step  7,000 | lr 2.0e-04 | train 2.965 | val 1.826 (best 1.826) | window Δ +14.06% | stable | 118k tok/s | phase 14m20s | run ETA: after first phase | health {'wnorm': 173.505, 'rank_enc1': 191.6, 'rank_dec1': 489.0, 'rarely_active': 0.0018}
+  [p01 hi] step  7,500 | lr 2.0e-04 | train 2.929 | val 1.791 (best 1.791) | window Δ +12.52% | stable | 121k tok/s | phase 15m21s | run ETA: after first phase | health {'wnorm': 175.027, 'rank_enc1': 221.9, 'rank_dec1': 480.9, 'rarely_active': 0.0023}
+  [p01 hi] step  8,000 | lr 2.0e-04 | train 2.915 | val 1.759 (best 1.759) | window Δ +11.08% | stable | 121k tok/s | phase 16m21s | run ETA: after first phase | health {'wnorm': 176.485, 'rank_enc1': 212.0, 'rank_dec1': 502.8, 'rarely_active': 0.002}
+  [p01 hi] step  8,500 | lr 2.0e-04 | train 2.862 | val 1.729 (best 1.729) | window Δ +9.63% | stable | 118k tok/s | phase 17m23s | run ETA: after first phase | health {'wnorm': 177.904, 'rank_enc1': 242.5, 'rank_dec1': 497.4, 'rarely_active': 0.0021}
+  [p01 hi] step  9,000 | lr 2.0e-04 | train 2.818 | val 1.704 (best 1.704) | window Δ +8.44% | stable | 121k tok/s | phase 18m24s | run ETA: after first phase | health {'wnorm': 179.288, 'rank_enc1': 256.4, 'rank_dec1': 514.5, 'rarely_active': 0.0024}
+  [p01 hi] step  9,500 | lr 2.0e-04 | train 2.813 | val 1.691 (best 1.691) | window Δ +7.20% | stable | 121k tok/s | phase 19m24s | run ETA: after first phase | health {'wnorm': 180.579, 'rank_enc1': 279.6, 'rank_dec1': 520.9, 'rarely_active': 0.0026}
+  [p01 hi] step 10,000 | lr 2.0e-04 | train 2.799 | val 1.666 (best 1.666) | window Δ +6.29% | stable | 118k tok/s | phase 20m26s | run ETA: after first phase | health {'wnorm': 181.81, 'rank_enc1': 299.7, 'rank_dec1': 509.9, 'rarely_active': 0.0026}
+  [p01 hi] step 10,500 | lr 2.0e-04 | train 2.736 | val 1.666 (best 1.666) | window Δ +5.32% | stable | 121k tok/s | phase 21m27s | run ETA: after first phase | health {'wnorm': 183.054, 'rank_enc1': 260.5, 'rank_dec1': 534.5, 'rarely_active': 0.0025}
+  [p01 hi] step 11,000 | lr 2.0e-04 | train 2.741 | val 1.629 (best 1.629) | window Δ +4.75% | stable | 120k tok/s | phase 22m28s | run ETA: after first phase | health {'wnorm': 184.225, 'rank_enc1': 279.0, 'rank_dec1': 528.4, 'rarely_active': 0.0027}
+  [p01 hi] step 11,500 | lr 2.0e-04 | train 2.733 | val 1.619 (best 1.619) | window Δ +4.41% | stable | 120k tok/s | phase 23m29s | run ETA: after first phase | health {'wnorm': 185.338, 'rank_enc1': 318.9, 'rank_dec1': 506.3, 'rarely_active': 0.0024}
+  [p01 hi] step 12,000 | lr 2.0e-04 | train 2.684 | val 1.602 (best 1.602) | window Δ +4.04% | stable | 118k tok/s | phase 24m31s | run ETA: after first phase | health {'wnorm': 186.443, 'rank_enc1': 338.7, 'rank_dec1': 539.0, 'rarely_active': 0.0026}
+  [p01 hi] step 12,500 | lr 2.0e-04 | train 2.684 | val 1.598 (best 1.598) | window Δ +4.13% | stable | 121k tok/s | phase 25m32s | run ETA: after first phase | health {'wnorm': 187.513, 'rank_enc1': 352.3, 'rank_dec1': 530.7, 'rarely_active': 0.0026}
+  [p01 hi] step 13,000 | lr 2.0e-04 | train 2.681 | val 1.578 (best 1.578) | window Δ +3.82% | stable | 121k tok/s | phase 26m32s | run ETA: after first phase | health {'wnorm': 188.521, 'rank_enc1': 369.0, 'rank_dec1': 557.3, 'rarely_active': 0.0032}
+  [p01 hi] step 13,500 | lr 2.0e-04 | train 2.656 | val 1.577 (best 1.577) | window Δ +3.41% | stable | 118k tok/s | phase 27m34s | run ETA: after first phase | health {'wnorm': 189.522, 'rank_enc1': 344.0, 'rank_dec1': 556.7, 'rarely_active': 0.0026}
+  [p01 hi] step 14,000 | lr 2.0e-04 | train 2.624 | val 1.560 (best 1.560) | window Δ +3.12% | stable | 121k tok/s | phase 28m35s | run ETA: after first phase | health {'wnorm': 190.505, 'rank_enc1': 348.0, 'rank_dec1': 557.7, 'rarely_active': 0.0032}
+  [p01 hi] step 14,500 | lr 2.0e-04 | train 2.636 | val 1.552 (best 1.552) | window Δ +2.83% | stable | 121k tok/s | phase 29m36s | run ETA: after first phase | health {'wnorm': 191.421, 'rank_enc1': 394.5, 'rank_dec1': 548.3, 'rarely_active': 0.0035}
+  [p01 hi] step 15,000 | lr 2.0e-04 | train 2.639 | val 1.560 (best 1.552) | window Δ +2.33% | stable | 118k tok/s | phase 30m37s | run ETA: after first phase | health {'wnorm': 192.308, 'rank_enc1': 359.1, 'rank_dec1': 570.0, 'rarely_active': 0.0025}
+  [p01 hi] step 15,500 | lr 2.0e-04 | train 2.582 | val 1.543 (best 1.543) | window Δ +2.21% | stable | 121k tok/s | phase 31m38s | run ETA: after first phase | health {'wnorm': 193.219, 'rank_enc1': 380.1, 'rank_dec1': 563.8, 'rarely_active': 0.0036}
+  [p01 hi] step 16,000 | lr 2.0e-04 | train 2.592 | val 1.532 (best 1.532) | window Δ +2.00% | stable | 121k tok/s | phase 32m38s | run ETA: after first phase | health {'wnorm': 194.083, 'rank_enc1': 437.0, 'rank_dec1': 561.4, 'rarely_active': 0.003}
+  [p01 hi] step 16,500 | lr 2.0e-04 | train 2.601 | val 1.524 (best 1.524) | window Δ +1.71% | stable | 120k tok/s | phase 33m39s | run ETA: after first phase | health {'wnorm': 194.91, 'rank_enc1': 429.1, 'rank_dec1': 562.1, 'rarely_active': 0.0032}
+  [p01 hi] step 17,000 | lr 2.0e-04 | train 2.563 | val 1.523 (best 1.523) | window Δ +2.03% | stable | 116k tok/s | phase 34m43s | run ETA: after first phase | health {'wnorm': 195.744, 'rank_enc1': 424.9, 'rank_dec1': 580.2, 'rarely_active': 0.0029}
+  [p01 hi] step 17,500 | lr 2.0e-04 | train 2.557 | val 1.518 (best 1.518) | window Δ +1.91% | stable | 120k tok/s | phase 35m43s | run ETA: after first phase | health {'wnorm': 196.539, 'rank_enc1': 479.4, 'rank_dec1': 594.9, 'rarely_active': 0.0034}
+  [p01 hi] step 18,000 | lr 2.0e-04 | train 2.568 | val 1.506 (best 1.506) | window Δ +1.88% | stable | 121k tok/s | phase 36m44s | run ETA: after first phase | health {'wnorm': 197.3, 'rank_enc1': 494.7, 'rank_dec1': 571.2, 'rarely_active': 0.003}
+  [p01 hi] step 18,500 | lr 2.0e-04 | train 2.555 | val 1.501 (best 1.501) | window Δ +1.82% | stable | 118k tok/s | phase 37m46s | run ETA: after first phase | health {'wnorm': 198.059, 'rank_enc1': 454.2, 'rank_dec1': 598.5, 'rarely_active': 0.003}
+  [p01 hi] step 19,000 | lr 2.0e-04 | train 2.522 | val 1.500 (best 1.500) | window Δ +1.60% | stable | 120k tok/s | phase 38m46s | run ETA: after first phase | health {'wnorm': 198.813, 'rank_enc1': 499.9, 'rank_dec1': 593.0, 'rarely_active': 0.0037}
+  [p01 hi] step 19,500 | lr 2.0e-04 | train 2.541 | val 1.500 (best 1.500) | window Δ +1.48% | stable | 121k tok/s | phase 39m47s | run ETA: after first phase | health {'wnorm': 199.52, 'rank_enc1': 427.9, 'rank_dec1': 586.1, 'rarely_active': 0.0036}
+  [p01 hi] step 20,000 | lr 2.0e-04 | train 2.542 | val 1.482 (best 1.482) | window Δ +1.45% | stable | 119k tok/s | phase 40m49s | run ETA: after first phase | health {'wnorm': 200.21, 'rank_enc1': 488.2, 'rank_dec1': 583.7, 'rarely_active': 0.0033}
+  [p01 hi] step 20,500 | lr 2.0e-04 | train 2.491 | val 1.488 (best 1.482) | window Δ +1.29% | stable | 121k tok/s | phase 41m50s | run ETA: after first phase | health {'wnorm': 200.913, 'rank_enc1': 486.8, 'rank_dec1': 596.0, 'rarely_active': 0.0033}
+  [p01 hi] step 21,000 | lr 2.0e-04 | train 2.510 | val 1.479 (best 1.479) | window Δ +1.25% | stable | 120k tok/s | phase 42m51s | run ETA: after first phase | health {'wnorm': 201.571, 'rank_enc1': 517.2, 'rank_dec1': 602.6, 'rarely_active': 0.0034}
+  [p01 hi] step 21,500 | lr 2.0e-04 | train 2.516 | val 1.474 (best 1.474) | window Δ +1.38% | stable | 121k tok/s | phase 43m51s | run ETA: after first phase | health {'wnorm': 202.207, 'rank_enc1': 466.4, 'rank_dec1': 599.9, 'rarely_active': 0.0036}
+  [p01 hi] step 22,000 | lr 2.0e-04 | train 2.479 | val 1.474 (best 1.474) | window Δ +1.13% | stable | 118k tok/s | phase 44m53s | run ETA: after first phase | health {'wnorm': 202.852, 'rank_enc1': 527.3, 'rank_dec1': 596.0, 'rarely_active': 0.0033}
+  [p01 hi] step 22,500 | lr 2.0e-04 | train 2.482 | val 1.476 (best 1.474) | window Δ +1.11% | stable | 121k tok/s | phase 45m54s | run ETA: after first phase | health {'wnorm': 203.473, 'rank_enc1': 498.6, 'rank_dec1': 622.8, 'rarely_active': 0.0032}
+  [p01 hi] step 23,000 | lr 2.0e-04 | train 2.496 | val 1.467 (best 1.467) | window Δ +0.98% | stable | 121k tok/s | phase 46m55s | run ETA: after first phase | health {'wnorm': 204.071, 'rank_enc1': 544.3, 'rank_dec1': 590.0, 'rarely_active': 0.0037}
+  [p01 hi] step 23,500 | lr 2.0e-04 | train 2.481 | val 1.466 (best 1.466) | window Δ +0.67% | stable | 118k tok/s | phase 47m57s | run ETA: after first phase | health {'wnorm': 204.659, 'rank_enc1': 526.6, 'rank_dec1': 608.9, 'rarely_active': 0.0032}
+  [p01 hi] step 24,000 | lr 2.0e-04 | train 2.461 | val 1.459 (best 1.459) | window Δ +0.79% | stable | 121k tok/s | phase 48m57s | run ETA: after first phase | health {'wnorm': 205.249, 'rank_enc1': 512.4, 'rank_dec1': 626.9, 'rarely_active': 0.0038}
+  [p01 hi] step 24,500 | lr 2.0e-04 | train 2.475 | val 1.454 (best 1.454) | window Δ +0.96% | stable | 120k tok/s | phase 49m57s | run ETA: after first phase | health {'wnorm': 205.812, 'rank_enc1': 540.9, 'rank_dec1': 609.5, 'rarely_active': 0.0043}
+  [p01 hi] step 25,000 | lr 2.0e-04 | train 2.483 | val 1.455 (best 1.454) | window Δ +0.96% | stable | 118k tok/s | phase 51m00s | run ETA: after first phase | health {'wnorm': 206.337, 'rank_enc1': 525.4, 'rank_dec1': 611.8, 'rarely_active': 0.0034}
+  [p01 hi] step 25,500 | lr 2.0e-04 | train 2.431 | val 1.452 (best 1.452) | window Δ +1.07% | stable | 120k tok/s | phase 52m01s | run ETA: after first phase | health {'wnorm': 206.907, 'rank_enc1': 539.1, 'rank_dec1': 612.2, 'rarely_active': 0.0037}
+  [p01 hi] step 26,000 | lr 2.0e-04 | train 2.453 | val 1.445 (best 1.445) | window Δ +1.05% | stable | 120k tok/s | phase 53m02s | run ETA: after first phase | health {'wnorm': 207.427, 'rank_enc1': 564.6, 'rank_dec1': 611.5, 'rarely_active': 0.0039}
+  [p01 hi] step 26,500 | lr 2.0e-04 | train 2.465 | val 1.442 (best 1.442) | window Δ +0.88% | stable | 121k tok/s | phase 54m02s | run ETA: after first phase | health {'wnorm': 207.929, 'rank_enc1': 565.5, 'rank_dec1': 604.1, 'rarely_active': 0.0035}
+  [p01 hi] step 27,000 | lr 2.0e-04 | train 2.429 | val 1.442 (best 1.442) | window Δ +0.90% | stable | 118k tok/s | phase 55m04s | run ETA: after first phase | health {'wnorm': 208.438, 'rank_enc1': 552.9, 'rank_dec1': 628.2, 'rarely_active': 0.0035}
+  [p01 hi] step 27,500 | lr 2.0e-04 | train 2.431 | val 1.443 (best 1.442) | window Δ +0.81% | stable | 120k tok/s | phase 56m05s | run ETA: after first phase | health {'wnorm': 208.929, 'rank_enc1': 541.8, 'rank_dec1': 634.3, 'rarely_active': 0.0039}
+  [p01 hi] step 28,000 | lr 2.0e-04 | train 2.446 | val 1.441 (best 1.441) | window Δ +0.65% | stable | 120k tok/s | phase 57m06s | run ETA: after first phase | health {'wnorm': 209.411, 'rank_enc1': 543.8, 'rank_dec1': 610.9, 'rarely_active': 0.0033}
+  [p01 hi] step 28,500 | lr 2.0e-04 | train 2.421 | val 1.436 (best 1.436) | window Δ +0.55% | stable | 118k tok/s | phase 58m08s | run ETA: after first phase | health {'wnorm': 209.875, 'rank_enc1': 563.0, 'rank_dec1': 648.8, 'rarely_active': 0.0039}
+  [p01 hi] step 29,000 | lr 2.0e-04 | train 2.410 | val 1.438 (best 1.436) | window Δ +0.39% | cooldown (plateau, ends at 31,000) | 120k tok/s | phase 59m08s | run ETA: after first phase | health {'wnorm': 210.354, 'rank_enc1': 588.3, 'rank_dec1': 650.5, 'rarely_active': 0.0031}
+  [p01 hi] step 29,500 | lr 1.6e-04 | train 2.412 | val 1.415 (best 1.415) | window Δ +0.73% | cooldown (plateau, ends at 31,000) | 118k tok/s | phase 1h00m | run ETA: after first phase | health {'wnorm': 210.509, 'rank_enc1': 566.7, 'rank_dec1': 632.2, 'rarely_active': 0.0036}
+  [p01 hi] step 30,000 | lr 1.1e-04 | train 2.398 | val 1.397 (best 1.397) | window Δ +1.42% | cooldown (plateau, ends at 31,000) | 118k tok/s | phase 1h01m | run ETA: after first phase | health {'wnorm': 210.251, 'rank_enc1': 588.7, 'rank_dec1': 635.9, 'rarely_active': 0.0038}
+  [p01 hi] step 30,500 | lr 6.5e-05 | train 2.305 | val 1.380 (best 1.380) | window Δ +2.30% | cooldown (plateau, ends at 31,000) | 120k tok/s | phase 1h02m | run ETA: after first phase | health {'wnorm': 209.854, 'rank_enc1': 595.7, 'rank_dec1': 653.9, 'rarely_active': 0.004}
+  phase 1 finished (plateau); evaluating all languages...
+  new best checkpoint: hi = phase 1 (chrF 48.5)
+
+======================================================================================
+ PHASE 1 DONE | trained: hi | 31,000 steps | stop: plateau | peak lr 2.0e-04 | took 1h03m | run time 1h03m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.366  -7.603 |   48.5  +46.4 |                 47.1           2.309  ◀ trained
+   zh      8.986  -0.622 |    0.5   +0.4 |                  0.8           9.948
+   ar      8.488  -0.657 |    0.5   -3.5 |                  0.5           9.913
+======================================================================================
+
+▶ PHASE 2/30 | training hi (993,016 pairs)
+p001_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p001_hi.pt:   0%|          | 65.5k/267M [00:05<5:42:09, 13.0kB/s]p001_hi.pt:   1%|          | 2.69M/267M [00:05<06:00, 734kB/s]   p001_hi.pt:   5%|▍         | 12.2M/267M [00:05<01:03, 4.02MB/s]p001_hi.pt:   6%|▌         | 16.1M/267M [00:05<00:49, 5.09MB/s]p001_hi.pt:  11%|█         | 30.0M/267M [00:05<00:18, 12.7MB/s]p001_hi.pt:  13%|█▎        | 35.1M/267M [00:06<00:17, 13.1MB/s]p001_hi.pt:  18%|█▊        | 48.1M/267M [00:06<00:10, 20.1MB/s]p001_hi.pt:  24%|██▍       | 64.1M/267M [00:06<00:07, 28.6MB/s]p001_hi.pt:  29%|██▉       | 77.0M/267M [00:06<00:04, 38.0MB/s]p001_hi.pt:  31%|███       | 83.5M/267M [00:07<00:05, 31.8MB/s]p001_hi.pt:  35%|███▍      | 92.8M/267M [00:07<00:04, 38.2MB/s]p001_hi.pt:  37%|███▋      | 98.7M/267M [00:07<00:05, 30.1MB/s]p001_hi.pt:  42%|████▏     | 112M/267M [00:07<00:04, 36.2MB/s] p001_hi.pt:  46%|████▋     | 124M/267M [00:08<00:03, 46.3MB/s]p001_hi.pt:  49%|████▉     | 130M/267M [00:08<00:03, 34.8MB/s]p001_hi.pt:  54%|█████▍    | 144M/267M [00:08<00:03, 40.9MB/s]p001_hi.pt:  60%|█████▉    | 160M/267M [00:08<00:02, 47.5MB/s]p001_hi.pt:  66%|██████▌   | 176M/267M [00:09<00:01, 51.2MB/s]p001_hi.pt:  72%|███████▏  | 192M/267M [00:09<00:01, 54.4MB/s]p001_hi.pt:  78%|███████▊  | 208M/267M [00:09<00:01, 56.4MB/s]p001_hi.pt:  84%|████████▍ | 224M/267M [00:10<00:00, 58.5MB/s]p001_hi.pt:  90%|████████▉ | 240M/267M [00:10<00:00, 56.8MB/s]p001_hi.pt:  96%|█████████▌| 256M/267M [00:10<00:00, 58.0MB/s]p001_hi.pt: 100%|██████████| 267M/267M [00:10<00:00, 24.8MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p001_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p02 hi] step    500 | lr 2.0e-04 | train 2.286 | val 1.412 (best 1.412) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~30h39m | health {'wnorm': 209.365, 'rank_enc1': 573.9, 'rank_dec1': 657.9, 'rarely_active': 0.0041}
+  [p02 hi] step  1,000 | lr 2.0e-04 | train 2.378 | val 1.427 (best 1.412) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~30h39m | health {'wnorm': 209.894, 'rank_enc1': 581.1, 'rank_dec1': 642.6, 'rarely_active': 0.0039}
+  [p02 hi] step  1,500 | lr 2.0e-04 | train 2.410 | val 1.422 (best 1.412) | window Δ n/a | stable | 120k tok/s | phase 3m04s | run ETA ~30h39m | health {'wnorm': 210.369, 'rank_enc1': 584.6, 'rank_dec1': 627.9, 'rarely_active': 0.0041}
+  [p02 hi] step  2,000 | lr 2.0e-04 | train 2.377 | val 1.430 (best 1.412) | window Δ n/a | stable | 117k tok/s | phase 4m06s | run ETA ~30h39m | health {'wnorm': 210.844, 'rank_enc1': 593.0, 'rank_dec1': 646.4, 'rarely_active': 0.0044}
+  [p02 hi] step  2,500 | lr 2.0e-04 | train 2.388 | val 1.428 (best 1.412) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~30h39m | health {'wnorm': 211.301, 'rank_enc1': 586.8, 'rank_dec1': 650.6, 'rarely_active': 0.0038}
+  [p02 hi] step  3,000 | lr 2.0e-04 | train 2.407 | val 1.417 (best 1.412) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~30h39m | health {'wnorm': 211.719, 'rank_enc1': 607.9, 'rank_dec1': 647.2, 'rarely_active': 0.0039}
+  [p02 hi] step  3,500 | lr 2.0e-04 | train 2.389 | val 1.418 (best 1.412) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~30h39m | health {'wnorm': 212.139, 'rank_enc1': 615.1, 'rank_dec1': 657.4, 'rarely_active': 0.0038}
+  [p02 hi] step  4,000 | lr 2.0e-04 | train 2.368 | val 1.413 (best 1.412) | window Δ +0.29% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m10s | run ETA ~30h39m | health {'wnorm': 212.559, 'rank_enc1': 593.6, 'rank_dec1': 645.3, 'rarely_active': 0.0039}
+  [p02 hi] step  4,500 | lr 1.6e-04 | train 2.378 | val 1.397 (best 1.397) | window Δ +1.10% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~30h39m | health {'wnorm': 212.687, 'rank_enc1': 616.2, 'rank_dec1': 646.7, 'rarely_active': 0.0041}
+  [p02 hi] step  5,000 | lr 1.1e-04 | train 2.362 | val 1.377 (best 1.377) | window Δ +1.62% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m13s | run ETA ~30h39m | health {'wnorm': 212.403, 'rank_enc1': 635.6, 'rank_dec1': 650.7, 'rarely_active': 0.004}
+  [p02 hi] step  5,500 | lr 6.5e-05 | train 2.265 | val 1.364 (best 1.364) | window Δ +2.51% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m14s | run ETA ~30h39m | health {'wnorm': 211.988, 'rank_enc1': 625.7, 'rank_dec1': 667.4, 'rarely_active': 0.0041}
+  phase 2 finished (plateau); evaluating all languages...
+  new best checkpoint: hi = phase 2 (chrF 48.7)
+
+======================================================================================
+ PHASE 2 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 1h16m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.349  -0.017 |   48.7   +0.2 |                 47.1           2.341  ◀ trained
+   zh      8.962  -0.024 |    0.5   -0.0 |                  0.8           9.946
+   ar      8.478  -0.011 |    0.5   +0.0 |                  0.4           9.918
+======================================================================================
+
+▶ PHASE 3/30 | training hi (993,016 pairs)
+p002_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p002_hi.pt:   2%|▏         | 5.05M/267M [00:00<00:05, 48.4MB/s]p002_hi.pt:   6%|▌         | 15.1M/267M [00:00<00:03, 70.5MB/s]p002_hi.pt:   8%|▊         | 22.0M/267M [00:00<00:06, 37.6MB/s]p002_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:07, 32.1MB/s]p002_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 42.7MB/s]p002_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 47.6MB/s]p002_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:03, 46.8MB/s]p002_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 51.7MB/s]p002_hi.pt:  42%|████▏     | 112M/267M [00:02<00:02, 55.5MB/s] p002_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 57.8MB/s]p002_hi.pt:  54%|█████▍    | 144M/267M [00:02<00:02, 56.8MB/s]p002_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 58.4MB/s]p002_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 60.3MB/s]p002_hi.pt:  72%|███████▏  | 192M/267M [00:03<00:01, 59.5MB/s]p002_hi.pt:  78%|███████▊  | 208M/267M [00:03<00:01, 55.6MB/s]p002_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 57.9MB/s]p002_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 59.3MB/s]p002_hi.pt:  96%|█████████▌| 256M/267M [00:04<00:00, 59.6MB/s]p002_hi.pt: 100%|██████████| 267M/267M [00:04<00:00, 54.4MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p002_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p03 hi] step    500 | lr 2.0e-04 | train 2.245 | val 1.402 (best 1.402) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~17h41m | health {'wnorm': 211.471, 'rank_enc1': 642.8, 'rank_dec1': 659.2, 'rarely_active': 0.0039}
+  [p03 hi] step  1,000 | lr 2.0e-04 | train 2.347 | val 1.407 (best 1.402) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~17h41m | health {'wnorm': 211.957, 'rank_enc1': 607.4, 'rank_dec1': 666.4, 'rarely_active': 0.004}
+  [p03 hi] step  1,500 | lr 2.0e-04 | train 2.376 | val 1.401 (best 1.401) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~17h41m | health {'wnorm': 212.388, 'rank_enc1': 600.8, 'rank_dec1': 680.5, 'rarely_active': 0.0038}
+  [p03 hi] step  2,000 | lr 2.0e-04 | train 2.342 | val 1.414 (best 1.401) | window Δ n/a | stable | 118k tok/s | phase 4m06s | run ETA ~17h41m | health {'wnorm': 212.819, 'rank_enc1': 634.3, 'rank_dec1': 657.5, 'rarely_active': 0.0041}
+  [p03 hi] step  2,500 | lr 2.0e-04 | train 2.356 | val 1.407 (best 1.401) | window Δ n/a | stable | 121k tok/s | phase 5m06s | run ETA ~17h41m | health {'wnorm': 213.224, 'rank_enc1': 644.1, 'rank_dec1': 665.1, 'rarely_active': 0.0043}
+  [p03 hi] step  3,000 | lr 2.0e-04 | train 2.379 | val 1.401 (best 1.401) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~17h41m | health {'wnorm': 213.61, 'rank_enc1': 620.9, 'rank_dec1': 662.6, 'rarely_active': 0.0041}
+  [p03 hi] step  3,500 | lr 2.0e-04 | train 2.357 | val 1.407 (best 1.401) | window Δ n/a | stable | 117k tok/s | phase 7m09s | run ETA ~17h41m | health {'wnorm': 213.998, 'rank_enc1': 661.9, 'rank_dec1': 668.2, 'rarely_active': 0.0042}
+  [p03 hi] step  4,000 | lr 2.0e-04 | train 2.342 | val 1.405 (best 1.401) | window Δ +0.08% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~17h41m | health {'wnorm': 214.397, 'rank_enc1': 636.6, 'rank_dec1': 673.1, 'rarely_active': 0.0044}
+  [p03 hi] step  4,500 | lr 1.6e-04 | train 2.353 | val 1.385 (best 1.385) | window Δ +0.56% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~17h41m | health {'wnorm': 214.496, 'rank_enc1': 619.4, 'rank_dec1': 675.8, 'rarely_active': 0.0043}
+  [p03 hi] step  5,000 | lr 1.1e-04 | train 2.332 | val 1.367 (best 1.367) | window Δ +1.06% | cooldown (plateau, ends at 6,000) | 115k tok/s | phase 10m14s | run ETA ~17h41m | health {'wnorm': 214.191, 'rank_enc1': 654.9, 'rank_dec1': 678.4, 'rarely_active': 0.0043}
+  [p03 hi] step  5,500 | lr 6.5e-05 | train 2.246 | val 1.355 (best 1.355) | window Δ +2.06% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~17h41m | health {'wnorm': 213.762, 'rank_enc1': 661.1, 'rank_dec1': 680.1, 'rarely_active': 0.0046}
+  phase 3 finished (plateau); evaluating all languages...
+  new best checkpoint: hi = phase 3 (chrF 49.2)
+
+======================================================================================
+ PHASE 3 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 1h28m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.345  -0.004 |   49.2   +0.4 |                 47.8           2.394  ◀ trained
+   zh      8.969  +0.007 |    0.4   -0.1 |                  0.7           9.965
+   ar      8.482  +0.005 |    0.4   -0.1 |                  0.5           9.949
+======================================================================================
+
+▶ PHASE 4/30 | training hi (993,016 pairs)
+p003_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p003_hi.pt:   2%|▏         | 5.11M/267M [00:00<00:06, 40.5MB/s]p003_hi.pt:   3%|▎         | 9.18M/267M [00:00<00:08, 29.4MB/s]p003_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:10, 23.6MB/s]p003_hi.pt:  10%|█         | 27.7M/267M [00:00<00:05, 40.5MB/s]p003_hi.pt:  12%|█▏        | 32.7M/267M [00:01<00:09, 25.0MB/s]p003_hi.pt:  16%|█▋        | 43.7M/267M [00:01<00:06, 35.5MB/s]p003_hi.pt:  18%|█▊        | 48.6M/267M [00:01<00:08, 26.0MB/s]p003_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:05, 37.0MB/s]p003_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 44.8MB/s]p003_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 51.2MB/s]p003_hi.pt:  40%|███▉      | 107M/267M [00:02<00:03, 43.6MB/s] p003_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 42.9MB/s]p003_hi.pt:  44%|████▎     | 116M/267M [00:03<00:04, 30.8MB/s]p003_hi.pt:  48%|████▊     | 128M/267M [00:03<00:04, 34.7MB/s]p003_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:03, 39.7MB/s]p003_hi.pt:  60%|█████▉    | 160M/267M [00:04<00:02, 45.8MB/s]p003_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 48.5MB/s]p003_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 51.9MB/s]p003_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 55.1MB/s]p003_hi.pt:  84%|████████▍ | 224M/267M [00:05<00:00, 57.9MB/s]p003_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 59.0MB/s]p003_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 60.3MB/s]p003_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 45.2MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p003_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p04 hi] step    500 | lr 2.0e-04 | train 2.214 | val 1.398 (best 1.398) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~13h14m | health {'wnorm': 213.225, 'rank_enc1': 650.4, 'rank_dec1': 662.6, 'rarely_active': 0.0045}
+  [p04 hi] step  1,000 | lr 2.0e-04 | train 2.319 | val 1.398 (best 1.398) | window Δ n/a | stable | 121k tok/s | phase 2m03s | run ETA ~13h14m | health {'wnorm': 213.676, 'rank_enc1': 626.0, 'rank_dec1': 687.3, 'rarely_active': 0.004}
+  [p04 hi] step  1,500 | lr 2.0e-04 | train 2.353 | val 1.401 (best 1.398) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~13h14m | health {'wnorm': 214.064, 'rank_enc1': 634.7, 'rank_dec1': 669.1, 'rarely_active': 0.0046}
+  [p04 hi] step  2,000 | lr 2.0e-04 | train 2.312 | val 1.408 (best 1.398) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~13h14m | health {'wnorm': 214.468, 'rank_enc1': 649.0, 'rank_dec1': 686.0, 'rarely_active': 0.0042}
+  [p04 hi] step  2,500 | lr 2.0e-04 | train 2.336 | val 1.396 (best 1.396) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~13h14m | health {'wnorm': 214.847, 'rank_enc1': 647.5, 'rank_dec1': 685.9, 'rarely_active': 0.0041}
+  [p04 hi] step  3,000 | lr 2.0e-04 | train 2.349 | val 1.394 (best 1.394) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~13h14m | health {'wnorm': 215.192, 'rank_enc1': 641.6, 'rank_dec1': 678.2, 'rarely_active': 0.0037}
+  [p04 hi] step  3,500 | lr 2.0e-04 | train 2.340 | val 1.401 (best 1.394) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~13h14m | health {'wnorm': 215.541, 'rank_enc1': 651.8, 'rank_dec1': 690.5, 'rarely_active': 0.004}
+  [p04 hi] step  4,000 | lr 2.0e-04 | train 2.314 | val 1.389 (best 1.389) | window Δ +0.43% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m09s | run ETA ~13h14m | health {'wnorm': 215.895, 'rank_enc1': 655.8, 'rank_dec1': 674.0, 'rarely_active': 0.0041}
+  [p04 hi] step  4,500 | lr 1.6e-04 | train 2.326 | val 1.384 (best 1.384) | window Δ +0.62% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m10s | run ETA ~13h14m | health {'wnorm': 215.968, 'rank_enc1': 670.2, 'rank_dec1': 692.8, 'rarely_active': 0.0044}
+  [p04 hi] step  5,000 | lr 1.1e-04 | train 2.311 | val 1.353 (best 1.353) | window Δ +1.27% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m11s | run ETA ~13h14m | health {'wnorm': 215.649, 'rank_enc1': 658.4, 'rank_dec1': 683.3, 'rarely_active': 0.0043}
+  [p04 hi] step  5,500 | lr 6.5e-05 | train 2.218 | val 1.345 (best 1.345) | window Δ +2.27% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m13s | run ETA ~13h14m | health {'wnorm': 215.208, 'rank_enc1': 680.9, 'rank_dec1': 701.4, 'rarely_active': 0.0043}
+  phase 4 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 4 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 1h40m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.332  -0.013 |   48.6   -0.6 |                 44.6           2.428  ◀ trained
+   zh      8.993  +0.024 |    0.5   +0.1 |                  0.5           9.999
+   ar      8.511  +0.029 |    0.5   +0.1 |                  0.3           9.988
+======================================================================================
+
+▶ PHASE 5/30 | training hi (993,016 pairs)
+p004_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p004_hi.pt:   0%|          | 65.5k/267M [00:00<07:07, 624kB/s]p004_hi.pt:   4%|▍         | 10.7M/267M [00:00<00:05, 48.8MB/s]p004_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:10, 24.3MB/s]p004_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:05, 39.7MB/s]p004_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:04, 45.6MB/s]p004_hi.pt:  22%|██▏       | 59.3M/267M [00:01<00:03, 52.9MB/s]p004_hi.pt:  24%|██▍       | 65.2M/267M [00:01<00:05, 35.2MB/s]p004_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:04, 42.1MB/s]p004_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 46.2MB/s]p004_hi.pt:  40%|████      | 107M/267M [00:02<00:02, 54.9MB/s] p004_hi.pt:  43%|████▎     | 114M/267M [00:02<00:03, 48.0MB/s]p004_hi.pt:  46%|████▌     | 123M/267M [00:02<00:02, 55.6MB/s]p004_hi.pt:  49%|████▉     | 130M/267M [00:02<00:03, 41.9MB/s]p004_hi.pt:  52%|█████▏    | 140M/267M [00:03<00:02, 50.3MB/s]p004_hi.pt:  55%|█████▍    | 146M/267M [00:03<00:02, 44.1MB/s]p004_hi.pt:  57%|█████▋    | 152M/267M [00:03<00:02, 44.0MB/s]p004_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:03, 35.7MB/s]p004_hi.pt:  65%|██████▍   | 173M/267M [00:03<00:01, 50.1MB/s]p004_hi.pt:  67%|██████▋   | 179M/267M [00:04<00:01, 44.5MB/s]p004_hi.pt:  70%|██████▉   | 186M/267M [00:04<00:01, 45.2MB/s]p004_hi.pt:  72%|███████▏  | 191M/267M [00:04<00:01, 44.0MB/s]p004_hi.pt:  74%|███████▎  | 196M/267M [00:04<00:01, 37.3MB/s]p004_hi.pt:  76%|███████▌  | 204M/267M [00:04<00:01, 42.3MB/s]p004_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 35.1MB/s]p004_hi.pt:  81%|████████  | 217M/267M [00:04<00:01, 43.7MB/s]p004_hi.pt:  84%|████████▎ | 223M/267M [00:05<00:00, 46.8MB/s]p004_hi.pt:  86%|████████▌ | 228M/267M [00:05<00:00, 40.2MB/s]p004_hi.pt:  88%|████████▊ | 235M/267M [00:05<00:00, 44.3MB/s]p004_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 33.3MB/s]p004_hi.pt:  93%|█████████▎| 249M/267M [00:05<00:00, 44.1MB/s]p004_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 48.1MB/s]p004_hi.pt:  98%|█████████▊| 262M/267M [00:06<00:00, 43.3MB/s]p004_hi.pt: 100%|██████████| 267M/267M [00:06<00:00, 42.3MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p004_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p05 hi] step    500 | lr 2.0e-04 | train 2.202 | val 1.390 (best 1.390) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~10h54m | health {'wnorm': 214.654, 'rank_enc1': 676.5, 'rank_dec1': 703.7, 'rarely_active': 0.0043}
+  [p05 hi] step  1,000 | lr 2.0e-04 | train 2.289 | val 1.397 (best 1.390) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~10h54m | health {'wnorm': 215.069, 'rank_enc1': 666.2, 'rank_dec1': 689.0, 'rarely_active': 0.0041}
+  [p05 hi] step  1,500 | lr 2.0e-04 | train 2.323 | val 1.387 (best 1.387) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~10h54m | health {'wnorm': 215.435, 'rank_enc1': 660.7, 'rank_dec1': 686.9, 'rarely_active': 0.004}
+  [p05 hi] step  2,000 | lr 2.0e-04 | train 2.300 | val 1.398 (best 1.387) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~10h54m | health {'wnorm': 215.8, 'rank_enc1': 680.7, 'rank_dec1': 681.2, 'rarely_active': 0.0046}
+  [p05 hi] step  2,500 | lr 2.0e-04 | train 2.306 | val 1.389 (best 1.387) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~10h54m | health {'wnorm': 216.153, 'rank_enc1': 670.1, 'rank_dec1': 683.5, 'rarely_active': 0.0045}
+  [p05 hi] step  3,000 | lr 2.0e-04 | train 2.330 | val 1.384 (best 1.384) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~10h54m | health {'wnorm': 216.479, 'rank_enc1': 689.5, 'rank_dec1': 687.0, 'rarely_active': 0.0045}
+  [p05 hi] step  3,500 | lr 2.0e-04 | train 2.319 | val 1.390 (best 1.384) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~10h54m | health {'wnorm': 216.809, 'rank_enc1': 689.4, 'rank_dec1': 716.0, 'rarely_active': 0.0045}
+  [p05 hi] step  4,000 | lr 2.0e-04 | train 2.298 | val 1.384 (best 1.384) | window Δ +0.43% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~10h54m | health {'wnorm': 217.132, 'rank_enc1': 696.1, 'rank_dec1': 699.6, 'rarely_active': 0.0043}
+  [p05 hi] step  4,500 | lr 1.6e-04 | train 2.305 | val 1.370 (best 1.370) | window Δ +0.77% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~10h54m | health {'wnorm': 217.177, 'rank_enc1': 674.8, 'rank_dec1': 692.2, 'rarely_active': 0.0041}
+  [p05 hi] step  5,000 | lr 1.1e-04 | train 2.288 | val 1.350 (best 1.350) | window Δ +1.16% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 10m11s | run ETA ~10h54m | health {'wnorm': 216.843, 'rank_enc1': 679.0, 'rank_dec1': 688.0, 'rarely_active': 0.0049}
+  [p05 hi] step  5,500 | lr 6.5e-05 | train 2.194 | val 1.340 (best 1.340) | window Δ +2.12% | cooldown (plateau, ends at 6,000) | 116k tok/s | phase 11m15s | run ETA ~10h54m | health {'wnorm': 216.393, 'rank_enc1': 690.6, 'rank_dec1': 708.5, 'rarely_active': 0.0046}
+  phase 5 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 5 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 1h53m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.326  -0.006 |   48.9   +0.3 |                 44.2           2.461  ◀ trained
+   zh      9.011  +0.018 |    0.4   -0.1 |                  0.6          10.033
+   ar      8.502  -0.009 |    0.5   -0.1 |                  0.4           9.996
+======================================================================================
+
+▶ PHASE 6/30 | training hi (993,016 pairs)
+p005_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p005_hi.pt:   0%|          | 65.5k/267M [00:05<5:46:44, 12.8kB/s]p005_hi.pt:   3%|▎         | 9.04M/267M [00:05<01:48, 2.37MB/s]  p005_hi.pt:   6%|▌         | 16.1M/267M [00:05<00:56, 4.46MB/s]p005_hi.pt:  12%|█▏        | 32.1M/267M [00:05<00:22, 10.6MB/s]p005_hi.pt:  16%|█▌        | 42.4M/267M [00:06<00:14, 15.8MB/s]p005_hi.pt:  18%|█▊        | 48.2M/267M [00:06<00:13, 16.0MB/s]p005_hi.pt:  24%|██▍       | 64.1M/267M [00:06<00:08, 24.6MB/s]p005_hi.pt:  30%|██▉       | 80.1M/267M [00:06<00:05, 32.3MB/s]p005_hi.pt:  36%|███▌      | 96.1M/267M [00:07<00:04, 39.0MB/s]p005_hi.pt:  40%|███▉      | 106M/267M [00:07<00:03, 44.5MB/s] p005_hi.pt:  42%|████▏     | 112M/267M [00:07<00:04, 32.9MB/s]p005_hi.pt:  47%|████▋     | 125M/267M [00:07<00:03, 43.1MB/s]p005_hi.pt:  49%|████▉     | 131M/267M [00:08<00:03, 40.7MB/s]p005_hi.pt:  52%|█████▏    | 139M/267M [00:08<00:02, 44.6MB/s]p005_hi.pt:  54%|█████▍    | 145M/267M [00:08<00:03, 37.9MB/s]p005_hi.pt:  58%|█████▊    | 155M/267M [00:08<00:02, 47.2MB/s]p005_hi.pt:  60%|██████    | 161M/267M [00:08<00:02, 40.6MB/s]p005_hi.pt:  64%|██████▍   | 171M/267M [00:08<00:01, 51.0MB/s]p005_hi.pt:  66%|██████▋   | 177M/267M [00:09<00:02, 41.5MB/s]p005_hi.pt:  70%|███████   | 188M/267M [00:09<00:01, 52.6MB/s]p005_hi.pt:  73%|███████▎  | 194M/267M [00:09<00:01, 44.5MB/s]p005_hi.pt:  76%|███████▋  | 204M/267M [00:09<00:01, 54.0MB/s]p005_hi.pt:  79%|███████▉  | 211M/267M [00:09<00:01, 46.2MB/s]p005_hi.pt:  82%|████████▏ | 220M/267M [00:09<00:00, 54.9MB/s]p005_hi.pt:  85%|████████▍ | 227M/267M [00:10<00:00, 46.4MB/s]p005_hi.pt:  88%|████████▊ | 236M/267M [00:10<00:00, 55.9MB/s]p005_hi.pt:  91%|█████████ | 243M/267M [00:10<00:00, 46.7MB/s]p005_hi.pt:  95%|█████████▍| 254M/267M [00:10<00:00, 58.3MB/s]p005_hi.pt:  98%|█████████▊| 261M/267M [00:10<00:00, 47.5MB/s]p005_hi.pt: 100%|██████████| 267M/267M [00:10<00:00, 24.4MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p005_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p06 hi] step    500 | lr 2.0e-04 | train 2.172 | val 1.375 (best 1.375) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~9h25m | health {'wnorm': 215.822, 'rank_enc1': 694.9, 'rank_dec1': 707.4, 'rarely_active': 0.0045}
+  [p06 hi] step  1,000 | lr 2.0e-04 | train 2.278 | val 1.380 (best 1.375) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~9h25m | health {'wnorm': 216.215, 'rank_enc1': 691.7, 'rank_dec1': 697.1, 'rarely_active': 0.0046}
+  [p06 hi] step  1,500 | lr 2.0e-04 | train 2.304 | val 1.379 (best 1.375) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~9h25m | health {'wnorm': 216.559, 'rank_enc1': 708.7, 'rank_dec1': 693.3, 'rarely_active': 0.0046}
+  [p06 hi] step  2,000 | lr 2.0e-04 | train 2.284 | val 1.392 (best 1.375) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~9h25m | health {'wnorm': 216.9, 'rank_enc1': 703.7, 'rank_dec1': 703.0, 'rarely_active': 0.005}
+  [p06 hi] step  2,500 | lr 2.0e-04 | train 2.292 | val 1.388 (best 1.375) | window Δ n/a | stable | 121k tok/s | phase 5m06s | run ETA ~9h25m | health {'wnorm': 217.227, 'rank_enc1': 704.7, 'rank_dec1': 710.5, 'rarely_active': 0.0045}
+  [p06 hi] step  3,000 | lr 2.0e-04 | train 2.308 | val 1.382 (best 1.375) | window Δ n/a | stable | 121k tok/s | phase 6m06s | run ETA ~9h25m | health {'wnorm': 217.54, 'rank_enc1': 709.2, 'rank_dec1': 704.5, 'rarely_active': 0.0043}
+  [p06 hi] step  3,500 | lr 2.0e-04 | train 2.301 | val 1.384 (best 1.375) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~9h25m | health {'wnorm': 217.84, 'rank_enc1': 687.1, 'rank_dec1': 717.2, 'rarely_active': 0.0042}
+  [p06 hi] step  4,000 | lr 2.0e-04 | train 2.278 | val 1.386 (best 1.375) | window Δ -0.26% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m09s | run ETA ~9h25m | health {'wnorm': 218.158, 'rank_enc1': 708.9, 'rank_dec1': 712.0, 'rarely_active': 0.0044}
+  [p06 hi] step  4,500 | lr 1.6e-04 | train 2.292 | val 1.365 (best 1.365) | window Δ +0.42% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 9m10s | run ETA ~9h25m | health {'wnorm': 218.181, 'rank_enc1': 711.6, 'rank_dec1': 720.9, 'rarely_active': 0.0047}
+  [p06 hi] step  5,000 | lr 1.1e-04 | train 2.272 | val 1.343 (best 1.343) | window Δ +1.16% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m12s | run ETA ~9h25m | health {'wnorm': 217.836, 'rank_enc1': 728.6, 'rank_dec1': 701.0, 'rarely_active': 0.0045}
+  [p06 hi] step  5,500 | lr 6.5e-05 | train 2.176 | val 1.335 (best 1.335) | window Δ +2.14% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m12s | run ETA ~9h25m | health {'wnorm': 217.38, 'rank_enc1': 730.3, 'rank_dec1': 719.7, 'rarely_active': 0.0049}
+  phase 6 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 6 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 2h05m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.321  -0.005 |   48.7   -0.2 |                 39.5           2.504  ◀ trained
+   zh      8.986  -0.025 |    0.5   +0.1 |                  0.5          10.041
+   ar      8.484  -0.018 |    0.6   +0.2 |                  0.3          10.011
+======================================================================================
+
+▶ PHASE 7/30 | training hi (993,016 pairs)
+p006_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p006_hi.pt:   2%|▏         | 5.96M/267M [00:00<00:04, 57.0MB/s]p006_hi.pt:   5%|▌         | 14.5M/267M [00:00<00:03, 66.5MB/s]p006_hi.pt:   8%|▊         | 21.2M/267M [00:00<00:07, 31.2MB/s]p006_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:07, 30.2MB/s]p006_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 40.9MB/s]p006_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 45.9MB/s]p006_hi.pt:  29%|██▉       | 76.9M/267M [00:01<00:03, 53.6MB/s]p006_hi.pt:  31%|███       | 82.9M/267M [00:01<00:04, 40.9MB/s]p006_hi.pt:  34%|███▍      | 91.5M/267M [00:02<00:03, 46.4MB/s]p006_hi.pt:  36%|███▋      | 97.1M/267M [00:02<00:04, 36.4MB/s]p006_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 43.7MB/s] p006_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 49.2MB/s]p006_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 52.9MB/s]p006_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 54.3MB/s]p006_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 55.3MB/s]p006_hi.pt:  72%|███████▏  | 192M/267M [00:03<00:01, 56.7MB/s]p006_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 55.8MB/s]p006_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 53.2MB/s]p006_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 54.8MB/s]p006_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 52.9MB/s]p006_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 48.9MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p006_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p07 hi] step    500 | lr 2.0e-04 | train 2.153 | val 1.361 (best 1.361) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~8h22m | health {'wnorm': 216.802, 'rank_enc1': 726.0, 'rank_dec1': 715.0, 'rarely_active': 0.0051}
+  [p07 hi] step  1,000 | lr 2.0e-04 | train 2.254 | val 1.378 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~8h22m | health {'wnorm': 217.181, 'rank_enc1': 723.2, 'rank_dec1': 714.8, 'rarely_active': 0.0046}
+  [p07 hi] step  1,500 | lr 2.0e-04 | train 2.297 | val 1.376 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~8h22m | health {'wnorm': 217.504, 'rank_enc1': 716.4, 'rank_dec1': 718.5, 'rarely_active': 0.0048}
+  [p07 hi] step  2,000 | lr 2.0e-04 | train 2.267 | val 1.390 (best 1.361) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~8h22m | health {'wnorm': 217.83, 'rank_enc1': 716.0, 'rank_dec1': 726.8, 'rarely_active': 0.0043}
+  [p07 hi] step  2,500 | lr 2.0e-04 | train 2.278 | val 1.378 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~8h22m | health {'wnorm': 218.131, 'rank_enc1': 739.0, 'rank_dec1': 725.8, 'rarely_active': 0.0045}
+  [p07 hi] step  3,000 | lr 2.0e-04 | train 2.296 | val 1.375 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~8h22m | health {'wnorm': 218.422, 'rank_enc1': 726.8, 'rank_dec1': 716.2, 'rarely_active': 0.0049}
+  [p07 hi] step  3,500 | lr 2.0e-04 | train 2.283 | val 1.378 (best 1.361) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~8h22m | health {'wnorm': 218.695, 'rank_enc1': 727.2, 'rank_dec1': 721.1, 'rarely_active': 0.0045}
+  [p07 hi] step  4,000 | lr 2.0e-04 | train 2.268 | val 1.379 (best 1.361) | window Δ -0.08% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~8h22m | health {'wnorm': 218.984, 'rank_enc1': 746.2, 'rank_dec1': 705.7, 'rarely_active': 0.0048}
+  [p07 hi] step  4,500 | lr 1.6e-04 | train 2.276 | val 1.350 (best 1.350) | window Δ +0.72% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~8h22m | health {'wnorm': 219.005, 'rank_enc1': 729.4, 'rank_dec1': 715.6, 'rarely_active': 0.0049}
+  [p07 hi] step  5,000 | lr 1.1e-04 | train 2.254 | val 1.334 (best 1.334) | window Δ +1.40% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m12s | run ETA ~8h22m | health {'wnorm': 218.647, 'rank_enc1': 725.1, 'rank_dec1': 716.1, 'rarely_active': 0.0047}
+  [p07 hi] step  5,500 | lr 6.5e-05 | train 2.161 | val 1.329 (best 1.329) | window Δ +2.33% | cooldown (plateau, ends at 6,000) | 115k tok/s | phase 11m15s | run ETA ~8h22m | health {'wnorm': 218.184, 'rank_enc1': 740.2, 'rank_dec1': 730.7, 'rarely_active': 0.0047}
+  phase 7 finished (plateau); evaluating all languages...
+  new best checkpoint: hi = phase 7 (chrF 49.5)
+
+======================================================================================
+ PHASE 7 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 2h18m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.316  -0.005 |   49.5   +0.8 |                 38.1           2.542  ◀ trained
+   zh      9.006  +0.020 |    0.5   +0.0 |                  0.5          10.094
+   ar      8.491  +0.007 |    0.6   -0.0 |                  0.3          10.028
+======================================================================================
+
+▶ PHASE 8/30 | training hi (993,016 pairs)
+p007_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p007_hi.pt:   5%|▍         | 12.3M/267M [00:00<00:02, 121MB/s]p007_hi.pt:   9%|▉         | 24.4M/267M [00:00<00:05, 45.1MB/s]p007_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:07, 32.4MB/s]p007_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 39.6MB/s]p007_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 46.4MB/s]p007_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:03, 47.4MB/s]p007_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 52.2MB/s]p007_hi.pt:  42%|████▏     | 112M/267M [00:02<00:02, 51.7MB/s] p007_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 54.5MB/s]p007_hi.pt:  54%|█████▍    | 144M/267M [00:02<00:02, 55.8MB/s]p007_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 57.4MB/s]p007_hi.pt:  64%|██████▍   | 171M/267M [00:03<00:01, 62.9MB/s]p007_hi.pt:  66%|██████▋   | 178M/267M [00:03<00:02, 41.8MB/s]p007_hi.pt:  72%|███████▏  | 192M/267M [00:03<00:01, 45.2MB/s]p007_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 47.8MB/s]p007_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 50.0MB/s]p007_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 48.2MB/s]p007_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 51.3MB/s]p007_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 49.9MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p007_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p08 hi] step    500 | lr 2.0e-04 | train 2.141 | val 1.363 (best 1.363) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~7h33m | health {'wnorm': 217.595, 'rank_enc1': 748.1, 'rank_dec1': 716.9, 'rarely_active': 0.0046}
+  [p08 hi] step  1,000 | lr 2.0e-04 | train 2.244 | val 1.370 (best 1.363) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~7h33m | health {'wnorm': 217.958, 'rank_enc1': 735.0, 'rank_dec1': 718.5, 'rarely_active': 0.0046}
+  [p08 hi] step  1,500 | lr 2.0e-04 | train 2.276 | val 1.384 (best 1.363) | window Δ n/a | stable | 120k tok/s | phase 3m04s | run ETA ~7h33m | health {'wnorm': 218.265, 'rank_enc1': 730.8, 'rank_dec1': 707.7, 'rarely_active': 0.0046}
+  [p08 hi] step  2,000 | lr 2.0e-04 | train 2.253 | val 1.381 (best 1.363) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~7h33m | health {'wnorm': 218.571, 'rank_enc1': 749.5, 'rank_dec1': 733.0, 'rarely_active': 0.0049}
+  [p08 hi] step  2,500 | lr 2.0e-04 | train 2.262 | val 1.370 (best 1.363) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~7h33m | health {'wnorm': 218.862, 'rank_enc1': 746.5, 'rank_dec1': 729.2, 'rarely_active': 0.0053}
+  [p08 hi] step  3,000 | lr 2.0e-04 | train 2.280 | val 1.368 (best 1.363) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~7h33m | health {'wnorm': 219.142, 'rank_enc1': 721.9, 'rank_dec1': 727.4, 'rarely_active': 0.005}
+  [p08 hi] step  3,500 | lr 2.0e-04 | train 2.271 | val 1.382 (best 1.363) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~7h33m | health {'wnorm': 219.41, 'rank_enc1': 745.7, 'rank_dec1': 733.9, 'rarely_active': 0.005}
+  [p08 hi] step  4,000 | lr 2.0e-04 | train 2.252 | val 1.371 (best 1.363) | window Δ +0.14% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m10s | run ETA ~7h33m | health {'wnorm': 219.687, 'rank_enc1': 728.4, 'rank_dec1': 729.0, 'rarely_active': 0.0046}
+  [p08 hi] step  4,500 | lr 1.6e-04 | train 2.264 | val 1.351 (best 1.351) | window Δ +0.62% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~7h33m | health {'wnorm': 219.695, 'rank_enc1': 761.6, 'rank_dec1': 733.5, 'rarely_active': 0.0049}
+  [p08 hi] step  5,000 | lr 1.1e-04 | train 2.245 | val 1.332 (best 1.332) | window Δ +1.22% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m12s | run ETA ~7h33m | health {'wnorm': 219.332, 'rank_enc1': 752.7, 'rank_dec1': 727.9, 'rarely_active': 0.005}
+  [p08 hi] step  5,500 | lr 6.5e-05 | train 2.151 | val 1.329 (best 1.329) | window Δ +2.14% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m14s | run ETA ~7h33m | health {'wnorm': 218.863, 'rank_enc1': 758.9, 'rank_dec1': 746.9, 'rarely_active': 0.0052}
+  phase 8 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 8 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m26s | run time 2h30m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.314  -0.003 |   48.8   -0.6 |                 34.0           2.573  ◀ trained
+   zh      9.017  +0.011 |    0.5   +0.0 |                  0.4          10.125
+   ar      8.522  +0.032 |    0.8   +0.2 |                  0.2          10.098
+======================================================================================
+
+▶ PHASE 9/30 | training hi (993,016 pairs)
+p008_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p008_hi.pt:   1%|▏         | 3.80M/267M [00:00<00:06, 38.0MB/s]p008_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:05, 43.5MB/s]p008_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:05, 45.5MB/s]p008_hi.pt:  16%|█▋        | 43.6M/267M [00:00<00:04, 54.5MB/s]p008_hi.pt:  19%|█▊        | 49.5M/267M [00:01<00:06, 35.4MB/s]p008_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 42.5MB/s]p008_hi.pt:  28%|██▊       | 74.4M/267M [00:01<00:04, 48.1MB/s]p008_hi.pt:  30%|██▉       | 79.9M/267M [00:01<00:05, 36.7MB/s]p008_hi.pt:  32%|███▏      | 84.3M/267M [00:02<00:06, 27.4MB/s]p008_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:05, 30.4MB/s]p008_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 39.0MB/s] p008_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 45.3MB/s]p008_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 49.6MB/s]p008_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:02, 51.7MB/s]p008_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 53.5MB/s]p008_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 56.0MB/s]p008_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 54.6MB/s]p008_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 53.0MB/s]p008_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 54.4MB/s]p008_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 55.5MB/s]p008_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 47.4MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p008_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p09 hi] step    500 | lr 2.0e-04 | train 2.125 | val 1.360 (best 1.360) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~6h53m | health {'wnorm': 218.267, 'rank_enc1': 740.6, 'rank_dec1': 739.6, 'rarely_active': 0.0051}
+  [p09 hi] step  1,000 | lr 2.0e-04 | train 2.235 | val 1.372 (best 1.360) | window Δ n/a | stable | 121k tok/s | phase 2m03s | run ETA ~6h53m | health {'wnorm': 218.604, 'rank_enc1': 760.3, 'rank_dec1': 737.8, 'rarely_active': 0.0051}
+  [p09 hi] step  1,500 | lr 2.0e-04 | train 2.261 | val 1.368 (best 1.360) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~6h53m | health {'wnorm': 218.896, 'rank_enc1': 751.2, 'rank_dec1': 729.2, 'rarely_active': 0.0056}
+  [p09 hi] step  2,000 | lr 2.0e-04 | train 2.241 | val 1.377 (best 1.360) | window Δ n/a | stable | 117k tok/s | phase 4m06s | run ETA ~6h53m | health {'wnorm': 219.196, 'rank_enc1': 771.1, 'rank_dec1': 741.7, 'rarely_active': 0.0057}
+  [p09 hi] step  2,500 | lr 2.0e-04 | train 2.252 | val 1.368 (best 1.360) | window Δ n/a | stable | 120k tok/s | phase 5m07s | run ETA ~6h53m | health {'wnorm': 219.477, 'rank_enc1': 743.1, 'rank_dec1': 726.6, 'rarely_active': 0.0049}
+  [p09 hi] step  3,000 | lr 2.0e-04 | train 2.271 | val 1.360 (best 1.360) | window Δ n/a | stable | 120k tok/s | phase 6m08s | run ETA ~6h53m | health {'wnorm': 219.743, 'rank_enc1': 764.7, 'rank_dec1': 726.7, 'rarely_active': 0.0053}
+  [p09 hi] step  3,500 | lr 2.0e-04 | train 2.256 | val 1.375 (best 1.360) | window Δ n/a | stable | 118k tok/s | phase 7m10s | run ETA ~6h53m | health {'wnorm': 219.998, 'rank_enc1': 762.5, 'rank_dec1': 741.2, 'rarely_active': 0.0053}
+  [p09 hi] step  4,000 | lr 2.0e-04 | train 2.239 | val 1.375 (best 1.360) | window Δ -0.01% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~6h53m | health {'wnorm': 220.259, 'rank_enc1': 751.6, 'rank_dec1': 756.1, 'rarely_active': 0.0052}
+  [p09 hi] step  4,500 | lr 1.6e-04 | train 2.248 | val 1.354 (best 1.354) | window Δ +0.40% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~6h53m | health {'wnorm': 220.259, 'rank_enc1': 752.8, 'rank_dec1': 746.9, 'rarely_active': 0.0048}
+  [p09 hi] step  5,000 | lr 1.1e-04 | train 2.239 | val 1.331 (best 1.331) | window Δ +0.70% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m14s | run ETA ~6h53m | health {'wnorm': 219.891, 'rank_enc1': 745.3, 'rank_dec1': 730.7, 'rarely_active': 0.0052}
+  [p09 hi] step  5,500 | lr 6.5e-05 | train 2.135 | val 1.325 (best 1.325) | window Δ +1.75% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~6h53m | health {'wnorm': 219.42, 'rank_enc1': 769.9, 'rank_dec1': 753.1, 'rarely_active': 0.005}
+  phase 9 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 9 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m28s | run time 2h43m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.312  -0.001 |   49.0   +0.1 |                 31.3           2.598  ◀ trained
+   zh      9.014  -0.002 |    0.5   +0.0 |                  0.4          10.149
+   ar      8.516  -0.006 |    0.8   -0.0 |                  0.2          10.114
+======================================================================================
+
+▶ PHASE 10/30 | training hi (993,016 pairs)
+p009_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p009_hi.pt:   2%|▏         | 4.13M/267M [00:00<00:06, 41.3MB/s]p009_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:06, 38.9MB/s]p009_hi.pt:  11%|█         | 28.5M/267M [00:00<00:03, 60.9MB/s]p009_hi.pt:  13%|█▎        | 35.9M/267M [00:00<00:06, 37.4MB/s]p009_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 39.5MB/s]p009_hi.pt:  23%|██▎       | 62.3M/267M [00:01<00:03, 56.3MB/s]p009_hi.pt:  26%|██▋       | 70.3M/267M [00:01<00:04, 48.1MB/s]p009_hi.pt:  29%|██▉       | 78.2M/267M [00:01<00:03, 52.5MB/s]p009_hi.pt:  32%|███▏      | 84.9M/267M [00:01<00:04, 41.1MB/s]p009_hi.pt:  35%|███▌      | 93.8M/267M [00:02<00:03, 47.7MB/s]p009_hi.pt:  37%|███▋      | 99.8M/267M [00:02<00:03, 43.8MB/s]p009_hi.pt:  40%|████      | 108M/267M [00:02<00:03, 49.4MB/s] p009_hi.pt:  43%|████▎     | 114M/267M [00:02<00:03, 40.7MB/s]p009_hi.pt:  47%|████▋     | 124M/267M [00:02<00:02, 51.8MB/s]p009_hi.pt:  49%|████▉     | 130M/267M [00:02<00:03, 43.7MB/s]p009_hi.pt:  52%|█████▏    | 140M/267M [00:02<00:02, 51.9MB/s]p009_hi.pt:  55%|█████▍    | 146M/267M [00:03<00:02, 42.8MB/s]p009_hi.pt:  58%|█████▊    | 154M/267M [00:03<00:02, 49.8MB/s]p009_hi.pt:  60%|██████    | 160M/267M [00:03<00:02, 40.9MB/s]p009_hi.pt:  65%|██████▍   | 173M/267M [00:03<00:01, 56.5MB/s]p009_hi.pt:  67%|██████▋   | 180M/267M [00:03<00:01, 49.0MB/s]p009_hi.pt:  71%|███████   | 190M/267M [00:03<00:01, 58.2MB/s]p009_hi.pt:  74%|███████▎  | 197M/267M [00:04<00:01, 48.7MB/s]p009_hi.pt:  77%|███████▋  | 205M/267M [00:04<00:01, 55.0MB/s]p009_hi.pt:  79%|███████▉  | 211M/267M [00:04<00:01, 45.9MB/s]p009_hi.pt:  83%|████████▎ | 222M/267M [00:04<00:00, 58.0MB/s]p009_hi.pt:  86%|████████▌ | 229M/267M [00:04<00:00, 47.3MB/s]p009_hi.pt:  89%|████████▉ | 239M/267M [00:04<00:00, 57.3MB/s]p009_hi.pt:  92%|█████████▏| 246M/267M [00:05<00:00, 48.9MB/s]p009_hi.pt:  95%|█████████▌| 255M/267M [00:05<00:00, 57.6MB/s]p009_hi.pt:  98%|█████████▊| 262M/267M [00:05<00:00, 48.4MB/s]p009_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 47.2MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p009_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p10 hi] step    500 | lr 2.0e-04 | train 2.118 | val 1.354 (best 1.354) | window Δ n/a | stable | 117k tok/s | phase 1m02s | run ETA ~6h20m | health {'wnorm': 218.816, 'rank_enc1': 762.5, 'rank_dec1': 749.1, 'rarely_active': 0.005}
+  [p10 hi] step  1,000 | lr 2.0e-04 | train 2.219 | val 1.372 (best 1.354) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~6h20m | health {'wnorm': 219.141, 'rank_enc1': 768.0, 'rank_dec1': 750.8, 'rarely_active': 0.0052}
+  [p10 hi] step  1,500 | lr 2.0e-04 | train 2.252 | val 1.367 (best 1.354) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~6h20m | health {'wnorm': 219.428, 'rank_enc1': 743.9, 'rank_dec1': 740.0, 'rarely_active': 0.0053}
+  [p10 hi] step  2,000 | lr 2.0e-04 | train 2.225 | val 1.373 (best 1.354) | window Δ n/a | stable | 118k tok/s | phase 4m06s | run ETA ~6h20m | health {'wnorm': 219.714, 'rank_enc1': 770.6, 'rank_dec1': 737.1, 'rarely_active': 0.0054}
+  [p10 hi] step  2,500 | lr 2.0e-04 | train 2.243 | val 1.368 (best 1.354) | window Δ n/a | stable | 120k tok/s | phase 5m07s | run ETA ~6h20m | health {'wnorm': 219.981, 'rank_enc1': 761.5, 'rank_dec1': 756.5, 'rarely_active': 0.0049}
+  [p10 hi] step  3,000 | lr 2.0e-04 | train 2.258 | val 1.366 (best 1.354) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~6h20m | health {'wnorm': 220.243, 'rank_enc1': 766.1, 'rank_dec1': 743.3, 'rarely_active': 0.005}
+  [p10 hi] step  3,500 | lr 2.0e-04 | train 2.247 | val 1.370 (best 1.354) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~6h20m | health {'wnorm': 220.482, 'rank_enc1': 783.1, 'rank_dec1': 744.7, 'rarely_active': 0.0053}
+  [p10 hi] step  4,000 | lr 2.0e-04 | train 2.228 | val 1.364 (best 1.354) | window Δ -0.04% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~6h20m | health {'wnorm': 220.742, 'rank_enc1': 773.6, 'rank_dec1': 770.4, 'rarely_active': 0.0053}
+  [p10 hi] step  4,500 | lr 1.6e-04 | train 2.241 | val 1.347 (best 1.347) | window Δ +0.62% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~6h20m | health {'wnorm': 220.732, 'rank_enc1': 776.3, 'rank_dec1': 739.7, 'rarely_active': 0.0047}
+  [p10 hi] step  5,000 | lr 1.1e-04 | train 2.225 | val 1.331 (best 1.331) | window Δ +1.17% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m13s | run ETA ~6h20m | health {'wnorm': 220.362, 'rank_enc1': 791.0, 'rank_dec1': 739.9, 'rarely_active': 0.0051}
+  [p10 hi] step  5,500 | lr 6.5e-05 | train 2.120 | val 1.327 (best 1.327) | window Δ +2.00% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m14s | run ETA ~6h20m | health {'wnorm': 219.887, 'rank_enc1': 791.1, 'rank_dec1': 759.7, 'rarely_active': 0.0052}
+  phase 10 finished (plateau); evaluating all languages...
+  new best checkpoint: hi = phase 10 (chrF 49.5)
+
+======================================================================================
+ PHASE 10 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m26s | run time 2h55m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.310  -0.002 |   49.5   +0.6 |                 27.1           2.623  ◀ trained
+   zh      9.030  +0.016 |    0.5   -0.1 |                  0.4          10.179
+   ar      8.500  -0.016 |    0.7   -0.1 |                  0.2          10.109
+======================================================================================
+
+▶ PHASE 11/30 | training hi (993,016 pairs)
+p010_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p010_hi.pt:   3%|▎         | 7.14M/267M [00:00<00:03, 71.4MB/s]p010_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:06, 37.0MB/s]p010_hi.pt:  11%|█         | 28.3M/267M [00:00<00:05, 43.6MB/s]p010_hi.pt:  12%|█▏        | 33.1M/267M [00:00<00:07, 29.3MB/s]p010_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 31.6MB/s]p010_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:05, 39.9MB/s]p010_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 42.1MB/s]p010_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 46.8MB/s]p010_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 49.2MB/s] p010_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 51.5MB/s]p010_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 52.7MB/s]p010_hi.pt:  59%|█████▉    | 158M/267M [00:03<00:01, 63.6MB/s]p010_hi.pt:  62%|██████▏   | 166M/267M [00:03<00:01, 54.1MB/s]p010_hi.pt:  65%|██████▌   | 174M/267M [00:03<00:01, 58.6MB/s]p010_hi.pt:  68%|██████▊   | 181M/267M [00:03<00:01, 49.8MB/s]p010_hi.pt:  71%|███████   | 189M/267M [00:03<00:01, 53.6MB/s]p010_hi.pt:  73%|███████▎  | 195M/267M [00:04<00:01, 45.9MB/s]p010_hi.pt:  76%|███████▌  | 204M/267M [00:04<00:01, 53.6MB/s]p010_hi.pt:  79%|███████▊  | 210M/267M [00:04<00:01, 44.9MB/s]p010_hi.pt:  81%|████████▏ | 217M/267M [00:04<00:00, 50.2MB/s]p010_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 53.1MB/s]p010_hi.pt:  86%|████████▌ | 230M/267M [00:04<00:00, 47.0MB/s]p010_hi.pt:  88%|████████▊ | 235M/267M [00:04<00:00, 48.1MB/s]p010_hi.pt:  90%|█████████ | 241M/267M [00:05<00:00, 38.2MB/s]p010_hi.pt:  94%|█████████▍| 251M/267M [00:05<00:00, 50.0MB/s]p010_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 40.2MB/s]p010_hi.pt: 100%|█████████▉| 266M/267M [00:05<00:00, 51.2MB/s]p010_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 46.1MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p010_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p11 hi] step    500 | lr 2.0e-04 | train 2.108 | val 1.361 (best 1.361) | window Δ n/a | stable | 117k tok/s | phase 1m02s | run ETA ~5h50m | health {'wnorm': 219.276, 'rank_enc1': 781.4, 'rank_dec1': 757.6, 'rarely_active': 0.0059}
+  [p11 hi] step  1,000 | lr 2.0e-04 | train 2.207 | val 1.365 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~5h50m | health {'wnorm': 219.594, 'rank_enc1': 781.8, 'rank_dec1': 744.9, 'rarely_active': 0.0052}
+  [p11 hi] step  1,500 | lr 2.0e-04 | train 2.244 | val 1.361 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 3m04s | run ETA ~5h50m | health {'wnorm': 219.884, 'rank_enc1': 768.3, 'rank_dec1': 750.3, 'rarely_active': 0.0052}
+  [p11 hi] step  2,000 | lr 2.0e-04 | train 2.213 | val 1.371 (best 1.361) | window Δ n/a | stable | 118k tok/s | phase 4m06s | run ETA ~5h50m | health {'wnorm': 220.147, 'rank_enc1': 775.5, 'rank_dec1': 763.8, 'rarely_active': 0.0053}
+  [p11 hi] step  2,500 | lr 2.0e-04 | train 2.228 | val 1.372 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 5m07s | run ETA ~5h50m | health {'wnorm': 220.411, 'rank_enc1': 788.6, 'rank_dec1': 747.2, 'rarely_active': 0.005}
+  [p11 hi] step  3,000 | lr 2.0e-04 | train 2.251 | val 1.364 (best 1.361) | window Δ n/a | stable | 120k tok/s | phase 6m08s | run ETA ~5h50m | health {'wnorm': 220.664, 'rank_enc1': 771.3, 'rank_dec1': 736.8, 'rarely_active': 0.0056}
+  [p11 hi] step  3,500 | lr 2.0e-04 | train 2.242 | val 1.369 (best 1.361) | window Δ n/a | stable | 118k tok/s | phase 7m10s | run ETA ~5h50m | health {'wnorm': 220.9, 'rank_enc1': 777.4, 'rank_dec1': 757.8, 'rarely_active': 0.005}
+  [p11 hi] step  4,000 | lr 2.0e-04 | train 2.221 | val 1.364 (best 1.361) | window Δ -0.20% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~5h50m | health {'wnorm': 221.149, 'rank_enc1': 768.1, 'rank_dec1': 749.6, 'rarely_active': 0.0058}
+  [p11 hi] step  4,500 | lr 1.6e-04 | train 2.229 | val 1.351 (best 1.351) | window Δ +0.39% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m12s | run ETA ~5h50m | health {'wnorm': 221.128, 'rank_enc1': 777.9, 'rank_dec1': 760.7, 'rarely_active': 0.0053}
+  [p11 hi] step  5,000 | lr 1.1e-04 | train 2.215 | val 1.328 (best 1.328) | window Δ +1.02% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m14s | run ETA ~5h50m | health {'wnorm': 220.746, 'rank_enc1': 775.1, 'rank_dec1': 752.9, 'rarely_active': 0.0056}
+  [p11 hi] step  5,500 | lr 6.5e-05 | train 2.114 | val 1.325 (best 1.325) | window Δ +1.95% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~5h50m | health {'wnorm': 220.266, 'rank_enc1': 791.4, 'rank_dec1': 772.3, 'rarely_active': 0.0057}
+  phase 11 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 11 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m28s | run time 3h08m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.308  -0.002 |   48.4   -1.2 |                 25.8           2.647  ◀ trained
+   zh      9.022  -0.008 |    0.5   +0.0 |                  0.3          10.175
+   ar      8.502  +0.002 |    0.8   +0.1 |                  0.1          10.116
+======================================================================================
+
+▶ PHASE 12/30 | training hi (993,016 pairs)
+p011_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p011_hi.pt:   1%|          | 2.75M/267M [00:00<00:09, 27.5MB/s]p011_hi.pt:   3%|▎         | 9.24M/267M [00:00<00:07, 36.1MB/s]p011_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:10, 25.0MB/s]p011_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:06, 36.7MB/s]p011_hi.pt:  17%|█▋        | 44.3M/267M [00:01<00:04, 48.8MB/s]p011_hi.pt:  19%|█▊        | 50.0M/267M [00:01<00:06, 34.5MB/s]p011_hi.pt:  22%|██▏       | 59.5M/267M [00:01<00:04, 44.0MB/s]p011_hi.pt:  25%|██▍       | 65.6M/267M [00:01<00:05, 38.6MB/s]p011_hi.pt:  28%|██▊       | 75.5M/267M [00:01<00:03, 49.0MB/s]p011_hi.pt:  31%|███       | 82.0M/267M [00:02<00:04, 41.4MB/s]p011_hi.pt:  33%|███▎      | 89.2M/267M [00:02<00:03, 46.7MB/s]p011_hi.pt:  36%|███▌      | 95.9M/267M [00:02<00:03, 50.0MB/s]p011_hi.pt:  38%|███▊      | 102M/267M [00:02<00:04, 37.9MB/s] p011_hi.pt:  40%|███▉      | 107M/267M [00:02<00:04, 37.9MB/s]p011_hi.pt:  42%|████▏     | 112M/267M [00:02<00:04, 32.7MB/s]p011_hi.pt:  45%|████▌     | 121M/267M [00:02<00:03, 44.0MB/s]p011_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 38.0MB/s]p011_hi.pt:  52%|█████▏    | 138M/267M [00:03<00:02, 49.8MB/s]p011_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 41.1MB/s]p011_hi.pt:  58%|█████▊    | 155M/267M [00:03<00:02, 53.0MB/s]p011_hi.pt:  61%|██████    | 162M/267M [00:03<00:02, 44.5MB/s]p011_hi.pt:  64%|██████▍   | 171M/267M [00:03<00:01, 54.1MB/s]p011_hi.pt:  67%|██████▋   | 178M/267M [00:04<00:01, 45.3MB/s]p011_hi.pt:  70%|███████   | 188M/267M [00:04<00:01, 55.9MB/s]p011_hi.pt:  73%|███████▎  | 195M/267M [00:04<00:01, 45.7MB/s]p011_hi.pt:  77%|███████▋  | 205M/267M [00:04<00:01, 55.2MB/s]p011_hi.pt:  79%|███████▉  | 212M/267M [00:04<00:01, 47.8MB/s]p011_hi.pt:  82%|████████▏ | 220M/267M [00:04<00:00, 55.0MB/s]p011_hi.pt:  85%|████████▍ | 227M/267M [00:05<00:00, 46.2MB/s]p011_hi.pt:  89%|████████▊ | 237M/267M [00:05<00:00, 56.7MB/s]p011_hi.pt:  91%|█████████ | 244M/267M [00:05<00:00, 47.3MB/s]p011_hi.pt:  95%|█████████▍| 254M/267M [00:05<00:00, 56.9MB/s]p011_hi.pt:  97%|█████████▋| 260M/267M [00:05<00:00, 47.3MB/s]p011_hi.pt: 100%|██████████| 267M/267M [00:06<00:00, 44.2MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p011_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p12 hi] step    500 | lr 2.0e-04 | train 2.097 | val 1.355 (best 1.355) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~5h24m | health {'wnorm': 219.655, 'rank_enc1': 781.5, 'rank_dec1': 765.2, 'rarely_active': 0.0061}
+  [p12 hi] step  1,000 | lr 2.0e-04 | train 2.197 | val 1.353 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~5h24m | health {'wnorm': 219.973, 'rank_enc1': 788.7, 'rank_dec1': 763.7, 'rarely_active': 0.0057}
+  [p12 hi] step  1,500 | lr 2.0e-04 | train 2.238 | val 1.360 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~5h24m | health {'wnorm': 220.246, 'rank_enc1': 789.5, 'rank_dec1': 773.1, 'rarely_active': 0.0051}
+  [p12 hi] step  2,000 | lr 2.0e-04 | train 2.206 | val 1.365 (best 1.353) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~5h24m | health {'wnorm': 220.508, 'rank_enc1': 778.8, 'rank_dec1': 762.2, 'rarely_active': 0.0058}
+  [p12 hi] step  2,500 | lr 2.0e-04 | train 2.220 | val 1.361 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~5h24m | health {'wnorm': 220.773, 'rank_enc1': 767.5, 'rank_dec1': 746.1, 'rarely_active': 0.0049}
+  [p12 hi] step  3,000 | lr 2.0e-04 | train 2.240 | val 1.352 (best 1.352) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~5h24m | health {'wnorm': 221.009, 'rank_enc1': 787.5, 'rank_dec1': 738.2, 'rarely_active': 0.0054}
+  [p12 hi] step  3,500 | lr 2.0e-04 | train 2.241 | val 1.372 (best 1.352) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~5h24m | health {'wnorm': 221.234, 'rank_enc1': 786.8, 'rank_dec1': 756.6, 'rarely_active': 0.0056}
+  [p12 hi] step  4,000 | lr 2.0e-04 | train 2.211 | val 1.361 (best 1.352) | window Δ -0.26% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m09s | run ETA ~5h24m | health {'wnorm': 221.477, 'rank_enc1': 793.9, 'rank_dec1': 750.3, 'rarely_active': 0.0058}
+  [p12 hi] step  4,500 | lr 1.6e-04 | train 2.221 | val 1.344 (best 1.344) | window Δ +0.16% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 9m10s | run ETA ~5h24m | health {'wnorm': 221.455, 'rank_enc1': 787.5, 'rank_dec1': 755.6, 'rarely_active': 0.0055}
+  [p12 hi] step  5,000 | lr 1.1e-04 | train 2.206 | val 1.325 (best 1.325) | window Δ +0.66% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 10m11s | run ETA ~5h24m | health {'wnorm': 221.071, 'rank_enc1': 798.6, 'rank_dec1': 755.0, 'rarely_active': 0.006}
+  [p12 hi] step  5,500 | lr 6.5e-05 | train 2.105 | val 1.320 (best 1.320) | window Δ +1.85% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m12s | run ETA ~5h24m | health {'wnorm': 220.589, 'rank_enc1': 806.0, 'rank_dec1': 768.5, 'rarely_active': 0.0058}
+  phase 12 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 12 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m24s | run time 3h20m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.307  -0.001 |   48.8   +0.4 |                 21.9           2.670  ◀ trained
+   zh      9.041  +0.019 |    0.5   -0.0 |                  0.4          10.209
+   ar      8.507  +0.005 |    0.8   -0.1 |                  0.1          10.139
+======================================================================================
+
+▶ PHASE 13/30 | training hi (993,016 pairs)
+p012_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p012_hi.pt:   1%|          | 3.01M/267M [00:00<00:08, 30.1MB/s]p012_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:06, 39.2MB/s]p012_hi.pt:  11%|█         | 29.2M/267M [00:00<00:03, 62.3MB/s]p012_hi.pt:  14%|█▎        | 36.7M/267M [00:01<00:08, 27.6MB/s]p012_hi.pt:  17%|█▋        | 44.6M/267M [00:01<00:06, 33.8MB/s]p012_hi.pt:  19%|█▉        | 50.2M/267M [00:01<00:08, 26.7MB/s]p012_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:05, 34.8MB/s]p012_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 41.9MB/s]p012_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 44.6MB/s]p012_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 48.8MB/s] p012_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 52.4MB/s]p012_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 52.8MB/s]p012_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 55.0MB/s]p012_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 57.9MB/s]p012_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 58.7MB/s]p012_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:00, 59.4MB/s]p012_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 60.2MB/s]p012_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 60.6MB/s]p012_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 61.1MB/s]p012_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 49.5MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p012_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p13 hi] step    500 | lr 2.0e-04 | train 2.087 | val 1.349 (best 1.349) | window Δ n/a | stable | 119k tok/s | phase 1m01s | run ETA ~5h00m | health {'wnorm': 219.97, 'rank_enc1': 798.8, 'rank_dec1': 757.3, 'rarely_active': 0.0057}
+  [p13 hi] step  1,000 | lr 2.0e-04 | train 2.195 | val 1.356 (best 1.349) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~5h00m | health {'wnorm': 220.276, 'rank_enc1': 793.8, 'rank_dec1': 767.0, 'rarely_active': 0.0056}
+  [p13 hi] step  1,500 | lr 2.0e-04 | train 2.224 | val 1.366 (best 1.349) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~5h00m | health {'wnorm': 220.549, 'rank_enc1': 793.9, 'rank_dec1': 751.1, 'rarely_active': 0.0061}
+  [p13 hi] step  2,000 | lr 2.0e-04 | train 2.196 | val 1.364 (best 1.349) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~5h00m | health {'wnorm': 220.81, 'rank_enc1': 781.2, 'rank_dec1': 762.5, 'rarely_active': 0.0056}
+  [p13 hi] step  2,500 | lr 2.0e-04 | train 2.210 | val 1.358 (best 1.349) | window Δ n/a | stable | 120k tok/s | phase 5m05s | run ETA ~5h00m | health {'wnorm': 221.058, 'rank_enc1': 800.7, 'rank_dec1': 768.7, 'rarely_active': 0.0056}
+  [p13 hi] step  3,000 | lr 2.0e-04 | train 2.237 | val 1.361 (best 1.349) | window Δ n/a | stable | 121k tok/s | phase 6m06s | run ETA ~5h00m | health {'wnorm': 221.296, 'rank_enc1': 801.4, 'rank_dec1': 765.0, 'rarely_active': 0.0059}
+  [p13 hi] step  3,500 | lr 2.0e-04 | train 2.222 | val 1.364 (best 1.349) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~5h00m | health {'wnorm': 221.511, 'rank_enc1': 792.0, 'rank_dec1': 770.1, 'rarely_active': 0.0057}
+  [p13 hi] step  4,000 | lr 2.0e-04 | train 2.204 | val 1.361 (best 1.349) | window Δ -0.16% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m08s | run ETA ~5h00m | health {'wnorm': 221.753, 'rank_enc1': 809.8, 'rank_dec1': 773.3, 'rarely_active': 0.006}
+  [p13 hi] step  4,500 | lr 1.6e-04 | train 2.215 | val 1.342 (best 1.342) | window Δ +0.29% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 9m09s | run ETA ~5h00m | health {'wnorm': 221.724, 'rank_enc1': 808.8, 'rank_dec1': 757.0, 'rarely_active': 0.0054}
+  [p13 hi] step  5,000 | lr 1.1e-04 | train 2.198 | val 1.326 (best 1.326) | window Δ +1.04% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m11s | run ETA ~5h00m | health {'wnorm': 221.339, 'rank_enc1': 813.1, 'rank_dec1': 764.7, 'rarely_active': 0.0062}
+  [p13 hi] step  5,500 | lr 6.5e-05 | train 2.095 | val 1.324 (best 1.324) | window Δ +1.74% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 11m11s | run ETA ~5h00m | health {'wnorm': 220.854, 'rank_enc1': 810.2, 'rank_dec1': 768.9, 'rarely_active': 0.0058}
+  phase 13 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 13 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m24s | run time 3h33m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.310  +0.003 |   49.1   +0.3 |                 18.4           2.683  ◀ trained
+   zh      9.050  +0.009 |    0.6   +0.1 |                  0.3          10.245
+   ar      8.525  +0.018 |    1.0   +0.3 |                  0.1          10.178
+======================================================================================
+
+▶ PHASE 14/30 | training hi (993,016 pairs)
+p013_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p013_hi.pt:   1%|▏         | 3.34M/267M [00:00<00:08, 32.6MB/s]p013_hi.pt:   3%|▎         | 7.86M/267M [00:00<00:07, 35.2MB/s]p013_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:09, 25.4MB/s]p013_hi.pt:  10%|█         | 27.0M/267M [00:00<00:05, 40.6MB/s]p013_hi.pt:  12%|█▏        | 32.0M/267M [00:00<00:05, 41.9MB/s]p013_hi.pt:  14%|█▍        | 36.8M/267M [00:01<00:07, 28.8MB/s]p013_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 35.3MB/s]p013_hi.pt:  24%|██▍       | 63.5M/267M [00:01<00:03, 56.0MB/s]p013_hi.pt:  27%|██▋       | 71.1M/267M [00:01<00:04, 46.8MB/s]p013_hi.pt:  30%|██▉       | 80.0M/267M [00:01<00:03, 54.2MB/s]p013_hi.pt:  33%|███▎      | 87.1M/267M [00:02<00:03, 45.6MB/s]p013_hi.pt:  35%|███▍      | 92.9M/267M [00:02<00:03, 46.0MB/s]p013_hi.pt:  37%|███▋      | 98.4M/267M [00:02<00:04, 33.9MB/s]p013_hi.pt:  41%|████      | 110M/267M [00:02<00:03, 47.0MB/s] p013_hi.pt:  43%|████▎     | 116M/267M [00:02<00:03, 39.5MB/s]p013_hi.pt:  47%|████▋     | 126M/267M [00:02<00:02, 50.8MB/s]p013_hi.pt:  50%|████▉     | 133M/267M [00:03<00:03, 44.0MB/s]p013_hi.pt:  52%|█████▏    | 139M/267M [00:03<00:02, 45.5MB/s]p013_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:03, 31.2MB/s]p013_hi.pt:  59%|█████▉    | 158M/267M [00:03<00:02, 48.6MB/s]p013_hi.pt:  62%|██████▏   | 165M/267M [00:03<00:02, 43.2MB/s]p013_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:02, 41.0MB/s]p013_hi.pt:  71%|███████▏  | 191M/267M [00:04<00:01, 58.4MB/s]p013_hi.pt:  75%|███████▍  | 199M/267M [00:04<00:01, 47.3MB/s]p013_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 53.2MB/s]p013_hi.pt:  80%|████████  | 215M/267M [00:04<00:01, 47.2MB/s]p013_hi.pt:  84%|████████▍ | 224M/267M [00:05<00:00, 54.5MB/s]p013_hi.pt:  86%|████████▋ | 231M/267M [00:05<00:00, 46.8MB/s]p013_hi.pt:  90%|████████▉ | 239M/267M [00:05<00:00, 54.6MB/s]p013_hi.pt:  92%|█████████▏| 246M/267M [00:05<00:00, 47.1MB/s]p013_hi.pt:  95%|█████████▍| 254M/267M [00:05<00:00, 53.0MB/s]p013_hi.pt:  97%|█████████▋| 260M/267M [00:05<00:00, 44.6MB/s]p013_hi.pt: 100%|██████████| 267M/267M [00:06<00:00, 43.9MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p013_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p14 hi] step    500 | lr 2.0e-04 | train 2.079 | val 1.353 (best 1.353) | window Δ n/a | stable | 117k tok/s | phase 1m02s | run ETA ~4h38m | health {'wnorm': 220.229, 'rank_enc1': 810.4, 'rank_dec1': 758.7, 'rarely_active': 0.0059}
+  [p14 hi] step  1,000 | lr 2.0e-04 | train 2.182 | val 1.358 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~4h38m | health {'wnorm': 220.535, 'rank_enc1': 802.3, 'rank_dec1': 762.3, 'rarely_active': 0.006}
+  [p14 hi] step  1,500 | lr 2.0e-04 | train 2.220 | val 1.359 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 3m04s | run ETA ~4h38m | health {'wnorm': 220.8, 'rank_enc1': 788.2, 'rank_dec1': 763.6, 'rarely_active': 0.0057}
+  [p14 hi] step  2,000 | lr 2.0e-04 | train 2.190 | val 1.369 (best 1.353) | window Δ n/a | stable | 117k tok/s | phase 4m07s | run ETA ~4h38m | health {'wnorm': 221.045, 'rank_enc1': 826.1, 'rank_dec1': 775.9, 'rarely_active': 0.0059}
+  [p14 hi] step  2,500 | lr 2.0e-04 | train 2.205 | val 1.366 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 5m08s | run ETA ~4h38m | health {'wnorm': 221.294, 'rank_enc1': 811.8, 'rank_dec1': 759.3, 'rarely_active': 0.006}
+  [p14 hi] step  3,000 | lr 2.0e-04 | train 2.229 | val 1.355 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 6m09s | run ETA ~4h38m | health {'wnorm': 221.525, 'rank_enc1': 800.1, 'rank_dec1': 764.2, 'rarely_active': 0.0061}
+  [p14 hi] step  3,500 | lr 2.0e-04 | train 2.217 | val 1.365 (best 1.353) | window Δ n/a | stable | 118k tok/s | phase 7m11s | run ETA ~4h38m | health {'wnorm': 221.74, 'rank_enc1': 801.5, 'rank_dec1': 783.0, 'rarely_active': 0.0058}
+  [p14 hi] step  4,000 | lr 2.0e-04 | train 2.196 | val 1.365 (best 1.353) | window Δ -0.22% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m12s | run ETA ~4h38m | health {'wnorm': 221.969, 'rank_enc1': 815.6, 'rank_dec1': 783.9, 'rarely_active': 0.0056}
+  [p14 hi] step  4,500 | lr 1.6e-04 | train 2.208 | val 1.339 (best 1.339) | window Δ +0.52% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m13s | run ETA ~4h38m | health {'wnorm': 221.934, 'rank_enc1': 813.8, 'rank_dec1': 780.4, 'rarely_active': 0.0063}
+  [p14 hi] step  5,000 | lr 1.1e-04 | train 2.190 | val 1.320 (best 1.320) | window Δ +1.11% | cooldown (plateau, ends at 6,000) | 117k tok/s | phase 10m15s | run ETA ~4h38m | health {'wnorm': 221.554, 'rank_enc1': 810.5, 'rank_dec1': 774.5, 'rarely_active': 0.006}
+  [p14 hi] step  5,500 | lr 6.5e-05 | train 2.094 | val 1.315 (best 1.315) | window Δ +2.12% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m16s | run ETA ~4h38m | health {'wnorm': 221.067, 'rank_enc1': 823.6, 'rank_dec1': 785.8, 'rarely_active': 0.0057}
+  phase 14 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 14 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m28s | run time 3h45m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.305  -0.005 |   48.4   -0.7 |                 18.6           2.697  ◀ trained
+   zh      9.027  -0.022 |    0.5   -0.1 |                  0.3          10.212
+   ar      8.491  -0.034 |    1.1   +0.1 |                  0.1          10.131
+======================================================================================
+
+▶ PHASE 15/30 | training hi (993,016 pairs)
+p014_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p014_hi.pt:   2%|▏         | 6.03M/267M [00:00<00:04, 56.5MB/s]p014_hi.pt:   5%|▍         | 12.8M/267M [00:00<00:04, 56.5MB/s]p014_hi.pt:   7%|▋         | 18.6M/267M [00:00<00:08, 30.2MB/s]p014_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:06, 35.2MB/s]p014_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:04, 44.6MB/s]p014_hi.pt:  22%|██▏       | 58.7M/267M [00:01<00:03, 53.7MB/s]p014_hi.pt:  24%|██▍       | 65.0M/267M [00:01<00:06, 32.5MB/s]p014_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 39.2MB/s]p014_hi.pt:  33%|███▎      | 87.5M/267M [00:02<00:04, 43.7MB/s]p014_hi.pt:  35%|███▌      | 94.8M/267M [00:02<00:03, 48.3MB/s]p014_hi.pt:  38%|███▊      | 101M/267M [00:02<00:04, 38.8MB/s] p014_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 50.0MB/s]p014_hi.pt:  44%|████▍     | 118M/267M [00:02<00:03, 42.6MB/s]p014_hi.pt:  48%|████▊     | 127M/267M [00:02<00:02, 50.3MB/s]p014_hi.pt:  50%|█████     | 134M/267M [00:03<00:03, 43.0MB/s]p014_hi.pt:  53%|█████▎    | 143M/267M [00:03<00:02, 51.3MB/s]p014_hi.pt:  56%|█████▌    | 149M/267M [00:03<00:02, 44.6MB/s]p014_hi.pt:  59%|█████▉    | 158M/267M [00:03<00:02, 52.7MB/s]p014_hi.pt:  61%|██████▏   | 164M/267M [00:03<00:02, 43.8MB/s]p014_hi.pt:  65%|██████▍   | 172M/267M [00:03<00:01, 51.6MB/s]p014_hi.pt:  67%|██████▋   | 178M/267M [00:04<00:02, 41.9MB/s]p014_hi.pt:  71%|███████   | 189M/267M [00:04<00:01, 54.5MB/s]p014_hi.pt:  73%|███████▎  | 196M/267M [00:04<00:01, 46.5MB/s]p014_hi.pt:  77%|███████▋  | 205M/267M [00:04<00:01, 55.6MB/s]p014_hi.pt:  79%|███████▉  | 212M/267M [00:04<00:01, 47.4MB/s]p014_hi.pt:  83%|████████▎ | 222M/267M [00:04<00:00, 58.5MB/s]p014_hi.pt:  86%|████████▌ | 229M/267M [00:05<00:00, 48.4MB/s]p014_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 44.7MB/s]p014_hi.pt:  95%|█████████▌| 254M/267M [00:05<00:00, 60.8MB/s]p014_hi.pt:  98%|█████████▊| 262M/267M [00:05<00:00, 52.5MB/s]p014_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 45.3MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p014_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p15 hi] step    500 | lr 2.0e-04 | train 2.072 | val 1.347 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~4h17m | health {'wnorm': 220.443, 'rank_enc1': 817.2, 'rank_dec1': 778.1, 'rarely_active': 0.0057}
+  [p15 hi] step  1,000 | lr 2.0e-04 | train 2.173 | val 1.360 (best 1.347) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~4h17m | health {'wnorm': 220.753, 'rank_enc1': 807.2, 'rank_dec1': 761.8, 'rarely_active': 0.0063}
+  [p15 hi] step  1,500 | lr 2.0e-04 | train 2.211 | val 1.357 (best 1.347) | window Δ n/a | stable | 119k tok/s | phase 3m03s | run ETA ~4h17m | health {'wnorm': 221.008, 'rank_enc1': 800.7, 'rank_dec1': 782.3, 'rarely_active': 0.0057}
+  [p15 hi] step  2,000 | lr 2.0e-04 | train 2.189 | val 1.363 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 4m06s | run ETA ~4h17m | health {'wnorm': 221.259, 'rank_enc1': 828.0, 'rank_dec1': 777.1, 'rarely_active': 0.0058}
+  [p15 hi] step  2,500 | lr 2.0e-04 | train 2.198 | val 1.353 (best 1.347) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~4h17m | health {'wnorm': 221.5, 'rank_enc1': 808.6, 'rank_dec1': 778.2, 'rarely_active': 0.0061}
+  [p15 hi] step  3,000 | lr 2.0e-04 | train 2.215 | val 1.357 (best 1.347) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~4h17m | health {'wnorm': 221.722, 'rank_enc1': 817.3, 'rank_dec1': 778.7, 'rarely_active': 0.0062}
+  [p15 hi] step  3,500 | lr 2.0e-04 | train 2.213 | val 1.364 (best 1.347) | window Δ n/a | stable | 117k tok/s | phase 7m10s | run ETA ~4h17m | health {'wnorm': 221.929, 'rank_enc1': 832.2, 'rank_dec1': 779.9, 'rarely_active': 0.0057}
+  [p15 hi] step  4,000 | lr 2.0e-04 | train 2.186 | val 1.365 (best 1.347) | window Δ -0.20% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m10s | run ETA ~4h17m | health {'wnorm': 222.157, 'rank_enc1': 821.2, 'rank_dec1': 774.3, 'rarely_active': 0.0064}
+  [p15 hi] step  4,500 | lr 1.6e-04 | train 2.199 | val 1.344 (best 1.344) | window Δ +0.07% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~4h17m | health {'wnorm': 222.119, 'rank_enc1': 803.4, 'rank_dec1': 778.0, 'rarely_active': 0.006}
+  [p15 hi] step  5,000 | lr 1.1e-04 | train 2.189 | val 1.323 (best 1.323) | window Δ +0.63% | cooldown (plateau, ends at 6,000) | 117k tok/s | phase 10m13s | run ETA ~4h17m | health {'wnorm': 221.73, 'rank_enc1': 814.4, 'rank_dec1': 788.7, 'rarely_active': 0.0063}
+  [p15 hi] step  5,500 | lr 6.5e-05 | train 2.093 | val 1.318 (best 1.318) | window Δ +1.60% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m14s | run ETA ~4h17m | health {'wnorm': 221.237, 'rank_enc1': 825.2, 'rank_dec1': 791.7, 'rarely_active': 0.006}
+  phase 15 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 15 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 3h57m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.305  -0.000 |   48.6   +0.2 |                 15.4           2.710  ◀ trained
+   zh      9.066  +0.039 |    0.5   -0.0 |                  0.3          10.328
+   ar      8.548  +0.057 |    1.1   -0.1 |                  0.1          10.261
+======================================================================================
+
+▶ PHASE 16/30 | training hi (993,016 pairs)
+p015_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p015_hi.pt:   0%|          | 852k/267M [00:00<00:31, 8.42MB/s]p015_hi.pt:   6%|▌         | 15.9M/267M [00:00<00:02, 89.7MB/s]p015_hi.pt:   9%|▉         | 24.8M/267M [00:00<00:05, 43.5MB/s]p015_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:06, 38.2MB/s]p015_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:04, 47.5MB/s]p015_hi.pt:  23%|██▎       | 62.5M/267M [00:01<00:03, 64.8MB/s]p015_hi.pt:  27%|██▋       | 70.9M/267M [00:01<00:04, 46.3MB/s]p015_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:04, 42.6MB/s]p015_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 47.8MB/s]p015_hi.pt:  40%|████      | 108M/267M [00:02<00:02, 57.4MB/s] p015_hi.pt:  43%|████▎     | 115M/267M [00:02<00:03, 44.1MB/s]p015_hi.pt:  48%|████▊     | 128M/267M [00:02<00:03, 45.1MB/s]p015_hi.pt:  54%|█████▍    | 144M/267M [00:02<00:02, 49.2MB/s]p015_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 63.9MB/s]p015_hi.pt:  63%|██████▎   | 168M/267M [00:03<00:01, 56.1MB/s]p015_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 47.2MB/s]p015_hi.pt:  70%|██████▉   | 186M/267M [00:03<00:01, 53.9MB/s]p015_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 40.1MB/s]p015_hi.pt:  77%|███████▋  | 205M/267M [00:04<00:01, 54.1MB/s]p015_hi.pt:  80%|███████▉  | 213M/267M [00:04<00:01, 47.9MB/s]p015_hi.pt:  84%|████████▎ | 224M/267M [00:04<00:00, 58.4MB/s]p015_hi.pt:  87%|████████▋ | 231M/267M [00:04<00:00, 50.1MB/s]p015_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 41.6MB/s]p015_hi.pt:  95%|█████████▌| 255M/267M [00:05<00:00, 57.9MB/s]p015_hi.pt:  98%|█████████▊| 263M/267M [00:05<00:00, 49.3MB/s]p015_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 48.6MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p015_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p16 hi] step    500 | lr 2.0e-04 | train 2.061 | val 1.343 (best 1.343) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~3h57m | health {'wnorm': 220.609, 'rank_enc1': 819.4, 'rank_dec1': 780.4, 'rarely_active': 0.0059}
+  [p16 hi] step  1,000 | lr 2.0e-04 | train 2.170 | val 1.359 (best 1.343) | window Δ n/a | stable | 119k tok/s | phase 2m03s | run ETA ~3h57m | health {'wnorm': 220.913, 'rank_enc1': 825.7, 'rank_dec1': 794.7, 'rarely_active': 0.0057}
+  [p16 hi] step  1,500 | lr 2.0e-04 | train 2.206 | val 1.352 (best 1.343) | window Δ n/a | stable | 120k tok/s | phase 3m04s | run ETA ~3h57m | health {'wnorm': 221.168, 'rank_enc1': 823.7, 'rank_dec1': 782.5, 'rarely_active': 0.006}
+  [p16 hi] step  2,000 | lr 2.0e-04 | train 2.174 | val 1.366 (best 1.343) | window Δ n/a | stable | 118k tok/s | phase 4m06s | run ETA ~3h57m | health {'wnorm': 221.412, 'rank_enc1': 830.3, 'rank_dec1': 778.9, 'rarely_active': 0.006}
+  [p16 hi] step  2,500 | lr 2.0e-04 | train 2.192 | val 1.363 (best 1.343) | window Δ n/a | stable | 120k tok/s | phase 5m07s | run ETA ~3h57m | health {'wnorm': 221.645, 'rank_enc1': 826.1, 'rank_dec1': 786.3, 'rarely_active': 0.0053}
+  [p16 hi] step  3,000 | lr 2.0e-04 | train 2.214 | val 1.354 (best 1.343) | window Δ n/a | stable | 120k tok/s | phase 6m08s | run ETA ~3h57m | health {'wnorm': 221.861, 'rank_enc1': 824.9, 'rank_dec1': 787.4, 'rarely_active': 0.0059}
+  [p16 hi] step  3,500 | lr 2.0e-04 | train 2.207 | val 1.366 (best 1.343) | window Δ n/a | stable | 118k tok/s | phase 7m11s | run ETA ~3h57m | health {'wnorm': 222.07, 'rank_enc1': 836.2, 'rank_dec1': 785.0, 'rarely_active': 0.0059}
+  [p16 hi] step  4,000 | lr 2.0e-04 | train 2.184 | val 1.362 (best 1.343) | window Δ -0.46% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~3h57m | health {'wnorm': 222.306, 'rank_enc1': 831.6, 'rank_dec1': 792.1, 'rarely_active': 0.0063}
+  [p16 hi] step  4,500 | lr 1.6e-04 | train 2.195 | val 1.346 (best 1.343) | window Δ +0.21% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m12s | run ETA ~3h57m | health {'wnorm': 222.262, 'rank_enc1': 834.1, 'rank_dec1': 791.0, 'rarely_active': 0.0062}
+  [p16 hi] step  5,000 | lr 1.1e-04 | train 2.178 | val 1.326 (best 1.326) | window Δ +0.65% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m13s | run ETA ~3h57m | health {'wnorm': 221.871, 'rank_enc1': 824.8, 'rank_dec1': 784.1, 'rarely_active': 0.0061}
+  [p16 hi] step  5,500 | lr 6.5e-05 | train 2.079 | val 1.317 (best 1.317) | window Δ +1.81% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m15s | run ETA ~3h57m | health {'wnorm': 221.379, 'rank_enc1': 842.1, 'rank_dec1': 795.8, 'rarely_active': 0.0062}
+  phase 16 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 16 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m28s | run time 4h10m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.306  +0.002 |   48.4   -0.2 |                 16.9           2.714  ◀ trained
+   zh      9.073  +0.007 |    0.4   -0.1 |                  0.3          10.341
+   ar      8.529  -0.019 |    1.2   +0.2 |                  0.1          10.257
+======================================================================================
+
+▶ PHASE 17/30 | training hi (993,016 pairs)
+p016_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p016_hi.pt:   2%|▏         | 5.77M/267M [00:00<00:04, 56.8MB/s]p016_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:05, 47.1MB/s]p016_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:04, 55.6MB/s]p016_hi.pt:  18%|█▊        | 48.1M/267M [00:00<00:03, 58.3MB/s]p016_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:03, 60.4MB/s]p016_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:03, 60.6MB/s]p016_hi.pt:  36%|███▌      | 96.1M/267M [00:01<00:02, 61.8MB/s]p016_hi.pt:  42%|████▏     | 112M/267M [00:01<00:02, 62.0MB/s] p016_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 62.6MB/s]p016_hi.pt:  54%|█████▍    | 144M/267M [00:02<00:02, 61.3MB/s]p016_hi.pt:  60%|█████▉    | 160M/267M [00:02<00:01, 61.9MB/s]p016_hi.pt:  66%|██████▌   | 176M/267M [00:02<00:01, 62.5MB/s]p016_hi.pt:  72%|███████▏  | 192M/267M [00:03<00:01, 61.3MB/s]p016_hi.pt:  78%|███████▊  | 208M/267M [00:03<00:00, 60.4MB/s]p016_hi.pt:  84%|████████▍ | 224M/267M [00:03<00:00, 58.3MB/s]p016_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 58.7MB/s]p016_hi.pt:  96%|█████████▌| 256M/267M [00:04<00:00, 60.0MB/s]p016_hi.pt: 100%|█████████▉| 266M/267M [00:04<00:00, 61.6MB/s]p016_hi.pt: 100%|██████████| 267M/267M [00:04<00:00, 53.7MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p016_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p17 hi] step    500 | lr 2.0e-04 | train 2.053 | val 1.351 (best 1.351) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~3h38m | health {'wnorm': 220.749, 'rank_enc1': 836.7, 'rank_dec1': 803.2, 'rarely_active': 0.0066}
+  [p17 hi] step  1,000 | lr 2.0e-04 | train 2.164 | val 1.362 (best 1.351) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~3h38m | health {'wnorm': 221.043, 'rank_enc1': 819.5, 'rank_dec1': 785.9, 'rarely_active': 0.0053}
+  [p17 hi] step  1,500 | lr 2.0e-04 | train 2.199 | val 1.364 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~3h38m | health {'wnorm': 221.292, 'rank_enc1': 823.1, 'rank_dec1': 760.5, 'rarely_active': 0.0063}
+  [p17 hi] step  2,000 | lr 2.0e-04 | train 2.174 | val 1.365 (best 1.351) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~3h38m | health {'wnorm': 221.537, 'rank_enc1': 839.0, 'rank_dec1': 798.9, 'rarely_active': 0.006}
+  [p17 hi] step  2,500 | lr 2.0e-04 | train 2.186 | val 1.358 (best 1.351) | window Δ n/a | stable | 121k tok/s | phase 5m06s | run ETA ~3h38m | health {'wnorm': 221.77, 'rank_enc1': 824.9, 'rank_dec1': 792.3, 'rarely_active': 0.0058}
+  [p17 hi] step  3,000 | lr 2.0e-04 | train 2.209 | val 1.360 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~3h38m | health {'wnorm': 221.992, 'rank_enc1': 836.5, 'rank_dec1': 791.0, 'rarely_active': 0.0059}
+  [p17 hi] step  3,500 | lr 2.0e-04 | train 2.194 | val 1.364 (best 1.351) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~3h38m | health {'wnorm': 222.204, 'rank_enc1': 836.1, 'rank_dec1': 792.0, 'rarely_active': 0.0062}
+  [p17 hi] step  4,000 | lr 2.0e-04 | train 2.176 | val 1.364 (best 1.351) | window Δ -0.10% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m09s | run ETA ~3h38m | health {'wnorm': 222.428, 'rank_enc1': 829.7, 'rank_dec1': 793.5, 'rarely_active': 0.0062}
+  [p17 hi] step  4,500 | lr 1.6e-04 | train 2.193 | val 1.336 (best 1.336) | window Δ +0.45% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 9m10s | run ETA ~3h38m | health {'wnorm': 222.387, 'rank_enc1': 834.4, 'rank_dec1': 791.1, 'rarely_active': 0.006}
+  [p17 hi] step  5,000 | lr 1.1e-04 | train 2.172 | val 1.322 (best 1.322) | window Δ +1.11% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m12s | run ETA ~3h38m | health {'wnorm': 221.991, 'rank_enc1': 837.8, 'rank_dec1': 786.0, 'rarely_active': 0.0062}
+  [p17 hi] step  5,500 | lr 6.5e-05 | train 2.072 | val 1.320 (best 1.320) | window Δ +1.94% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m13s | run ETA ~3h38m | health {'wnorm': 221.497, 'rank_enc1': 838.6, 'rank_dec1': 800.0, 'rarely_active': 0.0062}
+  phase 17 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 17 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 4h22m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.306  -0.000 |   48.6   +0.2 |                 13.4           2.737  ◀ trained
+   zh      9.037  -0.036 |    0.6   +0.1 |                  0.3          10.303
+   ar      8.506  -0.023 |    1.6   +0.4 |                  0.1          10.220
+======================================================================================
+
+▶ PHASE 18/30 | training hi (993,016 pairs)
+p017_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p017_hi.pt:   2%|▏         | 5.51M/267M [00:00<00:06, 37.5MB/s]p017_hi.pt:   4%|▍         | 10.8M/267M [00:00<00:06, 40.7MB/s]p017_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:10, 24.8MB/s]p017_hi.pt:  10%|▉         | 26.0M/267M [00:00<00:05, 41.8MB/s]p017_hi.pt:  12%|█▏        | 31.6M/267M [00:00<00:06, 36.5MB/s]p017_hi.pt:  14%|█▎        | 36.3M/267M [00:01<00:08, 25.8MB/s]p017_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 33.9MB/s]p017_hi.pt:  23%|██▎       | 62.1M/267M [00:01<00:04, 45.8MB/s]p017_hi.pt:  25%|██▌       | 67.4M/267M [00:01<00:05, 34.9MB/s]p017_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 39.6MB/s]p017_hi.pt:  34%|███▍      | 91.7M/267M [00:02<00:03, 44.4MB/s]p017_hi.pt:  36%|███▌      | 96.5M/267M [00:02<00:05, 31.7MB/s]p017_hi.pt:  42%|████▏     | 112M/267M [00:03<00:03, 39.8MB/s] p017_hi.pt:  48%|████▊     | 128M/267M [00:03<00:02, 46.5MB/s]p017_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 51.8MB/s]p017_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:02, 52.2MB/s]p017_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 55.5MB/s]p017_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 56.7MB/s]p017_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 58.8MB/s]p017_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 60.4MB/s]p017_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 60.0MB/s]p017_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 61.3MB/s]p017_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 48.1MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p017_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p18 hi] step    500 | lr 2.0e-04 | train 2.052 | val 1.353 (best 1.353) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~3h20m | health {'wnorm': 220.86, 'rank_enc1': 860.1, 'rank_dec1': 789.5, 'rarely_active': 0.0067}
+  [p18 hi] step  1,000 | lr 2.0e-04 | train 2.160 | val 1.361 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~3h20m | health {'wnorm': 221.149, 'rank_enc1': 822.3, 'rank_dec1': 788.5, 'rarely_active': 0.0059}
+  [p18 hi] step  1,500 | lr 2.0e-04 | train 2.190 | val 1.354 (best 1.353) | window Δ n/a | stable | 118k tok/s | phase 3m04s | run ETA ~3h20m | health {'wnorm': 221.407, 'rank_enc1': 854.6, 'rank_dec1': 795.6, 'rarely_active': 0.0063}
+  [p18 hi] step  2,000 | lr 2.0e-04 | train 2.168 | val 1.369 (best 1.353) | window Δ n/a | stable | 117k tok/s | phase 4m07s | run ETA ~3h20m | health {'wnorm': 221.645, 'rank_enc1': 834.1, 'rank_dec1': 799.2, 'rarely_active': 0.0063}
+  [p18 hi] step  2,500 | lr 2.0e-04 | train 2.178 | val 1.358 (best 1.353) | window Δ n/a | stable | 121k tok/s | phase 5m08s | run ETA ~3h20m | health {'wnorm': 221.881, 'rank_enc1': 825.4, 'rank_dec1': 795.0, 'rarely_active': 0.0062}
+  [p18 hi] step  3,000 | lr 2.0e-04 | train 2.204 | val 1.359 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 6m08s | run ETA ~3h20m | health {'wnorm': 222.099, 'rank_enc1': 817.7, 'rank_dec1': 785.9, 'rarely_active': 0.0064}
+  [p18 hi] step  3,500 | lr 2.0e-04 | train 2.195 | val 1.358 (best 1.353) | window Δ n/a | stable | 117k tok/s | phase 7m11s | run ETA ~3h20m | health {'wnorm': 222.307, 'rank_enc1': 828.1, 'rank_dec1': 797.9, 'rarely_active': 0.0064}
+  [p18 hi] step  4,000 | lr 2.0e-04 | train 2.167 | val 1.367 (best 1.353) | window Δ -0.11% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~3h20m | health {'wnorm': 222.522, 'rank_enc1': 824.2, 'rank_dec1': 794.6, 'rarely_active': 0.0065}
+  [p18 hi] step  4,500 | lr 1.6e-04 | train 2.184 | val 1.343 (best 1.343) | window Δ +0.27% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m12s | run ETA ~3h20m | health {'wnorm': 222.477, 'rank_enc1': 835.9, 'rank_dec1': 792.5, 'rarely_active': 0.0067}
+  [p18 hi] step  5,000 | lr 1.1e-04 | train 2.168 | val 1.321 (best 1.321) | window Δ +0.94% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m15s | run ETA ~3h20m | health {'wnorm': 222.081, 'rank_enc1': 837.6, 'rank_dec1': 795.3, 'rarely_active': 0.0065}
+  [p18 hi] step  5,500 | lr 6.5e-05 | train 2.065 | val 1.316 (best 1.316) | window Δ +1.78% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~3h20m | health {'wnorm': 221.588, 'rank_enc1': 843.3, 'rank_dec1': 794.5, 'rarely_active': 0.0065}
+  phase 18 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 18 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m28s | run time 4h35m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.306  +0.000 |   48.9   +0.4 |                 11.2           2.745  ◀ trained
+   zh      9.053  +0.016 |    0.5   -0.1 |                  0.3          10.351
+   ar      8.514  +0.008 |    2.0   +0.4 |                  0.1          10.266
+======================================================================================
+
+▶ PHASE 19/30 | training hi (993,016 pairs)
+p018_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p018_hi.pt:   2%|▏         | 5.83M/267M [00:00<00:04, 57.9MB/s]p018_hi.pt:   4%|▍         | 11.7M/267M [00:00<00:05, 44.4MB/s]p018_hi.pt:   6%|▌         | 16.3M/267M [00:00<00:11, 22.5MB/s]p018_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:06, 37.0MB/s]p018_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 37.8MB/s]p018_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 45.1MB/s]p018_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:03, 50.2MB/s]p018_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 53.9MB/s]p018_hi.pt:  42%|████▏     | 112M/267M [00:02<00:02, 53.3MB/s] p018_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 53.3MB/s]p018_hi.pt:  54%|█████▎    | 143M/267M [00:02<00:01, 65.7MB/s]p018_hi.pt:  57%|█████▋    | 151M/267M [00:03<00:02, 41.3MB/s]p018_hi.pt:  59%|█████▉    | 158M/267M [00:03<00:02, 40.7MB/s]p018_hi.pt:  61%|██████    | 163M/267M [00:03<00:03, 32.9MB/s]p018_hi.pt:  65%|██████▌   | 175M/267M [00:03<00:02, 44.2MB/s]p018_hi.pt:  68%|██████▊   | 182M/267M [00:04<00:02, 39.8MB/s]p018_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 39.5MB/s]p018_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 44.4MB/s]p018_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 47.8MB/s]p018_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 50.2MB/s]p018_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 51.3MB/s]p018_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 46.1MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p018_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p19 hi] step    500 | lr 2.0e-04 | train 2.038 | val 1.355 (best 1.355) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~3h03m | health {'wnorm': 220.954, 'rank_enc1': 830.0, 'rank_dec1': 782.5, 'rarely_active': 0.0065}
+  [p19 hi] step  1,000 | lr 2.0e-04 | train 2.153 | val 1.357 (best 1.355) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~3h03m | health {'wnorm': 221.251, 'rank_enc1': 839.1, 'rank_dec1': 790.4, 'rarely_active': 0.0068}
+  [p19 hi] step  1,500 | lr 2.0e-04 | train 2.193 | val 1.355 (best 1.355) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~3h03m | health {'wnorm': 221.501, 'rank_enc1': 841.8, 'rank_dec1': 797.7, 'rarely_active': 0.0061}
+  [p19 hi] step  2,000 | lr 2.0e-04 | train 2.161 | val 1.360 (best 1.355) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~3h03m | health {'wnorm': 221.735, 'rank_enc1': 855.0, 'rank_dec1': 805.1, 'rarely_active': 0.0063}
+  [p19 hi] step  2,500 | lr 2.0e-04 | train 2.176 | val 1.358 (best 1.355) | window Δ n/a | stable | 120k tok/s | phase 5m05s | run ETA ~3h03m | health {'wnorm': 221.969, 'rank_enc1': 849.9, 'rank_dec1': 799.6, 'rarely_active': 0.0066}
+  [p19 hi] step  3,000 | lr 2.0e-04 | train 2.198 | val 1.347 (best 1.347) | window Δ n/a | stable | 120k tok/s | phase 6m06s | run ETA ~3h03m | health {'wnorm': 222.179, 'rank_enc1': 860.2, 'rank_dec1': 789.7, 'rarely_active': 0.0063}
+  [p19 hi] step  3,500 | lr 2.0e-04 | train 2.189 | val 1.361 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~3h03m | health {'wnorm': 222.378, 'rank_enc1': 851.5, 'rank_dec1': 804.7, 'rarely_active': 0.0063}
+  [p19 hi] step  4,000 | lr 2.0e-04 | train 2.166 | val 1.361 (best 1.347) | window Δ +0.00% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m09s | run ETA ~3h03m | health {'wnorm': 222.605, 'rank_enc1': 837.6, 'rank_dec1': 798.0, 'rarely_active': 0.0065}
+  [p19 hi] step  4,500 | lr 1.6e-04 | train 2.182 | val 1.339 (best 1.339) | window Δ +0.40% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m10s | run ETA ~3h03m | health {'wnorm': 222.56, 'rank_enc1': 853.6, 'rank_dec1': 798.1, 'rarely_active': 0.0069}
+  [p19 hi] step  5,000 | lr 1.1e-04 | train 2.158 | val 1.319 (best 1.319) | window Δ +0.72% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m12s | run ETA ~3h03m | health {'wnorm': 222.165, 'rank_enc1': 847.6, 'rank_dec1': 801.7, 'rarely_active': 0.0064}
+  [p19 hi] step  5,500 | lr 6.5e-05 | train 2.061 | val 1.320 (best 1.319) | window Δ +1.60% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m13s | run ETA ~3h03m | health {'wnorm': 221.667, 'rank_enc1': 858.4, 'rank_dec1': 807.6, 'rarely_active': 0.0063}
+  phase 19 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 19 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 4h47m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.308  +0.003 |   48.5   -0.4 |                 11.5           2.743  ◀ trained
+   zh      9.044  -0.009 |    0.6   +0.1 |                  0.3          10.367
+   ar      8.512  -0.002 |    1.8   -0.2 |                  0.1          10.287
+======================================================================================
+
+▶ PHASE 20/30 | training hi (993,016 pairs)
+p019_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p019_hi.pt:   2%|▏         | 5.57M/267M [00:00<00:07, 35.6MB/s]p019_hi.pt:   3%|▎         | 9.18M/267M [00:00<00:08, 29.8MB/s]p019_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:11, 22.5MB/s]p019_hi.pt:  12%|█▏        | 32.1M/267M [00:01<00:06, 33.6MB/s]p019_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 42.7MB/s]p019_hi.pt:  23%|██▎       | 62.7M/267M [00:01<00:03, 57.7MB/s]p019_hi.pt:  26%|██▌       | 70.0M/267M [00:01<00:04, 42.4MB/s]p019_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:04, 42.0MB/s]p019_hi.pt:  34%|███▍      | 91.1M/267M [00:02<00:04, 40.6MB/s]p019_hi.pt:  36%|███▌      | 95.9M/267M [00:02<00:04, 39.5MB/s]p019_hi.pt:  38%|███▊      | 100M/267M [00:02<00:05, 31.4MB/s] p019_hi.pt:  42%|████▏     | 112M/267M [00:02<00:04, 36.3MB/s]p019_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 43.6MB/s]p019_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 48.8MB/s]p019_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:02, 50.9MB/s]p019_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 52.1MB/s]p019_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 53.9MB/s]p019_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 54.9MB/s]p019_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 56.3MB/s]p019_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 57.6MB/s]p019_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 56.2MB/s]p019_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 47.2MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p019_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p20 hi] step    500 | lr 2.0e-04 | train 2.033 | val 1.347 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~2h46m | health {'wnorm': 221.031, 'rank_enc1': 854.3, 'rank_dec1': 813.2, 'rarely_active': 0.0065}
+  [p20 hi] step  1,000 | lr 2.0e-04 | train 2.148 | val 1.360 (best 1.347) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~2h46m | health {'wnorm': 221.324, 'rank_enc1': 856.7, 'rank_dec1': 795.0, 'rarely_active': 0.0065}
+  [p20 hi] step  1,500 | lr 2.0e-04 | train 2.189 | val 1.353 (best 1.347) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~2h46m | health {'wnorm': 221.562, 'rank_enc1': 847.3, 'rank_dec1': 796.8, 'rarely_active': 0.0068}
+  [p20 hi] step  2,000 | lr 2.0e-04 | train 2.149 | val 1.364 (best 1.347) | window Δ n/a | stable | 115k tok/s | phase 4m06s | run ETA ~2h46m | health {'wnorm': 221.8, 'rank_enc1': 846.7, 'rank_dec1': 802.9, 'rarely_active': 0.0069}
+  [p20 hi] step  2,500 | lr 2.0e-04 | train 2.172 | val 1.357 (best 1.347) | window Δ n/a | stable | 120k tok/s | phase 5m07s | run ETA ~2h46m | health {'wnorm': 222.031, 'rank_enc1': 851.4, 'rank_dec1': 806.3, 'rarely_active': 0.0064}
+  [p20 hi] step  3,000 | lr 2.0e-04 | train 2.198 | val 1.352 (best 1.347) | window Δ n/a | stable | 120k tok/s | phase 6m08s | run ETA ~2h46m | health {'wnorm': 222.252, 'rank_enc1': 844.6, 'rank_dec1': 808.3, 'rarely_active': 0.0071}
+  [p20 hi] step  3,500 | lr 2.0e-04 | train 2.181 | val 1.362 (best 1.347) | window Δ n/a | stable | 117k tok/s | phase 7m10s | run ETA ~2h46m | health {'wnorm': 222.458, 'rank_enc1': 871.1, 'rank_dec1': 810.6, 'rarely_active': 0.0067}
+  [p20 hi] step  4,000 | lr 2.0e-04 | train 2.162 | val 1.357 (best 1.347) | window Δ -0.09% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~2h46m | health {'wnorm': 222.672, 'rank_enc1': 857.0, 'rank_dec1': 807.4, 'rarely_active': 0.0069}
+  [p20 hi] step  4,500 | lr 1.6e-04 | train 2.173 | val 1.338 (best 1.338) | window Δ +0.44% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m12s | run ETA ~2h46m | health {'wnorm': 222.627, 'rank_enc1': 853.5, 'rank_dec1': 800.5, 'rarely_active': 0.0072}
+  [p20 hi] step  5,000 | lr 1.1e-04 | train 2.159 | val 1.317 (best 1.317) | window Δ +0.96% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m13s | run ETA ~2h46m | health {'wnorm': 222.227, 'rank_enc1': 853.8, 'rank_dec1': 796.1, 'rarely_active': 0.0072}
+  [p20 hi] step  5,500 | lr 6.5e-05 | train 2.057 | val 1.320 (best 1.317) | window Δ +1.90% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m15s | run ETA ~2h46m | health {'wnorm': 221.732, 'rank_enc1': 863.9, 'rank_dec1': 805.6, 'rarely_active': 0.0073}
+  phase 20 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 20 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 5h00m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.307  -0.002 |   49.0   +0.5 |                 11.6           2.740  ◀ trained
+   zh      9.091  +0.047 |    0.6   -0.0 |                  0.3          10.436
+   ar      8.561  +0.049 |    2.0   +0.3 |                  0.1          10.360
+======================================================================================
+
+▶ PHASE 21/30 | training hi (993,016 pairs)
+p020_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p020_hi.pt:   1%|          | 2.62M/267M [00:00<00:10, 25.0MB/s]p020_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:05, 41.9MB/s]p020_hi.pt:   9%|▉         | 23.5M/267M [00:00<00:04, 50.2MB/s]p020_hi.pt:  11%|█         | 29.4M/267M [00:00<00:04, 48.1MB/s]p020_hi.pt:  13%|█▎        | 34.3M/267M [00:00<00:07, 31.2MB/s]p020_hi.pt:  14%|█▍        | 38.6M/267M [00:01<00:06, 33.2MB/s]p020_hi.pt:  16%|█▋        | 44.1M/267M [00:01<00:08, 27.4MB/s]p020_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:10, 20.7MB/s]p020_hi.pt:  21%|██▏       | 57.3M/267M [00:01<00:06, 31.0MB/s]p020_hi.pt:  24%|██▍       | 63.8M/267M [00:01<00:05, 36.0MB/s]p020_hi.pt:  26%|██▌       | 68.5M/267M [00:02<00:07, 27.8MB/s]p020_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:05, 33.3MB/s]p020_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:04, 41.5MB/s]p020_hi.pt:  42%|████▏     | 112M/267M [00:03<00:03, 46.7MB/s] p020_hi.pt:  47%|████▋     | 126M/267M [00:03<00:02, 59.8MB/s]p020_hi.pt:  50%|█████     | 134M/267M [00:03<00:02, 49.2MB/s]p020_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 45.2MB/s]p020_hi.pt:  59%|█████▉    | 159M/267M [00:03<00:01, 60.7MB/s]p020_hi.pt:  63%|██████▎   | 167M/267M [00:03<00:01, 53.2MB/s]p020_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 46.7MB/s]p020_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 63.5MB/s]p020_hi.pt:  75%|███████▍  | 200M/267M [00:04<00:01, 53.6MB/s]p020_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 45.8MB/s]p020_hi.pt:  84%|████████▎ | 224M/267M [00:04<00:00, 63.5MB/s]p020_hi.pt:  87%|████████▋ | 232M/267M [00:05<00:00, 53.1MB/s]p020_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 44.0MB/s]p020_hi.pt:  95%|█████████▍| 253M/267M [00:05<00:00, 56.5MB/s]p020_hi.pt:  97%|█████████▋| 260M/267M [00:05<00:00, 50.0MB/s]p020_hi.pt: 100%|██████████| 267M/267M [00:06<00:00, 44.3MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p020_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p21 hi] step    500 | lr 2.0e-04 | train 2.037 | val 1.347 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~2h29m | health {'wnorm': 221.097, 'rank_enc1': 853.5, 'rank_dec1': 813.5, 'rarely_active': 0.0065}
+  [p21 hi] step  1,000 | lr 2.0e-04 | train 2.135 | val 1.360 (best 1.347) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~2h29m | health {'wnorm': 221.386, 'rank_enc1': 855.6, 'rank_dec1': 803.1, 'rarely_active': 0.0062}
+  [p21 hi] step  1,500 | lr 2.0e-04 | train 2.179 | val 1.355 (best 1.347) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~2h29m | health {'wnorm': 221.633, 'rank_enc1': 847.4, 'rank_dec1': 792.1, 'rarely_active': 0.0071}
+  [p21 hi] step  2,000 | lr 2.0e-04 | train 2.160 | val 1.368 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~2h29m | health {'wnorm': 221.867, 'rank_enc1': 855.4, 'rank_dec1': 803.0, 'rarely_active': 0.0069}
+  [p21 hi] step  2,500 | lr 2.0e-04 | train 2.161 | val 1.359 (best 1.347) | window Δ n/a | stable | 121k tok/s | phase 5m06s | run ETA ~2h29m | health {'wnorm': 222.108, 'rank_enc1': 859.6, 'rank_dec1': 797.3, 'rarely_active': 0.0074}
+  [p21 hi] step  3,000 | lr 2.0e-04 | train 2.188 | val 1.357 (best 1.347) | window Δ n/a | stable | 121k tok/s | phase 6m07s | run ETA ~2h29m | health {'wnorm': 222.321, 'rank_enc1': 842.3, 'rank_dec1': 805.3, 'rarely_active': 0.0068}
+  [p21 hi] step  3,500 | lr 2.0e-04 | train 2.181 | val 1.367 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~2h29m | health {'wnorm': 222.528, 'rank_enc1': 857.9, 'rank_dec1': 827.2, 'rarely_active': 0.0069}
+  [p21 hi] step  4,000 | lr 2.0e-04 | train 2.155 | val 1.357 (best 1.347) | window Δ -0.21% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m09s | run ETA ~2h29m | health {'wnorm': 222.742, 'rank_enc1': 869.2, 'rank_dec1': 819.5, 'rarely_active': 0.0071}
+  [p21 hi] step  4,500 | lr 1.6e-04 | train 2.170 | val 1.341 (best 1.341) | window Δ +0.35% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m10s | run ETA ~2h29m | health {'wnorm': 222.69, 'rank_enc1': 857.2, 'rank_dec1': 811.4, 'rarely_active': 0.007}
+  [p21 hi] step  5,000 | lr 1.1e-04 | train 2.154 | val 1.320 (best 1.320) | window Δ +0.99% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m12s | run ETA ~2h29m | health {'wnorm': 222.291, 'rank_enc1': 866.9, 'rank_dec1': 819.8, 'rarely_active': 0.0065}
+  [p21 hi] step  5,500 | lr 6.5e-05 | train 2.049 | val 1.320 (best 1.320) | window Δ +2.08% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 11m12s | run ETA ~2h29m | health {'wnorm': 221.793, 'rank_enc1': 871.4, 'rank_dec1': 825.5, 'rarely_active': 0.0066}
+  phase 21 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 21 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 5h12m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.306  -0.001 |   48.8   -0.3 |                 10.0           2.761  ◀ trained
+   zh      9.085  -0.005 |    0.5   -0.0 |                  0.3          10.412
+   ar      8.542  -0.019 |    1.9   -0.1 |                  0.1          10.322
+======================================================================================
+
+▶ PHASE 22/30 | training hi (993,016 pairs)
+p021_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p021_hi.pt:   2%|▏         | 5.70M/267M [00:00<00:04, 54.3MB/s]p021_hi.pt:   4%|▍         | 11.1M/267M [00:00<00:08, 30.9MB/s]p021_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:11, 22.3MB/s]p021_hi.pt:  12%|█▏        | 32.1M/267M [00:00<00:06, 35.8MB/s]p021_hi.pt:  14%|█▍        | 38.0M/267M [00:01<00:06, 36.9MB/s]p021_hi.pt:  16%|█▌        | 41.8M/267M [00:01<00:06, 33.3MB/s]p021_hi.pt:  18%|█▊        | 46.8M/267M [00:01<00:06, 34.5MB/s]p021_hi.pt:  19%|█▉        | 50.4M/267M [00:01<00:08, 24.8MB/s]p021_hi.pt:  20%|██        | 54.3M/267M [00:01<00:07, 26.6MB/s]p021_hi.pt:  22%|██▏       | 59.7M/267M [00:01<00:06, 31.6MB/s]p021_hi.pt:  24%|██▍       | 64.1M/267M [00:02<00:09, 22.2MB/s]p021_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:05, 34.2MB/s]p021_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:04, 42.0MB/s]p021_hi.pt:  42%|████▏     | 112M/267M [00:03<00:03, 47.1MB/s] p021_hi.pt:  47%|████▋     | 127M/267M [00:03<00:02, 58.5MB/s]p021_hi.pt:  50%|████▉     | 133M/267M [00:03<00:03, 40.4MB/s]p021_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:03, 40.6MB/s]p021_hi.pt:  60%|█████▉    | 160M/267M [00:04<00:02, 45.5MB/s]p021_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 48.8MB/s]p021_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 52.0MB/s]p021_hi.pt:  78%|███████▊  | 208M/267M [00:05<00:01, 53.7MB/s]p021_hi.pt:  80%|████████  | 214M/267M [00:05<00:00, 54.4MB/s]p021_hi.pt:  83%|████████▎ | 222M/267M [00:05<00:00, 57.7MB/s]p021_hi.pt:  85%|████████▌ | 228M/267M [00:05<00:00, 41.3MB/s]p021_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 41.1MB/s]p021_hi.pt:  96%|█████████▌| 256M/267M [00:06<00:00, 46.6MB/s]p021_hi.pt: 100%|██████████| 267M/267M [00:06<00:00, 42.2MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p021_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p22 hi] step    500 | lr 2.0e-04 | train 2.030 | val 1.353 (best 1.353) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~2h13m | health {'wnorm': 221.149, 'rank_enc1': 867.8, 'rank_dec1': 818.0, 'rarely_active': 0.0069}
+  [p22 hi] step  1,000 | lr 2.0e-04 | train 2.135 | val 1.360 (best 1.353) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~2h13m | health {'wnorm': 221.443, 'rank_enc1': 864.1, 'rank_dec1': 800.0, 'rarely_active': 0.0066}
+  [p22 hi] step  1,500 | lr 2.0e-04 | train 2.169 | val 1.354 (best 1.353) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~2h13m | health {'wnorm': 221.687, 'rank_enc1': 861.2, 'rank_dec1': 808.3, 'rarely_active': 0.0067}
+  [p22 hi] step  2,000 | lr 2.0e-04 | train 2.149 | val 1.352 (best 1.352) | window Δ n/a | stable | 116k tok/s | phase 4m06s | run ETA ~2h13m | health {'wnorm': 221.916, 'rank_enc1': 867.6, 'rank_dec1': 816.4, 'rarely_active': 0.0068}
+  [p22 hi] step  2,500 | lr 2.0e-04 | train 2.163 | val 1.356 (best 1.352) | window Δ n/a | stable | 121k tok/s | phase 5m07s | run ETA ~2h13m | health {'wnorm': 222.142, 'rank_enc1': 859.2, 'rank_dec1': 809.1, 'rarely_active': 0.0065}
+  [p22 hi] step  3,000 | lr 2.0e-04 | train 2.182 | val 1.351 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 6m08s | run ETA ~2h13m | health {'wnorm': 222.359, 'rank_enc1': 859.9, 'rank_dec1': 813.6, 'rarely_active': 0.0067}
+  [p22 hi] step  3,500 | lr 2.0e-04 | train 2.177 | val 1.358 (best 1.351) | window Δ n/a | stable | 118k tok/s | phase 7m10s | run ETA ~2h13m | health {'wnorm': 222.557, 'rank_enc1': 862.9, 'rank_dec1': 828.9, 'rarely_active': 0.0072}
+  [p22 hi] step  4,000 | lr 2.0e-04 | train 2.148 | val 1.362 (best 1.351) | window Δ -0.14% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m11s | run ETA ~2h13m | health {'wnorm': 222.764, 'rank_enc1': 860.1, 'rank_dec1': 828.9, 'rarely_active': 0.0069}
+  [p22 hi] step  4,500 | lr 1.6e-04 | train 2.166 | val 1.334 (best 1.334) | window Δ +0.33% | cooldown (plateau, ends at 6,000) | 119k tok/s | phase 9m12s | run ETA ~2h13m | health {'wnorm': 222.715, 'rank_enc1': 865.7, 'rank_dec1': 803.5, 'rarely_active': 0.0073}
+  [p22 hi] step  5,000 | lr 1.1e-04 | train 2.152 | val 1.318 (best 1.318) | window Δ +0.77% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m14s | run ETA ~2h13m | health {'wnorm': 222.317, 'rank_enc1': 874.4, 'rank_dec1': 819.6, 'rarely_active': 0.0074}
+  [p22 hi] step  5,500 | lr 6.5e-05 | train 2.053 | val 1.319 (best 1.318) | window Δ +1.55% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~2h13m | health {'wnorm': 221.819, 'rank_enc1': 867.4, 'rank_dec1': 820.9, 'rarely_active': 0.0073}
+  phase 22 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 22 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 5h25m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.304  -0.002 |   48.6   -0.2 |                  9.7           2.766  ◀ trained
+   zh      9.130  +0.045 |    0.6   +0.0 |                  0.2          10.515
+   ar      8.554  +0.012 |    2.0   +0.1 |                  0.1          10.386
+======================================================================================
+
+▶ PHASE 23/30 | training hi (993,016 pairs)
+p022_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p022_hi.pt:   1%|          | 3.28M/267M [00:00<00:08, 31.7MB/s]p022_hi.pt:   4%|▍         | 12.0M/267M [00:00<00:04, 55.3MB/s]p022_hi.pt:   7%|▋         | 17.4M/267M [00:00<00:09, 27.2MB/s]p022_hi.pt:  11%|█         | 28.9M/267M [00:00<00:05, 47.4MB/s]p022_hi.pt:  13%|█▎        | 35.7M/267M [00:01<00:07, 30.8MB/s]p022_hi.pt:  17%|█▋        | 44.6M/267M [00:01<00:05, 38.7MB/s]p022_hi.pt:  19%|█▉        | 50.2M/267M [00:01<00:07, 29.4MB/s]p022_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:05, 36.9MB/s]p022_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 43.6MB/s]p022_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 48.3MB/s]p022_hi.pt:  40%|███▉      | 106M/267M [00:02<00:03, 51.7MB/s] p022_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 40.7MB/s]p022_hi.pt:  44%|████▎     | 116M/267M [00:03<00:04, 31.2MB/s]p022_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 35.0MB/s]p022_hi.pt:  53%|█████▎    | 141M/267M [00:03<00:02, 46.2MB/s]p022_hi.pt:  55%|█████▍    | 147M/267M [00:03<00:03, 35.6MB/s]  [p23 hi] step    500 | lr 2.0e-04 | train 2.023 | val 1.357 (best 1.357) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~1h58m | health {'wnorm': 221.178, 'rank_enc1': 871.2, 'rank_dec1': 828.7, 'rarely_active': 0.0064}
+p022_hi.pt:  60%|█████▉    | 160M/267M [00:04<00:02, 39.8MB/s]p022_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:02, 45.5MB/s]p022_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 49.8MB/s]p022_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 54.0MB/s]p022_hi.pt:  84%|████████▍ | 224M/267M [00:05<00:00, 49.7MB/s]p022_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 53.7MB/s]p022_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 55.7MB/s]p022_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 44.8MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p022_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p23 hi] step  1,000 | lr 2.0e-04 | train 2.131 | val 1.359 (best 1.357) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~1h58m | health {'wnorm': 221.467, 'rank_enc1': 863.0, 'rank_dec1': 808.7, 'rarely_active': 0.0069}
+  [p23 hi] step  1,500 | lr 2.0e-04 | train 2.169 | val 1.356 (best 1.356) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~1h58m | health {'wnorm': 221.707, 'rank_enc1': 874.1, 'rank_dec1': 813.8, 'rarely_active': 0.0079}
+  [p23 hi] step  2,000 | lr 2.0e-04 | train 2.147 | val 1.374 (best 1.356) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~1h58m | health {'wnorm': 221.947, 'rank_enc1': 881.1, 'rank_dec1': 828.9, 'rarely_active': 0.0076}
+  [p23 hi] step  2,500 | lr 2.0e-04 | train 2.161 | val 1.358 (best 1.356) | window Δ n/a | stable | 121k tok/s | phase 5m06s | run ETA ~1h58m | health {'wnorm': 222.179, 'rank_enc1': 867.6, 'rank_dec1': 806.5, 'rarely_active': 0.0073}
+  [p23 hi] step  3,000 | lr 2.0e-04 | train 2.176 | val 1.349 (best 1.349) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~1h58m | health {'wnorm': 222.385, 'rank_enc1': 867.6, 'rank_dec1': 817.4, 'rarely_active': 0.0074}
+  [p23 hi] step  3,500 | lr 2.0e-04 | train 2.169 | val 1.362 (best 1.349) | window Δ n/a | stable | 117k tok/s | phase 7m09s | run ETA ~1h58m | health {'wnorm': 222.586, 'rank_enc1': 862.8, 'rank_dec1': 829.1, 'rarely_active': 0.0069}
+  [p23 hi] step  4,000 | lr 2.0e-04 | train 2.151 | val 1.361 (best 1.349) | window Δ +0.29% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~1h58m | health {'wnorm': 222.8, 'rank_enc1': 868.6, 'rank_dec1': 807.6, 'rarely_active': 0.0073}
+  [p23 hi] step  4,500 | lr 1.6e-04 | train 2.162 | val 1.339 (best 1.339) | window Δ +0.65% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~1h58m | health {'wnorm': 222.744, 'rank_enc1': 866.1, 'rank_dec1': 831.6, 'rarely_active': 0.0068}
+  [p23 hi] step  5,000 | lr 1.1e-04 | train 2.144 | val 1.317 (best 1.317) | window Δ +1.07% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m13s | run ETA ~1h58m | health {'wnorm': 222.351, 'rank_enc1': 865.3, 'rank_dec1': 802.4, 'rarely_active': 0.0074}
+  [p23 hi] step  5,500 | lr 6.5e-05 | train 2.048 | val 1.320 (best 1.317) | window Δ +1.95% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~1h58m | health {'wnorm': 221.852, 'rank_enc1': 878.1, 'rank_dec1': 827.2, 'rarely_active': 0.0073}
+  phase 23 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 23 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m26s | run time 5h37m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.305  +0.001 |   48.1   -0.4 |                  9.0           2.776  ◀ trained
+   zh      9.170  +0.040 |    0.5   -0.1 |                  0.2          10.568
+   ar      8.618  +0.064 |    1.7   -0.3 |                  0.1          10.475
+======================================================================================
+
+▶ PHASE 24/30 | training hi (993,016 pairs)
+p023_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p023_hi.pt:   0%|          | 590k/267M [00:00<00:47, 5.66MB/s]p023_hi.pt:   2%|▏         | 4.52M/267M [00:00<00:10, 24.6MB/s]p023_hi.pt:   3%|▎         | 8.32M/267M [00:00<00:08, 30.4MB/s]p023_hi.pt:   4%|▍         | 11.6M/267M [00:00<00:09, 26.8MB/s]p023_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:14, 17.5MB/s]p023_hi.pt:  10%|▉         | 25.7M/267M [00:00<00:07, 31.5MB/s]p023_hi.pt:  12%|█▏        | 32.1M/267M [00:01<00:08, 26.6MB/s]p023_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 37.6MB/s]p023_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 45.3MB/s]p023_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:03, 48.6MB/s]p023_hi.pt:  34%|███▍      | 91.1M/267M [00:02<00:03, 55.5MB/s]p023_hi.pt:  36%|███▋      | 97.2M/267M [00:02<00:04, 37.9MB/s]p023_hi.pt:  41%|████      | 109M/267M [00:02<00:03, 49.1MB/s] p023_hi.pt:  44%|████▎     | 116M/267M [00:03<00:03, 39.8MB/s]p023_hi.pt:  47%|████▋     | 125M/267M [00:03<00:03, 44.6MB/s]p023_hi.pt:  49%|████▉     | 131M/267M [00:03<00:04, 33.4MB/s]p023_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:03, 38.0MB/s]p023_hi.pt:  60%|█████▉    | 160M/267M [00:04<00:02, 43.1MB/s]p023_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 46.5MB/s]p023_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 50.2MB/s]p023_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 53.1MB/s]p023_hi.pt:  84%|████████▍ | 224M/267M [00:05<00:00, 54.6MB/s]p023_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 56.0MB/s]p023_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 57.1MB/s]p023_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 45.1MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p023_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p24 hi] step    500 | lr 2.0e-04 | train 2.022 | val 1.353 (best 1.353) | window Δ n/a | stable | 117k tok/s | phase 1m02s | run ETA ~1h42m | health {'wnorm': 221.205, 'rank_enc1': 876.3, 'rank_dec1': 827.7, 'rarely_active': 0.007}
+  [p24 hi] step  1,000 | lr 2.0e-04 | train 2.126 | val 1.352 (best 1.352) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~1h42m | health {'wnorm': 221.496, 'rank_enc1': 863.9, 'rank_dec1': 815.6, 'rarely_active': 0.0072}
+  [p24 hi] step  1,500 | lr 2.0e-04 | train 2.170 | val 1.346 (best 1.346) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~1h42m | health {'wnorm': 221.742, 'rank_enc1': 877.1, 'rank_dec1': 809.6, 'rarely_active': 0.0075}
+  [p24 hi] step  2,000 | lr 2.0e-04 | train 2.133 | val 1.365 (best 1.346) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~1h42m | health {'wnorm': 221.984, 'rank_enc1': 878.7, 'rank_dec1': 809.9, 'rarely_active': 0.0071}
+  [p24 hi] step  2,500 | lr 2.0e-04 | train 2.154 | val 1.357 (best 1.346) | window Δ n/a | stable | 119k tok/s | phase 5m07s | run ETA ~1h42m | health {'wnorm': 222.206, 'rank_enc1': 877.5, 'rank_dec1': 811.5, 'rarely_active': 0.0066}
+  [p24 hi] step  3,000 | lr 2.0e-04 | train 2.179 | val 1.350 (best 1.346) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~1h42m | health {'wnorm': 222.425, 'rank_enc1': 872.0, 'rank_dec1': 831.4, 'rarely_active': 0.0068}
+  [p24 hi] step  3,500 | lr 2.0e-04 | train 2.167 | val 1.367 (best 1.346) | window Δ n/a | stable | 118k tok/s | phase 7m10s | run ETA ~1h42m | health {'wnorm': 222.62, 'rank_enc1': 879.5, 'rank_dec1': 809.1, 'rarely_active': 0.0068}
+  [p24 hi] step  4,000 | lr 2.0e-04 | train 2.138 | val 1.352 (best 1.346) | window Δ -0.15% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m10s | run ETA ~1h42m | health {'wnorm': 222.828, 'rank_enc1': 895.5, 'rank_dec1': 814.3, 'rarely_active': 0.0072}
+  [p24 hi] step  4,500 | lr 1.6e-04 | train 2.159 | val 1.329 (best 1.329) | window Δ +0.43% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m11s | run ETA ~1h42m | health {'wnorm': 222.781, 'rank_enc1': 878.5, 'rank_dec1': 821.5, 'rarely_active': 0.0073}
+  [p24 hi] step  5,000 | lr 1.1e-04 | train 2.145 | val 1.318 (best 1.318) | window Δ +0.96% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m12s | run ETA ~1h42m | health {'wnorm': 222.381, 'rank_enc1': 884.3, 'rank_dec1': 822.3, 'rarely_active': 0.0074}
+  [p24 hi] step  5,500 | lr 6.5e-05 | train 2.035 | val 1.319 (best 1.318) | window Δ +2.21% | cooldown (plateau, ends at 6,000) | 117k tok/s | phase 11m14s | run ETA ~1h42m | health {'wnorm': 221.88, 'rank_enc1': 886.4, 'rank_dec1': 833.0, 'rarely_active': 0.0071}
+  phase 24 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 24 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 5h50m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.306  +0.001 |   48.8   +0.7 |                  9.6           2.769  ◀ trained
+   zh      9.107  -0.063 |    0.4   -0.0 |                  0.2          10.475
+   ar      8.546  -0.072 |    1.7   -0.0 |                  0.1          10.354
+======================================================================================
+
+▶ PHASE 25/30 | training hi (993,016 pairs)
+p024_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p024_hi.pt:   2%|▏         | 4.13M/267M [00:00<00:06, 40.3MB/s]p024_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:07, 34.5MB/s]p024_hi.pt:   9%|▉         | 24.3M/267M [00:00<00:05, 45.6MB/s]p024_hi.pt:  11%|█         | 29.8M/267M [00:00<00:07, 33.7MB/s]p024_hi.pt:  13%|█▎        | 34.0M/267M [00:01<00:10, 22.0MB/s]p024_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 32.4MB/s]p024_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 42.0MB/s]p024_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:03, 47.8MB/s]p024_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 53.2MB/s]p024_hi.pt:  42%|████▏     | 112M/267M [00:02<00:02, 52.4MB/s] p024_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 53.6MB/s]p024_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 56.6MB/s]p024_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 57.0MB/s]p024_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 58.3MB/s]p024_hi.pt:  72%|███████▏  | 192M/267M [00:03<00:01, 58.9MB/s]p024_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:00, 60.1MB/s]p024_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 60.3MB/s]p024_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 60.8MB/s]p024_hi.pt:  96%|█████████▌| 256M/267M [00:04<00:00, 60.6MB/s]p024_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 50.6MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p024_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p25 hi] step    500 | lr 2.0e-04 | train 2.018 | val 1.351 (best 1.351) | window Δ n/a | stable | 117k tok/s | phase 1m02s | run ETA ~1h27m | health {'wnorm': 221.237, 'rank_enc1': 876.4, 'rank_dec1': 825.1, 'rarely_active': 0.0077}
+  [p25 hi] step  1,000 | lr 2.0e-04 | train 2.124 | val 1.352 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~1h27m | health {'wnorm': 221.524, 'rank_enc1': 878.0, 'rank_dec1': 819.5, 'rarely_active': 0.0072}
+  [p25 hi] step  1,500 | lr 2.0e-04 | train 2.163 | val 1.350 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 3m04s | run ETA ~1h27m | health {'wnorm': 221.772, 'rank_enc1': 879.3, 'rank_dec1': 817.3, 'rarely_active': 0.0076}
+  [p25 hi] step  2,000 | lr 2.0e-04 | train 2.130 | val 1.366 (best 1.350) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~1h27m | health {'wnorm': 222.007, 'rank_enc1': 889.1, 'rank_dec1': 833.4, 'rarely_active': 0.0071}
+  [p25 hi] step  2,500 | lr 2.0e-04 | train 2.151 | val 1.354 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~1h27m | health {'wnorm': 222.235, 'rank_enc1': 878.3, 'rank_dec1': 815.8, 'rarely_active': 0.0077}
+  [p25 hi] step  3,000 | lr 2.0e-04 | train 2.171 | val 1.355 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~1h27m | health {'wnorm': 222.447, 'rank_enc1': 893.4, 'rank_dec1': 822.5, 'rarely_active': 0.0072}
+  [p25 hi] step  3,500 | lr 2.0e-04 | train 2.165 | val 1.361 (best 1.350) | window Δ n/a | stable | 117k tok/s | phase 7m10s | run ETA ~1h27m | health {'wnorm': 222.645, 'rank_enc1': 881.7, 'rank_dec1': 831.3, 'rarely_active': 0.0075}
+  [p25 hi] step  4,000 | lr 2.0e-04 | train 2.138 | val 1.356 (best 1.350) | window Δ -0.13% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m10s | run ETA ~1h27m | health {'wnorm': 222.855, 'rank_enc1': 886.8, 'rank_dec1': 827.0, 'rarely_active': 0.0078}
+  [p25 hi] step  4,500 | lr 1.6e-04 | train 2.155 | val 1.337 (best 1.337) | window Δ +0.23% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m12s | run ETA ~1h27m | health {'wnorm': 222.808, 'rank_enc1': 885.2, 'rank_dec1': 822.5, 'rarely_active': 0.0076}
+  [p25 hi] step  5,000 | lr 1.1e-04 | train 2.139 | val 1.310 (best 1.310) | window Δ +1.13% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 10m13s | run ETA ~1h27m | health {'wnorm': 222.404, 'rank_enc1': 876.9, 'rank_dec1': 814.9, 'rarely_active': 0.0079}
+  [p25 hi] step  5,500 | lr 6.5e-05 | train 2.036 | val 1.313 (best 1.310) | window Δ +2.23% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m15s | run ETA ~1h27m | health {'wnorm': 221.905, 'rank_enc1': 889.2, 'rank_dec1': 834.9, 'rarely_active': 0.0078}
+  phase 25 finished (plateau); evaluating all languages...
+  new best checkpoint: hi = phase 25 (chrF 49.7)
+
+======================================================================================
+ PHASE 25 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 6h02m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.304  -0.001 |   49.7   +0.9 |                  9.2           2.764  ◀ trained
+   zh      9.110  +0.003 |    0.6   +0.1 |                  0.2          10.526
+   ar      8.558  +0.012 |    1.6   -0.1 |                  0.0          10.441
+======================================================================================
+
+▶ PHASE 26/30 | training hi (993,016 pairs)
+p025_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p025_hi.pt:   1%|          | 2.62M/267M [00:00<00:10, 24.8MB/s]p025_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:06, 41.2MB/s]p025_hi.pt:  11%|█         | 28.3M/267M [00:00<00:04, 59.4MB/s]p025_hi.pt:  13%|█▎        | 34.8M/267M [00:00<00:06, 35.3MB/s]p025_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:05, 38.1MB/s]p025_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 42.0MB/s]p025_hi.pt:  30%|██▉       | 80.1M/267M [00:01<00:03, 47.8MB/s]p025_hi.pt:  34%|███▍      | 91.4M/267M [00:01<00:03, 54.5MB/s]  [p26 hi] step    500 | lr 2.0e-04 | train 2.008 | val 1.348 (best 1.348) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~1h12m | health {'wnorm': 221.259, 'rank_enc1': 889.3, 'rank_dec1': 826.9, 'rarely_active': 0.0077}
+p025_hi.pt:  37%|███▋      | 97.6M/267M [00:02<00:04, 39.4MB/s]p025_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 44.0MB/s] p025_hi.pt:  48%|████▊     | 128M/267M [00:02<00:02, 48.9MB/s]p025_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 52.7MB/s]p025_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 55.2MB/s]p025_hi.pt:  63%|██████▎   | 169M/267M [00:03<00:01, 54.4MB/s]p025_hi.pt:  65%|██████▌   | 175M/267M [00:03<00:02, 44.5MB/s]p025_hi.pt:  67%|██████▋   | 179M/267M [00:04<00:02, 33.4MB/s]p025_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 46.4MB/s]p025_hi.pt:  74%|███████▍  | 198M/267M [00:04<00:01, 42.5MB/s]p025_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 41.4MB/s]p025_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 46.1MB/s]p025_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 49.9MB/s]p025_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 52.8MB/s]p025_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 46.5MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p025_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p26 hi] step  1,000 | lr 2.0e-04 | train 2.125 | val 1.353 (best 1.348) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~1h12m | health {'wnorm': 221.542, 'rank_enc1': 893.3, 'rank_dec1': 836.3, 'rarely_active': 0.0082}
+  [p26 hi] step  1,500 | lr 2.0e-04 | train 2.155 | val 1.350 (best 1.348) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~1h12m | health {'wnorm': 221.793, 'rank_enc1': 875.2, 'rank_dec1': 822.9, 'rarely_active': 0.0074}
+  [p26 hi] step  2,000 | lr 2.0e-04 | train 2.134 | val 1.370 (best 1.348) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~1h12m | health {'wnorm': 222.031, 'rank_enc1': 889.5, 'rank_dec1': 849.3, 'rarely_active': 0.0077}
+  [p26 hi] step  2,500 | lr 2.0e-04 | train 2.142 | val 1.353 (best 1.348) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~1h12m | health {'wnorm': 222.256, 'rank_enc1': 890.8, 'rank_dec1': 825.0, 'rarely_active': 0.0078}
+  [p26 hi] step  3,000 | lr 2.0e-04 | train 2.171 | val 1.353 (best 1.348) | window Δ n/a | stable | 119k tok/s | phase 6m08s | run ETA ~1h12m | health {'wnorm': 222.469, 'rank_enc1': 876.8, 'rank_dec1': 833.0, 'rarely_active': 0.0069}
+  [p26 hi] step  3,500 | lr 2.0e-04 | train 2.162 | val 1.364 (best 1.348) | window Δ n/a | stable | 117k tok/s | phase 7m10s | run ETA ~1h12m | health {'wnorm': 222.662, 'rank_enc1': 896.6, 'rank_dec1': 835.4, 'rarely_active': 0.0084}
+  [p26 hi] step  4,000 | lr 2.0e-04 | train 2.141 | val 1.359 (best 1.348) | window Δ -0.17% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~1h12m | health {'wnorm': 222.879, 'rank_enc1': 875.5, 'rank_dec1': 826.3, 'rarely_active': 0.0069}
+  [p26 hi] step  4,500 | lr 1.6e-04 | train 2.148 | val 1.340 (best 1.340) | window Δ +0.18% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 9m12s | run ETA ~1h12m | health {'wnorm': 222.831, 'rank_enc1': 874.9, 'rank_dec1': 827.1, 'rarely_active': 0.0073}
+  [p26 hi] step  5,000 | lr 1.1e-04 | train 2.132 | val 1.326 (best 1.326) | window Δ +0.68% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m14s | run ETA ~1h12m | health {'wnorm': 222.432, 'rank_enc1': 894.7, 'rank_dec1': 834.0, 'rarely_active': 0.0078}
+  [p26 hi] step  5,500 | lr 6.5e-05 | train 2.033 | val 1.324 (best 1.324) | window Δ +1.67% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 11m15s | run ETA ~1h12m | health {'wnorm': 221.931, 'rank_enc1': 896.6, 'rank_dec1': 843.4, 'rarely_active': 0.0077}
+  phase 26 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 26 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 6h14m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.308  +0.004 |   48.9   -0.8 |                  8.2           2.764  ◀ trained
+   zh      9.130  +0.020 |    0.6   +0.0 |                  0.2          10.574
+   ar      8.566  +0.009 |    1.6   +0.1 |                  0.1          10.471
+======================================================================================
+
+▶ PHASE 27/30 | training hi (993,016 pairs)
+p026_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p026_hi.pt:   2%|▏         | 5.37M/267M [00:00<00:05, 51.5MB/s]p026_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:06, 37.8MB/s]p026_hi.pt:  10%|▉         | 25.8M/267M [00:00<00:05, 45.0MB/s]p026_hi.pt:  11%|█▏        | 30.6M/267M [00:00<00:07, 31.8MB/s]p026_hi.pt:  13%|█▎        | 34.2M/267M [00:01<00:09, 23.4MB/s]p026_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 34.1MB/s]p026_hi.pt:  22%|██▏       | 59.5M/267M [00:01<00:04, 43.2MB/s]p026_hi.pt:  24%|██▍       | 64.5M/267M [00:01<00:06, 29.9MB/s]p026_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 38.5MB/s]p026_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 46.2MB/s]p026_hi.pt:  40%|████      | 108M/267M [00:02<00:03, 50.3MB/s] p026_hi.pt:  42%|████▏     | 113M/267M [00:03<00:04, 34.2MB/s]p026_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 40.0MB/s]p026_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 46.2MB/s]p026_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:02, 49.2MB/s]p026_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 51.8MB/s]p026_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 54.3MB/s]p026_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 56.3MB/s]p026_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 57.7MB/s]p026_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 56.5MB/s]p026_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 57.5MB/s]p026_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 46.6MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p026_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p27 hi] step    500 | lr 2.0e-04 | train 2.007 | val 1.350 (best 1.350) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~57m37s | health {'wnorm': 221.289, 'rank_enc1': 886.8, 'rank_dec1': 835.6, 'rarely_active': 0.0084}
+  [p27 hi] step  1,000 | lr 2.0e-04 | train 2.112 | val 1.358 (best 1.350) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~57m37s | health {'wnorm': 221.581, 'rank_enc1': 892.3, 'rank_dec1': 834.4, 'rarely_active': 0.0075}
+  [p27 hi] step  1,500 | lr 2.0e-04 | train 2.161 | val 1.355 (best 1.350) | window Δ n/a | stable | 121k tok/s | phase 3m03s | run ETA ~57m37s | health {'wnorm': 221.825, 'rank_enc1': 888.3, 'rank_dec1': 814.9, 'rarely_active': 0.0073}
+  [p27 hi] step  2,000 | lr 2.0e-04 | train 2.132 | val 1.362 (best 1.350) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~57m37s | health {'wnorm': 222.044, 'rank_enc1': 884.7, 'rank_dec1': 829.8, 'rarely_active': 0.0073}
+  [p27 hi] step  2,500 | lr 2.0e-04 | train 2.144 | val 1.356 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 5m05s | run ETA ~57m37s | health {'wnorm': 222.277, 'rank_enc1': 885.1, 'rank_dec1': 824.2, 'rarely_active': 0.0076}
+  [p27 hi] step  3,000 | lr 2.0e-04 | train 2.165 | val 1.352 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 6m06s | run ETA ~57m37s | health {'wnorm': 222.489, 'rank_enc1': 891.3, 'rank_dec1': 824.7, 'rarely_active': 0.0074}
+  [p27 hi] step  3,500 | lr 2.0e-04 | train 2.149 | val 1.362 (best 1.350) | window Δ n/a | stable | 118k tok/s | phase 7m09s | run ETA ~57m37s | health {'wnorm': 222.687, 'rank_enc1': 882.6, 'rank_dec1': 833.8, 'rarely_active': 0.0076}
+  [p27 hi] step  4,000 | lr 2.0e-04 | train 2.133 | val 1.357 (best 1.350) | window Δ -0.04% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m09s | run ETA ~57m37s | health {'wnorm': 222.906, 'rank_enc1': 910.1, 'rank_dec1': 827.7, 'rarely_active': 0.0073}
+  [p27 hi] step  4,500 | lr 1.6e-04 | train 2.146 | val 1.344 (best 1.344) | window Δ +0.28% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m10s | run ETA ~57m37s | health {'wnorm': 222.847, 'rank_enc1': 894.7, 'rank_dec1': 823.5, 'rarely_active': 0.008}
+  [p27 hi] step  5,000 | lr 1.1e-04 | train 2.134 | val 1.317 (best 1.317) | window Δ +0.83% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 10m11s | run ETA ~57m37s | health {'wnorm': 222.443, 'rank_enc1': 901.6, 'rank_dec1': 826.8, 'rarely_active': 0.0074}
+  [p27 hi] step  5,500 | lr 6.5e-05 | train 2.024 | val 1.318 (best 1.317) | window Δ +1.75% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m13s | run ETA ~57m37s | health {'wnorm': 221.941, 'rank_enc1': 898.5, 'rank_dec1': 850.0, 'rarely_active': 0.0078}
+  phase 27 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 27 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m25s | run time 6h27m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.308  -0.000 |   48.2   -0.7 |                  8.5           2.770  ◀ trained
+   zh      9.125  -0.004 |    0.6   -0.0 |                  0.3          10.566
+   ar      8.578  +0.012 |    2.0   +0.3 |                  0.1          10.469
+======================================================================================
+
+▶ PHASE 28/30 | training hi (993,016 pairs)
+p027_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p027_hi.pt:   1%|          | 2.62M/267M [00:00<00:17, 14.8MB/s]p027_hi.pt:   5%|▍         | 12.2M/267M [00:00<00:08, 28.3MB/s]p027_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:13, 19.0MB/s]p027_hi.pt:  10%|▉         | 26.7M/267M [00:01<00:09, 24.4MB/s]p027_hi.pt:  11%|█▏        | 30.1M/267M [00:01<00:09, 25.6MB/s]p027_hi.pt:  12%|█▏        | 32.8M/267M [00:01<00:12, 19.2MB/s]p027_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 33.0MB/s]p027_hi.pt:  24%|██▍       | 64.1M/267M [00:02<00:05, 40.6MB/s]p027_hi.pt:  28%|██▊       | 75.8M/267M [00:02<00:04, 46.2MB/s]p027_hi.pt:  30%|███       | 80.7M/267M [00:02<00:05, 32.7MB/s]p027_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:04, 39.8MB/s]p027_hi.pt:  42%|████▏     | 112M/267M [00:03<00:02, 55.4MB/s] p027_hi.pt:  45%|████▍     | 119M/267M [00:03<00:02, 49.5MB/s]p027_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 42.6MB/s]p027_hi.pt:  54%|█████▎    | 143M/267M [00:03<00:02, 58.2MB/s]p027_hi.pt:  57%|█████▋    | 151M/267M [00:03<00:02, 51.1MB/s]p027_hi.pt:  60%|█████▉    | 160M/267M [00:04<00:02, 46.0MB/s]p027_hi.pt:  66%|██████▌   | 175M/267M [00:04<00:01, 63.1MB/s]p027_hi.pt:  69%|██████▉   | 184M/267M [00:04<00:01, 49.3MB/s]p027_hi.pt:  71%|███████▏  | 191M/267M [00:04<00:01, 52.0MB/s]p027_hi.pt:  74%|███████▍  | 198M/267M [00:04<00:01, 40.5MB/s]p027_hi.pt:  77%|███████▋  | 206M/267M [00:04<00:01, 47.1MB/s]p027_hi.pt:  79%|███████▉  | 212M/267M [00:05<00:01, 41.5MB/s]p027_hi.pt:  83%|████████▎ | 223M/267M [00:05<00:00, 53.4MB/s]p027_hi.pt:  86%|████████▌ | 230M/267M [00:05<00:00, 46.9MB/s]p027_hi.pt:  89%|████████▉ | 239M/267M [00:05<00:00, 55.2MB/s]p027_hi.pt:  92%|█████████▏| 245M/267M [00:05<00:00, 46.5MB/s]p027_hi.pt:  96%|█████████▌| 256M/267M [00:06<00:00, 43.3MB/s]p027_hi.pt: 100%|██████████| 267M/267M [00:06<00:00, 42.2MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p027_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p28 hi] step    500 | lr 2.0e-04 | train 2.001 | val 1.351 (best 1.351) | window Δ n/a | stable | 118k tok/s | phase 1m02s | run ETA ~43m00s | health {'wnorm': 221.298, 'rank_enc1': 896.1, 'rank_dec1': 839.6, 'rarely_active': 0.0081}
+  [p28 hi] step  1,000 | lr 2.0e-04 | train 2.116 | val 1.365 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 2m02s | run ETA ~43m00s | health {'wnorm': 221.589, 'rank_enc1': 889.4, 'rank_dec1': 824.8, 'rarely_active': 0.0085}
+  [p28 hi] step  1,500 | lr 2.0e-04 | train 2.151 | val 1.350 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~43m00s | health {'wnorm': 221.842, 'rank_enc1': 899.2, 'rank_dec1': 829.5, 'rarely_active': 0.008}
+  [p28 hi] step  2,000 | lr 2.0e-04 | train 2.126 | val 1.373 (best 1.350) | window Δ n/a | stable | 117k tok/s | phase 4m06s | run ETA ~43m00s | health {'wnorm': 222.067, 'rank_enc1': 889.7, 'rank_dec1': 829.2, 'rarely_active': 0.008}
+  [p28 hi] step  2,500 | lr 2.0e-04 | train 2.137 | val 1.357 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~43m00s | health {'wnorm': 222.293, 'rank_enc1': 889.4, 'rank_dec1': 830.1, 'rarely_active': 0.007}
+  [p28 hi] step  3,000 | lr 2.0e-04 | train 2.166 | val 1.346 (best 1.346) | window Δ n/a | stable | 120k tok/s | phase 6m07s | run ETA ~43m00s | health {'wnorm': 222.503, 'rank_enc1': 888.5, 'rank_dec1': 836.9, 'rarely_active': 0.0078}
+  [p28 hi] step  3,500 | lr 2.0e-04 | train 2.153 | val 1.363 (best 1.346) | window Δ n/a | stable | 116k tok/s | phase 7m10s | run ETA ~43m00s | health {'wnorm': 222.698, 'rank_enc1': 911.8, 'rank_dec1': 845.6, 'rarely_active': 0.0073}
+  [p28 hi] step  4,000 | lr 2.0e-04 | train 2.129 | val 1.360 (best 1.346) | window Δ +0.24% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~43m00s | health {'wnorm': 222.91, 'rank_enc1': 886.9, 'rank_dec1': 830.3, 'rarely_active': 0.008}
+  [p28 hi] step  4,500 | lr 1.6e-04 | train 2.144 | val 1.346 (best 1.346) | window Δ +0.54% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 9m12s | run ETA ~43m00s | health {'wnorm': 222.856, 'rank_enc1': 900.9, 'rank_dec1': 849.8, 'rarely_active': 0.0073}
+  [p28 hi] step  5,000 | lr 1.1e-04 | train 2.128 | val 1.323 (best 1.323) | window Δ +0.62% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 10m12s | run ETA ~43m00s | health {'wnorm': 222.458, 'rank_enc1': 909.2, 'rank_dec1': 843.9, 'rarely_active': 0.0083}
+  [p28 hi] step  5,500 | lr 6.5e-05 | train 2.025 | val 1.321 (best 1.321) | window Δ +1.63% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m14s | run ETA ~43m00s | health {'wnorm': 221.957, 'rank_enc1': 909.7, 'rank_dec1': 855.1, 'rarely_active': 0.0081}
+  phase 28 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 28 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m26s | run time 6h39m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.309  +0.000 |   47.9   -0.3 |                  7.9           2.780  ◀ trained
+   zh      9.153  +0.028 |    0.5   -0.1 |                  0.2          10.629
+   ar      8.600  +0.022 |    1.9   -0.1 |                  0.1          10.524
+======================================================================================
+
+▶ PHASE 29/30 | training hi (993,016 pairs)
+p028_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p028_hi.pt:   1%|          | 2.62M/267M [00:00<00:16, 16.0MB/s]p028_hi.pt:   4%|▍         | 11.1M/267M [00:00<00:08, 30.6MB/s]p028_hi.pt:   5%|▌         | 14.1M/267M [00:00<00:08, 29.8MB/s]p028_hi.pt:   6%|▋         | 17.0M/267M [00:00<00:13, 18.7MB/s]p028_hi.pt:  12%|█▏        | 32.1M/267M [00:01<00:07, 32.3MB/s]p028_hi.pt:  16%|█▋        | 43.7M/267M [00:01<00:05, 44.3MB/s]p028_hi.pt:  18%|█▊        | 48.7M/267M [00:01<00:07, 30.4MB/s]p028_hi.pt:  23%|██▎       | 60.6M/267M [00:01<00:04, 42.2MB/s]p028_hi.pt:  25%|██▍       | 66.3M/267M [00:02<00:06, 31.4MB/s]p028_hi.pt:  29%|██▊       | 76.5M/267M [00:02<00:04, 38.9MB/s]p028_hi.pt:  31%|███       | 81.6M/267M [00:02<00:06, 29.2MB/s]p028_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:04, 37.9MB/s]p028_hi.pt:  42%|████▏     | 112M/267M [00:03<00:03, 45.6MB/s] p028_hi.pt:  48%|████▊     | 128M/267M [00:03<00:02, 51.1MB/s]p028_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 53.4MB/s]p028_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 54.5MB/s]p028_hi.pt:  65%|██████▍   | 173M/267M [00:03<00:01, 63.4MB/s]p028_hi.pt:  68%|██████▊   | 181M/267M [00:04<00:01, 47.1MB/s]p028_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 45.3MB/s]p028_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 50.6MB/s]p028_hi.pt:  84%|████████▍ | 224M/267M [00:05<00:00, 54.0MB/s]p028_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 57.1MB/s]p028_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 58.8MB/s]p028_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 45.5MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p028_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p29 hi] step    500 | lr 2.0e-04 | train 2.000 | val 1.352 (best 1.352) | window Δ n/a | stable | 118k tok/s | phase 1m01s | run ETA ~28m31s | health {'wnorm': 221.313, 'rank_enc1': 892.2, 'rank_dec1': 842.0, 'rarely_active': 0.0083}
+  [p29 hi] step  1,000 | lr 2.0e-04 | train 2.108 | val 1.360 (best 1.352) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~28m31s | health {'wnorm': 221.596, 'rank_enc1': 901.3, 'rank_dec1': 827.0, 'rarely_active': 0.0083}
+  [p29 hi] step  1,500 | lr 2.0e-04 | train 2.152 | val 1.348 (best 1.348) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~28m31s | health {'wnorm': 221.851, 'rank_enc1': 891.1, 'rank_dec1': 829.9, 'rarely_active': 0.0074}
+  [p29 hi] step  2,000 | lr 2.0e-04 | train 2.124 | val 1.365 (best 1.348) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~28m31s | health {'wnorm': 222.079, 'rank_enc1': 901.3, 'rank_dec1': 850.3, 'rarely_active': 0.008}
+  [p29 hi] step  2,500 | lr 2.0e-04 | train 2.135 | val 1.361 (best 1.348) | window Δ n/a | stable | 121k tok/s | phase 5m05s | run ETA ~28m31s | health {'wnorm': 222.305, 'rank_enc1': 904.6, 'rank_dec1': 821.7, 'rarely_active': 0.0072}
+  [p29 hi] step  3,000 | lr 2.0e-04 | train 2.161 | val 1.350 (best 1.348) | window Δ n/a | stable | 121k tok/s | phase 6m06s | run ETA ~28m31s | health {'wnorm': 222.518, 'rank_enc1': 908.3, 'rank_dec1': 830.0, 'rarely_active': 0.0078}
+  [p29 hi] step  3,500 | lr 2.0e-04 | train 2.148 | val 1.363 (best 1.348) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~28m31s | health {'wnorm': 222.715, 'rank_enc1': 897.2, 'rank_dec1': 840.3, 'rarely_active': 0.0081}
+  [p29 hi] step  4,000 | lr 2.0e-04 | train 2.128 | val 1.362 (best 1.348) | window Δ -0.19% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 8m09s | run ETA ~28m31s | health {'wnorm': 222.925, 'rank_enc1': 904.0, 'rank_dec1': 843.3, 'rarely_active': 0.0082}
+  [p29 hi] step  4,500 | lr 1.6e-04 | train 2.142 | val 1.344 (best 1.344) | window Δ +0.27% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m09s | run ETA ~28m31s | health {'wnorm': 222.868, 'rank_enc1': 909.5, 'rank_dec1': 835.0, 'rarely_active': 0.0077}
+  [p29 hi] step  5,000 | lr 1.1e-04 | train 2.124 | val 1.322 (best 1.322) | window Δ +0.60% | cooldown (plateau, ends at 6,000) | 121k tok/s | phase 10m10s | run ETA ~28m31s | health {'wnorm': 222.471, 'rank_enc1': 910.2, 'rank_dec1': 843.1, 'rarely_active': 0.0081}
+  [p29 hi] step  5,500 | lr 6.5e-05 | train 2.021 | val 1.324 (best 1.322) | window Δ +1.58% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m12s | run ETA ~28m31s | health {'wnorm': 221.969, 'rank_enc1': 914.8, 'rank_dec1': 858.5, 'rarely_active': 0.0076}
+  phase 29 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 29 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m24s | run time 6h52m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.311  +0.002 |   48.5   +0.5 |                  7.2           2.781  ◀ trained
+   zh      9.127  -0.027 |    0.6   +0.1 |                  0.2          10.658
+   ar      8.557  -0.043 |    2.6   +0.8 |                  0.1          10.541
+======================================================================================
+
+▶ PHASE 30/30 | training hi (993,016 pairs)
+p029_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p029_hi.pt:   1%|          | 2.10M/267M [00:00<00:12, 21.0MB/s]p029_hi.pt:   5%|▍         | 13.2M/267M [00:00<00:03, 72.2MB/s]p029_hi.pt:   8%|▊         | 20.3M/267M [00:00<00:06, 36.2MB/s]p029_hi.pt:  10%|▉         | 26.7M/267M [00:00<00:09, 26.2MB/s]p029_hi.pt:  11%|█▏        | 30.4M/267M [00:00<00:08, 27.5MB/s]p029_hi.pt:  13%|█▎        | 33.9M/267M [00:01<00:11, 20.8MB/s]p029_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:06, 32.7MB/s]p029_hi.pt:  24%|██▍       | 64.1M/267M [00:01<00:04, 40.8MB/s]p029_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 46.3MB/s]p029_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:03, 50.5MB/s]p029_hi.pt:  39%|███▉      | 105M/267M [00:02<00:03, 53.1MB/s] p029_hi.pt:  41%|████▏     | 110M/267M [00:02<00:03, 50.3MB/s]p029_hi.pt:  43%|████▎     | 115M/267M [00:02<00:04, 36.0MB/s]p029_hi.pt:  48%|████▊     | 128M/267M [00:03<00:03, 40.0MB/s]p029_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 47.0MB/s]p029_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:02, 52.2MB/s]p029_hi.pt:  66%|██████▌   | 176M/267M [00:04<00:01, 53.1MB/s]p029_hi.pt:  70%|███████   | 187M/267M [00:04<00:01, 58.9MB/s]p029_hi.pt:  72%|███████▏  | 194M/267M [00:04<00:01, 39.1MB/s]p029_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:01, 44.5MB/s]p029_hi.pt:  84%|████████▍ | 224M/267M [00:05<00:00, 49.7MB/s]p029_hi.pt:  90%|████████▉ | 240M/267M [00:05<00:00, 52.6MB/s]p029_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 55.5MB/s]p029_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 45.9MB/s]
+  HF: uploaded v14_hindi_s3/ckpt/p029_hi.pt
+No files have been modified since last commit. Skipping to prevent empty commit.
+  [p30 hi] step    500 | lr 2.0e-04 | train 1.997 | val 1.353 (best 1.353) | window Δ n/a | stable | 119k tok/s | phase 1m01s | run ETA ~14m12s | health {'wnorm': 221.327, 'rank_enc1': 914.2, 'rank_dec1': 846.2, 'rarely_active': 0.008}
+  [p30 hi] step  1,000 | lr 2.0e-04 | train 2.108 | val 1.365 (best 1.353) | window Δ n/a | stable | 121k tok/s | phase 2m02s | run ETA ~14m12s | health {'wnorm': 221.618, 'rank_enc1': 902.2, 'rank_dec1': 835.5, 'rarely_active': 0.0074}
+  [p30 hi] step  1,500 | lr 2.0e-04 | train 2.147 | val 1.351 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 3m03s | run ETA ~14m12s | health {'wnorm': 221.862, 'rank_enc1': 909.5, 'rank_dec1': 831.0, 'rarely_active': 0.0084}
+  [p30 hi] step  2,000 | lr 2.0e-04 | train 2.117 | val 1.365 (best 1.351) | window Δ n/a | stable | 118k tok/s | phase 4m05s | run ETA ~14m12s | health {'wnorm': 222.102, 'rank_enc1': 908.9, 'rank_dec1': 831.8, 'rarely_active': 0.0087}
+  [p30 hi] step  2,500 | lr 2.0e-04 | train 2.138 | val 1.356 (best 1.351) | window Δ n/a | stable | 120k tok/s | phase 5m06s | run ETA ~14m12s | health {'wnorm': 222.331, 'rank_enc1': 898.3, 'rank_dec1': 837.5, 'rarely_active': 0.008}
+  [p30 hi] step  3,000 | lr 2.0e-04 | train 2.157 | val 1.350 (best 1.350) | window Δ n/a | stable | 120k tok/s | phase 6m06s | run ETA ~14m12s | health {'wnorm': 222.539, 'rank_enc1': 895.2, 'rank_dec1': 850.4, 'rarely_active': 0.008}
+  [p30 hi] step  3,500 | lr 2.0e-04 | train 2.143 | val 1.363 (best 1.350) | window Δ n/a | stable | 115k tok/s | phase 7m10s | run ETA ~14m12s | health {'wnorm': 222.738, 'rank_enc1': 900.1, 'rank_dec1': 850.8, 'rarely_active': 0.0077}
+  [p30 hi] step  4,000 | lr 2.0e-04 | train 2.122 | val 1.358 (best 1.350) | window Δ +0.14% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 8m11s | run ETA ~14m12s | health {'wnorm': 222.946, 'rank_enc1': 895.3, 'rank_dec1': 864.9, 'rarely_active': 0.0073}
+  [p30 hi] step  4,500 | lr 1.6e-04 | train 2.145 | val 1.341 (best 1.341) | window Δ +0.46% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m12s | run ETA ~14m12s | health {'wnorm': 222.891, 'rank_enc1': 897.5, 'rank_dec1': 842.1, 'rarely_active': 0.0077}
+  [p30 hi] step  5,000 | lr 1.1e-04 | train 2.119 | val 1.323 (best 1.323) | window Δ +0.69% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 10m14s | run ETA ~14m12s | health {'wnorm': 222.493, 'rank_enc1': 908.1, 'rank_dec1': 848.1, 'rarely_active': 0.0073}
+  [p30 hi] step  5,500 | lr 6.5e-05 | train 2.021 | val 1.322 (best 1.322) | window Δ +1.67% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 11m15s | run ETA ~14m12s | health {'wnorm': 221.989, 'rank_enc1': 911.2, 'rank_dec1': 854.6, 'rarely_active': 0.0085}
+  phase 30 finished (plateau); evaluating all languages...
+
+======================================================================================
+ PHASE 30 DONE | trained: hi | 6,000 steps | stop: plateau | peak lr 2.0e-04 | took 12m27s | run time 7h04m
+--------------------------------------------------------------------------------------
+   lang      val       Δ |   chrF      Δ |  chrF (unrestricted)  val (unrestr.)
+   hi      1.311  +0.000 |   48.8   +0.4 |                  7.8           2.768  ◀ trained
+   zh      9.129  +0.002 |    0.6   +0.0 |                  0.2          10.645
+   ar      8.568  +0.010 |    2.6   -0.0 |                  0.1          10.516
+======================================================================================
+
+======================================================================================
+ SUMMARY v14_hindi_s3: 31 phases (incl. phase 0)
+--------------------------------------------------------------------------------------
+  ph lang   steps      stop | chrF hi chrF zh chrF ar | val hi val zh val ar   (script-restricted)
+   0 init       0      init |     2.1     0.0     4.0 |  8.969  9.608  9.145
+   1   hi  31,000   plateau |    48.5     0.5     0.5 |  1.366  8.986  8.488
+   2   hi   6,000   plateau |    48.7     0.5     0.5 |  1.349  8.962  8.478
+   3   hi   6,000   plateau |    49.2     0.4     0.4 |  1.345  8.969  8.482
+   4   hi   6,000   plateau |    48.6     0.5     0.5 |  1.332  8.993  8.511
+   5   hi   6,000   plateau |    48.9     0.4     0.5 |  1.326  9.011  8.502
+   6   hi   6,000   plateau |    48.7     0.5     0.6 |  1.321  8.986  8.484
+   7   hi   6,000   plateau |    49.5     0.5     0.6 |  1.316  9.006  8.491
+   8   hi   6,000   plateau |    48.8     0.5     0.8 |  1.314  9.017  8.522
+   9   hi   6,000   plateau |    49.0     0.5     0.8 |  1.312  9.014  8.516
+  10   hi   6,000   plateau |    49.5     0.5     0.7 |  1.310  9.030  8.500
+  11   hi   6,000   plateau |    48.4     0.5     0.8 |  1.308  9.022  8.502
+  12   hi   6,000   plateau |    48.8     0.5     0.8 |  1.307  9.041  8.507
+  13   hi   6,000   plateau |    49.1     0.6     1.0 |  1.310  9.050  8.525
+  14   hi   6,000   plateau |    48.4     0.5     1.1 |  1.305  9.027  8.491
+  15   hi   6,000   plateau |    48.6     0.5     1.1 |  1.305  9.066  8.548
+  16   hi   6,000   plateau |    48.4     0.4     1.2 |  1.306  9.073  8.529
+  17   hi   6,000   plateau |    48.6     0.6     1.6 |  1.306  9.037  8.506
+  18   hi   6,000   plateau |    48.9     0.5     2.0 |  1.306  9.053  8.514
+  19   hi   6,000   plateau |    48.5     0.6     1.8 |  1.308  9.044  8.512
+  20   hi   6,000   plateau |    49.0     0.6     2.0 |  1.307  9.091  8.561
+  21   hi   6,000   plateau |    48.8     0.5     1.9 |  1.306  9.085  8.542
+  22   hi   6,000   plateau |    48.6     0.6     2.0 |  1.304  9.130  8.554
+  23   hi   6,000   plateau |    48.1     0.5     1.7 |  1.305  9.170  8.618
+  24   hi   6,000   plateau |    48.8     0.4     1.7 |  1.306  9.107  8.546
+  25   hi   6,000   plateau |    49.7     0.6     1.6 |  1.304  9.110  8.558
+  26   hi   6,000   plateau |    48.9     0.6     1.6 |  1.308  9.130  8.566
+  27   hi   6,000   plateau |    48.2     0.6     2.0 |  1.308  9.125  8.578
+  28   hi   6,000   plateau |    47.9     0.5     1.9 |  1.309  9.153  8.600
+  29   hi   6,000   plateau |    48.5     0.6     2.6 |  1.311  9.127  8.557
+  30   hi   6,000   plateau |    48.8     0.6     2.6 |  1.311  9.129  8.568
+======================================================================================
+p030_hi.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p030_hi.pt:   0%|          | 1.18M/267M [00:00<00:25, 10.2MB/s]p030_hi.pt:   4%|▍         | 10.6M/267M [00:00<00:08, 30.0MB/s]p030_hi.pt:   6%|▌         | 16.1M/267M [00:00<00:12, 20.0MB/s]p030_hi.pt:  12%|█▏        | 32.1M/267M [00:01<00:06, 34.1MB/s]p030_hi.pt:  18%|█▊        | 48.1M/267M [00:01<00:04, 43.9MB/s]p030_hi.pt:  23%|██▎       | 60.2M/267M [00:01<00:04, 42.8MB/s]p030_hi.pt:  24%|██▍       | 64.6M/267M [00:01<00:06, 31.2MB/s]p030_hi.pt:  30%|██▉       | 80.1M/267M [00:02<00:04, 38.9MB/s]p030_hi.pt:  36%|███▌      | 96.1M/267M [00:02<00:04, 42.5MB/s]p030_hi.pt:  42%|████▏     | 112M/267M [00:02<00:03, 45.6MB/s] p030_hi.pt:  48%|████▊     | 128M/267M [00:03<00:02, 50.1MB/s]p030_hi.pt:  54%|█████▍    | 144M/267M [00:03<00:02, 53.8MB/s]p030_hi.pt:  60%|█████▉    | 160M/267M [00:03<00:01, 56.5MB/s]p030_hi.pt:  66%|██████▌   | 176M/267M [00:03<00:01, 58.5MB/s]p030_hi.pt:  72%|███████▏  | 192M/267M [00:04<00:01, 57.8MB/s]p030_hi.pt:  78%|███████▊  | 208M/267M [00:04<00:00, 60.0MB/s]p030_hi.pt:  84%|████████▍ | 224M/267M [00:04<00:00, 61.4MB/s]p030_hi.pt:  90%|████████▉ | 240M/267M [00:04<00:00, 62.4MB/s]p030_hi.pt:  96%|█████████▌| 256M/267M [00:05<00:00, 62.5MB/s]p030_hi.pt: 100%|██████████| 267M/267M [00:05<00:00, 49.8MB/s]
+No files have been modified since last commit. Skipping to prevent empty commit.
+HF CHECK v14_hindi_s3: 31 of 31 checkpoints on HF with the right size | all there
+RUN COMPLETE: v14_hindi_s3
