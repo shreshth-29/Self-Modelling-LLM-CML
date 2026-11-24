@@ -214,8 +214,56 @@ def part_train():
             trN_self05=at(last, "0.5", "self"), trN_look05=at(last, "0.5", "look"),
             chrf_end_self=at(last, "1.0", "self", "d_score"), chrf_end_task=at(last, "1.0", "task", "d_score"))
 
+# =============================================================================================== 5. lesion, then a held-out language
+def steps_to(steps, loss, target):
+    """first training step at which the loss is at or below target (straight line between evaluation points). nan if never."""
+    steps, loss = np.asarray(steps, float), np.asarray(loss, float)
+    o = np.argsort(steps); steps, loss = steps[o], loss[o]
+    for i in range(len(steps)):
+        if loss[i] <= target:
+            if i == 0 or loss[i - 1] <= loss[i]:
+                return float(steps[i])
+            return float(steps[i - 1] + (steps[i] - steps[i - 1]) * (loss[i - 1] - target) / (loss[i - 1] - loss[i]))
+    return np.nan
+
+FRESH = []
+def part_heldout():
+    for label in sorted({os.path.basename(os.path.dirname(os.path.dirname(f))) for f in glob.glob(f"{ROOT}/train_heldout/*/p*/curves.csv")}):
+        cur = pd.concat([pd.read_csv(f) for f in sorted(glob.glob(f"{ROOT}/train_heldout/{label}/p*/curves.csv"))])
+        last = int(cur["step"].max())
+        if label.startswith("fresh"):
+            e = cur[cur["step"] == last]
+            FRESH.append({"untrained model": label, "loss at the end": e["val_loss"].mean(), "chrF at the end": e["score"].mean(), "repeats": e["seed"].nunique(), "steps": last})
+            continue
+        none = cur[cur["cond"] == "none"][["start", "seed", "step", "val_loss", "score"]].rename(columns={"val_loss": "none_loss", "score": "none_score"})
+        x = split_cond(cur[cur["cond"] != "none"]).merge(none, on=["start", "seed", "step"], how="left")
+        x = x[x["dose"] == "1.0"]
+        x["extra"] = x["val_loss"] - x["none_loss"]
+        rows = []
+        for (st, sd, grp), q in x.groupby(["start", "seed", "group"]):
+            n0 = none[(none["start"] == st) & (none["seed"] == sd)]
+            tgt = n0[n0["step"] == CFG.HELDOUT_REACH]["none_loss"]
+            reach = steps_to(q["step"], q["val_loss"], float(tgt.iloc[0])) if len(tgt) else np.nan
+            late = q[q["step"] >= 100] if (q["step"] >= 100).any() else q
+            end = q[q["step"] == last]
+            rows.append({"start": st, "seed": sd, "group": grp, "avg": late["extra"].mean(), "end": end["extra"].mean(),
+                         "steps": min(reach, last) if np.isfinite(reach) else (float(last) if len(tgt) else np.nan),
+                         "chrf": (end["score"] - end["none_score"]).mean()})
+        w = pd.DataFrame(rows).pivot_table(index=["start", "seed"], columns="group", values=["avg", "end", "steps", "chrf"])
+        if not (("avg", "self") in w.columns and ("avg", "task") in w.columns):
+            continue
+        g = lambda a, b: w[(a, b)].mean() if (a, b) in w.columns else np.nan
+        put(label, ho_avg_self=g("avg", "self"), ho_avg_task=g("avg", "task"), ho_avg_diff=g("avg", "self") - g("avg", "task"),
+            ho_end_self=g("end", "self"), ho_end_task=g("end", "task"), ho_end_diff=g("end", "self") - g("end", "task"),
+            ho_steps_self=g("steps", "self"), ho_steps_task=g("steps", "task"), ho_steps_diff=g("steps", "self") - g("steps", "task"),
+            ho_chrf_diff=g("chrf", "task") - g("chrf", "self"),
+            ho_k=int((w[("avg", "self")] > w[("avg", "task")]).sum()), ho_n=len(w), ho_last_step=last)
+
 # =============================================================================================== tables, tests, figures
-KEY = [("hi_les_diff", "IMPORTANCE on Hindi, lesion without training: loss rise, self minus task"),
+KEY = [("ho_avg_diff", "IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task"),
+       ("ho_steps_diff", "IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task"),
+       ("ho_end_diff", "IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task"),
+       ("hi_les_diff", "IMPORTANCE on Hindi, lesion without training: loss rise, self minus task"),
        ("hi_chrf_diff", "IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task"),
        ("hi_trN_diff", "IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task"),
        ("hi_prev_les_diff", "PREVIOUS language = Hindi, lesion without training: loss rise, self minus task (continual runs only)"),
@@ -263,12 +311,14 @@ COL = {"hindi": "#2A6F97", "related": "#00918F", "distant": "#C8102E"}      # th
 def fig_trend(T):
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
     fams = [f for f in CFG.FAMILY_ORDER if f in set(T["family"])]
-    panels = [("hi_les_diff", "1. Importance: lesion, no training", "self minus task\n(loss rise on Hindi)"),
-              ("hi_chrf_diff", "2. Importance: lesion, no training", "self minus task\n(chrF points lost on Hindi)"),
-              ("hi_trN_diff", "3. Importance: lesion, then 1,000 steps of Hindi", "self minus task\n(extra Hindi loss still there at the end)"),
-              ("hi_prev_les_diff", "4. Previous language: lesion, no training", "self minus task\n(loss rise on Hindi, one phase after Hindi)"),
-              ("hi_prev_tr_end_diff", "5. Previous language: lesion, then the next language", "self minus task\n(extra Hindi forgetting at the end)"),
-              ("gap_matched", "6. Persistence (existence, not importance)", "self minus task\n(persistence from one phase to the next)")]
+    panels = [("ho_avg_diff", "New language (Indonesian): lesion, then learn it", "self minus task\n(extra Indonesian loss while learning)"),
+              ("ho_steps_diff", "New language (Indonesian): time to catch up", "self minus task\n(extra training steps to reach the untouched model)"),
+              ("hi_les_diff", "Hindi: lesion, no training", "self minus task\n(loss rise on Hindi)"),
+              ("hi_chrf_diff", "Hindi: lesion, no training", "self minus task\n(chrF points lost on Hindi)"),
+              ("hi_trN_diff", "Hindi: lesion, then 1,000 steps of Hindi", "self minus task\n(extra Hindi loss still there at the end)"),
+              ("hi_prev_les_diff", "Previous language (Hindi): lesion, no training", "self minus task\n(loss rise on Hindi, one phase after Hindi)"),
+              ("hi_prev_tr_end_diff", "Previous language (Hindi): lesion, then the next language", "self minus task\n(extra Hindi forgetting at the end)"),
+              ("gap_matched", "Persistence (existence, not importance)", "self minus task\n(persistence from one phase to the next)")]
     panels = [p for p in panels if p[0] in T and T[p[0]].notna().any()]
     if not panels or not fams:
         return
@@ -296,8 +346,9 @@ def fig_trend(T):
         ax.grid(axis="y", color="#EEEEEE", lw=0.8); ax.set_axisbelow(True)
     fig.text(0.01, 0.01, "One dot = one model (one seed). Filled = new seeds, hollow = the old seed-0 runs. Line and number = average of the models. "
              "Above the dotted zero line = higher for self neurons than for task neurons.\n"
-             "Panels 1 to 5 are measured on Hindi in every kind of run (the one language they share), same number of self and task neurons lesioned, all 8 layers.\n"
-             "Previous language (panels 4, 5): a Hindi-only model has none, so those panels show the two continual kinds of run.", fontsize=8, color="#555555")
+             "Every importance panel uses ONE language for all three kinds of run (Indonesian, which no model has seen, or Hindi, which all have), "
+             "the same number of self and task neurons lesioned, all 8 layers, and every checkpoint from phase 4 on.\n"
+             "Previous-language panels: a Hindi-only model has no previous language, so they show the two continual kinds of run.", fontsize=8, color="#555555")
     fig.tight_layout(rect=(0, 0.07, 1, 1)); fig.savefig(f"{OUT}/trend.png", dpi=170); plt.close(fig)
 
 def fig_gap_by_phase(P):
@@ -336,6 +387,7 @@ guarded("self size", part_sizes)
 P = guarded("persistence", part_persistence)
 guarded("lesion without training", part_static)
 guarded("lesion with training", part_train)
+guarded("lesion with a held-out language", part_heldout)
 
 T = pd.DataFrame([dict(label=k, **v) for k, v in M.items()]) if M else pd.DataFrame(columns=["label"])
 T["family"] = [family_of(l) for l in T["label"]]; T["tag"] = [l.rsplit("_", 1)[1] for l in T["label"]]
@@ -345,7 +397,7 @@ T = T.sort_values(["_o", "tag"]).drop(columns="_o").reset_index(drop=True)
 T.to_csv(f"{OUT}/per_model.csv", index=False)
 
 def show(title, cols, note=""):
-    cols = [c for c in cols if c in T.columns]
+    cols = [c for c in cols if c in T.columns and T[c].notna().any()]
     if not cols or not len(T):
         return
     say(f"=== {title} ===")
@@ -365,6 +417,14 @@ show("3b. The same with 'silence' (each neuron held at its own average) in place
 show("4. Lesion, then training on the next language: held-out loss minus the untouched model's", ["tr0_self", "tr0_task", "trN_self", "trN_task", "trN_diff", "trN_k", "trN_n", "trN_self05", "trN_look05", "chrf_end_self", "chrf_end_task", "trN_step"],
      "tr0 = right after the lesion. trN = at the last training step (trN_step). trN_k of trN_n = in how many (start x repeat) runs the self lesion was still worse. chrf_end = chrF vs the untouched model.")
 
+show("5a. THE TREND QUESTION: importance of the self for learning a NEW language (Indonesian), which no model has seen",
+     ["ho_avg_self", "ho_avg_task", "ho_avg_diff", "ho_steps_self", "ho_steps_task", "ho_steps_diff", "ho_end_self", "ho_end_task", "ho_end_diff", "ho_chrf_diff", "ho_k", "ho_n", "ho_last_step"],
+     f"Lesion, then {CFG.HELDOUT_STEPS:,} training steps on Indonesian, from every checkpoint. All numbers are relative to the untouched model from the same checkpoint. "
+     f"ho_avg = extra Indonesian loss, average of the evaluations from step 100 on. ho_steps = training steps needed to reach the loss the untouched model has at step {CFG.HELDOUT_REACH} "
+     "(so the untouched model's own value is that step count; capped at the last step). ho_end = extra loss at the last step. ho_chrf_diff = chrF of the task-lesioned model "
+     "minus the self-lesioned one at the end. ho_k of ho_n = checkpoints where the self lesion was worse (ho_avg). diff = self minus task.")
+if FRESH:
+    say("for reference, an UNTRAINED model learning Indonesian with the same settings:"); say(pd.DataFrame(FRESH).round(3).to_string(index=False)); say()
 show("5. THE TREND QUESTION: importance of the self on HINDI, the one language all three kinds of run share",
      ["hi_les_self", "hi_les_task", "hi_les_diff", "hi_chrf_self", "hi_chrf_task", "hi_chrf_diff", "hi_les_n", "hi_trN_self", "hi_trN_task", "hi_trN_diff", "hi_chrf_end_diff"],
      "Same language and same test sentences everywhere, so the three kinds of run can be compared directly. hi_les = loss rise on Hindi after the lesion "

@@ -23,7 +23,7 @@ FAMILIES = {
 }
 FAMILY_ORDER = ["hindi", "related", "distant"]   # left to right on the trend figure: least to most different languages
 SEEDS = [1, 2, 3]                                 # new seeds (seed 0 = the old runs below)
-N_PHASES = 15                                     # 5 full cycles of 3 languages; phase 0 = the untrained model
+N_PHASES = 18                                     # 6 full cycles of 3 languages; phase 0 = the untrained model
 
 # Old single-seed runs, already on HF. Same model and training recipe, so they are analysed with the same code as extra models.
 # They are marked "old" in every table and drawn hollow on the figure.
@@ -52,13 +52,21 @@ def models(seeds=None, families=None, include_old=True):
     return out
 
 # ---------------------------------------------------------------- analysis (all through core_v11.py, tau 0.2, FLORES dev)
-SIZE_PHASES = [0, 1, 2, 3, 6, 9, 12, 13, 14, 15]  # self size per layer at these checkpoints
-PERSIST_FROM = list(range(3, 15))                 # persistence between phase p and p+1, for p = 3 .. 14 (4 full cycles)
-HEADLINE_FROM = list(range(9, 15))                # the last 2 cycles: used for the headline persistence numbers
-LESION_PHASES = [13, 14, 15]                      # the last cycle: every language is "the one just trained" once
-STATIC_DRAWS = "0,1"                              # two random draws of the lesioned neurons
-TRAIN_SEEDS = "0,1"                               # lesion, then 1,000 steps on the next language: two repeats per start
-TRAIN_STEPS = 1000
+# MANY checkpoints per model, not a hand-picked few: every phase after the first cycle is tested.
+# With 18 phases that is 15 checkpoints per model = 5 per language per seed (phases 4 .. 18).
+SIZE_PHASES = list(range(0, N_PHASES + 1))        # self size per layer at every checkpoint
+PERSIST_FROM = list(range(3, N_PHASES))           # persistence between phase p and p+1, for p = 3 .. 17
+HEADLINE_FROM = list(range(6, N_PHASES))          # p = 6 .. 17 (4 cycles): used for the headline persistence numbers
+LESION_PHASES = list(range(4, N_PHASES + 1))      # lesion tests at EVERY checkpoint from phase 4 on
+STATIC_DRAWS = "0,1"                              # lesion without training: two random draws of the lesioned neurons, three doses
+# lesion, then training. One repeat per checkpoint and three conditions (untouched, self, task): the many checkpoints are the repeats.
+TRAIN_CONDS = "none,self@1.0,task@1.0"
+TRAIN_SEEDS = "0"
+TRAIN_STEPS = 1000                                # ... on the run's next language
+HELDOUT = "indonesian"                            # ... and on a language no model has seen (same for every kind of run)
+HELDOUT_STEPS = 1500                              # as in the earlier Indonesian test (v11)
+HELDOUT_LR = "1e-4"
+HELDOUT_REACH = 300                               # "time to catch up": steps a lesioned model needs to reach the loss the untouched one has at this step
 
 # ---------------------------------------------------------------- GPU memory each kind of job needs (GB); the scheduler packs jobs by this
 NEED_GB = {"train": float(os.environ.get("V14_TRAIN_GB", 22.5)),      # one training run (16,000 tokens per batch)

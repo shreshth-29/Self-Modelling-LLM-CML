@@ -5,7 +5,8 @@ Stages, in this order (--stage all, or a comma list):
   test     a tiny version of EVERYTHING (training, upload to HF, every lesion test, the summary). Stops here if anything fails.
   train    every (kind of run, seed) of v14_config.py, as many at once as the GPUs and the memory allow; failed runs are retried
   verify   lists HF and compares every checkpoint by size; uploads what is missing
-  analyze  self size, persistence and the count-matched lesion tests (core_v11.py) on every model, incl. the old seed-0 runs
+  analyze  self size, persistence and the count-matched lesion tests (core_v11.py) at EVERY checkpoint from phase 4 on, on every
+           model incl. the old seed-0 runs: lesion without training, lesion + the next language, lesion + a held-out language
   summary  one report + figures across seeds (summary_v14.py)
   push     commit + push (done after verify, after analyze and after summary)
 
@@ -188,7 +189,7 @@ def stage_prep():
     par = max(1, min(par, int((ram_gb() - 4) // CFG.NEED_RAM["train"])))
     say(f"  training runs that fit at the same time: about {par}  (limited by GPU memory and by ordinary memory, 14 GB per run)")
     free = shutil.disk_usage(REPO).free / 2 ** 30
-    want = len(NEW) * (N + 1) * 0.27 + (5 * len(OLD) if OLD else 0) + 8
+    want = len(NEW) * (N + 1) * 0.27 + (N + 1) * 0.27 * len(OLD) + 8
     say(f"  disk free: {free:.0f} GB | needed: about {want:.0f} GB")
     if free < want and not os.environ.get("V14_SKIP_DISK"):
         say("STOP: not enough disk. Rent more disk, or set V14_SKIP_DISK=1 to go on anyway."); sys.exit(1)
@@ -232,6 +233,19 @@ def stage_prep():
         for f in miss:
             print("   ", f)
         sys.exit(1)
+    # the held-out language (Indonesian): plain text, made once by prep_newtasks.py
+    ho = [f"data/newtask/{CFG.HELDOUT}/{s}.jsonl" for s in ("train", "val", "test")]
+    if not all(os.path.exists(f) for f in ho):
+        try:
+            from huggingface_hub import snapshot_download
+            snapshot_download(HF.api().whoami()["name"] + "/cml-lang-self-data", repo_type="dataset", local_dir="data", allow_patterns=[f"newtask/{CFG.HELDOUT}/*"])
+        except Exception:
+            pass
+    if not all(os.path.exists(f) for f in ho):
+        say("  making the held-out language data (prep_newtasks.py, a few minutes)")
+        r = sh([PY, "-u", "prep_newtasks.py"])
+        if not all(os.path.exists(f) for f in ho):
+            print(r.stdout[-1500:], r.stderr[-1500:]); say("STOP: the held-out language data could not be made (lines above)."); sys.exit(1)
     # the tokenizers must be exactly the ones the old runs used: compare with the piece lists that are in git
     import sentencepiece as spm
     for t in toks:
@@ -252,7 +266,9 @@ def analysis_jobs(mods, outroot, tiny=False):
     les_ph = [3] if tiny else CFG.LESION_PHASES
     static_x = ["--draws", "0", "--n_val", "30", "--n_chrf", "8"] if tiny else ["--draws", CFG.STATIC_DRAWS]
     train_x = (["--seeds", "0", "--steps", "20", "--conds", "none,self@1.0,task@1.0"] if tiny
-               else ["--seeds", CFG.TRAIN_SEEDS, "--steps", str(CFG.TRAIN_STEPS)])
+               else ["--seeds", CFG.TRAIN_SEEDS, "--steps", str(CFG.TRAIN_STEPS), "--conds", CFG.TRAIN_CONDS])
+    held_x = (["--seeds", "0", "--steps", "20", "--conds", "none,self@1.0,task@1.0", "--lr", CFG.HELDOUT_LR] if tiny
+              else ["--seeds", CFG.TRAIN_SEEDS, "--steps", str(CFG.HELDOUT_STEPS), "--conds", CFG.TRAIN_CONDS, "--lr", CFG.HELDOUT_LR])
     jobs = []
     for m in mods:
         fam = CFG.FAMILIES[m["family"]]; lab, run = m["label"], m["run"]; have = here(run)
@@ -278,6 +294,8 @@ def analysis_jobs(mods, outroot, tiny=False):
             add(f"lesion + train, from phase {p}", f"train_next/{lab}/p{p:03d}",
                 ["--part", "train", "--task", "next", "--mode", "lesion", "--model", f"{lab}_p{p}={run}:{p}"] + train_x
                 + (["--next_lang", fam["only"]] if fam["only"] else []), "retrain", clean=False)
+            add(f"lesion + held-out language, from phase {p}", f"train_heldout/{lab}/p{p:03d}",
+                ["--part", "train", "--task", CFG.HELDOUT, "--mode", "lesion", "--model", f"{lab}_p{p}={run}:{p}"] + held_x, "retrain", clean=False)
         missing = sorted((set(size_ph) | set(pers_ph) | {p + 1 for p in pers_ph} | set(les_ph)) - have)
         if missing:
             say(f"  {lab} ({run}): checkpoints of phases {missing} are not available; the tests that need them are left out")
@@ -308,8 +326,8 @@ def stage_test():
     except Exception as e:
         say(f"  {type(e).__name__}: {e}"); stop("upload of a checkpoint to HF")
     jobs = analysis_jobs(mods, root, tiny=True)
-    if len(jobs) != 4 * len(mods):                                # per model: self size, 1 persistence, static lesion, 1 lesion + train
-        stop(f"building the analysis jobs (got {len(jobs)}, expected {4 * len(mods)})")
+    if len(jobs) != 5 * len(mods):                                # per model: self size, 1 persistence, static lesion, lesion + next language, lesion + held-out language
+        stop(f"building the analysis jobs (got {len(jobs)}, expected {5 * len(mods)})")
     bad = run_jobs(jobs)
     if bad:
         stop(bad[0], os.path.join(LOGS, f"{root}_analysis_{bad[0].split()[-1]}.log"))
@@ -380,6 +398,12 @@ def stage_analyze():
             got = HF.download(m["run"], need)
             say(f"  {m['run']}: {len(got)} of {len(need)} needed checkpoints are on this machine")
     jobs = analysis_jobs(mods, CFG.OUTROOT)
+    for ls in sorted({CFG.FAMILIES[m["family"]]["langset"] for m in mods}):      # reference: an UNTRAINED model learning the held-out language
+        d = os.path.join(REPO, "analysis", CFG.OUTROOT, f"train_heldout/fresh_{ls}/p000")
+        jobs.append(dict(name=f"held-out language, untrained model ({ls})", env={"CML_LANGSET": ls}, log=os.path.join(LOGS, f"{CFG.OUTROOT}_analysis_fresh_{ls}.log"),
+                         cmd=[PY, "-u", "core_v11.py", "--outroot", CFG.OUTROOT, "--family", "fresh", "--out", f"train_heldout/fresh_{ls}/p000", "--part", "train",
+                              "--task", CFG.HELDOUT, "--model", "fresh", "--seeds", "0,1,2", "--steps", str(CFG.HELDOUT_STEPS), "--lr", CFG.HELDOUT_LR],
+                         need=CFG.NEED_GB["retrain"], ram=CFG.NEED_RAM["retrain"], done=os.path.join(d, ".done"), clean=None))
     say(f"  {len(jobs)} jobs. Progress per model: logs/{CFG.OUTROOT}_analysis_<model>.log")
     run_jobs(jobs, retries=1)
 
