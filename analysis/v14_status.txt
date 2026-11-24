@@ -1,4 +1,4 @@
-checked: Tue 2026-11-24 18:14 UTC
+checked: Tue 2026-11-24 18:29 UTC
 
 --- main log, last 15 lines
 Tue 17:41     v14_hindi_s1: phase 30 of 30 finished (hi)
@@ -18,34 +18,34 @@ Tue 18:11     v14_hindi_s2: phase 30 of 30 finished (hi)
 Tue 18:11     v14_hindi_s3: phase 17 of 30 finished (hi)
 
 --- last phase finished, per run
-v14_distant_s1: phase 26 (zh) | hours so far 11.4
-v14_distant_s2: phase 26 (zh) | hours so far 11.3
-v14_distant_s3: phase 26 (zh) | hours so far 11.5
+v14_distant_s1: phase 27 (ar) | hours so far 11.7
+v14_distant_s2: phase 27 (ar) | hours so far 11.6
+v14_distant_s3: phase 27 (ar) | hours so far 11.8
 v14_hindi_s1: phase 30 (hi) | hours so far 7.1
 v14_hindi_s2: phase 30 (hi) | hours so far 7.1
-v14_hindi_s3: phase 17 (hi) | hours so far 4.4
+v14_hindi_s3: phase 18 (hi) | hours so far 4.6
 v14_related_s1: phase 30 (pa) | hours so far 11.5
 v14_related_s2: phase 30 (pa) | hours so far 11.4
 v14_related_s3: phase 30 (pa) | hours so far 11.3
 
 --- checkpoints: on this machine | on Hugging Face with the right size
-v14_distant_s1 | 27 | 27 
-v14_distant_s2 | 27 | 27 
-v14_distant_s3 | 27 | 27 
+v14_distant_s1 | 28 | 28 
+v14_distant_s2 | 28 | 28 
+v14_distant_s3 | 28 | 28 
 v14_related_s1 | 31 | 31 
 v14_related_s2 | 31 | 31 
 v14_related_s3 | 31 | 31 
 v14_hindi_s1 | 31 | 31 
 v14_hindi_s2 | 31 | 31 
-v14_hindi_s3 | 18 | 18 
+v14_hindi_s3 | 19 | 19 
 
 --- speed: the newest progress line of each run
-  [p27 ar] step  3,500 | lr 2.0e-04 | train 2.820 | val 1.914 (best 1.914) | window Δ n/a | stable | 112k tok/s | phase 7m11s | run ETA ~1h45m | health {'wnorm': 230.391, 'ra
-  [p27 ar] step  7,500 | lr 2.0e-04 | train 2.699 | val 1.884 (best 1.884) | window Δ +0.68% | stable | 112k tok/s | phase 15m30s | run ETA ~1h43m | health {'wnorm': 230.817,
-  [p27 ar] step  2,000 | lr 2.0e-04 | train 2.908 | val 1.951 (best 1.951) | window Δ n/a | stable | 112k tok/s | phase 4m08s | run ETA ~1h45m | health {'wnorm': 229.575, 'ra
+  [p28 hi] step  1,000 | lr 2.0e-04 | train 2.792 | val 1.586 (best 1.586) | window Δ n/a | stable | 120k tok/s | phase 2m03s | run ETA ~1h18m | health {'wnorm': 229.383, 'ra
+  [p28 hi] step  4,500 | lr 2.0e-04 | train 2.351 | val 1.345 (best 1.345) | window Δ +7.88% | stable | 120k tok/s | phase 9m14s | run ETA ~1h17m | health {'wnorm': 229.975, 
+  [p28 hi] step    500 | lr 2.0e-04 | train 3.597 | val 1.848 (best 1.848) | window Δ n/a | stable | 117k tok/s | phase 1m02s | run ETA ~1h18m | health {'wnorm': 228.655, 'ra
   [p30 hi] step  5,500 | lr 6.5e-05 | train 2.020 | val 1.318 (best 1.318) | window Δ +1.86% | cooldown (plateau, ends at 6,000) | 117k tok/s | phase 11m15s | run ETA ~14m10s
   [p30 hi] step  5,500 | lr 6.5e-05 | train 2.017 | val 1.314 (best 1.311) | window Δ +1.72% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m10s | run ETA ~14m12s
-  [p18 hi] step  2,500 | lr 2.0e-04 | train 2.178 | val 1.358 (best 1.353) | window Δ n/a | stable | 121k tok/s | phase 5m08s | run ETA ~3h20m | health {'wnorm': 221.881, 'ra
+  [p19 hi] step  3,500 | lr 2.0e-04 | train 2.189 | val 1.361 (best 1.347) | window Δ n/a | stable | 118k tok/s | phase 7m08s | run ETA ~3h03m | health {'wnorm': 222.378, 'ra
   [p30 pa] step  7,500 | lr 6.5e-05 | train 2.512 | val 1.830 (best 1.830) | window Δ +1.02% | cooldown (plateau, ends at 8,000) | 116k tok/s | phase 15m22s | run ETA ~23m08s
   [p30 pa] step  8,000 | lr 6.5e-05 | train 2.542 | val 1.816 (best 1.816) | window Δ +1.31% | cooldown (plateau, ends at 8,500) | 115k tok/s | phase 16m26s | run ETA ~22m58s
   [p30 pa] step  7,500 | lr 6.5e-05 | train 2.505 | val 1.817 (best 1.817) | window Δ +1.53% | cooldown (plateau, ends at 8,000) | 116k tok/s | phase 15m21s | run ETA ~22m50s
@@ -53,14 +53,14 @@ v14_hindi_s3 | 18 | 18
 --- problems (empty = none)
 
 --- GPUs (index, % busy, memory used)
-0, 92 %, 19708 MiB
-1, 91 %, 19888 MiB
-2, 92 %, 19892 MiB
+0, 97 %, 19708 MiB
+1, 99 %, 19888 MiB
+2, 93 %, 19892 MiB
 3, 0 %, 2 MiB
 4, 0 %, 2 MiB
 5, 0 %, 2 MiB
-6, 94 %, 19892 MiB
+6, 92 %, 19892 MiB
 7, 0 %, 2 MiB
 
 --- disk
-overlay         258G   72G  187G  28% /
+overlay         258G   73G  186G  29% /
