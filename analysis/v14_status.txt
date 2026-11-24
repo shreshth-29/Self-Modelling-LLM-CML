@@ -1,0 +1,66 @@
+checked: Tue 2026-11-24 17:28 UTC
+
+--- main log, last 15 lines
+Tue 16:41     v14_related_s1: phase 24 of 30 finished (pa)
+Tue 16:41     v14_related_s2: phase 25 of 30 finished (hi)
+Tue 16:41     v14_related_s3: phase 25 of 30 finished (hi)
+Tue 16:41     v14_hindi_s1: phase 30 of 30 finished (hi)
+Tue 16:41     v14_hindi_s2: phase 30 of 30 finished (hi)
+Tue 16:41     v14_hindi_s3: phase 9 of 30 finished (hi)
+Tue 17:11     v14_distant_s1: phase 23 of 30 finished (zh)
+Tue 17:11     v14_distant_s2: phase 23 of 30 finished (zh)
+Tue 17:11     v14_distant_s3: phase 23 of 30 finished (zh)
+Tue 17:11     v14_related_s1: phase 26 of 30 finished (gu)
+Tue 17:11     v14_related_s2: phase 27 of 30 finished (pa)
+Tue 17:11     v14_related_s3: phase 27 of 30 finished (pa)
+Tue 17:11     v14_hindi_s1: phase 30 of 30 finished (hi)
+Tue 17:11     v14_hindi_s2: phase 30 of 30 finished (hi)
+Tue 17:11     v14_hindi_s3: phase 12 of 30 finished (hi)
+
+--- last phase finished, per run
+v14_distant_s1: phase 24 (ar) | hours so far 10.6
+v14_distant_s2: phase 24 (ar) | hours so far 10.5
+v14_distant_s3: phase 24 (ar) | hours so far 10.8
+v14_hindi_s1: phase 30 (hi) | hours so far 7.1
+v14_hindi_s2: phase 30 (hi) | hours so far 7.1
+v14_hindi_s3: phase 13 (hi) | hours so far 3.5
+v14_related_s1: phase 27 (pa) | hours so far 10.5
+v14_related_s2: phase 27 (pa) | hours so far 10.5
+v14_related_s3: phase 27 (pa) | hours so far 10.4
+
+--- checkpoints: on this machine | on Hugging Face with the right size
+v14_distant_s1 | 25 | 25 
+v14_distant_s2 | 25 | 25 
+v14_distant_s3 | 25 | 25 
+v14_related_s1 | 28 | 28 
+v14_related_s2 | 28 | 28 
+v14_related_s3 | 28 | 28 
+v14_hindi_s1 | 31 | 31 
+v14_hindi_s2 | 31 | 31 
+v14_hindi_s3 | 14 | 14 
+
+--- speed: the newest progress line of each run
+  [p25 hi] step  4,000 | lr 2.0e-04 | train 2.356 | val 1.363 (best 1.363) | window Δ +14.39% | stable | 121k tok/s | phase 8m10s | run ETA ~2h39m | health {'wnorm': 230.198,
+  [p25 hi] step  8,000 | lr 2.0e-04 | train 2.280 | val 1.318 (best 1.318) | window Δ +1.05% | stable | 120k tok/s | phase 16m24s | run ETA ~2h37m | health {'wnorm': 230.547,
+p024_ar.pt:   0%|          | 0.00/267M [00:00<?, ?B/s]p024_ar.pt:   3%|▎         | 8.59M/267M [00:00<00:03, 85.5MB/s]p024_ar.pt:   6%|▋         | 17.2M/267M [00:00<00:0
+  [p30 hi] step  5,500 | lr 6.5e-05 | train 2.020 | val 1.318 (best 1.318) | window Δ +1.86% | cooldown (plateau, ends at 6,000) | 117k tok/s | phase 11m15s | run ETA ~14m10s
+  [p30 hi] step  5,500 | lr 6.5e-05 | train 2.017 | val 1.314 (best 1.311) | window Δ +1.72% | cooldown (plateau, ends at 6,000) | 118k tok/s | phase 11m10s | run ETA ~14m12s
+  [p14 hi] step  4,500 | lr 1.6e-04 | train 2.208 | val 1.339 (best 1.339) | window Δ +0.52% | cooldown (plateau, ends at 6,000) | 120k tok/s | phase 9m13s | run ETA ~4h38m |
+  [p28 hi] step  7,000 | lr 2.0e-04 | train 2.266 | val 1.345 (best 1.345) | window Δ +0.98% | stable | 121k tok/s | phase 14m19s | run ETA ~1h10m | health {'wnorm': 231.272,
+  [p28 hi] step  9,500 | lr 2.0e-04 | train 2.288 | val 1.332 (best 1.332) | window Δ +0.32% | cooldown (plateau, ends at 11,500) | 121k tok/s | phase 19m23s | run ETA ~1h09m
+  [p28 hi] step  9,500 | lr 6.5e-05 | train 2.210 | val 1.288 (best 1.288) | window Δ +1.81% | cooldown (plateau, ends at 10,000) | 121k tok/s | phase 19m20s | run ETA ~1h09m
+
+--- problems (empty = none)
+
+--- GPUs (index, % busy, memory used)
+0, 94 %, 19708 MiB
+1, 91 %, 19888 MiB
+2, 93 %, 19892 MiB
+3, 94 %, 22564 MiB
+4, 93 %, 18836 MiB
+5, 100 %, 18830 MiB
+6, 92 %, 19892 MiB
+7, 0 %, 2 MiB
+
+--- disk
+overlay         258G   67G  192G  26% /
