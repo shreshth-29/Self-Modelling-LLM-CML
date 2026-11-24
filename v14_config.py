@@ -23,7 +23,9 @@ FAMILIES = {
 }
 FAMILY_ORDER = ["hindi", "related", "distant"]   # left to right on the trend figure: least to most different languages
 SEEDS = [1, 2, 3]                                 # new seeds (seed 0 = the old runs below)
-N_PHASES = 60                                     # 20 full cycles of 3 languages; phase 0 = the untrained model
+N_PHASES = 30                                     # 10 full cycles of 3 languages; phase 0 = the untrained model.
+                                                  # To EXTEND finished runs later: set 60 (or start with --n_phases 60) and run again.
+                                                  # Training resumes after phase 30 (also on a new machine, from HF); finished tests are skipped.
 
 # Old single-seed runs, already on HF. Same model and training recipe, so they are analysed with the same code as extra models.
 # They are marked "old" in every table and drawn hollow on the figure.
@@ -53,9 +55,9 @@ def models(seeds=None, families=None, include_old=True):
 
 # ---------------------------------------------------------------- analysis (all through core_v11.py, tau 0.2, FLORES dev)
 # MANY checkpoints per model, not a hand-picked few: every phase after the first cycle is used, UNTIL THE MODEL LOSES PLASTICITY.
-# With 60 phases that is up to 57 checkpoints per model = 19 per language per seed (phases 4 .. 60).
+# With 30 phases that is up to 27 checkpoints per model = 9 per language per seed (phases 4 .. 30).
 SIZE_PHASES = list(range(0, N_PHASES + 1))        # self size per layer at every checkpoint
-PERSIST_FROM = list(range(3, N_PHASES))           # persistence between phase p and p+1, for p = 3 .. 59
+PERSIST_FROM = list(range(3, N_PHASES))           # persistence between phase p and p+1, for p = 3 .. N_PHASES - 1
 HEADLINE_FROM = list(range(6, N_PHASES))          # p = 6 on: used for the headline persistence numbers
 LESION_PHASES = list(range(4, N_PHASES + 1))      # lesion without training: at EVERY checkpoint from phase 4 on
 RETRAIN_EVERY = 2                                 # the two lesion-then-train tests: every 2nd checkpoint (4, 6, 8, ...). With 3 languages

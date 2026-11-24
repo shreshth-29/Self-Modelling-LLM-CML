@@ -37,6 +37,9 @@ FAMS = [f for f in args.families.split(",") if f]
 assert all(f in CFG.FAMILIES for f in FAMS), f"families are: {list(CFG.FAMILIES)}"
 SHARD_K, SHARD_N = [int(x) for x in args.shard.split("/")]
 N = args.n_phases
+if N != CFG.N_PHASES:                                # --n_phases given: the checkpoint lists follow it
+    CFG.N_PHASES = N
+    CFG.SIZE_PHASES = list(range(0, N + 1)); CFG.PERSIST_FROM = list(range(3, N)); CFG.HEADLINE_FROM = list(range(6, N)); CFG.LESION_PHASES = list(range(4, N + 1))
 _all_new = CFG.models(SEEDS, FAMS, include_old=False)
 NEW = [m for i, m in enumerate(_all_new) if i % SHARD_N == SHARD_K]
 OLD = [m for m in CFG.models(SEEDS, FAMS, include_old=True) if not m["new"]] if (args.old and SHARD_K == 0) else []
