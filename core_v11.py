@@ -48,6 +48,10 @@ ap.add_argument("--max_t", type=int, default=24000)
 ap.add_argument("--out", default="")
 ap.add_argument("--outroot", default="v11", help="results go to analysis/<outroot>/<out>  (v14 uses its own folder)")
 ap.add_argument("--next_lang", default="", help="train, task next: train this language (default: the next one in the run's order). Hindi-only runs use hi")
+ap.add_argument("--tau_by_layer", default="", help="e.g. enc0=0.3,dec3=0.4 : a threshold per layer (null-calibrated) in place of --tau")
+ap.add_argument("--extra_taus", default="", help="matrix --compact: also record who is in the self at these thresholds, e.g. 0.15,0.25,0.30")
+ap.add_argument("--cal_taus", default="", help="matrix --compact: also record the self at these per-layer thresholds (enc0=0.3,...), column in_self_cal")
+ap.add_argument("--match_std", action="store_true", help="look-alike task neurons are also matched on how much the activity VARIES (standard deviation)")
 ap.add_argument("--compact", action="store_true", help="matrix: no figures; one small per-neuron file per transition (persistence + average activity + firing rate)")
 ap.add_argument("--summarize", action="store_true")
 args = ap.parse_args()
@@ -210,6 +214,20 @@ from scipy.sparse.csgraph import connected_components, reverse_cuthill_mckee
 from scipy.optimize import linear_sum_assignment
 FAMILY = args.family or (args.model.split("=")[0] if "=" in args.model else args.model)
 SELF_LANGS = [l for l in (args.self_langs.split(",") if args.self_langs else LANGS) if l in LANGS]      # languages the self is found on
+def _tau_map(spec):
+    return {k.strip(): float(v) for k, v in (x.split("=") for x in spec.split(",") if "=" in x)}
+TAU_BY, CAL_BY = _tau_map(args.tau_by_layer), _tau_map(args.cal_taus)
+EXTRA_TAUS = [float(x) for x in args.extra_taus.split(",") if x.strip()]
+
+def largest_group(R, alive, tau):
+    """mask of the largest co-firing group of a layer at threshold tau. R = correlation matrix (tensor), alive = numpy bool"""
+    al = torch.as_tensor(alive, device=R.device)
+    A = ((R.abs() >= tau) & al[:, None] & al[None, :]).cpu().numpy(); np.fill_diagonal(A, False)
+    _, lab = connected_components(csr_matrix(A), directed=False)
+    lab = np.where(alive, lab, -1)
+    if not (lab >= 0).any():
+        return np.zeros(len(lab), bool)
+    return lab == int(np.bincount(lab[lab >= 0]).argmax())
 
 def mlp_mod(model, L):
     return (model.enc_blocks if L.startswith("enc") else model.dec_blocks)[int(L[3])].mlp
@@ -261,7 +279,7 @@ def groups(acts, dlang, n_langs, keep=False):
         alive = sd[0] > 1e-6
         Z = (X - mu) / torch.where(sd > 0, sd, torch.ones_like(sd)); Z[:, ~alive] = 0
         Rm = Z.T @ Z / Z.shape[0]
-        A = ((Rm.abs() >= args.tau) & alive[:, None] & alive[None, :]).cpu().numpy(); np.fill_diagonal(A, False)
+        A = ((Rm.abs() >= TAU_BY.get(L, args.tau)) & alive[:, None] & alive[None, :]).cpu().numpy(); np.fill_diagonal(A, False)
         _, lab = connected_components(csr_matrix(A), directed=False)
         alive_np = alive.cpu().numpy(); lab = np.where(alive_np, lab, -1)
         if (lab >= 0).any():
@@ -284,7 +302,8 @@ def neuron_info(model, langs):
         A_ = acts[L].float(); mean = A_.mean(0).numpy(); fire = (A_ > 0).float().mean(0).numpy()
         outn = mlp_mod(model, L).proj.weight.detach().float().norm(dim=0).cpu().numpy()
         alive, smask = G[L]["alive"], G[L]["self"]
-        info[L] = dict(mean=mean, feat=np.stack([mean, fire, outn], 1), sid=np.nonzero(alive & smask)[0],
+        feats = [mean, fire, outn] + ([A_.std(0).numpy()] if args.match_std else [])
+        info[L] = dict(mean=mean, feat=np.stack(feats, 1), sid=np.nonzero(alive & smask)[0],
                        tid=np.nonzero(alive & ~smask)[0], nalive=int(alive.sum()), second=G[L]["second"])
         del A_
     del acts
@@ -398,7 +417,7 @@ if args.part == "matrix":
         model, ck = load_model(f); model.eval()
         acts, dlang = record(model, SELF_LANGS); G[tag] = groups(acts, dlang, len(SELF_LANGS), keep=True); G[tag + "_lang"] = str(ck.get("lang"))
         if tag == "a":                                                       # average activity and firing rate at the first checkpoint (for activity-matched comparisons)
-            STAT = {L: (acts[L].float().mean(0).numpy(), (acts[L] > 0).float().mean(0).numpy()) for L in LAYERS}
+            STAT = {L: (acts[L].float().mean(0).numpy(), (acts[L] > 0).float().mean(0).numpy(), acts[L].float().std(0).numpy()) for L in LAYERS}
         del acts, model
         torch.cuda.empty_cache()
     rows = []
@@ -419,10 +438,14 @@ if args.part == "matrix":
         order = rcm[np.argsort(rank, kind="stable")]
         n_self, n_alive = int(a["self"].sum()), int(a["alive"].sum())
         if args.compact:
+            more = {f"in_self_{int(round(t * 100)):02d}": largest_group(Ra, a["alive"], t) for t in EXTRA_TAUS}
+            if L in CAL_BY:
+                more["in_self_cal"] = largest_group(Ra, a["alive"], CAL_BY[L])
             for n_ in range(len(pers)):
                 rows.append({"model": name, "family": FAMILY, "phase_a": pa, "phase_b": pb, "layer": L, "neuron": n_, "in_self": int(a["self"][n_]),
                              "alive": int(a["alive"][n_]), "valid": int(valid[n_]), "persistence": round(float(pers[n_]), 4),
-                             "mean": round(float(STAT[L][0][n_]), 5), "fire": round(float(STAT[L][1][n_]), 4)})
+                             "mean": round(float(STAT[L][0][n_]), 5), "fire": round(float(STAT[L][1][n_]), 4), "std": round(float(STAT[L][2][n_]), 5),
+                             **{k: int(v[n_]) for k, v in more.items()}})
             sv, tv = pers[valid & a["self"]], pers[valid & ~a["self"]]
             print(f"  {name} {pa}->{pb} {L}: self {n_self}/{n_alive} | persistence self {sv.mean() if len(sv) else float('nan'):.3f} vs task {tv.mean() if len(tv) else float('nan'):.3f}", flush=True)
             del Za, Zb, Ra, Rb, S, A_, B_

@@ -280,7 +280,8 @@ def analysis_jobs(mods, outroot, tiny=False):
         fam = CFG.FAMILIES[m["family"]]; lab, run = m["label"], m["run"]; have = here(run)
         if m.get("last") is not None:                                  # only checkpoints before this model lost plasticity
             have = {p for p in have if p <= m["last"]}
-        base = [PY, "-u", "core_v11.py", "--outroot", outroot, "--family", m["family"]] + (["--self_langs", fam["only"]] if fam["only"] else [])
+        base = [PY, "-u", "core_v11.py", "--outroot", outroot, "--family", m["family"], "--tau", str(CFG.TAU), "--match_std"] + (["--self_langs", fam["only"]] if fam["only"] else [])
+        cal = CFG.cal_spec(fam["langset"])                              # null-calibrated threshold per layer
         log = os.path.join(LOGS, f"{outroot}_analysis_{lab}.log")
         def add(name, out, extra, kind, marker=".done", clean=True):
             d = os.path.join(REPO, "analysis", outroot, out); done = os.path.join(d, marker)
@@ -292,12 +293,16 @@ def analysis_jobs(mods, outroot, tiny=False):
             add("self size", f"sizes/{lab}", ["--part", "sizes", "--model", f"{m['family']}={run}:" + ",".join(map(str, ph))], "light")
         for p in pers_ph:
             if p in have and p + 1 in have:
-                add(f"persistence {p}->{p + 1}", f"persistence/{lab}", ["--part", "matrix", "--compact", "--model", f"{lab}={run}:{p}"], "light",
+                add(f"persistence {p}->{p + 1}", f"persistence/{lab}", ["--part", "matrix", "--compact", "--model", f"{lab}={run}:{p}", "--extra_taus", CFG.EXTRA_TAUS]
+                    + (["--cal_taus", cal] if cal else []), "light",
                     marker=f".done_p{p:03d}", clean=False)
         ph = [p for p in les_ph if p in have]
         if ph:
             add("lesion (no training)", f"static/{lab}", ["--part", "static", "--model", f"{m['family']}={run}:" + ",".join(map(str, ph))] + static_x
                 + (["--eval_langs", fam["only"]] if fam["only"] else []), "light")
+            if cal:                                                     # the same test with the self found at the null-calibrated thresholds (a much smaller self)
+                add("lesion (no training, calibrated threshold)", f"static_cal/{lab}", ["--part", "static", "--tau_by_layer", cal,
+                    "--model", f"{m['family']}={run}:" + ",".join(map(str, ph))] + static_x + (["--eval_langs", fam["only"]] if fam["only"] else []), "light")
         for p in (ph if tiny else ph[::CFG.RETRAIN_EVERY]):
             add(f"lesion + train, from phase {p}", f"train_next/{lab}/p{p:03d}",
                 ["--part", "train", "--task", "next", "--mode", "lesion", "--model", f"{lab}_p{p}={run}:{p}"] + train_x
@@ -335,8 +340,8 @@ def stage_test():
     except Exception as e:
         say(f"  {type(e).__name__}: {e}"); stop("upload of a checkpoint to HF")
     jobs = analysis_jobs(mods, root, tiny=True)
-    if len(jobs) != 5 * len(mods):                                # per model: self size, 1 persistence, static lesion, lesion + next language, lesion + held-out language
-        stop(f"building the analysis jobs (got {len(jobs)}, expected {5 * len(mods)})")
+    if len(jobs) != 6 * len(mods):                                # per model: self size, 1 persistence, 2 static lesions (0.2 and calibrated), lesion + next language, lesion + held-out language
+        stop(f"building the analysis jobs (got {len(jobs)}, expected {6 * len(mods)})")
     bad = run_jobs(jobs)
     if bad:
         stop(bad[0], os.path.join(LOGS, f"{root}_analysis_{bad[0].split()[-1]}.log"))

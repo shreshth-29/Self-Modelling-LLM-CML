@@ -89,9 +89,30 @@ def plasticity_onset(rows, tol=None):
             first_bad = ph if bad else None
             best = min(best, v)
     return onset
+TAU = 0.2                                         # THE definition: neurons are linked if |correlation| >= 0.2 (fixed, every layer, as in all earlier results)
+EXTRA_TAUS = "0.15,0.25,0.30"                     # persistence is ALSO reported at these thresholds and at the null-calibrated one (nearly free)
+
+def _calibrated():
+    """null-calibrated threshold per layer (highest threshold at which an UNTRAINED model's largest group is under 5% of the layer),
+    measured in the v13 definition check: 0.30 in most layers, 0.35 to 0.40 in the late decoder layers."""
+    out, path = {}, os.path.join(REPO, "analysis", "v13", "defn", "calibrated_tau.csv")
+    if os.path.exists(path):
+        for line in open(path).read().splitlines()[1:]:
+            ls, meas, layer, tau = line.split(",")
+            if meas == "corr":
+                out.setdefault(ls, {})[layer] = float(tau)
+    return out
+CAL_TAU = _calibrated()                           # {"distant": {"enc0": 0.3, ...}, "indic": {...}}; the lesion WITHOUT training is repeated at these
+
+def cal_spec(langset):
+    return ",".join(f"{L}={t}" for L, t in sorted(CAL_TAU.get(langset, {}).items()))
+
 STATIC_DRAWS = "0,1"                              # lesion without training: two random draws of the lesioned neurons, three doses
-# lesion, then training. One repeat per checkpoint and three conditions (untouched, self, task): the many checkpoints are the repeats.
-TRAIN_CONDS = "none,self@1.0,task@1.0"
+# lesion, then training. One repeat per checkpoint (the many checkpoints are the repeats) and five conditions:
+#   untouched | self vs RANDOM task neurons, full count | self vs LOOK-ALIKE task neurons, half the count
+# Look-alike = task neurons matched one by one to the lesioned self neurons on average activity, how much the activity varies
+# (standard deviation), firing rate and outgoing weight size. It needs half the count: at the full count the smaller group is used up.
+TRAIN_CONDS = "none,self@1.0,task@1.0,self@0.5,look@0.5"
 TRAIN_SEEDS = "0"
 TRAIN_STEPS = 1000                                # ... on the run's next language
 HELDOUT = "indonesian"                            # ... and on a language no model has seen (same for every kind of run)

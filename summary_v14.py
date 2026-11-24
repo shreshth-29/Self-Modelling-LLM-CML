@@ -82,10 +82,10 @@ def part_sizes():
                 self_pct_dec=float(pct[s["layer"].str.startswith("dec")].mean()))
 
 # =============================================================================================== 2. persistence
-def matched_gap(x):
-    """self minus task persistence inside 10 bins of equal average activity (same method as defn_v13.py)"""
-    m = x["in_self"].values == 1
-    bins = pd.qcut(x["mean"].rank(method="first"), 10, labels=False).values
+def matched_gap(x, col="in_self", by="mean"):
+    """self minus task persistence inside 10 bins of equal average activity (same method as defn_v13.py); by="std": bins of equal variability"""
+    m = x[col].values == 1
+    bins = pd.qcut(x[by].rank(method="first"), 10, labels=False).values
     diffs, w = [], []
     for b in range(10):
         i = bins == b
@@ -103,8 +103,14 @@ def part_persistence():
             if m.sum() < 20 or (~m).sum() < 20:
                 continue
             ps, pt = x["persistence"].values[m].mean(), x["persistence"].values[~m].mean()
-            rows.append({"label": label, "family": family_of(label), "phase_a": int(x["phase_a"].iloc[0]), "layer": L, "side": L[:3],
-                         "pers_self": ps, "pers_task": pt, "gap": ps - pt, "gap_matched": matched_gap(x), "self_pct": 100 * m.mean()})
+            row = {"label": label, "family": family_of(label), "phase_a": int(x["phase_a"].iloc[0]), "layer": L, "side": L[:3],
+                   "pers_self": ps, "pers_task": pt, "gap": ps - pt, "gap_matched": matched_gap(x), "self_pct": 100 * m.mean(),
+                   "gap_matched_std": matched_gap(x, by="std") if "std" in x else np.nan}
+            for c in [c for c in x.columns if c.startswith("in_self_")]:      # other thresholds (0.15, 0.25, 0.30) and the null-calibrated one
+                mm = x[c].values == 1; t = c[len("in_self_"):]
+                if mm.sum() >= 20 and (~mm).sum() >= 20:
+                    row[f"gapm_{t}"] = matched_gap(x, col=c); row[f"selfpct_{t}"] = 100 * mm.mean()
+            rows.append(row)
     if not rows:
         return None
     P = pd.DataFrame(rows); P.to_csv(f"{OUT}/persistence_by_layer.csv", index=False)
@@ -112,17 +118,23 @@ def part_persistence():
         h = q[q["phase_a"].isin(pick(CFG.HEADLINE_FROM, q["phase_a"]))]
         put(label, pers_self=h["pers_self"].mean(), pers_task=h["pers_task"].mean(), gap=h["gap"].mean(), gap_matched=h["gap_matched"].mean(),
             gap_matched_enc=h[h["side"] == "enc"]["gap_matched"].mean(), gap_matched_dec=h[h["side"] == "dec"]["gap_matched"].mean(),
-            n_transitions=int(h["phase_a"].nunique()))
+            gap_matched_std=h["gap_matched_std"].mean(), n_transitions=int(h["phase_a"].nunique()),
+            **{c: h[c].mean() for c in h.columns if c.startswith(("gapm_", "selfpct_"))})
     return P
 
 # =============================================================================================== 3. lesion, no training
-def part_static():
+def part_static(sub="static", pre=""):
     rows = []
-    for f in sorted(glob.glob(f"{ROOT}/static/*/static.csv")):
+    def put(label, **kv):                                  # same numbers, with a prefix for the calibrated-threshold run
+        M.setdefault(label, {}).update({pre + k: v for k, v in kv.items()})
+    for f in sorted(glob.glob(f"{ROOT}/{sub}/*/static.csv")):
         label = os.path.basename(os.path.dirname(f)); fam = family_of(label)
         s = split_cond(pd.read_csv(f))
         s = s[s["scope"].astype(str) == "all"]
         s = s[s["phase"].isin(pick(CFG.LESION_PHASES, s["phase"]))]
+        one_ = s[s["cond"] == "self@1.0"]
+        if len(one_):
+            put(label, n_lesioned=one_["n_neurons"].mean())
         if not CFG.FAMILIES[fam]["only"]:
             # PREVIOUS language = the one trained one phase earlier (a Hindi-only model has no previous language)
             pv = s[[int(p) >= 2 and l == CFG.trained_lang(fam, int(p) - 1) for l, p in zip(s["lang"], s["phase"])]]
@@ -164,8 +176,12 @@ def part_static():
                 hi_les_diff=(g[("d_loss", "self")] - g[("d_loss", "task")]).mean(),
                 hi_chrf_self=g[("d_chrf", "self")].mean(), hi_chrf_task=g[("d_chrf", "task")].mean(),
                 hi_chrf_diff=(g[("d_chrf", "self")] - g[("d_chrf", "task")]).mean(), hi_les_n=len(g))
+        g5 = s[(s["mode"] == "lesion") & (s["dose"] == "0.5") & (s["lang"] == "hi")].groupby(["phase", "draw", "group"])["d_loss"].mean().unstack("group")
+        if "self" in g5.columns and "look" in g5.columns and len(g5.dropna(subset=["self", "look"])):
+            g5 = g5.dropna(subset=["self", "look"])
+            put(label, hi_look_self05=g5["self"].mean(), hi_look_look05=g5["look"].mean(), hi_look_diff=(g5["self"] - g5["look"]).mean())
     if rows:
-        pd.concat(rows).to_csv(f"{OUT}/static_trained_language.csv", index=False)
+        pd.concat(rows).to_csv(f"{OUT}/{sub}_trained_language.csv", index=False)
 
 # =============================================================================================== 4. lesion, then training
 def part_train():
@@ -189,6 +205,10 @@ def part_train():
         def at_hi(step, group, col="extra"):
             q = rh[(rh["step"] == step) & (rh["dose"] == "1.0") & (rh["group"] == group)][col]
             return float(q.mean()) if len(q) else np.nan
+        def at_hi5(step, group):
+            q = rh[(rh["step"] == step) & (rh["dose"] == "0.5") & (rh["group"] == group)]["extra"]
+            return float(q.mean()) if len(q) else np.nan
+        put(label, hi_trN_self05=at_hi5(last, "self"), hi_trN_look05=at_hi5(last, "look"), hi_trN_look_diff=at_hi5(last, "self") - at_hi5(last, "look"))
         put(label, hi_tr0_diff=at_hi(0, "self") - at_hi(0, "task"), hi_trN_self=at_hi(last, "self"), hi_trN_task=at_hi(last, "task"),
             hi_trN_diff=at_hi(last, "self") - at_hi(last, "task"), hi_chrf_end_diff=at_hi(last, "task", "d_score") - at_hi(last, "self", "d_score"))
         of = [f for f in sorted(glob.glob(f"{ROOT}/train_next/{label}/p*/others.csv"))]
@@ -237,8 +257,13 @@ def part_heldout():
             continue
         none = cur[cur["cond"] == "none"][["start", "seed", "step", "val_loss", "score"]].rename(columns={"val_loss": "none_loss", "score": "none_score"})
         x = split_cond(cur[cur["cond"] != "none"]).merge(none, on=["start", "seed", "step"], how="left")
-        x = x[x["dose"] == "1.0"]
         x["extra"] = x["val_loss"] - x["none_loss"]
+        hf = x[(x["dose"] == "0.5") & (x["step"] >= 100)].groupby(["start", "seed", "group"])["extra"].mean().unstack("group")
+        if "self" in hf.columns and "look" in hf.columns and len(hf.dropna(subset=["self", "look"])):
+            hf = hf.dropna(subset=["self", "look"])
+            put(label, ho_avg_self05=hf["self"].mean(), ho_avg_look05=hf["look"].mean(), ho_look_diff=(hf["self"] - hf["look"]).mean(),
+                ho_look_k=int((hf["self"] > hf["look"]).sum()), ho_look_n=len(hf))
+        x = x[x["dose"] == "1.0"]
         rows = []
         for (st, sd, grp), q in x.groupby(["start", "seed", "group"]):
             n0 = none[(none["start"] == st) & (none["seed"] == sd)]
@@ -260,7 +285,11 @@ def part_heldout():
             ho_k=int((w[("avg", "self")] > w[("avg", "task")]).sum()), ho_n=len(w), ho_last_step=last)
 
 # =============================================================================================== tables, tests, figures
-KEY = [("ho_avg_diff", "IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task"),
+KEY = [("ho_look_diff", "MATCHED: new language (Indonesian), extra loss while learning it, self minus LOOK-ALIKE task neurons (half count)"),
+       ("hi_look_diff", "MATCHED: Hindi, lesion without training, loss rise, self minus LOOK-ALIKE task neurons (half count)"),
+       ("hi_trN_look_diff", "MATCHED: Hindi, lesion + 1,000 steps of Hindi, extra loss at the end, self minus LOOK-ALIKE task neurons (half count)"),
+       ("cal_hi_les_diff", "CALIBRATED threshold: Hindi, lesion without training, loss rise, self minus task"),
+       ("ho_avg_diff", "IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task"),
        ("ho_steps_diff", "IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task"),
        ("ho_end_diff", "IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task"),
        ("hi_les_diff", "IMPORTANCE on Hindi, lesion without training: loss rise, self minus task"),
@@ -394,6 +423,7 @@ guarded("training table", part_training)
 guarded("self size", part_sizes)
 P = guarded("persistence", part_persistence)
 guarded("lesion without training", part_static)
+guarded("lesion without training, calibrated threshold", part_static, "static_cal", "cal_")
 guarded("lesion with training", part_train)
 guarded("lesion with a held-out language", part_heldout)
 
@@ -446,6 +476,17 @@ show("5c. The PREVIOUS language while the next one is learned (lesion, then 1,00
       "hi_prev_tr_end_self", "hi_prev_tr_end_task", "hi_prev_tr_end_diff"],
      "now = loss rise on the previous language right after the lesion. end = how much MORE of it is forgotten after the 1,000 steps than the untouched model forgets. "
      "prev_tr_k of prev_tr_n = runs where the self lesion forgot more. hi_prev = the starts where the previous language is Hindi (phase 13).")
+show("5d. MATCHED comparison: self vs LOOK-ALIKE task neurons (same average activity, same variability, same firing rate, same outgoing weight size), half the count",
+     ["hi_look_self05", "hi_look_look05", "hi_look_diff", "hi_trN_self05", "hi_trN_look05", "hi_trN_look_diff", "ho_avg_self05", "ho_avg_look05", "ho_look_diff", "ho_look_k", "ho_look_n"],
+     "This is the strict version of every importance number above: the task neurons are not random, each one is the closest match to one lesioned self neuron. "
+     "hi_look = loss rise on Hindi, no training. hi_trN = extra Hindi loss after 1,000 steps of Hindi. ho = extra Indonesian loss while learning it. diff = self minus look-alike.")
+show("5e. The same lesion without training, with the self found at the NULL-CALIBRATED thresholds (0.30 to 0.40 per layer; a much smaller self)",
+     ["cal_n_lesioned", "n_lesioned", "cal_hi_les_self", "cal_hi_les_task", "cal_hi_les_diff", "cal_hi_chrf_diff", "cal_les_self", "cal_les_task", "cal_les_diff", "cal_les_k", "cal_les_n", "cal_prev_les_diff"],
+     "cal_n_lesioned = neurons lesioned in all 8 layers together at the calibrated thresholds; n_lesioned = the same at 0.2. Names as in 3. and 5., with cal_ in front.")
+show("2b. Persistence gap (activity-matched) at other thresholds, and the self size there (% of working neurons)",
+     ["gapm_15", "gap_matched", "gapm_25", "gapm_30", "gapm_cal", "gap_matched_std", "selfpct_15", "selfpct_25", "selfpct_30", "selfpct_cal"],
+     "gap_matched = the main definition (0.2). gapm_15 / 25 / 30 = thresholds 0.15 / 0.25 / 0.30. gapm_cal = null-calibrated per layer. "
+     "gap_matched_std = at 0.2, comparing only neurons whose activity varies equally much.")
 by = None
 if len(T):
     num = [c for c in T.columns if c not in ("label", "family", "tag", "new") and pd.api.types.is_numeric_dtype(T[c])]
