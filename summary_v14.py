@@ -379,9 +379,17 @@ def guarded(name, fn, *a):
         return None
 
 say(f"MULTI-SEED PILOT (v14). Tables in analysis/{args.root}/. Self = largest co-firing group per layer, |correlation| >= 0.2, FLORES dev.")
-say(f"Lesion tests are count-matched (same number of self and task neurons per layer) and use phases {CFG.LESION_PHASES}; "
-    f"persistence uses the phase changes {CFG.HEADLINE_FROM[0]}->{CFG.HEADLINE_FROM[0] + 1} to {CFG.HEADLINE_FROM[-1]}->{CFG.HEADLINE_FROM[-1] + 1}.")
+say(f"Lesion tests are count-matched (same number of self and task neurons per layer). Lesion without training: every checkpoint from phase {CFG.LESION_PHASES[0]} "
+    f"until the model loses plasticity (at most phase {CFG.LESION_PHASES[-1]}). Lesion + training: every {CFG.RETRAIN_EVERY}. of those checkpoints. "
+    f"Persistence: every phase change from {CFG.HEADLINE_FROM[0]}->{CFG.HEADLINE_FROM[0] + 1} on.")
 say("s1, s2, s3 = new seeds. old0, old1 = the earlier single runs (same recipe), analysed with the same code.\n")
+def part_plasticity():
+    t = pd.concat([pd.read_csv(f) for f in sorted(glob.glob(f"{ROOT}/plasticity*.csv"))])
+    say("=== 0b. Which checkpoints are used: every one from phase 4 until the model loses plasticity ===")
+    say(f"Rule: {t['rule'].iloc[0]}. Empty 'plasticity_lost_at' = it never happened in this run.")
+    say(t.drop(columns="rule").to_string(index=False)); say()
+if glob.glob(f"{ROOT}/plasticity*.csv"):
+    guarded("plasticity table", part_plasticity)
 guarded("training table", part_training)
 guarded("self size", part_sizes)
 P = guarded("persistence", part_persistence)

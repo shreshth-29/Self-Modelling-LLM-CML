@@ -23,7 +23,7 @@ FAMILIES = {
 }
 FAMILY_ORDER = ["hindi", "related", "distant"]   # left to right on the trend figure: least to most different languages
 SEEDS = [1, 2, 3]                                 # new seeds (seed 0 = the old runs below)
-N_PHASES = 18                                     # 6 full cycles of 3 languages; phase 0 = the untrained model
+N_PHASES = 60                                     # 20 full cycles of 3 languages; phase 0 = the untrained model
 
 # Old single-seed runs, already on HF. Same model and training recipe, so they are analysed with the same code as extra models.
 # They are marked "old" in every table and drawn hollow on the figure.
@@ -52,12 +52,43 @@ def models(seeds=None, families=None, include_old=True):
     return out
 
 # ---------------------------------------------------------------- analysis (all through core_v11.py, tau 0.2, FLORES dev)
-# MANY checkpoints per model, not a hand-picked few: every phase after the first cycle is tested.
-# With 18 phases that is 15 checkpoints per model = 5 per language per seed (phases 4 .. 18).
+# MANY checkpoints per model, not a hand-picked few: every phase after the first cycle is used, UNTIL THE MODEL LOSES PLASTICITY.
+# With 60 phases that is up to 57 checkpoints per model = 19 per language per seed (phases 4 .. 60).
 SIZE_PHASES = list(range(0, N_PHASES + 1))        # self size per layer at every checkpoint
-PERSIST_FROM = list(range(3, N_PHASES))           # persistence between phase p and p+1, for p = 3 .. 17
-HEADLINE_FROM = list(range(6, N_PHASES))          # p = 6 .. 17 (4 cycles): used for the headline persistence numbers
-LESION_PHASES = list(range(4, N_PHASES + 1))      # lesion tests at EVERY checkpoint from phase 4 on
+PERSIST_FROM = list(range(3, N_PHASES))           # persistence between phase p and p+1, for p = 3 .. 59
+HEADLINE_FROM = list(range(6, N_PHASES))          # p = 6 on: used for the headline persistence numbers
+LESION_PHASES = list(range(4, N_PHASES + 1))      # lesion without training: at EVERY checkpoint from phase 4 on
+RETRAIN_EVERY = 2                                 # the two lesion-then-train tests: every 2nd checkpoint (4, 6, 8, ...). With 3 languages
+                                                  # this still visits every language equally often. 1 = every checkpoint (twice the time).
+
+# Loss of plasticity, found per run from its own training log. After each phase we look at the language just trained:
+# it "did not come back" if its validation loss is more than PLASTICITY_TOL above the best that language ever reached.
+# Onset = the first phase where that happens and it happens again at the language's next visit (one bad visit alone is noise).
+# Only checkpoints BEFORE the onset are analysed. (Old distant run: onset at phase 64. Old Hindi-only run: none in 90 phases.)
+PLASTICITY_TOL = 0.03
+
+def plasticity_onset(rows, tol=None):
+    """rows = the lines of a run's phases.jsonl (dicts). Returns the onset phase, or None if the run never lost plasticity."""
+    tol = PLASTICITY_TOL if tol is None else tol
+    visits = {}
+    for r in sorted({r["phase"]: r for r in rows}.values(), key=lambda r: r["phase"]):
+        v = (r.get("val_masked") or {}).get(r.get("lang"))
+        if r["phase"] == 0 or v is None:
+            continue
+        if r.get("reason") == "failed":                 # a phase that diverged even at a quarter of the learning rate
+            return r["phase"]
+        visits.setdefault(r["lang"], []).append((r["phase"], v))
+    onset = None
+    for seq in visits.values():
+        best, first_bad = float("inf"), None
+        for ph, v in seq:
+            bad = v > best * (1 + tol)
+            if bad and first_bad is not None:
+                onset = first_bad if onset is None else min(onset, first_bad)
+                break
+            first_bad = ph if bad else None
+            best = min(best, v)
+    return onset
 STATIC_DRAWS = "0,1"                              # lesion without training: two random draws of the lesioned neurons, three doses
 # lesion, then training. One repeat per checkpoint and three conditions (untouched, self, task): the many checkpoints are the repeats.
 TRAIN_CONDS = "none,self@1.0,task@1.0"

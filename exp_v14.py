@@ -188,6 +188,12 @@ def stage_prep():
     par = sum(max(1, int((gb - 1.0) // CFG.NEED_GB["train"])) for _, gb in G)
     par = max(1, min(par, int((ram_gb() - 4) // CFG.NEED_RAM["train"])))
     say(f"  training runs that fit at the same time: about {par}  (limited by GPU memory and by ordinary memory, 14 GB per run)")
+    r = sh([PY, "-c", "import torch; x = torch.randn(64, 64, device='cuda'); print(torch.__version__, torch.cuda.get_device_name(0), float((x @ x).sum()) * 0 + 1)"])
+    if r.returncode != 0:
+        print(r.stderr[-1500:])
+        say("STOP: this machine's PyTorch cannot use its GPU (lines above). New cards such as the RTX 5090 need a newer PyTorch: "
+            "pick a newer PyTorch template, or run  pip install -U torch --index-url https://download.pytorch.org/whl/cu128"); sys.exit(1)
+    say(f"  PyTorch works on the GPU: {r.stdout.strip().rsplit(' ', 1)[0]}")
     free = shutil.disk_usage(REPO).free / 2 ** 30
     want = len(NEW) * (N + 1) * 0.27 + (N + 1) * 0.27 * len(OLD) + 8
     say(f"  disk free: {free:.0f} GB | needed: about {want:.0f} GB")
@@ -272,6 +278,8 @@ def analysis_jobs(mods, outroot, tiny=False):
     jobs = []
     for m in mods:
         fam = CFG.FAMILIES[m["family"]]; lab, run = m["label"], m["run"]; have = here(run)
+        if m.get("last") is not None:                                  # only checkpoints before this model lost plasticity
+            have = {p for p in have if p <= m["last"]}
         base = [PY, "-u", "core_v11.py", "--outroot", outroot, "--family", m["family"]] + (["--self_langs", fam["only"]] if fam["only"] else [])
         log = os.path.join(LOGS, f"{outroot}_analysis_{lab}.log")
         def add(name, out, extra, kind, marker=".done", clean=True):
@@ -290,13 +298,14 @@ def analysis_jobs(mods, outroot, tiny=False):
         if ph:
             add("lesion (no training)", f"static/{lab}", ["--part", "static", "--model", f"{m['family']}={run}:" + ",".join(map(str, ph))] + static_x
                 + (["--eval_langs", fam["only"]] if fam["only"] else []), "light")
-        for p in ph:
+        for p in (ph if tiny else ph[::CFG.RETRAIN_EVERY]):
             add(f"lesion + train, from phase {p}", f"train_next/{lab}/p{p:03d}",
                 ["--part", "train", "--task", "next", "--mode", "lesion", "--model", f"{lab}_p{p}={run}:{p}"] + train_x
                 + (["--next_lang", fam["only"]] if fam["only"] else []), "retrain", clean=False)
             add(f"lesion + held-out language, from phase {p}", f"train_heldout/{lab}/p{p:03d}",
                 ["--part", "train", "--task", CFG.HELDOUT, "--mode", "lesion", "--model", f"{lab}_p{p}={run}:{p}"] + held_x, "retrain", clean=False)
-        missing = sorted((set(size_ph) | set(pers_ph) | {p + 1 for p in pers_ph} | set(les_ph)) - have)
+        top = m["last"] if m.get("last") is not None else 10 ** 9
+        missing = sorted(p for p in (set(size_ph) | set(pers_ph) | {p + 1 for p in pers_ph} | set(les_ph)) - have if p <= top)
         if missing:
             say(f"  {lab} ({run}): checkpoints of phases {missing} are not available; the tests that need them are left out")
     return jobs
@@ -388,15 +397,46 @@ def stage_verify():
     save_training_logs()
 
 # =============================================================================================== stage: analyze
+def phase_rows(run):
+    """the run's training log (one row per phase): from this machine, from the repo (old runs), or from HF"""
+    cands = [f"runs/{run}/phases.jsonl", f"analysis/{CFG.OUTROOT}/training/{run}_phases.jsonl"] + sorted(glob.glob(f"analysis/*/{run}/phases.jsonl"))
+    if not any(os.path.exists(c) for c in cands):
+        try:
+            import v14_hf as HF
+            from huggingface_hub import hf_hub_download
+            hf_hub_download(HF.ckpt_repo(), f"{run}/phases.jsonl", local_dir="runs")
+        except Exception:
+            pass
+    for c in cands:
+        if os.path.exists(c):
+            return [json.loads(l) for l in open(c) if l.strip()]
+    return []
+
 def stage_analyze():
     import v14_hf as HF
     mods = NEW + OLD
     say(f"STAGE analyze: {len(mods)} models ({len(NEW)} new, {len(OLD)} old)")
-    need = sorted(set(CFG.SIZE_PHASES) | set(CFG.PERSIST_FROM) | {p + 1 for p in CFG.PERSIST_FROM} | set(CFG.LESION_PHASES))
+    need_all = sorted(p for p in set(CFG.SIZE_PHASES) | set(CFG.PERSIST_FROM) | {p + 1 for p in CFG.PERSIST_FROM} | set(CFG.LESION_PHASES) if p <= N)
+    rows = []
     for m in mods:
+        pr = phase_rows(m["run"])
+        onset = CFG.plasticity_onset(pr) if pr else None
+        m["last"] = min(N, onset - 1) if onset is not None else N
+        trained_to = max([r["phase"] for r in pr], default=None)
+        say(f"  {m['label']}: " + ("no training log found, so all checkpoints are used" if not pr else
+                                   f"lost plasticity at phase {onset}: checkpoints up to phase {m['last']} are used" if onset is not None and onset <= N else
+                                   f"no loss of plasticity up to phase {min(N, trained_to)}: all checkpoints are used"))
+        rows.append({"label": m["label"], "run": m["run"], "phases_trained": trained_to, "plasticity_lost_at": onset if (onset is not None and onset <= N) else "",
+                     "last_checkpoint_used": m["last"], "rule": f"validation loss of the language just trained > {1 + CFG.PLASTICITY_TOL:.2f} x its best, at two visits in a row"})
+        need = [p for p in need_all if p <= m["last"]]
         if not set(need) <= here(m["run"]):
             got = HF.download(m["run"], need)
             say(f"  {m['run']}: {len(got)} of {len(need)} needed checkpoints are on this machine")
+    os.makedirs(f"analysis/{CFG.OUTROOT}", exist_ok=True)
+    import csv
+    pf = f"analysis/{CFG.OUTROOT}/plasticity{'' if SHARD_N == 1 else f'_shard{SHARD_K}'}.csv"
+    with open(pf, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
     jobs = analysis_jobs(mods, CFG.OUTROOT)
     for ls in sorted({CFG.FAMILIES[m["family"]]["langset"] for m in mods}):      # reference: an UNTRAINED model learning the held-out language
         d = os.path.join(REPO, "analysis", CFG.OUTROOT, f"train_heldout/fresh_{ls}/p000")

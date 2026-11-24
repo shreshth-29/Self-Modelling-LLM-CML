@@ -1,6 +1,6 @@
 #!/bin/bash
-# Multi-seed pilot (v14): 3 new seeds each of distant (hi/zh/ar), related (hi/gu/pa) and Hindi-only, 18 phases, same recipe as before.
-# Then self size, persistence and the count-matched lesion tests at EVERY checkpoint from phase 4 on (lesion without training,
+# Multi-seed pilot (v14): 3 new seeds each of distant (hi/zh/ar), related (hi/gu/pa) and Hindi-only, 60 phases (20 cycles), same recipe as before.
+# Then self size, persistence and the count-matched lesion tests at every checkpoint from phase 4 until the model loses plasticity (lesion without training,
 # lesion + the next language, lesion + the held-out language Indonesian), on every model plus the old seed-0 runs, and one summary.
 #   1. checks the machine and downloads what is missing     2. tiny test of everything (stops here if it fails)
 #   3. trains (as many runs at once as fit)                  4. verifies every checkpoint on HF
