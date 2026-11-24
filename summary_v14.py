@@ -1,0 +1,316 @@
+"""summary_v14.py: one summary across seeds of the multi-seed pilot. CPU only; reads the tables in analysis/v14/.
+
+  python summary_v14.py            (run it anywhere after  git pull)
+
+One row per MODEL (a kind of run x a seed). Three questions, each asked for Hindi only, related and distant languages:
+  1. persistence   do self neurons change less than task neurons from one phase to the next?
+  2. lesion        does re-initialising self neurons hurt more than the same number of task neurons? (no training after)
+  3. lasting cost  after the lesion and 1,000 training steps on the next language, is the self lesion still worse?
+Writes analysis/v14/summary/: per_model.csv, by_family.csv, tests.csv, persistence_by_layer.csv, report.txt, trend.png, gap_by_phase.png
+"""
+import os, glob, json, argparse
+import numpy as np, pandas as pd
+import v14_config as CFG
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--root", default=CFG.OUTROOT)
+ap.add_argument("--tiny", action="store_true", help="the test: use whatever phases are there")
+args = ap.parse_args()
+ROOT = os.path.join(CFG.REPO, "analysis", args.root)
+OUT = os.path.join(ROOT, "summary"); os.makedirs(OUT, exist_ok=True)
+LAYERS = [f"enc{j}" for j in range(4)] + [f"dec{j}" for j in range(4)]
+REPORT = []
+
+def say(s=""):
+    print(s); REPORT.append(str(s))
+
+def family_of(label):
+    return label.rsplit("_", 1)[0]
+
+def pick(phases_wanted, phases_there):
+    """the wanted phases that exist; in the tiny test (or if none exist) all that are there"""
+    there = sorted(set(int(p) for p in phases_there))
+    got = [p for p in phases_wanted if p in there]
+    return there if (args.tiny or not got) else got
+
+def split_cond(df):
+    df = df.copy()
+    parts = df["cond"].astype(str).str.split("@", expand=True)
+    df["group"] = parts[0]; df["dose"] = parts[1] if parts.shape[1] > 1 else ""
+    return df
+
+M = {}                                              # label -> dict of numbers
+def put(label, **kv):
+    M.setdefault(label, {}).update(kv)
+
+# =============================================================================================== 0. training
+def part_training():
+    rows = []
+    for f in sorted(glob.glob(f"{ROOT}/training/*_phases.jsonl")):
+        run = os.path.basename(f)[:-len("_phases.jsonl")]
+        r = {}
+        for line in open(f):
+            if line.strip():
+                d = json.loads(line); r[d["phase"]] = d
+        if not r:
+            continue
+        last = r[max(r)]
+        row = {"run": run, "phases": max(r), "total_steps": sum(x.get("steps", 0) for x in r.values()), "hours": round(last.get("total_min", 0) / 60, 1)}
+        best = {}
+        for x in r.values():                         # chrF of each language right after its own most recent phase
+            if x["lang"] in x.get("chrf_masked", {}):
+                best[x["lang"]] = x["chrf_masked"][x["lang"]]
+        row.update({f"chrF_{l}": v for l, v in best.items()})
+        rows.append(row)
+    if rows:
+        t = pd.DataFrame(rows)
+        say("=== 0. Training: one row per new run. chrF_xx = chrF on language xx right after its last own phase (FLORES devtest, 200 sentences) ===")
+        say(t.to_string(index=False)); say()
+        t.to_csv(f"{OUT}/training.csv", index=False)
+
+# =============================================================================================== 1. self size
+def part_sizes():
+    for f in sorted(glob.glob(f"{ROOT}/sizes/*/sizes.csv")):
+        label = os.path.basename(os.path.dirname(f)); fam = CFG.FAMILIES[family_of(label)]
+        s = pd.read_csv(f)
+        want = "Hindi only" if fam["only"] else "all the model's languages"
+        s = s[s["self_def"] == want]
+        s = s[s["phase"].isin(pick(CFG.LESION_PHASES, s["phase"]))]
+        if len(s):
+            pct = 100 * s["n_self"] / s["n_alive"].clip(lower=1)
+            put(label, self_pct=float(pct.mean()), self_pct_enc=float(pct[s["layer"].str.startswith("enc")].mean()),
+                self_pct_dec=float(pct[s["layer"].str.startswith("dec")].mean()))
+
+# =============================================================================================== 2. persistence
+def matched_gap(x):
+    """self minus task persistence inside 10 bins of equal average activity (same method as defn_v13.py)"""
+    m = x["in_self"].values == 1
+    bins = pd.qcut(x["mean"].rank(method="first"), 10, labels=False).values
+    diffs, w = [], []
+    for b in range(10):
+        i = bins == b
+        if (m & i).sum() >= 3 and ((~m) & i).sum() >= 3:
+            diffs.append(x["persistence"].values[m & i].mean() - x["persistence"].values[(~m) & i].mean()); w.append(min((m & i).sum(), ((~m) & i).sum()))
+    return float(np.average(diffs, weights=w)) if len(diffs) >= 3 else np.nan
+
+def part_persistence():
+    rows = []
+    for f in sorted(glob.glob(f"{ROOT}/persistence/*/pers_p*.csv.gz")):
+        label = os.path.basename(os.path.dirname(f))
+        d = pd.read_csv(f); d = d[d["valid"] == 1]
+        for L, x in d.groupby("layer"):
+            m = x["in_self"].values == 1
+            if m.sum() < 20 or (~m).sum() < 20:
+                continue
+            ps, pt = x["persistence"].values[m].mean(), x["persistence"].values[~m].mean()
+            rows.append({"label": label, "family": family_of(label), "phase_a": int(x["phase_a"].iloc[0]), "layer": L, "side": L[:3],
+                         "pers_self": ps, "pers_task": pt, "gap": ps - pt, "gap_matched": matched_gap(x), "self_pct": 100 * m.mean()})
+    if not rows:
+        return None
+    P = pd.DataFrame(rows); P.to_csv(f"{OUT}/persistence_by_layer.csv", index=False)
+    for label, q in P.groupby("label"):
+        h = q[q["phase_a"].isin(pick(CFG.HEADLINE_FROM, q["phase_a"]))]
+        put(label, pers_self=h["pers_self"].mean(), pers_task=h["pers_task"].mean(), gap=h["gap"].mean(), gap_matched=h["gap_matched"].mean(),
+            gap_matched_enc=h[h["side"] == "enc"]["gap_matched"].mean(), gap_matched_dec=h[h["side"] == "dec"]["gap_matched"].mean(),
+            n_transitions=int(h["phase_a"].nunique()))
+    return P
+
+# =============================================================================================== 3. lesion, no training
+def part_static():
+    rows = []
+    for f in sorted(glob.glob(f"{ROOT}/static/*/static.csv")):
+        label = os.path.basename(os.path.dirname(f)); fam = family_of(label)
+        s = split_cond(pd.read_csv(f))
+        s = s[s["scope"].astype(str) == "all"]
+        s = s[s["phase"].isin(pick(CFG.LESION_PHASES, s["phase"]))]
+        s = s[[l == CFG.trained_lang(fam, int(p)) for l, p in zip(s["lang"], s["phase"])]]      # the language just trained
+        if not len(s):
+            continue
+        s = s.assign(label=label, family=fam); rows.append(s)
+        for mode, tag in [("lesion", "les"), ("silence", "sil")]:
+            g = s[s["mode"] == mode].groupby(["phase", "draw", "dose", "group"])["d_loss"].mean().unstack("group").reset_index()
+            one = g[g["dose"] == "1.0"]
+            if {"self", "task"} <= set(one.columns) and len(one.dropna(subset=["self", "task"])):
+                o = one.dropna(subset=["self", "task"])
+                put(label, **{f"{tag}_self": o["self"].mean(), f"{tag}_task": o["task"].mean(), f"{tag}_diff": (o["self"] - o["task"]).mean(),
+                              f"{tag}_ratio": o["self"].mean() / max(o["task"].mean(), 1e-9), f"{tag}_k": int((o["self"] > o["task"]).sum()), f"{tag}_n": len(o)})
+            half = g[g["dose"] == "0.5"]
+            if mode == "lesion" and {"self", "look"} <= set(half.columns) and len(half.dropna(subset=["self", "look"])):
+                h = half.dropna(subset=["self", "look"])
+                put(label, les_self05=h["self"].mean(), les_look05=h["look"].mean())
+        c = s[(s["mode"] == "lesion") & (s["dose"] == "1.0")].dropna(subset=["d_chrf"]).groupby("group")["d_chrf"].mean()
+        if "self" in c and "task" in c:
+            put(label, chrf_drop_self=c["self"], chrf_drop_task=c["task"])
+    if rows:
+        pd.concat(rows).to_csv(f"{OUT}/static_trained_language.csv", index=False)
+
+# =============================================================================================== 4. lesion, then training
+def part_train():
+    for label in sorted({os.path.basename(os.path.dirname(os.path.dirname(f))) for f in glob.glob(f"{ROOT}/train_next/*/p*/curves.csv")}):
+        cur = pd.concat([pd.read_csv(f) for f in sorted(glob.glob(f"{ROOT}/train_next/{label}/p*/curves.csv"))])
+        last = int(cur["step"].max())
+        none = cur[cur["cond"] == "none"].groupby(["start", "seed", "step"]).agg(none_loss=("val_loss", "mean"), none_score=("score", "mean")).reset_index()
+        x = split_cond(cur[cur["cond"] != "none"]).merge(none, on=["start", "seed", "step"], how="left")
+        x["extra"] = x["val_loss"] - x["none_loss"]; x["d_score"] = x["score"] - x["none_score"]
+        run = x.groupby(["start", "seed", "dose", "group", "step"])[["extra", "d_score"]].mean().reset_index()
+        def at(step, dose, group, col="extra"):
+            q = run[(run["step"] == step) & (run["dose"] == dose) & (run["group"] == group)][col]
+            return float(q.mean()) if len(q) else np.nan
+        e = run[(run["step"] == last) & (run["dose"] == "1.0")].pivot_table(index=["start", "seed"], columns="group", values="extra")
+        k = n = 0
+        if {"self", "task"} <= set(e.columns):
+            e = e.dropna(subset=["self", "task"]); k, n = int((e["self"] > e["task"]).sum()), len(e)
+        put(label, tr0_self=at(0, "1.0", "self"), tr0_task=at(0, "1.0", "task"), trN_self=at(last, "1.0", "self"), trN_task=at(last, "1.0", "task"),
+            trN_diff=at(last, "1.0", "self") - at(last, "1.0", "task"), trN_k=k, trN_n=n, trN_step=last,
+            trN_self05=at(last, "0.5", "self"), trN_look05=at(last, "0.5", "look"),
+            chrf_end_self=at(last, "1.0", "self", "d_score"), chrf_end_task=at(last, "1.0", "task", "d_score"))
+
+# =============================================================================================== tables, tests, figures
+KEY = [("gap_matched", "persistence gap, self minus task (task neurons of equal activity)"),
+       ("les_diff", "lesion, no training: loss rise, self minus task"),
+       ("trN_diff", "lesion + training: extra loss at the end, self minus task")]
+PAIRED = [("pers_self", "pers_task", "persistence: self vs task"), ("les_self", "les_task", "lesion, no training: self vs task"),
+          ("trN_self", "trN_task", "lesion + training, at the end: self vs task")]
+
+def tests(T):
+    from scipy import stats
+    rows = []
+    for fam in CFG.FAMILY_ORDER:
+        q = T[T["family"] == fam]
+        for a, b, name in PAIRED:
+            if a in q and b in q:
+                d = q[[a, b]].dropna()
+                p = stats.ttest_rel(d[a], d[b]).pvalue if len(d) >= 3 else np.nan
+                rows.append({"test": name, "groups": fam, "n_models": len(d), "mean_1": d[a].mean() if len(d) else np.nan, "mean_2": d[b].mean() if len(d) else np.nan,
+                             "models_where_self_is_higher": f"{int((d[a] > d[b]).sum())}/{len(d)}", "p": p, "kind": "paired t-test over models"})
+    for col, name in KEY:
+        if col not in T:
+            continue
+        for i, fa in enumerate(CFG.FAMILY_ORDER):
+            for fb in CFG.FAMILY_ORDER[i + 1:]:
+                a, b = T[T["family"] == fa][col].dropna(), T[T["family"] == fb][col].dropna()
+                p = stats.ttest_ind(a, b, equal_var=False).pvalue if len(a) >= 2 and len(b) >= 2 else np.nan
+                rows.append({"test": name, "groups": f"{fa} vs {fb}", "n_models": f"{len(a)} vs {len(b)}", "mean_1": a.mean() if len(a) else np.nan,
+                             "mean_2": b.mean() if len(b) else np.nan, "models_where_self_is_higher": "", "p": p, "kind": "Welch t-test between kinds of run"})
+    return pd.DataFrame(rows)
+
+COL = {"hindi": "#2A6F97", "related": "#00918F", "distant": "#C8102E"}      # the colours these runs have on the slides
+
+def fig_trend(T):
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+    fams = [f for f in CFG.FAMILY_ORDER if f in set(T["family"])]
+    panels = [("gap_matched", "1. Persistence", "self minus task\n(persistence from one phase to the next)"),
+              ("les_diff", "2. Lesion, no training", "self minus task\n(loss rise on the language just trained)"),
+              ("trN_diff", "3. Lesion, then 1,000 training steps", "self minus task\n(extra loss that is still there at the end)")]
+    panels = [p for p in panels if p[0] in T and T[p[0]].notna().any()]
+    if not panels or not fams:
+        return
+    fig, axs = plt.subplots(1, len(panels), figsize=(4.6 * len(panels), 4.4), squeeze=False)
+    for ax, (col, title, yl) in zip(axs[0], panels):
+        for k, fam in enumerate(fams):
+            q = T[T["family"] == fam].dropna(subset=[col])
+            if not len(q):
+                continue
+            jit = np.linspace(-0.12, 0.12, len(q)) if len(q) > 1 else [0.0]
+            for (_, r), dx in zip(q.iterrows(), jit):
+                ax.scatter(k + dx, r[col], s=46, zorder=3, linewidths=1.6, edgecolors=COL[fam], facecolors=COL[fam] if r["new"] else "white")
+            mu = q[col].mean()
+            ax.plot([k - 0.24, k + 0.24], [mu, mu], color=COL[fam], lw=2, zorder=2)
+            ax.annotate(f"{mu:.3f}", (k + 0.27, mu), va="center", fontsize=9, color="#333333")
+        ax.axhline(0, color="#888888", lw=0.8, ls=":")
+        ax.set_xticks(range(len(fams))); ax.set_xticklabels([CFG.FAMILIES[f]["label"] for f in fams], fontsize=8.5)
+        ax.set_xlim(-0.5, len(fams) - 0.3)
+        ax.set_title(title, fontsize=10.5, loc="left"); ax.set_ylabel(yl, fontsize=9)
+        for s_ in ("top", "right"):
+            ax.spines[s_].set_visible(False)
+        ax.grid(axis="y", color="#EEEEEE", lw=0.8); ax.set_axisbelow(True)
+    fig.text(0.01, 0.01, "One dot = one model (one seed). Filled = new seeds, hollow = the old seed-0 runs. Line and number = average of the models. "
+             "Above the dotted zero line = higher for self neurons than for task neurons.", fontsize=8, color="#555555")
+    fig.tight_layout(rect=(0, 0.05, 1, 1)); fig.savefig(f"{OUT}/trend.png", dpi=170); plt.close(fig)
+
+def fig_gap_by_phase(P):
+    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+    g = P.groupby(["family", "label", "phase_a"])["gap_matched"].mean().reset_index()
+    fams = [f for f in CFG.FAMILY_ORDER if f in set(g["family"])]
+    fig, ax = plt.subplots(figsize=(8.4, 4.2))
+    for fam in fams:
+        q = g[g["family"] == fam]
+        for _, x in q.groupby("label"):
+            ax.plot(x["phase_a"], x["gap_matched"], color=COL[fam], lw=0.8, alpha=0.35)
+        m = q.groupby("phase_a")["gap_matched"].mean()
+        ax.plot(m.index, m.values, color=COL[fam], lw=2, marker="o", ms=4, label=CFG.FAMILIES[fam]["label"].replace("\n", " "))
+    ax.axhline(0, color="#888888", lw=0.8, ls=":")
+    ax.set_xlabel("phase p (persistence is measured from phase p to phase p + 1)"); ax.set_ylabel("persistence gap: self minus task\n(average of the 8 layers)")
+    ax.set_title("Persistence gap at every phase change. Thin lines = single models, thick = their average", fontsize=10, loc="left")
+    for s_ in ("top", "right"):
+        ax.spines[s_].set_visible(False)
+    ax.legend(frameon=False, fontsize=8.5)
+    fig.tight_layout(); fig.savefig(f"{OUT}/gap_by_phase.png", dpi=170); plt.close(fig)
+
+# =============================================================================================== main
+def guarded(name, fn, *a):
+    try:
+        return fn(*a)
+    except Exception as e:
+        say(f"({name}: left out, {type(e).__name__}: {e})")
+        return None
+
+say(f"MULTI-SEED PILOT (v14). Tables in analysis/{args.root}/. Self = largest co-firing group per layer, |correlation| >= 0.2, FLORES dev.")
+say(f"Lesion tests are count-matched (same number of self and task neurons per layer) and use phases {CFG.LESION_PHASES}; "
+    f"persistence uses the phase changes {CFG.HEADLINE_FROM[0]}->{CFG.HEADLINE_FROM[0] + 1} to {CFG.HEADLINE_FROM[-1]}->{CFG.HEADLINE_FROM[-1] + 1}.")
+say("s1, s2, s3 = new seeds. old0, old1 = the earlier single runs (same recipe), analysed with the same code.\n")
+guarded("training table", part_training)
+guarded("self size", part_sizes)
+P = guarded("persistence", part_persistence)
+guarded("lesion without training", part_static)
+guarded("lesion with training", part_train)
+
+T = pd.DataFrame([dict(label=k, **v) for k, v in M.items()]) if M else pd.DataFrame(columns=["label"])
+T["family"] = [family_of(l) for l in T["label"]]; T["tag"] = [l.rsplit("_", 1)[1] for l in T["label"]]
+T["new"] = [not t.startswith("old") for t in T["tag"]]
+T["_o"] = [CFG.FAMILY_ORDER.index(f) if f in CFG.FAMILY_ORDER else 9 for f in T["family"]]
+T = T.sort_values(["_o", "tag"]).drop(columns="_o").reset_index(drop=True)
+T.to_csv(f"{OUT}/per_model.csv", index=False)
+
+def show(title, cols, note=""):
+    cols = [c for c in cols if c in T.columns]
+    if not cols or not len(T):
+        return
+    say(f"=== {title} ===")
+    if note:
+        say(note)
+    say(T[["family", "tag"] + cols].round(4).to_string(index=False))
+    say("average over models (mean, standard deviation, number of models):")
+    say(T.groupby("family", sort=False)[cols].agg(["mean", "std", "count"]).round(4).to_string()); say()
+
+show("1. Self size (% of a layer's working neurons, average of the 8 layers)", ["self_pct", "self_pct_enc", "self_pct_dec"])
+show("2. Persistence from one phase to the next (1 = unchanged)", ["pers_self", "pers_task", "gap", "gap_matched", "gap_matched_enc", "gap_matched_dec", "n_transitions"],
+     "gap = self minus task. gap_matched = the same, comparing only neurons of equal average activity. enc / dec = the 4 encoder / 4 decoder layers.")
+show("3. Lesion without training: loss rise on the language just trained, all 8 layers", ["les_self", "les_task", "les_diff", "les_ratio", "les_k", "les_n", "chrf_drop_self", "chrf_drop_task", "les_self05", "les_look05"],
+     "les_k of les_n = in how many (checkpoint x draw) comparisons the self lesion was worse. chrf_drop = chrF points lost. "
+     "les_self05 / les_look05 = half the count: self vs task neurons that look like the self (same activity, firing rate, weight size).")
+show("3b. The same with 'silence' (each neuron held at its own average) in place of re-initialising", ["sil_self", "sil_task", "sil_diff", "sil_ratio", "sil_k", "sil_n"])
+show("4. Lesion, then training on the next language: held-out loss minus the untouched model's", ["tr0_self", "tr0_task", "trN_self", "trN_task", "trN_diff", "trN_k", "trN_n", "trN_self05", "trN_look05", "chrf_end_self", "chrf_end_task", "trN_step"],
+     "tr0 = right after the lesion. trN = at the last training step (trN_step). trN_k of trN_n = in how many (start x repeat) runs the self lesion was still worse. chrf_end = chrF vs the untouched model.")
+
+by = None
+if len(T):
+    num = [c for c in T.columns if c not in ("label", "family", "tag", "new") and pd.api.types.is_numeric_dtype(T[c])]
+    by = T.groupby("family", sort=False)[num].agg(["mean", "std", "count"]); by.columns = [f"{a}_{b}" for a, b in by.columns]
+    by.reset_index().to_csv(f"{OUT}/by_family.csv", index=False)
+    tt = guarded("tests", tests, T)
+    if tt is not None and len(tt):
+        tt.to_csv(f"{OUT}/tests.csv", index=False)
+        say("=== 5. Tests. One data point = one MODEL (not one neuron, not one checkpoint), so n is small and p-values are rough ===")
+        say(tt.round(4).to_string(index=False)); say()
+    say("=== 6. The trend (average over models; left to right = more different languages) ===")
+    for col, name in KEY:
+        if col in T:
+            m = T.groupby("family")[col].agg(["mean", "std", "count"])
+            say(f"{name}:  " + "  |  ".join(f"{f}: {m.loc[f, 'mean']:.3f} (sd {m.loc[f, 'std']:.3f}, {int(m.loc[f, 'count'])} models)" for f in CFG.FAMILY_ORDER if f in m.index))
+    guarded("trend figure", fig_trend, T)
+if P is not None:
+    guarded("gap-by-phase figure", fig_gap_by_phase, P)
+with open(f"{OUT}/report.txt", "w") as f:
+    f.write("\n".join(REPORT) + "\n")
+print("report in", OUT)

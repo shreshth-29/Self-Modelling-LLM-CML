@@ -32,7 +32,7 @@ ap.add_argument("--part", default="", choices=["", "sizes", "matrix", "static", 
 ap.add_argument("--model", default="", help="name=run:phase[,phase,...]   (train: exactly one phase)   or fresh")
 ap.add_argument("--family", default="", help="label used to group results: distant / related / hindi / mixed")
 ap.add_argument("--eval_langs", default="", help="static: comma list; default = all languages of the language set")
-ap.add_argument("--self_langs", default="", help="static: comma list of languages the self is found on; default = all languages of the language set")
+ap.add_argument("--self_langs", default="", help="static / matrix / train: comma list of languages the self is found on; default = all languages of the language set")
 ap.add_argument("--task", default="next", choices=["next", "indonesian"])
 ap.add_argument("--mode", default="lesion", choices=["lesion", "silence", "freeze"])
 ap.add_argument("--conds", default="none,self@1.0,task@1.0,self@0.5,task@0.5,look@0.5")
@@ -46,12 +46,15 @@ ap.add_argument("--n_chrf", type=int, default=100)
 ap.add_argument("--tau", type=float, default=0.2)
 ap.add_argument("--max_t", type=int, default=24000)
 ap.add_argument("--out", default="")
+ap.add_argument("--outroot", default="v11", help="results go to analysis/<outroot>/<out>  (v14 uses its own folder)")
+ap.add_argument("--next_lang", default="", help="train, task next: train this language (default: the next one in the run's order). Hindi-only runs use hi")
+ap.add_argument("--compact", action="store_true", help="matrix: no figures; one small per-neuron file per transition (persistence + average activity + firing rate)")
 ap.add_argument("--summarize", action="store_true")
 args = ap.parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
 REPO = os.path.dirname(os.path.abspath(__file__)); os.chdir(REPO); sys.path.insert(0, REPO)
 DEFAULT_OUT = {"sizes": "sizes", "matrix": "matrix", "static": "static", "train": f"train_{args.task}"}
-OUT = os.path.join(REPO, "analysis", "v11", args.out or DEFAULT_OUT.get(args.part, "misc")); os.makedirs(OUT, exist_ok=True)
+OUT = os.path.join(REPO, "analysis", args.outroot, args.out or DEFAULT_OUT.get(args.part, "misc")); os.makedirs(OUT, exist_ok=True)
 import numpy as np, pandas as pd
 LAYERS = [f"enc{j}" for j in range(4)] + [f"dec{j}" for j in range(4)]
 EVAL_AT = [0, 50, 100, 200, 300, 500, 750, 1000, 1500, 2000]
@@ -206,6 +209,7 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components, reverse_cuthill_mckee
 from scipy.optimize import linear_sum_assignment
 FAMILY = args.family or (args.model.split("=")[0] if "=" in args.model else args.model)
+SELF_LANGS = [l for l in (args.self_langs.split(",") if args.self_langs else LANGS) if l in LANGS]      # languages the self is found on
 
 def mlp_mod(model, L):
     return (model.enc_blocks if L.startswith("enc") else model.dec_blocks)[int(L[3])].mlp
@@ -392,7 +396,9 @@ if args.part == "matrix":
     G = {}
     for tag, f in [("a", fa), ("b", fb)]:
         model, ck = load_model(f); model.eval()
-        acts, dlang = record(model, list(LANGS)); G[tag] = groups(acts, dlang, len(LANGS), keep=True); G[tag + "_lang"] = str(ck.get("lang"))
+        acts, dlang = record(model, SELF_LANGS); G[tag] = groups(acts, dlang, len(SELF_LANGS), keep=True); G[tag + "_lang"] = str(ck.get("lang"))
+        if tag == "a":                                                       # average activity and firing rate at the first checkpoint (for activity-matched comparisons)
+            STAT = {L: (acts[L].float().mean(0).numpy(), (acts[L] > 0).float().mean(0).numpy()) for L in LAYERS}
         del acts, model
         torch.cuda.empty_cache()
     rows = []
@@ -412,6 +418,16 @@ if args.part == "matrix":
         rank = np.where(~a["alive"][rcm], 2, np.where(a["self"][rcm], 0, 1))
         order = rcm[np.argsort(rank, kind="stable")]
         n_self, n_alive = int(a["self"].sum()), int(a["alive"].sum())
+        if args.compact:
+            for n_ in range(len(pers)):
+                rows.append({"model": name, "family": FAMILY, "phase_a": pa, "phase_b": pb, "layer": L, "neuron": n_, "in_self": int(a["self"][n_]),
+                             "alive": int(a["alive"][n_]), "valid": int(valid[n_]), "persistence": round(float(pers[n_]), 4),
+                             "mean": round(float(STAT[L][0][n_]), 5), "fire": round(float(STAT[L][1][n_]), 4)})
+            sv, tv = pers[valid & a["self"]], pers[valid & ~a["self"]]
+            print(f"  {name} {pa}->{pb} {L}: self {n_self}/{n_alive} | persistence self {sv.mean() if len(sv) else float('nan'):.3f} vs task {tv.mean() if len(tv) else float('nan'):.3f}", flush=True)
+            del Za, Zb, Ra, Rb, S, A_, B_
+            torch.cuda.empty_cache()
+            continue
         Rabs = Ra.abs().cpu().numpy()[np.ix_(order, order)]
         k = 8; nb = Rabs.shape[0] // k; small = Rabs[:nb * k, :nb * k].reshape(nb, k, nb, k).mean((1, 3))
         np.save(f"{OUT}/R_{name}_{L}.npy", small.astype(np.float16))
@@ -437,7 +453,10 @@ if args.part == "matrix":
         print(f"  {name} {L}: self {n_self}/{n_alive} | persistence self {sv.mean() if len(sv) else float('nan'):.3f} vs task {tv.mean() if len(tv) else float('nan'):.3f}", flush=True)
         del Za, Zb, Ra, Rb, S, A_, B_
         torch.cuda.empty_cache()
-    append_csv(f"{OUT}/persistence_per_neuron.csv", rows)
+    if args.compact:
+        pd.DataFrame(rows).to_csv(f"{OUT}/pers_p{pa:03d}.csv.gz", index=False)       # one file per transition (overwritten on a rerun)
+    else:
+        append_csv(f"{OUT}/persistence_per_neuron.csv", rows)
     print("done"); sys.exit()
 
 # =============================================================================================== PART static
@@ -456,7 +475,7 @@ if args.part == "static":
         if path is None:
             print(f"  {run} phase {ph}: checkpoint not on this machine, skipped", flush=True); continue
         t0 = time.time(); model, ck = load_model(path); model.eval()
-        info = neuron_info(model, [l for l in (args.self_langs.split(",") if args.self_langs else LANGS) if l in LANGS])
+        info = neuron_info(model, SELF_LANGS)
         base, base_c = ev_loss(model), ev_chrf(model)
         print(f"{FAMILY} phase {ph} ({ck.get('lang')}): intact loss " + ", ".join(f"{l} {base[l]:.3f}" for l in EV)
               + " | chrF " + ", ".join(f"{l} {base_c[l]:.1f}" for l in EV), flush=True)
@@ -622,7 +641,7 @@ if args.part == "train":
         m0, ck0 = load_model(path); cfg = ck0["cfg"]; m0.eval()
         start_sd = {k: v.detach().clone() for k, v in m0.state_dict().items()}
         print(f"start model: {start_name} = {run} phase {phases[0]} (last trained on {ck0.get('lang')}) | languages {', '.join(LANGS)}", flush=True)
-        t0 = time.time(); info = neuron_info(m0, list(LANGS))
+        t0 = time.time(); info = neuron_info(m0, SELF_LANGS)
         for L in LAYERS:
             d = info[L]
             print(f"  {L}: working {d['nalive']}, self {len(d['sid'])}, task {len(d['tid'])} -> count-matched n_max {min(len(d['sid']), len(d['tid']))}")
@@ -632,7 +651,7 @@ if args.part == "train":
         if args.task == "next":
             if ck0.get("lang") not in LANGS:
                 print(f"this checkpoint's language is {ck0.get('lang')}: no 'next' language, nothing to do"); sys.exit()
-            NEXT["lang"] = LANGS[(LANGS.index(ck0["lang"]) + 1) % len(LANGS)]
+            NEXT["lang"] = args.next_lang if args.next_lang in LANGS else LANGS[(LANGS.index(ck0["lang"]) + 1) % len(LANGS)]
             print(f"  next language = {NEXT['lang']} (phase {phases[0] + 1} of the normal schedule)", flush=True)
         del m0
         torch.cuda.empty_cache()
