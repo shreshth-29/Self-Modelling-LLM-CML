@@ -1779,3 +1779,413 @@ Wed 03:19   finished held-out language, untrained model (distant)  (705 of 708 d
 Wed 03:21   finished lesion + held-out language, from phase 30 hindi_old0  (706 of 708 done)
 Wed 03:22   finished lesion + train, from phase 30 hindi_old0  (707 of 708 done)
 Wed 03:22   finished lesion + held-out language, from phase 28 hindi_old0  (708 of 708 done)
+Wed 03:22 pushed
+Wed 03:22 STAGE summary
+MULTI-SEED PILOT (v14). Tables in analysis/v14/. Self = largest co-firing group per layer, |correlation| >= 0.2, FLORES dev.
+Lesion tests are count-matched (same number of self and task neurons per layer). Lesion without training: every checkpoint from phase 4 until the model loses plasticity (at most phase 30). Lesion + training: every 2. of those checkpoints. Persistence: every phase change from 6->7 on.
+s1, s2, s3 = new seeds. old0, old1 = the earlier single runs (same recipe), analysed with the same code.
+
+=== 0b. Which checkpoints are used: every one from phase 4 until the model loses plasticity ===
+Rule: validation loss of the language just trained > 1.03 x its best, at two visits in a row. Empty 'plasticity_lost_at' = it never happened in this run.
+       label                   run  phases_trained  plasticity_lost_at  last_checkpoint_used
+  distant_s1        v14_distant_s1              30                 NaN                    30
+  distant_s2        v14_distant_s2              30                 NaN                    30
+  distant_s3        v14_distant_s3              30                 NaN                    30
+  related_s1        v14_related_s1              30                 NaN                    30
+  related_s2        v14_related_s2              30                 NaN                    30
+  related_s3        v14_related_s3              30                 NaN                    30
+    hindi_s1          v14_hindi_s1              30                 NaN                    30
+    hindi_s2          v14_hindi_s2              30                 NaN                    30
+    hindi_s3          v14_hindi_s3              30                 NaN                    30
+distant_old0      v4b_continual_s0              86                 NaN                    30
+related_old0 v8_indic_continual_s0              16                 NaN                    30
+related_old1 v8_indic_continual_s1              20                 NaN                    30
+  hindi_old0        v4b_only_hi_s0              90                 NaN                    30
+
+=== 0. Training: one row per new run. chrF_xx = chrF on language xx right after its last own phase (FLORES devtest, 200 sentences) ===
+           run  phases  total_steps  hours  chrF_hi  chrF_zh  chrF_ar  chrF_gu  chrF_pa
+v14_distant_s1      30       376000   12.8    50.74    26.34    52.74      NaN      NaN
+v14_distant_s2      30       371500   12.7    50.96    25.83    52.53      NaN      NaN
+v14_distant_s3      30       373000   12.8    51.75    26.32    53.81      NaN      NaN
+  v14_hindi_s1      30       204500    7.1    48.97      NaN      NaN      NaN      NaN
+  v14_hindi_s2      30       206500    7.1    48.25      NaN      NaN      NaN      NaN
+  v14_hindi_s3      30       205000    7.1    48.82      NaN      NaN      NaN      NaN
+v14_related_s1      30       332000   11.5    51.43      NaN      NaN    43.90    45.50
+v14_related_s2      30       329000   11.4    50.92      NaN      NaN    44.63    45.83
+v14_related_s3      30       328000   11.3    50.56      NaN      NaN    43.17    44.79
+
+=== 1. Self size (% of a layer's working neurons, average of the 8 layers) ===
+ family  tag  self_pct  self_pct_enc  self_pct_dec
+  hindi old0   48.9374       45.7331       52.1416
+  hindi   s1   49.5363       46.8204       52.2522
+  hindi   s2   49.5133       46.1806       52.8461
+  hindi   s3   50.8064       48.3359       53.2769
+related old0   55.3339       51.4378       59.2300
+related old1   54.5077       50.3102       58.7052
+related   s1   53.6943       49.1616       58.2270
+related   s2   53.4811       49.4007       57.5615
+related   s3   53.4471       49.0025       57.8917
+distant old0   52.0412       50.7831       53.2993
+distant   s1   51.7083       50.6662       52.7503
+distant   s2   52.1826       51.1581       53.2071
+distant   s3   51.9994       50.8341       53.1648
+average over models (mean, standard deviation, number of models):
+        self_pct               self_pct_enc               self_pct_dec              
+            mean     std count         mean     std count         mean     std count
+family                                                                              
+hindi    49.6984  0.7890     4      46.7675  1.1368     4      52.6292  0.5312     4
+related  54.0928  0.8159     5      49.8626  1.0157     5      58.3231  0.6603     5
+distant  51.9829  0.1992     4      50.8604  0.2106     4      53.1054  0.2433     4
+
+=== 2. Persistence from one phase to the next (1 = unchanged) ===
+gap = self minus task. gap_matched = the same, comparing only neurons of equal average activity. enc / dec = the 4 encoder / 4 decoder layers.
+ family  tag  pers_self  pers_task    gap  gap_matched  gap_matched_enc  gap_matched_dec  n_transitions
+  hindi old0     0.9474     0.9277 0.0197       0.0139           0.0149           0.0130             24
+  hindi   s1     0.9473     0.9276 0.0196       0.0140           0.0148           0.0133             24
+  hindi   s2     0.9476     0.9278 0.0197       0.0136           0.0138           0.0133             24
+  hindi   s3     0.9473     0.9270 0.0202       0.0147           0.0162           0.0132             24
+related old0     0.7283     0.6445 0.0838       0.0597           0.0599           0.0595             10
+related old1     0.7317     0.6465 0.0852       0.0611           0.0619           0.0604             14
+related   s1     0.7392     0.6555 0.0837       0.0592           0.0600           0.0584             24
+related   s2     0.7378     0.6543 0.0834       0.0596           0.0616           0.0575             24
+related   s3     0.7419     0.6591 0.0829       0.0590           0.0609           0.0571             24
+distant old0     0.5888     0.5109 0.0779       0.0607           0.0702           0.0512             24
+distant   s1     0.5864     0.5083 0.0781       0.0607           0.0699           0.0515             24
+distant   s2     0.5876     0.5104 0.0773       0.0605           0.0691           0.0518             24
+distant   s3     0.5872     0.5085 0.0788       0.0622           0.0705           0.0538             24
+average over models (mean, standard deviation, number of models):
+        pers_self               pers_task                   gap               gap_matched               gap_matched_enc               gap_matched_dec               n_transitions              
+             mean     std count      mean     std count    mean     std count        mean     std count            mean     std count            mean     std count          mean     std count
+family                                                                                                                                                                                         
+hindi      0.9474  0.0001     4    0.9276  0.0003     4  0.0198  0.0003     4      0.0141  0.0005     4          0.0149  0.0010     4          0.0132  0.0002     4          24.0  0.0000     4
+related    0.7358  0.0056     5    0.6520  0.0062     5  0.0838  0.0009     5      0.0597  0.0008     5          0.0609  0.0009     5          0.0586  0.0014     5          19.2  6.7231     5
+distant    0.5875  0.0010     4    0.5095  0.0013     4  0.0780  0.0006     4      0.0610  0.0008     4          0.0700  0.0006     4          0.0521  0.0012     4          24.0  0.0000     4
+
+=== 3. Lesion without training: loss rise on the language just trained, all 8 layers ===
+les_k of les_n = in how many (checkpoint x draw) comparisons the self lesion was worse. chrf_drop = chrF points lost. les_self05 / les_look05 = half the count: self vs task neurons that look like the self (same activity, firing rate, weight size).
+ family  tag  les_self  les_task  les_diff  les_ratio  les_k  les_n  chrf_drop_self  chrf_drop_task  les_self05  les_look05
+  hindi old0    3.9377    1.1703    2.7674     3.3647     54     54         45.1216         12.3694      0.7400      0.3751
+  hindi   s1    3.5540    1.0909    2.4631     3.2578     54     54         45.1903         11.3173      0.6609      0.3461
+  hindi   s2    3.7357    1.2763    2.4594     2.9269     54     54         45.6659         11.0992      0.7473      0.3204
+  hindi   s3    3.1821    1.3513    1.8308     2.3549     54     54         43.5652         16.1892      0.6823      0.3319
+related old0    2.2189    0.7715    1.4474     2.8760     25     26         37.4765          4.2312      0.4333      0.2332
+related old1    2.4694    1.2604    1.2091     1.9593     27     34         38.7988         12.0558      0.4177      0.2424
+related   s1    2.3908    1.3389    1.0519     1.7856     48     54         38.9090          8.7454      0.4578      0.2710
+related   s2    2.1427    0.9438    1.1989     2.2702     53     54         36.3911          7.0518      0.4423      0.2460
+related   s3    2.1753    1.3816    0.7937     1.5745     45     54         37.6913          9.3093      0.4309      0.2438
+distant old0    3.0745    1.6818    1.3927     1.8281     47     54         39.7746         13.8644      0.5345      0.2934
+distant   s1    2.5527    1.6873    0.8654     1.5129     45     54         38.9670         15.0004      0.4809      0.2886
+distant   s2    2.6049    1.5798    1.0251     1.6489     48     54         39.6829         17.5667      0.5022      0.2813
+distant   s3    3.1038    1.2662    1.8376     2.4512     52     54         38.4312         12.7709      0.5149      0.2939
+average over models (mean, standard deviation, number of models):
+        les_self               les_task               les_diff               les_ratio               les_k                les_n                chrf_drop_self               chrf_drop_task               les_self05               les_look05              
+            mean     std count     mean     std count     mean     std count      mean     std count  mean      std count  mean      std count           mean     std count           mean     std count       mean     std count       mean     std count
+family                                                                                                                                                                                                                                                    
+hindi     3.6024  0.3210     4   1.2222  0.1148     4   2.3802  0.3936     4    2.9761  0.4541     4  54.0   0.0000     4  54.0   0.0000     4        44.8858  0.9130     4        12.7438  2.3629     4     0.7076  0.0426     4     0.3434  0.0236     4
+related   2.2794  0.1429     5   1.1392  0.2677     5   1.1402  0.2400     5    2.0931  0.5064     5  39.6  12.7593     5  44.4  13.4462     5        37.8534  1.0386     5         8.2787  2.8911     5     0.4364  0.0148     5     0.2473  0.0141     5
+distant   2.8340  0.2957     4   1.5538  0.1980     4   1.2802  0.4322     4    1.8603  0.4146     4  48.0   2.9439     4  54.0   0.0000     4        39.2139  0.6345     4        14.8006  2.0565     4     0.5081  0.0225     4     0.2893  0.0058     4
+
+=== 3b. The same with 'silence' (each neuron held at its own average) in place of re-initialising ===
+ family  tag  sil_self  sil_task  sil_diff  sil_ratio  sil_k  sil_n
+  hindi old0    3.6512    0.9704    2.6807     3.7624     54     54
+  hindi   s1    3.3916    0.8730    2.5185     3.8848     54     54
+  hindi   s2    3.3497    1.0935    2.2563     3.0634     54     54
+  hindi   s3    2.9820    1.1693    1.8127     2.5502     54     54
+related old0    2.0966    0.6379    1.4587     3.2869     26     26
+related old1    2.2485    1.1120    1.1365     2.0220     26     34
+related   s1    2.1989    1.1419    1.0570     1.9257     49     54
+related   s2    1.8759    0.7967    1.0792     2.3546     51     54
+related   s3    1.9121    1.1938    0.7183     1.6017     45     54
+distant old0    2.6102    1.3701    1.2401     1.9051     47     54
+distant   s1    1.9063    1.3696    0.5367     1.3919     44     54
+distant   s2    2.0212    1.2877    0.7335     1.5696     45     54
+distant   s3    2.5293    1.0054    1.5239     2.5157     52     54
+average over models (mean, standard deviation, number of models):
+        sil_self               sil_task               sil_diff               sil_ratio               sil_k                sil_n               
+            mean     std count     mean     std count     mean     std count      mean     std count  mean      std count  mean      std count
+family                                                                                                                                        
+hindi     3.3436  0.2755     4   1.0266  0.1311     4   2.3171  0.3790     4    3.3152  0.6253     4  54.0   0.0000     4  54.0   0.0000     4
+related   2.0664  0.1671     5   0.9764  0.2449     5   1.0900  0.2634     5    2.2382  0.6448     5  39.4  12.4218     5  44.4  13.4462     5
+distant   2.2668  0.3546     4   1.2582  0.1729     4   1.0086  0.4537     4    1.8456  0.4948     4  47.0   3.5590     4  54.0   0.0000     4
+
+=== 4. Lesion, then training on the next language: held-out loss minus the untouched model's ===
+tr0 = right after the lesion. trN = at the last training step (trN_step). trN_k of trN_n = in how many (start x repeat) runs the self lesion was still worse. chrf_end = chrF vs the untouched model.
+ family  tag  tr0_self  tr0_task  trN_self  trN_task  trN_diff  trN_k  trN_n  trN_self05  trN_look05  chrf_end_self  chrf_end_task  trN_step
+  hindi old0    3.5101    1.1524    0.1775    0.1594    0.0181     14     14      0.0649      0.0613        -1.6742        -0.8354      1000
+  hindi   s1    3.4750    1.0455    0.1716    0.1549    0.0167     13     14      0.0612      0.0596        -0.9238        -0.8085      1000
+  hindi   s2    3.3971    1.3083    0.1727    0.1547    0.0180     14     14      0.0611      0.0605        -0.8212        -0.5444      1000
+  hindi   s3    3.0592    1.3787    0.1672    0.1557    0.0115     12     14      0.0595      0.0592        -1.1402        -0.9135      1000
+related old0    2.1480    0.5009    0.1254    0.0887    0.0367      7      7      0.0500      0.0417        -1.6073        -0.1981      1000
+related old1    2.2537    1.2369    0.1355    0.1039    0.0316      9      9      0.0573      0.0477        -2.0594        -0.9544      1000
+related   s1    2.1779    1.0629    0.1396    0.1086    0.0310     14     14      0.0533      0.0494        -2.4173        -0.6225      1000
+related   s2    2.0063    0.8146    0.1396    0.1024    0.0371     14     14      0.0562      0.0470        -1.8878        -0.6934      1000
+related   s3    1.9867    1.2943    0.1379    0.1041    0.0338     14     14      0.0546      0.0480        -2.2207        -0.8398      1000
+distant old0    1.4659    1.0094    0.1438    0.1100    0.0338     14     14      0.0552      0.0477        -2.1091        -1.4731      1000
+distant   s1    1.1760    1.0084    0.1441    0.1072    0.0370     14     14      0.0567      0.0489        -1.8412        -1.0537      1000
+distant   s2    1.2255    0.9410    0.1436    0.1079    0.0357     14     14      0.0537      0.0481        -2.0801        -0.9217      1000
+distant   s3    1.4284    0.7534    0.1416    0.1084    0.0333     14     14      0.0546      0.0485        -2.1145        -1.2554      1000
+average over models (mean, standard deviation, number of models):
+        tr0_self               tr0_task               trN_self               trN_task               trN_diff                trN_k               trN_n               trN_self05               trN_look05               chrf_end_self               chrf_end_task               trN_step           
+            mean     std count     mean     std count     mean     std count     mean     std count     mean     std count   mean     std count  mean     std count       mean     std count       mean     std count          mean     std count          mean     std count     mean  std count
+family                                                                                                                                                                                                                                                                                           
+hindi     3.3604  0.2062     4   1.2212  0.1505     4   0.1723  0.0043     4   0.1562  0.0022     4   0.0161  0.0031     4  13.25  0.9574     4  14.0  0.0000     4     0.0617  0.0023     4     0.0602  0.0009     4       -1.1399  0.3802     4       -0.7755  0.1603     4   1000.0  0.0     4
+related   2.1145  0.1146     5   0.9819  0.3273     5   0.1356  0.0060     5   0.1015  0.0076     5   0.0341  0.0028     5  11.60  3.3615     5  11.6  3.3615     5     0.0543  0.0029     5     0.0468  0.0029     5       -2.0385  0.3105     5       -0.6616  0.2894     5   1000.0  0.0     5
+distant   1.3239  0.1445     4   0.9280  0.1207     4   0.1433  0.0011     4   0.1084  0.0012     4   0.0349  0.0017     4  14.00  0.0000     4  14.0  0.0000     4     0.0551  0.0012     4     0.0483  0.0005     4       -2.0363  0.1309     4       -1.1760  0.2409     4   1000.0  0.0     4
+
+=== 5a. THE TREND QUESTION: importance of the self for learning a NEW language (Indonesian), which no model has seen ===
+Lesion, then 1,500 training steps on Indonesian, from every checkpoint. All numbers are relative to the untouched model from the same checkpoint. ho_avg = extra Indonesian loss, average of the evaluations from step 100 on. ho_steps = training steps needed to reach the loss the untouched model has at step 300 (so the untouched model's own value is that step count; capped at the last step). ho_end = extra loss at the last step. ho_chrf_diff = chrF of the task-lesioned model minus the self-lesioned one at the end. ho_k of ho_n = checkpoints where the self lesion was worse (ho_avg). diff = self minus task.
+ family  tag  ho_avg_self  ho_avg_task  ho_avg_diff  ho_steps_self  ho_steps_task  ho_steps_diff  ho_end_self  ho_end_task  ho_end_diff  ho_chrf_diff  ho_k  ho_n  ho_last_step
+  hindi old0       0.0880       0.0210       0.0670       350.5086       312.2247        38.2839       0.0379       0.0171       0.0208        1.1802    14    14          1500
+  hindi   s1       0.0853       0.0155       0.0698       355.4262       310.0557        45.3704       0.0429       0.0190       0.0239        1.0150    14    14          1500
+  hindi   s2       0.0953       0.0194       0.0759       355.2493       311.6314        43.6179       0.0382       0.0185       0.0197        1.7120    14    14          1500
+  hindi   s3       0.0724       0.0265       0.0459       349.1051       309.0877        40.0175       0.0388       0.0208       0.0179        1.4785    14    14          1500
+related old0       0.0638       0.0074       0.0564       345.1691       304.3715        40.7976       0.0376       0.0207       0.0169        1.2807     7     7          1500
+related old1       0.0692       0.0299       0.0393       352.5437       316.9825        35.5612       0.0408       0.0216       0.0192        1.7898     8     9          1500
+related   s1       0.0612       0.0041       0.0571       349.7455       305.1104        44.6351       0.0390       0.0163       0.0227        0.8980    14    14          1500
+related   s2       0.0625       0.0062       0.0564       347.8810       303.6074        44.2736       0.0401       0.0165       0.0237        1.4682    14    14          1500
+related   s3       0.0523       0.0141       0.0382       341.6817       309.1013        32.5803       0.0377       0.0197       0.0180        1.9258    14    14          1500
+distant old0       0.1126       0.0383       0.0743       377.5925       323.5433        54.0492       0.0525       0.0264       0.0261        1.7875    12    14          1500
+distant   s1       0.0841       0.0278       0.0563       364.6088       316.4885        48.1202       0.0472       0.0237       0.0235        1.7534    13    14          1500
+distant   s2       0.0911       0.0292       0.0620       366.0257       316.5958        49.4299       0.0521       0.0283       0.0238        1.5461    14    14          1500
+distant   s3       0.0879       0.0157       0.0722       364.6346       309.7060        54.9285       0.0474       0.0253       0.0221        1.8421    14    14          1500
+average over models (mean, standard deviation, number of models):
+        ho_avg_self               ho_avg_task               ho_avg_diff               ho_steps_self               ho_steps_task               ho_steps_diff               ho_end_self               ho_end_task               ho_end_diff               ho_chrf_diff                 ho_k                ho_n               ho_last_step           
+               mean     std count        mean     std count        mean     std count          mean     std count          mean     std count          mean     std count        mean     std count        mean     std count        mean     std count         mean     std count   mean     std count  mean     std count         mean  std count
+family                                                                                                                                                                                                                                                                                                                                             
+hindi        0.0853  0.0096     4      0.0206  0.0045     4      0.0646  0.0130     4      352.5723  3.2451     4      310.7499  1.4372     4       41.8224  3.2450     4      0.0395  0.0023     4      0.0189  0.0015     4      0.0206  0.0025     4       1.3464  0.3101     4  14.00  0.0000     4  14.0  0.0000     4       1500.0  0.0     4
+related      0.0618  0.0061     5      0.0123  0.0105     5      0.0495  0.0098     5      347.4042  4.1793     5      307.8346  5.5356     5       39.5695  5.3435     5      0.0391  0.0014     5      0.0190  0.0024     5      0.0201  0.0029     5       1.4725  0.4102     5  11.40  3.5777     5  11.6  3.3615     5       1500.0  0.0     5
+distant      0.0939  0.0128     4      0.0277  0.0093     4      0.0662  0.0085     4      368.2154  6.2864     4      316.5834  5.6494     4       51.6320  3.3612     4      0.0498  0.0029     4      0.0259  0.0019     4      0.0239  0.0016     4       1.7323  0.1294     4  13.25  0.9574     4  14.0  0.0000     4       1500.0  0.0     4
+
+for reference, an UNTRAINED model learning Indonesian with the same settings:
+untrained model  loss at the end  chrF at the end  repeats  steps
+  fresh_distant            1.795           24.348        3   1500
+    fresh_indic            1.819           22.061        3   1500
+
+=== 5. THE TREND QUESTION: importance of the self on HINDI, the one language all three kinds of run share ===
+Same language and same test sentences everywhere, so the three kinds of run can be compared directly. hi_les = loss rise on Hindi after the lesion (checkpoints where Hindi was just trained). hi_chrf = chrF points lost. hi_trN = extra Hindi loss after the lesion and 1,000 steps of Hindi. diff = self minus task.
+ family  tag  hi_les_self  hi_les_task  hi_les_diff  hi_chrf_self  hi_chrf_task  hi_chrf_diff  hi_les_n  hi_trN_self  hi_trN_task  hi_trN_diff  hi_chrf_end_diff
+  hindi old0       3.9377       1.1703       2.7674       45.1216       12.3694       32.7522        54       0.1775       0.1594       0.0181            0.8388
+  hindi   s1       3.5540       1.0909       2.4631       45.1903       11.3173       33.8730        54       0.1716       0.1549       0.0167            0.1153
+  hindi   s2       3.7357       1.2763       2.4594       45.6659       11.0992       34.5667        54       0.1727       0.1547       0.0180            0.2768
+  hindi   s3       3.1821       1.3513       1.8308       43.5652       16.1892       27.3761        54       0.1672       0.1557       0.0115            0.2267
+related old0       2.6032       0.8699       1.7333       43.4685        6.0818       37.3867        10       0.1729       0.1271       0.0458            0.7385
+related old1       2.9135       1.2976       1.6158       44.5925       10.5557       34.0367        12       0.1896       0.1512       0.0384            0.5861
+related   s1       2.9496       1.4522       1.4974       44.9122       11.5477       33.3645        18       0.1968       0.1574       0.0395            1.8025
+related   s2       2.5763       1.0075       1.5687       41.3265        7.5120       33.8146        18       0.1927       0.1490       0.0437            0.4469
+related   s3       2.4916       1.8712       0.6204       44.3709       11.7685       32.6025        18       0.1957       0.1560       0.0397            0.9931
+distant old0       3.5691       2.1103       1.4589       47.2232       14.8528       32.3704        18       0.1905       0.1562       0.0343            0.7982
+distant   s1       3.1286       1.8675       1.2611       46.7988       15.0222       31.7767        18       0.1887       0.1554       0.0332            1.1639
+distant   s2       3.0632       1.6003       1.4629       48.7038       23.6194       25.0844        18       0.1932       0.1540       0.0393            1.3755
+distant   s3       3.2518       1.5134       1.7385       44.9430       14.2037       30.7393        18       0.1895       0.1515       0.0380            0.8323
+average over models (mean, standard deviation, number of models):
+        hi_les_self               hi_les_task               hi_les_diff               hi_chrf_self               hi_chrf_task               hi_chrf_diff               hi_les_n               hi_trN_self               hi_trN_task               hi_trN_diff               hi_chrf_end_diff              
+               mean     std count        mean     std count        mean     std count         mean     std count         mean     std count         mean     std count     mean     std count        mean     std count        mean     std count        mean     std count             mean     std count
+family                                                                                                                                                                                                                                                                                                    
+hindi        3.6024  0.3210     4      1.2222  0.1148     4      2.3802  0.3936     4      44.8858  0.9130     4      12.7438  2.3629     4      32.1420  3.2640     4     54.0  0.0000     4      0.1723  0.0043     4      0.1562  0.0022     4      0.0161  0.0031     4           0.3644  0.3234     4
+related      2.7068  0.2096     5      1.2997  0.3937     5      1.4071  0.4481     5      43.7341  1.4489     5       9.4931  2.5539     5      34.2410  1.8420     5     15.2  3.8987     5      0.1895  0.0097     5      0.1481  0.0123     5      0.0414  0.0032     5           0.9134  0.5367     5
+distant      3.2532  0.2247     4      1.7729  0.2708     4      1.4803  0.1962     4      46.9172  1.5489     4      16.9245  4.4772     4      29.9927  3.3409     4     18.0  0.0000     4      0.1905  0.0020     4      0.1543  0.0021     4      0.0362  0.0029     4           1.0425  0.2766     4
+
+=== 5b. The PREVIOUS language (the one trained one phase earlier). Continual runs only: a Hindi-only model has no previous language ===
+Lesion without training. prev_les = loss rise on the previous language, all 8 layers; diff = self minus task; prev_chrf_diff = chrF points lost, self minus task. hi_prev = the same when the previous language is Hindi (phase 14), so related and distant can be compared on one language.
+ family  tag  prev_les_self  prev_les_task  prev_les_diff  prev_chrf_diff  prev_les_k  prev_les_n  hi_prev_les_self  hi_prev_les_task  hi_prev_les_diff  hi_prev_chrf_diff
+  hindi old0            NaN            NaN            NaN             NaN         NaN         NaN               NaN               NaN               NaN                NaN
+  hindi   s1            NaN            NaN            NaN             NaN         NaN         NaN               NaN               NaN               NaN                NaN
+  hindi   s2            NaN            NaN            NaN             NaN         NaN         NaN               NaN               NaN               NaN                NaN
+  hindi   s3            NaN            NaN            NaN             NaN         NaN         NaN               NaN               NaN               NaN                NaN
+related old0         2.1961         0.6265         1.5695         27.0849        26.0        26.0            2.3308            0.7731            1.5577            26.4025
+related old1         2.4103         1.1332         1.2771         21.0204        29.0        34.0            2.8936            1.3588            1.5348            18.7689
+related   s1         2.2964         1.2655         1.0308         24.7526        49.0        54.0            2.5243            1.0699            1.4545            26.0279
+related   s2         2.1328         0.8676         1.2652         25.6335        53.0        54.0            2.3111            0.9123            1.3987            25.5344
+related   s3         2.1686         1.2946         0.8740         21.7170        44.0        54.0            2.3966            1.2229            1.1737            21.4594
+distant old0         1.8341         1.1850         0.6490          7.3742        44.0        54.0            2.3405            1.1469            1.1936            14.1334
+distant   s1         1.5010         1.2272         0.2738          5.4049        40.0        54.0            1.8470            1.2539            0.5931             9.8710
+distant   s2         1.5652         1.1488         0.4164          4.2154        45.0        54.0            1.9767            1.4142            0.5625             6.8935
+distant   s3         1.8254         0.9733         0.8521          5.9051        49.0        54.0            2.0299            1.1019            0.9280            10.2450
+average over models (mean, standard deviation, number of models):
+        prev_les_self               prev_les_task               prev_les_diff               prev_chrf_diff               prev_les_k                prev_les_n                hi_prev_les_self               hi_prev_les_task               hi_prev_les_diff               hi_prev_chrf_diff              
+                 mean     std count          mean     std count          mean     std count           mean     std count       mean      std count       mean      std count             mean     std count             mean     std count             mean     std count              mean     std count
+family                                                                                                                                                                                                                                                                                                   
+hindi             NaN     NaN     0           NaN     NaN     0           NaN     NaN     0            NaN     NaN     0        NaN      NaN     0        NaN      NaN     0              NaN     NaN     0              NaN     NaN     0              NaN     NaN     0               NaN     NaN     0
+related        2.2408  0.1126     5        1.0375  0.2850     5        1.2033  0.2653     5        24.0417  2.5900     5       40.2  12.0706     5       44.4  13.4462     5           2.4913  0.2399     5           1.0674  0.2344     5           1.4239  0.1536     5           23.6386  3.3692     5
+distant        1.6814  0.1733     4        1.1336  0.1116     4        0.5478  0.2551     4         5.7249  1.3081     4       44.5   3.6968     4       54.0   0.0000     4           2.0485  0.2092     4           1.2292  0.1388     4           0.8193  0.2995     4           10.2857  2.9713     4
+
+=== 5c. The PREVIOUS language while the next one is learned (lesion, then 1,000 steps on the next language) ===
+now = loss rise on the previous language right after the lesion. end = how much MORE of it is forgotten after the 1,000 steps than the untouched model forgets. prev_tr_k of prev_tr_n = runs where the self lesion forgot more. hi_prev = the starts where the previous language is Hindi (phase 13).
+ family  tag  prev_tr_now_self  prev_tr_now_task  prev_tr_end_self  prev_tr_end_task  prev_tr_end_diff  prev_tr_k  prev_tr_n  hi_prev_tr_end_self  hi_prev_tr_end_task  hi_prev_tr_end_diff
+  hindi old0               NaN               NaN               NaN               NaN               NaN        NaN        NaN                  NaN                  NaN                  NaN
+  hindi   s1               NaN               NaN               NaN               NaN               NaN        NaN        NaN                  NaN                  NaN                  NaN
+  hindi   s2               NaN               NaN               NaN               NaN               NaN        NaN        NaN                  NaN                  NaN                  NaN
+  hindi   s3               NaN               NaN               NaN               NaN               NaN        NaN        NaN                  NaN                  NaN                  NaN
+related old0            2.4650            0.6784            0.4057            0.3499            0.0558        7.0        7.0               0.5361               0.4718               0.0643
+related old1            2.5613            1.4825            0.3806            0.3331            0.0475        9.0        9.0               0.5441               0.4684               0.0758
+related   s1            2.3432            1.1573            0.3885            0.3507            0.0379       14.0       14.0               0.5524               0.5053               0.0471
+related   s2            2.1467            0.9699            0.3920            0.3382            0.0538       14.0       14.0               0.5369               0.4732               0.0637
+related   s3            2.0702            1.4462            0.3980            0.3438            0.0542       14.0       14.0               0.5567               0.4887               0.0680
+distant old0            3.1373            1.8767            0.8199            0.5797            0.2402       14.0       14.0               1.1621               0.8059               0.3562
+distant   s1            2.5369            1.8689            0.7693            0.5517            0.2176       14.0       14.0               1.0175               0.7676               0.2499
+distant   s2            2.5818            1.6051            0.7836            0.5593            0.2242       14.0       14.0               1.0651               0.7502               0.3150
+distant   s3            3.0240            1.2648            0.7816            0.5666            0.2150       14.0       14.0               1.1207               0.7838               0.3369
+average over models (mean, standard deviation, number of models):
+        prev_tr_now_self               prev_tr_now_task               prev_tr_end_self               prev_tr_end_task               prev_tr_end_diff               prev_tr_k               prev_tr_n               hi_prev_tr_end_self               hi_prev_tr_end_task               hi_prev_tr_end_diff              
+                    mean     std count             mean     std count             mean     std count             mean     std count             mean     std count      mean     std count      mean     std count                mean     std count                mean     std count                mean     std count
+family                                                                                                                                                                                                                                                                                                                  
+hindi                NaN     NaN     0              NaN     NaN     0              NaN     NaN     0              NaN     NaN     0              NaN     NaN     0       NaN     NaN     0       NaN     NaN     0                 NaN     NaN     0                 NaN     NaN     0                 NaN     NaN     0
+related           2.3173  0.2075     5           1.1469  0.3366     5           0.3930  0.0095     5           0.3431  0.0076     5           0.0498  0.0074     5      11.6  3.3615     5      11.6  3.3615     5              0.5452  0.0092     5              0.4815  0.0154     5              0.0638  0.0105     5
+distant           2.8200  0.3051     4           1.6539  0.2885     4           0.7886  0.0218     4           0.5643  0.0119     4           0.2242  0.0113     4      14.0  0.0000     4      14.0  0.0000     4              1.0914  0.0633     4              0.7769  0.0237     4              0.3145  0.0462     4
+
+=== 5d. MATCHED comparison: self vs LOOK-ALIKE task neurons (same average activity, same variability, same firing rate, same outgoing weight size), half the count ===
+This is the strict version of every importance number above: the task neurons are not random, each one is the closest match to one lesioned self neuron. hi_look = loss rise on Hindi, no training. hi_trN = extra Hindi loss after 1,000 steps of Hindi. ho = extra Indonesian loss while learning it. diff = self minus look-alike.
+ family  tag  hi_look_self05  hi_look_look05  hi_look_diff  hi_trN_self05  hi_trN_look05  hi_trN_look_diff  ho_avg_self05  ho_avg_look05  ho_look_diff  ho_look_k  ho_look_n
+  hindi old0          0.7400          0.3751        0.3650         0.0649         0.0613            0.0036         0.0278         0.0118        0.0160         14         14
+  hindi   s1          0.6609          0.3461        0.3148         0.0612         0.0596            0.0016         0.0285         0.0067        0.0218         13         14
+  hindi   s2          0.7473          0.3204        0.4268         0.0611         0.0605            0.0006         0.0328         0.0078        0.0250         14         14
+  hindi   s3          0.6823          0.3319        0.3504         0.0595         0.0592            0.0003         0.0275         0.0039        0.0236         14         14
+related old0          0.5603          0.2778        0.2825         0.0737         0.0601            0.0136         0.0191        -0.0009        0.0201          7          7
+related old1          0.5183          0.2834        0.2350         0.0789         0.0668            0.0121         0.0198         0.0057        0.0141          9          9
+related   s1          0.5631          0.3294        0.2337         0.0755         0.0730            0.0026         0.0189        -0.0033        0.0222         14         14
+related   s2          0.5390          0.2947        0.2443         0.0808         0.0671            0.0137         0.0248         0.0000        0.0248         14         14
+related   s3          0.5174          0.2939        0.2234         0.0794         0.0748            0.0046         0.0173        -0.0038        0.0211         14         14
+distant old0          0.6629          0.3474        0.3155         0.0800         0.0684            0.0116         0.0310         0.0037        0.0272         14         14
+distant   s1          0.5970          0.3348        0.2622         0.0779         0.0703            0.0076         0.0272         0.0026        0.0246         14         14
+distant   s2          0.6201          0.3307        0.2895         0.0780         0.0721            0.0059         0.0287         0.0038        0.0250         14         14
+distant   s3          0.6387          0.3473        0.2914         0.0792         0.0662            0.0130         0.0276         0.0010        0.0265         14         14
+average over models (mean, standard deviation, number of models):
+        hi_look_self05               hi_look_look05               hi_look_diff               hi_trN_self05               hi_trN_look05               hi_trN_look_diff               ho_avg_self05               ho_avg_look05               ho_look_diff               ho_look_k               ho_look_n              
+                  mean     std count           mean     std count         mean     std count          mean     std count          mean     std count             mean     std count          mean     std count          mean     std count         mean     std count      mean     std count      mean     std count
+family                                                                                                                                                                                                                                                                                                                
+hindi           0.7076  0.0426     4         0.3434  0.0236     4       0.3643  0.0467     4        0.0617  0.0023     4        0.0602  0.0009     4           0.0015  0.0015     4        0.0292  0.0025     4        0.0076  0.0032     4       0.0216  0.0039     4     13.75  0.5000     4      14.0  0.0000     4
+related         0.5396  0.0220     5         0.2958  0.0201     5       0.2438  0.0229     5        0.0777  0.0029     5        0.0684  0.0058     5           0.0093  0.0053     5        0.0200  0.0028     5       -0.0005  0.0038     5       0.0205  0.0040     5     11.60  3.3615     5      11.6  3.3615     5
+distant         0.6297  0.0280     4         0.3400  0.0086     4       0.2896  0.0218     4        0.0788  0.0010     4        0.0692  0.0025     4           0.0095  0.0033     4        0.0286  0.0017     4        0.0028  0.0013     4       0.0258  0.0013     4     14.00  0.0000     4      14.0  0.0000     4
+
+=== 5e. The same lesion without training, with the self found at the NULL-CALIBRATED thresholds (0.30 to 0.40 per layer; a much smaller self) ===
+cal_n_lesioned = neurons lesioned in all 8 layers together at the calibrated thresholds; n_lesioned = the same at 0.2. Names as in 3. and 5., with cal_ in front.
+ family  tag  cal_n_lesioned  n_lesioned  cal_hi_les_self  cal_hi_les_task  cal_hi_les_diff  cal_hi_chrf_diff  cal_les_self  cal_les_task  cal_les_diff  cal_les_k  cal_les_n  cal_prev_les_diff
+  hindi old0       1439.6296   8733.1852           0.3909           0.0722           0.3187           10.2982        0.3909        0.0722        0.3187         54         54                NaN
+  hindi   s1       1235.1481   8659.7037           0.2605           0.0532           0.2073            7.2331        0.2605        0.0532        0.2073         54         54                NaN
+  hindi   s2       1340.1852   8617.1481           0.3700           0.0642           0.3058            9.4573        0.3700        0.0642        0.3058         54         54                NaN
+  hindi   s3       1547.3333   8598.1852           0.2589           0.0716           0.1873            7.6487        0.2589        0.0716        0.1873         54         54                NaN
+related old0       2030.8462   8757.6154           0.4226           0.1202           0.3025           11.0144        0.3990        0.1062        0.2928         26         26             0.3149
+related old1       1855.0588   8696.7059           0.3064           0.1208           0.1857            8.0162        0.3428        0.0989        0.2439         34         34             0.2275
+related   s1       1799.7407   8676.0741           0.3428           0.1266           0.2162           12.3362        0.3248        0.1048        0.2200         54         54             0.1624
+related   s2       1595.4444   8571.9630           0.2638           0.1182           0.1456            7.4104        0.2771        0.0940        0.1831         54         54             0.1830
+related   s3       1626.4444   8559.2222           0.3371           0.1266           0.2104           10.8540        0.2826        0.0995        0.1830         54         54             0.1714
+distant old0       1132.2593   8807.8889           0.2293           0.0580           0.1713            6.8087        0.2479        0.0511        0.1968         54         54             0.0947
+distant   s1       1195.7778   8639.4074           0.2585           0.0673           0.1912            6.7868        0.2249        0.0525        0.1725         54         54             0.0573
+distant   s2       1195.0741   8759.4444           0.3059           0.0665           0.2394            8.4872        0.2670        0.0561        0.2110         54         54             0.0929
+distant   s3       1185.1481   8703.5556           0.2428           0.0635           0.1793            6.8830        0.2283        0.0540        0.1743         54         54             0.0558
+average over models (mean, standard deviation, number of models):
+        cal_n_lesioned                 n_lesioned                cal_hi_les_self               cal_hi_les_task               cal_hi_les_diff               cal_hi_chrf_diff               cal_les_self               cal_les_task               cal_les_diff               cal_les_k                cal_les_n                cal_prev_les_diff              
+                  mean       std count       mean      std count            mean     std count            mean     std count            mean     std count             mean     std count         mean     std count         mean     std count         mean     std count      mean      std count      mean      std count              mean     std count
+family                                                                                                                                                                                                                                                                                                                                                      
+hindi        1390.5741  133.7612     4  8652.0556  59.8917     4          0.3201  0.0702     4          0.0653  0.0089     4          0.2548  0.0671     4           8.6593  1.4581     4       0.3201  0.0702     4       0.0653  0.0089     4       0.2548  0.0671     4      54.0   0.0000     4      54.0   0.0000     4               NaN     NaN     0
+related      1781.5069  177.8876     5  8652.3161  84.7731     5          0.3346  0.0584     5          0.1225  0.0039     5          0.2121  0.0577     5           9.9262  2.1113     5       0.3253  0.0497     5       0.1007  0.0049     5       0.2246  0.0461     5      44.4  13.4462     5      44.4  13.4462     5            0.2118  0.0628     5
+distant      1177.0648   30.2621     4  8727.5741  72.6096     4          0.2591  0.0334     4          0.0638  0.0042     4          0.1953  0.0305     4           7.2414  0.8316     4       0.2420  0.0195     4       0.0534  0.0021     4       0.1886  0.0185     4      54.0   0.0000     4      54.0   0.0000     4            0.0752  0.0215     4
+
+=== 2b. Persistence gap (activity-matched) at other thresholds, and the self size there (% of working neurons) ===
+gap_matched = the main definition (0.2). gapm_15 / 25 / 30 = thresholds 0.15 / 0.25 / 0.30. gapm_cal = null-calibrated per layer. gap_matched_std = at 0.2, comparing only neurons whose activity varies equally much.
+ family  tag  gapm_15  gap_matched  gapm_25  gapm_30  gapm_cal  gap_matched_std  selfpct_15  selfpct_25  selfpct_30  selfpct_cal
+  hindi old0   0.0158       0.0139   0.0155   0.0145    0.0152           0.0123     81.4958     25.3990      9.8787       6.8724
+  hindi   s1   0.0153       0.0140   0.0155   0.0152    0.0155           0.0122     81.4126     25.2242      8.9777       5.7597
+  hindi   s2   0.0146       0.0136   0.0146   0.0140    0.0145           0.0122     81.3249     25.2722      9.4794       6.2832
+  hindi   s3   0.0159       0.0147   0.0164   0.0160    0.0164           0.0126     82.2447     26.5527     10.7021       7.3031
+related old0   0.0685       0.0597   0.0585   0.0403    0.0282           0.0493     84.9042     31.0636     13.6246       9.7369
+related old1   0.0706       0.0611   0.0580   0.0382    0.0289           0.0510     84.4496     29.8954     12.2437       8.9704
+related   s1   0.0709       0.0592   0.0542   0.0333    0.0224           0.0490     83.3742     28.9339     11.8675       8.5742
+related   s2   0.0719       0.0596   0.0537   0.0310    0.0186           0.0494     83.6898     28.0945     10.8665       7.4910
+related   s3   0.0690       0.0590   0.0540   0.0324    0.0235           0.0483     83.4246     28.4019     11.1308       7.7898
+distant old0   0.0687       0.0607   0.0618   0.0684    0.0805           0.0426     83.7661     25.7619      8.7695       5.3841
+distant   s1   0.0673       0.0607   0.0628   0.0676    0.0895           0.0445     83.0438     25.9214      9.1018       5.6567
+distant   s2   0.0693       0.0605   0.0631   0.0707    0.0850           0.0433     83.7516     25.5996      8.9189       5.6301
+distant   s3   0.0714       0.0622   0.0646   0.0689    0.0857           0.0442     83.4627     25.3562      8.7714       5.5119
+average over models (mean, standard deviation, number of models):
+        gapm_15               gap_matched               gapm_25               gapm_30               gapm_cal               gap_matched_std               selfpct_15               selfpct_25               selfpct_30               selfpct_cal              
+           mean     std count        mean     std count    mean     std count    mean     std count     mean     std count            mean     std count       mean     std count       mean     std count       mean     std count        mean     std count
+family                                                                                                                                                                                                                                                       
+hindi    0.0154  0.0006     4      0.0141  0.0005     4  0.0155  0.0007     4  0.0149  0.0009     4   0.0154  0.0008     4          0.0123  0.0002     4    81.6195  0.4226     4    25.6120  0.6315     4     9.7595  0.7286     4      6.5546  0.6750     4
+related  0.0702  0.0014     5      0.0597  0.0008     5  0.0557  0.0024     5  0.0350  0.0040     5   0.0243  0.0043     5          0.0494  0.0010     5    83.9685  0.6771     5    29.2778  1.2100     5    11.9466  1.0888     5      8.5125  0.9053     5
+distant  0.0692  0.0017     4      0.0610  0.0008     4  0.0631  0.0012     4  0.0689  0.0013     4   0.0852  0.0037     4          0.0437  0.0009     4    83.5061  0.3384     4    25.6598  0.2413     4     8.8904  0.1573     4      5.5457  0.1248     4
+
+=== 6. Tests. One data point = one MODEL (not one neuron, not one checkpoint), so n is small and p-values are rough ===
+                                                                                                                         test                           groups n_models  mean_1  mean_2 models_where_self_is_higher      p                                                                               kind
+                                                                                                    persistence: self vs task                            hindi        4  0.9474  0.9276                         4/4 0.0000                                                          paired t-test over models
+                                                                                            lesion, no training: self vs task                            hindi        4  3.6024  1.2222                         4/4 0.0012                                                          paired t-test over models
+                                                                                  lesion + training, at the end: self vs task                            hindi        4  0.1723  0.1562                         4/4 0.0019                                                          paired t-test over models
+                                                                                                    persistence: self vs task                          related        5  0.7358  0.6520                         5/5 0.0000                                                          paired t-test over models
+                                                                                            lesion, no training: self vs task                          related        5  2.2794  1.1392                         5/5 0.0004                                                          paired t-test over models
+                                                                                  lesion + training, at the end: self vs task                          related        5  0.1356  0.1015                         5/5 0.0000                                                          paired t-test over models
+                                                                                                    persistence: self vs task                          distant        4  0.5875  0.5095                         4/4 0.0000                                                          paired t-test over models
+                                                                                            lesion, no training: self vs task                          distant        4  2.8340  1.5538                         4/4 0.0096                                                          paired t-test over models
+                                                                                  lesion + training, at the end: self vs task                          distant        4  0.1433  0.1084                         4/4 0.0000                                                          paired t-test over models
+            MATCHED: new language (Indonesian), extra loss while learning it, self minus LOOK-ALIKE task neurons (half count)                 hindi vs related   4 vs 5  0.0216  0.0205                             0.6822                                                  Welch t-test between kinds of run
+            MATCHED: new language (Indonesian), extra loss while learning it, self minus LOOK-ALIKE task neurons (half count)                 hindi vs distant   4 vs 4  0.0216  0.0258                             0.1187                                                  Welch t-test between kinds of run
+            MATCHED: new language (Indonesian), extra loss while learning it, self minus LOOK-ALIKE task neurons (half count)               related vs distant   5 vs 4  0.0205  0.0258                             0.0360                                                  Welch t-test between kinds of run
+                          MATCHED: Hindi, lesion without training, loss rise, self minus LOOK-ALIKE task neurons (half count)                 hindi vs related   4 vs 5  0.3643  0.2438                             0.0084                                                  Welch t-test between kinds of run
+                          MATCHED: Hindi, lesion without training, loss rise, self minus LOOK-ALIKE task neurons (half count)                 hindi vs distant   4 vs 4  0.3643  0.2896                             0.0413                                                  Welch t-test between kinds of run
+                          MATCHED: Hindi, lesion without training, loss rise, self minus LOOK-ALIKE task neurons (half count)               related vs distant   5 vs 4  0.2438  0.2896                             0.0190                                                  Welch t-test between kinds of run
+        MATCHED: Hindi, lesion + 1,000 steps of Hindi, extra loss at the end, self minus LOOK-ALIKE task neurons (half count)                 hindi vs related   4 vs 5  0.0015  0.0093                             0.0277                                                  Welch t-test between kinds of run
+        MATCHED: Hindi, lesion + 1,000 steps of Hindi, extra loss at the end, self minus LOOK-ALIKE task neurons (half count)                 hindi vs distant   4 vs 4  0.0015  0.0095                             0.0107                                                  Welch t-test between kinds of run
+        MATCHED: Hindi, lesion + 1,000 steps of Hindi, extra loss at the end, self minus LOOK-ALIKE task neurons (half count)               related vs distant   5 vs 4  0.0093  0.0095                             0.9433                                                  Welch t-test between kinds of run
+                                             CALIBRATED threshold: Hindi, lesion without training, loss rise, self minus task                 hindi vs related   4 vs 5  0.2548  0.2121                             0.3520                                                  Welch t-test between kinds of run
+                                             CALIBRATED threshold: Hindi, lesion without training, loss rise, self minus task                 hindi vs distant   4 vs 4  0.2548  0.1953                             0.1786                                                  Welch t-test between kinds of run
+                                             CALIBRATED threshold: Hindi, lesion without training, loss rise, self minus task               related vs distant   5 vs 4  0.2121  0.1953                             0.5945                                                  Welch t-test between kinds of run
+                 IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task                 hindi vs related   4 vs 5  0.0646  0.0495                             0.1062                                                  Welch t-test between kinds of run
+                 IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task                 hindi vs distant   4 vs 4  0.0646  0.0662                             0.8493                                                  Welch t-test between kinds of run
+                 IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task               related vs distant   5 vs 4  0.0495  0.0662                             0.0295                                                  Welch t-test between kinds of run
+                         IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task                 hindi vs related   4 vs 5 41.8224 39.5695                             0.4623                                                  Welch t-test between kinds of run
+                         IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task                 hindi vs distant   4 vs 4 41.8224 51.6320                             0.0057                                                  Welch t-test between kinds of run
+                         IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task               related vs distant   5 vs 4 39.5695 51.6320                             0.0048                                                  Welch t-test between kinds of run
+                               IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task                 hindi vs related   4 vs 5  0.0206  0.0201                             0.7954                                                  Welch t-test between kinds of run
+                               IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task                 hindi vs distant   4 vs 4  0.0206  0.0239                             0.0792                                                  Welch t-test between kinds of run
+                               IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task               related vs distant   5 vs 4  0.0201  0.0239                             0.0482                                                  Welch t-test between kinds of run
+                                                     IMPORTANCE on Hindi, lesion without training: loss rise, self minus task                 hindi vs related   4 vs 5  2.3802  1.4071                             0.0108                                                  Welch t-test between kinds of run
+                                                     IMPORTANCE on Hindi, lesion without training: loss rise, self minus task                 hindi vs distant   4 vs 4  2.3802  1.4803                             0.0123                                                  Welch t-test between kinds of run
+                                                     IMPORTANCE on Hindi, lesion without training: loss rise, self minus task               related vs distant   5 vs 4  1.4071  1.4803                             0.7545                                                  Welch t-test between kinds of run
+                                              IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task                 hindi vs related   4 vs 5 32.1420 34.2410                             0.3082                                                  Welch t-test between kinds of run
+                                              IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task                 hindi vs distant   4 vs 4 32.1420 29.9927                             0.3929                                                  Welch t-test between kinds of run
+                                              IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task               related vs distant   5 vs 4 34.2410 29.9927                             0.0781                                                  Welch t-test between kinds of run
+                                   IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task                 hindi vs related   4 vs 5  0.0161  0.0414                             0.0000                                                  Welch t-test between kinds of run
+                                   IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task                 hindi vs distant   4 vs 4  0.0161  0.0362                             0.0001                                                  Welch t-test between kinds of run
+                                   IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task               related vs distant   5 vs 4  0.0414  0.0362                             0.0373                                                  Welch t-test between kinds of run
+                         PREVIOUS language = Hindi, lesion without training: loss rise, self minus task (continual runs only)               related vs distant   5 vs 4  1.4239  0.8193                             0.0192                                                  Welch t-test between kinds of run
+PREVIOUS language = Hindi, lesion + 1,000 steps of the next language: extra forgetting, self minus task (continual runs only)               related vs distant   5 vs 4  0.0638  0.3145                             0.0012                                                  Welch t-test between kinds of run
+                                                            persistence gap, self minus task (task neurons of equal activity)                 hindi vs related   4 vs 5  0.0141  0.0597                             0.0000                                                  Welch t-test between kinds of run
+                                                            persistence gap, self minus task (task neurons of equal activity)                 hindi vs distant   4 vs 4  0.0141  0.0610                             0.0000                                                  Welch t-test between kinds of run
+                                                            persistence gap, self minus task (task neurons of equal activity)               related vs distant   5 vs 4  0.0597  0.0610                             0.0479                                                  Welch t-test between kinds of run
+                           lesion, no training, language just trained (a different language per kind of run): self minus task                 hindi vs related   4 vs 5  2.3802  1.1402                             0.0031                                                  Welch t-test between kinds of run
+                           lesion, no training, language just trained (a different language per kind of run): self minus task                 hindi vs distant   4 vs 4  2.3802  1.2802                             0.0095                                                  Welch t-test between kinds of run
+                           lesion, no training, language just trained (a different language per kind of run): self minus task               related vs distant   5 vs 4  1.1402  1.2802                             0.5898                                                  Welch t-test between kinds of run
+                                            lesion + training on the next language (differs per kind of run): self minus task                 hindi vs related   4 vs 5  0.0161  0.0341                             0.0001                                                  Welch t-test between kinds of run
+                                            lesion + training on the next language (differs per kind of run): self minus task                 hindi vs distant   4 vs 4  0.0161  0.0349                             0.0002                                                  Welch t-test between kinds of run
+                                            lesion + training on the next language (differs per kind of run): self minus task               related vs distant   5 vs 4  0.0341  0.0349                             0.5842                                                  Welch t-test between kinds of run
+            MATCHED: new language (Indonesian), extra loss while learning it, self minus LOOK-ALIKE task neurons (half count) trend: hindi < related < distant       13  0.4717     NaN                             0.1036 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                          MATCHED: Hindi, lesion without training, loss rise, self minus LOOK-ALIKE task neurons (half count) trend: hindi < related < distant       13 -0.3931     NaN                             0.1839 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+        MATCHED: Hindi, lesion + 1,000 steps of Hindi, extra loss at the end, self minus LOOK-ALIKE task neurons (half count) trend: hindi < related < distant       13  0.6290     NaN                             0.0213 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                                             CALIBRATED threshold: Hindi, lesion without training, loss rise, self minus task trend: hindi < related < distant       13 -0.4193     NaN                             0.1538 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                 IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task trend: hindi < related < distant       13  0.0000     NaN                             1.0000 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                         IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task trend: hindi < related < distant       13  0.6290     NaN                             0.0213 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                               IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task trend: hindi < related < distant       13  0.3931     NaN                             0.1839 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                                                     IMPORTANCE on Hindi, lesion without training: loss rise, self minus task trend: hindi < related < distant       13 -0.7338     NaN                             0.0043 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                                              IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task trend: hindi < related < distant       13 -0.4717     NaN                             0.1036 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                                   IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task trend: hindi < related < distant       13  0.4455     NaN                             0.1271 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                                                            persistence gap, self minus task (task neurons of equal activity) trend: hindi < related < distant       13  0.8648     NaN                             0.0001 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                           lesion, no training, language just trained (a different language per kind of run): self minus task trend: hindi < related < distant       13 -0.6028     NaN                             0.0292 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+                                            lesion + training on the next language (differs per kind of run): self minus task trend: hindi < related < distant       13  0.7076     NaN                             0.0068 rank correlation with language distance (mean_1 = correlation; +1 = always rising)
+
+=== 7. The trend (average over models; left to right = more different languages) ===
+MATCHED: new language (Indonesian), extra loss while learning it, self minus LOOK-ALIKE task neurons (half count):  hindi: 0.022 (sd 0.004, 4 models)  |  related: 0.020 (sd 0.004, 5 models)  |  distant: 0.026 (sd 0.001, 4 models)
+MATCHED: Hindi, lesion without training, loss rise, self minus LOOK-ALIKE task neurons (half count):  hindi: 0.364 (sd 0.047, 4 models)  |  related: 0.244 (sd 0.023, 5 models)  |  distant: 0.290 (sd 0.022, 4 models)
+MATCHED: Hindi, lesion + 1,000 steps of Hindi, extra loss at the end, self minus LOOK-ALIKE task neurons (half count):  hindi: 0.002 (sd 0.002, 4 models)  |  related: 0.009 (sd 0.005, 5 models)  |  distant: 0.010 (sd 0.003, 4 models)
+CALIBRATED threshold: Hindi, lesion without training, loss rise, self minus task:  hindi: 0.255 (sd 0.067, 4 models)  |  related: 0.212 (sd 0.058, 5 models)  |  distant: 0.195 (sd 0.031, 4 models)
+IMPORTANCE for a NEW language (Indonesian), lesion + training: extra loss while learning it, self minus task:  hindi: 0.065 (sd 0.013, 4 models)  |  related: 0.049 (sd 0.010, 5 models)  |  distant: 0.066 (sd 0.009, 4 models)
+IMPORTANCE for a NEW language (Indonesian): extra training steps needed to catch up, self minus task:  hindi: 41.822 (sd 3.245, 4 models)  |  related: 39.570 (sd 5.343, 5 models)  |  distant: 51.632 (sd 3.361, 4 models)
+IMPORTANCE for a NEW language (Indonesian): extra loss at the end of training, self minus task:  hindi: 0.021 (sd 0.003, 4 models)  |  related: 0.020 (sd 0.003, 5 models)  |  distant: 0.024 (sd 0.002, 4 models)
+IMPORTANCE on Hindi, lesion without training: loss rise, self minus task:  hindi: 2.380 (sd 0.394, 4 models)  |  related: 1.407 (sd 0.448, 5 models)  |  distant: 1.480 (sd 0.196, 4 models)
+IMPORTANCE on Hindi, lesion without training: chrF points lost, self minus task:  hindi: 32.142 (sd 3.264, 4 models)  |  related: 34.241 (sd 1.842, 5 models)  |  distant: 29.993 (sd 3.341, 4 models)
+IMPORTANCE on Hindi, lesion + 1,000 steps of Hindi: extra loss at the end, self minus task:  hindi: 0.016 (sd 0.003, 4 models)  |  related: 0.041 (sd 0.003, 5 models)  |  distant: 0.036 (sd 0.003, 4 models)
+PREVIOUS language = Hindi, lesion without training: loss rise, self minus task (continual runs only):  hindi: nan (sd nan, 0 models)  |  related: 1.424 (sd 0.154, 5 models)  |  distant: 0.819 (sd 0.299, 4 models)
+PREVIOUS language = Hindi, lesion + 1,000 steps of the next language: extra forgetting, self minus task (continual runs only):  hindi: nan (sd nan, 0 models)  |  related: 0.064 (sd 0.010, 5 models)  |  distant: 0.314 (sd 0.046, 4 models)
+persistence gap, self minus task (task neurons of equal activity):  hindi: 0.014 (sd 0.000, 4 models)  |  related: 0.060 (sd 0.001, 5 models)  |  distant: 0.061 (sd 0.001, 4 models)
+lesion, no training, language just trained (a different language per kind of run): self minus task:  hindi: 2.380 (sd 0.394, 4 models)  |  related: 1.140 (sd 0.240, 5 models)  |  distant: 1.280 (sd 0.432, 4 models)
+lesion + training on the next language (differs per kind of run): self minus task:  hindi: 0.016 (sd 0.003, 4 models)  |  related: 0.034 (sd 0.003, 5 models)  |  distant: 0.035 (sd 0.002, 4 models)
+report in /workspace/shreshth/analysis/v14/summary
+
