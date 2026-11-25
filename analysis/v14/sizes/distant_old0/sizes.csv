@@ -1,0 +1,497 @@
+family,run,phase,lang,self_def,layer,n_alive,n_self,n_task,second
+distant,v4b_continual_s0,0,init,all the model's languages,enc0,2560,2546,14,1
+distant,v4b_continual_s0,0,init,all the model's languages,enc1,2560,2520,40,1
+distant,v4b_continual_s0,0,init,all the model's languages,enc2,2560,2519,41,1
+distant,v4b_continual_s0,0,init,all the model's languages,enc3,2560,2506,54,1
+distant,v4b_continual_s0,0,init,all the model's languages,dec0,2560,2209,351,2
+distant,v4b_continual_s0,0,init,all the model's languages,dec1,2560,2397,163,2
+distant,v4b_continual_s0,0,init,all the model's languages,dec2,2560,2425,135,1
+distant,v4b_continual_s0,0,init,all the model's languages,dec3,2560,2445,115,1
+distant,v4b_continual_s0,0,init,Hindi only,enc0,2560,2546,14,1
+distant,v4b_continual_s0,0,init,Hindi only,enc1,2560,2520,40,1
+distant,v4b_continual_s0,0,init,Hindi only,enc2,2560,2519,41,1
+distant,v4b_continual_s0,0,init,Hindi only,enc3,2560,2506,54,1
+distant,v4b_continual_s0,0,init,Hindi only,dec0,2560,2268,292,2
+distant,v4b_continual_s0,0,init,Hindi only,dec1,2560,2411,149,1
+distant,v4b_continual_s0,0,init,Hindi only,dec2,2560,2430,130,1
+distant,v4b_continual_s0,0,init,Hindi only,dec3,2560,2460,100,1
+distant,v4b_continual_s0,1,hi,all the model's languages,enc0,2560,1752,808,5
+distant,v4b_continual_s0,1,hi,all the model's languages,enc1,2560,1552,1008,4
+distant,v4b_continual_s0,1,hi,all the model's languages,enc2,2560,1551,1009,5
+distant,v4b_continual_s0,1,hi,all the model's languages,enc3,2560,1710,850,7
+distant,v4b_continual_s0,1,hi,all the model's languages,dec0,2560,1480,1080,7
+distant,v4b_continual_s0,1,hi,all the model's languages,dec1,2560,1371,1189,6
+distant,v4b_continual_s0,1,hi,all the model's languages,dec2,2560,1520,1040,3
+distant,v4b_continual_s0,1,hi,all the model's languages,dec3,2560,1829,731,4
+distant,v4b_continual_s0,1,hi,Hindi only,enc0,2560,1752,808,5
+distant,v4b_continual_s0,1,hi,Hindi only,enc1,2560,1552,1008,4
+distant,v4b_continual_s0,1,hi,Hindi only,enc2,2560,1551,1009,5
+distant,v4b_continual_s0,1,hi,Hindi only,enc3,2560,1710,850,7
+distant,v4b_continual_s0,1,hi,Hindi only,dec0,2560,1554,1006,3
+distant,v4b_continual_s0,1,hi,Hindi only,dec1,2560,1352,1208,2
+distant,v4b_continual_s0,1,hi,Hindi only,dec2,2560,1478,1082,5
+distant,v4b_continual_s0,1,hi,Hindi only,dec3,2560,1875,685,3
+distant,v4b_continual_s0,2,zh,all the model's languages,enc0,2560,1527,1033,6
+distant,v4b_continual_s0,2,zh,all the model's languages,enc1,2560,1310,1250,16
+distant,v4b_continual_s0,2,zh,all the model's languages,enc2,2560,1431,1129,4
+distant,v4b_continual_s0,2,zh,all the model's languages,enc3,2560,1618,942,8
+distant,v4b_continual_s0,2,zh,all the model's languages,dec0,2560,1384,1176,6
+distant,v4b_continual_s0,2,zh,all the model's languages,dec1,2560,1379,1181,4
+distant,v4b_continual_s0,2,zh,all the model's languages,dec2,2560,1246,1314,4
+distant,v4b_continual_s0,2,zh,all the model's languages,dec3,2560,1415,1145,9
+distant,v4b_continual_s0,2,zh,Hindi only,enc0,2560,1527,1033,6
+distant,v4b_continual_s0,2,zh,Hindi only,enc1,2560,1310,1250,16
+distant,v4b_continual_s0,2,zh,Hindi only,enc2,2560,1431,1129,4
+distant,v4b_continual_s0,2,zh,Hindi only,enc3,2560,1618,942,8
+distant,v4b_continual_s0,2,zh,Hindi only,dec0,2560,1464,1096,5
+distant,v4b_continual_s0,2,zh,Hindi only,dec1,2560,1148,1412,6
+distant,v4b_continual_s0,2,zh,Hindi only,dec2,2560,906,1654,9
+distant,v4b_continual_s0,2,zh,Hindi only,dec3,2560,1096,1464,16
+distant,v4b_continual_s0,3,ar,all the model's languages,enc0,2560,1467,1093,8
+distant,v4b_continual_s0,3,ar,all the model's languages,enc1,2560,1342,1218,9
+distant,v4b_continual_s0,3,ar,all the model's languages,enc2,2560,1448,1112,10
+distant,v4b_continual_s0,3,ar,all the model's languages,enc3,2560,1701,859,5
+distant,v4b_continual_s0,3,ar,all the model's languages,dec0,2560,1281,1279,6
+distant,v4b_continual_s0,3,ar,all the model's languages,dec1,2560,1496,1064,6
+distant,v4b_continual_s0,3,ar,all the model's languages,dec2,2560,1728,832,6
+distant,v4b_continual_s0,3,ar,all the model's languages,dec3,2560,1999,561,9
+distant,v4b_continual_s0,3,ar,Hindi only,enc0,2560,1467,1093,8
+distant,v4b_continual_s0,3,ar,Hindi only,enc1,2560,1342,1218,9
+distant,v4b_continual_s0,3,ar,Hindi only,enc2,2560,1448,1112,10
+distant,v4b_continual_s0,3,ar,Hindi only,enc3,2560,1701,859,5
+distant,v4b_continual_s0,3,ar,Hindi only,dec0,2560,1280,1280,17
+distant,v4b_continual_s0,3,ar,Hindi only,dec1,2560,1251,1309,7
+distant,v4b_continual_s0,3,ar,Hindi only,dec2,2560,1234,1326,5
+distant,v4b_continual_s0,3,ar,Hindi only,dec3,2560,1553,1007,10
+distant,v4b_continual_s0,4,hi,all the model's languages,enc0,2560,1450,1110,7
+distant,v4b_continual_s0,4,hi,all the model's languages,enc1,2560,1164,1396,15
+distant,v4b_continual_s0,4,hi,all the model's languages,enc2,2560,1396,1164,11
+distant,v4b_continual_s0,4,hi,all the model's languages,enc3,2560,1688,872,7
+distant,v4b_continual_s0,4,hi,all the model's languages,dec0,2560,1356,1204,12
+distant,v4b_continual_s0,4,hi,all the model's languages,dec1,2560,1148,1412,8
+distant,v4b_continual_s0,4,hi,all the model's languages,dec2,2560,1298,1262,4
+distant,v4b_continual_s0,4,hi,all the model's languages,dec3,2560,1732,828,4
+distant,v4b_continual_s0,4,hi,Hindi only,enc0,2560,1450,1110,7
+distant,v4b_continual_s0,4,hi,Hindi only,enc1,2560,1164,1396,15
+distant,v4b_continual_s0,4,hi,Hindi only,enc2,2560,1396,1164,11
+distant,v4b_continual_s0,4,hi,Hindi only,enc3,2560,1688,872,7
+distant,v4b_continual_s0,4,hi,Hindi only,dec0,2560,1830,730,3
+distant,v4b_continual_s0,4,hi,Hindi only,dec1,2560,1596,964,4
+distant,v4b_continual_s0,4,hi,Hindi only,dec2,2560,1606,954,8
+distant,v4b_continual_s0,4,hi,Hindi only,dec3,2560,1921,639,5
+distant,v4b_continual_s0,5,zh,all the model's languages,enc0,2560,1383,1177,8
+distant,v4b_continual_s0,5,zh,all the model's languages,enc1,2560,1236,1324,10
+distant,v4b_continual_s0,5,zh,all the model's languages,enc2,2560,1414,1146,6
+distant,v4b_continual_s0,5,zh,all the model's languages,enc3,2560,1667,893,8
+distant,v4b_continual_s0,5,zh,all the model's languages,dec0,2560,1341,1219,7
+distant,v4b_continual_s0,5,zh,all the model's languages,dec1,2560,1231,1329,8
+distant,v4b_continual_s0,5,zh,all the model's languages,dec2,2560,1241,1319,10
+distant,v4b_continual_s0,5,zh,all the model's languages,dec3,2560,1439,1121,12
+distant,v4b_continual_s0,5,zh,Hindi only,enc0,2560,1383,1177,8
+distant,v4b_continual_s0,5,zh,Hindi only,enc1,2560,1236,1324,10
+distant,v4b_continual_s0,5,zh,Hindi only,enc2,2560,1414,1146,6
+distant,v4b_continual_s0,5,zh,Hindi only,enc3,2560,1667,893,8
+distant,v4b_continual_s0,5,zh,Hindi only,dec0,2560,1636,924,8
+distant,v4b_continual_s0,5,zh,Hindi only,dec1,2560,1375,1185,5
+distant,v4b_continual_s0,5,zh,Hindi only,dec2,2560,1083,1477,12
+distant,v4b_continual_s0,5,zh,Hindi only,dec3,2560,1402,1158,6
+distant,v4b_continual_s0,6,ar,all the model's languages,enc0,2560,1323,1237,11
+distant,v4b_continual_s0,6,ar,all the model's languages,enc1,2560,1232,1328,12
+distant,v4b_continual_s0,6,ar,all the model's languages,enc2,2560,1437,1123,8
+distant,v4b_continual_s0,6,ar,all the model's languages,enc3,2560,1769,791,7
+distant,v4b_continual_s0,6,ar,all the model's languages,dec0,2560,1371,1189,6
+distant,v4b_continual_s0,6,ar,all the model's languages,dec1,2560,1483,1077,13
+distant,v4b_continual_s0,6,ar,all the model's languages,dec2,2560,1654,906,4
+distant,v4b_continual_s0,6,ar,all the model's languages,dec3,2560,2086,474,7
+distant,v4b_continual_s0,6,ar,Hindi only,enc0,2560,1323,1237,11
+distant,v4b_continual_s0,6,ar,Hindi only,enc1,2560,1232,1328,12
+distant,v4b_continual_s0,6,ar,Hindi only,enc2,2560,1437,1123,8
+distant,v4b_continual_s0,6,ar,Hindi only,enc3,2560,1769,791,7
+distant,v4b_continual_s0,6,ar,Hindi only,dec0,2560,1423,1137,5
+distant,v4b_continual_s0,6,ar,Hindi only,dec1,2560,1344,1216,5
+distant,v4b_continual_s0,6,ar,Hindi only,dec2,2560,1183,1377,10
+distant,v4b_continual_s0,6,ar,Hindi only,dec3,2560,1673,887,6
+distant,v4b_continual_s0,7,hi,all the model's languages,enc0,2560,1372,1188,9
+distant,v4b_continual_s0,7,hi,all the model's languages,enc1,2560,1125,1435,11
+distant,v4b_continual_s0,7,hi,all the model's languages,enc2,2560,1320,1240,8
+distant,v4b_continual_s0,7,hi,all the model's languages,enc3,2560,1635,925,5
+distant,v4b_continual_s0,7,hi,all the model's languages,dec0,2560,1327,1233,9
+distant,v4b_continual_s0,7,hi,all the model's languages,dec1,2560,1103,1457,7
+distant,v4b_continual_s0,7,hi,all the model's languages,dec2,2560,1219,1341,4
+distant,v4b_continual_s0,7,hi,all the model's languages,dec3,2560,1650,910,8
+distant,v4b_continual_s0,7,hi,Hindi only,enc0,2560,1372,1188,9
+distant,v4b_continual_s0,7,hi,Hindi only,enc1,2560,1125,1435,11
+distant,v4b_continual_s0,7,hi,Hindi only,enc2,2560,1320,1240,8
+distant,v4b_continual_s0,7,hi,Hindi only,enc3,2560,1635,925,5
+distant,v4b_continual_s0,7,hi,Hindi only,dec0,2560,1826,734,6
+distant,v4b_continual_s0,7,hi,Hindi only,dec1,2560,1556,1004,5
+distant,v4b_continual_s0,7,hi,Hindi only,dec2,2560,1489,1071,5
+distant,v4b_continual_s0,7,hi,Hindi only,dec3,2560,1895,665,11
+distant,v4b_continual_s0,8,zh,all the model's languages,enc0,2560,1333,1227,5
+distant,v4b_continual_s0,8,zh,all the model's languages,enc1,2560,1124,1436,18
+distant,v4b_continual_s0,8,zh,all the model's languages,enc2,2560,1368,1192,8
+distant,v4b_continual_s0,8,zh,all the model's languages,enc3,2560,1614,946,7
+distant,v4b_continual_s0,8,zh,all the model's languages,dec0,2560,1368,1192,7
+distant,v4b_continual_s0,8,zh,all the model's languages,dec1,2560,1179,1381,4
+distant,v4b_continual_s0,8,zh,all the model's languages,dec2,2560,1162,1398,8
+distant,v4b_continual_s0,8,zh,all the model's languages,dec3,2560,1507,1053,6
+distant,v4b_continual_s0,8,zh,Hindi only,enc0,2560,1333,1227,5
+distant,v4b_continual_s0,8,zh,Hindi only,enc1,2560,1124,1436,18
+distant,v4b_continual_s0,8,zh,Hindi only,enc2,2560,1368,1192,8
+distant,v4b_continual_s0,8,zh,Hindi only,enc3,2560,1614,946,7
+distant,v4b_continual_s0,8,zh,Hindi only,dec0,2560,1747,813,4
+distant,v4b_continual_s0,8,zh,Hindi only,dec1,2560,1354,1206,8
+distant,v4b_continual_s0,8,zh,Hindi only,dec2,2560,1047,1513,13
+distant,v4b_continual_s0,8,zh,Hindi only,dec3,2560,1416,1144,6
+distant,v4b_continual_s0,9,ar,all the model's languages,enc0,2560,1319,1241,12
+distant,v4b_continual_s0,9,ar,all the model's languages,enc1,2560,1190,1370,14
+distant,v4b_continual_s0,9,ar,all the model's languages,enc2,2560,1360,1200,11
+distant,v4b_continual_s0,9,ar,all the model's languages,enc3,2560,1705,855,4
+distant,v4b_continual_s0,9,ar,all the model's languages,dec0,2560,1403,1157,9
+distant,v4b_continual_s0,9,ar,all the model's languages,dec1,2560,1446,1114,12
+distant,v4b_continual_s0,9,ar,all the model's languages,dec2,2560,1556,1004,5
+distant,v4b_continual_s0,9,ar,all the model's languages,dec3,2560,2082,478,4
+distant,v4b_continual_s0,9,ar,Hindi only,enc0,2560,1319,1241,12
+distant,v4b_continual_s0,9,ar,Hindi only,enc1,2560,1190,1370,14
+distant,v4b_continual_s0,9,ar,Hindi only,enc2,2560,1360,1200,11
+distant,v4b_continual_s0,9,ar,Hindi only,enc3,2560,1705,855,4
+distant,v4b_continual_s0,9,ar,Hindi only,dec0,2560,1521,1039,17
+distant,v4b_continual_s0,9,ar,Hindi only,dec1,2560,1292,1268,8
+distant,v4b_continual_s0,9,ar,Hindi only,dec2,2560,1173,1387,6
+distant,v4b_continual_s0,9,ar,Hindi only,dec3,2560,1647,913,5
+distant,v4b_continual_s0,10,hi,all the model's languages,enc0,2560,1313,1247,7
+distant,v4b_continual_s0,10,hi,all the model's languages,enc1,2560,1133,1427,14
+distant,v4b_continual_s0,10,hi,all the model's languages,enc2,2560,1273,1287,5
+distant,v4b_continual_s0,10,hi,all the model's languages,enc3,2560,1552,1008,7
+distant,v4b_continual_s0,10,hi,all the model's languages,dec0,2560,1331,1229,11
+distant,v4b_continual_s0,10,hi,all the model's languages,dec1,2560,1039,1521,5
+distant,v4b_continual_s0,10,hi,all the model's languages,dec2,2560,1108,1452,9
+distant,v4b_continual_s0,10,hi,all the model's languages,dec3,2560,1663,897,6
+distant,v4b_continual_s0,10,hi,Hindi only,enc0,2560,1313,1247,7
+distant,v4b_continual_s0,10,hi,Hindi only,enc1,2560,1133,1427,14
+distant,v4b_continual_s0,10,hi,Hindi only,enc2,2560,1273,1287,5
+distant,v4b_continual_s0,10,hi,Hindi only,enc3,2560,1552,1008,7
+distant,v4b_continual_s0,10,hi,Hindi only,dec0,2560,1831,729,4
+distant,v4b_continual_s0,10,hi,Hindi only,dec1,2560,1554,1006,3
+distant,v4b_continual_s0,10,hi,Hindi only,dec2,2560,1408,1152,10
+distant,v4b_continual_s0,10,hi,Hindi only,dec3,2560,1876,684,4
+distant,v4b_continual_s0,11,zh,all the model's languages,enc0,2560,1307,1253,11
+distant,v4b_continual_s0,11,zh,all the model's languages,enc1,2560,1137,1423,17
+distant,v4b_continual_s0,11,zh,all the model's languages,enc2,2560,1275,1285,9
+distant,v4b_continual_s0,11,zh,all the model's languages,enc3,2560,1562,998,7
+distant,v4b_continual_s0,11,zh,all the model's languages,dec0,2560,1359,1201,10
+distant,v4b_continual_s0,11,zh,all the model's languages,dec1,2560,1132,1428,6
+distant,v4b_continual_s0,11,zh,all the model's languages,dec2,2560,1084,1476,7
+distant,v4b_continual_s0,11,zh,all the model's languages,dec3,2560,1425,1135,6
+distant,v4b_continual_s0,11,zh,Hindi only,enc0,2560,1307,1253,11
+distant,v4b_continual_s0,11,zh,Hindi only,enc1,2560,1137,1423,17
+distant,v4b_continual_s0,11,zh,Hindi only,enc2,2560,1275,1285,9
+distant,v4b_continual_s0,11,zh,Hindi only,enc3,2560,1562,998,7
+distant,v4b_continual_s0,11,zh,Hindi only,dec0,2560,1715,845,4
+distant,v4b_continual_s0,11,zh,Hindi only,dec1,2560,1331,1229,5
+distant,v4b_continual_s0,11,zh,Hindi only,dec2,2560,1002,1558,6
+distant,v4b_continual_s0,11,zh,Hindi only,dec3,2560,1372,1188,10
+distant,v4b_continual_s0,12,ar,all the model's languages,enc0,2560,1265,1295,17
+distant,v4b_continual_s0,12,ar,all the model's languages,enc1,2560,1197,1363,12
+distant,v4b_continual_s0,12,ar,all the model's languages,enc2,2560,1318,1242,9
+distant,v4b_continual_s0,12,ar,all the model's languages,enc3,2560,1635,925,7
+distant,v4b_continual_s0,12,ar,all the model's languages,dec0,2560,1410,1150,7
+distant,v4b_continual_s0,12,ar,all the model's languages,dec1,2560,1399,1161,10
+distant,v4b_continual_s0,12,ar,all the model's languages,dec2,2560,1478,1082,8
+distant,v4b_continual_s0,12,ar,all the model's languages,dec3,2560,2056,504,4
+distant,v4b_continual_s0,12,ar,Hindi only,enc0,2560,1265,1295,17
+distant,v4b_continual_s0,12,ar,Hindi only,enc1,2560,1197,1363,12
+distant,v4b_continual_s0,12,ar,Hindi only,enc2,2560,1318,1242,9
+distant,v4b_continual_s0,12,ar,Hindi only,enc3,2560,1635,925,7
+distant,v4b_continual_s0,12,ar,Hindi only,dec0,2560,1538,1022,16
+distant,v4b_continual_s0,12,ar,Hindi only,dec1,2560,1280,1280,6
+distant,v4b_continual_s0,12,ar,Hindi only,dec2,2560,1166,1394,11
+distant,v4b_continual_s0,12,ar,Hindi only,dec3,2560,1667,893,4
+distant,v4b_continual_s0,13,hi,all the model's languages,enc0,2560,1321,1239,7
+distant,v4b_continual_s0,13,hi,all the model's languages,enc1,2560,1097,1463,14
+distant,v4b_continual_s0,13,hi,all the model's languages,enc2,2560,1246,1314,16
+distant,v4b_continual_s0,13,hi,all the model's languages,enc3,2560,1534,1026,7
+distant,v4b_continual_s0,13,hi,all the model's languages,dec0,2560,1244,1316,10
+distant,v4b_continual_s0,13,hi,all the model's languages,dec1,2560,1032,1528,5
+distant,v4b_continual_s0,13,hi,all the model's languages,dec2,2560,1064,1496,12
+distant,v4b_continual_s0,13,hi,all the model's languages,dec3,2560,1647,913,7
+distant,v4b_continual_s0,13,hi,Hindi only,enc0,2560,1321,1239,7
+distant,v4b_continual_s0,13,hi,Hindi only,enc1,2560,1097,1463,14
+distant,v4b_continual_s0,13,hi,Hindi only,enc2,2560,1246,1314,16
+distant,v4b_continual_s0,13,hi,Hindi only,enc3,2560,1534,1026,7
+distant,v4b_continual_s0,13,hi,Hindi only,dec0,2560,1831,729,6
+distant,v4b_continual_s0,13,hi,Hindi only,dec1,2560,1474,1086,6
+distant,v4b_continual_s0,13,hi,Hindi only,dec2,2560,1373,1187,8
+distant,v4b_continual_s0,13,hi,Hindi only,dec3,2560,1884,676,4
+distant,v4b_continual_s0,14,zh,all the model's languages,enc0,2560,1241,1319,9
+distant,v4b_continual_s0,14,zh,all the model's languages,enc1,2560,1136,1424,20
+distant,v4b_continual_s0,14,zh,all the model's languages,enc2,2560,1218,1342,10
+distant,v4b_continual_s0,14,zh,all the model's languages,enc3,2560,1499,1061,8
+distant,v4b_continual_s0,14,zh,all the model's languages,dec0,2560,1373,1187,5
+distant,v4b_continual_s0,14,zh,all the model's languages,dec1,2560,1043,1517,17
+distant,v4b_continual_s0,14,zh,all the model's languages,dec2,2560,1020,1540,9
+distant,v4b_continual_s0,14,zh,all the model's languages,dec3,2560,1449,1111,4
+distant,v4b_continual_s0,14,zh,Hindi only,enc0,2560,1241,1319,9
+distant,v4b_continual_s0,14,zh,Hindi only,enc1,2560,1136,1424,20
+distant,v4b_continual_s0,14,zh,Hindi only,enc2,2560,1218,1342,10
+distant,v4b_continual_s0,14,zh,Hindi only,enc3,2560,1499,1061,8
+distant,v4b_continual_s0,14,zh,Hindi only,dec0,2560,1771,789,3
+distant,v4b_continual_s0,14,zh,Hindi only,dec1,2560,1308,1252,6
+distant,v4b_continual_s0,14,zh,Hindi only,dec2,2560,985,1575,12
+distant,v4b_continual_s0,14,zh,Hindi only,dec3,2560,1399,1161,7
+distant,v4b_continual_s0,15,ar,all the model's languages,enc0,2560,1233,1327,19
+distant,v4b_continual_s0,15,ar,all the model's languages,enc1,2560,1173,1387,18
+distant,v4b_continual_s0,15,ar,all the model's languages,enc2,2560,1289,1271,8
+distant,v4b_continual_s0,15,ar,all the model's languages,enc3,2560,1636,924,6
+distant,v4b_continual_s0,15,ar,all the model's languages,dec0,2560,1363,1197,12
+distant,v4b_continual_s0,15,ar,all the model's languages,dec1,2560,1408,1152,8
+distant,v4b_continual_s0,15,ar,all the model's languages,dec2,2560,1460,1100,5
+distant,v4b_continual_s0,15,ar,all the model's languages,dec3,2560,2040,520,5
+distant,v4b_continual_s0,15,ar,Hindi only,enc0,2560,1233,1327,19
+distant,v4b_continual_s0,15,ar,Hindi only,enc1,2560,1173,1387,18
+distant,v4b_continual_s0,15,ar,Hindi only,enc2,2560,1289,1271,8
+distant,v4b_continual_s0,15,ar,Hindi only,enc3,2560,1636,924,6
+distant,v4b_continual_s0,15,ar,Hindi only,dec0,2560,1577,983,8
+distant,v4b_continual_s0,15,ar,Hindi only,dec1,2560,1261,1299,6
+distant,v4b_continual_s0,15,ar,Hindi only,dec2,2560,1161,1399,6
+distant,v4b_continual_s0,15,ar,Hindi only,dec3,2560,1650,910,4
+distant,v4b_continual_s0,16,hi,all the model's languages,enc0,2560,1267,1293,12
+distant,v4b_continual_s0,16,hi,all the model's languages,enc1,2560,1103,1457,17
+distant,v4b_continual_s0,16,hi,all the model's languages,enc2,2560,1226,1334,10
+distant,v4b_continual_s0,16,hi,all the model's languages,enc3,2560,1498,1062,7
+distant,v4b_continual_s0,16,hi,all the model's languages,dec0,2560,1314,1246,12
+distant,v4b_continual_s0,16,hi,all the model's languages,dec1,2560,1010,1550,4
+distant,v4b_continual_s0,16,hi,all the model's languages,dec2,2560,1068,1492,13
+distant,v4b_continual_s0,16,hi,all the model's languages,dec3,2560,1652,908,7
+distant,v4b_continual_s0,16,hi,Hindi only,enc0,2560,1267,1293,12
+distant,v4b_continual_s0,16,hi,Hindi only,enc1,2560,1103,1457,17
+distant,v4b_continual_s0,16,hi,Hindi only,enc2,2560,1226,1334,10
+distant,v4b_continual_s0,16,hi,Hindi only,enc3,2560,1498,1062,7
+distant,v4b_continual_s0,16,hi,Hindi only,dec0,2560,1844,716,5
+distant,v4b_continual_s0,16,hi,Hindi only,dec1,2560,1432,1128,12
+distant,v4b_continual_s0,16,hi,Hindi only,dec2,2560,1337,1223,8
+distant,v4b_continual_s0,16,hi,Hindi only,dec3,2560,1874,686,17
+distant,v4b_continual_s0,17,zh,all the model's languages,enc0,2560,1241,1319,26
+distant,v4b_continual_s0,17,zh,all the model's languages,enc1,2560,1138,1422,15
+distant,v4b_continual_s0,17,zh,all the model's languages,enc2,2560,1193,1367,34
+distant,v4b_continual_s0,17,zh,all the model's languages,enc3,2560,1483,1077,12
+distant,v4b_continual_s0,17,zh,all the model's languages,dec0,2560,1381,1179,9
+distant,v4b_continual_s0,17,zh,all the model's languages,dec1,2560,1039,1521,11
+distant,v4b_continual_s0,17,zh,all the model's languages,dec2,2560,1017,1543,5
+distant,v4b_continual_s0,17,zh,all the model's languages,dec3,2560,1453,1107,6
+distant,v4b_continual_s0,17,zh,Hindi only,enc0,2560,1241,1319,26
+distant,v4b_continual_s0,17,zh,Hindi only,enc1,2560,1138,1422,15
+distant,v4b_continual_s0,17,zh,Hindi only,enc2,2560,1193,1367,34
+distant,v4b_continual_s0,17,zh,Hindi only,enc3,2560,1483,1077,12
+distant,v4b_continual_s0,17,zh,Hindi only,dec0,2560,1848,712,4
+distant,v4b_continual_s0,17,zh,Hindi only,dec1,2560,1277,1283,7
+distant,v4b_continual_s0,17,zh,Hindi only,dec2,2560,972,1588,18
+distant,v4b_continual_s0,17,zh,Hindi only,dec3,2560,1357,1203,7
+distant,v4b_continual_s0,18,ar,all the model's languages,enc0,2560,1273,1287,8
+distant,v4b_continual_s0,18,ar,all the model's languages,enc1,2560,1193,1367,11
+distant,v4b_continual_s0,18,ar,all the model's languages,enc2,2560,1295,1265,9
+distant,v4b_continual_s0,18,ar,all the model's languages,enc3,2560,1581,979,11
+distant,v4b_continual_s0,18,ar,all the model's languages,dec0,2560,1410,1150,6
+distant,v4b_continual_s0,18,ar,all the model's languages,dec1,2560,1376,1184,6
+distant,v4b_continual_s0,18,ar,all the model's languages,dec2,2560,1439,1121,4
+distant,v4b_continual_s0,18,ar,all the model's languages,dec3,2560,2086,474,4
+distant,v4b_continual_s0,18,ar,Hindi only,enc0,2560,1273,1287,8
+distant,v4b_continual_s0,18,ar,Hindi only,enc1,2560,1193,1367,11
+distant,v4b_continual_s0,18,ar,Hindi only,enc2,2560,1295,1265,9
+distant,v4b_continual_s0,18,ar,Hindi only,enc3,2560,1581,979,11
+distant,v4b_continual_s0,18,ar,Hindi only,dec0,2560,1599,961,6
+distant,v4b_continual_s0,18,ar,Hindi only,dec1,2560,1250,1310,7
+distant,v4b_continual_s0,18,ar,Hindi only,dec2,2560,1162,1398,14
+distant,v4b_continual_s0,18,ar,Hindi only,dec3,2560,1679,881,11
+distant,v4b_continual_s0,19,hi,all the model's languages,enc0,2560,1266,1294,10
+distant,v4b_continual_s0,19,hi,all the model's languages,enc1,2560,1092,1468,14
+distant,v4b_continual_s0,19,hi,all the model's languages,enc2,2560,1154,1406,11
+distant,v4b_continual_s0,19,hi,all the model's languages,enc3,2560,1483,1077,6
+distant,v4b_continual_s0,19,hi,all the model's languages,dec0,2560,1357,1203,8
+distant,v4b_continual_s0,19,hi,all the model's languages,dec1,2560,978,1582,21
+distant,v4b_continual_s0,19,hi,all the model's languages,dec2,2560,1052,1508,8
+distant,v4b_continual_s0,19,hi,all the model's languages,dec3,2560,1638,922,8
+distant,v4b_continual_s0,19,hi,Hindi only,enc0,2560,1266,1294,10
+distant,v4b_continual_s0,19,hi,Hindi only,enc1,2560,1092,1468,14
+distant,v4b_continual_s0,19,hi,Hindi only,enc2,2560,1154,1406,11
+distant,v4b_continual_s0,19,hi,Hindi only,enc3,2560,1483,1077,6
+distant,v4b_continual_s0,19,hi,Hindi only,dec0,2560,1832,728,7
+distant,v4b_continual_s0,19,hi,Hindi only,dec1,2560,1405,1155,10
+distant,v4b_continual_s0,19,hi,Hindi only,dec2,2560,1296,1264,9
+distant,v4b_continual_s0,19,hi,Hindi only,dec3,2560,1832,728,10
+distant,v4b_continual_s0,20,zh,all the model's languages,enc0,2560,1201,1359,17
+distant,v4b_continual_s0,20,zh,all the model's languages,enc1,2560,1116,1444,35
+distant,v4b_continual_s0,20,zh,all the model's languages,enc2,2560,1151,1409,14
+distant,v4b_continual_s0,20,zh,all the model's languages,enc3,2560,1464,1096,8
+distant,v4b_continual_s0,20,zh,all the model's languages,dec0,2560,1410,1150,8
+distant,v4b_continual_s0,20,zh,all the model's languages,dec1,2560,1033,1527,28
+distant,v4b_continual_s0,20,zh,all the model's languages,dec2,2560,1044,1516,8
+distant,v4b_continual_s0,20,zh,all the model's languages,dec3,2560,1409,1151,9
+distant,v4b_continual_s0,20,zh,Hindi only,enc0,2560,1201,1359,17
+distant,v4b_continual_s0,20,zh,Hindi only,enc1,2560,1116,1444,35
+distant,v4b_continual_s0,20,zh,Hindi only,enc2,2560,1151,1409,14
+distant,v4b_continual_s0,20,zh,Hindi only,enc3,2560,1464,1096,8
+distant,v4b_continual_s0,20,zh,Hindi only,dec0,2560,1824,736,4
+distant,v4b_continual_s0,20,zh,Hindi only,dec1,2560,1291,1269,11
+distant,v4b_continual_s0,20,zh,Hindi only,dec2,2560,963,1597,13
+distant,v4b_continual_s0,20,zh,Hindi only,dec3,2560,1334,1226,10
+distant,v4b_continual_s0,21,ar,all the model's languages,enc0,2560,1228,1332,9
+distant,v4b_continual_s0,21,ar,all the model's languages,enc1,2560,1247,1313,10
+distant,v4b_continual_s0,21,ar,all the model's languages,enc2,2560,1238,1322,16
+distant,v4b_continual_s0,21,ar,all the model's languages,enc3,2560,1555,1005,13
+distant,v4b_continual_s0,21,ar,all the model's languages,dec0,2560,1456,1104,11
+distant,v4b_continual_s0,21,ar,all the model's languages,dec1,2560,1353,1207,10
+distant,v4b_continual_s0,21,ar,all the model's languages,dec2,2560,1457,1103,5
+distant,v4b_continual_s0,21,ar,all the model's languages,dec3,2560,2001,559,6
+distant,v4b_continual_s0,21,ar,Hindi only,enc0,2560,1228,1332,9
+distant,v4b_continual_s0,21,ar,Hindi only,enc1,2560,1247,1313,10
+distant,v4b_continual_s0,21,ar,Hindi only,enc2,2560,1238,1322,16
+distant,v4b_continual_s0,21,ar,Hindi only,enc3,2560,1555,1005,13
+distant,v4b_continual_s0,21,ar,Hindi only,dec0,2560,1591,969,7
+distant,v4b_continual_s0,21,ar,Hindi only,dec1,2560,1284,1276,11
+distant,v4b_continual_s0,21,ar,Hindi only,dec2,2560,1189,1371,7
+distant,v4b_continual_s0,21,ar,Hindi only,dec3,2560,1633,927,6
+distant,v4b_continual_s0,22,hi,all the model's languages,enc0,2560,1210,1350,26
+distant,v4b_continual_s0,22,hi,all the model's languages,enc1,2560,1041,1519,13
+distant,v4b_continual_s0,22,hi,all the model's languages,enc2,2560,1163,1397,8
+distant,v4b_continual_s0,22,hi,all the model's languages,enc3,2560,1446,1114,12
+distant,v4b_continual_s0,22,hi,all the model's languages,dec0,2560,1304,1256,13
+distant,v4b_continual_s0,22,hi,all the model's languages,dec1,2560,1043,1517,6
+distant,v4b_continual_s0,22,hi,all the model's languages,dec2,2560,1033,1527,7
+distant,v4b_continual_s0,22,hi,all the model's languages,dec3,2560,1620,940,5
+distant,v4b_continual_s0,22,hi,Hindi only,enc0,2560,1210,1350,26
+distant,v4b_continual_s0,22,hi,Hindi only,enc1,2560,1041,1519,13
+distant,v4b_continual_s0,22,hi,Hindi only,enc2,2560,1163,1397,8
+distant,v4b_continual_s0,22,hi,Hindi only,enc3,2560,1446,1114,12
+distant,v4b_continual_s0,22,hi,Hindi only,dec0,2560,1873,687,6
+distant,v4b_continual_s0,22,hi,Hindi only,dec1,2560,1435,1125,8
+distant,v4b_continual_s0,22,hi,Hindi only,dec2,2560,1343,1217,10
+distant,v4b_continual_s0,22,hi,Hindi only,dec3,2560,1856,704,9
+distant,v4b_continual_s0,23,zh,all the model's languages,enc0,2560,1153,1407,13
+distant,v4b_continual_s0,23,zh,all the model's languages,enc1,2560,1197,1363,16
+distant,v4b_continual_s0,23,zh,all the model's languages,enc2,2560,1156,1404,15
+distant,v4b_continual_s0,23,zh,all the model's languages,enc3,2560,1403,1157,12
+distant,v4b_continual_s0,23,zh,all the model's languages,dec0,2560,1417,1143,5
+distant,v4b_continual_s0,23,zh,all the model's languages,dec1,2560,1069,1491,5
+distant,v4b_continual_s0,23,zh,all the model's languages,dec2,2560,936,1624,23
+distant,v4b_continual_s0,23,zh,all the model's languages,dec3,2560,1365,1195,5
+distant,v4b_continual_s0,23,zh,Hindi only,enc0,2560,1153,1407,13
+distant,v4b_continual_s0,23,zh,Hindi only,enc1,2560,1197,1363,16
+distant,v4b_continual_s0,23,zh,Hindi only,enc2,2560,1156,1404,15
+distant,v4b_continual_s0,23,zh,Hindi only,enc3,2560,1403,1157,12
+distant,v4b_continual_s0,23,zh,Hindi only,dec0,2560,1808,752,6
+distant,v4b_continual_s0,23,zh,Hindi only,dec1,2560,1298,1262,6
+distant,v4b_continual_s0,23,zh,Hindi only,dec2,2560,977,1583,9
+distant,v4b_continual_s0,23,zh,Hindi only,dec3,2560,1336,1224,12
+distant,v4b_continual_s0,24,ar,all the model's languages,enc0,2560,1211,1349,16
+distant,v4b_continual_s0,24,ar,all the model's languages,enc1,2560,1206,1354,17
+distant,v4b_continual_s0,24,ar,all the model's languages,enc2,2560,1267,1293,20
+distant,v4b_continual_s0,24,ar,all the model's languages,enc3,2560,1538,1022,8
+distant,v4b_continual_s0,24,ar,all the model's languages,dec0,2560,1463,1097,11
+distant,v4b_continual_s0,24,ar,all the model's languages,dec1,2560,1322,1238,5
+distant,v4b_continual_s0,24,ar,all the model's languages,dec2,2560,1429,1131,18
+distant,v4b_continual_s0,24,ar,all the model's languages,dec3,2560,2055,505,6
+distant,v4b_continual_s0,24,ar,Hindi only,enc0,2560,1211,1349,16
+distant,v4b_continual_s0,24,ar,Hindi only,enc1,2560,1206,1354,17
+distant,v4b_continual_s0,24,ar,Hindi only,enc2,2560,1267,1293,20
+distant,v4b_continual_s0,24,ar,Hindi only,enc3,2560,1538,1022,8
+distant,v4b_continual_s0,24,ar,Hindi only,dec0,2560,1634,926,7
+distant,v4b_continual_s0,24,ar,Hindi only,dec1,2560,1217,1343,8
+distant,v4b_continual_s0,24,ar,Hindi only,dec2,2560,1206,1354,5
+distant,v4b_continual_s0,24,ar,Hindi only,dec3,2560,1661,899,5
+distant,v4b_continual_s0,25,hi,all the model's languages,enc0,2560,1204,1356,18
+distant,v4b_continual_s0,25,hi,all the model's languages,enc1,2560,1104,1456,11
+distant,v4b_continual_s0,25,hi,all the model's languages,enc2,2560,1124,1436,8
+distant,v4b_continual_s0,25,hi,all the model's languages,enc3,2560,1392,1168,10
+distant,v4b_continual_s0,25,hi,all the model's languages,dec0,2560,1334,1226,6
+distant,v4b_continual_s0,25,hi,all the model's languages,dec1,2560,1023,1537,13
+distant,v4b_continual_s0,25,hi,all the model's languages,dec2,2560,1003,1557,8
+distant,v4b_continual_s0,25,hi,all the model's languages,dec3,2560,1620,940,5
+distant,v4b_continual_s0,25,hi,Hindi only,enc0,2560,1204,1356,18
+distant,v4b_continual_s0,25,hi,Hindi only,enc1,2560,1104,1456,11
+distant,v4b_continual_s0,25,hi,Hindi only,enc2,2560,1124,1436,8
+distant,v4b_continual_s0,25,hi,Hindi only,enc3,2560,1392,1168,10
+distant,v4b_continual_s0,25,hi,Hindi only,dec0,2560,1866,694,5
+distant,v4b_continual_s0,25,hi,Hindi only,dec1,2560,1370,1190,9
+distant,v4b_continual_s0,25,hi,Hindi only,dec2,2560,1299,1261,7
+distant,v4b_continual_s0,25,hi,Hindi only,dec3,2560,1827,733,8
+distant,v4b_continual_s0,26,zh,all the model's languages,enc0,2560,1261,1299,8
+distant,v4b_continual_s0,26,zh,all the model's languages,enc1,2560,1108,1452,14
+distant,v4b_continual_s0,26,zh,all the model's languages,enc2,2560,1117,1443,11
+distant,v4b_continual_s0,26,zh,all the model's languages,enc3,2560,1355,1205,7
+distant,v4b_continual_s0,26,zh,all the model's languages,dec0,2560,1377,1183,9
+distant,v4b_continual_s0,26,zh,all the model's languages,dec1,2560,1015,1545,21
+distant,v4b_continual_s0,26,zh,all the model's languages,dec2,2560,1000,1560,10
+distant,v4b_continual_s0,26,zh,all the model's languages,dec3,2560,1346,1214,7
+distant,v4b_continual_s0,26,zh,Hindi only,enc0,2560,1261,1299,8
+distant,v4b_continual_s0,26,zh,Hindi only,enc1,2560,1108,1452,14
+distant,v4b_continual_s0,26,zh,Hindi only,enc2,2560,1117,1443,11
+distant,v4b_continual_s0,26,zh,Hindi only,enc3,2560,1355,1205,7
+distant,v4b_continual_s0,26,zh,Hindi only,dec0,2560,1783,777,4
+distant,v4b_continual_s0,26,zh,Hindi only,dec1,2560,1231,1329,8
+distant,v4b_continual_s0,26,zh,Hindi only,dec2,2560,974,1586,12
+distant,v4b_continual_s0,26,zh,Hindi only,dec3,2560,1325,1235,13
+distant,v4b_continual_s0,27,ar,all the model's languages,enc0,2560,1257,1303,11
+distant,v4b_continual_s0,27,ar,all the model's languages,enc1,2560,1187,1373,20
+distant,v4b_continual_s0,27,ar,all the model's languages,enc2,2560,1240,1320,10
+distant,v4b_continual_s0,27,ar,all the model's languages,enc3,2560,1481,1079,10
+distant,v4b_continual_s0,27,ar,all the model's languages,dec0,2560,1485,1075,6
+distant,v4b_continual_s0,27,ar,all the model's languages,dec1,2560,1343,1217,11
+distant,v4b_continual_s0,27,ar,all the model's languages,dec2,2560,1442,1118,9
+distant,v4b_continual_s0,27,ar,all the model's languages,dec3,2560,2034,526,4
+distant,v4b_continual_s0,27,ar,Hindi only,enc0,2560,1257,1303,11
+distant,v4b_continual_s0,27,ar,Hindi only,enc1,2560,1187,1373,20
+distant,v4b_continual_s0,27,ar,Hindi only,enc2,2560,1240,1320,10
+distant,v4b_continual_s0,27,ar,Hindi only,enc3,2560,1481,1079,10
+distant,v4b_continual_s0,27,ar,Hindi only,dec0,2560,1618,942,8
+distant,v4b_continual_s0,27,ar,Hindi only,dec1,2560,1284,1276,11
+distant,v4b_continual_s0,27,ar,Hindi only,dec2,2560,1210,1350,8
+distant,v4b_continual_s0,27,ar,Hindi only,dec3,2560,1673,887,6
+distant,v4b_continual_s0,28,hi,all the model's languages,enc0,2560,1253,1307,21
+distant,v4b_continual_s0,28,hi,all the model's languages,enc1,2560,1096,1464,10
+distant,v4b_continual_s0,28,hi,all the model's languages,enc2,2560,1073,1487,26
+distant,v4b_continual_s0,28,hi,all the model's languages,enc3,2560,1365,1195,10
+distant,v4b_continual_s0,28,hi,all the model's languages,dec0,2560,1304,1256,14
+distant,v4b_continual_s0,28,hi,all the model's languages,dec1,2560,1022,1538,6
+distant,v4b_continual_s0,28,hi,all the model's languages,dec2,2560,995,1565,7
+distant,v4b_continual_s0,28,hi,all the model's languages,dec3,2560,1609,951,11
+distant,v4b_continual_s0,28,hi,Hindi only,enc0,2560,1253,1307,21
+distant,v4b_continual_s0,28,hi,Hindi only,enc1,2560,1096,1464,10
+distant,v4b_continual_s0,28,hi,Hindi only,enc2,2560,1073,1487,26
+distant,v4b_continual_s0,28,hi,Hindi only,enc3,2560,1365,1195,10
+distant,v4b_continual_s0,28,hi,Hindi only,dec0,2560,1869,691,6
+distant,v4b_continual_s0,28,hi,Hindi only,dec1,2560,1392,1168,9
+distant,v4b_continual_s0,28,hi,Hindi only,dec2,2560,1314,1246,7
+distant,v4b_continual_s0,28,hi,Hindi only,dec3,2560,1860,700,5
+distant,v4b_continual_s0,29,zh,all the model's languages,enc0,2560,1190,1370,11
+distant,v4b_continual_s0,29,zh,all the model's languages,enc1,2560,1069,1491,15
+distant,v4b_continual_s0,29,zh,all the model's languages,enc2,2560,1082,1478,8
+distant,v4b_continual_s0,29,zh,all the model's languages,enc3,2560,1371,1189,8
+distant,v4b_continual_s0,29,zh,all the model's languages,dec0,2560,1341,1219,10
+distant,v4b_continual_s0,29,zh,all the model's languages,dec1,2560,1035,1525,16
+distant,v4b_continual_s0,29,zh,all the model's languages,dec2,2560,928,1632,7
+distant,v4b_continual_s0,29,zh,all the model's languages,dec3,2560,1358,1202,9
+distant,v4b_continual_s0,29,zh,Hindi only,enc0,2560,1190,1370,11
+distant,v4b_continual_s0,29,zh,Hindi only,enc1,2560,1069,1491,15
+distant,v4b_continual_s0,29,zh,Hindi only,enc2,2560,1082,1478,8
+distant,v4b_continual_s0,29,zh,Hindi only,enc3,2560,1371,1189,8
+distant,v4b_continual_s0,29,zh,Hindi only,dec0,2560,1787,773,5
+distant,v4b_continual_s0,29,zh,Hindi only,dec1,2560,1259,1301,6
+distant,v4b_continual_s0,29,zh,Hindi only,dec2,2560,903,1657,10
+distant,v4b_continual_s0,29,zh,Hindi only,dec3,2560,1308,1252,15
+distant,v4b_continual_s0,30,ar,all the model's languages,enc0,2560,1234,1326,18
+distant,v4b_continual_s0,30,ar,all the model's languages,enc1,2560,1189,1371,32
+distant,v4b_continual_s0,30,ar,all the model's languages,enc2,2560,1224,1336,14
+distant,v4b_continual_s0,30,ar,all the model's languages,enc3,2560,1538,1022,7
+distant,v4b_continual_s0,30,ar,all the model's languages,dec0,2560,1482,1078,10
+distant,v4b_continual_s0,30,ar,all the model's languages,dec1,2560,1325,1235,6
+distant,v4b_continual_s0,30,ar,all the model's languages,dec2,2560,1394,1166,11
+distant,v4b_continual_s0,30,ar,all the model's languages,dec3,2560,2049,511,5
+distant,v4b_continual_s0,30,ar,Hindi only,enc0,2560,1234,1326,18
+distant,v4b_continual_s0,30,ar,Hindi only,enc1,2560,1189,1371,32
+distant,v4b_continual_s0,30,ar,Hindi only,enc2,2560,1224,1336,14
+distant,v4b_continual_s0,30,ar,Hindi only,enc3,2560,1538,1022,7
+distant,v4b_continual_s0,30,ar,Hindi only,dec0,2560,1649,911,7
+distant,v4b_continual_s0,30,ar,Hindi only,dec1,2560,1194,1366,9
+distant,v4b_continual_s0,30,ar,Hindi only,dec2,2560,1156,1404,9
+distant,v4b_continual_s0,30,ar,Hindi only,dec3,2560,1662,898,9

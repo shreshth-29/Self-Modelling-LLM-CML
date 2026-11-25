@@ -1,0 +1,650 @@
+
+===== Tue 21:51 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out sizes/related_old0 --part sizes --model related=v8_indic_continual_s0:0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+
+===== Tue 21:51 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:3 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:52 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:4 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:52 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:5 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  related phase 0 (init): self % per layer 100 98 98 98 84 94 95 96 | 107s
+
+===== Tue 21:53 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:6 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:7 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:8 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:9 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:10 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:11 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:12 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:54 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:13 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  related_old0 4->5 enc0: self 1624/2560 | persistence self 0.806 vs task 0.745
+  related_old0 4->5 enc1: self 1345/2560 | persistence self 0.755 vs task 0.672
+  related_old0 4->5 enc2: self 1407/2560 | persistence self 0.727 vs task 0.615
+  related_old0 4->5 enc3: self 1535/2560 | persistence self 0.700 vs task 0.598
+  related_old0 5->6 enc0: self 1538/2560 | persistence self 0.832 vs task 0.772
+  related_old0 4->5 dec0: self 1599/2560 | persistence self 0.567 vs task 0.493
+  related_old0 4->5 dec1: self 1314/2560 | persistence self 0.575 vs task 0.453
+  related_old0 5->6 enc1: self 1261/2560 | persistence self 0.791 vs task 0.707
+  related_old0 4->5 dec2: self 1387/2560 | persistence self 0.594 vs task 0.504
+  related_old0 4->5 dec3: self 1970/2560 | persistence self 0.639 vs task 0.554
+done
+  related_old0 5->6 enc2: self 1323/2560 | persistence self 0.766 vs task 0.663
+  related_old0 5->6 enc3: self 1273/2559 | persistence self 0.748 vs task 0.648
+  related_old0 5->6 dec0: self 1606/2560 | persistence self 0.663 vs task 0.587
+  related phase 1 (hi): self % per layer 76 67 64 65 74 66 61 75 | 132s
+  related_old0 5->6 dec1: self 1363/2560 | persistence self 0.646 vs task 0.546
+
+===== Tue 21:55 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:14 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  related_old0 5->6 dec2: self 1326/2560 | persistence self 0.654 vs task 0.577
+  related_old0 5->6 dec3: self 1783/2560 | persistence self 0.684 vs task 0.618
+done
+
+===== Tue 21:56 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out persistence/related_old0 --part matrix --compact --model related_old0=v8_indic_continual_s0:15 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  related_old0 3->4 enc0: self 1629/2560 | persistence self 0.766 vs task 0.692
+  related_old0 3->4 enc1: self 1411/2560 | persistence self 0.716 vs task 0.622
+  related_old0 3->4 enc2: self 1475/2560 | persistence self 0.687 vs task 0.572
+  related_old0 3->4 enc3: self 1505/2560 | persistence self 0.672 vs task 0.554
+  related_old0 3->4 dec0: self 1549/2560 | persistence self 0.473 vs task 0.358
+  related_old0 7->8 enc0: self 1577/2560 | persistence self 0.838 vs task 0.783
+  related_old0 7->8 enc1: self 1272/2560 | persistence self 0.789 vs task 0.713
+  related_old0 3->4 dec1: self 1437/2560 | persistence self 0.508 vs task 0.381
+  related_old0 3->4 dec2: self 1498/2560 | persistence self 0.545 vs task 0.455
+  related_old0 7->8 enc2: self 1357/2560 | persistence self 0.760 vs task 0.657
+  related_old0 7->8 enc3: self 1419/2560 | persistence self 0.738 vs task 0.642
+  related_old0 8->9 enc0: self 1468/2560 | persistence self 0.845 vs task 0.786
+  related_old0 7->8 dec0: self 1587/2560 | persistence self 0.648 vs task 0.596
+  related_old0 7->8 dec1: self 1260/2560 | persistence self 0.647 vs task 0.539
+  related_old0 8->9 enc1: self 1218/2560 | persistence self 0.803 vs task 0.725
+  related_old0 7->8 dec2: self 1294/2560 | persistence self 0.658 vs task 0.570
+  related_old0 8->9 enc2: self 1267/2560 | persistence self 0.780 vs task 0.678
+  related_old0 3->4 dec3: self 1966/2560 | persistence self 0.596 vs task 0.512
+done
+  related_old0 7->8 dec3: self 1938/2560 | persistence self 0.690 vs task 0.613
+  related_old0 8->9 enc3: self 1283/2560 | persistence self 0.759 vs task 0.661
+done
+  related_old0 6->7 enc0: self 1596/2560 | persistence self 0.806 vs task 0.745
+  related_old0 8->9 dec0: self 1678/2560 | persistence self 0.690 vs task 0.619
+  related_old0 6->7 enc1: self 1316/2560 | persistence self 0.757 vs task 0.665
+  related_old0 8->9 dec1: self 1356/2560 | persistence self 0.672 vs task 0.572
+  related_old0 6->7 enc2: self 1356/2559 | persistence self 0.727 vs task 0.612
+  related_old0 8->9 dec2: self 1303/2560 | persistence self 0.680 vs task 0.602
+  related_old0 8->9 dec3: self 1819/2560 | persistence self 0.710 vs task 0.645
+  related_old0 6->7 enc3: self 1420/2560 | persistence self 0.713 vs task 0.598
+
+===== Tue 21:57 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out static/related_old0 --part static --model related=v8_indic_continual_s0:4,5,6,7,8,9,10,11,12,13,14,15,16 --draws 0,1
+
+===== Tue 21:57 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out static_cal/related_old0 --part static --tau_by_layer dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.35,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3 --model related=v8_indic_continual_s0:4,5,6,7,8,9,10,11,12,13,14,15,16 --draws 0,1
+done
+  related_old0 6->7 dec0: self 1665/2560 | persistence self 0.591 vs task 0.492
+  related_old0 6->7 dec1: self 1357/2560 | persistence self 0.607 vs task 0.486
+  related_old0 6->7 dec2: self 1447/2560 | persistence self 0.620 vs task 0.526
+  related_old0 6->7 dec3: self 1956/2560 | persistence self 0.666 vs task 0.593
+done
+  related_old0 9->10 enc0: self 1449/2560 | persistence self 0.820 vs task 0.756
+  related_old0 15->16 enc0: self 1384/2560 | persistence self 0.839 vs task 0.780
+  related_old0 9->10 enc1: self 1231/2560 | persistence self 0.769 vs task 0.674
+  related_old0 15->16 enc1: self 1152/2560 | persistence self 0.785 vs task 0.698
+  related_old0 15->16 enc2: self 1203/2560 | persistence self 0.753 vs task 0.643
+  related_old0 15->16 enc3: self 1302/2560 | persistence self 0.733 vs task 0.616
+  related_old0 15->16 dec0: self 1709/2560 | persistence self 0.670 vs task 0.616
+  related_old0 15->16 dec1: self 1249/2560 | persistence self 0.655 vs task 0.551
+  related_old0 15->16 dec2: self 1311/2560 | persistence self 0.660 vs task 0.569
+  related_old0 9->10 enc2: self 1280/2560 | persistence self 0.734 vs task 0.619
+  related_old0 15->16 dec3: self 1886/2560 | persistence self 0.710 vs task 0.642
+  related_old0 13->14 enc0: self 1416/2560 | persistence self 0.850 vs task 0.798
+done
+  related_old0 13->14 enc1: self 1109/2560 | persistence self 0.801 vs task 0.724
+  related_old0 13->14 enc2: self 1223/2560 | persistence self 0.767 vs task 0.665
+  related_old0 13->14 enc3: self 1271/2560 | persistence self 0.741 vs task 0.645
+  related_old0 13->14 dec0: self 1603/2560 | persistence self 0.696 vs task 0.641
+  related_old0 13->14 dec1: self 1167/2560 | persistence self 0.669 vs task 0.566
+  related_old0 13->14 dec2: self 1190/2560 | persistence self 0.664 vs task 0.587
+  related_old0 9->10 enc3: self 1376/2560 | persistence self 0.719 vs task 0.602
+  related_old0 13->14 dec3: self 1862/2560 | persistence self 0.706 vs task 0.635
+done
+  related_old0 9->10 dec0: self 1703/2560 | persistence self 0.610 vs task 0.539
+  related_old0 9->10 dec1: self 1281/2560 | persistence self 0.617 vs task 0.506
+  related_old0 9->10 dec2: self 1356/2560 | persistence self 0.631 vs task 0.541
+  related_old0 10->11 enc0: self 1466/2560 | persistence self 0.845 vs task 0.795
+  related_old0 10->11 enc1: self 1176/2560 | persistence self 0.797 vs task 0.723
+  related_old0 9->10 dec3: self 1906/2560 | persistence self 0.685 vs task 0.613
+  related_old0 10->11 enc2: self 1269/2560 | persistence self 0.767 vs task 0.661
+  related_old0 10->11 enc3: self 1329/2560 | persistence self 0.741 vs task 0.647
+done
+  related phase 2 (gu): self % per layer 66 55 58 56 60 59 56 67 | 192s
+  related_old0 10->11 dec0: self 1558/2560 | persistence self 0.676 vs task 0.628
+  related_old0 10->11 dec1: self 1144/2560 | persistence self 0.665 vs task 0.554
+related phase 4 (hi): intact loss hi 1.173, gu 4.967, pa 4.334 | chrF hi 53.7, gu 23.4, pa 34.9
+  count-matched n per layer (n_max = smaller group): enc0:936 enc1:1215 enc2:1153 enc3:1025 dec0:961 dec1:1246 dec2:1173 dec3:590
+  related_old0 10->11 dec2: self 1235/2560 | persistence self 0.661 vs task 0.575
+  related_old0 10->11 dec3: self 1909/2560 | persistence self 0.696 vs task 0.626
+done
+  related_old0 14->15 enc0: self 1378/2560 | persistence self 0.864 vs task 0.812
+  related_old0 14->15 enc1: self 1102/2560 | persistence self 0.824 vs task 0.748
+  related_old0 14->15 enc2: self 1176/2560 | persistence self 0.801 vs task 0.702
+  related_old0 14->15 enc3: self 1209/2560 | persistence self 0.775 vs task 0.683
+  related_old0 14->15 dec0: self 1674/2560 | persistence self 0.738 vs task 0.677
+  related_old0 12->13 enc0: self 1418/2560 | persistence self 0.832 vs task 0.772
+related phase 4 (hi): intact loss hi 1.173, gu 4.967, pa 4.334 | chrF hi 53.7, gu 23.4, pa 34.9
+  count-matched n per layer (n_max = smaller group): enc0:518 enc1:350 enc2:317 enc3:425 dec0:534 dec1:119 dec2:141 dec3:410
+  related_old0 14->15 dec1: self 1315/2560 | persistence self 0.698 vs task 0.615
+  related_old0 14->15 dec2: self 1197/2560 | persistence self 0.704 vs task 0.627
+  related_old0 12->13 enc1: self 1182/2560 | persistence self 0.781 vs task 0.688
+  related_old0 14->15 dec3: self 1715/2560 | persistence self 0.735 vs task 0.674
+done
+  related_old0 12->13 enc2: self 1231/2560 | persistence self 0.745 vs task 0.636
+  related_old0 12->13 enc3: self 1299/2560 | persistence self 0.729 vs task 0.616
+  related_old0 12->13 dec0: self 1666/2560 | persistence self 0.657 vs task 0.586
+  related_old0 12->13 dec1: self 1271/2560 | persistence self 0.639 vs task 0.538
+  related_old0 12->13 dec2: self 1364/2560 | persistence self 0.647 vs task 0.564
+  related_old0 12->13 dec3: self 1892/2560 | persistence self 0.702 vs task 0.631
+done
+  related_old0 11->12 enc0: self 1426/2560 | persistence self 0.855 vs task 0.797
+  related_old0 11->12 enc1: self 1140/2560 | persistence self 0.816 vs task 0.735
+  related_old0 11->12 enc2: self 1214/2560 | persistence self 0.790 vs task 0.688
+  related_old0 11->12 enc3: self 1283/2560 | persistence self 0.765 vs task 0.672
+  related_old0 11->12 dec0: self 1662/2560 | persistence self 0.729 vs task 0.665
+  related_old0 11->12 dec1: self 1274/2560 | persistence self 0.691 vs task 0.600
+  related_old0 11->12 dec2: self 1288/2560 | persistence self 0.695 vs task 0.615
+  related_old0 11->12 dec3: self 1743/2560 | persistence self 0.723 vs task 0.662
+done
+  related phase 3 (pa): self % per layer 64 55 58 59 61 56 59 77 | 145s
+  related phase 4 (hi): self % per layer 63 53 55 60 62 51 54 77 | 142s
+  related phase 5 (gu): self % per layer 60 49 52 50 63 53 52 70 | 119s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.232     0.397     1.579     0.159     0.489
+silence     0.122     0.357     1.600     0.095     0.318
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 589s
+  related phase 6 (pa): self % per layer 62 51 53 55 65 53 57 76 | 138s
+related phase 5 (gu): intact loss hi 3.393, gu 1.925, pa 4.719 | chrF hi 35.9, gu 45.4, pa 19.8
+  count-matched n per layer (n_max = smaller group): enc0:1022 enc1:1261 enc2:1237 enc3:1273 dec0:954 dec1:1197 dec2:1234 dec3:777
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.123     0.123     0.682     0.061     0.146
+silence     0.108     0.183     0.871     0.039     0.086
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 747s
+  related phase 7 (hi): self % per layer 62 50 53 55 62 49 51 76 | 137s
+related phase 5 (gu): intact loss hi 3.393, gu 1.925, pa 4.719 | chrF hi 35.9, gu 45.4, pa 19.8
+  count-matched n per layer (n_max = smaller group): enc0:428 enc1:249 enc2:216 enc3:283 dec0:339 dec1:123 dec2:111 dec3:276
+  related phase 8 (gu): self % per layer 57 48 49 50 66 53 51 71 | 123s
+  related phase 9 (pa): self % per layer 57 48 50 54 67 50 53 74 | 120s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.188     0.451     1.725     0.161     0.509
+silence     0.120     0.373     1.672     0.108     0.346
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 502s
+  related phase 10 (hi): self % per layer 57 46 50 52 61 45 48 75 | 139s
+related phase 6 (pa): intact loss hi 3.746, gu 3.200, pa 1.887 | chrF hi 30.9, gu 37.1, pa 44.7
+  count-matched n per layer (n_max = smaller group): enc0:964 enc1:1244 enc2:1203 enc3:1140 dec0:895 dec1:1203 dec2:1113 dec3:604
+  related phase 11 (gu): self % per layer 56 45 47 50 65 50 50 68 | 105s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.109     0.109     0.457     0.031     0.090
+silence     0.104     0.130     0.521     0.023     0.071
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 607s
+  related phase 12 (pa): self % per layer 55 46 48 51 65 50 53 74 | 102s
+related phase 6 (pa): intact loss hi 3.746, gu 3.200, pa 1.887 | chrF hi 30.9, gu 37.1, pa 44.7
+  count-matched n per layer (n_max = smaller group): enc0:192 enc1:286 enc2:275 enc3:362 dec0:521 dec1:158 dec2:201 dec3:435
+  related phase 13 (hi): self % per layer 55 43 48 50 63 46 46 73 | 94s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.174     0.392     2.802     0.141     0.401
+silence     0.114     0.348     2.862     0.096     0.279
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 407s
+  related phase 14 (gu): self % per layer 54 43 46 47 65 51 47 67 | 93s
+related phase 7 (hi): intact loss hi 1.161, gu 4.328, pa 3.737 | chrF hi 54.4, gu 30.1, pa 39.2
+  count-matched n per layer (n_max = smaller group): enc0:983 enc1:1272 enc2:1203 enc3:1141 dec0:973 dec1:1260 dec2:1266 dec3:622
+  related phase 15 (pa): self % per layer 54 45 47 51 67 49 51 74 | 88s
+  related phase 16 (hi): self % per layer 55 43 45 49 62 44 46 71 | 92s
+done
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.121     0.214     0.590     0.067     0.117
+silence     0.117     0.219     0.758     0.051     0.084
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 442s
+related phase 7 (hi): intact loss hi 1.161, gu 4.328, pa 3.737 | chrF hi 54.4, gu 30.1, pa 39.2
+  count-matched n per layer (n_max = smaller group): enc0:398 enc1:335 enc2:144 enc3:371 dec0:511 dec1:54 dec2:114 dec3:412
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.252     0.562     2.111     0.263     0.772
+silence     0.139     0.468     2.122     0.196     0.528
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 436s
+related phase 8 (gu): intact loss hi 3.022, gu 1.898, pa 3.985 | chrF hi 39.1, gu 44.9, pa 30.6
+  count-matched n per layer (n_max = smaller group): enc0:1092 enc1:1218 enc2:1267 enc3:1277 dec0:882 dec1:1204 dec2:1257 dec3:741
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.137     0.140     0.435     0.053     0.147
+silence     0.123     0.189     0.549     0.034     0.093
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 344s
+related phase 8 (gu): intact loss hi 3.022, gu 1.898, pa 3.985 | chrF hi 39.1, gu 44.9, pa 30.6
+  count-matched n per layer (n_max = smaller group): enc0:398 enc1:280 enc2:216 enc3:255 dec0:375 dec1:143 dec2:145 dec3:231
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.227     0.474     2.094     0.184     0.536
+silence     0.148     0.416     1.943     0.134     0.381
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 342s
+related phase 9 (pa): intact loss hi 3.392, gu 3.216, pa 1.891 | chrF hi 38.3, gu 37.5, pa 43.2
+  count-matched n per layer (n_max = smaller group): enc0:1111 enc1:1231 enc2:1280 enc3:1184 dec0:857 dec1:1279 dec2:1204 dec3:654
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.124     0.164     0.462      0.05     0.093
+silence     0.119     0.158     0.516      0.04     0.082
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 261s
+related phase 9 (pa): intact loss hi 3.392, gu 3.216, pa 1.891 | chrF hi 38.3, gu 37.5, pa 43.2
+  count-matched n per layer (n_max = smaller group): enc0:325 enc1:240 enc2:179 enc3:203 dec0:443 dec1:161 dec2:115 dec3:407
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.207     0.403     1.756     0.169     0.539
+silence     0.128     0.327     1.734     0.107     0.347
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 337s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.143     0.178     0.440     0.045     0.116
+silence     0.130     0.174     0.548     0.033     0.088
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 252s
+related phase 10 (hi): intact loss hi 1.145, gu 4.402, pa 3.663 | chrF hi 53.9, gu 29.4, pa 38.8
+  count-matched n per layer (n_max = smaller group): enc0:1094 enc1:1176 enc2:1269 enc3:1231 dec0:1002 dec1:1144 dec2:1235 dec3:651
+related phase 10 (hi): intact loss hi 1.145, gu 4.402, pa 3.663 | chrF hi 53.9, gu 29.4, pa 38.8
+  count-matched n per layer (n_max = smaller group): enc0:358 enc1:232 enc2:177 enc3:242 dec0:385 dec1:32 dec2:119 dec3:308
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.121     0.067     0.279     0.052     0.114
+silence     0.123     0.099     0.392     0.041     0.098
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 208s
+related phase 11 (gu): intact loss hi 2.893, gu 1.900, pa 3.883 | chrF hi 42.0, gu 44.5, pa 32.1
+  count-matched n per layer (n_max = smaller group): enc0:309 enc1:198 enc2:146 enc3:172 dec0:431 dec1:47 dec2:146 dec3:221
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.277     0.874     2.983     0.201     0.611
+silence     0.151     0.732     2.751     0.116     0.365
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 326s
+related phase 11 (gu): intact loss hi 2.893, gu 1.900, pa 3.883 | chrF hi 42.0, gu 44.5, pa 32.1
+  count-matched n per layer (n_max = smaller group): enc0:1134 enc1:1140 enc2:1214 enc3:1277 dec0:898 dec1:1274 dec2:1272 dec3:817
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.117     0.114     0.311     0.051     0.085
+silence     0.111     0.103     0.272     0.045     0.076
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 217s
+related phase 12 (pa): intact loss hi 3.178, gu 3.119, pa 1.891 | chrF hi 40.5, gu 38.0, pa 42.9
+  count-matched n per layer (n_max = smaller group): enc0:303 enc1:213 enc2:155 enc3:207 dec0:397 dec1:121 dec2:122 dec3:451
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.266     0.506     2.284     0.207     1.328
+silence     0.179     0.411     2.114     0.151     1.104
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 333s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.104     0.093     0.381     0.078     0.129
+silence     0.095     0.114     0.471     0.063     0.106
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 222s
+related phase 12 (pa): intact loss hi 3.178, gu 3.119, pa 1.891 | chrF hi 40.5, gu 38.0, pa 42.9
+  count-matched n per layer (n_max = smaller group): enc0:1142 enc1:1182 enc2:1231 enc3:1261 dec0:894 dec1:1271 dec2:1196 dec3:668
+related phase 13 (hi): intact loss hi 1.153, gu 4.187, pa 3.498 | chrF hi 54.0, gu 32.3, pa 40.4
+  count-matched n per layer (n_max = smaller group): enc0:322 enc1:221 enc2:144 enc3:199 dec0:436 dec1:37 dec2:122 dec3:442
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.126     0.130     0.369     0.061     0.123
+silence     0.106     0.166     0.462     0.041     0.065
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 206s
+related phase 14 (gu): intact loss hi 2.925, gu 1.884, pa 3.807 | chrF hi 40.5, gu 44.0, pa 29.8
+  count-matched n per layer (n_max = smaller group): enc0:248 enc1:136 enc2:89 enc3:161 dec0:404 dec1:49 dec2:178 dec3:302
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.251     0.439     2.062     0.193     0.611
+silence     0.165     0.354     1.909     0.132     0.401
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 320s
+related phase 13 (hi): intact loss hi 1.153, gu 4.187, pa 3.498 | chrF hi 54.0, gu 32.3, pa 40.4
+  count-matched n per layer (n_max = smaller group): enc0:1144 enc1:1109 enc2:1223 enc3:1271 dec0:957 dec1:1167 dec2:1190 dec3:698
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.112     0.132     0.335     0.046     0.124
+silence     0.102     0.135     0.360     0.037     0.104
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 208s
+related phase 15 (pa): intact loss hi 3.070, gu 2.947, pa 1.873 | chrF hi 40.0, gu 38.1, pa 43.6
+  count-matched n per layer (n_max = smaller group): enc0:287 enc1:208 enc2:139 enc3:221 dec0:461 dec1:125 dec2:182 dec3:451
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.155     0.166     0.458     0.059     0.142
+silence     0.158     0.170     0.537     0.046     0.108
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 166s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.296     0.567     2.294     0.235     0.787
+silence     0.162     0.463     2.117     0.146     0.489
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 294s
+related phase 16 (hi): intact loss hi 1.145, gu 4.072, pa 3.470 | chrF hi 54.9, gu 36.6, pa 40.1
+  count-matched n per layer (n_max = smaller group): enc0:310 enc1:196 enc2:138 enc3:198 dec0:355 dec1:23 dec2:105 dec3:296
+related phase 14 (gu): intact loss hi 2.925, gu 1.884, pa 3.807 | chrF hi 40.5, gu 44.0, pa 29.8
+  count-matched n per layer (n_max = smaller group): enc0:1182 enc1:1102 enc2:1176 enc3:1209 dec0:886 dec1:1245 dec2:1197 dec3:845
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.124     0.087     0.298     0.035     0.104
+silence     0.127     0.106     0.349     0.029     0.076
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 164s
+done
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.280     0.515     2.078     0.208     0.686
+silence     0.178     0.424     1.804     0.151     0.462
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 291s
+related phase 15 (pa): intact loss hi 3.070, gu 2.947, pa 1.873 | chrF hi 40.0, gu 38.1, pa 43.6
+  count-matched n per layer (n_max = smaller group): enc0:1176 enc1:1152 enc2:1203 enc3:1258 dec0:851 dec1:1249 dec2:1249 dec3:674
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.267     0.490     2.028     0.206     0.648
+silence     0.175     0.417     1.894     0.138     0.434
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 285s
+related phase 16 (hi): intact loss hi 1.145, gu 4.072, pa 3.470 | chrF hi 54.9, gu 36.6, pa 40.1
+  count-matched n per layer (n_max = smaller group): enc0:1148 enc1:1101 enc2:1153 enc3:1258 dec0:966 dec1:1133 dec2:1174 dec3:752
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.311     0.583     2.361     0.230     0.764
+silence     0.164     0.501     2.094     0.132     0.454
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 297s
+done
+
+===== Wed 02:27 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p004 --part train --task next --mode lesion --model related_old0_p4=v8_indic_continual_s0:4 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+start model: related_old0_p4 = v8_indic_continual_s0 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1624, task 936 -> count-matched n_max 936
+  enc1: working 2560, self 1345, task 1215 -> count-matched n_max 1215
+  enc2: working 2560, self 1407, task 1153 -> count-matched n_max 1153
+  enc3: working 2560, self 1535, task 1025 -> count-matched n_max 1025
+  dec0: working 2560, self 1599, task 961 -> count-matched n_max 961
+  dec1: working 2560, self 1314, task 1246 -> count-matched n_max 1246
+  dec2: working 2560, self 1387, task 1173 -> count-matched n_max 1173
+  dec3: working 2560, self 1970, task 590 -> count-matched n_max 590
+  self found in 9s
+  next language = gu (phase 5 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 02:28 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p004 --part train --task indonesian --mode lesion --model related_old0_p4=v8_indic_continual_s0:4 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: related_old0_p4 = v8_indic_continual_s0 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1624, task 936 -> count-matched n_max 936
+  enc1: working 2560, self 1345, task 1215 -> count-matched n_max 1215
+  enc2: working 2560, self 1407, task 1153 -> count-matched n_max 1153
+  enc3: working 2560, self 1535, task 1025 -> count-matched n_max 1025
+  dec0: working 2560, self 1599, task 961 -> count-matched n_max 961
+  dec1: working 2560, self 1314, task 1246 -> count-matched n_max 1246
+  dec2: working 2560, self 1387, task 1173 -> count-matched n_max 1173
+  dec3: working 2560, self 1970, task 590 -> count-matched n_max 590
+  self found in 10s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 02:29 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p006 --part train --task next --mode lesion --model related_old0_p6=v8_indic_continual_s0:6 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+  related_old0_p4 | next | none    | none      | seed 0 | 0 neurons | loss 5.046 -> 2.268 | chrF 22.6 -> 42.1 | 134s | left in this call: 4 runs, about 9 min
+start model: related_old0_p6 = v8_indic_continual_s0 phase 6 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1596, task 964 -> count-matched n_max 964
+  enc1: working 2560, self 1316, task 1244 -> count-matched n_max 1244
+  enc2: working 2559, self 1356, task 1203 -> count-matched n_max 1203
+  enc3: working 2560, self 1420, task 1140 -> count-matched n_max 1140
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1447, task 1113 -> count-matched n_max 1113
+  dec3: working 2560, self 1956, task 604 -> count-matched n_max 604
+  self found in 10s
+  next language = hi (phase 7 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 02:30 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p006 --part train --task indonesian --mode lesion --model related_old0_p6=v8_indic_continual_s0:6 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: related_old0_p6 = v8_indic_continual_s0 phase 6 (last trained on pa) | languages hi, gu, pa
+
+===== Wed 02:30 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p008 --part train --task next --mode lesion --model related_old0_p8=v8_indic_continual_s0:8 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+  enc0: working 2560, self 1596, task 964 -> count-matched n_max 964
+  enc1: working 2560, self 1316, task 1244 -> count-matched n_max 1244
+  enc2: working 2559, self 1356, task 1203 -> count-matched n_max 1203
+  enc3: working 2560, self 1420, task 1140 -> count-matched n_max 1140
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1447, task 1113 -> count-matched n_max 1113
+  dec3: working 2560, self 1956, task 604 -> count-matched n_max 604
+  self found in 10s
+start model: related_old0_p8 = v8_indic_continual_s0 phase 8 (last trained on gu) | languages hi, gu, pa
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1468, task 1092 -> count-matched n_max 1092
+  enc1: working 2560, self 1218, task 1342 -> count-matched n_max 1218
+  enc2: working 2560, self 1267, task 1293 -> count-matched n_max 1267
+  enc3: working 2560, self 1283, task 1277 -> count-matched n_max 1277
+  dec0: working 2560, self 1678, task 882 -> count-matched n_max 882
+  dec1: working 2560, self 1356, task 1204 -> count-matched n_max 1204
+  dec2: working 2560, self 1303, task 1257 -> count-matched n_max 1257
+  dec3: working 2560, self 1819, task 741 -> count-matched n_max 741
+  self found in 10s
+  next language = pa (phase 9 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 02:30 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p008 --part train --task indonesian --mode lesion --model related_old0_p8=v8_indic_continual_s0:8 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: related_old0_p8 = v8_indic_continual_s0 phase 8 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1468, task 1092 -> count-matched n_max 1092
+  enc1: working 2560, self 1218, task 1342 -> count-matched n_max 1218
+  enc2: working 2560, self 1267, task 1293 -> count-matched n_max 1267
+  enc3: working 2560, self 1283, task 1277 -> count-matched n_max 1277
+  dec0: working 2560, self 1678, task 882 -> count-matched n_max 882
+  dec1: working 2560, self 1356, task 1204 -> count-matched n_max 1204
+  dec2: working 2560, self 1303, task 1257 -> count-matched n_max 1257
+  dec3: working 2560, self 1819, task 741 -> count-matched n_max 741
+  self found in 10s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p4 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.117 -> 1.271 | chrF 5.2 -> 46.8 | 125s | left in this call: 4 runs, about 8 min
+
+===== Wed 02:31 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p010 --part train --task next --mode lesion --model related_old0_p10=v8_indic_continual_s0:10 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+start model: related_old0_p10 = v8_indic_continual_s0 phase 10 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1466, task 1094 -> count-matched n_max 1094
+  enc1: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  enc2: working 2560, self 1269, task 1291 -> count-matched n_max 1269
+  enc3: working 2560, self 1329, task 1231 -> count-matched n_max 1231
+  dec0: working 2560, self 1558, task 1002 -> count-matched n_max 1002
+  dec1: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec2: working 2560, self 1235, task 1325 -> count-matched n_max 1235
+  dec3: working 2560, self 1909, task 651 -> count-matched n_max 651
+  self found in 10s
+  next language = gu (phase 11 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p6 | next | none    | none      | seed 0 | 0 neurons | loss 3.798 -> 1.808 | chrF 29.9 -> 48.0 | 111s | left in this call: 4 runs, about 7 min
+  related_old0_p4 | next | lesion  | self@1.0  | seed 0 | 8299 neurons | loss 6.222 -> 2.350 | chrF 6.6 -> 41.1 | 134s | left in this call: 3 runs, about 7 min
+  related_old0_p8 | next | none    | none      | seed 0 | 0 neurons | loss 3.945 -> 2.091 | chrF 30.7 -> 43.5 | 133s | left in this call: 4 runs, about 9 min
+  related_old0_p6 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.410 -> 1.276 | chrF 4.9 -> 46.8 | 147s | left in this call: 4 runs, about 10 min
+
+===== Wed 02:32 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p010 --part train --task indonesian --mode lesion --model related_old0_p10=v8_indic_continual_s0:10 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: related_old0_p10 = v8_indic_continual_s0 phase 10 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1466, task 1094 -> count-matched n_max 1094
+  enc1: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  enc2: working 2560, self 1269, task 1291 -> count-matched n_max 1269
+  enc3: working 2560, self 1329, task 1231 -> count-matched n_max 1231
+  dec0: working 2560, self 1558, task 1002 -> count-matched n_max 1002
+  dec1: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec2: working 2560, self 1235, task 1325 -> count-matched n_max 1235
+  dec3: working 2560, self 1909, task 651 -> count-matched n_max 651
+  self found in 10s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p8 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.916 -> 1.272 | chrF 5.3 -> 46.2 | 148s | left in this call: 4 runs, about 10 min
+
+===== Wed 02:33 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p012 --part train --task next --mode lesion --model related_old0_p12=v8_indic_continual_s0:12 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+  related_old0_p4 | indonesian | lesion  | self@1.0  | seed 0 | 8299 neurons | loss 8.963 -> 1.309 | chrF 4.3 -> 44.8 | 146s | left in this call: 3 runs, about 7 min
+start model: related_old0_p12 = v8_indic_continual_s0 phase 12 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  enc1: working 2560, self 1182, task 1378 -> count-matched n_max 1182
+  enc2: working 2560, self 1231, task 1329 -> count-matched n_max 1231
+  enc3: working 2560, self 1299, task 1261 -> count-matched n_max 1261
+  dec0: working 2560, self 1666, task 894 -> count-matched n_max 894
+  dec1: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec2: working 2560, self 1364, task 1196 -> count-matched n_max 1196
+  dec3: working 2560, self 1892, task 668 -> count-matched n_max 668
+  self found in 10s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p10 | next | none    | none      | seed 0 | 0 neurons | loss 4.481 -> 2.181 | chrF 28.8 -> 42.2 | 134s | left in this call: 4 runs, about 9 min
+  related_old0_p6 | next | lesion  | self@1.0  | seed 0 | 8366 neurons | loss 7.488 -> 1.952 | chrF 2.2 -> 47.1 | 129s | left in this call: 3 runs, about 6 min
+  related_old0_p4 | next | lesion  | task@1.0  | seed 0 | 8299 neurons | loss 5.426 -> 2.328 | chrF 18.2 -> 42.1 | 133s | left in this call: 2 runs, about 4 min
+  related_old0_p8 | next | lesion  | self@1.0  | seed 0 | 8938 neurons | loss 5.798 -> 2.199 | chrF 5.8 -> 42.2 | 111s | left in this call: 3 runs, about 6 min
+  related_old0_p6 | indonesian | lesion  | self@1.0  | seed 0 | 8366 neurons | loss 11.478 -> 1.310 | chrF 3.9 -> 44.3 | 144s | left in this call: 3 runs, about 7 min
+
+===== Wed 02:35 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p012 --part train --task indonesian --mode lesion --model related_old0_p12=v8_indic_continual_s0:12 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: related_old0_p12 = v8_indic_continual_s0 phase 12 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  enc1: working 2560, self 1182, task 1378 -> count-matched n_max 1182
+  enc2: working 2560, self 1231, task 1329 -> count-matched n_max 1231
+  enc3: working 2560, self 1299, task 1261 -> count-matched n_max 1261
+  dec0: working 2560, self 1666, task 894 -> count-matched n_max 894
+  dec1: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec2: working 2560, self 1364, task 1196 -> count-matched n_max 1196
+  dec3: working 2560, self 1892, task 668 -> count-matched n_max 668
+  self found in 10s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 02:35 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p014 --part train --task next --mode lesion --model related_old0_p14=v8_indic_continual_s0:14 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+  related_old0_p10 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.397 -> 1.264 | chrF 5.4 -> 47.2 | 147s | left in this call: 4 runs, about 10 min
+start model: related_old0_p14 = v8_indic_continual_s0 phase 14 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1102, task 1458 -> count-matched n_max 1102
+  enc2: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  enc3: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  dec0: working 2560, self 1674, task 886 -> count-matched n_max 886
+  dec1: working 2560, self 1315, task 1245 -> count-matched n_max 1245
+  dec2: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  dec3: working 2560, self 1715, task 845 -> count-matched n_max 845
+  self found in 10s
+  next language = pa (phase 15 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p8 | indonesian | lesion  | self@1.0  | seed 0 | 8938 neurons | loss 10.138 -> 1.302 | chrF 4.4 -> 44.7 | 148s | left in this call: 3 runs, about 7 min
+  related_old0_p4 | indonesian | lesion  | task@1.0  | seed 0 | 8299 neurons | loss 9.087 -> 1.292 | chrF 4.9 -> 46.1 | 146s | left in this call: 2 runs, about 5 min
+  related_old0_p12 | next | none    | none      | seed 0 | 0 neurons | loss 3.224 -> 1.655 | chrF 38.6 -> 48.4 | 135s | left in this call: 4 runs, about 9 min
+
+===== Wed 02:36 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p014 --part train --task indonesian --mode lesion --model related_old0_p14=v8_indic_continual_s0:14 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: related_old0_p14 = v8_indic_continual_s0 phase 14 (last trained on gu) | languages hi, gu, pa
+  related_old0_p10 | next | lesion  | self@1.0  | seed 0 | 8802 neurons | loss 6.877 -> 2.290 | chrF 2.1 -> 40.7 | 133s | left in this call: 3 runs, about 7 min
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1102, task 1458 -> count-matched n_max 1102
+  enc2: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  enc3: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  dec0: working 2560, self 1674, task 886 -> count-matched n_max 886
+  dec1: working 2560, self 1315, task 1245 -> count-matched n_max 1245
+  dec2: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  dec3: working 2560, self 1715, task 845 -> count-matched n_max 845
+  self found in 10s
+  related_old0_p6 | next | lesion  | task@1.0  | seed 0 | 8366 neurons | loss 4.164 -> 1.913 | chrF 24.5 -> 47.7 | 130s | left in this call: 2 runs, about 4 min
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p4 | next | lesion  | self@0.5  | seed 0 | 4148 neurons | loss 5.444 -> 2.294 | chrF 13.8 -> 41.8 | 133s | left in this call: 1 runs, about 2 min
+  related_old0_p8 | next | lesion  | task@1.0  | seed 0 | 8938 neurons | loss 4.385 -> 2.162 | chrF 22.1 -> 43.5 | 131s | left in this call: 2 runs, about 4 min
+
+===== Wed 02:37 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_next/related_old0/p016 --part train --task next --mode lesion --model related_old0_p16=v8_indic_continual_s0:16 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5
+start model: related_old0_p16 = v8_indic_continual_s0 phase 16 (last trained on hi) | languages hi, gu, pa
+
+===== Wed 02:37 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family related --tau 0.2 --match_std --out train_heldout/related_old0/p016 --part train --task indonesian --mode lesion --model related_old0_p16=v8_indic_continual_s0:16 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+  enc0: working 2560, self 1412, task 1148 -> count-matched n_max 1148
+  enc1: working 2560, self 1101, task 1459 -> count-matched n_max 1101
+  enc2: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  enc3: working 2560, self 1258, task 1302 -> count-matched n_max 1258
+  dec0: working 2560, self 1594, task 966 -> count-matched n_max 966
+  dec1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  dec2: working 2560, self 1174, task 1386 -> count-matched n_max 1174
+  dec3: working 2560, self 1808, task 752 -> count-matched n_max 752
+  self found in 10s
+  next language = gu (phase 17 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+start model: related_old0_p16 = v8_indic_continual_s0 phase 16 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1412, task 1148 -> count-matched n_max 1148
+  enc1: working 2560, self 1101, task 1459 -> count-matched n_max 1101
+  enc2: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  enc3: working 2560, self 1258, task 1302 -> count-matched n_max 1258
+  dec0: working 2560, self 1594, task 966 -> count-matched n_max 966
+  dec1: working 2560, self 1133, task 1427 -> count-matched n_max 1133
+  dec2: working 2560, self 1174, task 1386 -> count-matched n_max 1174
+  dec3: working 2560, self 1808, task 752 -> count-matched n_max 752
+  self found in 10s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  related_old0_p6 | indonesian | lesion  | task@1.0  | seed 0 | 8366 neurons | loss 9.441 -> 1.291 | chrF 4.4 -> 46.3 | 144s | left in this call: 2 runs, about 5 min
+  related_old0_p12 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.946 -> 1.264 | chrF 5.0 -> 46.4 | 131s | left in this call: 4 runs, about 9 min
+  related_old0_p10 | indonesian | lesion  | self@1.0  | seed 0 | 8802 neurons | loss 9.630 -> 1.298 | chrF 3.9 -> 45.3 | 145s | left in this call: 3 runs, about 7 min
+  related_old0_p14 | next | none    | none      | seed 0 | 0 neurons | loss 3.783 -> 2.056 | chrF 29.7 -> 44.5 | 134s | left in this call: 4 runs, about 9 min
+  related_old0_p8 | indonesian | lesion  | task@1.0  | seed 0 | 8938 neurons | loss 9.807 -> 1.288 | chrF 4.6 -> 45.4 | 140s | left in this call: 2 runs, about 5 min
+  related_old0_p12 | next | lesion  | self@1.0  | seed 0 | 8845 neurons | loss 5.462 -> 1.856 | chrF 4.6 -> 46.4 | 133s | left in this call: 3 runs, about 7 min
+  related_old0_p10 | next | lesion  | task@1.0  | seed 0 | 8802 neurons | loss 4.979 -> 2.256 | chrF 23.9 -> 42.1 | 133s | left in this call: 2 runs, about 4 min
+  related_old0_p4 | indonesian | lesion  | self@0.5  | seed 0 | 4148 neurons | loss 9.313 -> 1.290 | chrF 4.9 -> 45.0 | 146s | left in this call: 1 runs, about 2 min
+  related_old0_p4 | next | lesion  | look@0.5  | seed 0 | 4148 neurons | loss 5.247 -> 2.297 | chrF 19.5 -> 42.3 | 113s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p6 | next | lesion  | self@0.5  | seed 0 | 4184 neurons | loss 4.304 -> 1.868 | chrF 15.6 -> 47.3 | 130s | left in this call: 1 runs, about 2 min
+  related_old0_p14 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.590 -> 1.260 | chrF 5.1 -> 46.7 | 129s | left in this call: 4 runs, about 9 min
+  related_old0_p8 | next | lesion  | self@0.5  | seed 0 | 4468 neurons | loss 4.354 -> 2.133 | chrF 19.0 -> 42.7 | 131s | left in this call: 1 runs, about 2 min
+  related_old0_p16 | next | none    | none      | seed 0 | 0 neurons | loss 4.178 -> 2.148 | chrF 35.6 -> 42.8 | 135s | left in this call: 4 runs, about 9 min
+  related_old0_p16 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.970 -> 1.260 | chrF 5.2 -> 47.3 | 126s | left in this call: 4 runs, about 8 min
+  related_old0_p6 | indonesian | lesion  | self@0.5  | seed 0 | 4184 neurons | loss 9.858 -> 1.286 | chrF 5.4 -> 46.7 | 145s | left in this call: 1 runs, about 2 min
+  related_old0_p12 | next | lesion  | task@1.0  | seed 0 | 8845 neurons | loss 3.829 -> 1.804 | chrF 26.4 -> 47.3 | 111s | left in this call: 2 runs, about 4 min
+  related_old0_p12 | indonesian | lesion  | self@1.0  | seed 0 | 8845 neurons | loss 10.061 -> 1.307 | chrF 4.3 -> 44.1 | 146s | left in this call: 3 runs, about 7 min
+  related_old0_p14 | next | lesion  | self@1.0  | seed 0 | 8842 neurons | loss 5.489 -> 2.175 | chrF 5.5 -> 41.7 | 133s | left in this call: 3 runs, about 7 min
+  related_old0_p8 | indonesian | lesion  | self@0.5  | seed 0 | 4468 neurons | loss 10.379 -> 1.292 | chrF 4.7 -> 46.0 | 135s | left in this call: 1 runs, about 2 min
+  related_old0_p10 | indonesian | lesion  | task@1.0  | seed 0 | 8802 neurons | loss 9.548 -> 1.280 | chrF 5.5 -> 46.4 | 145s | left in this call: 2 runs, about 5 min
+  related_old0_p10 | next | lesion  | self@0.5  | seed 0 | 4402 neurons | loss 5.372 -> 2.222 | chrF 9.9 -> 42.2 | 133s | left in this call: 1 runs, about 2 min
+  related_old0_p6 | next | lesion  | look@0.5  | seed 0 | 4184 neurons | loss 3.969 -> 1.855 | chrF 25.2 -> 47.7 | 131s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p4 | indonesian | lesion  | look@0.5  | seed 0 | 4148 neurons | loss 8.899 -> 1.281 | chrF 5.2 -> 47.1 | 145s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p14 | indonesian | lesion  | self@1.0  | seed 0 | 8842 neurons | loss 10.383 -> 1.300 | chrF 4.5 -> 44.5 | 148s | left in this call: 3 runs, about 7 min
+  related_old0_p8 | next | lesion  | look@0.5  | seed 0 | 4468 neurons | loss 4.134 -> 2.122 | chrF 27.7 -> 43.2 | 131s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p16 | next | lesion  | self@1.0  | seed 0 | 8685 neurons | loss 6.156 -> 2.263 | chrF 2.7 -> 41.0 | 133s | left in this call: 3 runs, about 7 min
+  related_old0_p6 | indonesian | lesion  | look@0.5  | seed 0 | 4184 neurons | loss 9.358 -> 1.279 | chrF 5.0 -> 47.0 | 121s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p16 | indonesian | lesion  | self@1.0  | seed 0 | 8685 neurons | loss 9.305 -> 1.304 | chrF 3.8 -> 45.8 | 145s | left in this call: 3 runs, about 7 min
+  related_old0_p12 | next | lesion  | self@0.5  | seed 0 | 4423 neurons | loss 3.766 -> 1.742 | chrF 26.5 -> 47.4 | 133s | left in this call: 1 runs, about 2 min
+  related_old0_p10 | next | lesion  | look@0.5  | seed 0 | 4402 neurons | loss 4.768 -> 2.219 | chrF 25.9 -> 41.7 | 111s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p10 | indonesian | lesion  | self@0.5  | seed 0 | 4402 neurons | loss 9.064 -> 1.275 | chrF 4.5 -> 46.1 | 124s | left in this call: 1 runs, about 2 min
+  related_old0_p14 | next | lesion  | task@1.0  | seed 0 | 8842 neurons | loss 4.350 -> 2.142 | chrF 17.6 -> 44.6 | 135s | left in this call: 2 runs, about 4 min
+  related_old0_p12 | indonesian | lesion  | task@1.0  | seed 0 | 8845 neurons | loss 10.543 -> 1.292 | chrF 3.9 -> 46.0 | 146s | left in this call: 2 runs, about 5 min
+  related_old0_p8 | indonesian | lesion  | look@0.5  | seed 0 | 4468 neurons | loss 9.784 -> 1.277 | chrF 5.0 -> 45.7 | 146s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p14 | indonesian | lesion  | task@1.0  | seed 0 | 8842 neurons | loss 10.650 -> 1.290 | chrF 4.2 -> 45.4 | 147s | left in this call: 2 runs, about 5 min
+  related_old0_p16 | next | lesion  | task@1.0  | seed 0 | 8685 neurons | loss 4.827 -> 2.224 | chrF 27.2 -> 42.8 | 134s | left in this call: 2 runs, about 4 min
+  related_old0_p16 | indonesian | lesion  | task@1.0  | seed 0 | 8685 neurons | loss 10.022 -> 1.279 | chrF 4.8 -> 46.8 | 146s | left in this call: 2 runs, about 5 min
+  related_old0_p12 | next | lesion  | look@0.5  | seed 0 | 4423 neurons | loss 3.515 -> 1.728 | chrF 35.0 -> 48.4 | 132s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p14 | next | lesion  | self@0.5  | seed 0 | 4419 neurons | loss 4.318 -> 2.104 | chrF 18.5 -> 43.2 | 135s | left in this call: 1 runs, about 2 min
+  related_old0_p10 | indonesian | lesion  | look@0.5  | seed 0 | 4402 neurons | loss 9.232 -> 1.270 | chrF 5.5 -> 47.0 | 146s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p12 | indonesian | lesion  | self@0.5  | seed 0 | 4423 neurons | loss 9.712 -> 1.280 | chrF 4.4 -> 45.9 | 146s | left in this call: 1 runs, about 2 min
+  related_old0_p14 | indonesian | lesion  | self@0.5  | seed 0 | 4419 neurons | loss 10.849 -> 1.277 | chrF 4.8 -> 46.3 | 146s | left in this call: 1 runs, about 2 min
+  related_old0_p16 | next | lesion  | self@0.5  | seed 0 | 4341 neurons | loss 4.756 -> 2.194 | chrF 21.5 -> 42.6 | 134s | left in this call: 1 runs, about 2 min
+  related_old0_p16 | indonesian | lesion  | self@0.5  | seed 0 | 4341 neurons | loss 10.385 -> 1.274 | chrF 5.1 -> 46.1 | 146s | left in this call: 1 runs, about 2 min
+  related_old0_p14 | next | lesion  | look@0.5  | seed 0 | 4419 neurons | loss 4.034 -> 2.098 | chrF 23.1 -> 43.6 | 133s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p12 | indonesian | lesion  | look@0.5  | seed 0 | 4423 neurons | loss 9.888 -> 1.278 | chrF 4.4 -> 45.8 | 136s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p14 | indonesian | lesion  | look@0.5  | seed 0 | 4419 neurons | loss 10.440 -> 1.270 | chrF 4.5 -> 46.4 | 146s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p16 | next | lesion  | look@0.5  | seed 0 | 4341 neurons | loss 4.457 -> 2.181 | chrF 29.7 -> 42.5 | 128s | left in this call: 0 runs, about 0 min
+done
+  related_old0_p16 | indonesian | lesion  | look@0.5  | seed 0 | 4341 neurons | loss 9.705 -> 1.265 | chrF 4.9 -> 47.1 | 146s | left in this call: 0 runs, about 0 min
+done

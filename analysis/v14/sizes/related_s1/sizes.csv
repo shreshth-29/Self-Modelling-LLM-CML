@@ -1,0 +1,497 @@
+family,run,phase,lang,self_def,layer,n_alive,n_self,n_task,second
+related,v14_related_s1,0,init,all the model's languages,enc0,2560,2542,18,1
+related,v14_related_s1,0,init,all the model's languages,enc1,2560,2528,32,1
+related,v14_related_s1,0,init,all the model's languages,enc2,2560,2518,42,1
+related,v14_related_s1,0,init,all the model's languages,enc3,2560,2503,57,1
+related,v14_related_s1,0,init,all the model's languages,dec0,2560,2158,402,3
+related,v14_related_s1,0,init,all the model's languages,dec1,2560,2384,176,2
+related,v14_related_s1,0,init,all the model's languages,dec2,2560,2414,146,1
+related,v14_related_s1,0,init,all the model's languages,dec3,2560,2463,97,1
+related,v14_related_s1,0,init,Hindi only,enc0,2560,2542,18,1
+related,v14_related_s1,0,init,Hindi only,enc1,2560,2528,32,1
+related,v14_related_s1,0,init,Hindi only,enc2,2560,2518,42,1
+related,v14_related_s1,0,init,Hindi only,enc3,2560,2503,57,1
+related,v14_related_s1,0,init,Hindi only,dec0,2560,2335,225,2
+related,v14_related_s1,0,init,Hindi only,dec1,2560,2429,131,1
+related,v14_related_s1,0,init,Hindi only,dec2,2560,2437,123,1
+related,v14_related_s1,0,init,Hindi only,dec3,2560,2469,91,1
+related,v14_related_s1,1,hi,all the model's languages,enc0,2560,1866,694,4
+related,v14_related_s1,1,hi,all the model's languages,enc1,2560,1604,956,6
+related,v14_related_s1,1,hi,all the model's languages,enc2,2560,1595,965,5
+related,v14_related_s1,1,hi,all the model's languages,enc3,2560,1782,778,4
+related,v14_related_s1,1,hi,all the model's languages,dec0,2560,1863,697,9
+related,v14_related_s1,1,hi,all the model's languages,dec1,2560,1674,886,2
+related,v14_related_s1,1,hi,all the model's languages,dec2,2560,1573,987,4
+related,v14_related_s1,1,hi,all the model's languages,dec3,2560,1804,756,3
+related,v14_related_s1,1,hi,Hindi only,enc0,2560,1866,694,4
+related,v14_related_s1,1,hi,Hindi only,enc1,2560,1604,956,6
+related,v14_related_s1,1,hi,Hindi only,enc2,2560,1595,965,5
+related,v14_related_s1,1,hi,Hindi only,enc3,2560,1782,778,4
+related,v14_related_s1,1,hi,Hindi only,dec0,2560,1571,989,5
+related,v14_related_s1,1,hi,Hindi only,dec1,2560,1399,1161,4
+related,v14_related_s1,1,hi,Hindi only,dec2,2560,1517,1043,3
+related,v14_related_s1,1,hi,Hindi only,dec3,2560,1813,747,3
+related,v14_related_s1,2,gu,all the model's languages,enc0,2560,1607,953,5
+related,v14_related_s1,2,gu,all the model's languages,enc1,2560,1363,1197,11
+related,v14_related_s1,2,gu,all the model's languages,enc2,2560,1367,1193,4
+related,v14_related_s1,2,gu,all the model's languages,enc3,2560,1577,983,4
+related,v14_related_s1,2,gu,all the model's languages,dec0,2560,1544,1016,6
+related,v14_related_s1,2,gu,all the model's languages,dec1,2560,1517,1043,4
+related,v14_related_s1,2,gu,all the model's languages,dec2,2560,1386,1174,7
+related,v14_related_s1,2,gu,all the model's languages,dec3,2560,1747,813,3
+related,v14_related_s1,2,gu,Hindi only,enc0,2560,1607,953,5
+related,v14_related_s1,2,gu,Hindi only,enc1,2560,1363,1197,11
+related,v14_related_s1,2,gu,Hindi only,enc2,2560,1367,1193,4
+related,v14_related_s1,2,gu,Hindi only,enc3,2560,1577,983,4
+related,v14_related_s1,2,gu,Hindi only,dec0,2560,1666,894,5
+related,v14_related_s1,2,gu,Hindi only,dec1,2560,1405,1155,4
+related,v14_related_s1,2,gu,Hindi only,dec2,2560,1308,1252,3
+related,v14_related_s1,2,gu,Hindi only,dec3,2560,1609,951,4
+related,v14_related_s1,3,pa,all the model's languages,enc0,2560,1573,987,5
+related,v14_related_s1,3,pa,all the model's languages,enc1,2560,1389,1171,13
+related,v14_related_s1,3,pa,all the model's languages,enc2,2560,1399,1161,8
+related,v14_related_s1,3,pa,all the model's languages,enc3,2560,1583,977,5
+related,v14_related_s1,3,pa,all the model's languages,dec0,2560,1511,1049,8
+related,v14_related_s1,3,pa,all the model's languages,dec1,2560,1426,1134,3
+related,v14_related_s1,3,pa,all the model's languages,dec2,2560,1437,1123,3
+related,v14_related_s1,3,pa,all the model's languages,dec3,2560,1911,649,3
+related,v14_related_s1,3,pa,Hindi only,enc0,2560,1573,987,5
+related,v14_related_s1,3,pa,Hindi only,enc1,2560,1389,1171,13
+related,v14_related_s1,3,pa,Hindi only,enc2,2560,1399,1161,8
+related,v14_related_s1,3,pa,Hindi only,enc3,2560,1583,977,5
+related,v14_related_s1,3,pa,Hindi only,dec0,2560,1536,1024,6
+related,v14_related_s1,3,pa,Hindi only,dec1,2560,1419,1141,5
+related,v14_related_s1,3,pa,Hindi only,dec2,2560,1356,1204,8
+related,v14_related_s1,3,pa,Hindi only,dec3,2560,1844,716,3
+related,v14_related_s1,4,hi,all the model's languages,enc0,2560,1550,1010,4
+related,v14_related_s1,4,hi,all the model's languages,enc1,2560,1326,1234,8
+related,v14_related_s1,4,hi,all the model's languages,enc2,2560,1393,1167,7
+related,v14_related_s1,4,hi,all the model's languages,enc3,2560,1613,947,4
+related,v14_related_s1,4,hi,all the model's languages,dec0,2560,1588,972,5
+related,v14_related_s1,4,hi,all the model's languages,dec1,2560,1278,1282,5
+related,v14_related_s1,4,hi,all the model's languages,dec2,2560,1423,1137,6
+related,v14_related_s1,4,hi,all the model's languages,dec3,2560,1955,605,3
+related,v14_related_s1,4,hi,Hindi only,enc0,2560,1550,1010,4
+related,v14_related_s1,4,hi,Hindi only,enc1,2560,1326,1234,8
+related,v14_related_s1,4,hi,Hindi only,enc2,2560,1393,1167,7
+related,v14_related_s1,4,hi,Hindi only,enc3,2560,1613,947,4
+related,v14_related_s1,4,hi,Hindi only,dec0,2560,1757,803,5
+related,v14_related_s1,4,hi,Hindi only,dec1,2560,1470,1090,4
+related,v14_related_s1,4,hi,Hindi only,dec2,2560,1596,964,6
+related,v14_related_s1,4,hi,Hindi only,dec3,2560,2008,552,3
+related,v14_related_s1,5,gu,all the model's languages,enc0,2560,1442,1118,7
+related,v14_related_s1,5,gu,all the model's languages,enc1,2560,1289,1271,11
+related,v14_related_s1,5,gu,all the model's languages,enc2,2560,1297,1263,6
+related,v14_related_s1,5,gu,all the model's languages,enc3,2560,1451,1109,7
+related,v14_related_s1,5,gu,all the model's languages,dec0,2560,1572,988,6
+related,v14_related_s1,5,gu,all the model's languages,dec1,2560,1352,1208,4
+related,v14_related_s1,5,gu,all the model's languages,dec2,2560,1343,1217,4
+related,v14_related_s1,5,gu,all the model's languages,dec3,2560,1758,802,4
+related,v14_related_s1,5,gu,Hindi only,enc0,2560,1442,1118,7
+related,v14_related_s1,5,gu,Hindi only,enc1,2560,1289,1271,11
+related,v14_related_s1,5,gu,Hindi only,enc2,2560,1297,1263,6
+related,v14_related_s1,5,gu,Hindi only,enc3,2560,1451,1109,7
+related,v14_related_s1,5,gu,Hindi only,dec0,2560,1771,789,5
+related,v14_related_s1,5,gu,Hindi only,dec1,2560,1382,1178,4
+related,v14_related_s1,5,gu,Hindi only,dec2,2560,1303,1257,3
+related,v14_related_s1,5,gu,Hindi only,dec3,2560,1726,834,6
+related,v14_related_s1,6,pa,all the model's languages,enc0,2560,1500,1060,5
+related,v14_related_s1,6,pa,all the model's languages,enc1,2560,1305,1255,11
+related,v14_related_s1,6,pa,all the model's languages,enc2,2560,1308,1252,10
+related,v14_related_s1,6,pa,all the model's languages,enc3,2560,1488,1072,5
+related,v14_related_s1,6,pa,all the model's languages,dec0,2560,1618,942,8
+related,v14_related_s1,6,pa,all the model's languages,dec1,2560,1311,1249,8
+related,v14_related_s1,6,pa,all the model's languages,dec2,2560,1400,1160,6
+related,v14_related_s1,6,pa,all the model's languages,dec3,2560,1997,563,5
+related,v14_related_s1,6,pa,Hindi only,enc0,2560,1500,1060,5
+related,v14_related_s1,6,pa,Hindi only,enc1,2560,1305,1255,11
+related,v14_related_s1,6,pa,Hindi only,enc2,2560,1308,1252,10
+related,v14_related_s1,6,pa,Hindi only,enc3,2560,1488,1072,5
+related,v14_related_s1,6,pa,Hindi only,dec0,2560,1612,948,7
+related,v14_related_s1,6,pa,Hindi only,dec1,2560,1284,1276,5
+related,v14_related_s1,6,pa,Hindi only,dec2,2560,1373,1187,2
+related,v14_related_s1,6,pa,Hindi only,dec3,2560,1933,627,4
+related,v14_related_s1,7,hi,all the model's languages,enc0,2560,1472,1088,6
+related,v14_related_s1,7,hi,all the model's languages,enc1,2560,1232,1328,18
+related,v14_related_s1,7,hi,all the model's languages,enc2,2560,1332,1228,9
+related,v14_related_s1,7,hi,all the model's languages,enc3,2560,1512,1048,6
+related,v14_related_s1,7,hi,all the model's languages,dec0,2560,1605,955,8
+related,v14_related_s1,7,hi,all the model's languages,dec1,2560,1244,1316,6
+related,v14_related_s1,7,hi,all the model's languages,dec2,2560,1368,1192,4
+related,v14_related_s1,7,hi,all the model's languages,dec3,2560,1942,618,5
+related,v14_related_s1,7,hi,Hindi only,enc0,2560,1472,1088,6
+related,v14_related_s1,7,hi,Hindi only,enc1,2560,1232,1328,18
+related,v14_related_s1,7,hi,Hindi only,enc2,2560,1332,1228,9
+related,v14_related_s1,7,hi,Hindi only,enc3,2560,1512,1048,6
+related,v14_related_s1,7,hi,Hindi only,dec0,2560,1781,779,5
+related,v14_related_s1,7,hi,Hindi only,dec1,2560,1383,1177,7
+related,v14_related_s1,7,hi,Hindi only,dec2,2560,1479,1081,4
+related,v14_related_s1,7,hi,Hindi only,dec3,2560,1982,578,4
+related,v14_related_s1,8,gu,all the model's languages,enc0,2560,1408,1152,6
+related,v14_related_s1,8,gu,all the model's languages,enc1,2560,1178,1382,13
+related,v14_related_s1,8,gu,all the model's languages,enc2,2560,1294,1266,12
+related,v14_related_s1,8,gu,all the model's languages,enc3,2560,1405,1155,14
+related,v14_related_s1,8,gu,all the model's languages,dec0,2560,1683,877,8
+related,v14_related_s1,8,gu,all the model's languages,dec1,2560,1339,1221,5
+related,v14_related_s1,8,gu,all the model's languages,dec2,2560,1331,1229,3
+related,v14_related_s1,8,gu,all the model's languages,dec3,2560,1821,739,4
+related,v14_related_s1,8,gu,Hindi only,enc0,2560,1408,1152,6
+related,v14_related_s1,8,gu,Hindi only,enc1,2560,1178,1382,13
+related,v14_related_s1,8,gu,Hindi only,enc2,2560,1294,1266,12
+related,v14_related_s1,8,gu,Hindi only,enc3,2560,1405,1155,14
+related,v14_related_s1,8,gu,Hindi only,dec0,2560,1838,722,6
+related,v14_related_s1,8,gu,Hindi only,dec1,2560,1401,1159,5
+related,v14_related_s1,8,gu,Hindi only,dec2,2560,1331,1229,4
+related,v14_related_s1,8,gu,Hindi only,dec3,2560,1774,786,7
+related,v14_related_s1,9,pa,all the model's languages,enc0,2560,1474,1086,6
+related,v14_related_s1,9,pa,all the model's languages,enc1,2560,1234,1326,20
+related,v14_related_s1,9,pa,all the model's languages,enc2,2560,1332,1228,14
+related,v14_related_s1,9,pa,all the model's languages,enc3,2560,1470,1090,5
+related,v14_related_s1,9,pa,all the model's languages,dec0,2560,1672,888,10
+related,v14_related_s1,9,pa,all the model's languages,dec1,2560,1299,1261,6
+related,v14_related_s1,9,pa,all the model's languages,dec2,2560,1363,1197,5
+related,v14_related_s1,9,pa,all the model's languages,dec3,2560,1946,614,2
+related,v14_related_s1,9,pa,Hindi only,enc0,2560,1474,1086,6
+related,v14_related_s1,9,pa,Hindi only,enc1,2560,1234,1326,20
+related,v14_related_s1,9,pa,Hindi only,enc2,2560,1332,1228,14
+related,v14_related_s1,9,pa,Hindi only,enc3,2560,1470,1090,5
+related,v14_related_s1,9,pa,Hindi only,dec0,2560,1714,846,5
+related,v14_related_s1,9,pa,Hindi only,dec1,2560,1267,1293,5
+related,v14_related_s1,9,pa,Hindi only,dec2,2560,1334,1226,8
+related,v14_related_s1,9,pa,Hindi only,dec3,2560,1913,647,3
+related,v14_related_s1,10,hi,all the model's languages,enc0,2560,1421,1139,6
+related,v14_related_s1,10,hi,all the model's languages,enc1,2560,1189,1371,30
+related,v14_related_s1,10,hi,all the model's languages,enc2,2560,1239,1321,20
+related,v14_related_s1,10,hi,all the model's languages,enc3,2560,1453,1107,8
+related,v14_related_s1,10,hi,all the model's languages,dec0,2560,1557,1003,7
+related,v14_related_s1,10,hi,all the model's languages,dec1,2560,1171,1389,6
+related,v14_related_s1,10,hi,all the model's languages,dec2,2560,1275,1285,5
+related,v14_related_s1,10,hi,all the model's languages,dec3,2560,1900,660,4
+related,v14_related_s1,10,hi,Hindi only,enc0,2560,1421,1139,6
+related,v14_related_s1,10,hi,Hindi only,enc1,2560,1189,1371,30
+related,v14_related_s1,10,hi,Hindi only,enc2,2560,1239,1321,20
+related,v14_related_s1,10,hi,Hindi only,enc3,2560,1453,1107,8
+related,v14_related_s1,10,hi,Hindi only,dec0,2560,1745,815,5
+related,v14_related_s1,10,hi,Hindi only,dec1,2560,1298,1262,5
+related,v14_related_s1,10,hi,Hindi only,dec2,2560,1358,1202,4
+related,v14_related_s1,10,hi,Hindi only,dec3,2560,1950,610,3
+related,v14_related_s1,11,gu,all the model's languages,enc0,2560,1384,1176,10
+related,v14_related_s1,11,gu,all the model's languages,enc1,2560,1149,1411,19
+related,v14_related_s1,11,gu,all the model's languages,enc2,2560,1229,1331,7
+related,v14_related_s1,11,gu,all the model's languages,enc3,2560,1390,1170,7
+related,v14_related_s1,11,gu,all the model's languages,dec0,2560,1679,881,9
+related,v14_related_s1,11,gu,all the model's languages,dec1,2560,1288,1272,5
+related,v14_related_s1,11,gu,all the model's languages,dec2,2560,1297,1263,4
+related,v14_related_s1,11,gu,all the model's languages,dec3,2560,1779,781,3
+related,v14_related_s1,11,gu,Hindi only,enc0,2560,1384,1176,10
+related,v14_related_s1,11,gu,Hindi only,enc1,2560,1149,1411,19
+related,v14_related_s1,11,gu,Hindi only,enc2,2560,1229,1331,7
+related,v14_related_s1,11,gu,Hindi only,enc3,2560,1390,1170,7
+related,v14_related_s1,11,gu,Hindi only,dec0,2560,1873,687,3
+related,v14_related_s1,11,gu,Hindi only,dec1,2560,1319,1241,6
+related,v14_related_s1,11,gu,Hindi only,dec2,2560,1305,1255,5
+related,v14_related_s1,11,gu,Hindi only,dec3,2560,1743,817,3
+related,v14_related_s1,12,pa,all the model's languages,enc0,2560,1384,1176,9
+related,v14_related_s1,12,pa,all the model's languages,enc1,2560,1176,1384,43
+related,v14_related_s1,12,pa,all the model's languages,enc2,2560,1227,1333,9
+related,v14_related_s1,12,pa,all the model's languages,enc3,2560,1392,1168,8
+related,v14_related_s1,12,pa,all the model's languages,dec0,2560,1632,928,11
+related,v14_related_s1,12,pa,all the model's languages,dec1,2560,1237,1323,5
+related,v14_related_s1,12,pa,all the model's languages,dec2,2560,1325,1235,5
+related,v14_related_s1,12,pa,all the model's languages,dec3,2560,1913,647,5
+related,v14_related_s1,12,pa,Hindi only,enc0,2560,1384,1176,9
+related,v14_related_s1,12,pa,Hindi only,enc1,2560,1176,1384,43
+related,v14_related_s1,12,pa,Hindi only,enc2,2560,1227,1333,9
+related,v14_related_s1,12,pa,Hindi only,enc3,2560,1392,1168,8
+related,v14_related_s1,12,pa,Hindi only,dec0,2560,1676,884,4
+related,v14_related_s1,12,pa,Hindi only,dec1,2560,1235,1325,7
+related,v14_related_s1,12,pa,Hindi only,dec2,2560,1262,1298,10
+related,v14_related_s1,12,pa,Hindi only,dec3,2560,1905,655,4
+related,v14_related_s1,13,hi,all the model's languages,enc0,2560,1418,1142,9
+related,v14_related_s1,13,hi,all the model's languages,enc1,2560,1101,1459,19
+related,v14_related_s1,13,hi,all the model's languages,enc2,2560,1248,1312,9
+related,v14_related_s1,13,hi,all the model's languages,enc3,2560,1399,1161,11
+related,v14_related_s1,13,hi,all the model's languages,dec0,2560,1597,963,7
+related,v14_related_s1,13,hi,all the model's languages,dec1,2560,1168,1392,4
+related,v14_related_s1,13,hi,all the model's languages,dec2,2560,1221,1339,7
+related,v14_related_s1,13,hi,all the model's languages,dec3,2560,1877,683,3
+related,v14_related_s1,13,hi,Hindi only,enc0,2560,1418,1142,9
+related,v14_related_s1,13,hi,Hindi only,enc1,2560,1101,1459,19
+related,v14_related_s1,13,hi,Hindi only,enc2,2560,1248,1312,9
+related,v14_related_s1,13,hi,Hindi only,enc3,2560,1399,1161,11
+related,v14_related_s1,13,hi,Hindi only,dec0,2560,1783,777,6
+related,v14_related_s1,13,hi,Hindi only,dec1,2560,1262,1298,4
+related,v14_related_s1,13,hi,Hindi only,dec2,2560,1345,1215,6
+related,v14_related_s1,13,hi,Hindi only,dec3,2560,1937,623,3
+related,v14_related_s1,14,gu,all the model's languages,enc0,2560,1362,1198,11
+related,v14_related_s1,14,gu,all the model's languages,enc1,2560,1181,1379,11
+related,v14_related_s1,14,gu,all the model's languages,enc2,2560,1182,1378,7
+related,v14_related_s1,14,gu,all the model's languages,enc3,2560,1341,1219,7
+related,v14_related_s1,14,gu,all the model's languages,dec0,2560,1675,885,6
+related,v14_related_s1,14,gu,all the model's languages,dec1,2560,1286,1274,5
+related,v14_related_s1,14,gu,all the model's languages,dec2,2560,1278,1282,9
+related,v14_related_s1,14,gu,all the model's languages,dec3,2560,1760,800,3
+related,v14_related_s1,14,gu,Hindi only,enc0,2560,1362,1198,11
+related,v14_related_s1,14,gu,Hindi only,enc1,2560,1181,1379,11
+related,v14_related_s1,14,gu,Hindi only,enc2,2560,1182,1378,7
+related,v14_related_s1,14,gu,Hindi only,enc3,2560,1341,1219,7
+related,v14_related_s1,14,gu,Hindi only,dec0,2560,1848,712,10
+related,v14_related_s1,14,gu,Hindi only,dec1,2560,1316,1244,7
+related,v14_related_s1,14,gu,Hindi only,dec2,2560,1262,1298,7
+related,v14_related_s1,14,gu,Hindi only,dec3,2560,1699,861,6
+related,v14_related_s1,15,pa,all the model's languages,enc0,2560,1332,1228,12
+related,v14_related_s1,15,pa,all the model's languages,enc1,2560,1086,1474,27
+related,v14_related_s1,15,pa,all the model's languages,enc2,2560,1167,1393,13
+related,v14_related_s1,15,pa,all the model's languages,enc3,2560,1371,1189,9
+related,v14_related_s1,15,pa,all the model's languages,dec0,2560,1699,861,10
+related,v14_related_s1,15,pa,all the model's languages,dec1,2560,1225,1335,6
+related,v14_related_s1,15,pa,all the model's languages,dec2,2560,1287,1273,7
+related,v14_related_s1,15,pa,all the model's languages,dec3,2560,1922,638,4
+related,v14_related_s1,15,pa,Hindi only,enc0,2560,1332,1228,12
+related,v14_related_s1,15,pa,Hindi only,enc1,2560,1086,1474,27
+related,v14_related_s1,15,pa,Hindi only,enc2,2560,1167,1393,13
+related,v14_related_s1,15,pa,Hindi only,enc3,2560,1371,1189,9
+related,v14_related_s1,15,pa,Hindi only,dec0,2560,1744,816,6
+related,v14_related_s1,15,pa,Hindi only,dec1,2560,1221,1339,9
+related,v14_related_s1,15,pa,Hindi only,dec2,2560,1288,1272,8
+related,v14_related_s1,15,pa,Hindi only,dec3,2560,1872,688,5
+related,v14_related_s1,16,hi,all the model's languages,enc0,2560,1371,1189,12
+related,v14_related_s1,16,hi,all the model's languages,enc1,2560,1142,1418,11
+related,v14_related_s1,16,hi,all the model's languages,enc2,2560,1240,1320,8
+related,v14_related_s1,16,hi,all the model's languages,enc3,2560,1378,1182,8
+related,v14_related_s1,16,hi,all the model's languages,dec0,2560,1659,901,9
+related,v14_related_s1,16,hi,all the model's languages,dec1,2560,1179,1381,5
+related,v14_related_s1,16,hi,all the model's languages,dec2,2560,1220,1340,7
+related,v14_related_s1,16,hi,all the model's languages,dec3,2560,1902,658,4
+related,v14_related_s1,16,hi,Hindi only,enc0,2560,1371,1189,12
+related,v14_related_s1,16,hi,Hindi only,enc1,2560,1142,1418,11
+related,v14_related_s1,16,hi,Hindi only,enc2,2560,1240,1320,8
+related,v14_related_s1,16,hi,Hindi only,enc3,2560,1378,1182,8
+related,v14_related_s1,16,hi,Hindi only,dec0,2560,1817,743,12
+related,v14_related_s1,16,hi,Hindi only,dec1,2560,1254,1306,8
+related,v14_related_s1,16,hi,Hindi only,dec2,2560,1323,1237,6
+related,v14_related_s1,16,hi,Hindi only,dec3,2560,1920,640,3
+related,v14_related_s1,17,gu,all the model's languages,enc0,2560,1345,1215,6
+related,v14_related_s1,17,gu,all the model's languages,enc1,2560,1079,1481,22
+related,v14_related_s1,17,gu,all the model's languages,enc2,2560,1135,1425,21
+related,v14_related_s1,17,gu,all the model's languages,enc3,2560,1289,1271,6
+related,v14_related_s1,17,gu,all the model's languages,dec0,2560,1664,896,8
+related,v14_related_s1,17,gu,all the model's languages,dec1,2560,1227,1333,5
+related,v14_related_s1,17,gu,all the model's languages,dec2,2560,1208,1352,5
+related,v14_related_s1,17,gu,all the model's languages,dec3,2560,1708,852,6
+related,v14_related_s1,17,gu,Hindi only,enc0,2560,1345,1215,6
+related,v14_related_s1,17,gu,Hindi only,enc1,2560,1079,1481,22
+related,v14_related_s1,17,gu,Hindi only,enc2,2560,1135,1425,21
+related,v14_related_s1,17,gu,Hindi only,enc3,2560,1289,1271,6
+related,v14_related_s1,17,gu,Hindi only,dec0,2560,1802,758,6
+related,v14_related_s1,17,gu,Hindi only,dec1,2560,1238,1322,8
+related,v14_related_s1,17,gu,Hindi only,dec2,2560,1216,1344,4
+related,v14_related_s1,17,gu,Hindi only,dec3,2560,1696,864,4
+related,v14_related_s1,18,pa,all the model's languages,enc0,2560,1359,1201,6
+related,v14_related_s1,18,pa,all the model's languages,enc1,2560,1108,1452,18
+related,v14_related_s1,18,pa,all the model's languages,enc2,2560,1173,1387,13
+related,v14_related_s1,18,pa,all the model's languages,enc3,2560,1293,1267,8
+related,v14_related_s1,18,pa,all the model's languages,dec0,2560,1706,854,7
+related,v14_related_s1,18,pa,all the model's languages,dec1,2560,1219,1341,6
+related,v14_related_s1,18,pa,all the model's languages,dec2,2560,1248,1312,10
+related,v14_related_s1,18,pa,all the model's languages,dec3,2560,1908,652,4
+related,v14_related_s1,18,pa,Hindi only,enc0,2560,1359,1201,6
+related,v14_related_s1,18,pa,Hindi only,enc1,2560,1108,1452,18
+related,v14_related_s1,18,pa,Hindi only,enc2,2560,1173,1387,13
+related,v14_related_s1,18,pa,Hindi only,enc3,2560,1293,1267,8
+related,v14_related_s1,18,pa,Hindi only,dec0,2560,1739,821,6
+related,v14_related_s1,18,pa,Hindi only,dec1,2560,1209,1351,11
+related,v14_related_s1,18,pa,Hindi only,dec2,2560,1263,1297,4
+related,v14_related_s1,18,pa,Hindi only,dec3,2560,1852,708,4
+related,v14_related_s1,19,hi,all the model's languages,enc0,2560,1350,1210,8
+related,v14_related_s1,19,hi,all the model's languages,enc1,2560,1083,1477,14
+related,v14_related_s1,19,hi,all the model's languages,enc2,2560,1135,1425,12
+related,v14_related_s1,19,hi,all the model's languages,enc3,2560,1339,1221,8
+related,v14_related_s1,19,hi,all the model's languages,dec0,2560,1630,930,9
+related,v14_related_s1,19,hi,all the model's languages,dec1,2560,1117,1443,8
+related,v14_related_s1,19,hi,all the model's languages,dec2,2560,1167,1393,5
+related,v14_related_s1,19,hi,all the model's languages,dec3,2560,1865,695,3
+related,v14_related_s1,19,hi,Hindi only,enc0,2560,1350,1210,8
+related,v14_related_s1,19,hi,Hindi only,enc1,2560,1083,1477,14
+related,v14_related_s1,19,hi,Hindi only,enc2,2560,1135,1425,12
+related,v14_related_s1,19,hi,Hindi only,enc3,2560,1339,1221,8
+related,v14_related_s1,19,hi,Hindi only,dec0,2560,1791,769,5
+related,v14_related_s1,19,hi,Hindi only,dec1,2560,1191,1369,9
+related,v14_related_s1,19,hi,Hindi only,dec2,2560,1262,1298,7
+related,v14_related_s1,19,hi,Hindi only,dec3,2560,1910,650,3
+related,v14_related_s1,20,gu,all the model's languages,enc0,2560,1334,1226,6
+related,v14_related_s1,20,gu,all the model's languages,enc1,2560,1064,1496,10
+related,v14_related_s1,20,gu,all the model's languages,enc2,2560,1060,1500,10
+related,v14_related_s1,20,gu,all the model's languages,enc3,2560,1243,1317,7
+related,v14_related_s1,20,gu,all the model's languages,dec0,2560,1675,885,11
+related,v14_related_s1,20,gu,all the model's languages,dec1,2560,1156,1404,6
+related,v14_related_s1,20,gu,all the model's languages,dec2,2560,1180,1380,9
+related,v14_related_s1,20,gu,all the model's languages,dec3,2560,1753,807,3
+related,v14_related_s1,20,gu,Hindi only,enc0,2560,1334,1226,6
+related,v14_related_s1,20,gu,Hindi only,enc1,2560,1064,1496,10
+related,v14_related_s1,20,gu,Hindi only,enc2,2560,1060,1500,10
+related,v14_related_s1,20,gu,Hindi only,enc3,2560,1243,1317,7
+related,v14_related_s1,20,gu,Hindi only,dec0,2560,1849,711,7
+related,v14_related_s1,20,gu,Hindi only,dec1,2560,1246,1314,6
+related,v14_related_s1,20,gu,Hindi only,dec2,2560,1160,1400,11
+related,v14_related_s1,20,gu,Hindi only,dec3,2560,1696,864,3
+related,v14_related_s1,21,pa,all the model's languages,enc0,2560,1335,1225,8
+related,v14_related_s1,21,pa,all the model's languages,enc1,2560,1146,1414,18
+related,v14_related_s1,21,pa,all the model's languages,enc2,2560,1150,1410,9
+related,v14_related_s1,21,pa,all the model's languages,enc3,2560,1299,1261,9
+related,v14_related_s1,21,pa,all the model's languages,dec0,2560,1694,866,7
+related,v14_related_s1,21,pa,all the model's languages,dec1,2560,1213,1347,6
+related,v14_related_s1,21,pa,all the model's languages,dec2,2560,1265,1295,5
+related,v14_related_s1,21,pa,all the model's languages,dec3,2560,1910,650,3
+related,v14_related_s1,21,pa,Hindi only,enc0,2560,1335,1225,8
+related,v14_related_s1,21,pa,Hindi only,enc1,2560,1146,1414,18
+related,v14_related_s1,21,pa,Hindi only,enc2,2560,1150,1410,9
+related,v14_related_s1,21,pa,Hindi only,enc3,2560,1299,1261,9
+related,v14_related_s1,21,pa,Hindi only,dec0,2560,1769,791,5
+related,v14_related_s1,21,pa,Hindi only,dec1,2560,1221,1339,6
+related,v14_related_s1,21,pa,Hindi only,dec2,2560,1242,1318,6
+related,v14_related_s1,21,pa,Hindi only,dec3,2560,1872,688,4
+related,v14_related_s1,22,hi,all the model's languages,enc0,2560,1329,1231,9
+related,v14_related_s1,22,hi,all the model's languages,enc1,2560,1102,1458,7
+related,v14_related_s1,22,hi,all the model's languages,enc2,2560,1093,1467,19
+related,v14_related_s1,22,hi,all the model's languages,enc3,2560,1314,1246,8
+related,v14_related_s1,22,hi,all the model's languages,dec0,2560,1607,953,8
+related,v14_related_s1,22,hi,all the model's languages,dec1,2560,1143,1417,7
+related,v14_related_s1,22,hi,all the model's languages,dec2,2560,1145,1415,6
+related,v14_related_s1,22,hi,all the model's languages,dec3,2560,1839,721,4
+related,v14_related_s1,22,hi,Hindi only,enc0,2560,1329,1231,9
+related,v14_related_s1,22,hi,Hindi only,enc1,2560,1102,1458,7
+related,v14_related_s1,22,hi,Hindi only,enc2,2560,1093,1467,19
+related,v14_related_s1,22,hi,Hindi only,enc3,2560,1314,1246,8
+related,v14_related_s1,22,hi,Hindi only,dec0,2560,1806,754,6
+related,v14_related_s1,22,hi,Hindi only,dec1,2560,1217,1343,7
+related,v14_related_s1,22,hi,Hindi only,dec2,2560,1230,1330,7
+related,v14_related_s1,22,hi,Hindi only,dec3,2560,1859,701,3
+related,v14_related_s1,23,gu,all the model's languages,enc0,2560,1279,1281,8
+related,v14_related_s1,23,gu,all the model's languages,enc1,2560,1070,1490,15
+related,v14_related_s1,23,gu,all the model's languages,enc2,2560,1036,1524,10
+related,v14_related_s1,23,gu,all the model's languages,enc3,2560,1193,1367,13
+related,v14_related_s1,23,gu,all the model's languages,dec0,2560,1629,931,7
+related,v14_related_s1,23,gu,all the model's languages,dec1,2560,1171,1389,7
+related,v14_related_s1,23,gu,all the model's languages,dec2,2560,1162,1398,4
+related,v14_related_s1,23,gu,all the model's languages,dec3,2560,1694,866,15
+related,v14_related_s1,23,gu,Hindi only,enc0,2560,1279,1281,8
+related,v14_related_s1,23,gu,Hindi only,enc1,2560,1070,1490,15
+related,v14_related_s1,23,gu,Hindi only,enc2,2560,1036,1524,10
+related,v14_related_s1,23,gu,Hindi only,enc3,2560,1193,1367,13
+related,v14_related_s1,23,gu,Hindi only,dec0,2560,1830,730,5
+related,v14_related_s1,23,gu,Hindi only,dec1,2560,1210,1350,7
+related,v14_related_s1,23,gu,Hindi only,dec2,2560,1161,1399,4
+related,v14_related_s1,23,gu,Hindi only,dec3,2560,1668,892,3
+related,v14_related_s1,24,pa,all the model's languages,enc0,2560,1330,1230,6
+related,v14_related_s1,24,pa,all the model's languages,enc1,2560,1078,1482,16
+related,v14_related_s1,24,pa,all the model's languages,enc2,2560,1133,1427,12
+related,v14_related_s1,24,pa,all the model's languages,enc3,2560,1349,1211,9
+related,v14_related_s1,24,pa,all the model's languages,dec0,2560,1729,831,10
+related,v14_related_s1,24,pa,all the model's languages,dec1,2560,1189,1371,5
+related,v14_related_s1,24,pa,all the model's languages,dec2,2560,1237,1323,5
+related,v14_related_s1,24,pa,all the model's languages,dec3,2560,1886,674,3
+related,v14_related_s1,24,pa,Hindi only,enc0,2560,1330,1230,6
+related,v14_related_s1,24,pa,Hindi only,enc1,2560,1078,1482,16
+related,v14_related_s1,24,pa,Hindi only,enc2,2560,1133,1427,12
+related,v14_related_s1,24,pa,Hindi only,enc3,2560,1349,1211,9
+related,v14_related_s1,24,pa,Hindi only,dec0,2560,1786,774,6
+related,v14_related_s1,24,pa,Hindi only,dec1,2560,1179,1381,9
+related,v14_related_s1,24,pa,Hindi only,dec2,2560,1242,1318,5
+related,v14_related_s1,24,pa,Hindi only,dec3,2560,1849,711,5
+related,v14_related_s1,25,hi,all the model's languages,enc0,2560,1335,1225,9
+related,v14_related_s1,25,hi,all the model's languages,enc1,2560,1046,1514,17
+related,v14_related_s1,25,hi,all the model's languages,enc2,2560,1096,1464,26
+related,v14_related_s1,25,hi,all the model's languages,enc3,2560,1325,1235,10
+related,v14_related_s1,25,hi,all the model's languages,dec0,2560,1680,880,8
+related,v14_related_s1,25,hi,all the model's languages,dec1,2560,1131,1429,5
+related,v14_related_s1,25,hi,all the model's languages,dec2,2560,1138,1422,5
+related,v14_related_s1,25,hi,all the model's languages,dec3,2560,1856,704,3
+related,v14_related_s1,25,hi,Hindi only,enc0,2560,1335,1225,9
+related,v14_related_s1,25,hi,Hindi only,enc1,2560,1046,1514,17
+related,v14_related_s1,25,hi,Hindi only,enc2,2560,1096,1464,26
+related,v14_related_s1,25,hi,Hindi only,enc3,2560,1325,1235,10
+related,v14_related_s1,25,hi,Hindi only,dec0,2560,1801,759,7
+related,v14_related_s1,25,hi,Hindi only,dec1,2560,1204,1356,8
+related,v14_related_s1,25,hi,Hindi only,dec2,2560,1226,1334,6
+related,v14_related_s1,25,hi,Hindi only,dec3,2560,1864,696,5
+related,v14_related_s1,26,gu,all the model's languages,enc0,2560,1280,1280,11
+related,v14_related_s1,26,gu,all the model's languages,enc1,2560,1000,1560,21
+related,v14_related_s1,26,gu,all the model's languages,enc2,2560,1013,1547,12
+related,v14_related_s1,26,gu,all the model's languages,enc3,2560,1192,1368,8
+related,v14_related_s1,26,gu,all the model's languages,dec0,2560,1666,894,13
+related,v14_related_s1,26,gu,all the model's languages,dec1,2560,1155,1405,7
+related,v14_related_s1,26,gu,all the model's languages,dec2,2560,1146,1414,4
+related,v14_related_s1,26,gu,all the model's languages,dec3,2560,1713,847,3
+related,v14_related_s1,26,gu,Hindi only,enc0,2560,1280,1280,11
+related,v14_related_s1,26,gu,Hindi only,enc1,2560,1000,1560,21
+related,v14_related_s1,26,gu,Hindi only,enc2,2560,1013,1547,12
+related,v14_related_s1,26,gu,Hindi only,enc3,2560,1192,1368,8
+related,v14_related_s1,26,gu,Hindi only,dec0,2560,1815,745,13
+related,v14_related_s1,26,gu,Hindi only,dec1,2560,1192,1368,6
+related,v14_related_s1,26,gu,Hindi only,dec2,2560,1150,1410,9
+related,v14_related_s1,26,gu,Hindi only,dec3,2560,1681,879,3
+related,v14_related_s1,27,pa,all the model's languages,enc0,2560,1331,1229,10
+related,v14_related_s1,27,pa,all the model's languages,enc1,2560,1034,1526,15
+related,v14_related_s1,27,pa,all the model's languages,enc2,2560,1121,1439,19
+related,v14_related_s1,27,pa,all the model's languages,enc3,2560,1300,1260,11
+related,v14_related_s1,27,pa,all the model's languages,dec0,2560,1704,856,8
+related,v14_related_s1,27,pa,all the model's languages,dec1,2560,1203,1357,8
+related,v14_related_s1,27,pa,all the model's languages,dec2,2560,1221,1339,5
+related,v14_related_s1,27,pa,all the model's languages,dec3,2560,1838,722,8
+related,v14_related_s1,27,pa,Hindi only,enc0,2560,1331,1229,10
+related,v14_related_s1,27,pa,Hindi only,enc1,2560,1034,1526,15
+related,v14_related_s1,27,pa,Hindi only,enc2,2560,1121,1439,19
+related,v14_related_s1,27,pa,Hindi only,enc3,2560,1300,1260,11
+related,v14_related_s1,27,pa,Hindi only,dec0,2560,1771,789,10
+related,v14_related_s1,27,pa,Hindi only,dec1,2560,1180,1380,8
+related,v14_related_s1,27,pa,Hindi only,dec2,2560,1239,1321,4
+related,v14_related_s1,27,pa,Hindi only,dec3,2560,1828,732,6
+related,v14_related_s1,28,hi,all the model's languages,enc0,2560,1331,1229,18
+related,v14_related_s1,28,hi,all the model's languages,enc1,2560,995,1565,12
+related,v14_related_s1,28,hi,all the model's languages,enc2,2560,1101,1459,7
+related,v14_related_s1,28,hi,all the model's languages,enc3,2560,1277,1283,11
+related,v14_related_s1,28,hi,all the model's languages,dec0,2560,1673,887,9
+related,v14_related_s1,28,hi,all the model's languages,dec1,2560,1135,1425,10
+related,v14_related_s1,28,hi,all the model's languages,dec2,2560,1117,1443,6
+related,v14_related_s1,28,hi,all the model's languages,dec3,2560,1814,746,3
+related,v14_related_s1,28,hi,Hindi only,enc0,2560,1331,1229,18
+related,v14_related_s1,28,hi,Hindi only,enc1,2560,995,1565,12
+related,v14_related_s1,28,hi,Hindi only,enc2,2560,1101,1459,7
+related,v14_related_s1,28,hi,Hindi only,enc3,2560,1277,1283,11
+related,v14_related_s1,28,hi,Hindi only,dec0,2560,1795,765,5
+related,v14_related_s1,28,hi,Hindi only,dec1,2560,1183,1377,6
+related,v14_related_s1,28,hi,Hindi only,dec2,2560,1187,1373,7
+related,v14_related_s1,28,hi,Hindi only,dec3,2560,1838,722,4
+related,v14_related_s1,29,gu,all the model's languages,enc0,2560,1305,1255,9
+related,v14_related_s1,29,gu,all the model's languages,enc1,2560,994,1566,13
+related,v14_related_s1,29,gu,all the model's languages,enc2,2560,1041,1519,15
+related,v14_related_s1,29,gu,all the model's languages,enc3,2560,1178,1382,7
+related,v14_related_s1,29,gu,all the model's languages,dec0,2560,1640,920,8
+related,v14_related_s1,29,gu,all the model's languages,dec1,2560,1145,1415,12
+related,v14_related_s1,29,gu,all the model's languages,dec2,2560,1155,1405,6
+related,v14_related_s1,29,gu,all the model's languages,dec3,2560,1680,880,13
+related,v14_related_s1,29,gu,Hindi only,enc0,2560,1305,1255,9
+related,v14_related_s1,29,gu,Hindi only,enc1,2560,994,1566,13
+related,v14_related_s1,29,gu,Hindi only,enc2,2560,1041,1519,15
+related,v14_related_s1,29,gu,Hindi only,enc3,2560,1178,1382,7
+related,v14_related_s1,29,gu,Hindi only,dec0,2560,1813,747,15
+related,v14_related_s1,29,gu,Hindi only,dec1,2560,1222,1338,9
+related,v14_related_s1,29,gu,Hindi only,dec2,2560,1173,1387,4
+related,v14_related_s1,29,gu,Hindi only,dec3,2560,1657,903,4
+related,v14_related_s1,30,pa,all the model's languages,enc0,2560,1323,1237,8
+related,v14_related_s1,30,pa,all the model's languages,enc1,2560,1054,1506,22
+related,v14_related_s1,30,pa,all the model's languages,enc2,2560,1099,1461,13
+related,v14_related_s1,30,pa,all the model's languages,enc3,2560,1269,1291,10
+related,v14_related_s1,30,pa,all the model's languages,dec0,2560,1724,836,8
+related,v14_related_s1,30,pa,all the model's languages,dec1,2560,1193,1367,9
+related,v14_related_s1,30,pa,all the model's languages,dec2,2560,1229,1331,4
+related,v14_related_s1,30,pa,all the model's languages,dec3,2560,1870,690,3
+related,v14_related_s1,30,pa,Hindi only,enc0,2560,1323,1237,8
+related,v14_related_s1,30,pa,Hindi only,enc1,2560,1054,1506,22
+related,v14_related_s1,30,pa,Hindi only,enc2,2560,1099,1461,13
+related,v14_related_s1,30,pa,Hindi only,enc3,2560,1269,1291,10
+related,v14_related_s1,30,pa,Hindi only,dec0,2560,1799,761,8
+related,v14_related_s1,30,pa,Hindi only,dec1,2560,1163,1397,5
+related,v14_related_s1,30,pa,Hindi only,dec2,2560,1230,1330,6
+related,v14_related_s1,30,pa,Hindi only,dec3,2560,1847,713,4

@@ -1,0 +1,7 @@
+
+===== Wed 03:12 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family fresh --out train_heldout/fresh_indic/p000 --part train --task indonesian --model fresh --seeds 0,1,2 --steps 1500 --lr 1e-4
+runs to do in this call: 3 (mode lesion; conditions ['none']; seeds [0, 1, 2]; finished runs are skipped)
+  fresh | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.538 -> 1.825 | chrF 1.9 -> 20.5 | 75s | left in this call: 2 runs, about 3 min
+  fresh | indonesian | none    | none      | seed 1 | 0 neurons | loss 10.466 -> 1.820 | chrF 2.0 -> 23.6 | 74s | left in this call: 1 runs, about 1 min
+  fresh | indonesian | none    | none      | seed 2 | 0 neurons | loss 10.515 -> 1.811 | chrF 0.6 -> 22.1 | 74s | left in this call: 0 runs, about 0 min
+done

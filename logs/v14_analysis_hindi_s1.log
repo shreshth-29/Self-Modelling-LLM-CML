@@ -1,0 +1,1315 @@
+
+===== Tue 21:28 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out sizes/hindi_s1 --part sizes --model hindi=v14_hindi_s1:0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
+
+===== Tue 21:28 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:3 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:28 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:4 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:28 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:5 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:28 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:6 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:7 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:8 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:9 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:10 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:11 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:12 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:13 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:14 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:29 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:15 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:30 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:16 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:30 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:17 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi phase 0 (init): self % per layer 99 99 98 98 87 94 95 96 | 127s
+  hindi_s1 3->4 enc0: self 1675/2560 | persistence self 0.949 vs task 0.936
+  hindi_s1 3->4 enc1: self 1419/2560 | persistence self 0.932 vs task 0.919
+
+===== Tue 21:31 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:18 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:31 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:19 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 3->4 enc2: self 1395/2560 | persistence self 0.936 vs task 0.912
+  hindi_s1 11->12 enc0: self 1457/2560 | persistence self 0.957 vs task 0.945
+  hindi_s1 11->12 enc1: self 1138/2560 | persistence self 0.942 vs task 0.927
+  hindi_s1 11->12 enc2: self 1180/2560 | persistence self 0.939 vs task 0.913
+  hindi_s1 6->7 enc0: self 1577/2560 | persistence self 0.953 vs task 0.942
+  hindi_s1 11->12 enc3: self 1280/2560 | persistence self 0.941 vs task 0.919
+  hindi_s1 3->4 enc3: self 1587/2560 | persistence self 0.938 vs task 0.916
+  hindi_s1 6->7 enc1: self 1245/2560 | persistence self 0.940 vs task 0.923
+  hindi_s1 11->12 dec0: self 1479/2560 | persistence self 0.956 vs task 0.938
+
+===== Tue 21:31 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:20 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 3->4 dec0: self 1529/2560 | persistence self 0.952 vs task 0.935
+  hindi_s1 11->12 dec1: self 1168/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 3->4 dec1: self 1273/2560 | persistence self 0.942 vs task 0.917
+  hindi_s1 6->7 enc2: self 1296/2560 | persistence self 0.939 vs task 0.915
+  hindi_s1 3->4 dec2: self 1329/2560 | persistence self 0.946 vs task 0.926
+  hindi_s1 11->12 dec2: self 1161/2560 | persistence self 0.947 vs task 0.927
+  hindi_s1 6->7 enc3: self 1420/2560 | persistence self 0.940 vs task 0.918
+  hindi_s1 3->4 dec3: self 1838/2560 | persistence self 0.950 vs task 0.935
+
+===== Tue 21:31 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:21 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 5->6 enc0: self 1628/2560 | persistence self 0.952 vs task 0.941
+  hindi_s1 6->7 dec0: self 1514/2560 | persistence self 0.954 vs task 0.937
+  hindi_s1 9->10 enc0: self 1512/2560 | persistence self 0.956 vs task 0.944
+  hindi_s1 11->12 dec3: self 1685/2560 | persistence self 0.951 vs task 0.936
+  hindi_s1 9->10 enc1: self 1180/2560 | persistence self 0.940 vs task 0.925
+  hindi_s1 5->6 enc1: self 1321/2560 | persistence self 0.937 vs task 0.922
+  hindi_s1 9->10 enc2: self 1218/2560 | persistence self 0.940 vs task 0.914
+done
+  hindi_s1 6->7 dec1: self 1238/2560 | persistence self 0.943 vs task 0.918
+
+===== Tue 21:31 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:22 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+done
+  hindi_s1 9->10 enc3: self 1354/2560 | persistence self 0.940 vs task 0.919
+  hindi_s1 6->7 dec2: self 1244/2560 | persistence self 0.947 vs task 0.928
+  hindi_s1 6->7 dec3: self 1775/2560 | persistence self 0.951 vs task 0.937
+  hindi_s1 5->6 enc2: self 1272/2560 | persistence self 0.939 vs task 0.913
+done
+  hindi_s1 4->5 enc0: self 1617/2560 | persistence self 0.951 vs task 0.938
+
+===== Tue 21:31 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:23 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+
+===== Tue 21:31 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:24 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 9->10 dec0: self 1474/2560 | persistence self 0.955 vs task 0.938
+  hindi_s1 9->10 dec1: self 1172/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 5->6 enc3: self 1519/2560 | persistence self 0.939 vs task 0.918
+
+===== Tue 21:31 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:25 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 4->5 enc1: self 1371/2560 | persistence self 0.934 vs task 0.920
+  hindi_s1 9->10 dec2: self 1177/2560 | persistence self 0.947 vs task 0.928
+  hindi_s1 5->6 dec0: self 1474/2560 | persistence self 0.954 vs task 0.937
+  hindi_s1 4->5 enc2: self 1355/2560 | persistence self 0.938 vs task 0.912
+  hindi_s1 4->5 enc3: self 1588/2560 | persistence self 0.939 vs task 0.916
+  hindi_s1 9->10 dec3: self 1733/2560 | persistence self 0.951 vs task 0.937
+  hindi_s1 5->6 dec1: self 1219/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 4->5 dec0: self 1534/2560 | persistence self 0.952 vs task 0.935
+  hindi_s1 5->6 dec2: self 1258/2560 | persistence self 0.947 vs task 0.928
+done
+
+===== Tue 21:31 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:26 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 5->6 dec3: self 1808/2560 | persistence self 0.951 vs task 0.936
+  hindi_s1 8->9 enc0: self 1518/2560 | persistence self 0.955 vs task 0.944
+  hindi_s1 4->5 dec1: self 1277/2560 | persistence self 0.941 vs task 0.917
+  hindi_s1 4->5 dec2: self 1285/2560 | persistence self 0.946 vs task 0.927
+
+===== Tue 21:31 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:27 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+done
+  hindi_s1 4->5 dec3: self 1796/2560 | persistence self 0.950 vs task 0.935
+  hindi_s1 8->9 enc1: self 1219/2560 | persistence self 0.940 vs task 0.925
+done
+  hindi_s1 8->9 enc2: self 1266/2560 | persistence self 0.938 vs task 0.913
+
+===== Tue 21:31 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:28 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 12->13 enc0: self 1453/2560 | persistence self 0.957 vs task 0.946
+  hindi_s1 8->9 enc3: self 1357/2560 | persistence self 0.941 vs task 0.919
+  hindi_s1 12->13 enc1: self 1095/2560 | persistence self 0.945 vs task 0.923
+
+===== Tue 21:32 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out persistence/hindi_s1 --part matrix --compact --model hindi_s1=v14_hindi_s1:29 --extra_taus 0.15,0.25,0.30 --cal_taus dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3
+  hindi_s1 8->9 dec0: self 1498/2560 | persistence self 0.955 vs task 0.937
+  hindi_s1 12->13 enc2: self 1149/2560 | persistence self 0.939 vs task 0.913
+  hindi_s1 12->13 enc3: self 1277/2560 | persistence self 0.941 vs task 0.919
+  hindi_s1 8->9 dec1: self 1204/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 12->13 dec0: self 1468/2560 | persistence self 0.956 vs task 0.938
+  hindi_s1 12->13 dec1: self 1127/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 13->14 enc0: self 1430/2560 | persistence self 0.957 vs task 0.947
+  hindi_s1 8->9 dec2: self 1200/2560 | persistence self 0.947 vs task 0.928
+  hindi_s1 17->18 enc0: self 1392/2560 | persistence self 0.959 vs task 0.947
+  hindi_s1 12->13 dec2: self 1144/2560 | persistence self 0.947 vs task 0.928
+  hindi_s1 17->18 enc1: self 1025/2560 | persistence self 0.943 vs task 0.926
+  hindi_s1 13->14 enc1: self 1093/2560 | persistence self 0.944 vs task 0.923
+  hindi_s1 17->18 enc2: self 1102/2560 | persistence self 0.939 vs task 0.912
+  hindi_s1 12->13 dec3: self 1691/2560 | persistence self 0.951 vs task 0.936
+  hindi_s1 17->18 enc3: self 1188/2560 | persistence self 0.941 vs task 0.918
+  hindi_s1 13->14 enc2: self 1124/2560 | persistence self 0.940 vs task 0.913
+done
+  hindi_s1 17->18 dec0: self 1430/2560 | persistence self 0.957 vs task 0.939
+  hindi_s1 7->8 enc0: self 1559/2560 | persistence self 0.954 vs task 0.943
+  hindi_s1 17->18 dec1: self 1076/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 17->18 dec2: self 1113/2560 | persistence self 0.946 vs task 0.926
+  hindi_s1 15->16 enc0: self 1420/2560 | persistence self 0.959 vs task 0.947
+  hindi_s1 17->18 dec3: self 1679/2560 | persistence self 0.950 vs task 0.935
+  hindi_s1 8->9 dec3: self 1754/2560 | persistence self 0.951 vs task 0.936
+done
+  hindi_s1 13->14 enc3: self 1252/2560 | persistence self 0.941 vs task 0.919
+  hindi_s1 10->11 enc0: self 1483/2560 | persistence self 0.957 vs task 0.944
+  hindi_s1 10->11 enc1: self 1194/2560 | persistence self 0.940 vs task 0.925
+
+===== Tue 21:32 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out static/hindi_s1 --part static --model hindi=v14_hindi_s1:4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 --draws 0,1 --eval_langs hi
+  hindi_s1 10->11 enc2: self 1211/2560 | persistence self 0.940 vs task 0.914
+  hindi_s1 7->8 enc1: self 1246/2560 | persistence self 0.939 vs task 0.924
+  hindi_s1 13->14 dec0: self 1457/2560 | persistence self 0.956 vs task 0.938
+  hindi_s1 7->8 enc2: self 1287/2560 | persistence self 0.940 vs task 0.914
+  hindi_s1 10->11 enc3: self 1325/2560 | persistence self 0.941 vs task 0.919
+  hindi_s1 15->16 enc1: self 1047/2560 | persistence self 0.945 vs task 0.925
+  hindi_s1 7->8 enc3: self 1418/2560 | persistence self 0.940 vs task 0.919
+
+===== Tue 21:32 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out static_cal/hindi_s1 --part static --tau_by_layer dec0=0.3,dec1=0.35,dec2=0.35,dec3=0.4,enc0=0.3,enc1=0.3,enc2=0.3,enc3=0.3 --model hindi=v14_hindi_s1:4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 --draws 0,1 --eval_langs hi
+  hindi_s1 10->11 dec0: self 1489/2560 | persistence self 0.955 vs task 0.938
+done
+  hindi_s1 15->16 enc2: self 1093/2560 | persistence self 0.939 vs task 0.914
+  hindi_s1 10->11 dec1: self 1153/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 13->14 dec1: self 1142/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 7->8 dec0: self 1520/2560 | persistence self 0.955 vs task 0.937
+  hindi_s1 7->8 dec1: self 1198/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 13->14 dec2: self 1138/2560 | persistence self 0.947 vs task 0.927
+  hindi_s1 15->16 enc3: self 1242/2560 | persistence self 0.941 vs task 0.918
+  hindi_s1 10->11 dec2: self 1166/2560 | persistence self 0.947 vs task 0.928
+  hindi_s1 13->14 dec3: self 1692/2560 | persistence self 0.951 vs task 0.936
+  hindi_s1 15->16 dec0: self 1455/2560 | persistence self 0.956 vs task 0.939
+  hindi_s1 10->11 dec3: self 1704/2560 | persistence self 0.951 vs task 0.937
+  hindi_s1 7->8 dec2: self 1230/2560 | persistence self 0.947 vs task 0.928
+  hindi_s1 14->15 enc0: self 1411/2560 | persistence self 0.957 vs task 0.947
+done
+  hindi_s1 15->16 dec1: self 1079/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 16->17 enc0: self 1369/2560 | persistence self 0.959 vs task 0.948
+  hindi_s1 15->16 dec2: self 1091/2560 | persistence self 0.947 vs task 0.927
+done
+  hindi_s1 7->8 dec3: self 1744/2560 | persistence self 0.951 vs task 0.937
+  hindi_s1 16->17 enc1: self 1075/2560 | persistence self 0.940 vs task 0.927
+  hindi_s1 14->15 enc1: self 1085/2560 | persistence self 0.942 vs task 0.926
+  hindi phase 1 (hi): self % per layer 69 62 60 69 56 51 58 73 | 140s
+  hindi_s1 16->17 enc2: self 1091/2560 | persistence self 0.939 vs task 0.914
+done
+  hindi_s1 16->17 enc3: self 1230/2560 | persistence self 0.940 vs task 0.919
+  hindi_s1 14->15 enc2: self 1106/2560 | persistence self 0.939 vs task 0.914
+  hindi_s1 15->16 dec3: self 1683/2560 | persistence self 0.950 vs task 0.936
+  hindi_s1 16->17 dec0: self 1454/2560 | persistence self 0.956 vs task 0.939
+done
+  hindi_s1 16->17 dec1: self 1038/2560 | persistence self 0.944 vs task 0.920
+  hindi_s1 14->15 enc3: self 1274/2560 | persistence self 0.941 vs task 0.918
+  hindi_s1 16->17 dec2: self 1110/2560 | persistence self 0.946 vs task 0.926
+  hindi_s1 14->15 dec0: self 1455/2560 | persistence self 0.956 vs task 0.939
+  hindi_s1 16->17 dec3: self 1671/2560 | persistence self 0.950 vs task 0.935
+done
+  hindi_s1 14->15 dec1: self 1106/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 19->20 enc0: self 1364/2560 | persistence self 0.960 vs task 0.948
+  hindi_s1 19->20 enc1: self 996/2560 | persistence self 0.947 vs task 0.926
+  hindi_s1 19->20 enc2: self 1058/2560 | persistence self 0.940 vs task 0.913
+  hindi_s1 19->20 enc3: self 1195/2560 | persistence self 0.940 vs task 0.917
+  hindi_s1 14->15 dec2: self 1126/2560 | persistence self 0.947 vs task 0.927
+  hindi_s1 19->20 dec0: self 1436/2560 | persistence self 0.957 vs task 0.938
+  hindi_s1 19->20 dec1: self 1060/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 18->19 enc0: self 1382/2560 | persistence self 0.959 vs task 0.948
+  hindi_s1 14->15 dec3: self 1660/2560 | persistence self 0.951 vs task 0.936
+  hindi_s1 19->20 dec2: self 1105/2560 | persistence self 0.946 vs task 0.925
+  hindi_s1 18->19 enc1: self 999/2560 | persistence self 0.945 vs task 0.928
+done
+  hindi_s1 18->19 enc2: self 1046/2560 | persistence self 0.939 vs task 0.912
+  hindi_s1 19->20 dec3: self 1654/2560 | persistence self 0.950 vs task 0.934
+done
+  hindi_s1 18->19 enc3: self 1189/2560 | persistence self 0.940 vs task 0.918
+  hindi_s1 18->19 dec0: self 1461/2560 | persistence self 0.956 vs task 0.938
+  hindi_s1 18->19 dec1: self 1071/2560 | persistence self 0.944 vs task 0.918
+  hindi_s1 18->19 dec2: self 1081/2560 | persistence self 0.946 vs task 0.926
+  hindi_s1 18->19 dec3: self 1672/2560 | persistence self 0.950 vs task 0.935
+done
+hindi phase 4 (hi): intact loss hi 1.160 | chrF hi 52.6
+  count-matched n per layer (n_max = smaller group): enc0:336 enc1:479 enc2:505 enc3:459 dec0:211 dec1:62 dec2:119 dec3:47
+  hindi_s1 25->26 enc0: self 1288/2560 | persistence self 0.960 vs task 0.949
+  hindi_s1 25->26 enc1: self 941/2560 | persistence self 0.946 vs task 0.926
+  hindi_s1 27->28 enc0: self 1274/2560 | persistence self 0.960 vs task 0.949
+hindi phase 4 (hi): intact loss hi 1.160 | chrF hi 52.6
+  count-matched n per layer (n_max = smaller group): enc0:943 enc1:1189 enc2:1205 enc3:972 dec0:1026 dec1:1277 dec2:1275 dec3:764
+  hindi_s1 27->28 enc1: self 944/2560 | persistence self 0.948 vs task 0.927
+  hindi_s1 25->26 enc2: self 983/2560 | persistence self 0.939 vs task 0.912
+  hindi_s1 25->26 enc3: self 1076/2560 | persistence self 0.940 vs task 0.917
+  hindi_s1 25->26 dec0: self 1431/2560 | persistence self 0.957 vs task 0.939
+  hindi_s1 27->28 enc2: self 969/2560 | persistence self 0.938 vs task 0.911
+  hindi_s1 27->28 enc3: self 1060/2560 | persistence self 0.940 vs task 0.916
+  hindi_s1 25->26 dec1: self 1040/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 25->26 dec2: self 1041/2560 | persistence self 0.945 vs task 0.925
+  hindi_s1 21->22 enc0: self 1329/2560 | persistence self 0.960 vs task 0.949
+  hindi_s1 21->22 enc1: self 943/2560 | persistence self 0.947 vs task 0.927
+  hindi_s1 25->26 dec3: self 1651/2560 | persistence self 0.949 vs task 0.933
+  hindi_s1 26->27 enc0: self 1276/2560 | persistence self 0.960 vs task 0.949
+  hindi_s1 27->28 dec0: self 1433/2560 | persistence self 0.957 vs task 0.939
+done
+  hindi_s1 23->24 enc0: self 1297/2560 | persistence self 0.961 vs task 0.949
+  hindi_s1 26->27 enc1: self 917/2560 | persistence self 0.948 vs task 0.928
+  hindi_s1 27->28 dec1: self 1011/2560 | persistence self 0.944 vs task 0.918
+  hindi_s1 26->27 enc2: self 932/2560 | persistence self 0.940 vs task 0.911
+  hindi_s1 27->28 dec2: self 1014/2560 | persistence self 0.945 vs task 0.924
+  hindi_s1 26->27 enc3: self 1109/2560 | persistence self 0.940 vs task 0.916
+  hindi_s1 21->22 enc2: self 1034/2560 | persistence self 0.938 vs task 0.912
+  hindi_s1 23->24 enc1: self 997/2560 | persistence self 0.947 vs task 0.926
+  hindi_s1 27->28 dec3: self 1632/2560 | persistence self 0.949 vs task 0.934
+  hindi_s1 23->24 enc2: self 1003/2560 | persistence self 0.938 vs task 0.913
+  hindi_s1 29->30 enc0: self 1269/2560 | persistence self 0.961 vs task 0.950
+  hindi_s1 24->25 enc0: self 1288/2560 | persistence self 0.961 vs task 0.949
+  hindi_s1 23->24 enc3: self 1132/2560 | persistence self 0.940 vs task 0.917
+  hindi_s1 21->22 enc3: self 1164/2560 | persistence self 0.940 vs task 0.917
+  hindi_s1 22->23 enc0: self 1305/2560 | persistence self 0.960 vs task 0.949
+  hindi_s1 26->27 dec0: self 1440/2560 | persistence self 0.957 vs task 0.938
+done
+  hindi_s1 23->24 dec0: self 1421/2560 | persistence self 0.957 vs task 0.939
+  hindi_s1 28->29 enc0: self 1275/2560 | persistence self 0.961 vs task 0.950
+  hindi_s1 24->25 enc1: self 966/2560 | persistence self 0.947 vs task 0.927
+  hindi_s1 29->30 enc1: self 948/2560 | persistence self 0.947 vs task 0.926
+  hindi_s1 22->23 enc1: self 979/2560 | persistence self 0.947 vs task 0.926
+  hindi_s1 26->27 dec1: self 1030/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 28->29 enc1: self 922/2560 | persistence self 0.948 vs task 0.926
+  hindi_s1 29->30 enc2: self 948/2560 | persistence self 0.939 vs task 0.911
+  hindi_s1 21->22 dec0: self 1440/2560 | persistence self 0.956 vs task 0.939
+  hindi_s1 22->23 enc2: self 1030/2560 | persistence self 0.939 vs task 0.913
+  hindi_s1 23->24 dec1: self 1051/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 26->27 dec2: self 1028/2560 | persistence self 0.945 vs task 0.924
+  hindi_s1 24->25 enc2: self 999/2560 | persistence self 0.940 vs task 0.912
+  hindi_s1 28->29 enc2: self 958/2560 | persistence self 0.939 vs task 0.910
+  hindi_s1 23->24 dec2: self 1044/2560 | persistence self 0.946 vs task 0.925
+  hindi_s1 24->25 enc3: self 1070/2560 | persistence self 0.940 vs task 0.917
+  hindi_s1 21->22 dec1: self 1030/2560 | persistence self 0.944 vs task 0.919
+  hindi_s1 26->27 dec3: self 1645/2560 | persistence self 0.949 vs task 0.934
+  hindi_s1 28->29 enc3: self 1072/2560 | persistence self 0.939 vs task 0.915
+  hindi_s1 22->23 enc3: self 1144/2560 | persistence self 0.940 vs task 0.917
+  hindi_s1 24->25 dec0: self 1427/2560 | persistence self 0.957 vs task 0.939
+done
+  hindi_s1 23->24 dec3: self 1644/2560 | persistence self 0.949 vs task 0.934
+  hindi_s1 20->21 enc0: self 1326/2560 | persistence self 0.960 vs task 0.949
+  hindi_s1 28->29 dec0: self 1414/2560 | persistence self 0.957 vs task 0.939
+  hindi_s1 21->22 dec2: self 1057/2560 | persistence self 0.946 vs task 0.925
+  hindi_s1 24->25 dec1: self 1035/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 29->30 enc3: self 1069/2560 | persistence self 0.940 vs task 0.915
+  hindi_s1 21->22 dec3: self 1642/2560 | persistence self 0.950 vs task 0.935
+done
+  hindi_s1 22->23 dec0: self 1447/2560 | persistence self 0.956 vs task 0.938
+  hindi_s1 28->29 dec1: self 1008/2560 | persistence self 0.944 vs task 0.918
+  hindi_s1 29->30 dec0: self 1418/2560 | persistence self 0.957 vs task 0.938
+done
+  hindi_s1 29->30 dec1: self 1044/2560 | persistence self 0.943 vs task 0.917
+  hindi_s1 22->23 dec1: self 1069/2560 | persistence self 0.943 vs task 0.918
+  hindi_s1 28->29 dec2: self 1026/2560 | persistence self 0.945 vs task 0.924
+  hindi_s1 20->21 enc1: self 992/2560 | persistence self 0.946 vs task 0.926
+  hindi_s1 28->29 dec3: self 1621/2560 | persistence self 0.949 vs task 0.934
+  hindi_s1 24->25 dec2: self 1042/2560 | persistence self 0.945 vs task 0.925
+  hindi_s1 29->30 dec2: self 1028/2560 | persistence self 0.945 vs task 0.924
+  hindi_s1 22->23 dec2: self 1081/2560 | persistence self 0.945 vs task 0.925
+  hindi_s1 20->21 enc2: self 1030/2560 | persistence self 0.940 vs task 0.911
+done
+  hindi_s1 24->25 dec3: self 1611/2560 | persistence self 0.949 vs task 0.934
+  hindi_s1 20->21 enc3: self 1176/2560 | persistence self 0.940 vs task 0.917
+done
+  hindi_s1 20->21 dec0: self 1392/2560 | persistence self 0.957 vs task 0.939
+  hindi_s1 29->30 dec3: self 1609/2560 | persistence self 0.949 vs task 0.934
+  hindi_s1 22->23 dec3: self 1659/2560 | persistence self 0.950 vs task 0.934
+done
+  hindi_s1 20->21 dec1: self 1038/2560 | persistence self 0.943 vs task 0.919
+  hindi_s1 20->21 dec2: self 1071/2560 | persistence self 0.946 vs task 0.926
+done
+  hindi phase 2 (hi): self % per layer 67 59 56 65 59 53 57 73 | 124s
+  hindi_s1 20->21 dec3: self 1652/2560 | persistence self 0.950 vs task 0.935
+done
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.078     0.087     0.385     0.037     0.075
+silence     0.083     0.100     0.475     0.035     0.065
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 165s
+hindi phase 5 (hi): intact loss hi 1.167 | chrF hi 52.0
+  count-matched n per layer (n_max = smaller group): enc0:191 enc1:470 enc2:419 enc3:402 dec0:193 dec1:64 dec2:117 dec3:50
+  hindi phase 3 (hi): self % per layer 65 55 54 62 62 55 57 73 | 115s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.279     0.448     2.283     0.252     0.865
+silence     0.243     0.422     2.425     0.228     0.779
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 332s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.058     0.058     0.389     0.027     0.082
+silence     0.056     0.062     0.431     0.023     0.080
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 182s
+  hindi phase 4 (hi): self % per layer 63 54 53 62 64 57 56 72 | 123s
+hindi phase 6 (hi): intact loss hi 1.158 | chrF hi 51.6
+  count-matched n per layer (n_max = smaller group): enc0:181 enc1:443 enc2:370 enc3:367 dec0:147 dec1:86 dec2:110 dec3:70
+hindi phase 5 (hi): intact loss hi 1.167 | chrF hi 52.0
+  count-matched n per layer (n_max = smaller group): enc0:932 enc1:1239 enc2:1272 enc3:1041 dec0:1086 dec1:1219 dec2:1258 dec3:752
+  hindi phase 5 (hi): self % per layer 64 52 50 59 65 58 56 73 | 110s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.069     0.068     0.447     0.033     0.064
+silence     0.071     0.081     0.506     0.031     0.061
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 175s
+hindi phase 7 (hi): intact loss hi 1.149 | chrF hi 51.6
+  count-matched n per layer (n_max = smaller group): enc0:197 enc1:436 enc2:335 enc3:262 dec0:151 dec1:72 dec2:88 dec3:72
+  hindi phase 6 (hi): self % per layer 62 49 51 55 67 59 56 70 | 126s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.274     0.487     2.690     0.242     0.892
+silence     0.233     0.451     2.836     0.211     0.774
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 367s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.044     0.058     0.207     0.028     0.061
+silence     0.050     0.070     0.273     0.025     0.053
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 176s
+  hindi phase 7 (hi): self % per layer 61 49 50 55 67 59 56 69 | 120s
+hindi phase 8 (hi): intact loss hi 1.150 | chrF hi 50.6
+  count-matched n per layer (n_max = smaller group): enc0:270 enc1:408 enc2:299 enc3:245 dec0:125 dec1:60 dec2:43 dec3:67
+hindi phase 6 (hi): intact loss hi 1.158 | chrF hi 51.6
+  count-matched n per layer (n_max = smaller group): enc0:983 enc1:1245 enc2:1264 enc3:1140 dec0:1046 dec1:1238 dec2:1244 dec3:785
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.058     0.051     0.199     0.023     0.056
+silence     0.065     0.061     0.268     0.018     0.054
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 163s
+  hindi phase 8 (hi): self % per layer 59 48 49 53 67 61 54 69 | 151s
+hindi phase 9 (hi): intact loss hi 1.153 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:291 enc1:342 enc2:331 enc3:218 dec0:229 dec1:77 dec2:44 dec3:73
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.274     0.509     2.701     0.260     0.996
+silence     0.233     0.475     2.928     0.227     0.828
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 301s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.098     0.067     0.372     0.022     0.072
+silence     0.101     0.081     0.430     0.019     0.067
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 131s
+  hindi phase 9 (hi): self % per layer 59 46 48 53 69 59 55 69 | 127s
+hindi phase 10 (hi): intact loss hi 1.147 | chrF hi 51.7
+  count-matched n per layer (n_max = smaller group): enc0:175 enc1:384 enc2:284 enc3:246 dec0:100 dec1:47 dec2:44 dec3:65
+hindi phase 7 (hi): intact loss hi 1.149 | chrF hi 51.6
+  count-matched n per layer (n_max = smaller group): enc0:1001 enc1:1246 enc2:1273 enc3:1142 dec0:1040 dec1:1198 dec2:1230 dec3:816
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.059     0.054     0.258     0.023     0.050
+silence     0.059     0.065     0.303     0.021     0.046
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 130s
+  hindi phase 10 (hi): self % per layer 58 47 47 52 71 59 54 69 | 132s
+hindi phase 11 (hi): intact loss hi 1.149 | chrF hi 51.8
+  count-matched n per layer (n_max = smaller group): enc0:195 enc1:330 enc2:281 enc3:193 dec0:140 dec1:57 dec2:42 dec3:67
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.059     0.042     0.255     0.022     0.053
+silence     0.064     0.053     0.307     0.018     0.049
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 113s
+hindi phase 12 (hi): intact loss hi 1.143 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:183 enc1:288 enc2:265 enc3:185 dec0:118 dec1:43 dec2:36 dec3:74
+  hindi phase 11 (hi): self % per layer 57 44 46 50 70 60 54 68 | 152s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.054     0.050     0.261     0.024     0.053
+silence     0.061     0.058     0.298     0.020     0.046
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 101s
+hindi phase 13 (hi): intact loss hi 1.158 | chrF hi 52.0
+  count-matched n per layer (n_max = smaller group): enc0:199 enc1:331 enc2:196 enc3:172 dec0:187 dec1:45 dec2:45 dec3:69
+  hindi phase 12 (hi): self % per layer 57 43 45 50 70 58 53 68 | 119s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.290     0.538     4.845     0.265     0.952
+silence     0.244     0.532     4.478     0.237     0.812
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 415s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.073     0.082     0.255     0.028     0.051
+silence     0.070     0.079     0.270     0.025     0.045
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 114s
+hindi phase 8 (hi): intact loss hi 1.150 | chrF hi 50.6
+  count-matched n per layer (n_max = smaller group): enc0:1042 enc1:1219 enc2:1266 enc3:1203 dec0:1062 dec1:1204 dec2:1200 dec3:806
+hindi phase 14 (hi): intact loss hi 1.149 | chrF hi 49.9
+  count-matched n per layer (n_max = smaller group): enc0:94 enc1:328 enc2:294 enc3:188 dec0:100 dec1:43 dec2:47 dec3:73
+  hindi phase 13 (hi): self % per layer 56 43 44 49 71 61 55 68 | 133s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.050     0.040     0.240     0.020     0.041
+silence     0.054     0.045     0.282     0.018     0.038
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 118s
+hindi phase 15 (hi): intact loss hi 1.141 | chrF hi 52.3
+  count-matched n per layer (n_max = smaller group): enc0:148 enc1:241 enc2:239 enc3:152 dec0:137 dec1:37 dec2:35 dec3:75
+  hindi phase 14 (hi): self % per layer 55 42 43 50 71 58 53 66 | 109s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.053     0.047     0.255     0.031     0.039
+silence     0.057     0.053     0.282     0.029     0.036
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 111s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.273     0.607     3.456     0.261     0.954
+silence     0.230     0.600     3.596     0.228     0.820
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 313s
+hindi phase 16 (hi): intact loss hi 1.145 | chrF hi 51.4
+  count-matched n per layer (n_max = smaller group): enc0:150 enc1:272 enc2:225 enc3:136 dec0:127 dec1:38 dec2:39 dec3:77
+  hindi phase 15 (hi): self % per layer 55 41 43 49 71 59 52 68 | 92s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.060     0.059     0.246     0.020     0.040
+silence     0.067     0.065     0.280     0.018     0.035
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 124s
+hindi phase 9 (hi): intact loss hi 1.153 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:1048 enc1:1180 enc2:1218 enc3:1206 dec0:1086 dec1:1172 dec2:1177 dec3:827
+  hindi phase 16 (hi): self % per layer 53 42 43 48 72 59 51 66 | 107s
+hindi phase 17 (hi): intact loss hi 1.152 | chrF hi 50.8
+  count-matched n per layer (n_max = smaller group): enc0:209 enc1:232 enc2:247 enc3:150 dec0:126 dec1:36 dec2:41 dec3:79
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.055     0.048     0.217     0.023     0.042
+silence     0.056     0.059     0.261     0.020     0.039
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 112s
+hindi phase 18 (hi): intact loss hi 1.146 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:161 enc1:294 enc2:243 enc3:133 dec0:79 dec1:51 dec2:38 dec3:82
+  hindi phase 17 (hi): self % per layer 54 40 43 46 72 59 50 66 | 99s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.046     0.059     0.275     0.016     0.041
+silence     0.047     0.059     0.299     0.014     0.034
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 86s
+  hindi phase 18 (hi): self % per layer 54 39 41 46 71 57 51 67 | 93s
+hindi phase 19 (hi): intact loss hi 1.146 | chrF hi 51.4
+  count-matched n per layer (n_max = smaller group): enc0:178 enc1:225 enc2:228 enc3:138 dec0:103 dec1:43 dec2:40 dec3:81
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion       0.29     0.571     2.944     0.279     1.017
+silence      0.24     0.526     2.990     0.243     0.853
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 356s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.056     0.057     0.221      0.02     0.039
+silence     0.061     0.065     0.256      0.02     0.036
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 101s
+  hindi phase 19 (hi): self % per layer 53 39 41 47 72 58 50 67 | 91s
+hindi phase 20 (hi): intact loss hi 1.150 | chrF hi 50.0
+  count-matched n per layer (n_max = smaller group): enc0:97 enc1:260 enc2:199 enc3:141 dec0:166 dec1:48 dec2:38 dec3:81
+hindi phase 10 (hi): intact loss hi 1.147 | chrF hi 51.7
+  count-matched n per layer (n_max = smaller group): enc0:1077 enc1:1194 enc2:1211 enc3:1235 dec0:1071 dec1:1153 dec2:1166 dec3:856
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.054     0.057     0.266     0.031     0.045
+silence     0.058     0.064     0.300     0.029     0.035
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 98s
+  hindi phase 20 (hi): self % per layer 52 39 40 46 72 57 51 68 | 92s
+hindi phase 21 (hi): intact loss hi 1.154 | chrF hi 50.9
+  count-matched n per layer (n_max = smaller group): enc0:82 enc1:155 enc2:225 enc3:150 dec0:186 dec1:47 dec2:73 dec3:76
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.065     0.048     0.296     0.023     0.050
+silence     0.067     0.058     0.335     0.021     0.042
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 101s
+  hindi phase 21 (hi): self % per layer 52 37 40 45 72 58 51 66 | 103s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.286     0.592     3.136     0.268     0.987
+silence     0.239     0.562     3.174     0.237     0.833
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 247s
+hindi phase 22 (hi): intact loss hi 1.165 | chrF hi 50.4
+  count-matched n per layer (n_max = smaller group): enc0:146 enc1:158 enc2:236 enc3:115 dec0:105 dec1:29 dec2:38 dec3:90
+hindi phase 11 (hi): intact loss hi 1.149 | chrF hi 51.8
+  count-matched n per layer (n_max = smaller group): enc0:1103 enc1:1138 enc2:1180 enc3:1280 dec0:1081 dec1:1168 dec2:1161 dec3:875
+  hindi phase 22 (hi): self % per layer 51 38 40 45 72 58 50 66 | 82s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.045     0.063     0.164     0.020     0.034
+silence     0.045     0.066     0.197     0.018     0.029
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 106s
+hindi phase 23 (hi): intact loss hi 1.158 | chrF hi 50.8
+  count-matched n per layer (n_max = smaller group): enc0:157 enc1:234 enc2:203 enc3:140 dec0:121 dec1:38 dec2:40 dec3:91
+  hindi phase 23 (hi): self % per layer 51 39 39 44 72 59 51 67 | 91s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.053     0.059     0.249     0.022     0.041
+silence     0.056     0.066     0.288     0.019     0.032
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 99s
+hindi phase 24 (hi): intact loss hi 1.164 | chrF hi 52.1
+  count-matched n per layer (n_max = smaller group): enc0:144 enc1:150 enc2:216 enc3:132 dec0:138 dec1:30 dec2:50 dec3:87
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.322     0.641     3.521     0.267     1.050
+silence     0.270     0.576     3.782     0.228     0.876
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 230s
+  hindi phase 24 (hi): self % per layer 50 38 39 42 71 59 52 66 | 80s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.070     0.079     0.274     0.015     0.036
+silence     0.078     0.088     0.319     0.011     0.033
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 97s
+hindi phase 12 (hi): intact loss hi 1.143 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:1107 enc1:1095 enc2:1149 enc3:1277 dec0:1092 dec1:1127 dec2:1144 dec3:869
+hindi phase 25 (hi): intact loss hi 1.162 | chrF hi 51.7
+  count-matched n per layer (n_max = smaller group): enc0:129 enc1:249 enc2:212 enc3:137 dec0:163 dec1:30 dec2:77 dec3:154
+  hindi phase 25 (hi): self % per layer 50 37 38 42 72 57 49 67 | 102s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.062     0.090     0.281     0.035     0.071
+silence     0.067     0.101     0.326     0.034     0.067
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 124s
+  hindi phase 26 (hi): self % per layer 50 36 36 43 72 56 49 67 | 82s
+hindi phase 26 (hi): intact loss hi 1.151 | chrF hi 51.2
+  count-matched n per layer (n_max = smaller group): enc0:104 enc1:251 enc2:206 enc3:104 dec0:159 dec1:35 dec2:40 dec3:161
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.312     0.631     2.910     0.270     1.340
+silence     0.249     0.554     2.922     0.224     1.039
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 263s
+  hindi phase 27 (hi): self % per layer 50 37 38 41 74 57 49 66 | 70s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.053     0.055     0.281     0.029     0.074
+silence     0.058     0.067     0.316     0.025     0.069
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 102s
+hindi phase 27 (hi): intact loss hi 1.140 | chrF hi 50.3
+  count-matched n per layer (n_max = smaller group): enc0:169 enc1:217 enc2:210 enc3:131 dec0:151 dec1:24 dec2:41 dec3:87
+hindi phase 13 (hi): intact loss hi 1.158 | chrF hi 52.0
+  count-matched n per layer (n_max = smaller group): enc0:1130 enc1:1093 enc2:1124 enc3:1252 dec0:1103 dec1:1142 dec2:1138 dec3:868
+  hindi phase 28 (hi): self % per layer 50 36 37 42 72 56 48 66 | 77s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.052     0.046     0.262     0.022     0.056
+silence     0.058     0.060     0.304     0.018     0.050
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 97s
+hindi phase 28 (hi): intact loss hi 1.148 | chrF hi 49.4
+  count-matched n per layer (n_max = smaller group): enc0:162 enc1:209 enc2:201 enc3:136 dec0:68 dec1:36 dec2:34 dec3:161
+  hindi phase 29 (hi): self % per layer 50 37 37 42 72 59 49 67 | 68s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.052     0.051     0.151     0.024     0.043
+silence     0.056     0.064     0.194     0.024     0.037
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 94s
+  hindi phase 30 (hi): self % per layer 48 36 37 41 74 58 50 67 | 73s
+done
+hindi phase 29 (hi): intact loss hi 1.151 | chrF hi 51.6
+  count-matched n per layer (n_max = smaller group): enc0:169 enc1:219 enc2:168 enc3:117 dec0:109 dec1:42 dec2:34 dec3:165
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.300     0.639     3.097     0.273     1.013
+silence     0.239     0.586     3.113     0.232     0.828
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 268s
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.058     0.056     0.180     0.037     0.076
+silence     0.062     0.066     0.228     0.033     0.075
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 83s
+hindi phase 14 (hi): intact loss hi 1.149 | chrF hi 49.9
+  count-matched n per layer (n_max = smaller group): enc0:1149 enc1:1085 enc2:1106 enc3:1274 dec0:1105 dec1:1106 dec2:1126 dec3:900
+hindi phase 30 (hi): intact loss hi 1.140 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:151 enc1:222 enc2:185 enc3:136 dec0:54 dec1:40 dec2:36 dec3:91
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.047     0.055     0.146     0.020     0.050
+silence     0.050     0.064     0.190     0.016     0.041
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 85s
+done
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.343     0.661     4.616     0.306     1.056
+silence     0.288     0.568     4.289     0.268     0.861
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 145s
+hindi phase 15 (hi): intact loss hi 1.141 | chrF hi 52.3
+  count-matched n per layer (n_max = smaller group): enc0:1140 enc1:1047 enc2:1093 enc3:1242 dec0:1105 dec1:1079 dec2:1091 dec3:877
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.363     0.606     3.076     0.268     1.236
+silence     0.288     0.534     3.057     0.223     0.981
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 126s
+hindi phase 16 (hi): intact loss hi 1.145 | chrF hi 51.4
+  count-matched n per layer (n_max = smaller group): enc0:1191 enc1:1075 enc2:1091 enc3:1230 dec0:1106 dec1:1038 dec2:1110 dec3:889
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.361     0.642     6.349     0.342     1.089
+silence     0.287     0.567     5.806     0.292     0.865
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 121s
+hindi phase 17 (hi): intact loss hi 1.152 | chrF hi 50.8
+  count-matched n per layer (n_max = smaller group): enc0:1168 enc1:1025 enc2:1102 enc3:1188 dec0:1130 dec1:1076 dec2:1113 dec3:881
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.377     0.647     3.823     0.304     1.181
+silence     0.313     0.568     3.619     0.258     0.968
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 111s
+hindi phase 18 (hi): intact loss hi 1.146 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:1178 enc1:999 enc2:1046 enc3:1189 dec0:1099 dec1:1071 dec2:1081 dec3:888
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.358     0.619     3.264     0.340     1.079
+silence     0.285     0.522     2.998     0.289     0.876
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 87s
+hindi phase 19 (hi): intact loss hi 1.146 | chrF hi 51.4
+  count-matched n per layer (n_max = smaller group): enc0:1196 enc1:996 enc2:1058 enc3:1195 dec0:1124 dec1:1060 dec2:1105 dec3:906
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.370     0.663     3.404     0.282     1.227
+silence     0.283     0.567     3.188     0.235     0.989
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 94s
+hindi phase 20 (hi): intact loss hi 1.150 | chrF hi 50.0
+  count-matched n per layer (n_max = smaller group): enc0:1234 enc1:992 enc2:1030 enc3:1176 dec0:1168 dec1:1038 dec2:1071 dec3:908
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.407     0.795     3.621     0.336     1.235
+silence     0.324     0.684     3.401     0.285     0.920
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 102s
+hindi phase 21 (hi): intact loss hi 1.154 | chrF hi 50.9
+  count-matched n per layer (n_max = smaller group): enc0:1231 enc1:943 enc2:1034 enc3:1164 dec0:1120 dec1:1030 dec2:1057 dec3:918
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.406     0.683     3.414     0.306     1.078
+silence     0.319     0.556     3.174     0.258     0.864
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 93s
+hindi phase 22 (hi): intact loss hi 1.165 | chrF hi 50.4
+  count-matched n per layer (n_max = smaller group): enc0:1255 enc1:979 enc2:1030 enc3:1144 dec0:1113 dec1:1069 dec2:1081 dec3:901
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.402     0.732      3.60     0.294     1.237
+silence     0.317     0.618      3.31     0.243     0.960
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 93s
+hindi phase 23 (hi): intact loss hi 1.158 | chrF hi 50.8
+  count-matched n per layer (n_max = smaller group): enc0:1263 enc1:997 enc2:1003 enc3:1132 dec0:1139 dec1:1051 dec2:1044 dec3:916
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.383     0.714     3.574     0.327     1.163
+silence     0.293     0.609     3.299     0.272     0.909
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 93s
+hindi phase 24 (hi): intact loss hi 1.164 | chrF hi 52.1
+  count-matched n per layer (n_max = smaller group): enc0:1272 enc1:966 enc2:999 enc3:1070 dec0:1133 dec1:1035 dec2:1042 dec3:949
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.396     0.695     3.509     0.320     1.130
+silence     0.315     0.592     3.310     0.264     0.866
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 93s
+hindi phase 25 (hi): intact loss hi 1.162 | chrF hi 51.7
+  count-matched n per layer (n_max = smaller group): enc0:1272 enc1:941 enc2:983 enc3:1076 dec0:1129 dec1:1040 dec2:1041 dec3:909
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.399     0.803     3.664     0.302     1.144
+silence     0.300     0.663     3.288     0.250     0.852
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 93s
+hindi phase 26 (hi): intact loss hi 1.151 | chrF hi 51.2
+  count-matched n per layer (n_max = smaller group): enc0:1276 enc1:917 enc2:932 enc3:1109 dec0:1120 dec1:1030 dec2:1028 dec3:915
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.351     0.767     3.429     0.323     1.113
+silence     0.262     0.644     3.210     0.254     0.851
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 82s
+hindi phase 27 (hi): intact loss hi 1.140 | chrF hi 50.3
+  count-matched n per layer (n_max = smaller group): enc0:1274 enc1:944 enc2:969 enc3:1060 dec0:1127 dec1:1011 dec2:1014 dec3:928
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.412     0.714     3.701     0.334     1.097
+silence     0.328     0.588     3.317     0.271     0.842
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 95s
+hindi phase 28 (hi): intact loss hi 1.148 | chrF hi 49.4
+  count-matched n per layer (n_max = smaller group): enc0:1275 enc1:922 enc2:958 enc3:1072 dec0:1146 dec1:1008 dec2:1026 dec3:939
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.416     0.758     3.548     0.321     1.158
+silence     0.320     0.606     3.305     0.258     0.887
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 86s
+hindi phase 29 (hi): intact loss hi 1.151 | chrF hi 51.6
+  count-matched n per layer (n_max = smaller group): enc0:1269 enc1:948 enc2:948 enc3:1069 dec0:1142 dec1:1044 dec2:1028 dec3:951
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.346     0.873     3.842     0.327     1.044
+silence     0.249     0.697     3.381     0.258     0.801
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 70s
+hindi phase 30 (hi): intact loss hi 1.140 | chrF hi 51.9
+  count-matched n per layer (n_max = smaller group): enc0:1230 enc1:926 enc2:940 enc3:1056 dec0:1144 dec1:1024 dec2:1027 dec3:933
+  all 8 layers, loss rise (average of languages and draws):
+cond     look@0.5  self@0.5  self@1.0  task@0.5  task@1.0
+mode                                                     
+lesion      0.356     0.809     3.940     0.316     1.121
+silence     0.259     0.682     3.378     0.255     0.838
+  restored model check: loss differs from intact by 0.00000 (should be ~0) | 68s
+done
+
+===== Wed 01:06 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p004 --part train --task next --mode lesion --model hindi_s1_p4=v14_hindi_s1:4 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p4 = v14_hindi_s1 phase 4 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1617, task 943 -> count-matched n_max 943
+  enc1: working 2560, self 1371, task 1189 -> count-matched n_max 1189
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1588, task 972 -> count-matched n_max 972
+  dec0: working 2560, self 1534, task 1026 -> count-matched n_max 1026
+  dec1: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec2: working 2560, self 1285, task 1275 -> count-matched n_max 1275
+  dec3: working 2560, self 1796, task 764 -> count-matched n_max 764
+  self found in 5s
+  next language = hi (phase 5 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 01:08 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p004 --part train --task indonesian --mode lesion --model hindi_s1_p4=v14_hindi_s1:4 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p4 = v14_hindi_s1 phase 4 (last trained on hi) | languages hi, zh, ar
+
+===== Wed 01:08 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p006 --part train --task next --mode lesion --model hindi_s1_p6=v14_hindi_s1:6 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p6 = v14_hindi_s1 phase 6 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1617, task 943 -> count-matched n_max 943
+  enc1: working 2560, self 1371, task 1189 -> count-matched n_max 1189
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1588, task 972 -> count-matched n_max 972
+  dec0: working 2560, self 1534, task 1026 -> count-matched n_max 1026
+  dec1: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec2: working 2560, self 1285, task 1275 -> count-matched n_max 1275
+  dec3: working 2560, self 1796, task 764 -> count-matched n_max 764
+  self found in 6s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1577, task 983 -> count-matched n_max 983
+  enc1: working 2560, self 1245, task 1315 -> count-matched n_max 1245
+  enc2: working 2560, self 1296, task 1264 -> count-matched n_max 1264
+  enc3: working 2560, self 1420, task 1140 -> count-matched n_max 1140
+  dec0: working 2560, self 1514, task 1046 -> count-matched n_max 1046
+  dec1: working 2560, self 1238, task 1322 -> count-matched n_max 1238
+  dec2: working 2560, self 1244, task 1316 -> count-matched n_max 1244
+  dec3: working 2560, self 1775, task 785 -> count-matched n_max 785
+  self found in 6s
+  next language = hi (phase 7 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p4 | next | none    | none      | seed 0 | 0 neurons | loss 1.320 -> 1.414 | chrF 49.6 -> 47.4 | 133s | left in this call: 4 runs, about 9 min
+
+===== Wed 01:08 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p006 --part train --task indonesian --mode lesion --model hindi_s1_p6=v14_hindi_s1:6 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p6 = v14_hindi_s1 phase 6 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1577, task 983 -> count-matched n_max 983
+  enc1: working 2560, self 1245, task 1315 -> count-matched n_max 1245
+  enc2: working 2560, self 1296, task 1264 -> count-matched n_max 1264
+  enc3: working 2560, self 1420, task 1140 -> count-matched n_max 1140
+  dec0: working 2560, self 1514, task 1046 -> count-matched n_max 1046
+  dec1: working 2560, self 1238, task 1322 -> count-matched n_max 1238
+  dec2: working 2560, self 1244, task 1316 -> count-matched n_max 1244
+  dec3: working 2560, self 1775, task 785 -> count-matched n_max 785
+  self found in 6s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 01:09 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p008 --part train --task next --mode lesion --model hindi_s1_p8=v14_hindi_s1:8 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p8 = v14_hindi_s1 phase 8 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1518, task 1042 -> count-matched n_max 1042
+  enc1: working 2560, self 1219, task 1341 -> count-matched n_max 1219
+  enc2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  enc3: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec0: working 2560, self 1498, task 1062 -> count-matched n_max 1062
+  dec1: working 2560, self 1204, task 1356 -> count-matched n_max 1204
+  dec2: working 2560, self 1200, task 1360 -> count-matched n_max 1200
+  dec3: working 2560, self 1754, task 806 -> count-matched n_max 806
+  self found in 5s
+  next language = hi (phase 9 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 01:10 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p008 --part train --task indonesian --mode lesion --model hindi_s1_p8=v14_hindi_s1:8 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p8 = v14_hindi_s1 phase 8 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1518, task 1042 -> count-matched n_max 1042
+  enc1: working 2560, self 1219, task 1341 -> count-matched n_max 1219
+  enc2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  enc3: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec0: working 2560, self 1498, task 1062 -> count-matched n_max 1062
+  dec1: working 2560, self 1204, task 1356 -> count-matched n_max 1204
+  dec2: working 2560, self 1200, task 1360 -> count-matched n_max 1200
+  dec3: working 2560, self 1754, task 806 -> count-matched n_max 806
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 01:10 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p010 --part train --task next --mode lesion --model hindi_s1_p10=v14_hindi_s1:10 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p10 = v14_hindi_s1 phase 10 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1483, task 1077 -> count-matched n_max 1077
+  enc1: working 2560, self 1194, task 1366 -> count-matched n_max 1194
+  enc2: working 2560, self 1211, task 1349 -> count-matched n_max 1211
+  enc3: working 2560, self 1325, task 1235 -> count-matched n_max 1235
+  dec0: working 2560, self 1489, task 1071 -> count-matched n_max 1071
+  dec1: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  dec2: working 2560, self 1166, task 1394 -> count-matched n_max 1166
+  dec3: working 2560, self 1704, task 856 -> count-matched n_max 856
+  self found in 6s
+  next language = hi (phase 11 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p4 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.655 -> 1.264 | chrF 1.1 -> 46.1 | 128s | left in this call: 4 runs, about 9 min
+  hindi_s1_p4 | next | lesion  | self@1.0  | seed 0 | 8651 neurons | loss 3.472 -> 1.568 | chrF 11.1 -> 46.3 | 134s | left in this call: 3 runs, about 7 min
+  hindi_s1_p6 | next | none    | none      | seed 0 | 0 neurons | loss 1.315 -> 1.397 | chrF 48.9 -> 46.8 | 132s | left in this call: 4 runs, about 9 min
+  hindi_s1_p6 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.703 -> 1.271 | chrF 2.3 -> 46.0 | 129s | left in this call: 4 runs, about 9 min
+
+===== Wed 01:11 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p010 --part train --task indonesian --mode lesion --model hindi_s1_p10=v14_hindi_s1:10 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p10 = v14_hindi_s1 phase 10 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1483, task 1077 -> count-matched n_max 1077
+  enc1: working 2560, self 1194, task 1366 -> count-matched n_max 1194
+  enc2: working 2560, self 1211, task 1349 -> count-matched n_max 1211
+  enc3: working 2560, self 1325, task 1235 -> count-matched n_max 1235
+  dec0: working 2560, self 1489, task 1071 -> count-matched n_max 1071
+  dec1: working 2560, self 1153, task 1407 -> count-matched n_max 1153
+  dec2: working 2560, self 1166, task 1394 -> count-matched n_max 1166
+  dec3: working 2560, self 1704, task 856 -> count-matched n_max 856
+  self found in 6s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p8 | next | none    | none      | seed 0 | 0 neurons | loss 1.307 -> 1.398 | chrF 47.7 -> 47.5 | 130s | left in this call: 4 runs, about 9 min
+
+===== Wed 01:12 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p012 --part train --task next --mode lesion --model hindi_s1_p12=v14_hindi_s1:12 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p12 = v14_hindi_s1 phase 12 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p8 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.724 -> 1.268 | chrF 3.4 -> 47.0 | 127s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1453, task 1107 -> count-matched n_max 1107
+  enc1: working 2560, self 1095, task 1465 -> count-matched n_max 1095
+  enc2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1468, task 1092 -> count-matched n_max 1092
+  dec1: working 2560, self 1127, task 1433 -> count-matched n_max 1127
+  dec2: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec3: working 2560, self 1691, task 869 -> count-matched n_max 869
+  self found in 6s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p4 | next | lesion  | task@1.0  | seed 0 | 8651 neurons | loss 2.119 -> 1.570 | chrF 42.0 -> 45.8 | 112s | left in this call: 2 runs, about 4 min
+  hindi_s1_p10 | next | none    | none      | seed 0 | 0 neurons | loss 1.306 -> 1.390 | chrF 49.5 -> 47.1 | 129s | left in this call: 4 runs, about 9 min
+  hindi_s1_p6 | next | lesion  | self@1.0  | seed 0 | 8945 neurons | loss 3.956 -> 1.574 | chrF 10.0 -> 45.9 | 132s | left in this call: 3 runs, about 7 min
+  hindi_s1_p4 | indonesian | lesion  | self@1.0  | seed 0 | 8651 neurons | loss 9.032 -> 1.304 | chrF 3.4 -> 44.9 | 146s | left in this call: 3 runs, about 7 min
+
+===== Wed 01:13 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p012 --part train --task indonesian --mode lesion --model hindi_s1_p12=v14_hindi_s1:12 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p12 = v14_hindi_s1 phase 12 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1453, task 1107 -> count-matched n_max 1107
+  enc1: working 2560, self 1095, task 1465 -> count-matched n_max 1095
+  enc2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1468, task 1092 -> count-matched n_max 1092
+  dec1: working 2560, self 1127, task 1433 -> count-matched n_max 1127
+  dec2: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec3: working 2560, self 1691, task 869 -> count-matched n_max 869
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 01:13 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p014 --part train --task next --mode lesion --model hindi_s1_p14=v14_hindi_s1:14 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p14 = v14_hindi_s1 phase 14 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p6 | indonesian | lesion  | self@1.0  | seed 0 | 8945 neurons | loss 9.293 -> 1.308 | chrF 3.9 -> 45.2 | 145s | left in this call: 3 runs, about 7 min
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1106, task 1454 -> count-matched n_max 1106
+  enc3: working 2560, self 1274, task 1286 -> count-matched n_max 1274
+  dec0: working 2560, self 1455, task 1105 -> count-matched n_max 1105
+  dec1: working 2560, self 1106, task 1454 -> count-matched n_max 1106
+  dec2: working 2560, self 1126, task 1434 -> count-matched n_max 1126
+  dec3: working 2560, self 1660, task 900 -> count-matched n_max 900
+  self found in 5s
+  next language = hi (phase 15 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p10 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.828 -> 1.266 | chrF 4.7 -> 47.3 | 147s | left in this call: 4 runs, about 10 min
+  hindi_s1_p8 | next | lesion  | self@1.0  | seed 0 | 9002 neurons | loss 4.400 -> 1.575 | chrF 7.0 -> 45.8 | 130s | left in this call: 3 runs, about 6 min
+
+===== Wed 01:14 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p014 --part train --task indonesian --mode lesion --model hindi_s1_p14=v14_hindi_s1:14 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+
+===== Wed 01:14 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p016 --part train --task next --mode lesion --model hindi_s1_p16=v14_hindi_s1:16 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p14 = v14_hindi_s1 phase 14 (last trained on hi) | languages hi, zh, ar
+start model: hindi_s1_p16 = v14_hindi_s1 phase 16 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1106, task 1454 -> count-matched n_max 1106
+  enc3: working 2560, self 1274, task 1286 -> count-matched n_max 1274
+  dec0: working 2560, self 1455, task 1105 -> count-matched n_max 1105
+  dec1: working 2560, self 1106, task 1454 -> count-matched n_max 1106
+  dec2: working 2560, self 1126, task 1434 -> count-matched n_max 1126
+  dec3: working 2560, self 1660, task 900 -> count-matched n_max 900
+  self found in 6s
+  enc0: working 2560, self 1369, task 1191 -> count-matched n_max 1191
+  enc1: working 2560, self 1075, task 1485 -> count-matched n_max 1075
+  enc2: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  enc3: working 2560, self 1230, task 1330 -> count-matched n_max 1230
+  dec0: working 2560, self 1454, task 1106 -> count-matched n_max 1106
+  dec1: working 2560, self 1038, task 1522 -> count-matched n_max 1038
+  dec2: working 2560, self 1110, task 1450 -> count-matched n_max 1110
+  dec3: working 2560, self 1671, task 889 -> count-matched n_max 889
+  self found in 6s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  next language = hi (phase 17 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p12 | next | none    | none      | seed 0 | 0 neurons | loss 1.297 -> 1.382 | chrF 49.0 -> 47.4 | 131s | left in this call: 4 runs, about 9 min
+  hindi_s1_p8 | indonesian | lesion  | self@1.0  | seed 0 | 9002 neurons | loss 9.458 -> 1.295 | chrF 4.6 -> 45.1 | 146s | left in this call: 3 runs, about 7 min
+  hindi_s1_p4 | next | lesion  | self@0.5  | seed 0 | 4325 neurons | loss 1.766 -> 1.470 | chrF 40.0 -> 46.5 | 132s | left in this call: 1 runs, about 2 min
+  hindi_s1_p10 | next | lesion  | self@1.0  | seed 0 | 8963 neurons | loss 4.295 -> 1.564 | chrF 5.9 -> 46.0 | 130s | left in this call: 3 runs, about 7 min
+  hindi_s1_p6 | next | lesion  | task@1.0  | seed 0 | 8945 neurons | loss 2.225 -> 1.564 | chrF 39.5 -> 46.3 | 133s | left in this call: 2 runs, about 4 min
+  hindi_s1_p4 | indonesian | lesion  | task@1.0  | seed 0 | 8651 neurons | loss 8.704 -> 1.289 | chrF 3.8 -> 45.5 | 147s | left in this call: 2 runs, about 5 min
+
+===== Wed 01:15 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p016 --part train --task indonesian --mode lesion --model hindi_s1_p16=v14_hindi_s1:16 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+  hindi_s1_p12 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.894 -> 1.262 | chrF 5.3 -> 47.1 | 140s | left in this call: 4 runs, about 9 min
+start model: hindi_s1_p16 = v14_hindi_s1 phase 16 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p14 | next | none    | none      | seed 0 | 0 neurons | loss 1.307 -> 1.375 | chrF 48.5 -> 46.4 | 131s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1369, task 1191 -> count-matched n_max 1191
+  enc1: working 2560, self 1075, task 1485 -> count-matched n_max 1075
+  enc2: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  enc3: working 2560, self 1230, task 1330 -> count-matched n_max 1230
+  dec0: working 2560, self 1454, task 1106 -> count-matched n_max 1106
+  dec1: working 2560, self 1038, task 1522 -> count-matched n_max 1038
+  dec2: working 2560, self 1110, task 1450 -> count-matched n_max 1110
+  dec3: working 2560, self 1671, task 889 -> count-matched n_max 889
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p6 | indonesian | lesion  | task@1.0  | seed 0 | 8945 neurons | loss 8.872 -> 1.288 | chrF 4.4 -> 45.6 | 145s | left in this call: 2 runs, about 5 min
+  hindi_s1_p10 | indonesian | lesion  | self@1.0  | seed 0 | 8963 neurons | loss 9.775 -> 1.306 | chrF 3.7 -> 44.7 | 146s | left in this call: 3 runs, about 7 min
+  hindi_s1_p8 | next | lesion  | task@1.0  | seed 0 | 9002 neurons | loss 2.175 -> 1.547 | chrF 40.7 -> 46.0 | 130s | left in this call: 2 runs, about 4 min
+
+===== Wed 01:16 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p018 --part train --task next --mode lesion --model hindi_s1_p18=v14_hindi_s1:18 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p18 = v14_hindi_s1 phase 18 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p16 | next | none    | none      | seed 0 | 0 neurons | loss 1.300 -> 1.381 | chrF 48.8 -> 46.6 | 131s | left in this call: 4 runs, about 9 min
+  hindi_s1_p12 | next | lesion  | self@1.0  | seed 0 | 8860 neurons | loss 4.071 -> 1.549 | chrF 6.7 -> 45.5 | 133s | left in this call: 3 runs, about 7 min
+  enc0: working 2560, self 1382, task 1178 -> count-matched n_max 1178
+  enc1: working 2560, self 999, task 1561 -> count-matched n_max 999
+  enc2: working 2560, self 1046, task 1514 -> count-matched n_max 1046
+  enc3: working 2560, self 1189, task 1371 -> count-matched n_max 1189
+  dec0: working 2560, self 1461, task 1099 -> count-matched n_max 1099
+  dec1: working 2560, self 1071, task 1489 -> count-matched n_max 1071
+  dec2: working 2560, self 1081, task 1479 -> count-matched n_max 1081
+  dec3: working 2560, self 1672, task 888 -> count-matched n_max 888
+  self found in 5s
+  next language = hi (phase 19 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p4 | next | lesion  | look@0.5  | seed 0 | 4325 neurons | loss 1.573 -> 1.476 | chrF 47.3 -> 46.2 | 130s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p6 | next | lesion  | self@0.5  | seed 0 | 4472 neurons | loss 1.814 -> 1.467 | chrF 41.7 -> 46.4 | 111s | left in this call: 1 runs, about 2 min
+  hindi_s1_p10 | next | lesion  | task@1.0  | seed 0 | 8963 neurons | loss 2.243 -> 1.548 | chrF 39.6 -> 45.2 | 131s | left in this call: 2 runs, about 4 min
+
+===== Wed 01:17 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p018 --part train --task indonesian --mode lesion --model hindi_s1_p18=v14_hindi_s1:18 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+  hindi_s1_p14 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.928 -> 1.267 | chrF 6.0 -> 46.7 | 147s | left in this call: 4 runs, about 10 min
+start model: hindi_s1_p18 = v14_hindi_s1 phase 18 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p8 | indonesian | lesion  | task@1.0  | seed 0 | 9002 neurons | loss 8.945 -> 1.280 | chrF 4.6 -> 45.8 | 146s | left in this call: 2 runs, about 5 min
+  enc0: working 2560, self 1382, task 1178 -> count-matched n_max 1178
+  enc1: working 2560, self 999, task 1561 -> count-matched n_max 999
+  enc2: working 2560, self 1046, task 1514 -> count-matched n_max 1046
+  enc3: working 2560, self 1189, task 1371 -> count-matched n_max 1189
+  dec0: working 2560, self 1461, task 1099 -> count-matched n_max 1099
+  dec1: working 2560, self 1071, task 1489 -> count-matched n_max 1071
+  dec2: working 2560, self 1081, task 1479 -> count-matched n_max 1081
+  dec3: working 2560, self 1672, task 888 -> count-matched n_max 888
+  self found in 6s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+
+===== Wed 01:17 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p020 --part train --task next --mode lesion --model hindi_s1_p20=v14_hindi_s1:20 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p20 = v14_hindi_s1 phase 20 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p4 | indonesian | lesion  | self@0.5  | seed 0 | 4325 neurons | loss 8.867 -> 1.275 | chrF 3.8 -> 45.0 | 146s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1326, task 1234 -> count-matched n_max 1234
+  enc1: working 2560, self 992, task 1568 -> count-matched n_max 992
+  enc2: working 2560, self 1030, task 1530 -> count-matched n_max 1030
+  enc3: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  dec0: working 2560, self 1392, task 1168 -> count-matched n_max 1168
+  dec1: working 2560, self 1038, task 1522 -> count-matched n_max 1038
+  dec2: working 2560, self 1071, task 1489 -> count-matched n_max 1071
+  dec3: working 2560, self 1652, task 908 -> count-matched n_max 908
+  self found in 5s
+  next language = hi (phase 21 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p14 | next | lesion  | self@1.0  | seed 0 | 8851 neurons | loss 5.565 -> 1.558 | chrF 5.4 -> 45.6 | 134s | left in this call: 3 runs, about 7 min
+  hindi_s1_p16 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.940 -> 1.262 | chrF 6.5 -> 47.1 | 129s | left in this call: 4 runs, about 9 min
+  hindi_s1_p12 | indonesian | lesion  | self@1.0  | seed 0 | 8860 neurons | loss 9.407 -> 1.301 | chrF 4.1 -> 45.6 | 145s | left in this call: 3 runs, about 7 min
+  hindi_s1_p6 | indonesian | lesion  | self@0.5  | seed 0 | 4472 neurons | loss 9.019 -> 1.286 | chrF 4.4 -> 45.5 | 145s | left in this call: 1 runs, about 2 min
+  hindi_s1_p8 | next | lesion  | self@0.5  | seed 0 | 4502 neurons | loss 1.911 -> 1.457 | chrF 37.5 -> 46.6 | 130s | left in this call: 1 runs, about 2 min
+  hindi_s1_p12 | next | lesion  | task@1.0  | seed 0 | 8860 neurons | loss 2.710 -> 1.544 | chrF 38.2 -> 46.0 | 113s | left in this call: 2 runs, about 4 min
+  hindi_s1_p10 | indonesian | lesion  | task@1.0  | seed 0 | 8963 neurons | loss 9.413 -> 1.286 | chrF 4.8 -> 46.9 | 146s | left in this call: 2 runs, about 5 min
+  hindi_s1_p16 | next | lesion  | self@1.0  | seed 0 | 8730 neurons | loss 7.563 -> 1.559 | chrF 3.6 -> 45.8 | 132s | left in this call: 3 runs, about 7 min
+  hindi_s1_p18 | next | none    | none      | seed 0 | 0 neurons | loss 1.296 -> 1.378 | chrF 49.6 -> 46.3 | 132s | left in this call: 4 runs, about 9 min
+  hindi_s1_p6 | next | lesion  | look@0.5  | seed 0 | 4472 neurons | loss 1.584 -> 1.463 | chrF 46.5 -> 46.8 | 130s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p10 | next | lesion  | self@0.5  | seed 0 | 4482 neurons | loss 1.860 -> 1.447 | chrF 38.5 -> 46.3 | 130s | left in this call: 1 runs, about 2 min
+
+===== Wed 01:19 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p020 --part train --task indonesian --mode lesion --model hindi_s1_p20=v14_hindi_s1:20 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p20 = v14_hindi_s1 phase 20 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1326, task 1234 -> count-matched n_max 1234
+  enc1: working 2560, self 992, task 1568 -> count-matched n_max 992
+  enc2: working 2560, self 1030, task 1530 -> count-matched n_max 1030
+  enc3: working 2560, self 1176, task 1384 -> count-matched n_max 1176
+  dec0: working 2560, self 1392, task 1168 -> count-matched n_max 1168
+  dec1: working 2560, self 1038, task 1522 -> count-matched n_max 1038
+  dec2: working 2560, self 1071, task 1489 -> count-matched n_max 1071
+  dec3: working 2560, self 1652, task 908 -> count-matched n_max 908
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p14 | indonesian | lesion  | self@1.0  | seed 0 | 8851 neurons | loss 10.129 -> 1.311 | chrF 3.8 -> 44.8 | 147s | left in this call: 3 runs, about 7 min
+  hindi_s1_p8 | indonesian | lesion  | self@0.5  | seed 0 | 4502 neurons | loss 9.110 -> 1.280 | chrF 5.2 -> 45.7 | 146s | left in this call: 1 runs, about 2 min
+  hindi_s1_p18 | indonesian | none    | none      | seed 0 | 0 neurons | loss 8.948 -> 1.267 | chrF 6.4 -> 47.5 | 150s | left in this call: 4 runs, about 10 min
+  hindi_s1_p20 | next | none    | none      | seed 0 | 0 neurons | loss 1.305 -> 1.378 | chrF 48.3 -> 46.7 | 130s | left in this call: 4 runs, about 9 min
+  hindi_s1_p4 | indonesian | lesion  | look@0.5  | seed 0 | 4325 neurons | loss 8.657 -> 1.277 | chrF 3.0 -> 45.8 | 146s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p14 | next | lesion  | task@1.0  | seed 0 | 8851 neurons | loss 2.278 -> 1.543 | chrF 36.5 -> 46.4 | 132s | left in this call: 2 runs, about 4 min
+
+===== Wed 01:20 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p022 --part train --task next --mode lesion --model hindi_s1_p22=v14_hindi_s1:22 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p22 = v14_hindi_s1 phase 22 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1305, task 1255 -> count-matched n_max 1255
+  enc1: working 2560, self 979, task 1581 -> count-matched n_max 979
+  enc2: working 2560, self 1030, task 1530 -> count-matched n_max 1030
+  enc3: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec0: working 2560, self 1447, task 1113 -> count-matched n_max 1113
+  dec1: working 2560, self 1069, task 1491 -> count-matched n_max 1069
+  dec2: working 2560, self 1081, task 1479 -> count-matched n_max 1081
+  dec3: working 2560, self 1659, task 901 -> count-matched n_max 901
+  self found in 5s
+  next language = hi (phase 23 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p8 | next | lesion  | look@0.5  | seed 0 | 4502 neurons | loss 1.575 -> 1.453 | chrF 45.8 -> 46.3 | 114s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p16 | indonesian | lesion  | self@1.0  | seed 0 | 8730 neurons | loss 10.677 -> 1.308 | chrF 3.0 -> 45.8 | 146s | left in this call: 3 runs, about 7 min
+
+===== Wed 01:20 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p022 --part train --task indonesian --mode lesion --model hindi_s1_p22=v14_hindi_s1:22 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p22 = v14_hindi_s1 phase 22 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p12 | indonesian | lesion  | task@1.0  | seed 0 | 8860 neurons | loss 10.273 -> 1.288 | chrF 4.1 -> 45.7 | 148s | left in this call: 2 runs, about 5 min
+  enc0: working 2560, self 1305, task 1255 -> count-matched n_max 1255
+  enc1: working 2560, self 979, task 1581 -> count-matched n_max 979
+  enc2: working 2560, self 1030, task 1530 -> count-matched n_max 1030
+  enc3: working 2560, self 1144, task 1416 -> count-matched n_max 1144
+  dec0: working 2560, self 1447, task 1113 -> count-matched n_max 1113
+  dec1: working 2560, self 1069, task 1491 -> count-matched n_max 1069
+  dec2: working 2560, self 1081, task 1479 -> count-matched n_max 1081
+  dec3: working 2560, self 1659, task 901 -> count-matched n_max 901
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p6 | indonesian | lesion  | look@0.5  | seed 0 | 4472 neurons | loss 8.752 -> 1.278 | chrF 4.5 -> 45.4 | 145s | left in this call: 0 runs, about 0 min
+done
+
+===== Wed 01:21 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p024 --part train --task next --mode lesion --model hindi_s1_p24=v14_hindi_s1:24 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+  hindi_s1_p12 | next | lesion  | self@0.5  | seed 0 | 4430 neurons | loss 1.900 -> 1.449 | chrF 37.8 -> 47.8 | 132s | left in this call: 1 runs, about 2 min
+start model: hindi_s1_p24 = v14_hindi_s1 phase 24 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1288, task 1272 -> count-matched n_max 1272
+  enc1: working 2560, self 966, task 1594 -> count-matched n_max 966
+  enc2: working 2560, self 999, task 1561 -> count-matched n_max 999
+  enc3: working 2560, self 1070, task 1490 -> count-matched n_max 1070
+  dec0: working 2560, self 1427, task 1133 -> count-matched n_max 1133
+  dec1: working 2560, self 1035, task 1525 -> count-matched n_max 1035
+  dec2: working 2560, self 1042, task 1518 -> count-matched n_max 1042
+  dec3: working 2560, self 1611, task 949 -> count-matched n_max 949
+  self found in 5s
+  next language = hi (phase 25 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p18 | next | lesion  | self@1.0  | seed 0 | 8551 neurons | loss 4.347 -> 1.551 | chrF 7.6 -> 46.3 | 116s | left in this call: 3 runs, about 6 min
+  hindi_s1_p10 | next | lesion  | look@0.5  | seed 0 | 4482 neurons | loss 1.589 -> 1.444 | chrF 45.8 -> 46.7 | 114s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p16 | next | lesion  | task@1.0  | seed 0 | 8730 neurons | loss 2.332 -> 1.540 | chrF 38.2 -> 45.0 | 132s | left in this call: 2 runs, about 4 min
+
+===== Wed 01:21 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p024 --part train --task indonesian --mode lesion --model hindi_s1_p24=v14_hindi_s1:24 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p24 = v14_hindi_s1 phase 24 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p10 | indonesian | lesion  | self@0.5  | seed 0 | 4482 neurons | loss 9.231 -> 1.281 | chrF 5.1 -> 45.9 | 146s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1288, task 1272 -> count-matched n_max 1272
+  enc1: working 2560, self 966, task 1594 -> count-matched n_max 966
+  enc2: working 2560, self 999, task 1561 -> count-matched n_max 999
+  enc3: working 2560, self 1070, task 1490 -> count-matched n_max 1070
+  dec0: working 2560, self 1427, task 1133 -> count-matched n_max 1133
+  dec1: working 2560, self 1035, task 1525 -> count-matched n_max 1035
+  dec2: working 2560, self 1042, task 1518 -> count-matched n_max 1042
+  dec3: working 2560, self 1611, task 949 -> count-matched n_max 949
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p20 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.093 -> 1.264 | chrF 6.6 -> 47.8 | 149s | left in this call: 4 runs, about 10 min
+  hindi_s1_p14 | indonesian | lesion  | task@1.0  | seed 0 | 8851 neurons | loss 9.355 -> 1.284 | chrF 4.5 -> 46.9 | 147s | left in this call: 2 runs, about 5 min
+  hindi_s1_p8 | indonesian | lesion  | look@0.5  | seed 0 | 4502 neurons | loss 8.813 -> 1.276 | chrF 4.9 -> 46.1 | 146s | left in this call: 0 runs, about 0 min
+done
+
+===== Wed 01:22 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p026 --part train --task next --mode lesion --model hindi_s1_p26=v14_hindi_s1:26 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p26 = v14_hindi_s1 phase 26 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p18 | indonesian | lesion  | self@1.0  | seed 0 | 8551 neurons | loss 9.535 -> 1.312 | chrF 4.3 -> 46.1 | 149s | left in this call: 3 runs, about 7 min
+  enc0: working 2560, self 1276, task 1284 -> count-matched n_max 1276
+  enc1: working 2560, self 917, task 1643 -> count-matched n_max 917
+  enc2: working 2560, self 932, task 1628 -> count-matched n_max 932
+  enc3: working 2560, self 1109, task 1451 -> count-matched n_max 1109
+  dec0: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec1: working 2560, self 1030, task 1530 -> count-matched n_max 1030
+  dec2: working 2560, self 1028, task 1532 -> count-matched n_max 1028
+  dec3: working 2560, self 1645, task 915 -> count-matched n_max 915
+  self found in 5s
+  next language = hi (phase 27 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p20 | next | lesion  | self@1.0  | seed 0 | 8617 neurons | loss 5.002 -> 1.547 | chrF 4.0 -> 46.8 | 130s | left in this call: 3 runs, about 7 min
+  hindi_s1_p14 | next | lesion  | self@0.5  | seed 0 | 4424 neurons | loss 1.964 -> 1.437 | chrF 38.7 -> 46.4 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p22 | next | none    | none      | seed 0 | 0 neurons | loss 1.307 -> 1.374 | chrF 48.3 -> 46.3 | 119s | left in this call: 4 runs, about 8 min
+  hindi_s1_p24 | next | none    | none      | seed 0 | 0 neurons | loss 1.302 -> 1.374 | chrF 49.6 -> 47.2 | 113s | left in this call: 4 runs, about 8 min
+  hindi_s1_p16 | indonesian | lesion  | task@1.0  | seed 0 | 8730 neurons | loss 9.492 -> 1.287 | chrF 4.8 -> 45.6 | 147s | left in this call: 2 runs, about 5 min
+  hindi_s1_p12 | next | lesion  | look@0.5  | seed 0 | 4430 neurons | loss 1.592 -> 1.445 | chrF 46.3 -> 46.8 | 130s | left in this call: 0 runs, about 0 min
+done
+
+===== Wed 01:23 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p026 --part train --task indonesian --mode lesion --model hindi_s1_p26=v14_hindi_s1:26 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+  hindi_s1_p12 | indonesian | lesion  | self@0.5  | seed 0 | 4430 neurons | loss 9.194 -> 1.282 | chrF 5.3 -> 46.3 | 147s | left in this call: 1 runs, about 2 min
+start model: hindi_s1_p26 = v14_hindi_s1 phase 26 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p22 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.113 -> 1.263 | chrF 6.5 -> 47.6 | 146s | left in this call: 4 runs, about 10 min
+  enc0: working 2560, self 1276, task 1284 -> count-matched n_max 1276
+  enc1: working 2560, self 917, task 1643 -> count-matched n_max 917
+  enc2: working 2560, self 932, task 1628 -> count-matched n_max 932
+  enc3: working 2560, self 1109, task 1451 -> count-matched n_max 1109
+  dec0: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec1: working 2560, self 1030, task 1530 -> count-matched n_max 1030
+  dec2: working 2560, self 1028, task 1532 -> count-matched n_max 1028
+  dec3: working 2560, self 1645, task 915 -> count-matched n_max 915
+  self found in 5s
+  hindi_s1_p18 | next | lesion  | task@1.0  | seed 0 | 8551 neurons | loss 2.322 -> 1.524 | chrF 39.3 -> 45.5 | 132s | left in this call: 2 runs, about 4 min
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p16 | next | lesion  | self@0.5  | seed 0 | 4366 neurons | loss 2.017 -> 1.442 | chrF 35.5 -> 46.6 | 132s | left in this call: 1 runs, about 2 min
+  hindi_s1_p10 | indonesian | lesion  | look@0.5  | seed 0 | 4482 neurons | loss 9.031 -> 1.279 | chrF 5.1 -> 47.1 | 125s | left in this call: 0 runs, about 0 min
+done
+
+===== Wed 01:23 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p028 --part train --task next --mode lesion --model hindi_s1_p28=v14_hindi_s1:28 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p28 = v14_hindi_s1 phase 28 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1275, task 1285 -> count-matched n_max 1275
+  enc1: working 2560, self 922, task 1638 -> count-matched n_max 922
+  enc2: working 2560, self 958, task 1602 -> count-matched n_max 958
+  enc3: working 2560, self 1072, task 1488 -> count-matched n_max 1072
+  dec0: working 2560, self 1414, task 1146 -> count-matched n_max 1146
+  dec1: working 2560, self 1008, task 1552 -> count-matched n_max 1008
+  dec2: working 2560, self 1026, task 1534 -> count-matched n_max 1026
+  dec3: working 2560, self 1621, task 939 -> count-matched n_max 939
+  self found in 5s
+  next language = hi (phase 29 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p24 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.137 -> 1.260 | chrF 6.8 -> 48.0 | 146s | left in this call: 4 runs, about 10 min
+  hindi_s1_p26 | next | none    | none      | seed 0 | 0 neurons | loss 1.302 -> 1.376 | chrF 49.3 -> 46.2 | 109s | left in this call: 4 runs, about 7 min
+  hindi_s1_p20 | indonesian | lesion  | self@1.0  | seed 0 | 8617 neurons | loss 9.554 -> 1.315 | chrF 4.3 -> 44.7 | 148s | left in this call: 3 runs, about 7 min
+  hindi_s1_p14 | indonesian | lesion  | self@0.5  | seed 0 | 4424 neurons | loss 9.036 -> 1.276 | chrF 5.6 -> 46.8 | 147s | left in this call: 1 runs, about 2 min
+  hindi_s1_p18 | indonesian | lesion  | task@1.0  | seed 0 | 8551 neurons | loss 9.667 -> 1.283 | chrF 4.7 -> 46.6 | 134s | left in this call: 2 runs, about 5 min
+  hindi_s1_p20 | next | lesion  | task@1.0  | seed 0 | 8617 neurons | loss 2.461 -> 1.528 | chrF 30.7 -> 45.5 | 131s | left in this call: 2 runs, about 4 min
+  hindi_s1_p14 | next | lesion  | look@0.5  | seed 0 | 4424 neurons | loss 1.637 -> 1.443 | chrF 46.5 -> 46.9 | 132s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p22 | next | lesion  | self@1.0  | seed 0 | 8572 neurons | loss 4.787 -> 1.552 | chrF 4.9 -> 46.2 | 131s | left in this call: 3 runs, about 6 min
+
+===== Wed 01:24 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p028 --part train --task indonesian --mode lesion --model hindi_s1_p28=v14_hindi_s1:28 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p28 = v14_hindi_s1 phase 28 (last trained on hi) | languages hi, zh, ar
+  enc0: working 2560, self 1275, task 1285 -> count-matched n_max 1275
+  enc1: working 2560, self 922, task 1638 -> count-matched n_max 922
+  enc2: working 2560, self 958, task 1602 -> count-matched n_max 958
+  enc3: working 2560, self 1072, task 1488 -> count-matched n_max 1072
+  dec0: working 2560, self 1414, task 1146 -> count-matched n_max 1146
+  dec1: working 2560, self 1008, task 1552 -> count-matched n_max 1008
+  dec2: working 2560, self 1026, task 1534 -> count-matched n_max 1026
+  dec3: working 2560, self 1621, task 939 -> count-matched n_max 939
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p24 | next | lesion  | self@1.0  | seed 0 | 8466 neurons | loss 4.773 -> 1.549 | chrF 4.3 -> 45.1 | 131s | left in this call: 3 runs, about 6 min
+  hindi_s1_p12 | indonesian | lesion  | look@0.5  | seed 0 | 4430 neurons | loss 9.080 -> 1.274 | chrF 5.4 -> 46.1 | 128s | left in this call: 0 runs, about 0 min
+done
+
+===== Wed 01:25 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_next/hindi_s1/p030 --part train --task next --mode lesion --model hindi_s1_p30=v14_hindi_s1:30 --seeds 0 --steps 1000 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --next_lang hi
+start model: hindi_s1_p30 = v14_hindi_s1 phase 30 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p16 | indonesian | lesion  | self@0.5  | seed 0 | 4366 neurons | loss 9.037 -> 1.284 | chrF 4.9 -> 47.0 | 146s | left in this call: 1 runs, about 2 min
+  hindi_s1_p18 | next | lesion  | self@0.5  | seed 0 | 4276 neurons | loss 1.934 -> 1.437 | chrF 40.1 -> 46.3 | 132s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1230, task 1330 -> count-matched n_max 1230
+  enc1: working 2560, self 926, task 1634 -> count-matched n_max 926
+  enc2: working 2560, self 940, task 1620 -> count-matched n_max 940
+  enc3: working 2560, self 1056, task 1504 -> count-matched n_max 1056
+  dec0: working 2560, self 1416, task 1144 -> count-matched n_max 1144
+  dec1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  dec2: working 2560, self 1027, task 1533 -> count-matched n_max 1027
+  dec3: working 2560, self 1627, task 933 -> count-matched n_max 933
+  self found in 6s
+  next language = hi (phase 31 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p16 | next | lesion  | look@0.5  | seed 0 | 4366 neurons | loss 1.635 -> 1.438 | chrF 45.8 -> 46.3 | 131s | left in this call: 0 runs, about 0 min
+done
+
+===== Wed 01:25 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v14 --family hindi --tau 0.2 --match_std --self_langs hi --out train_heldout/hindi_s1/p030 --part train --task indonesian --mode lesion --model hindi_s1_p30=v14_hindi_s1:30 --seeds 0 --steps 1500 --conds none,self@1.0,task@1.0,self@0.5,look@0.5 --lr 1e-4
+start model: hindi_s1_p30 = v14_hindi_s1 phase 30 (last trained on hi) | languages hi, zh, ar
+  hindi_s1_p22 | indonesian | lesion  | self@1.0  | seed 0 | 8572 neurons | loss 9.574 -> 1.306 | chrF 3.6 -> 45.1 | 146s | left in this call: 3 runs, about 7 min
+  enc0: working 2560, self 1230, task 1330 -> count-matched n_max 1230
+  enc1: working 2560, self 926, task 1634 -> count-matched n_max 926
+  enc2: working 2560, self 940, task 1620 -> count-matched n_max 940
+  enc3: working 2560, self 1056, task 1504 -> count-matched n_max 1056
+  dec0: working 2560, self 1416, task 1144 -> count-matched n_max 1144
+  dec1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  dec2: working 2560, self 1027, task 1533 -> count-matched n_max 1027
+  dec3: working 2560, self 1627, task 933 -> count-matched n_max 933
+  self found in 5s
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'look@0.5']; seeds [0]; finished runs are skipped)
+  hindi_s1_p26 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.253 -> 1.259 | chrF 7.0 -> 47.9 | 149s | left in this call: 4 runs, about 10 min
+  hindi_s1_p28 | next | none    | none      | seed 0 | 0 neurons | loss 1.295 -> 1.372 | chrF 47.7 -> 46.4 | 130s | left in this call: 4 runs, about 9 min
+  hindi_s1_p24 | indonesian | lesion  | self@1.0  | seed 0 | 8466 neurons | loss 9.330 -> 1.308 | chrF 3.8 -> 45.6 | 145s | left in this call: 3 runs, about 7 min
+  hindi_s1_p26 | next | lesion  | self@1.0  | seed 0 | 8327 neurons | loss 4.671 -> 1.538 | chrF 3.7 -> 45.6 | 130s | left in this call: 3 runs, about 6 min
+  hindi_s1_p14 | indonesian | lesion  | look@0.5  | seed 0 | 4424 neurons | loss 9.317 -> 1.272 | chrF 5.7 -> 47.5 | 131s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p20 | next | lesion  | self@0.5  | seed 0 | 4309 neurons | loss 2.062 -> 1.434 | chrF 34.6 -> 47.0 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p20 | indonesian | lesion  | task@1.0  | seed 0 | 8617 neurons | loss 9.799 -> 1.279 | chrF 4.5 -> 46.5 | 148s | left in this call: 2 runs, about 5 min
+  hindi_s1_p18 | indonesian | lesion  | self@0.5  | seed 0 | 4276 neurons | loss 9.132 -> 1.289 | chrF 5.2 -> 47.3 | 148s | left in this call: 1 runs, about 2 min
+  hindi_s1_p22 | next | lesion  | task@1.0  | seed 0 | 8572 neurons | loss 2.457 -> 1.524 | chrF 37.9 -> 45.8 | 130s | left in this call: 2 runs, about 4 min
+  hindi_s1_p28 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.303 -> 1.259 | chrF 6.5 -> 47.4 | 128s | left in this call: 4 runs, about 9 min
+  hindi_s1_p24 | next | lesion  | task@1.0  | seed 0 | 8466 neurons | loss 2.384 -> 1.526 | chrF 37.5 -> 46.7 | 131s | left in this call: 2 runs, about 4 min
+  hindi_s1_p18 | next | lesion  | look@0.5  | seed 0 | 4276 neurons | loss 1.647 -> 1.437 | chrF 45.3 -> 46.8 | 131s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p30 | next | none    | none      | seed 0 | 0 neurons | loss 1.301 -> 1.375 | chrF 49.0 -> 46.5 | 131s | left in this call: 4 runs, about 9 min
+  hindi_s1_p16 | indonesian | lesion  | look@0.5  | seed 0 | 4366 neurons | loss 9.180 -> 1.273 | chrF 5.5 -> 47.3 | 146s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p30 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.258 -> 1.261 | chrF 6.6 -> 47.8 | 131s | left in this call: 4 runs, about 9 min
+  hindi_s1_p22 | indonesian | lesion  | task@1.0  | seed 0 | 8572 neurons | loss 9.828 -> 1.286 | chrF 4.8 -> 46.2 | 145s | left in this call: 2 runs, about 5 min
+  hindi_s1_p28 | next | lesion  | self@1.0  | seed 0 | 8346 neurons | loss 4.815 -> 1.545 | chrF 4.1 -> 46.1 | 131s | left in this call: 3 runs, about 7 min
+  hindi_s1_p26 | indonesian | lesion  | self@1.0  | seed 0 | 8327 neurons | loss 9.551 -> 1.305 | chrF 4.2 -> 45.2 | 148s | left in this call: 3 runs, about 7 min
+  hindi_s1_p26 | next | lesion  | task@1.0  | seed 0 | 8327 neurons | loss 2.325 -> 1.529 | chrF 38.1 -> 46.1 | 131s | left in this call: 2 runs, about 4 min
+  hindi_s1_p20 | next | lesion  | look@0.5  | seed 0 | 4309 neurons | loss 1.686 -> 1.434 | chrF 45.5 -> 46.2 | 113s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p24 | indonesian | lesion  | task@1.0  | seed 0 | 8466 neurons | loss 9.809 -> 1.277 | chrF 5.2 -> 46.9 | 145s | left in this call: 2 runs, about 5 min
+  hindi_s1_p20 | indonesian | lesion  | self@0.5  | seed 0 | 4309 neurons | loss 9.325 -> 1.281 | chrF 5.6 -> 46.4 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p22 | next | lesion  | self@0.5  | seed 0 | 4285 neurons | loss 2.006 -> 1.431 | chrF 38.1 -> 46.0 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p18 | indonesian | lesion  | look@0.5  | seed 0 | 4276 neurons | loss 9.145 -> 1.277 | chrF 5.9 -> 47.3 | 148s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p24 | next | lesion  | self@0.5  | seed 0 | 4233 neurons | loss 2.018 -> 1.436 | chrF 34.6 -> 47.1 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p28 | indonesian | lesion  | self@1.0  | seed 0 | 8346 neurons | loss 9.613 -> 1.310 | chrF 3.9 -> 45.1 | 148s | left in this call: 3 runs, about 7 min
+  hindi_s1_p30 | next | lesion  | self@1.0  | seed 0 | 8280 neurons | loss 5.193 -> 1.538 | chrF 3.9 -> 44.7 | 132s | left in this call: 3 runs, about 7 min
+  hindi_s1_p28 | next | lesion  | task@1.0  | seed 0 | 8346 neurons | loss 2.421 -> 1.523 | chrF 37.3 -> 47.0 | 131s | left in this call: 2 runs, about 4 min
+  hindi_s1_p26 | indonesian | lesion  | task@1.0  | seed 0 | 8327 neurons | loss 9.825 -> 1.277 | chrF 4.8 -> 46.4 | 128s | left in this call: 2 runs, about 5 min
+  hindi_s1_p30 | indonesian | lesion  | self@1.0  | seed 0 | 8280 neurons | loss 9.771 -> 1.305 | chrF 3.8 -> 45.2 | 147s | left in this call: 3 runs, about 7 min
+  hindi_s1_p22 | indonesian | lesion  | self@0.5  | seed 0 | 4285 neurons | loss 9.356 -> 1.285 | chrF 5.4 -> 47.1 | 145s | left in this call: 1 runs, about 2 min
+  hindi_s1_p26 | next | lesion  | self@0.5  | seed 0 | 4163 neurons | loss 2.060 -> 1.442 | chrF 36.1 -> 46.9 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p24 | indonesian | lesion  | self@0.5  | seed 0 | 4233 neurons | loss 9.343 -> 1.277 | chrF 5.0 -> 46.3 | 145s | left in this call: 1 runs, about 2 min
+  hindi_s1_p22 | next | lesion  | look@0.5  | seed 0 | 4285 neurons | loss 1.681 -> 1.434 | chrF 44.3 -> 46.7 | 130s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p20 | indonesian | lesion  | look@0.5  | seed 0 | 4309 neurons | loss 9.451 -> 1.274 | chrF 5.4 -> 46.8 | 147s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p24 | next | lesion  | look@0.5  | seed 0 | 4233 neurons | loss 1.717 -> 1.433 | chrF 43.9 -> 46.8 | 129s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p28 | indonesian | lesion  | task@1.0  | seed 0 | 8346 neurons | loss 10.137 -> 1.276 | chrF 4.3 -> 45.7 | 147s | left in this call: 2 runs, about 5 min
+  hindi_s1_p30 | next | lesion  | task@1.0  | seed 0 | 8280 neurons | loss 2.444 -> 1.522 | chrF 37.2 -> 46.1 | 132s | left in this call: 2 runs, about 4 min
+  hindi_s1_p28 | next | lesion  | self@0.5  | seed 0 | 4174 neurons | loss 2.020 -> 1.428 | chrF 36.7 -> 46.6 | 131s | left in this call: 1 runs, about 2 min
+  hindi_s1_p22 | indonesian | lesion  | look@0.5  | seed 0 | 4285 neurons | loss 9.517 -> 1.275 | chrF 5.4 -> 47.4 | 127s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p26 | next | lesion  | look@0.5  | seed 0 | 4163 neurons | loss 1.662 -> 1.435 | chrF 43.6 -> 46.3 | 129s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p26 | indonesian | lesion  | self@0.5  | seed 0 | 4163 neurons | loss 9.303 -> 1.277 | chrF 5.3 -> 46.1 | 148s | left in this call: 1 runs, about 2 min
+  hindi_s1_p30 | indonesian | lesion  | task@1.0  | seed 0 | 8280 neurons | loss 10.193 -> 1.281 | chrF 5.0 -> 46.9 | 147s | left in this call: 2 runs, about 5 min
+  hindi_s1_p24 | indonesian | lesion  | look@0.5  | seed 0 | 4233 neurons | loss 9.545 -> 1.271 | chrF 5.3 -> 47.5 | 129s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p28 | next | lesion  | look@0.5  | seed 0 | 4174 neurons | loss 1.686 -> 1.429 | chrF 44.2 -> 46.4 | 110s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p30 | next | lesion  | self@0.5  | seed 0 | 4140 neurons | loss 2.112 -> 1.444 | chrF 32.4 -> 45.5 | 134s | left in this call: 1 runs, about 2 min
+  hindi_s1_p28 | indonesian | lesion  | self@0.5  | seed 0 | 4174 neurons | loss 9.323 -> 1.280 | chrF 4.6 -> 47.2 | 146s | left in this call: 1 runs, about 2 min
+  hindi_s1_p30 | indonesian | lesion  | self@0.5  | seed 0 | 4140 neurons | loss 9.457 -> 1.283 | chrF 5.4 -> 46.1 | 147s | left in this call: 1 runs, about 2 min
+  hindi_s1_p26 | indonesian | lesion  | look@0.5  | seed 0 | 4163 neurons | loss 9.655 -> 1.264 | chrF 5.3 -> 46.9 | 148s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p30 | next | lesion  | look@0.5  | seed 0 | 4140 neurons | loss 1.651 -> 1.433 | chrF 43.3 -> 46.7 | 132s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p28 | indonesian | lesion  | look@0.5  | seed 0 | 4174 neurons | loss 9.586 -> 1.264 | chrF 5.3 -> 46.8 | 138s | left in this call: 0 runs, about 0 min
+done
+  hindi_s1_p30 | indonesian | lesion  | look@0.5  | seed 0 | 4140 neurons | loss 9.545 -> 1.269 | chrF 5.5 -> 46.9 | 147s | left in this call: 0 runs, about 0 min
+done
