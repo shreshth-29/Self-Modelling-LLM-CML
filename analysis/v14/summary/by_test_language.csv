@@ -1,0 +1,23 @@
+test,language tested,language set,lesion size,compared with,self,other,self / other,checkpoints where self is worse,runs where self is worse
+"A. lesion, no training",1. language just trained,hindi,"strong (full count, about half a layer)","task neurons, random",3.6023625045326577,1.222196342421185,2.947449914140911,108 of 108,4 of 4
+"A. lesion, no training",1. language just trained,related,"strong (full count, about half a layer)","task neurons, random",2.2699221652243264,1.1746963131380241,1.9323480799565733,100 of 111,5 of 5
+"A. lesion, no training",1. language just trained,distant,"strong (full count, about half a layer)","task neurons, random",2.8339671127347597,1.5537705151078964,1.823929007005236,99 of 108,4 of 4
+"A. lesion, no training",1. language just trained,hindi,weak (half of that),"task neurons, random",0.7076190793984781,0.3086461710805966,2.2926546502133602,108 of 108,4 of 4
+"A. lesion, no training",1. language just trained,related,weak (half of that),"task neurons, random",0.438490792432459,0.22537352480176914,1.9456180259777207,109 of 111,5 of 5
+"A. lesion, no training",1. language just trained,distant,weak (half of that),"task neurons, random",0.508115761979281,0.2600751243810998,1.9537268825245895,105 of 108,4 of 4
+"A. lesion, no training",2. another language of its set,related,"strong (full count, about half a layer)","task neurons, random",2.1716241654579225,1.0457362165093984,2.076646224137352,204 of 222,5 of 5
+"A. lesion, no training",2. another language of its set,distant,"strong (full count, about half a layer)","task neurons, random",1.5181512720839139,1.0051019712785032,1.5104450249488668,178 of 216,4 of 4
+"A. lesion, no training",2. another language of its set,related,weak (half of that),"task neurons, random",0.5391257160296022,0.24058207708574206,2.2409221940396704,218 of 222,5 of 5
+"A. lesion, no training",2. another language of its set,distant,weak (half of that),"task neurons, random",0.39732107998674737,0.24008435996936828,1.6549227947936322,194 of 216,4 of 4
+"B. lesion, then 1,000 steps",1. the language just trained (trained again),hindi,"strong (full count, about half a layer)","task neurons, random",0.17225873279539156,0.1561694415471606,1.1030245807940107,53 of 56,4 of 4
+"B. lesion, then 1,000 steps",1. the language just trained (trained again),hindi,weak (half of that),task neurons that look like the self,0.06167135748742155,0.06015368935075137,1.0252298429747306,37 of 56,4 of 4
+"B. lesion, then 1,000 steps",2. another language of its set (the next one),related,"strong (full count, about half a layer)","task neurons, random",0.1368432060301867,0.10289691947138867,1.3299057613501937,58 of 58,5 of 5
+"B. lesion, then 1,000 steps",2. another language of its set (the next one),distant,"strong (full count, about half a layer)","task neurons, random",0.14328038671620932,0.10835074996739605,1.3223755881645858,56 of 56,4 of 4
+"B. lesion, then 1,000 steps",2. another language of its set (the next one),related,weak (half of that),task neurons that look like the self,0.05453349079894245,0.047286283873659414,1.1532623486473645,51 of 58,5 of 5
+"B. lesion, then 1,000 steps",2. another language of its set (the next one),distant,weak (half of that),task neurons that look like the self,0.055055117040594716,0.04829232575385028,1.1400386330783676,46 of 56,4 of 4
+"B. lesion, then 1,500 steps",3. a language outside its set (Indonesian),hindi,"strong (full count, about half a layer)","task neurons, random",0.08525869414643285,0.02061015443120536,4.136732426291023,56 of 56,4 of 4
+"B. lesion, then 1,500 steps",3. a language outside its set (Indonesian),related,"strong (full count, about half a layer)","task neurons, random",0.06091488645389502,0.011391527466634941,5.3473852942294915,57 of 58,5 of 5
+"B. lesion, then 1,500 steps",3. a language outside its set (Indonesian),distant,"strong (full count, about half a layer)","task neurons, random",0.09394950032990125,0.027746880697280603,3.3859481847669093,53 of 56,4 of 4
+"B. lesion, then 1,500 steps",3. a language outside its set (Indonesian),hindi,weak (half of that),task neurons that look like the self,0.029154058958174436,0.007555005287711576,3.8589064928378427,55 of 56,4 of 4
+"B. lesion, then 1,500 steps",3. a language outside its set (Indonesian),related,weak (half of that),task neurons that look like the self,0.020126128160408513,-0.0009308453512582508,,58 of 58,5 of 5
+"B. lesion, then 1,500 steps",3. a language outside its set (Indonesian),distant,weak (half of that),task neurons that look like the self,0.028609420256768454,0.0027856225028039796,10.270386683037813,56 of 56,4 of 4
