@@ -29,8 +29,9 @@ REPO = CFG.REPO; os.chdir(REPO); sys.path.insert(0, REPO)
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 PY = sys.executable
 LOGS = os.path.join(REPO, "logs"); os.makedirs(LOGS, exist_ok=True)
-ALL = ["prep", "test", "train", "verify", "analyze", "summary", "push"]
-STAGES = ALL if args.stage == "all" else [s for s in args.stage.split(",") if s]
+CORE = ["prep", "test", "train", "verify", "analyze", "summary", "push"]          # --stage all
+ALL = CORE[:-1] + ["trials", "trials_summary", "push"]                              # trials = Adi's trials on the finished checkpoints (v15): only when asked for
+STAGES = CORE if args.stage == "all" else [s for s in args.stage.split(",") if s]
 assert all(s in ALL for s in STAGES), f"stages are: {ALL}"
 SEEDS = [int(s) for s in args.seeds.split(",")]
 FAMS = [f for f in args.families.split(",") if f]
@@ -199,6 +200,8 @@ def stage_prep():
     say(f"  PyTorch works on the GPU: {r.stdout.strip().rsplit(' ', 1)[0]}")
     free = shutil.disk_usage(REPO).free / 2 ** 30
     want = len(NEW) * (N + 1) * 0.27 + (N + 1) * 0.27 * len(OLD) + 8
+    if "train" not in STAGES and "analyze" not in STAGES:      # trials only: just the checkpoints the trials start from
+        want = (len(NEW) + len(OLD)) * len(CFG.LESION_PHASES[::CFG.RETRAIN_EVERY]) * 0.27 + 8
     say(f"  disk free: {free:.0f} GB | needed: about {want:.0f} GB")
     if free < want and not os.environ.get("V14_SKIP_DISK"):
         say("STOP: not enough disk. Rent more disk, or set V14_SKIP_DISK=1 to go on anyway."); sys.exit(1)
@@ -466,14 +469,83 @@ def stage_summary():
     if r.returncode != 0:
         print(r.stderr[-3000:], flush=True); problem("the summary stopped with an error (the tables of the single tests are still in analysis/v14/)")
 
+# =============================================================================================== stage: trials (v15, Adi's trials A / B / C and their freeze versions)
+T_ROOT = "v15"
+FULL = "none,self@1.0,task@1.0,self@0.5,task@0.5"       # untouched | strong (full count, about half a layer): self, task | weak (half of that): self, task
+WEAK = "none,task@0.5"                                  # v14 already has the other lesion conditions for trials A and B
+
+def trial_jobs(mods, outroot, tiny=False):
+    """Every job = one start checkpoint x one trial. Lesion or freeze, then train:
+       A / alpha  a language outside every set (Indonesian)      B / beta  another language of the run's own set (the next one)
+       C / gamma  the language the checkpoint was just trained on"""
+    jobs = []
+    for m in mods:
+        fam = CFG.FAMILIES[m["family"]]; lab, run = m["label"], m["run"]
+        starts = [p for p in CFG.LESION_PHASES[::CFG.RETRAIN_EVERY] if p in here(run)]      # the same start checkpoints as the v14 lesion-then-train tests
+        if tiny:
+            starts = starts[:1]
+        base = [PY, "-u", "core_v11.py", "--outroot", outroot, "--family", m["family"], "--tau", str(CFG.TAU), "--seeds", CFG.TRAIN_SEEDS] \
+            + (["--self_langs", fam["only"]] if fam["only"] else [])
+        log = os.path.join(LOGS, f"{outroot}_trials_{lab}.log")
+        for p in starts:
+            A = ["--task", CFG.HELDOUT, "--lr", CFG.HELDOUT_LR, "--steps", "20" if tiny else str(CFG.HELDOUT_STEPS)]
+            B = ["--task", "next", "--steps", "20" if tiny else str(CFG.TRAIN_STEPS)]
+            C = B + ["--next_lang", CFG.trained_lang(m["family"], p)]
+            plan = [("lesion A, weak task", "lesion_A_weak", "lesion", A, WEAK), ("lesion C", "lesion_C", "lesion", C, FULL),
+                    ("freeze alpha", "freeze_A", "freeze", A, FULL), ("freeze gamma", "freeze_C", "freeze", C, FULL)]
+            if not fam["only"]:                                         # a Hindi-only run has no other language of its own set
+                plan += [("lesion B, weak task", "lesion_B_weak", "lesion", B, WEAK), ("freeze beta", "freeze_B", "freeze", B, FULL)]
+            for name, sub, mode, extra, conds in plan:
+                d = os.path.join(REPO, "analysis", outroot, sub, lab, f"p{p:03d}")
+                jobs.append(dict(name=f"{name}, from phase {p} {lab}", env={"CML_LANGSET": fam["langset"]}, log=log,
+                                 cmd=base + ["--out", f"{sub}/{lab}/p{p:03d}", "--part", "train", "--mode", mode, "--model", f"{lab}_p{p}={run}:{p}",
+                                             "--conds", "none,self@1.0,task@0.5" if tiny else conds] + extra,
+                                 need=CFG.NEED_GB["retrain"], ram=CFG.NEED_RAM["retrain"], done=os.path.join(d, ".done"), clean=None))
+    return jobs
+
+def stage_trials():
+    import v14_hf as HF
+    mods = NEW + OLD
+    starts = CFG.LESION_PHASES[::CFG.RETRAIN_EVERY]
+    say(f"STAGE trials: {len(mods)} runs, start checkpoints = phases {starts[0]}, {starts[1]}, ... {starts[-1]} (those that exist)")
+    for m in mods:
+        if not set(starts) <= here(m["run"]):
+            got = HF.download(m["run"], starts)
+            say(f"  {m['run']}: {len(got)} of {len(starts)} start checkpoints are on this machine")
+    # ---- tiny test first: one checkpoint of one run per language set, every trial, 20 training steps
+    troot = T_ROOT + "_test"
+    shutil.rmtree(f"analysis/{troot}", ignore_errors=True)
+    first = [next(m for m in mods if m["family"] == f) for f in FAMS if any(m["family"] == f for m in mods)]
+    tj = trial_jobs(first, troot, tiny=True)
+    say(f"  tiny test: {len(tj)} jobs of 20 training steps. Nothing real starts until this passes.")
+    bad = run_jobs(tj)
+    if bad:
+        say(f"TEST FAILED at: {bad[0]}. Nothing else was run. Send these lines to Claude:")
+        print(tail(os.path.join(LOGS, f"{troot}_trials_{bad[0].split()[-1]}.log"))); sys.exit(1)
+    shutil.rmtree(f"analysis/{troot}", ignore_errors=True)
+    for f in glob.glob(f"logs/{troot}_*"):
+        os.remove(f)
+    say("  TEST OK")
+    jobs = trial_jobs(mods, T_ROOT)
+    say(f"  {len(jobs)} jobs. Progress per run: logs/{T_ROOT}_trials_<run>.log")
+    run_jobs(jobs, retries=1)
+
+def stage_trials_summary():
+    say("STAGE trials_summary")
+    r = sh([PY, "trials_v15.py"])
+    print(r.stdout, flush=True)
+    if r.returncode != 0:
+        print(r.stderr[-3000:], flush=True); problem("the trials summary stopped with an error (the tables of the single jobs are still in analysis/v15/)")
+
 # =============================================================================================== main
 say(f"exp_v14 | stages: {', '.join(STAGES)} | families: {', '.join(FAMS)} | seeds: {SEEDS} | phases: {N} | shard {SHARD_K}/{SHARD_N} | old runs: {len(OLD)}")
-RUNNERS = {"prep": stage_prep, "test": stage_test, "train": stage_train, "verify": stage_verify, "analyze": stage_analyze, "summary": stage_summary}
+RUNNERS = {"prep": stage_prep, "test": stage_test, "train": stage_train, "verify": stage_verify, "analyze": stage_analyze, "summary": stage_summary,
+           "trials": stage_trials, "trials_summary": stage_trials_summary}
 for s in ALL:
     if s not in STAGES or s == "push":
         continue
     RUNNERS[s]()
-    if "push" in STAGES and s in ("verify", "analyze", "summary"):
+    if "push" in STAGES and s in ("verify", "analyze", "summary", "trials", "trials_summary"):
         push(f"v14 multi-seed pilot: after {s}" + (f" (shard {SHARD_K}/{SHARD_N})" if SHARD_N > 1 else ""))
 
 say("=" * 70)
@@ -489,3 +561,5 @@ if "push" in STAGES:
     say("Results on GitHub: " + ("pushed." if STATE["pushed"] else "NOT pushed. Run: git push"))
 if STATE["verified"] and STATE["pushed"] and not STATE["problems"]:
     say("The instance can be destroyed.")
+if "verify" not in STAGES and "train" not in STAGES and STATE["pushed"] and not STATE["problems"]:
+    say("No new checkpoints were made in this run, and the results are on GitHub: the instance can be destroyed.")
