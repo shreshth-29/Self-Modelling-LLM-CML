@@ -1878,3 +1878,60 @@ Sat 11:10   finished freeze alpha, from phase 28 hindi_old0  (905 of 908 done)
 Sat 11:11   finished freeze gamma, from phase 30 hindi_old0  (906 of 908 done)
 Sat 11:11   finished lesion C, from phase 30 hindi_old0  (907 of 908 done)
 Sat 11:12   finished freeze alpha, from phase 30 hindi_old0  (908 of 908 done)
+Sat 11:12 pushed
+Sat 11:12 STAGE trials_summary
+ADI'S TRIALS on the v14 checkpoints. Extra held-out loss against the untouched checkpoint (trial A / alpha: average from step 100 on; B, C, beta, gamma: at the last step).
+strong = full count (about half a layer), weak = half of that. Self against the same number of random task neurons. 'costs more' = higher extra loss.
+
+=== Trial A: lesion, then learn Indonesian (outside every set) ===
+  size language set   self    task  self minus task checkpoints where self costs more runs where self costs more  p (paired, over runs)
+strong        hindi 0.0853  0.0206           0.0646                          56 of 56                     4 of 4                 0.0022
+strong      related 0.0609  0.0114           0.0495                          57 of 58                     5 of 5                 0.0004
+strong      distant 0.0939  0.0277           0.0662                          53 of 56                     4 of 4                 0.0006
+  weak        hindi 0.0292  0.0046           0.0245                          56 of 56                     4 of 4                 0.0002
+  weak      related 0.0201 -0.0019           0.0220                          58 of 58                     5 of 5                 0.0005
+  weak      distant 0.0286  0.0012           0.0274                          56 of 56                     4 of 4                 0.0003
+
+=== Trial B: lesion, then learn another language of its own set (the next one) ===
+  size language set   self   task  self minus task checkpoints where self costs more runs where self costs more  p (paired, over runs)
+strong      related 0.1368 0.1029           0.0339                          58 of 58                     5 of 5                 0.0000
+strong      distant 0.1433 0.1084           0.0349                          56 of 56                     4 of 4                 0.0000
+  weak      related 0.0545 0.0442           0.0103                          57 of 58                     5 of 5                 0.0001
+  weak      distant 0.0551 0.0457           0.0094                          52 of 56                     4 of 4                 0.0018
+
+=== Trial C: lesion, then train again on the language just trained ===
+  size language set   self   task  self minus task checkpoints where self costs more runs where self costs more  p (paired, over runs)
+strong        hindi 0.1723 0.1562           0.0161                          53 of 56                     4 of 4                 0.0019
+strong      related 0.1094 0.0910           0.0183                          57 of 58                     5 of 5                 0.0004
+strong      distant 0.1134 0.0947           0.0187                          53 of 56                     4 of 4                 0.0016
+  weak        hindi 0.0617 0.0595           0.0022                          40 of 56                     3 of 4                 0.1931
+  weak      related 0.0386 0.0347           0.0038                          38 of 58                     5 of 5                 0.0290
+  weak      distant 0.0376 0.0340           0.0036                          41 of 56                     4 of 4                 0.0185
+
+=== Trial alpha: freeze, then learn Indonesian (outside every set) ===
+  size language set   self   task  self minus task checkpoints where self costs more runs where self costs more  p (paired, over runs)
+strong        hindi 0.0596 0.0567           0.0029                          48 of 56                     4 of 4                 0.0346
+strong      related 0.0549 0.0535           0.0014                          36 of 58                     5 of 5                 0.0421
+strong      distant 0.0524 0.0536          -0.0012                          20 of 56                     0 of 4                 0.0564
+  weak        hindi 0.0277 0.0270           0.0006                          33 of 56                     3 of 4                 0.1744
+  weak      related 0.0258 0.0252           0.0006                          32 of 58                     3 of 5                 0.1242
+  weak      distant 0.0245 0.0253          -0.0007                          23 of 56                     0 of 4                 0.0277
+
+=== Trial beta: freeze, then learn another language of its own set (the next one) ===
+  size language set   self   task  self minus task checkpoints where self costs more runs where self costs more  p (paired, over runs)
+strong      related 0.0060 0.0083          -0.0024                          14 of 58                     0 of 5                 0.0078
+strong      distant 0.0178 0.0187          -0.0010                          24 of 56                     0 of 4                 0.1581
+  weak      related 0.0028 0.0037          -0.0009                          24 of 58                     0 of 5                 0.0014
+  weak      distant 0.0079 0.0092          -0.0012                          20 of 56                     0 of 4                 0.0086
+
+=== Trial gamma: freeze, then train again on the language just trained ===
+  size language set    self    task  self minus task checkpoints where self costs more runs where self costs more  p (paired, over runs)
+strong        hindi -0.0122 -0.0114          -0.0008                          26 of 56                     1 of 4                 0.1799
+strong      related -0.0108 -0.0105          -0.0003                          27 of 58                     0 of 5                 0.0515
+strong      distant -0.0108 -0.0090          -0.0018                          20 of 56                     0 of 4                 0.0269
+  weak        hindi -0.0063 -0.0059          -0.0003                          26 of 56                     1 of 4                 0.3793
+  weak      related -0.0054 -0.0052          -0.0001                          30 of 58                     3 of 5                 0.7609
+  weak      distant -0.0056 -0.0046          -0.0010                          20 of 56                     1 of 4                 0.0852
+
+written: /workspace/shreshth/analysis/v15/summary
+

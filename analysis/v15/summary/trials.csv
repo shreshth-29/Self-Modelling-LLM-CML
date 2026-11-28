@@ -1,0 +1,33 @@
+trial,what,size,language set,self,task,self minus task,checkpoints where self costs more,runs where self costs more,"p (paired, over runs)"
+Trial A,"lesion, then learn Indonesian (outside every set)",strong,hindi,0.08525869414643285,0.020610154431205348,0.06464853971522751,56 of 56,4 of 4,0.0021762094969516553
+Trial A,"lesion, then learn Indonesian (outside every set)",strong,related,0.06091488645389502,0.011391527466634951,0.04952335898726007,57 of 58,5 of 5,0.0003544797398158978
+Trial A,"lesion, then learn Indonesian (outside every set)",strong,distant,0.09394950032990126,0.027746880697280603,0.06620261963262065,53 of 56,4 of 4,0.0005759568130774019
+Trial A,"lesion, then learn Indonesian (outside every set)",weak,hindi,0.02915405895817442,0.004628093620678697,0.02452596533749572,56 of 56,4 of 4,0.00023218121018824125
+Trial A,"lesion, then learn Indonesian (outside every set)",weak,related,0.02012612816040851,-0.0019181860267720558,0.022044314187180572,58 of 58,5 of 5,0.00047777752931958765
+Trial A,"lesion, then learn Indonesian (outside every set)",weak,distant,0.028609420256768457,0.0012221378335041493,0.027387282423264308,56 of 56,4 of 4,0.00028928310491940345
+Trial B,"lesion, then learn another language of its own set (the next one)",strong,related,0.13684320603018674,0.10289691947138867,0.03394628655879806,58 of 58,5 of 5,1.1024042699919745e-05
+Trial B,"lesion, then learn another language of its own set (the next one)",strong,distant,0.14328038671620932,0.10835074996739606,0.034929636748813254,56 of 56,4 of 4,3.248424450495801e-05
+Trial B,"lesion, then learn another language of its own set (the next one)",weak,related,0.054533490798942465,0.04423718250454151,0.010296308294400957,57 of 58,5 of 5,9.198185686012784e-05
+Trial B,"lesion, then learn another language of its own set (the next one)",weak,distant,0.05505511704059475,0.045671703846855406,0.00938341319373934,52 of 56,4 of 4,0.0017808369751100795
+Trial C,"lesion, then train again on the language just trained",strong,hindi,0.17225873279539156,0.1561694415471606,0.01608929124823098,53 of 56,4 of 4,0.0019483312895798614
+Trial C,"lesion, then train again on the language just trained",strong,related,0.10937089296011229,0.0910350599948848,0.018335832965227533,57 of 58,5 of 5,0.0004111091022254056
+Trial C,"lesion, then train again on the language just trained",strong,distant,0.113439221699882,0.094731798701182,0.018707422998700002,53 of 56,4 of 4,0.0015579490584123222
+Trial C,"lesion, then train again on the language just trained",weak,hindi,0.06167135748742157,0.05950145806517592,0.00216989942224565,40 of 56,3 of 4,0.1930828398087982
+Trial C,"lesion, then train again on the language just trained",weak,related,0.03856987816557513,0.03474479461531445,0.003825083550260681,38 of 58,5 of 5,0.028993180429175185
+Trial C,"lesion, then train again on the language just trained",weak,distant,0.0376387832255168,0.034037296946476385,0.003601486279040413,41 of 56,4 of 4,0.018465659060895527
+Trial alpha,"freeze, then learn Indonesian (outside every set)",strong,hindi,0.059588154195435686,0.056701370042431885,0.0028867841530038044,48 of 56,4 of 4,0.03455893161028525
+Trial alpha,"freeze, then learn Indonesian (outside every set)",strong,related,0.05493677689917481,0.053536460327380596,0.001400316571794204,36 of 58,5 of 5,0.042073649363374696
+Trial alpha,"freeze, then learn Indonesian (outside every set)",strong,distant,0.05242520880050066,0.05361022994957787,-0.0011850211490772073,20 of 56,0 of 4,0.056396953695411846
+Trial alpha,"freeze, then learn Indonesian (outside every set)",weak,hindi,0.02768525499743202,0.027047323948180237,0.0006379310492517803,33 of 56,3 of 4,0.1743891247956457
+Trial alpha,"freeze, then learn Indonesian (outside every set)",weak,related,0.0258110200975288,0.025241391694658156,0.0005696284028706412,32 of 58,3 of 5,0.12423753608842616
+Trial alpha,"freeze, then learn Indonesian (outside every set)",weak,distant,0.024544891015168855,0.025269193948107345,-0.0007243029329384908,23 of 56,0 of 4,0.02766285695533714
+Trial beta,"freeze, then learn another language of its own set (the next one)",strong,related,0.005975584934244931,0.008339754704624761,-0.002364169770379829,14 of 58,0 of 5,0.0077772207270945335
+Trial beta,"freeze, then learn another language of its own set (the next one)",strong,distant,0.01777515255468969,0.01874079677662301,-0.0009656442219333206,24 of 56,0 of 4,0.15810101857064948
+Trial beta,"freeze, then learn another language of its own set (the next one)",weak,related,0.0027915302531550277,0.0036763920303035085,-0.0008848617771484808,24 of 58,0 of 5,0.001367886889464102
+Trial beta,"freeze, then learn another language of its own set (the next one)",weak,distant,0.007945622800322297,0.009179050424761522,-0.0012334276244392237,20 of 56,0 of 4,0.008560623818269298
+Trial gamma,"freeze, then train again on the language just trained",strong,hindi,-0.0122034162285961,-0.011418145975833646,-0.0007852702527624544,26 of 56,1 of 4,0.1799140617619928
+Trial gamma,"freeze, then train again on the language just trained",strong,related,-0.010762304085982466,-0.010465996147194805,-0.000296307938787662,27 of 58,0 of 5,0.051496123994084556
+Trial gamma,"freeze, then train again on the language just trained",strong,distant,-0.010821311401347828,-0.008976556273011606,-0.001844755128336222,20 of 56,0 of 4,0.026947931068422425
+Trial gamma,"freeze, then train again on the language just trained",weak,hindi,-0.006279837794160454,-0.005931761577909228,-0.00034807621625122597,26 of 56,1 of 4,0.37933463299997455
+Trial gamma,"freeze, then train again on the language just trained",weak,related,-0.00536784981480113,-0.005230134054195253,-0.00013771576060587706,30 of 58,3 of 5,0.7609093259435598
+Trial gamma,"freeze, then train again on the language just trained",weak,distant,-0.005572951615846132,-0.00461891538995275,-0.0009540362258933828,20 of 56,1 of 4,0.0852107130884199
