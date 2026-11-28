@@ -1,0 +1,9 @@
+layer,n_self,n_task,n_max,dose,n,note,family,start,seed
+enc0,1347,1213,1213,0.5,606,,related,related_s2_p24,0
+enc1,1038,1522,1038,0.5,519,,related,related_s2_p24,0
+enc2,1038,1522,1038,0.5,519,,related,related_s2_p24,0
+enc3,1337,1223,1223,0.5,612,,related,related_s2_p24,0
+dec0,1718,842,842,0.5,421,,related,related_s2_p24,0
+dec1,1147,1413,1147,0.5,574,,related,related_s2_p24,0
+dec2,1223,1337,1223,0.5,612,,related,related_s2_p24,0
+dec3,1874,686,686,0.5,343,,related,related_s2_p24,0

@@ -1,0 +1,7 @@
+family,start,task,mode,cond,seed,lang,intact,before,after
+related,related_old1_p10,indonesian,none,none,0,hi,1.2391539602568655,1.2391539602568655,10.158914024836433
+related,related_old1_p10,indonesian,none,none,0,gu,4.4477517057937135,4.4477517057937135,9.523925451181556
+related,related_old1_p10,indonesian,none,none,0,pa,3.661522376019022,3.661522376019022,10.16401407839963
+related,related_old1_p10,indonesian,lesion,task@0.5,0,hi,1.2391539602568655,1.469314802185563,10.1606573099604
+related,related_old1_p10,indonesian,lesion,task@0.5,0,gu,4.4477517057937135,4.584646492296643,9.498168230164207
+related,related_old1_p10,indonesian,lesion,task@0.5,0,pa,3.661522376019022,3.8430810863060825,10.078291946114708

@@ -1,0 +1,17 @@
+layer,n_self,n_task,n_max,dose,n,note,family,start,seed
+enc0,1562,998,998,1.0,998,,hindi,hindi_s2_p6,0
+enc0,1562,998,998,0.5,499,,hindi,hindi_s2_p6,0
+enc1,1256,1304,1256,1.0,1256,,hindi,hindi_s2_p6,0
+enc1,1256,1304,1256,0.5,628,,hindi,hindi_s2_p6,0
+enc2,1259,1301,1259,1.0,1259,,hindi,hindi_s2_p6,0
+enc2,1259,1301,1259,0.5,630,,hindi,hindi_s2_p6,0
+enc3,1495,1065,1065,1.0,1065,,hindi,hindi_s2_p6,0
+enc3,1495,1065,1065,0.5,532,,hindi,hindi_s2_p6,0
+dec0,1496,1064,1064,1.0,1064,,hindi,hindi_s2_p6,0
+dec0,1496,1064,1064,0.5,532,,hindi,hindi_s2_p6,0
+dec1,1215,1345,1215,1.0,1215,,hindi,hindi_s2_p6,0
+dec1,1215,1345,1215,0.5,608,,hindi,hindi_s2_p6,0
+dec2,1290,1270,1270,1.0,1270,,hindi,hindi_s2_p6,0
+dec2,1290,1270,1270,0.5,635,,hindi,hindi_s2_p6,0
+dec3,1773,787,787,1.0,787,,hindi,hindi_s2_p6,0
+dec3,1773,787,787,0.5,394,,hindi,hindi_s2_p6,0

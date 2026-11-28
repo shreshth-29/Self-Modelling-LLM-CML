@@ -1,0 +1,17 @@
+family,start,task,mode,cond,seed,step,val_loss,score,n_neurons
+distant,distant_s2_p6,next,none,none,0,0,6.563282894771126,3.0894546239906924,0
+distant,distant_s2_p6,next,none,none,0,50,3.7152705762496354,,0
+distant,distant_s2_p6,next,none,none,0,100,2.9617412393952973,,0
+distant,distant_s2_p6,next,none,none,0,200,2.493921186476008,,0
+distant,distant_s2_p6,next,none,none,0,300,2.344009824983324,,0
+distant,distant_s2_p6,next,none,none,0,500,2.1504379325259517,,0
+distant,distant_s2_p6,next,none,none,0,750,2.0118408050454413,,0
+distant,distant_s2_p6,next,none,none,0,1000,1.922312533546817,45.69980797471208,0
+distant,distant_s2_p6,next,lesion,task@0.5,0,0,6.583804508692208,2.7926386046015907,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,50,3.7168672256065785,,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,100,3.0125700411941887,,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,200,2.5434962167007127,,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,300,2.386554517160337,,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,500,2.1967384025722265,,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,750,2.055281897486138,,4090
+distant,distant_s2_p6,next,lesion,task@0.5,0,1000,1.960890314610518,45.957815183180685,4090

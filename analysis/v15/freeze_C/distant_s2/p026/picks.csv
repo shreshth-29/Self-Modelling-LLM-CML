@@ -1,0 +1,17 @@
+layer,n_self,n_task,n_max,dose,n,note,family,start,seed
+enc0,1242,1318,1242,1.0,1242,,distant,distant_s2_p26,0
+enc0,1242,1318,1242,0.5,621,,distant,distant_s2_p26,0
+enc1,1068,1492,1068,1.0,1068,,distant,distant_s2_p26,0
+enc1,1068,1492,1068,0.5,534,,distant,distant_s2_p26,0
+enc2,1113,1447,1113,1.0,1113,,distant,distant_s2_p26,0
+enc2,1113,1447,1113,0.5,556,,distant,distant_s2_p26,0
+enc3,1363,1197,1197,1.0,1197,,distant,distant_s2_p26,0
+enc3,1363,1197,1197,0.5,598,,distant,distant_s2_p26,0
+dec0,1403,1157,1157,1.0,1157,,distant,distant_s2_p26,0
+dec0,1403,1157,1157,0.5,578,,distant,distant_s2_p26,0
+dec1,1010,1550,1010,1.0,1010,,distant,distant_s2_p26,0
+dec1,1010,1550,1010,0.5,505,,distant,distant_s2_p26,0
+dec2,999,1561,999,1.0,999,,distant,distant_s2_p26,0
+dec2,999,1561,999,0.5,500,,distant,distant_s2_p26,0
+dec3,1371,1189,1189,1.0,1189,,distant,distant_s2_p26,0
+dec3,1371,1189,1189,0.5,594,,distant,distant_s2_p26,0

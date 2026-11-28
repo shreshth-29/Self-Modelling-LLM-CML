@@ -1,0 +1,1008 @@
+
+===== Sat 09:57 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p004 --part train --mode lesion --model related_old1_p4=v8_indic_continual_s1:4 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p4 = v8_indic_continual_s1 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1505, task 1055 -> count-matched n_max 1055
+  enc1: working 2560, self 1373, task 1187 -> count-matched n_max 1187
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1613, task 947 -> count-matched n_max 947
+  dec0: working 2560, self 1637, task 923 -> count-matched n_max 923
+  dec1: working 2560, self 1260, task 1300 -> count-matched n_max 1260
+  dec2: working 2560, self 1330, task 1230 -> count-matched n_max 1230
+  dec3: working 2560, self 1883, task 677 -> count-matched n_max 677
+  self found in 9s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+
+===== Sat 09:57 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p004 --part train --mode lesion --model related_old1_p4=v8_indic_continual_s1:4 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang hi
+start model: related_old1_p4 = v8_indic_continual_s1 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1505, task 1055 -> count-matched n_max 1055
+  enc1: working 2560, self 1373, task 1187 -> count-matched n_max 1187
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1613, task 947 -> count-matched n_max 947
+  dec0: working 2560, self 1637, task 923 -> count-matched n_max 923
+  dec1: working 2560, self 1260, task 1300 -> count-matched n_max 1260
+  dec2: working 2560, self 1330, task 1230 -> count-matched n_max 1230
+  dec3: working 2560, self 1883, task 677 -> count-matched n_max 677
+  self found in 9s
+  next language = hi (phase 5 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+
+===== Sat 09:58 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p004 --part train --mode freeze --model related_old1_p4=v8_indic_continual_s1:4 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p4 = v8_indic_continual_s1 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1505, task 1055 -> count-matched n_max 1055
+  enc1: working 2560, self 1373, task 1187 -> count-matched n_max 1187
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1613, task 947 -> count-matched n_max 947
+  dec0: working 2560, self 1637, task 923 -> count-matched n_max 923
+  dec1: working 2560, self 1260, task 1300 -> count-matched n_max 1260
+  dec2: working 2560, self 1330, task 1230 -> count-matched n_max 1230
+  dec3: working 2560, self 1883, task 677 -> count-matched n_max 677
+  self found in 9s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+
+===== Sat 09:58 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p004 --part train --mode freeze --model related_old1_p4=v8_indic_continual_s1:4 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang hi
+start model: related_old1_p4 = v8_indic_continual_s1 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1505, task 1055 -> count-matched n_max 1055
+  enc1: working 2560, self 1373, task 1187 -> count-matched n_max 1187
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1613, task 947 -> count-matched n_max 947
+  dec0: working 2560, self 1637, task 923 -> count-matched n_max 923
+  dec1: working 2560, self 1260, task 1300 -> count-matched n_max 1260
+  dec2: working 2560, self 1330, task 1230 -> count-matched n_max 1230
+  dec3: working 2560, self 1883, task 677 -> count-matched n_max 677
+  self found in 9s
+  next language = hi (phase 5 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+
+===== Sat 09:59 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p004 --part train --mode lesion --model related_old1_p4=v8_indic_continual_s1:4 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p4 = v8_indic_continual_s1 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1505, task 1055 -> count-matched n_max 1055
+  enc1: working 2560, self 1373, task 1187 -> count-matched n_max 1187
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1613, task 947 -> count-matched n_max 947
+  dec0: working 2560, self 1637, task 923 -> count-matched n_max 923
+  dec1: working 2560, self 1260, task 1300 -> count-matched n_max 1260
+  dec2: working 2560, self 1330, task 1230 -> count-matched n_max 1230
+  dec3: working 2560, self 1883, task 677 -> count-matched n_max 677
+  self found in 9s
+  next language = gu (phase 5 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | next | none    | none      | seed 0 | 0 neurons | loss 1.326 -> 1.434 | chrF 51.0 -> 49.4 | 110s | left in this call: 4 runs, about 7 min
+  related_old1_p4 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.210 -> 1.273 | chrF 5.7 -> 46.7 | 148s | left in this call: 1 runs, about 2 min
+
+===== Sat 10:00 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p004 --part train --mode freeze --model related_old1_p4=v8_indic_continual_s1:4 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+
+===== Sat 10:00 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p006 --part train --mode lesion --model related_old1_p6=v8_indic_continual_s1:6 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p6 = v8_indic_continual_s1 phase 6 (last trained on pa) | languages hi, gu, pa
+start model: related_old1_p4 = v8_indic_continual_s1 phase 4 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1505, task 1055 -> count-matched n_max 1055
+  enc1: working 2560, self 1373, task 1187 -> count-matched n_max 1187
+  enc2: working 2560, self 1355, task 1205 -> count-matched n_max 1205
+  enc3: working 2560, self 1613, task 947 -> count-matched n_max 947
+  dec0: working 2560, self 1637, task 923 -> count-matched n_max 923
+  dec1: working 2560, self 1260, task 1300 -> count-matched n_max 1260
+  dec2: working 2560, self 1330, task 1230 -> count-matched n_max 1230
+  dec3: working 2560, self 1883, task 677 -> count-matched n_max 677
+  self found in 12s
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1290, task 1270 -> count-matched n_max 1270
+  enc2: working 2560, self 1286, task 1274 -> count-matched n_max 1274
+  enc3: working 2560, self 1544, task 1016 -> count-matched n_max 1016
+  dec0: working 2560, self 1671, task 889 -> count-matched n_max 889
+  dec1: working 2560, self 1443, task 1117 -> count-matched n_max 1117
+  dec2: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec3: working 2560, self 1967, task 593 -> count-matched n_max 593
+  self found in 12s
+  next language = gu (phase 5 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.210 -> 1.273 | chrF 5.7 -> 46.7 | 128s | left in this call: 4 runs, about 9 min
+  related_old1_p4 | next | none    | none      | seed 0 | 0 neurons | loss 1.326 -> 1.434 | chrF 51.0 -> 49.4 | 130s | left in this call: 4 runs, about 9 min
+
+===== Sat 10:01 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p006 --part train --mode lesion --model related_old1_p6=v8_indic_continual_s1:6 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang pa
+start model: related_old1_p6 = v8_indic_continual_s1 phase 6 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1290, task 1270 -> count-matched n_max 1270
+  enc2: working 2560, self 1286, task 1274 -> count-matched n_max 1274
+  enc3: working 2560, self 1544, task 1016 -> count-matched n_max 1016
+  dec0: working 2560, self 1671, task 889 -> count-matched n_max 889
+  dec1: working 2560, self 1443, task 1117 -> count-matched n_max 1117
+  dec2: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec3: working 2560, self 1967, task 593 -> count-matched n_max 593
+  self found in 9s
+  next language = pa (phase 7 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+
+===== Sat 10:01 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p006 --part train --mode freeze --model related_old1_p6=v8_indic_continual_s1:6 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p6 = v8_indic_continual_s1 phase 6 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1290, task 1270 -> count-matched n_max 1270
+  enc2: working 2560, self 1286, task 1274 -> count-matched n_max 1274
+  enc3: working 2560, self 1544, task 1016 -> count-matched n_max 1016
+  dec0: working 2560, self 1671, task 889 -> count-matched n_max 889
+  dec1: working 2560, self 1443, task 1117 -> count-matched n_max 1117
+  dec2: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec3: working 2560, self 1967, task 593 -> count-matched n_max 593
+  self found in 8s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | next | none    | none      | seed 0 | 0 neurons | loss 5.387 -> 2.286 | chrF 17.6 -> 42.3 | 135s | left in this call: 1 runs, about 2 min
+  related_old1_p4 | next | lesion  | self@1.0  | seed 0 | 8484 neurons | loss 3.304 -> 1.592 | chrF 13.4 -> 46.1 | 132s | left in this call: 3 runs, about 6 min
+  related_old1_p4 | indonesian | lesion  | task@0.5  | seed 0 | 4243 neurons | loss 9.029 -> 1.285 | chrF 5.4 -> 47.4 | 146s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:02 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p006 --part train --mode freeze --model related_old1_p6=v8_indic_continual_s1:6 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang pa
+start model: related_old1_p6 = v8_indic_continual_s1 phase 6 (last trained on pa) | languages hi, gu, pa
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1290, task 1270 -> count-matched n_max 1270
+  enc2: working 2560, self 1286, task 1274 -> count-matched n_max 1274
+  enc3: working 2560, self 1544, task 1016 -> count-matched n_max 1016
+  dec0: working 2560, self 1671, task 889 -> count-matched n_max 889
+  dec1: working 2560, self 1443, task 1117 -> count-matched n_max 1117
+  dec2: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec3: working 2560, self 1967, task 593 -> count-matched n_max 593
+  self found in 9s
+  next language = pa (phase 7 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | next | none    | none      | seed 0 | 0 neurons | loss 5.387 -> 2.286 | chrF 17.6 -> 42.3 | 135s | left in this call: 4 runs, about 9 min
+
+===== Sat 10:03 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p006 --part train --mode lesion --model related_old1_p6=v8_indic_continual_s1:6 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p6 = v8_indic_continual_s1 phase 6 (last trained on pa) | languages hi, gu, pa
+  related_old1_p6 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.806 -> 1.277 | chrF 5.4 -> 46.7 | 146s | left in this call: 1 runs, about 2 min
+  related_old1_p4 | indonesian | freeze  | self@1.0  | seed 0 | 8484 neurons | loss 9.210 -> 1.296 | chrF 5.7 -> 44.9 | 146s | left in this call: 3 runs, about 7 min
+  related_old1_p4 | next | freeze  | self@1.0  | seed 0 | 8484 neurons | loss 1.326 -> 1.421 | chrF 51.0 -> 48.7 | 129s | left in this call: 3 runs, about 6 min
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1290, task 1270 -> count-matched n_max 1270
+  enc2: working 2560, self 1286, task 1274 -> count-matched n_max 1274
+  enc3: working 2560, self 1544, task 1016 -> count-matched n_max 1016
+  dec0: working 2560, self 1671, task 889 -> count-matched n_max 889
+  dec1: working 2560, self 1443, task 1117 -> count-matched n_max 1117
+  dec2: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec3: working 2560, self 1967, task 593 -> count-matched n_max 593
+  self found in 9s
+  next language = hi (phase 7 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | none    | none      | seed 0 | 0 neurons | loss 1.847 -> 1.981 | chrF 44.8 -> 44.1 | 118s | left in this call: 4 runs, about 8 min
+
+===== Sat 10:03 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p006 --part train --mode freeze --model related_old1_p6=v8_indic_continual_s1:6 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+  related_old1_p4 | next | lesion  | task@0.5  | seed 0 | 4243 neurons | loss 5.465 -> 2.310 | chrF 16.3 -> 42.8 | 115s | left in this call: 0 runs, about 0 min
+done
+start model: related_old1_p6 = v8_indic_continual_s1 phase 6 (last trained on pa) | languages hi, gu, pa
+
+===== Sat 10:04 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p008 --part train --mode lesion --model related_old1_p8=v8_indic_continual_s1:8 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p8 = v8_indic_continual_s1 phase 8 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1411, task 1149 -> count-matched n_max 1149
+  enc1: working 2560, self 1290, task 1270 -> count-matched n_max 1270
+  enc2: working 2560, self 1286, task 1274 -> count-matched n_max 1274
+  enc3: working 2560, self 1544, task 1016 -> count-matched n_max 1016
+  dec0: working 2560, self 1671, task 889 -> count-matched n_max 889
+  dec1: working 2560, self 1443, task 1117 -> count-matched n_max 1117
+  dec2: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec3: working 2560, self 1967, task 593 -> count-matched n_max 593
+  self found in 9s
+  next language = hi (phase 7 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1372, task 1188 -> count-matched n_max 1188
+  enc1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  enc2: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  enc3: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec0: working 2560, self 1652, task 908 -> count-matched n_max 908
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1346, task 1214 -> count-matched n_max 1214
+  dec3: working 2560, self 1829, task 731 -> count-matched n_max 731
+  self found in 10s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | next | lesion  | task@1.0  | seed 0 | 8484 neurons | loss 2.026 -> 1.569 | chrF 47.0 -> 47.8 | 130s | left in this call: 2 runs, about 4 min
+  related_old1_p6 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.806 -> 1.277 | chrF 5.4 -> 46.7 | 146s | left in this call: 4 runs, about 10 min
+
+===== Sat 10:04 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p008 --part train --mode lesion --model related_old1_p8=v8_indic_continual_s1:8 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang gu
+start model: related_old1_p8 = v8_indic_continual_s1 phase 8 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1372, task 1188 -> count-matched n_max 1188
+  enc1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  enc2: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  enc3: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec0: working 2560, self 1652, task 908 -> count-matched n_max 908
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1346, task 1214 -> count-matched n_max 1214
+  dec3: working 2560, self 1829, task 731 -> count-matched n_max 731
+  self found in 9s
+  next language = gu (phase 9 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | none    | none      | seed 0 | 0 neurons | loss 1.847 -> 1.981 | chrF 44.8 -> 44.1 | 131s | left in this call: 4 runs, about 9 min
+  related_old1_p4 | next | freeze  | self@1.0  | seed 0 | 8484 neurons | loss 5.387 -> 2.293 | chrF 17.6 -> 42.2 | 133s | left in this call: 3 runs, about 7 min
+  related_old1_p6 | next | none    | none      | seed 0 | 0 neurons | loss 3.695 -> 1.794 | chrF 32.3 -> 48.5 | 114s | left in this call: 1 runs, about 2 min
+  related_old1_p4 | next | freeze  | task@1.0  | seed 0 | 8484 neurons | loss 1.326 -> 1.422 | chrF 51.0 -> 48.6 | 129s | left in this call: 2 runs, about 4 min
+  related_old1_p6 | indonesian | lesion  | task@0.5  | seed 0 | 4224 neurons | loss 9.721 -> 1.278 | chrF 5.0 -> 46.6 | 145s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p4 | indonesian | freeze  | task@1.0  | seed 0 | 8484 neurons | loss 9.210 -> 1.301 | chrF 5.7 -> 45.7 | 144s | left in this call: 2 runs, about 5 min
+
+===== Sat 10:05 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p008 --part train --mode freeze --model related_old1_p8=v8_indic_continual_s1:8 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+
+===== Sat 10:05 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p008 --part train --mode freeze --model related_old1_p8=v8_indic_continual_s1:8 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang gu
+start model: related_old1_p8 = v8_indic_continual_s1 phase 8 (last trained on gu) | languages hi, gu, pa
+start model: related_old1_p8 = v8_indic_continual_s1 phase 8 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1372, task 1188 -> count-matched n_max 1188
+  enc1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  enc2: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  enc3: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec0: working 2560, self 1652, task 908 -> count-matched n_max 908
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1346, task 1214 -> count-matched n_max 1214
+  dec3: working 2560, self 1829, task 731 -> count-matched n_max 731
+  self found in 12s
+  enc0: working 2560, self 1372, task 1188 -> count-matched n_max 1188
+  enc1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  enc2: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  enc3: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec0: working 2560, self 1652, task 908 -> count-matched n_max 908
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1346, task 1214 -> count-matched n_max 1214
+  dec3: working 2560, self 1829, task 731 -> count-matched n_max 731
+  self found in 12s
+  next language = gu (phase 9 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | lesion  | self@1.0  | seed 0 | 8451 neurons | loss 3.370 -> 2.063 | chrF 15.9 -> 43.0 | 130s | left in this call: 3 runs, about 6 min
+
+===== Sat 10:05 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p008 --part train --mode lesion --model related_old1_p8=v8_indic_continual_s1:8 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p8 = v8_indic_continual_s1 phase 8 (last trained on gu) | languages hi, gu, pa
+  related_old1_p6 | next | none    | none      | seed 0 | 0 neurons | loss 3.695 -> 1.794 | chrF 32.3 -> 48.5 | 112s | left in this call: 4 runs, about 7 min
+  enc0: working 2560, self 1372, task 1188 -> count-matched n_max 1188
+  enc1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  enc2: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  enc3: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec0: working 2560, self 1652, task 908 -> count-matched n_max 908
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1346, task 1214 -> count-matched n_max 1214
+  dec3: working 2560, self 1829, task 731 -> count-matched n_max 731
+  self found in 9s
+  next language = pa (phase 9 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | next | lesion  | self@0.5  | seed 0 | 4243 neurons | loss 1.755 -> 1.500 | chrF 44.4 -> 47.4 | 131s | left in this call: 1 runs, about 2 min
+  related_old1_p8 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.384 -> 1.281 | chrF 5.5 -> 46.8 | 147s | left in this call: 1 runs, about 2 min
+  related_old1_p6 | indonesian | freeze  | self@1.0  | seed 0 | 8451 neurons | loss 9.806 -> 1.297 | chrF 5.4 -> 45.2 | 144s | left in this call: 3 runs, about 7 min
+  related_old1_p6 | next | freeze  | self@1.0  | seed 0 | 8451 neurons | loss 1.847 -> 1.972 | chrF 44.8 -> 43.7 | 109s | left in this call: 3 runs, about 6 min
+  related_old1_p4 | next | freeze  | task@1.0  | seed 0 | 8484 neurons | loss 5.387 -> 2.297 | chrF 17.6 -> 42.7 | 110s | left in this call: 2 runs, about 4 min
+  related_old1_p8 | next | none    | none      | seed 0 | 0 neurons | loss 1.976 -> 2.093 | chrF 44.6 -> 42.5 | 133s | left in this call: 4 runs, about 9 min
+
+===== Sat 10:07 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p008 --part train --mode freeze --model related_old1_p8=v8_indic_continual_s1:8 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+start model: related_old1_p8 = v8_indic_continual_s1 phase 8 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1372, task 1188 -> count-matched n_max 1188
+  enc1: working 2560, self 1167, task 1393 -> count-matched n_max 1167
+  enc2: working 2560, self 1209, task 1351 -> count-matched n_max 1209
+  enc3: working 2560, self 1417, task 1143 -> count-matched n_max 1143
+  dec0: working 2560, self 1652, task 908 -> count-matched n_max 908
+  dec1: working 2560, self 1357, task 1203 -> count-matched n_max 1203
+  dec2: working 2560, self 1346, task 1214 -> count-matched n_max 1214
+  dec3: working 2560, self 1829, task 731 -> count-matched n_max 731
+  self found in 9s
+  next language = pa (phase 9 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | lesion  | task@0.5  | seed 0 | 4224 neurons | loss 3.824 -> 1.843 | chrF 28.5 -> 48.6 | 132s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p4 | next | freeze  | self@0.5  | seed 0 | 4243 neurons | loss 1.326 -> 1.427 | chrF 51.0 -> 48.9 | 129s | left in this call: 1 runs, about 2 min
+
+===== Sat 10:07 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p010 --part train --mode lesion --model related_old1_p10=v8_indic_continual_s1:10 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p10 = v8_indic_continual_s1 phase 10 (last trained on hi) | languages hi, gu, pa
+  related_old1_p4 | indonesian | freeze  | self@0.5  | seed 0 | 4243 neurons | loss 9.210 -> 1.287 | chrF 5.7 -> 46.7 | 126s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1403, task 1157 -> count-matched n_max 1157
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1257, task 1303 -> count-matched n_max 1257
+  enc3: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec0: working 2560, self 1659, task 901 -> count-matched n_max 901
+  dec1: working 2560, self 1193, task 1367 -> count-matched n_max 1193
+  dec2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  dec3: working 2560, self 1879, task 681 -> count-matched n_max 681
+  self found in 9s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | lesion  | task@1.0  | seed 0 | 8451 neurons | loss 2.286 -> 2.044 | chrF 40.8 -> 42.5 | 130s | left in this call: 2 runs, about 4 min
+  related_old1_p8 | next | none    | none      | seed 0 | 0 neurons | loss 1.976 -> 2.093 | chrF 44.6 -> 42.5 | 132s | left in this call: 4 runs, about 9 min
+  related_old1_p6 | next | freeze  | self@1.0  | seed 0 | 8451 neurons | loss 3.695 -> 1.807 | chrF 32.3 -> 48.7 | 133s | left in this call: 3 runs, about 6 min
+  related_old1_p8 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.384 -> 1.281 | chrF 5.5 -> 46.8 | 145s | left in this call: 4 runs, about 10 min
+
+===== Sat 10:08 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p010 --part train --mode lesion --model related_old1_p10=v8_indic_continual_s1:10 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang hi
+  related_old1_p8 | next | none    | none      | seed 0 | 0 neurons | loss 3.933 -> 2.081 | chrF 27.8 -> 44.7 | 132s | left in this call: 1 runs, about 2 min
+start model: related_old1_p10 = v8_indic_continual_s1 phase 10 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1403, task 1157 -> count-matched n_max 1157
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1257, task 1303 -> count-matched n_max 1257
+  enc3: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec0: working 2560, self 1659, task 901 -> count-matched n_max 901
+  dec1: working 2560, self 1193, task 1367 -> count-matched n_max 1193
+  dec2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  dec3: working 2560, self 1879, task 681 -> count-matched n_max 681
+  self found in 9s
+  next language = hi (phase 11 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p4 | next | lesion  | task@0.5  | seed 0 | 4243 neurons | loss 1.519 -> 1.487 | chrF 49.4 -> 48.2 | 129s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:08 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p010 --part train --mode freeze --model related_old1_p10=v8_indic_continual_s1:10 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+  related_old1_p8 | indonesian | lesion  | task@0.5  | seed 0 | 4383 neurons | loss 10.356 -> 1.286 | chrF 4.9 -> 46.1 | 124s | left in this call: 0 runs, about 0 min
+done
+start model: related_old1_p10 = v8_indic_continual_s1 phase 10 (last trained on hi) | languages hi, gu, pa
+
+===== Sat 10:08 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p010 --part train --mode freeze --model related_old1_p10=v8_indic_continual_s1:10 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang hi
+start model: related_old1_p10 = v8_indic_continual_s1 phase 10 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1403, task 1157 -> count-matched n_max 1157
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1257, task 1303 -> count-matched n_max 1257
+  enc3: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec0: working 2560, self 1659, task 901 -> count-matched n_max 901
+  dec1: working 2560, self 1193, task 1367 -> count-matched n_max 1193
+  dec2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  dec3: working 2560, self 1879, task 681 -> count-matched n_max 681
+  self found in 9s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1403, task 1157 -> count-matched n_max 1157
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1257, task 1303 -> count-matched n_max 1257
+  enc3: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec0: working 2560, self 1659, task 901 -> count-matched n_max 901
+  dec1: working 2560, self 1193, task 1367 -> count-matched n_max 1193
+  dec2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  dec3: working 2560, self 1879, task 681 -> count-matched n_max 681
+  self found in 9s
+  next language = hi (phase 11 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | freeze  | task@1.0  | seed 0 | 8451 neurons | loss 1.847 -> 1.970 | chrF 44.8 -> 44.2 | 129s | left in this call: 2 runs, about 4 min
+  related_old1_p4 | next | freeze  | self@0.5  | seed 0 | 4243 neurons | loss 5.387 -> 2.290 | chrF 17.6 -> 43.4 | 133s | left in this call: 1 runs, about 2 min
+  related_old1_p8 | next | lesion  | self@1.0  | seed 0 | 8763 neurons | loss 4.860 -> 2.170 | chrF 8.9 -> 40.8 | 134s | left in this call: 3 runs, about 7 min
+  related_old1_p6 | indonesian | freeze  | task@1.0  | seed 0 | 8451 neurons | loss 9.806 -> 1.298 | chrF 5.4 -> 45.3 | 144s | left in this call: 2 runs, about 5 min
+  related_old1_p8 | next | none    | none      | seed 0 | 0 neurons | loss 3.933 -> 2.081 | chrF 27.8 -> 44.7 | 112s | left in this call: 4 runs, about 7 min
+  related_old1_p4 | next | freeze  | task@0.5  | seed 0 | 4243 neurons | loss 1.326 -> 1.427 | chrF 51.0 -> 49.2 | 107s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:09 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p010 --part train --mode lesion --model related_old1_p10=v8_indic_continual_s1:10 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p10 = v8_indic_continual_s1 phase 10 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1403, task 1157 -> count-matched n_max 1157
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1257, task 1303 -> count-matched n_max 1257
+  enc3: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec0: working 2560, self 1659, task 901 -> count-matched n_max 901
+  dec1: working 2560, self 1193, task 1367 -> count-matched n_max 1193
+  dec2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  dec3: working 2560, self 1879, task 681 -> count-matched n_max 681
+  self found in 9s
+  next language = gu (phase 11 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p10 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.679 -> 1.260 | chrF 5.9 -> 47.2 | 131s | left in this call: 1 runs, about 2 min
+  related_old1_p4 | indonesian | freeze  | task@0.5  | seed 0 | 4243 neurons | loss 9.210 -> 1.282 | chrF 5.7 -> 46.1 | 145s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:10 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p010 --part train --mode freeze --model related_old1_p10=v8_indic_continual_s1:10 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+  related_old1_p8 | next | freeze  | self@1.0  | seed 0 | 8763 neurons | loss 1.976 -> 2.090 | chrF 44.6 -> 43.0 | 126s | left in this call: 3 runs, about 6 min
+start model: related_old1_p10 = v8_indic_continual_s1 phase 10 (last trained on hi) | languages hi, gu, pa
+  related_old1_p6 | next | lesion  | self@0.5  | seed 0 | 4224 neurons | loss 2.125 -> 2.016 | chrF 41.6 -> 42.5 | 130s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1403, task 1157 -> count-matched n_max 1157
+  enc1: working 2560, self 1197, task 1363 -> count-matched n_max 1197
+  enc2: working 2560, self 1257, task 1303 -> count-matched n_max 1257
+  enc3: working 2560, self 1440, task 1120 -> count-matched n_max 1120
+  dec0: working 2560, self 1659, task 901 -> count-matched n_max 901
+  dec1: working 2560, self 1193, task 1367 -> count-matched n_max 1193
+  dec2: working 2560, self 1266, task 1294 -> count-matched n_max 1266
+  dec3: working 2560, self 1879, task 681 -> count-matched n_max 681
+  self found in 9s
+  next language = gu (phase 11 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | freeze  | task@1.0  | seed 0 | 8451 neurons | loss 3.695 -> 1.812 | chrF 32.3 -> 48.3 | 133s | left in this call: 2 runs, about 4 min
+  related_old1_p8 | next | lesion  | task@0.5  | seed 0 | 4383 neurons | loss 4.081 -> 2.116 | chrF 29.2 -> 44.1 | 131s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:10 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p012 --part train --mode lesion --model related_old1_p12=v8_indic_continual_s1:12 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+  related_old1_p8 | indonesian | freeze  | self@1.0  | seed 0 | 8763 neurons | loss 10.384 -> 1.305 | chrF 5.5 -> 44.9 | 144s | left in this call: 3 runs, about 7 min
+start model: related_old1_p12 = v8_indic_continual_s1 phase 12 (last trained on pa) | languages hi, gu, pa
+  related_old1_p10 | next | none    | none      | seed 0 | 0 neurons | loss 1.304 -> 1.419 | chrF 52.1 -> 48.7 | 130s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1370, task 1190 -> count-matched n_max 1190
+  enc1: working 2560, self 1136, task 1424 -> count-matched n_max 1136
+  enc2: working 2560, self 1216, task 1344 -> count-matched n_max 1216
+  enc3: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  dec0: working 2560, self 1655, task 905 -> count-matched n_max 905
+  dec1: working 2560, self 1291, task 1269 -> count-matched n_max 1269
+  dec2: working 2560, self 1306, task 1254 -> count-matched n_max 1254
+  dec3: working 2560, self 1912, task 648 -> count-matched n_max 648
+  self found in 9s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | freeze  | self@0.5  | seed 0 | 4224 neurons | loss 1.847 -> 1.976 | chrF 44.8 -> 43.7 | 111s | left in this call: 1 runs, about 2 min
+  related_old1_p10 | indonesian | none    | none      | seed 0 | 0 neurons | loss 9.679 -> 1.260 | chrF 5.9 -> 47.2 | 127s | left in this call: 4 runs, about 8 min
+  related_old1_p10 | next | none    | none      | seed 0 | 0 neurons | loss 1.304 -> 1.419 | chrF 52.1 -> 48.7 | 130s | left in this call: 4 runs, about 9 min
+  related_old1_p4 | next | freeze  | task@0.5  | seed 0 | 4243 neurons | loss 5.387 -> 2.290 | chrF 17.6 -> 41.9 | 133s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:11 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p012 --part train --mode lesion --model related_old1_p12=v8_indic_continual_s1:12 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang pa
+  related_old1_p8 | next | freeze  | self@1.0  | seed 0 | 8763 neurons | loss 3.933 -> 2.085 | chrF 27.8 -> 44.9 | 131s | left in this call: 3 runs, about 6 min
+  related_old1_p8 | next | lesion  | task@1.0  | seed 0 | 8763 neurons | loss 2.493 -> 2.146 | chrF 40.3 -> 42.6 | 133s | left in this call: 2 runs, about 4 min
+start model: related_old1_p12 = v8_indic_continual_s1 phase 12 (last trained on pa) | languages hi, gu, pa
+  related_old1_p6 | indonesian | freeze  | self@0.5  | seed 0 | 4224 neurons | loss 9.806 -> 1.285 | chrF 5.4 -> 46.2 | 143s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1370, task 1190 -> count-matched n_max 1190
+  enc1: working 2560, self 1136, task 1424 -> count-matched n_max 1136
+  enc2: working 2560, self 1216, task 1344 -> count-matched n_max 1216
+  enc3: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  dec0: working 2560, self 1655, task 905 -> count-matched n_max 905
+  dec1: working 2560, self 1291, task 1269 -> count-matched n_max 1269
+  dec2: working 2560, self 1306, task 1254 -> count-matched n_max 1254
+  dec3: working 2560, self 1912, task 648 -> count-matched n_max 648
+  self found in 9s
+  next language = pa (phase 13 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p10 | next | none    | none      | seed 0 | 0 neurons | loss 4.459 -> 2.182 | chrF 30.5 -> 42.9 | 134s | left in this call: 1 runs, about 2 min
+  related_old1_p8 | next | freeze  | task@1.0  | seed 0 | 8763 neurons | loss 1.976 -> 2.084 | chrF 44.6 -> 42.3 | 118s | left in this call: 2 runs, about 4 min
+  related_old1_p10 | indonesian | lesion  | task@0.5  | seed 0 | 4383 neurons | loss 9.510 -> 1.274 | chrF 5.0 -> 47.0 | 146s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p6 | next | lesion  | task@0.5  | seed 0 | 4224 neurons | loss 1.984 -> 2.009 | chrF 43.4 -> 43.7 | 130s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:12 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p012 --part train --mode freeze --model related_old1_p12=v8_indic_continual_s1:12 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+
+===== Sat 10:12 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p012 --part train --mode freeze --model related_old1_p12=v8_indic_continual_s1:12 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang pa
+start model: related_old1_p12 = v8_indic_continual_s1 phase 12 (last trained on pa) | languages hi, gu, pa
+start model: related_old1_p12 = v8_indic_continual_s1 phase 12 (last trained on pa) | languages hi, gu, pa
+  related_old1_p10 | next | none    | none      | seed 0 | 0 neurons | loss 4.459 -> 2.182 | chrF 30.5 -> 42.9 | 133s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1370, task 1190 -> count-matched n_max 1190
+  enc1: working 2560, self 1136, task 1424 -> count-matched n_max 1136
+  enc2: working 2560, self 1216, task 1344 -> count-matched n_max 1216
+  enc3: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  dec0: working 2560, self 1655, task 905 -> count-matched n_max 905
+  dec1: working 2560, self 1291, task 1269 -> count-matched n_max 1269
+  dec2: working 2560, self 1306, task 1254 -> count-matched n_max 1254
+  dec3: working 2560, self 1912, task 648 -> count-matched n_max 648
+  self found in 12s
+  enc0: working 2560, self 1370, task 1190 -> count-matched n_max 1190
+  enc1: working 2560, self 1136, task 1424 -> count-matched n_max 1136
+  enc2: working 2560, self 1216, task 1344 -> count-matched n_max 1216
+  enc3: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  dec0: working 2560, self 1655, task 905 -> count-matched n_max 905
+  dec1: working 2560, self 1291, task 1269 -> count-matched n_max 1269
+  dec2: working 2560, self 1306, task 1254 -> count-matched n_max 1254
+  dec3: working 2560, self 1912, task 648 -> count-matched n_max 648
+  self found in 12s
+  next language = pa (phase 13 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p6 | next | freeze  | self@0.5  | seed 0 | 4224 neurons | loss 3.695 -> 1.801 | chrF 32.3 -> 48.8 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p8 | indonesian | freeze  | task@1.0  | seed 0 | 8763 neurons | loss 10.384 -> 1.302 | chrF 5.5 -> 45.5 | 129s | left in this call: 2 runs, about 5 min
+  related_old1_p10 | next | lesion  | self@1.0  | seed 0 | 8772 neurons | loss 7.563 -> 1.570 | chrF 3.4 -> 47.5 | 133s | left in this call: 3 runs, about 7 min
+  related_old1_p6 | next | freeze  | task@0.5  | seed 0 | 4224 neurons | loss 1.847 -> 1.975 | chrF 44.8 -> 43.6 | 130s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p10 | next | freeze  | self@1.0  | seed 0 | 8772 neurons | loss 1.304 -> 1.406 | chrF 52.1 -> 49.2 | 109s | left in this call: 3 runs, about 6 min
+
+===== Sat 10:13 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p012 --part train --mode lesion --model related_old1_p12=v8_indic_continual_s1:12 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p12 = v8_indic_continual_s1 phase 12 (last trained on pa) | languages hi, gu, pa
+  related_old1_p12 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.656 -> 1.271 | chrF 5.3 -> 46.2 | 140s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1370, task 1190 -> count-matched n_max 1190
+  enc1: working 2560, self 1136, task 1424 -> count-matched n_max 1136
+  enc2: working 2560, self 1216, task 1344 -> count-matched n_max 1216
+  enc3: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  dec0: working 2560, self 1655, task 905 -> count-matched n_max 905
+  dec1: working 2560, self 1291, task 1269 -> count-matched n_max 1269
+  dec2: working 2560, self 1306, task 1254 -> count-matched n_max 1254
+  dec3: working 2560, self 1912, task 648 -> count-matched n_max 648
+  self found in 8s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p10 | indonesian | freeze  | self@1.0  | seed 0 | 8772 neurons | loss 9.679 -> 1.284 | chrF 5.9 -> 45.9 | 145s | left in this call: 3 runs, about 7 min
+  related_old1_p8 | next | freeze  | task@1.0  | seed 0 | 8763 neurons | loss 3.933 -> 2.083 | chrF 27.8 -> 43.4 | 132s | left in this call: 2 runs, about 4 min
+  related_old1_p8 | next | lesion  | self@0.5  | seed 0 | 4383 neurons | loss 2.320 -> 2.119 | chrF 36.6 -> 41.7 | 133s | left in this call: 1 runs, about 2 min
+  related_old1_p6 | indonesian | freeze  | task@0.5  | seed 0 | 4224 neurons | loss 9.806 -> 1.285 | chrF 5.4 -> 45.9 | 125s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:13 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p012 --part train --mode freeze --model related_old1_p12=v8_indic_continual_s1:12 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+start model: related_old1_p12 = v8_indic_continual_s1 phase 12 (last trained on pa) | languages hi, gu, pa
+  related_old1_p12 | next | none    | none      | seed 0 | 0 neurons | loss 1.842 -> 1.972 | chrF 44.4 -> 44.1 | 130s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1370, task 1190 -> count-matched n_max 1190
+  enc1: working 2560, self 1136, task 1424 -> count-matched n_max 1136
+  enc2: working 2560, self 1216, task 1344 -> count-matched n_max 1216
+  enc3: working 2560, self 1418, task 1142 -> count-matched n_max 1142
+  dec0: working 2560, self 1655, task 905 -> count-matched n_max 905
+  dec1: working 2560, self 1291, task 1269 -> count-matched n_max 1269
+  dec2: working 2560, self 1306, task 1254 -> count-matched n_max 1254
+  dec3: working 2560, self 1912, task 648 -> count-matched n_max 648
+  self found in 9s
+  next language = hi (phase 13 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p10 | next | lesion  | task@0.5  | seed 0 | 4383 neurons | loss 4.593 -> 2.223 | chrF 27.1 -> 42.1 | 133s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:14 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p014 --part train --mode lesion --model related_old1_p14=v8_indic_continual_s1:14 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p14 = v8_indic_continual_s1 phase 14 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1334, task 1226 -> count-matched n_max 1226
+  enc1: working 2560, self 1103, task 1457 -> count-matched n_max 1103
+  enc2: working 2560, self 1161, task 1399 -> count-matched n_max 1161
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1237, task 1323 -> count-matched n_max 1237
+  dec2: working 2560, self 1208, task 1352 -> count-matched n_max 1208
+  dec3: working 2560, self 1748, task 812 -> count-matched n_max 812
+  self found in 9s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p8 | next | freeze  | self@0.5  | seed 0 | 4383 neurons | loss 1.976 -> 2.091 | chrF 44.6 -> 42.4 | 131s | left in this call: 1 runs, about 2 min
+  related_old1_p12 | next | none    | none      | seed 0 | 0 neurons | loss 1.842 -> 1.972 | chrF 44.4 -> 44.1 | 110s | left in this call: 4 runs, about 7 min
+  related_old1_p10 | next | freeze  | self@1.0  | seed 0 | 8772 neurons | loss 4.459 -> 2.186 | chrF 30.5 -> 42.9 | 131s | left in this call: 3 runs, about 7 min
+  related_old1_p6 | next | freeze  | task@0.5  | seed 0 | 4224 neurons | loss 3.695 -> 1.804 | chrF 32.3 -> 48.3 | 132s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:15 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p014 --part train --mode lesion --model related_old1_p14=v8_indic_continual_s1:14 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang gu
+start model: related_old1_p14 = v8_indic_continual_s1 phase 14 (last trained on gu) | languages hi, gu, pa
+  related_old1_p10 | next | lesion  | task@1.0  | seed 0 | 8772 neurons | loss 2.142 -> 1.558 | chrF 44.1 -> 48.0 | 129s | left in this call: 2 runs, about 4 min
+  related_old1_p12 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.656 -> 1.271 | chrF 5.3 -> 46.2 | 148s | left in this call: 4 runs, about 10 min
+  enc0: working 2560, self 1334, task 1226 -> count-matched n_max 1226
+  enc1: working 2560, self 1103, task 1457 -> count-matched n_max 1103
+  enc2: working 2560, self 1161, task 1399 -> count-matched n_max 1161
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1237, task 1323 -> count-matched n_max 1237
+  dec2: working 2560, self 1208, task 1352 -> count-matched n_max 1208
+  dec3: working 2560, self 1748, task 812 -> count-matched n_max 812
+  self found in 9s
+  next language = gu (phase 15 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p8 | indonesian | freeze  | self@0.5  | seed 0 | 4383 neurons | loss 10.384 -> 1.292 | chrF 5.5 -> 46.4 | 144s | left in this call: 1 runs, about 2 min
+  related_old1_p10 | next | freeze  | task@1.0  | seed 0 | 8772 neurons | loss 1.304 -> 1.406 | chrF 52.1 -> 49.4 | 130s | left in this call: 2 runs, about 4 min
+  related_old1_p8 | next | lesion  | task@0.5  | seed 0 | 4383 neurons | loss 2.144 -> 2.107 | chrF 44.7 -> 43.0 | 112s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p12 | indonesian | lesion  | task@0.5  | seed 0 | 4379 neurons | loss 10.418 -> 1.283 | chrF 5.1 -> 46.6 | 137s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:15 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p014 --part train --mode freeze --model related_old1_p14=v8_indic_continual_s1:14 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+
+===== Sat 10:15 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p014 --part train --mode freeze --model related_old1_p14=v8_indic_continual_s1:14 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang gu
+  related_old1_p12 | next | none    | none      | seed 0 | 0 neurons | loss 3.233 -> 1.662 | chrF 37.5 -> 49.6 | 131s | left in this call: 1 runs, about 2 min
+start model: related_old1_p14 = v8_indic_continual_s1 phase 14 (last trained on gu) | languages hi, gu, pa
+start model: related_old1_p14 = v8_indic_continual_s1 phase 14 (last trained on gu) | languages hi, gu, pa
+  related_old1_p10 | indonesian | freeze  | task@1.0  | seed 0 | 8772 neurons | loss 9.679 -> 1.287 | chrF 5.9 -> 45.2 | 129s | left in this call: 2 runs, about 4 min
+  enc0: working 2560, self 1334, task 1226 -> count-matched n_max 1226
+  enc1: working 2560, self 1103, task 1457 -> count-matched n_max 1103
+  enc2: working 2560, self 1161, task 1399 -> count-matched n_max 1161
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1237, task 1323 -> count-matched n_max 1237
+  dec2: working 2560, self 1208, task 1352 -> count-matched n_max 1208
+  dec3: working 2560, self 1748, task 812 -> count-matched n_max 812
+  self found in 10s
+  related_old1_p8 | next | freeze  | self@0.5  | seed 0 | 4383 neurons | loss 3.933 -> 2.082 | chrF 27.8 -> 44.5 | 132s | left in this call: 1 runs, about 2 min
+  next language = gu (phase 15 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1334, task 1226 -> count-matched n_max 1226
+  enc1: working 2560, self 1103, task 1457 -> count-matched n_max 1103
+  enc2: working 2560, self 1161, task 1399 -> count-matched n_max 1161
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1237, task 1323 -> count-matched n_max 1237
+  dec2: working 2560, self 1208, task 1352 -> count-matched n_max 1208
+  dec3: working 2560, self 1748, task 812 -> count-matched n_max 812
+  self found in 11s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p12 | next | lesion  | self@1.0  | seed 0 | 8760 neurons | loss 3.519 -> 2.058 | chrF 12.7 -> 42.0 | 132s | left in this call: 3 runs, about 7 min
+  related_old1_p12 | next | none    | none      | seed 0 | 0 neurons | loss 3.233 -> 1.662 | chrF 37.5 -> 49.6 | 132s | left in this call: 4 runs, about 9 min
+  related_old1_p8 | next | freeze  | task@0.5  | seed 0 | 4383 neurons | loss 1.976 -> 2.089 | chrF 44.6 -> 42.4 | 130s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:16 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p014 --part train --mode lesion --model related_old1_p14=v8_indic_continual_s1:14 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p14 = v8_indic_continual_s1 phase 14 (last trained on gu) | languages hi, gu, pa
+  related_old1_p12 | next | freeze  | self@1.0  | seed 0 | 8760 neurons | loss 1.842 -> 1.961 | chrF 44.4 -> 43.9 | 129s | left in this call: 3 runs, about 6 min
+  enc0: working 2560, self 1334, task 1226 -> count-matched n_max 1226
+  enc1: working 2560, self 1103, task 1457 -> count-matched n_max 1103
+  enc2: working 2560, self 1161, task 1399 -> count-matched n_max 1161
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1237, task 1323 -> count-matched n_max 1237
+  dec2: working 2560, self 1208, task 1352 -> count-matched n_max 1208
+  dec3: working 2560, self 1748, task 812 -> count-matched n_max 812
+  self found in 9s
+  next language = pa (phase 15 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p14 | indonesian | none    | none      | seed 0 | 0 neurons | loss 11.066 -> 1.267 | chrF 5.3 -> 46.4 | 147s | left in this call: 1 runs, about 2 min
+  related_old1_p10 | next | freeze  | task@1.0  | seed 0 | 8772 neurons | loss 4.459 -> 2.192 | chrF 30.5 -> 43.0 | 119s | left in this call: 2 runs, about 4 min
+  related_old1_p14 | next | none    | none      | seed 0 | 0 neurons | loss 1.966 -> 2.089 | chrF 44.4 -> 42.2 | 111s | left in this call: 4 runs, about 7 min
+  related_old1_p10 | next | lesion  | self@0.5  | seed 0 | 4383 neurons | loss 1.824 -> 1.468 | chrF 44.9 -> 48.4 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p10 | next | freeze  | self@0.5  | seed 0 | 4383 neurons | loss 1.304 -> 1.410 | chrF 52.1 -> 49.4 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p12 | next | lesion  | task@0.5  | seed 0 | 4379 neurons | loss 3.426 -> 1.728 | chrF 37.3 -> 49.2 | 117s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p12 | indonesian | freeze  | self@1.0  | seed 0 | 8760 neurons | loss 10.656 -> 1.296 | chrF 5.3 -> 45.6 | 145s | left in this call: 3 runs, about 7 min
+
+===== Sat 10:17 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p014 --part train --mode freeze --model related_old1_p14=v8_indic_continual_s1:14 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+  related_old1_p8 | indonesian | freeze  | task@0.5  | seed 0 | 4383 neurons | loss 10.384 -> 1.291 | chrF 5.5 -> 45.8 | 144s | left in this call: 0 runs, about 0 min
+done
+start model: related_old1_p14 = v8_indic_continual_s1 phase 14 (last trained on gu) | languages hi, gu, pa
+
+===== Sat 10:17 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p016 --part train --mode lesion --model related_old1_p16=v8_indic_continual_s1:16 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p16 = v8_indic_continual_s1 phase 16 (last trained on hi) | languages hi, gu, pa
+  related_old1_p14 | next | none    | none      | seed 0 | 0 neurons | loss 1.966 -> 2.089 | chrF 44.4 -> 42.2 | 118s | left in this call: 4 runs, about 8 min
+  enc0: working 2560, self 1334, task 1226 -> count-matched n_max 1226
+  enc1: working 2560, self 1103, task 1457 -> count-matched n_max 1103
+  enc2: working 2560, self 1161, task 1399 -> count-matched n_max 1161
+  enc3: working 2560, self 1277, task 1283 -> count-matched n_max 1277
+  dec0: working 2560, self 1665, task 895 -> count-matched n_max 895
+  dec1: working 2560, self 1237, task 1323 -> count-matched n_max 1237
+  dec2: working 2560, self 1208, task 1352 -> count-matched n_max 1208
+  dec3: working 2560, self 1748, task 812 -> count-matched n_max 812
+  self found in 9s
+  next language = pa (phase 15 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1304, task 1256 -> count-matched n_max 1256
+  enc1: working 2560, self 1111, task 1449 -> count-matched n_max 1111
+  enc2: working 2560, self 1082, task 1478 -> count-matched n_max 1082
+  enc3: working 2560, self 1349, task 1211 -> count-matched n_max 1211
+  dec0: working 2560, self 1605, task 955 -> count-matched n_max 955
+  dec1: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  dec2: working 2560, self 1155, task 1405 -> count-matched n_max 1155
+  dec3: working 2560, self 1850, task 710 -> count-matched n_max 710
+  self found in 9s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p12 | next | lesion  | task@1.0  | seed 0 | 8760 neurons | loss 2.433 -> 2.034 | chrF 39.5 -> 42.9 | 117s | left in this call: 2 runs, about 4 min
+  related_old1_p8 | next | freeze  | task@0.5  | seed 0 | 4383 neurons | loss 3.933 -> 2.081 | chrF 27.8 -> 44.5 | 132s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:18 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p016 --part train --mode lesion --model related_old1_p16=v8_indic_continual_s1:16 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang hi
+start model: related_old1_p16 = v8_indic_continual_s1 phase 16 (last trained on hi) | languages hi, gu, pa
+  related_old1_p10 | indonesian | freeze  | self@0.5  | seed 0 | 4383 neurons | loss 9.679 -> 1.273 | chrF 5.9 -> 45.7 | 146s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1304, task 1256 -> count-matched n_max 1256
+  enc1: working 2560, self 1111, task 1449 -> count-matched n_max 1111
+  enc2: working 2560, self 1082, task 1478 -> count-matched n_max 1082
+  enc3: working 2560, self 1349, task 1211 -> count-matched n_max 1211
+  dec0: working 2560, self 1605, task 955 -> count-matched n_max 955
+  dec1: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  dec2: working 2560, self 1155, task 1405 -> count-matched n_max 1155
+  dec3: working 2560, self 1850, task 710 -> count-matched n_max 710
+  self found in 9s
+  next language = hi (phase 17 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p14 | indonesian | none    | none      | seed 0 | 0 neurons | loss 11.066 -> 1.267 | chrF 5.3 -> 46.4 | 149s | left in this call: 4 runs, about 10 min
+  related_old1_p12 | next | freeze  | self@1.0  | seed 0 | 8760 neurons | loss 3.233 -> 1.672 | chrF 37.5 -> 49.8 | 130s | left in this call: 3 runs, about 7 min
+  related_old1_p12 | next | freeze  | task@1.0  | seed 0 | 8760 neurons | loss 1.842 -> 1.958 | chrF 44.4 -> 43.9 | 129s | left in this call: 2 runs, about 4 min
+  related_old1_p10 | next | freeze  | self@0.5  | seed 0 | 4383 neurons | loss 4.459 -> 2.185 | chrF 30.5 -> 43.5 | 131s | left in this call: 1 runs, about 2 min
+  related_old1_p14 | next | none    | none      | seed 0 | 0 neurons | loss 3.778 -> 2.048 | chrF 30.9 -> 44.1 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p10 | next | lesion  | task@0.5  | seed 0 | 4383 neurons | loss 1.531 -> 1.464 | chrF 49.6 -> 48.7 | 109s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p14 | indonesian | lesion  | task@0.5  | seed 0 | 4459 neurons | loss 10.714 -> 1.275 | chrF 5.3 -> 46.7 | 146s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:19 | GPU 1 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p016 --part train --mode freeze --model related_old1_p16=v8_indic_continual_s1:16 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p16 = v8_indic_continual_s1 phase 16 (last trained on hi) | languages hi, gu, pa
+
+===== Sat 10:19 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p016 --part train --mode freeze --model related_old1_p16=v8_indic_continual_s1:16 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang hi
+  related_old1_p14 | next | lesion  | self@1.0  | seed 0 | 8919 neurons | loss 3.914 -> 2.176 | chrF 8.0 -> 41.4 | 134s | left in this call: 3 runs, about 6 min
+start model: related_old1_p16 = v8_indic_continual_s1 phase 16 (last trained on hi) | languages hi, gu, pa
+  enc0: working 2560, self 1304, task 1256 -> count-matched n_max 1256
+  enc1: working 2560, self 1111, task 1449 -> count-matched n_max 1111
+  enc2: working 2560, self 1082, task 1478 -> count-matched n_max 1082
+  enc3: working 2560, self 1349, task 1211 -> count-matched n_max 1211
+  dec0: working 2560, self 1605, task 955 -> count-matched n_max 955
+  dec1: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  dec2: working 2560, self 1155, task 1405 -> count-matched n_max 1155
+  dec3: working 2560, self 1850, task 710 -> count-matched n_max 710
+  self found in 9s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1304, task 1256 -> count-matched n_max 1256
+  enc1: working 2560, self 1111, task 1449 -> count-matched n_max 1111
+  enc2: working 2560, self 1082, task 1478 -> count-matched n_max 1082
+  enc3: working 2560, self 1349, task 1211 -> count-matched n_max 1211
+  dec0: working 2560, self 1605, task 955 -> count-matched n_max 955
+  dec1: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  dec2: working 2560, self 1155, task 1405 -> count-matched n_max 1155
+  dec3: working 2560, self 1850, task 710 -> count-matched n_max 710
+  self found in 9s
+  next language = hi (phase 17 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p10 | next | freeze  | task@0.5  | seed 0 | 4383 neurons | loss 1.304 -> 1.412 | chrF 52.1 -> 49.8 | 131s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:19 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p016 --part train --mode lesion --model related_old1_p16=v8_indic_continual_s1:16 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p16 = v8_indic_continual_s1 phase 16 (last trained on hi) | languages hi, gu, pa
+  related_old1_p12 | indonesian | freeze  | task@1.0  | seed 0 | 8760 neurons | loss 10.656 -> 1.296 | chrF 5.3 -> 46.0 | 137s | left in this call: 2 runs, about 5 min
+  related_old1_p14 | next | freeze  | self@1.0  | seed 0 | 8919 neurons | loss 1.966 -> 2.077 | chrF 44.4 -> 42.6 | 126s | left in this call: 3 runs, about 6 min
+  enc0: working 2560, self 1304, task 1256 -> count-matched n_max 1256
+  enc1: working 2560, self 1111, task 1449 -> count-matched n_max 1111
+  enc2: working 2560, self 1082, task 1478 -> count-matched n_max 1082
+  enc3: working 2560, self 1349, task 1211 -> count-matched n_max 1211
+  dec0: working 2560, self 1605, task 955 -> count-matched n_max 955
+  dec1: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  dec2: working 2560, self 1155, task 1405 -> count-matched n_max 1155
+  dec3: working 2560, self 1850, task 710 -> count-matched n_max 710
+  self found in 10s
+  next language = gu (phase 17 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p12 | next | lesion  | self@0.5  | seed 0 | 4379 neurons | loss 2.229 -> 1.993 | chrF 40.1 -> 42.9 | 129s | left in this call: 1 runs, about 2 min
+  related_old1_p14 | next | none    | none      | seed 0 | 0 neurons | loss 3.778 -> 2.048 | chrF 30.9 -> 44.1 | 133s | left in this call: 4 runs, about 9 min
+  related_old1_p16 | next | none    | none      | seed 0 | 0 neurons | loss 1.287 -> 1.400 | chrF 51.7 -> 48.0 | 109s | left in this call: 4 runs, about 7 min
+  related_old1_p10 | indonesian | freeze  | task@0.5  | seed 0 | 4383 neurons | loss 9.679 -> 1.275 | chrF 5.9 -> 46.2 | 124s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:20 | GPU 4 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p016 --part train --mode freeze --model related_old1_p16=v8_indic_continual_s1:16 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+start model: related_old1_p16 = v8_indic_continual_s1 phase 16 (last trained on hi) | languages hi, gu, pa
+  related_old1_p16 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.269 -> 1.266 | chrF 5.9 -> 47.7 | 146s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1304, task 1256 -> count-matched n_max 1256
+  enc1: working 2560, self 1111, task 1449 -> count-matched n_max 1111
+  enc2: working 2560, self 1082, task 1478 -> count-matched n_max 1082
+  enc3: working 2560, self 1349, task 1211 -> count-matched n_max 1211
+  dec0: working 2560, self 1605, task 955 -> count-matched n_max 955
+  dec1: working 2560, self 1091, task 1469 -> count-matched n_max 1091
+  dec2: working 2560, self 1155, task 1405 -> count-matched n_max 1155
+  dec3: working 2560, self 1850, task 710 -> count-matched n_max 710
+  self found in 9s
+  next language = gu (phase 17 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p12 | next | freeze  | task@1.0  | seed 0 | 8760 neurons | loss 3.233 -> 1.680 | chrF 37.5 -> 50.5 | 130s | left in this call: 2 runs, about 4 min
+  related_old1_p14 | indonesian | freeze  | self@1.0  | seed 0 | 8919 neurons | loss 11.066 -> 1.288 | chrF 5.3 -> 45.6 | 147s | left in this call: 3 runs, about 7 min
+  related_old1_p12 | next | freeze  | self@0.5  | seed 0 | 4379 neurons | loss 1.842 -> 1.968 | chrF 44.4 -> 43.2 | 128s | left in this call: 1 runs, about 2 min
+  related_old1_p10 | next | freeze  | task@0.5  | seed 0 | 4383 neurons | loss 4.459 -> 2.186 | chrF 30.5 -> 43.2 | 132s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p14 | next | lesion  | task@0.5  | seed 0 | 4459 neurons | loss 3.961 -> 2.092 | chrF 28.7 -> 44.8 | 131s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:21 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p018 --part train --mode lesion --model related_old1_p18=v8_indic_continual_s1:18 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+start model: related_old1_p18 = v8_indic_continual_s1 phase 18 (last trained on pa) | languages hi, gu, pa
+
+===== Sat 10:21 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p018 --part train --mode lesion --model related_old1_p18=v8_indic_continual_s1:18 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang pa
+start model: related_old1_p18 = v8_indic_continual_s1 phase 18 (last trained on pa) | languages hi, gu, pa
+  related_old1_p16 | next | none    | none      | seed 0 | 0 neurons | loss 1.287 -> 1.400 | chrF 51.7 -> 48.0 | 107s | left in this call: 4 runs, about 7 min
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  enc3: working 2560, self 1343, task 1217 -> count-matched n_max 1217
+  dec0: working 2560, self 1672, task 888 -> count-matched n_max 888
+  dec1: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  dec2: working 2560, self 1234, task 1326 -> count-matched n_max 1234
+  dec3: working 2560, self 1855, task 705 -> count-matched n_max 705
+  self found in 8s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  enc3: working 2560, self 1343, task 1217 -> count-matched n_max 1217
+  dec0: working 2560, self 1672, task 888 -> count-matched n_max 888
+  dec1: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  dec2: working 2560, self 1234, task 1326 -> count-matched n_max 1234
+  dec3: working 2560, self 1855, task 705 -> count-matched n_max 705
+  self found in 8s
+  next language = pa (phase 19 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p14 | next | lesion  | task@1.0  | seed 0 | 8919 neurons | loss 4.040 -> 2.153 | chrF 14.1 -> 42.5 | 136s | left in this call: 2 runs, about 4 min
+  related_old1_p16 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.269 -> 1.266 | chrF 5.9 -> 47.7 | 147s | left in this call: 4 runs, about 10 min
+  related_old1_p14 | next | freeze  | task@1.0  | seed 0 | 8919 neurons | loss 1.966 -> 2.080 | chrF 44.4 -> 42.6 | 130s | left in this call: 2 runs, about 4 min
+  related_old1_p12 | indonesian | freeze  | self@0.5  | seed 0 | 4379 neurons | loss 10.656 -> 1.283 | chrF 5.3 -> 46.5 | 137s | left in this call: 1 runs, about 2 min
+  related_old1_p16 | next | none    | none      | seed 0 | 0 neurons | loss 4.468 -> 2.169 | chrF 30.2 -> 43.3 | 135s | left in this call: 1 runs, about 2 min
+  related_old1_p12 | next | lesion  | task@0.5  | seed 0 | 4379 neurons | loss 2.011 -> 1.989 | chrF 44.7 -> 42.7 | 130s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:22 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p018 --part train --mode freeze --model related_old1_p18=v8_indic_continual_s1:18 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+  related_old1_p14 | next | freeze  | self@1.0  | seed 0 | 8919 neurons | loss 3.778 -> 2.052 | chrF 30.9 -> 44.6 | 132s | left in this call: 3 runs, about 7 min
+start model: related_old1_p18 = v8_indic_continual_s1 phase 18 (last trained on pa) | languages hi, gu, pa
+  related_old1_p16 | next | lesion  | self@1.0  | seed 0 | 8571 neurons | loss 4.084 -> 1.556 | chrF 8.3 -> 46.4 | 133s | left in this call: 3 runs, about 6 min
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  enc3: working 2560, self 1343, task 1217 -> count-matched n_max 1217
+  dec0: working 2560, self 1672, task 888 -> count-matched n_max 888
+  dec1: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  dec2: working 2560, self 1234, task 1326 -> count-matched n_max 1234
+  dec3: working 2560, self 1855, task 705 -> count-matched n_max 705
+  self found in 9s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p16 | indonesian | lesion  | task@0.5  | seed 0 | 4288 neurons | loss 9.860 -> 1.277 | chrF 5.2 -> 47.7 | 129s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:22 | GPU 0 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p018 --part train --mode freeze --model related_old1_p18=v8_indic_continual_s1:18 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang pa
+start model: related_old1_p18 = v8_indic_continual_s1 phase 18 (last trained on pa) | languages hi, gu, pa
+  related_old1_p12 | next | freeze  | self@0.5  | seed 0 | 4379 neurons | loss 3.233 -> 1.667 | chrF 37.5 -> 50.1 | 130s | left in this call: 1 runs, about 2 min
+  related_old1_p16 | next | none    | none      | seed 0 | 0 neurons | loss 4.468 -> 2.169 | chrF 30.2 -> 43.3 | 134s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  enc3: working 2560, self 1343, task 1217 -> count-matched n_max 1217
+  dec0: working 2560, self 1672, task 888 -> count-matched n_max 888
+  dec1: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  dec2: working 2560, self 1234, task 1326 -> count-matched n_max 1234
+  dec3: working 2560, self 1855, task 705 -> count-matched n_max 705
+  self found in 9s
+  next language = pa (phase 19 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p12 | next | freeze  | task@0.5  | seed 0 | 4379 neurons | loss 1.842 -> 1.965 | chrF 44.4 -> 44.1 | 129s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:23 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p018 --part train --mode lesion --model related_old1_p18=v8_indic_continual_s1:18 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p18 = v8_indic_continual_s1 phase 18 (last trained on pa) | languages hi, gu, pa
+  related_old1_p14 | indonesian | freeze  | task@1.0  | seed 0 | 8919 neurons | loss 11.066 -> 1.291 | chrF 5.3 -> 46.0 | 147s | left in this call: 2 runs, about 5 min
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  enc3: working 2560, self 1343, task 1217 -> count-matched n_max 1217
+  dec0: working 2560, self 1672, task 888 -> count-matched n_max 888
+  dec1: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  dec2: working 2560, self 1234, task 1326 -> count-matched n_max 1234
+  dec3: working 2560, self 1855, task 705 -> count-matched n_max 705
+  self found in 9s
+  next language = hi (phase 19 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p16 | next | freeze  | self@1.0  | seed 0 | 8571 neurons | loss 1.287 -> 1.386 | chrF 51.7 -> 48.9 | 129s | left in this call: 3 runs, about 6 min
+  related_old1_p18 | next | none    | none      | seed 0 | 0 neurons | loss 1.826 -> 1.965 | chrF 44.4 -> 43.6 | 133s | left in this call: 4 runs, about 9 min
+  related_old1_p18 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.438 -> 1.272 | chrF 5.2 -> 47.3 | 140s | left in this call: 1 runs, about 2 min
+  related_old1_p14 | next | lesion  | self@0.5  | seed 0 | 4459 neurons | loss 2.415 -> 2.114 | chrF 35.2 -> 41.6 | 134s | left in this call: 1 runs, about 2 min
+  related_old1_p14 | next | freeze  | self@0.5  | seed 0 | 4459 neurons | loss 1.966 -> 2.079 | chrF 44.4 -> 42.4 | 130s | left in this call: 1 runs, about 2 min
+  related_old1_p16 | indonesian | freeze  | self@1.0  | seed 0 | 8571 neurons | loss 10.269 -> 1.287 | chrF 5.9 -> 46.3 | 145s | left in this call: 3 runs, about 7 min
+  related_old1_p14 | next | freeze  | task@1.0  | seed 0 | 8919 neurons | loss 3.778 -> 2.050 | chrF 30.9 -> 44.0 | 132s | left in this call: 2 runs, about 4 min
+  related_old1_p16 | next | lesion  | task@0.5  | seed 0 | 4288 neurons | loss 4.647 -> 2.203 | chrF 28.5 -> 42.5 | 136s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:24 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p018 --part train --mode freeze --model related_old1_p18=v8_indic_continual_s1:18 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+  related_old1_p12 | indonesian | freeze  | task@0.5  | seed 0 | 4379 neurons | loss 10.656 -> 1.282 | chrF 5.3 -> 45.4 | 144s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p12 | next | freeze  | task@0.5  | seed 0 | 4379 neurons | loss 3.233 -> 1.671 | chrF 37.5 -> 49.7 | 112s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p16 | next | lesion  | task@1.0  | seed 0 | 8571 neurons | loss 2.502 -> 1.533 | chrF 38.7 -> 48.6 | 133s | left in this call: 2 runs, about 4 min
+start model: related_old1_p18 = v8_indic_continual_s1 phase 18 (last trained on pa) | languages hi, gu, pa
+
+===== Sat 10:24 | GPU 2 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_A_weak/related_old1/p020 --part train --mode lesion --model related_old1_p20=v8_indic_continual_s1:20 --conds none,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+
+===== Sat 10:24 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_C/related_old1/p020 --part train --mode lesion --model related_old1_p20=v8_indic_continual_s1:20 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang gu
+start model: related_old1_p20 = v8_indic_continual_s1 phase 20 (last trained on gu) | languages hi, gu, pa
+start model: related_old1_p20 = v8_indic_continual_s1 phase 20 (last trained on gu) | languages hi, gu, pa
+  related_old1_p18 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.438 -> 1.272 | chrF 5.2 -> 47.3 | 128s | left in this call: 4 runs, about 9 min
+  enc0: working 2560, self 1378, task 1182 -> count-matched n_max 1182
+  enc1: working 2560, self 1085, task 1475 -> count-matched n_max 1085
+  enc2: working 2560, self 1132, task 1428 -> count-matched n_max 1132
+  enc3: working 2560, self 1343, task 1217 -> count-matched n_max 1217
+  dec0: working 2560, self 1672, task 888 -> count-matched n_max 888
+  dec1: working 2560, self 1214, task 1346 -> count-matched n_max 1214
+  dec2: working 2560, self 1234, task 1326 -> count-matched n_max 1234
+  dec3: working 2560, self 1855, task 705 -> count-matched n_max 705
+  self found in 8s
+  next language = hi (phase 19 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1255, task 1305 -> count-matched n_max 1255
+  enc1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  enc2: working 2560, self 1079, task 1481 -> count-matched n_max 1079
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1649, task 911 -> count-matched n_max 911
+  dec1: working 2560, self 1215, task 1345 -> count-matched n_max 1215
+  dec2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  dec3: working 2560, self 1725, task 835 -> count-matched n_max 835
+  self found in 9s
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1255, task 1305 -> count-matched n_max 1255
+  enc1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  enc2: working 2560, self 1079, task 1481 -> count-matched n_max 1079
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1649, task 911 -> count-matched n_max 911
+  dec1: working 2560, self 1215, task 1345 -> count-matched n_max 1215
+  dec2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  dec3: working 2560, self 1725, task 835 -> count-matched n_max 835
+  self found in 11s
+  next language = gu (phase 21 of the normal schedule)
+runs to do in this call: 5 (mode lesion; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p16 | next | freeze  | self@1.0  | seed 0 | 8571 neurons | loss 4.468 -> 2.170 | chrF 30.2 -> 43.6 | 133s | left in this call: 3 runs, about 7 min
+  related_old1_p18 | next | none    | none      | seed 0 | 0 neurons | loss 1.826 -> 1.965 | chrF 44.4 -> 43.6 | 130s | left in this call: 4 runs, about 9 min
+  related_old1_p18 | next | none    | none      | seed 0 | 0 neurons | loss 3.166 -> 1.618 | chrF 37.3 -> 49.1 | 109s | left in this call: 1 runs, about 2 min
+  related_old1_p16 | next | freeze  | task@1.0  | seed 0 | 8571 neurons | loss 1.287 -> 1.387 | chrF 51.7 -> 48.5 | 129s | left in this call: 2 runs, about 4 min
+  related_old1_p14 | indonesian | freeze  | self@0.5  | seed 0 | 4459 neurons | loss 11.066 -> 1.278 | chrF 5.3 -> 45.8 | 147s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | lesion  | self@1.0  | seed 0 | 8657 neurons | loss 3.705 -> 2.056 | chrF 7.3 -> 42.5 | 133s | left in this call: 3 runs, about 7 min
+  related_old1_p14 | next | lesion  | task@0.5  | seed 0 | 4459 neurons | loss 2.157 -> 2.103 | chrF 43.5 -> 43.5 | 133s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:26 | GPU 3 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_A/related_old1/p020 --part train --mode freeze --model related_old1_p20=v8_indic_continual_s1:20 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task indonesian --lr 1e-4 --steps 1500
+  related_old1_p18 | indonesian | lesion  | task@0.5  | seed 0 | 4327 neurons | loss 10.132 -> 1.279 | chrF 5.2 -> 47.3 | 144s | left in this call: 0 runs, about 0 min
+done
+start model: related_old1_p20 = v8_indic_continual_s1 phase 20 (last trained on gu) | languages hi, gu, pa
+
+===== Sat 10:26 | GPU 7 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_C/related_old1/p020 --part train --mode freeze --model related_old1_p20=v8_indic_continual_s1:20 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000 --next_lang gu
+start model: related_old1_p20 = v8_indic_continual_s1 phase 20 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1255, task 1305 -> count-matched n_max 1255
+  enc1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  enc2: working 2560, self 1079, task 1481 -> count-matched n_max 1079
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1649, task 911 -> count-matched n_max 911
+  dec1: working 2560, self 1215, task 1345 -> count-matched n_max 1215
+  dec2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  dec3: working 2560, self 1725, task 835 -> count-matched n_max 835
+  self found in 9s
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  enc0: working 2560, self 1255, task 1305 -> count-matched n_max 1255
+  enc1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  enc2: working 2560, self 1079, task 1481 -> count-matched n_max 1079
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1649, task 911 -> count-matched n_max 911
+  dec1: working 2560, self 1215, task 1345 -> count-matched n_max 1215
+  dec2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  dec3: working 2560, self 1725, task 835 -> count-matched n_max 835
+  self found in 9s
+  related_old1_p14 | next | freeze  | task@0.5  | seed 0 | 4459 neurons | loss 1.966 -> 2.085 | chrF 44.4 -> 42.3 | 131s | left in this call: 0 runs, about 0 min
+done
+  next language = gu (phase 21 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+
+===== Sat 10:26 | GPU 6 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out lesion_B_weak/related_old1/p020 --part train --mode lesion --model related_old1_p20=v8_indic_continual_s1:20 --conds none,task@0.5 --task next --steps 1000
+start model: related_old1_p20 = v8_indic_continual_s1 phase 20 (last trained on gu) | languages hi, gu, pa
+  related_old1_p14 | next | freeze  | self@0.5  | seed 0 | 4459 neurons | loss 3.778 -> 2.049 | chrF 30.9 -> 44.2 | 125s | left in this call: 1 runs, about 2 min
+  enc0: working 2560, self 1255, task 1305 -> count-matched n_max 1255
+  enc1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  enc2: working 2560, self 1079, task 1481 -> count-matched n_max 1079
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1649, task 911 -> count-matched n_max 911
+  dec1: working 2560, self 1215, task 1345 -> count-matched n_max 1215
+  dec2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  dec3: working 2560, self 1725, task 835 -> count-matched n_max 835
+  self found in 9s
+  next language = pa (phase 21 of the normal schedule)
+runs to do in this call: 2 (mode lesion; conditions ['none', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p16 | indonesian | freeze  | task@1.0  | seed 0 | 8571 neurons | loss 10.269 -> 1.288 | chrF 5.9 -> 47.0 | 146s | left in this call: 2 runs, about 5 min
+  related_old1_p16 | next | lesion  | self@0.5  | seed 0 | 4288 neurons | loss 1.859 -> 1.446 | chrF 39.0 -> 47.6 | 133s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | none    | none      | seed 0 | 0 neurons | loss 3.166 -> 1.618 | chrF 37.3 -> 49.1 | 130s | left in this call: 4 runs, about 9 min
+  related_old1_p20 | next | none    | none      | seed 0 | 0 neurons | loss 1.959 -> 2.079 | chrF 45.0 -> 41.9 | 131s | left in this call: 4 runs, about 9 min
+  related_old1_p18 | indonesian | freeze  | self@1.0  | seed 0 | 8657 neurons | loss 10.438 -> 1.293 | chrF 5.2 -> 45.2 | 146s | left in this call: 3 runs, about 7 min
+  related_old1_p16 | next | freeze  | task@1.0  | seed 0 | 8571 neurons | loss 4.468 -> 2.174 | chrF 30.2 -> 42.7 | 133s | left in this call: 2 runs, about 4 min
+  related_old1_p18 | next | freeze  | self@1.0  | seed 0 | 8657 neurons | loss 1.826 -> 1.949 | chrF 44.4 -> 44.2 | 129s | left in this call: 3 runs, about 6 min
+  related_old1_p20 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.897 -> 1.265 | chrF 5.6 -> 46.5 | 147s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | lesion  | task@0.5  | seed 0 | 4327 neurons | loss 3.421 -> 1.695 | chrF 34.3 -> 48.6 | 130s | left in this call: 0 runs, about 0 min
+done
+
+===== Sat 10:27 | GPU 5 | /venv/main/bin/python -u core_v11.py --outroot v15 --family related --tau 0.2 --seeds 0 --out freeze_B/related_old1/p020 --part train --mode freeze --model related_old1_p20=v8_indic_continual_s1:20 --conds none,self@1.0,task@1.0,self@0.5,task@0.5 --task next --steps 1000
+start model: related_old1_p20 = v8_indic_continual_s1 phase 20 (last trained on gu) | languages hi, gu, pa
+  enc0: working 2560, self 1255, task 1305 -> count-matched n_max 1255
+  enc1: working 2560, self 1024, task 1536 -> count-matched n_max 1024
+  enc2: working 2560, self 1079, task 1481 -> count-matched n_max 1079
+  enc3: working 2560, self 1271, task 1289 -> count-matched n_max 1271
+  dec0: working 2560, self 1649, task 911 -> count-matched n_max 911
+  dec1: working 2560, self 1215, task 1345 -> count-matched n_max 1215
+  dec2: working 2560, self 1149, task 1411 -> count-matched n_max 1149
+  dec3: working 2560, self 1725, task 835 -> count-matched n_max 835
+  self found in 9s
+  next language = pa (phase 21 of the normal schedule)
+runs to do in this call: 5 (mode freeze; conditions ['none', 'self@1.0', 'task@1.0', 'self@0.5', 'task@0.5']; seeds [0]; finished runs are skipped)
+  related_old1_p14 | indonesian | freeze  | task@0.5  | seed 0 | 4459 neurons | loss 11.066 -> 1.279 | chrF 5.3 -> 45.7 | 126s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p16 | next | freeze  | self@0.5  | seed 0 | 4288 neurons | loss 1.287 -> 1.392 | chrF 51.7 -> 48.8 | 129s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | lesion  | task@1.0  | seed 0 | 8657 neurons | loss 6.317 -> 2.036 | chrF 8.2 -> 42.8 | 112s | left in this call: 2 runs, about 4 min
+  related_old1_p20 | indonesian | none    | none      | seed 0 | 0 neurons | loss 10.897 -> 1.265 | chrF 5.6 -> 46.5 | 130s | left in this call: 4 runs, about 9 min
+  related_old1_p14 | next | freeze  | task@0.5  | seed 0 | 4459 neurons | loss 3.778 -> 2.049 | chrF 30.9 -> 43.9 | 123s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | next | none    | none      | seed 0 | 0 neurons | loss 1.959 -> 2.079 | chrF 45.0 -> 41.9 | 131s | left in this call: 4 runs, about 9 min
+  related_old1_p20 | next | none    | none      | seed 0 | 0 neurons | loss 3.716 -> 2.039 | chrF 32.3 -> 44.6 | 124s | left in this call: 1 runs, about 2 min
+  related_old1_p20 | next | lesion  | self@1.0  | seed 0 | 8739 neurons | loss 3.996 -> 2.166 | chrF 10.6 -> 41.5 | 111s | left in this call: 3 runs, about 6 min
+  related_old1_p16 | next | lesion  | task@0.5  | seed 0 | 4288 neurons | loss 1.544 -> 1.448 | chrF 50.0 -> 48.6 | 131s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p16 | indonesian | freeze  | self@0.5  | seed 0 | 4288 neurons | loss 10.269 -> 1.276 | chrF 5.9 -> 46.9 | 140s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | freeze  | self@1.0  | seed 0 | 8657 neurons | loss 3.166 -> 1.633 | chrF 37.3 -> 49.5 | 132s | left in this call: 3 runs, about 7 min
+  related_old1_p18 | next | freeze  | task@1.0  | seed 0 | 8657 neurons | loss 1.826 -> 1.957 | chrF 44.4 -> 42.7 | 131s | left in this call: 2 runs, about 4 min
+  related_old1_p16 | next | freeze  | self@0.5  | seed 0 | 4288 neurons | loss 4.468 -> 2.171 | chrF 30.2 -> 42.9 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | indonesian | freeze  | task@1.0  | seed 0 | 8657 neurons | loss 10.438 -> 1.294 | chrF 5.2 -> 45.4 | 143s | left in this call: 2 runs, about 5 min
+  related_old1_p20 | indonesian | lesion  | task@0.5  | seed 0 | 4372 neurons | loss 10.580 -> 1.274 | chrF 4.9 -> 46.9 | 147s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | next | none    | none      | seed 0 | 0 neurons | loss 3.716 -> 2.039 | chrF 32.3 -> 44.6 | 131s | left in this call: 4 runs, about 9 min
+  related_old1_p16 | next | freeze  | task@0.5  | seed 0 | 4288 neurons | loss 1.287 -> 1.396 | chrF 51.7 -> 47.8 | 129s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p18 | next | lesion  | self@0.5  | seed 0 | 4327 neurons | loss 2.208 -> 1.994 | chrF 36.7 -> 42.9 | 131s | left in this call: 1 runs, about 2 min
+  related_old1_p20 | next | freeze  | self@1.0  | seed 0 | 8739 neurons | loss 1.959 -> 2.067 | chrF 45.0 -> 42.3 | 129s | left in this call: 3 runs, about 7 min
+  related_old1_p20 | next | lesion  | task@0.5  | seed 0 | 4372 neurons | loss 4.133 -> 2.076 | chrF 24.7 -> 43.7 | 125s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | indonesian | freeze  | self@1.0  | seed 0 | 8739 neurons | loss 10.897 -> 1.291 | chrF 5.6 -> 45.7 | 148s | left in this call: 3 runs, about 7 min
+  related_old1_p18 | next | freeze  | task@1.0  | seed 0 | 8657 neurons | loss 3.166 -> 1.640 | chrF 37.3 -> 49.6 | 112s | left in this call: 2 runs, about 4 min
+  related_old1_p20 | next | lesion  | task@1.0  | seed 0 | 8739 neurons | loss 4.496 -> 2.149 | chrF 20.1 -> 41.6 | 132s | left in this call: 2 runs, about 4 min
+  related_old1_p16 | next | freeze  | task@0.5  | seed 0 | 4288 neurons | loss 4.468 -> 2.169 | chrF 30.2 -> 42.9 | 114s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p16 | indonesian | freeze  | task@0.5  | seed 0 | 4288 neurons | loss 10.269 -> 1.278 | chrF 5.9 -> 47.4 | 140s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p18 | next | freeze  | self@0.5  | seed 0 | 4327 neurons | loss 1.826 -> 1.955 | chrF 44.4 -> 43.4 | 129s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | indonesian | freeze  | self@0.5  | seed 0 | 4327 neurons | loss 10.438 -> 1.282 | chrF 5.2 -> 47.6 | 145s | left in this call: 1 runs, about 2 min
+  related_old1_p20 | next | freeze  | self@1.0  | seed 0 | 8739 neurons | loss 3.716 -> 2.037 | chrF 32.3 -> 44.2 | 131s | left in this call: 3 runs, about 7 min
+  related_old1_p18 | next | lesion  | task@0.5  | seed 0 | 4327 neurons | loss 2.013 -> 1.985 | chrF 44.4 -> 43.1 | 130s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | next | freeze  | task@1.0  | seed 0 | 8739 neurons | loss 1.959 -> 2.070 | chrF 45.0 -> 43.5 | 112s | left in this call: 2 runs, about 4 min
+  related_old1_p18 | next | freeze  | self@0.5  | seed 0 | 4327 neurons | loss 3.166 -> 1.625 | chrF 37.3 -> 49.3 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p20 | indonesian | freeze  | task@1.0  | seed 0 | 8739 neurons | loss 10.897 -> 1.291 | chrF 5.6 -> 45.8 | 135s | left in this call: 2 runs, about 5 min
+  related_old1_p20 | next | lesion  | self@0.5  | seed 0 | 4372 neurons | loss 2.385 -> 2.110 | chrF 36.3 -> 42.9 | 131s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | freeze  | task@0.5  | seed 0 | 4327 neurons | loss 1.826 -> 1.959 | chrF 44.4 -> 43.1 | 129s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p18 | indonesian | freeze  | task@0.5  | seed 0 | 4327 neurons | loss 10.438 -> 1.282 | chrF 5.2 -> 46.6 | 128s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | next | freeze  | task@1.0  | seed 0 | 8739 neurons | loss 3.716 -> 2.041 | chrF 32.3 -> 44.6 | 130s | left in this call: 2 runs, about 4 min
+  related_old1_p20 | next | freeze  | self@0.5  | seed 0 | 4372 neurons | loss 1.959 -> 2.076 | chrF 45.0 -> 42.2 | 132s | left in this call: 1 runs, about 2 min
+  related_old1_p18 | next | freeze  | task@0.5  | seed 0 | 4327 neurons | loss 3.166 -> 1.629 | chrF 37.3 -> 49.5 | 132s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | next | lesion  | task@0.5  | seed 0 | 4372 neurons | loss 2.345 -> 2.103 | chrF 39.2 -> 41.3 | 132s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | indonesian | freeze  | self@0.5  | seed 0 | 4372 neurons | loss 10.897 -> 1.276 | chrF 5.6 -> 45.9 | 142s | left in this call: 1 runs, about 2 min
+  related_old1_p20 | next | freeze  | self@0.5  | seed 0 | 4372 neurons | loss 3.716 -> 2.037 | chrF 32.3 -> 44.3 | 112s | left in this call: 1 runs, about 2 min
+  related_old1_p20 | next | freeze  | task@0.5  | seed 0 | 4372 neurons | loss 1.959 -> 2.076 | chrF 45.0 -> 41.6 | 131s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | indonesian | freeze  | task@0.5  | seed 0 | 4372 neurons | loss 10.897 -> 1.275 | chrF 5.6 -> 46.9 | 146s | left in this call: 0 runs, about 0 min
+done
+  related_old1_p20 | next | freeze  | task@0.5  | seed 0 | 4372 neurons | loss 3.716 -> 2.037 | chrF 32.3 -> 44.5 | 132s | left in this call: 0 runs, about 0 min
+done

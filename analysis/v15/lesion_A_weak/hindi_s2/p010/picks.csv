@@ -1,0 +1,9 @@
+layer,n_self,n_task,n_max,dose,n,note,family,start,seed
+enc0,1475,1085,1085,0.5,542,,hindi,hindi_s2_p10,0
+enc1,1174,1386,1174,0.5,587,,hindi,hindi_s2_p10,0
+enc2,1141,1419,1141,0.5,570,,hindi,hindi_s2_p10,0
+enc3,1358,1202,1202,0.5,601,,hindi,hindi_s2_p10,0
+dec0,1486,1074,1074,0.5,537,,hindi,hindi_s2_p10,0
+dec1,1161,1399,1161,0.5,580,,hindi,hindi_s2_p10,0
+dec2,1218,1342,1218,0.5,609,,hindi,hindi_s2_p10,0
+dec3,1728,832,832,0.5,416,,hindi,hindi_s2_p10,0
